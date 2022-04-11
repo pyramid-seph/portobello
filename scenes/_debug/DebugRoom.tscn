@@ -9,7 +9,6 @@
 
 [node name="DebugRoom" type="Node"]
 script = ExtResource( 2 )
-enable_autofire = true
 
 [node name="World" type="Node2D" parent="."]
 

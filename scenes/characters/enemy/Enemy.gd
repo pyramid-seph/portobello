@@ -1,6 +1,5 @@
 extends Area2D
 
-signal dead_enemy
 
 const SPEED = 48
 const SCORE = 10
@@ -16,11 +15,6 @@ func _process(delta):
 
 
 func _on_VisibilityNotifier2D_viewport_exited(_viewport):
-	queue_free()
-
-
-func _on_StormyCloud_area_entered(_area):
-	emit_signal("dead_enemy")
 	queue_free()
 
 
