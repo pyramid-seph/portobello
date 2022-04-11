@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/objects/Gun.gd" type="Script" id=1]
+
+[node name="Gun" type="Position2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
