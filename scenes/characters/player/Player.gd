@@ -1,6 +1,5 @@
 extends Area2D
 
-
 export var speed = 40
 export var is_auto_fire_enabled = false
 
@@ -13,20 +12,15 @@ onready var min_pos_y = player_size.get_height()
 
 func _input(event):
 	if not is_auto_fire_enabled and event.is_action_pressed("fire"):
-		fire()
+		_fire()
 
 
 func _process(delta):
-	var velocity = speed * Input.get_vector(
-		"move_left",
-		"move_right",
-		"move_up",
-		"move_down"
-	)
+	var velocity = speed * Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	_move(velocity, delta)
-	
+
 	if is_auto_fire_enabled:
-		fire()
+		_fire()
 
 
 func revive(pos):
@@ -42,7 +36,7 @@ func die():
 	$AnimatedSprite.play("explode")
 
 
-func fire():
+func _fire():
 	gun.shoot(Vector2.UP)
 
 

@@ -1,9 +1,8 @@
 extends Area2D
 
-
 const SPEED = 48
 const SCORE = 10
-const DIRECTION = Vector2.DOWN 
+const DIRECTION = Vector2.DOWN
 
 
 func _ready():

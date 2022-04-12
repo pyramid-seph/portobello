@@ -1,6 +1,5 @@
 extends Node
 
-
 export var enable_autofire = false
 
 onready var player = $World/Player

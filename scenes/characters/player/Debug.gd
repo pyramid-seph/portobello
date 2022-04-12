@@ -3,9 +3,11 @@ extends Node
 onready var scene_tree = get_tree()
 onready var player = get_parent()
 
+
 func _ready():
-	if not OS.is_debug_build(): 
+	if not OS.is_debug_build():
 		queue_free()
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("debug_kill"):

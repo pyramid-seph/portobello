@@ -1,6 +1,5 @@
 extends Control
 
-
 onready var score := $Score
 onready var hi_score := $HiScore
 

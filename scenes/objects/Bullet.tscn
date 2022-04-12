@@ -7,8 +7,9 @@
 radius = 3.0
 
 [node name="Bullet" type="Area2D" groups=["bullets"]]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
