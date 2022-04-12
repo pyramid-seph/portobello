@@ -19,7 +19,7 @@ func _spawn_bullet(direction: Vector2):
 	bullet.position = global_position
 	bullet.direction = direction
 	bullet.speed = bullet_speed
-	_root.add_child(bullet)
+	add_child(bullet)
 
 
 func shoot(direction):

@@ -4,6 +4,10 @@ export var speed := 0.0
 export var direction := Vector2.ZERO
 
 
+func _init():
+	set_as_toplevel(true)
+
+
 func _ready():
 	connect("area_entered", self, "_on_area_entered")
 
