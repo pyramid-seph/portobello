@@ -8,10 +8,6 @@ func _init():
 	set_as_toplevel(true)
 
 
-func _ready():
-	connect("area_entered", self, "_on_area_entered")
-
-
 func _process(delta):
 	position += direction * speed * delta
 
