@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/day_2_1.png-5f3e4f528a254bf513e83f02337671f8.stex"
+path="res://.import/day_2_intro_1.png-e2c2e07822b3427e53fd7f1d4b8d88b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_2_1.png"
-dest_files=[ "res://.import/day_2_1.png-5f3e4f528a254bf513e83f02337671f8.stex" ]
+source_file="res://art/cutscenes/day_2_intro_1.png"
+dest_files=[ "res://.import/day_2_intro_1.png-e2c2e07822b3427e53fd7f1d4b8d88b1.stex" ]
 
 [params]
 

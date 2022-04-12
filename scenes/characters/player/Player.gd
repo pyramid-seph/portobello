@@ -23,7 +23,7 @@ func _process(delta):
 		"move_up",
 		"move_down"
 	)
-	__move(velocity, delta)
+	_move(velocity, delta)
 	
 	if is_auto_fire_enabled:
 		fire()
@@ -46,7 +46,7 @@ func fire():
 	gun.shoot(Vector2.UP)
 
 
-func __move(velocity, delta):
+func _move(velocity, delta):
 	position += velocity * delta
 	var max_pos_x = screen_size.x - min_pos_x
 	var max_pos_y = screen_size.y - min_pos_y

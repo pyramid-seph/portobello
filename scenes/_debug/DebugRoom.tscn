@@ -13,6 +13,7 @@ script = ExtResource( 2 )
 [node name="World" type="Node2D" parent="."]
 
 [node name="Player" parent="World" instance=ExtResource( 1 )]
+is_auto_fire_enabled = true
 
 [node name="StartPosition" type="Position2D" parent="World"]
 position = Vector2( 120, 280 )

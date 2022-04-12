@@ -3,7 +3,6 @@ extends Node
 
 export var enable_autofire = false
 
-onready var screen_size = $World.get_viewport_rect().size
 onready var player = $World/Player
 
 

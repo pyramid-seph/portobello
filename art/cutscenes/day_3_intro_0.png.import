@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/day_0_intro.png-0e2343419a8a91b27f0172e8f45abe51.stex"
+path="res://.import/day_3_intro_0.png-5c4369f070e3a2aaa771c999be022e31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_0_intro.png"
-dest_files=[ "res://.import/day_0_intro.png-0e2343419a8a91b27f0172e8f45abe51.stex" ]
+source_file="res://art/cutscenes/day_3_intro_0.png"
+dest_files=[ "res://.import/day_3_intro_0.png-5c4369f070e3a2aaa771c999be022e31.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

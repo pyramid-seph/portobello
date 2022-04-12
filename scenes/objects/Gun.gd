@@ -7,25 +7,27 @@ export(PackedScene) var Bullet
 export var bullet_speed = 80
 export var cooldown = 1.0
 
+onready var _root = $"/root" 
+onready var _cooldown_timer = $CooldownTimer
 
 func _ready():
-	$CooldownTimer.start(cooldown)
+	_cooldown_timer.start(cooldown)
 
 
-func __spawn_bullet(direction):
+func _spawn_bullet(direction: Vector2):
 	var bullet = Bullet.instance()
 	bullet.position = global_position
-	bullet.direction = direction
+	bullet.direction = direction 
 	bullet.speed = bullet_speed
-	$"/root".add_child(bullet)
+	_root.add_child(bullet)
 
 
 func shoot(direction):
-	if not $CooldownTimer.is_stopped():
+	if not _cooldown_timer.is_stopped():
 		return false
 	
-	__spawn_bullet(direction)
-	$CooldownTimer.start(cooldown)
+	_spawn_bullet(direction)
+	_cooldown_timer.start(cooldown)
 	return true
 
 
