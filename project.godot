@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="Bucho Portobello"
 run/main_scene="res://scenes/_debug/DebugRoom.tscn"
-config/icon="res://art/icon.png"
+config/icon="res://art/_shared/ui_counter_lives.png"
 
 [autoload]
 

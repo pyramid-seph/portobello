@@ -4,8 +4,8 @@
 [ext_resource path="res://scenes/_debug/DebugRoom.gd" type="Script" id=2]
 [ext_resource path="res://scenes/pickups/StormyCloud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/characters/enemy/Enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/user_interfaces/Level04UserInterface.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/user_interfaces/PauseMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/ui/day_3/Day3Ui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ui/day_3/PauseMenu.tscn" type="PackedScene" id=6]
 
 [node name="DebugRoom" type="Node"]
 script = ExtResource( 2 )
@@ -32,6 +32,21 @@ position = Vector2( 154, 51 )
 
 [node name="StormyCloud5" parent="World" instance=ExtResource( 3 )]
 position = Vector2( 120, 47 )
+
+[node name="StormyCloud6" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 120, 30 )
+
+[node name="StormyCloud7" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 120, 10 )
+
+[node name="StormyCloud8" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 120, -10 )
+
+[node name="StormyCloud9" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 120, -30 )
+
+[node name="StormyCloud10" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 120, -50 )
 
 [node name="Enemy" parent="World" instance=ExtResource( 4 )]
 position = Vector2( 28, 77 )

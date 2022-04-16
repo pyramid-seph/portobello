@@ -21,4 +21,5 @@ func _on_VisibilityNotifier2D_viewport_exited(_viewport):
 
 func _on_area_entered(_area):
 	PlayerData.score += SCORE
+	PlayerData.power_up_count += 1
 	queue_free()

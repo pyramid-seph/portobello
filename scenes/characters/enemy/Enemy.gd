@@ -13,6 +13,11 @@ func _process(delta):
 	position += DIRECTION * SPEED * delta
 
 
+func kill():
+	PlayerData.score += SCORE
+	queue_free()
+
+
 func _on_VisibilityNotifier2D_viewport_exited(_viewport):
 	queue_free()
 
@@ -22,5 +27,4 @@ func _on_Gun_cooldown_ended():
 
 
 func _on_area_entered(_area):
-	PlayerData.score += SCORE
-	queue_free()
+	kill()
