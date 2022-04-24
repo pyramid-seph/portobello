@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/_debug/DebugRoom.gd" type="Script" id=2]
@@ -7,9 +7,14 @@
 [ext_resource path="res://scenes/ui/day_3/Day3Ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ui/day_3/PauseMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/backgrounds/Day03Bg.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/_debug/DebugSpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/pickups/Bird.tscn" type="PackedScene" id=9]
 
 [node name="DebugRoom" type="Node"]
 script = ExtResource( 2 )
+
+[node name="DebugSpawner" parent="." instance=ExtResource( 8 )]
+things = [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 3 ) ]
 
 [node name="World" type="Node2D" parent="."]
 
@@ -21,54 +26,8 @@ is_auto_fire_enabled = true
 [node name="StartPosition" type="Position2D" parent="World"]
 position = Vector2( 120, 280 )
 
-[node name="StormyCloud" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 41, 50 )
+[node name="Interface" type="Node" parent="."]
 
-[node name="StormyCloud2" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 82, 51 )
+[node name="Day3Ui" parent="Interface" instance=ExtResource( 5 )]
 
-[node name="StormyCloud3" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 188, 50 )
-
-[node name="StormyCloud4" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 154, 51 )
-
-[node name="StormyCloud5" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 120, 47 )
-
-[node name="StormyCloud6" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 120, 30 )
-
-[node name="StormyCloud7" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 120, 10 )
-
-[node name="StormyCloud8" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 120, -10 )
-
-[node name="StormyCloud9" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 120, -30 )
-
-[node name="StormyCloud10" parent="World" instance=ExtResource( 3 )]
-position = Vector2( 120, -50 )
-
-[node name="Enemy" parent="World" instance=ExtResource( 4 )]
-position = Vector2( 28, 77 )
-
-[node name="Enemy2" parent="World" instance=ExtResource( 4 )]
-position = Vector2( 68, 22 )
-
-[node name="Enemy3" parent="World" instance=ExtResource( 4 )]
-position = Vector2( 105, 77 )
-
-[node name="Enemy4" parent="World" instance=ExtResource( 4 )]
-position = Vector2( 144, 19 )
-
-[node name="Enemy5" parent="World" instance=ExtResource( 4 )]
-position = Vector2( 175, 73 )
-
-[node name="Enemy6" parent="World" instance=ExtResource( 4 )]
-position = Vector2( 175, 39 )
-
-[node name="Level04UserInterface" parent="." instance=ExtResource( 5 )]
-
-[node name="PauseMenu" parent="." instance=ExtResource( 6 )]
+[node name="PauseMenu" parent="Interface" instance=ExtResource( 6 )]
