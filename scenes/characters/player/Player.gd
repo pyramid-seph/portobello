@@ -16,7 +16,7 @@ func _input(event) -> void:
 		_fire()
 
 
-func _process(delta : float) -> void:
+func _process(delta: float) -> void:
 	var velocity = speed * Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	_move(velocity, delta)
 
@@ -43,13 +43,13 @@ func is_powered_up() -> bool:
 
 
 func _fire() -> void:
-	if (is_powered_up()):
+	if is_powered_up():
 		mega_gun.shoot()
 	else:
 		gun.shoot(Vector2.UP)
 
 
-func _move(velocity: Vector2, delta : float):
+func _move(velocity: Vector2, delta: float):
 	position += velocity * delta
 	var max_pos_x = screen_size.x - min_pos_x
 	var max_pos_y = screen_size.y - min_pos_y

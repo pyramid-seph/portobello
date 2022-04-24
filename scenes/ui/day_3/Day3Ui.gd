@@ -1,6 +1,5 @@
 extends Node
 
-
 signal score_changed(new_val)
 signal hi_score_changed(new_val)
 signal time_left_changed(new_val)
