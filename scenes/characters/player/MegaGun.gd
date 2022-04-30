@@ -3,12 +3,7 @@ extends Node
 
 func shoot() -> void:
 	# TODO Screen flash.
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	for enemy in enemies:
-		enemy.kill()
-
-	var bullets = get_tree().get_nodes_in_group("bullets")
-	for bullet in bullets:
-		bullet.queue_free()
+	get_tree().call_group("enemies", "kill")
+	get_tree().call_group("bullets", "queue_free")
 
 	PlayerData.power_up_count -= PlayerData.power_up_count

@@ -1,10 +1,12 @@
 extends Node
 
+export var world_path := NodePath()
 export(Array, PackedScene) var things := []
 
 var _selected_thing_index: int = 0 setget set_selected_thing_index
 
-onready var world := get_tree().get_root().get_node("DebugRoom/World")
+onready var world := get_node(world_path)
+
 
 func _ready():
 	if not OS.is_debug_build():
