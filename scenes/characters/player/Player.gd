@@ -1,15 +1,16 @@
 extends Area2D
 
-const SPEED := 40.0
-const INVINCIBILITY_DURATION := 1.0
+signal mega_gun_shot
+signal died
 
-export(Texture) var invincibility_start_texture = null
-export(Texture) var invincibility_about_to_end_texture = null
+
+const SPEED := 40.0
 
 onready var gun := $Gun
 onready var mega_gun := $MegaGun
 onready var hurt_box := $HurtBox
-onready var shield = $Shield
+#onready var shield_sprite := $ShieldSprite
+onready var animation_player := $AnimationPlayer
 onready var animated_sprite := $AnimatedSprite
 onready var collision_shape := $CollisionShape2D
 onready var screen_size := get_viewport_rect().size
@@ -21,19 +22,34 @@ var _max_pos_x := 0.0
 var _max_pos_y := 0.0
 
 
-func _ready():
+func _ready() -> void:
 	_min_pos_x = player_extents.x
 	_min_pos_y = player_extents.y
 	_max_pos_x = screen_size.x - player_extents.x
 	_max_pos_y = screen_size.y - player_extents.y
 
 
-func _input(event) -> void:
-	if event.is_action_pressed("fire"):
-		_fire()
-
-
 func _process(delta: float) -> void:
+	_process_movement(delta)
+	_process_fire()
+
+
+func revive(pos: Vector2) -> void:
+	position = pos
+	start_timed_invincibility()
+
+
+func start_timed_invincibility():
+	animation_player.play("invincible")
+
+
+func die() -> void:
+	# TODO Spawn explosion
+	emit_signal("died")
+	queue_free()
+
+
+func _process_movement(delta: float) -> void:
 	var velocity = SPEED * Input.get_vector(
 		"move_left",
 		"move_right",
@@ -43,59 +59,32 @@ func _process(delta: float) -> void:
 	_move(velocity, delta)
 
 
-func revive(pos: Vector2) -> void:
-	position = pos
-	animated_sprite.play("default")
-	hurt_box.disabled = false
-	collision_shape.set_deferred("disabled", false)
-	hurt_box.start_timed_invincibility(INVINCIBILITY_DURATION)
-	show()
-
-
-func die() -> void:
-	PlayerData.lives -= 1
-	hurt_box.disabled = true
-	collision_shape.set_deferred("disabled", true)
-	animated_sprite.play("explode")
-
-
-func is_powered_up() -> bool:
-	return PlayerData.power_up_count >= 5
-
-
-func _fire() -> void:
-	if is_powered_up():
-		mega_gun.shoot()
-	else:
+func _process_fire() -> void:
+	if not Input.is_action_pressed("fire"):
+		if mega_gun.is_powered_up():
+			mega_gun.prepare()
+		return
+	
+	if not mega_gun.is_powered_up():
 		gun.shoot(Vector2.UP)
+		return
+	
+	if mega_gun.shoot():
+		emit_signal("mega_gun_shot")
 
 
-func _move(velocity: Vector2, delta: float):
+func _move(velocity: Vector2, delta: float) -> void:
 	position += velocity * delta
 	position.x = clamp(position.x, _min_pos_x, _max_pos_x)
 	position.y = clamp(position.y, _min_pos_y, _max_pos_y)
 
 
-func _on_AnimatedSprite_animation_finished() -> void:
-	if animated_sprite.animation == "explode":
-		queue_free()
-
-
 func _on_HurtBox_hurt(who: Area2D) -> void:
 	if who.has_method("explode"):
 		who.explode()
-
 	die()
 
 
 func _on_Player_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pickups"):
 		area.pick_up()
-
-
-func _on_HurtBox_invincibility_started() -> void:
-	shield.visible = true
-
-
-func _on_HurtBox_invincibility_ended() -> void:
-	shield.visible = false
