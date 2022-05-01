@@ -13,6 +13,10 @@ func _process(delta):
 	position += DIRECTION * SPEED * delta
 
 
+func explode():
+	queue_free()
+
+
 func kill():
 	PlayerData.score += SCORE
 	queue_free()
