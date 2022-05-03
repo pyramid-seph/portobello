@@ -70,7 +70,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4, 1.2, 1.6 ),
+"times": PoolRealArray( 0, 0.08, 1.2, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Rect2( 0, 0, 20, 20 ), Rect2( 20, 0, 20, 20 ), Rect2( 40, 0, 20, 20 ), Rect2( 0, 0, 20, 20 ) ]
@@ -123,7 +123,6 @@ region_rect = Rect2( 20, 0, 20, 20 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -9,12 +9,10 @@ const SPEED := 40.0
 onready var gun := $Gun
 onready var mega_gun := $MegaGun
 onready var hurt_box := $HurtBox
-#onready var shield_sprite := $ShieldSprite
 onready var animation_player := $AnimationPlayer
 onready var animated_sprite := $AnimatedSprite
-onready var collision_shape := $CollisionShape2D
 onready var screen_size := get_viewport_rect().size
-onready var player_extents = collision_shape.shape.extents
+onready var player_extents = $CollisionShape2D.shape.extents
 
 var _min_pos_x := 0.0
 var _min_pos_y := 0.0
