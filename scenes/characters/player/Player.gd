@@ -70,6 +70,7 @@ func power_up_by(points: int) -> void:
 
 
 func _die() -> void:
+	player_data.lives -= 1
 	emit_signal("died")
 	queue_free()
 
