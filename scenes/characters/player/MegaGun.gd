@@ -18,7 +18,6 @@ func shoot() -> bool:
 
 	_is_prepared = false
 
-	print(owner.name)
 	get_tree().call_group("enemies", "kill", owner)
 	get_tree().call_group("bullets", "queue_free")
 
