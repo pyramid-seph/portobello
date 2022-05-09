@@ -1,7 +1,7 @@
 extends Area2D
 
 const SPEED = 48
-const SCORE = 10
+const SCORE_POINTS = 10
 const DIRECTION = Vector2.DOWN
 
 export(PackedScene) var explosion : PackedScene
@@ -21,8 +21,9 @@ func explode():
 	queue_free()
 
 
-func kill():
-	PlayerData.score += SCORE
+func kill(killer):
+	if killer and killer.is_in_group("players"):
+		killer.add_points_to_score(SCORE_POINTS)
 	explode()
 	queue_free()
 
@@ -35,5 +36,5 @@ func _on_Gun_cooldown_ended():
 	gun.shoot(Vector2.DOWN)
 
 
-func _on_area_entered(_area):
-	kill()
+func _on_area_entered(area):
+	kill(area)

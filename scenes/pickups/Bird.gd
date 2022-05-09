@@ -29,7 +29,9 @@ func _autoremove() -> void:
 		queue_free()
 
 
-func pick_up() -> void:
-	PlayerData.score += SCORE_POINTS
+func pick_up(picker) -> void:
+	if picker.is_in_group("players"):
+		picker.add_points_to_score(SCORE_POINTS)
+		picker.add_time_to_fly(5.0)
 	queue_free()
 

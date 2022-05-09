@@ -55,6 +55,18 @@ func fall() -> void:
 	_die()
 
 
+func add_points_to_score(points: int) -> void:
+	PlayerData.score += points
+
+
+func add_time_to_fly(time: float) -> void:
+	pass
+
+
+func power_up_by(points: int) -> void:
+	PlayerData.power_up_count += 1
+
+
 func _die() -> void:
 	emit_signal("died")
 	queue_free()
@@ -98,4 +110,4 @@ func _on_HurtBox_hurt(who: Area2D) -> void:
 
 func _on_Player_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pickups"):
-		area.pick_up()
+		area.pick_up(self)

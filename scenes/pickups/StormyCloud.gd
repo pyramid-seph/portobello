@@ -30,7 +30,8 @@ func _autoremove() -> void:
 		queue_free()
 
 
-func pick_up() -> void:
-	PlayerData.score += SCORE_POINTS
-	PlayerData.power_up_count += 1
+func pick_up(picker) -> void:
+	if picker.is_in_group("players"):
+		picker.add_points_to_score(SCORE_POINTS)
+		picker.power_up_by(1)
 	queue_free()
