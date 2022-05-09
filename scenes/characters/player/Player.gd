@@ -6,6 +6,9 @@ signal died
 
 const SPEED := 40.0
 
+export(PackedScene) var fall : PackedScene
+export(PackedScene) var explosion : PackedScene
+
 onready var gun := $Gun
 onready var mega_gun := $MegaGun
 onready var hurt_box := $HurtBox
@@ -13,6 +16,7 @@ onready var animation_player := $AnimationPlayer
 onready var animated_sprite := $AnimatedSprite
 onready var screen_size := get_viewport_rect().size
 onready var player_extents = $CollisionShape2D.shape.extents
+onready var world = get_parent()
 
 var _min_pos_x := 0.0
 var _min_pos_y := 0.0
@@ -25,6 +29,7 @@ func _ready() -> void:
 	_min_pos_y = player_extents.y
 	_max_pos_x = screen_size.x - player_extents.x
 	_max_pos_y = screen_size.y - player_extents.y
+	start_timed_invincibility()
 
 
 func _process(delta: float) -> void:
@@ -32,17 +37,25 @@ func _process(delta: float) -> void:
 	_process_fire()
 
 
-func revive(pos: Vector2) -> void:
-	position = pos
-	start_timed_invincibility()
-
-
-func start_timed_invincibility():
+func start_timed_invincibility() -> void:
 	animation_player.play("invincible")
 
 
-func die() -> void:
-	# TODO Spawn explosion
+func explode() -> void:
+	var new_explosion = explosion.instance()
+	new_explosion.global_position = global_position
+	world.add_child(new_explosion)
+	_die()
+
+
+func fall() -> void:
+	var new_fall = fall.instance()
+	new_fall.global_position = global_position
+	world.add_child(new_fall)
+	_die()
+
+
+func _die() -> void:
 	emit_signal("died")
 	queue_free()
 
@@ -80,7 +93,7 @@ func _move(velocity: Vector2, delta: float) -> void:
 func _on_HurtBox_hurt(who: Area2D) -> void:
 	if who.has_method("explode"):
 		who.explode()
-	die()
+	explode()
 
 
 func _on_Player_area_entered(area: Area2D) -> void:

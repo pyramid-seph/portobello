@@ -13,6 +13,7 @@
 
 [node name="DebugRoom" type="Node"]
 script = ExtResource( 2 )
+player = ExtResource( 1 )
 
 [node name="DebugSpawner" parent="." instance=ExtResource( 8 )]
 world_path = NodePath("../World")
@@ -21,8 +22,6 @@ things = [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 3 ) ]
 [node name="World" type="Node2D" parent="."]
 
 [node name="Day03Bg" parent="World" instance=ExtResource( 7 )]
-
-[node name="Player" parent="World" instance=ExtResource( 1 )]
 
 [node name="StartPosition" type="Position2D" parent="World"]
 position = Vector2( 120, 280 )
@@ -39,5 +38,3 @@ script = ExtResource( 10 )
 [node name="Day3Ui" parent="Interface" instance=ExtResource( 5 )]
 
 [node name="PauseMenu" parent="Interface" instance=ExtResource( 6 )]
-
-[connection signal="mega_gun_shot" from="World/Player" to="Interface/MegaGunFlash" method="_on_Player_mega_gun_shot"]
