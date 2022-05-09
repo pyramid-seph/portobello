@@ -6,6 +6,7 @@ signal died
 
 const SPEED := 40.0
 
+export(Resource) var player_data
 export(PackedScene) var fall : PackedScene
 export(PackedScene) var explosion : PackedScene
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 	_min_pos_y = player_extents.y
 	_max_pos_x = screen_size.x - player_extents.x
 	_max_pos_y = screen_size.y - player_extents.y
+	mega_gun.player_data = player_data
 	start_timed_invincibility()
 
 
@@ -56,7 +58,7 @@ func fall() -> void:
 
 
 func add_points_to_score(points: int) -> void:
-	PlayerData.score += points
+	player_data.score += points
 
 
 func add_time_to_fly(time: float) -> void:
@@ -64,7 +66,7 @@ func add_time_to_fly(time: float) -> void:
 
 
 func power_up_by(points: int) -> void:
-	PlayerData.power_up_count += 1
+	player_data.power_up_count += 1
 
 
 func _die() -> void:

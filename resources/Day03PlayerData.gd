@@ -1,4 +1,5 @@
-extends Node
+extends Resource
+class_name Day03PlayerData
 
 signal score_updated
 signal hi_score_updated
@@ -8,16 +9,11 @@ signal remaining_lives_updated
 var score := 0 setget set_score
 var power_up_count := 0 setget set_power_up_count
 var hi_score := 0 setget set_hi_score
-var lives := 0 setget set_lives
-
-
-func _ready():
-	self.hi_score = 120
-	self.lives = 9
+var lives := 9 setget set_lives
 
 
 func reset():
-	score = 0
+	self.score = 0
 
 
 func set_score(value):

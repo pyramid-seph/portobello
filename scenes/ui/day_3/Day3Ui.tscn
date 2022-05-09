@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/ui/day_3/Day3Ui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/_shared/LivesCounter.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/ui/_shared/TimeLeftBar.gd" type="Script" id=8]
 [ext_resource path="res://scenes/ui/day_3/HiScore.gd" type="Script" id=9]
 [ext_resource path="res://scenes/ui/_shared/PowerUpBar.gd" type="Script" id=10]
+[ext_resource path="res://resources/instances/Player01Day03Data.tres" type="Resource" id=11]
 
 [node name="Day3Ui" type="Control"]
 anchor_right = 1.0
@@ -22,6 +23,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+player_data = ExtResource( 11 )
 
 [node name="Bars" type="VBoxContainer" parent="."]
 margin_right = 40.0

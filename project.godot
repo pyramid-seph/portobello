@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Day03PlayerData",
+"language": "GDScript",
+"path": "res://resources/Day03PlayerData.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scenes/_shared/HurtBox.gd"
 } ]
 _global_script_class_icons={
+"Day03PlayerData": "",
 "GitAPI": "",
 "HurtBox": ""
 }
@@ -29,10 +35,6 @@ _global_script_class_icons={
 config/name="Bucho Portobello"
 run/main_scene="res://scenes/_debug/DebugRoom.tscn"
 config/icon="res://art/_shared/ui_counter_lives.png"
-
-[autoload]
-
-PlayerData="*res://scenes/autoloads/PlayerData.gd"
 
 [display]
 
