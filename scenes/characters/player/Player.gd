@@ -3,7 +3,6 @@ extends Area2D
 signal mega_gun_shot
 signal died
 
-
 const SPEED: float = 40.0
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
@@ -76,7 +75,7 @@ func _process_movement(delta: float) -> void:
 	var velocity = SPEED * Input.get_vector(
 		"move_left",
 		"move_right",
-		"move_up", 
+		"move_up",
 		"move_down"
 	)
 	_move(velocity, delta)
@@ -87,11 +86,11 @@ func _process_fire() -> void:
 		if mega_gun.is_powered_up():
 			mega_gun.prepare()
 		return
-	
+
 	if not mega_gun.is_powered_up():
 		gun.shoot(Vector2.UP)
 		return
-	
+
 	if mega_gun.shoot():
 		emit_signal("mega_gun_shot")
 

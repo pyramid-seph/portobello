@@ -1,7 +1,7 @@
 extends Area2D
 
 const SCORE_POINTS = 50
-const SPEED :=  32.0
+const SPEED := 32.0
 const DIRECTION := Vector2(1, 1)
 const VELOCITY := SPEED * DIRECTION
 
@@ -34,4 +34,3 @@ func pick_up(picker) -> void:
 		picker.add_points_to_score(SCORE_POINTS)
 		picker.add_stamina(randi() % 20 + 5)
 	queue_free()
-
