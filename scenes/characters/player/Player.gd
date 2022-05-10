@@ -4,32 +4,29 @@ signal mega_gun_shot
 signal died
 
 
-const SPEED := 40.0
+const SPEED: float = 40.0
+const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
-export(Resource) var player_data
-export(PackedScene) var fall : PackedScene
-export(PackedScene) var explosion : PackedScene
+export(Resource) var player_data: Resource
+export(PackedScene) var fall: PackedScene
+export(PackedScene) var explosion: PackedScene
 
+onready var world := get_parent()
 onready var gun := $Gun
 onready var mega_gun := $MegaGun
 onready var hurt_box := $HurtBox
 onready var animation_player := $AnimationPlayer
 onready var animated_sprite := $AnimatedSprite
-onready var screen_size := get_viewport_rect().size
 onready var player_extents = $CollisionShape2D.shape.extents
-onready var world = get_parent()
-
-var _min_pos_x := 0.0
-var _min_pos_y := 0.0
-var _max_pos_x := 0.0
-var _max_pos_y := 0.0
+onready var screen_size := get_viewport_rect().size
+onready var min_pos_x: float = player_extents.x
+onready var min_pos_y: float = player_extents.y
+onready var max_pos_x: float = screen_size.x - player_extents.x
+onready var max_pos_y: float = screen_size.y - player_extents.y
 
 
 func _ready() -> void:
-	_min_pos_x = player_extents.x
-	_min_pos_y = player_extents.y
-	_max_pos_x = screen_size.x - player_extents.x
-	_max_pos_y = screen_size.y - player_extents.y
+	player_data.reset_stamina()
 	mega_gun.player_data = player_data
 	start_timed_invincibility()
 
@@ -50,7 +47,7 @@ func explode() -> void:
 	_die()
 
 
-func fall() -> void:
+func plummet() -> void:
 	var new_fall = fall.instance()
 	new_fall.global_position = global_position
 	world.add_child(new_fall)
@@ -61,12 +58,12 @@ func add_points_to_score(points: int) -> void:
 	player_data.score += points
 
 
-func add_time_to_fly(time: float) -> void:
-	pass
+func add_stamina(stamina: int) -> void:
+	player_data.stamina += stamina
 
 
 func power_up_by(points: int) -> void:
-	player_data.power_up_count += 1
+	player_data.power_up_count += points
 
 
 func _die() -> void:
@@ -101,8 +98,8 @@ func _process_fire() -> void:
 
 func _move(velocity: Vector2, delta: float) -> void:
 	position += velocity * delta
-	position.x = clamp(position.x, _min_pos_x, _max_pos_x)
-	position.y = clamp(position.y, _min_pos_y, _max_pos_y)
+	position.x = clamp(position.x, min_pos_x, max_pos_x)
+	position.y = clamp(position.y, min_pos_y, max_pos_y)
 
 
 func _on_HurtBox_hurt(who: Area2D) -> void:
@@ -112,5 +109,11 @@ func _on_HurtBox_hurt(who: Area2D) -> void:
 
 
 func _on_Player_area_entered(area: Area2D) -> void:
-	if area.is_in_group("pickups"):
+	if area.has_method("pick_up"):
 		area.pick_up(self)
+
+
+func _on_StaminaDepletionTimer_timeout() -> void:
+	player_data.stamina -= STAMINA_POINTS_DEPLETED_PER_TICK
+	if player_data.stamina == 0:
+		plummet()

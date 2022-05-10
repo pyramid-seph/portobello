@@ -5,15 +5,36 @@ signal score_updated
 signal hi_score_updated
 signal power_up_count_updated
 signal remaining_lives_updated
+signal stamina_updated
+
+const MAX_LIVES = 9
+const MAX_STAMINA = 50
+const MAX_POWER_UP = 5
 
 var score := 0 setget set_score
-var power_up_count := 0 setget set_power_up_count
 var hi_score := 0 setget set_hi_score
-var lives := 9 setget set_lives
+var lives := MAX_LIVES setget set_lives
+var stamina := MAX_STAMINA setget set_stamina
+var power_up_count := 0 setget set_power_up_count
 
 
 func reset():
 	self.score = 0
+	reset_stamina()
+	reset_lives()
+	reset_power_up()
+
+
+func reset_stamina():
+	self.stamina = MAX_STAMINA
+
+
+func reset_lives():
+	self.lives = MAX_LIVES
+
+
+func reset_power_up():
+	self.power_up_count = 0
 
 
 func set_score(value):
@@ -25,7 +46,7 @@ func set_score(value):
 
 
 func set_power_up_count(value):
-	power_up_count = int(clamp(value, 0, 5))
+	power_up_count = int(clamp(value, 0, MAX_POWER_UP))
 	emit_signal("power_up_count_updated")
 
 
@@ -35,5 +56,10 @@ func set_hi_score(value):
 
 
 func set_lives(value):
-	lives = int(clamp(value, 0, 9))
+	lives = int(clamp(value, 0, MAX_LIVES))
 	emit_signal("remaining_lives_updated")
+
+
+func set_stamina(value):
+	stamina = int(clamp(value, 0, MAX_STAMINA))
+	emit_signal("stamina_updated")

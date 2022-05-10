@@ -32,6 +32,6 @@ func _autoremove() -> void:
 func pick_up(picker) -> void:
 	if picker.is_in_group("players"):
 		picker.add_points_to_score(SCORE_POINTS)
-		picker.add_time_to_fly(5.0)
+		picker.add_stamina(randi() % 20 + 5)
 	queue_free()
 
