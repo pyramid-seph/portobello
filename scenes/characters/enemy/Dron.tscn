@@ -40,6 +40,7 @@ playing = true
 [node name="Gun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 12 )
 Bullet = ExtResource( 1 )
+cooldown = 0.8
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 1.19209e-07, 4.17233e-07 )

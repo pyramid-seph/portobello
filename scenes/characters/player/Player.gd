@@ -26,7 +26,6 @@ onready var max_pos_y: float = screen_size.y - player_extents.y
 
 func _ready() -> void:
 	player_data.reset_stamina()
-	mega_gun.player_data = player_data
 	start_timed_invincibility()
 
 
@@ -81,17 +80,22 @@ func _process_movement(delta: float) -> void:
 	_move(velocity, delta)
 
 
+func _is_powered_up() -> bool:
+	return player_data.power_up_count == player_data.MAX_POWER_UP
+
+
 func _process_fire() -> void:
 	if not Input.is_action_pressed("fire"):
-		if mega_gun.is_powered_up():
+		if  _is_powered_up():
 			mega_gun.prepare()
 		return
 
-	if not mega_gun.is_powered_up():
+	if not _is_powered_up():
 		gun.shoot(Vector2.UP)
 		return
 
 	if mega_gun.shoot():
+		player_data.power_up_count = 0
 		emit_signal("mega_gun_shot")
 
 
