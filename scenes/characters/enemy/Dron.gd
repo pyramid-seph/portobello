@@ -4,11 +4,10 @@ const SPEED: float = 48.0
 const SCORE_POINTS: int = 10
 
 export(PackedScene) var explosion : PackedScene
+export var direction: Vector2 = Vector2.DOWN
 
 onready var world = get_parent()
 onready var gun = $Gun
-
-var direction: Vector2 = Vector2.DOWN
 
 
 func _process(delta: float) -> void:
@@ -37,5 +36,5 @@ func _on_Gun_cooldown_ended() -> void:
 	gun.shoot(Vector2.DOWN)
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_Dron_area_entered(area: Area2D):
 	kill(area)

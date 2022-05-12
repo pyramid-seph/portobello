@@ -1,9 +1,9 @@
 extends Node
 
-var _is_prepared = false
+var _is_prepared: bool = false
 
 
-func prepare():
+func prepare() -> void:
 	_is_prepared = true
 
 
