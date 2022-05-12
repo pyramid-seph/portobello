@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/ui/day_3/Day3Ui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/_shared/LivesCounter.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/ui/_shared/TimeLeftBar.gd" type="Script" id=8]
 [ext_resource path="res://scenes/ui/day_3/HiScore.gd" type="Script" id=9]
 [ext_resource path="res://scenes/ui/_shared/PowerUpBar.gd" type="Script" id=10]
+[ext_resource path="res://resources/instances/Player01Day03Data.tres" type="Resource" id=11]
 
 [node name="Day3Ui" type="Control"]
 anchor_right = 1.0
@@ -22,13 +23,14 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+player_data = ExtResource( 11 )
 
 [node name="Bars" type="VBoxContainer" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 3 )
 
-[node name="TimeLeftBar" parent="Bars" instance=ExtResource( 4 )]
+[node name="StaminaBar" parent="Bars" instance=ExtResource( 4 )]
 margin_right = 64.0
 script = ExtResource( 8 )
 
@@ -75,12 +77,8 @@ valign = 1
 uppercase = true
 script = ExtResource( 9 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 25.0
-autostart = true
-
 [connection signal="hi_score_changed" from="." to="HiScore" method="_on_Day3Ui_hi_score_changed"]
 [connection signal="lives_left_changed" from="." to="LivesCounter" method="_on_Day3Ui_lives_left_changed"]
 [connection signal="power_up_changed" from="." to="Bars/PowerUpBar" method="_on_Day3Ui_power_up_changed"]
 [connection signal="score_changed" from="." to="Score" method="_on_Day3Ui_score_changed"]
-[connection signal="time_left_changed" from="." to="Bars/TimeLeftBar" method="_on_Day3Ui_time_left_changed"]
+[connection signal="stamina_changed" from="." to="Bars/StaminaBar" method="_on_Day3Ui_time_changed"]

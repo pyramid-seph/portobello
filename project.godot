@@ -9,24 +9,32 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Day03PlayerData",
+"language": "GDScript",
+"path": "res://resources/Day03PlayerData.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://scenes/_shared/HurtBox.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"Day03PlayerData": "",
+"GitAPI": "",
+"HurtBox": ""
 }
 
 [application]
 
 config/name="Bucho Portobello"
-run/main_scene="res://scenes/_debug/DebugRoom.tscn"
+run/main_scene="res://scenes/levels/Day03Level.tscn"
 config/icon="res://art/_shared/ui_counter_lives.png"
-
-[autoload]
-
-PlayerData="*res://scenes/autoloads/PlayerData.gd"
 
 [display]
 

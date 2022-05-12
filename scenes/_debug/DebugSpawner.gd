@@ -38,25 +38,25 @@ func _process_key_input(event):
 	var new_index = -1
 	match event.scancode:
 		KEY_0:
-			new_index = 0
-		KEY_1:
-			new_index = 1
-		KEY_2:
-			new_index = 3
-		KEY_3:
-			new_index = 3
-		KEY_4:
-			new_index = 4
-		KEY_5:
-			new_index = 5
-		KEY_6:
-			new_index = 6
-		KEY_7:
-			new_index = 7
-		KEY_8:
-			new_index = 8
-		KEY_9:
 			new_index = 9
+		KEY_1:
+			new_index = 0
+		KEY_2:
+			new_index = 1
+		KEY_3:
+			new_index = 2
+		KEY_4:
+			new_index = 3
+		KEY_5:
+			new_index = 4
+		KEY_6:
+			new_index = 5
+		KEY_7:
+			new_index = 6
+		KEY_8:
+			new_index = 7
+		KEY_9:
+			new_index = 8
 	if (new_index != -1):
 		self._selected_thing_index = new_index
 

@@ -1,11 +1,87 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/objects/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/objects/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/characters/player/Player.gd" type="Script" id=3]
 [ext_resource path="res://art/day_3/tiles_objects.png" type="Texture" id=4]
-[ext_resource path="res://scenes/characters/player/Debug.gd" type="Script" id=5]
+[ext_resource path="res://art/day_3/shield.png" type="Texture" id=5]
 [ext_resource path="res://scenes/characters/player/MegaGun.gd" type="Script" id=6]
+[ext_resource path="res://scenes/_shared/HurtBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/objects/Fall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/objects/Explosion.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/instances/Player01Day03Data.tres" type="Resource" id=10]
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShieldSprite:region_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShieldSprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 20, 0, 20, 20 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "invincible"
+length = 1.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShieldSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtBox:invincible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShieldSprite:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.08, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 20, 20 ), Rect2( 20, 0, 20, 20 ), Rect2( 40, 0, 20, 20 ), Rect2( 0, 0, 20, 20 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 60, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
@@ -15,56 +91,52 @@ region = Rect2( 32, 32, 16, 16 )
 atlas = ExtResource( 4 )
 region = Rect2( 0, 48, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
-region = Rect2( 16, 48, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 4 )
-region = Rect2( 32, 80, 16, 16 )
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.5
-}, {
-"frames": [ SubResource( 6 ) ],
-"loop": false,
-"name": "explode",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ) ],
-"loop": false,
-"name": "drown",
-"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4, 6 )
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 4, 8 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 4, 8 )
 
 [node name="Player" type="Area2D" groups=["players"]]
-collision_mask = 2
+collision_mask = 4
 input_pickable = false
+monitorable = false
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+player_data = ExtResource( 10 )
+fall = ExtResource( 8 )
+explosion = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/invincible = SubResource( 10 )
+
+[node name="ShieldSprite" type="Sprite" parent="."]
+visible = false
+texture = SubResource( 9 )
+region_enabled = true
+region_rect = Rect2( 20, 0, 20, 20 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2 )
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
-[node name="InvincibilityTimer" type="Timer" parent="."]
-wait_time = 1.6
-one_shot = true
-
-[node name="Debug" type="Node" parent="."]
-script = ExtResource( 5 )
+[node name="StaminaDepletionTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="Gun" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -12 )
@@ -74,6 +146,15 @@ cooldown = 0.16
 [node name="MegaGun" type="Node" parent="."]
 script = ExtResource( 6 )
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
+[node name="HurtBox" parent="." instance=ExtResource( 7 )]
+collision_mask = 10
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0, 0 )
+shape = SubResource( 7 )
+
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
+[connection signal="timeout" from="StaminaDepletionTimer" to="." method="_on_StaminaDepletionTimer_timeout"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
+
+[editable path="HurtBox"]

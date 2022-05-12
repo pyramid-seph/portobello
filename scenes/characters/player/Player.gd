@@ -1,71 +1,122 @@
 extends Area2D
 
-export var speed = 40
-export var is_auto_fire_enabled = false
+signal mega_gun_shot
+signal died
 
-onready var gun = $Gun
-onready var mega_gun = $MegaGun
-onready var screen_size = get_viewport_rect().size
-onready var player_size = $AnimatedSprite.frames.get_frame("default", 0)
-onready var min_pos_x = player_size.get_width()
-onready var min_pos_y = player_size.get_height()
+const SPEED: float = 40.0
+const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
+
+export(Resource) var player_data: Resource
+export(PackedScene) var fall: PackedScene
+export(PackedScene) var explosion: PackedScene
+
+onready var world := get_parent()
+onready var gun := $Gun
+onready var mega_gun := $MegaGun
+onready var hurt_box := $HurtBox
+onready var animation_player := $AnimationPlayer
+onready var animated_sprite := $AnimatedSprite
+onready var player_extents = $CollisionShape2D.shape.extents
+onready var screen_size := get_viewport_rect().size
+onready var min_pos_x: float = player_extents.x
+onready var min_pos_y: float = player_extents.y
+onready var max_pos_x: float = screen_size.x - player_extents.x
+onready var max_pos_y: float = screen_size.y - player_extents.y
 
 
-func _input(event) -> void:
-	if not is_auto_fire_enabled and event.is_action_pressed("fire"):
-		_fire()
+func _ready() -> void:
+	player_data.reset_stamina()
+	start_timed_invincibility()
 
 
 func _process(delta: float) -> void:
-	var velocity = speed * Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	_process_movement(delta)
+	_process_fire()
+
+
+func start_timed_invincibility() -> void:
+	animation_player.play("invincible")
+
+
+func explode() -> void:
+	var new_explosion = explosion.instance()
+	new_explosion.global_position = global_position
+	world.add_child(new_explosion)
+	_die()
+
+
+func plummet() -> void:
+	var new_fall = fall.instance()
+	new_fall.global_position = global_position
+	world.add_child(new_fall)
+	_die()
+
+
+func add_points_to_score(points: int) -> void:
+	player_data.score += points
+
+
+func add_stamina(stamina: int) -> void:
+	player_data.stamina += stamina
+
+
+func power_up_by(points: int) -> void:
+	player_data.power_up_count += points
+
+
+func _die() -> void:
+	player_data.lives -= 1
+	emit_signal("died")
+	queue_free()
+
+
+func _process_movement(delta: float) -> void:
+	var velocity = SPEED * Input.get_vector(
+		"move_left",
+		"move_right",
+		"move_up",
+		"move_down"
+	)
 	_move(velocity, delta)
 
-	if is_auto_fire_enabled:
-		_fire()
+
+func _is_powered_up() -> bool:
+	return player_data.power_up_count == player_data.MAX_POWER_UP
 
 
-func revive(pos: Vector2) -> void:
-	position = pos
-	$InvincibilityTimer.start()
-	$AnimatedSprite.play("default")
-	$CollisionShape2D.disabled = true
-	show()
+func _process_fire() -> void:
+	if not Input.is_action_pressed("fire"):
+		if  _is_powered_up():
+			mega_gun.prepare()
+		return
 
-
-func die() -> void:
-	PlayerData.lives -= 1
-	$CollisionShape2D.set_deferred("disabled", true)
-	$AnimatedSprite.play("explode")
-
-
-func is_powered_up() -> bool:
-	return PlayerData.power_up_count >= 5
-
-
-func _fire() -> void:
-	if is_powered_up():
-		mega_gun.shoot()
-	else:
+	if not _is_powered_up():
 		gun.shoot(Vector2.UP)
+		return
+
+	if mega_gun.shoot():
+		player_data.power_up_count = 0
+		emit_signal("mega_gun_shot")
 
 
-func _move(velocity: Vector2, delta: float):
+func _move(velocity: Vector2, delta: float) -> void:
 	position += velocity * delta
-	var max_pos_x = screen_size.x - min_pos_x
-	var max_pos_y = screen_size.y - min_pos_y
 	position.x = clamp(position.x, min_pos_x, max_pos_x)
 	position.y = clamp(position.y, min_pos_y, max_pos_y)
 
 
-func _on_InvincibilityTimer_timeout() -> void:
-	$CollisionShape2D.disabled = false
+func _on_HurtBox_hurt(who: Area2D) -> void:
+	if who.has_method("explode"):
+		who.explode()
+	explode()
 
 
-func _on_AnimatedSprite_animation_finished() -> void:
-	if $AnimatedSprite.animation == "explode":
-		queue_free()
+func _on_Player_area_entered(area: Area2D) -> void:
+	if area.has_method("pick_up"):
+		area.pick_up(self)
 
 
-func _on_area_entered(area) -> void:
-	if not area.is_in_group("pickups"):
-		die()
+func _on_StaminaDepletionTimer_timeout() -> void:
+	player_data.stamina -= STAMINA_POINTS_DEPLETED_PER_TICK
+	if player_data.stamina == 0:
+		plummet()
