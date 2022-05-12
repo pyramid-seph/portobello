@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Bucho Portobello"
-run/main_scene="res://scenes/_debug/DebugRoom.tscn"
+run/main_scene="res://scenes/levels/Day03Level.tscn"
 config/icon="res://art/_shared/ui_counter_lives.png"
 
 [display]

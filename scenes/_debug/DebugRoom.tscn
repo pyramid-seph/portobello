@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/backgrounds/Day03Bg.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/_debug/DebugSpawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/pickups/Bird.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/_debug/MegaGunFlash.gd" type="Script" id=10]
+[ext_resource path="res://scenes/ui/day_3/MegaGunFlash.tscn" type="PackedScene" id=10]
 
 [node name="DebugRoom" type="Node"]
 script = ExtResource( 2 )
@@ -28,12 +28,7 @@ position = Vector2( 120, 280 )
 
 [node name="Interface" type="Node" parent="."]
 
-[node name="MegaGunFlash" type="ColorRect" parent="Interface"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 1, 1, 0, 1 )
-script = ExtResource( 10 )
+[node name="MegaGunFlash" parent="Interface" instance=ExtResource( 10 )]
 
 [node name="Day3Ui" parent="Interface" instance=ExtResource( 5 )]
 
