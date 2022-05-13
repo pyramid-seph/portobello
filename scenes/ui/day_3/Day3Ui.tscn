@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/ui/day_3/Day3Ui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/_shared/LivesCounter.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://scenes/ui/day_3/HiScore.gd" type="Script" id=9]
 [ext_resource path="res://scenes/ui/_shared/PowerUpBar.gd" type="Script" id=10]
 [ext_resource path="res://resources/instances/Player01Day03Data.tres" type="Resource" id=11]
+[ext_resource path="res://scenes/ui/day_3/PauseMenu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/ui/day_3/GameOver.gd" type="Script" id=13]
+[ext_resource path="res://scenes/ui/day_3/Start.gd" type="Script" id=14]
 
 [node name="Day3Ui" type="Control"]
 anchor_right = 1.0
@@ -77,8 +80,42 @@ valign = 1
 uppercase = true
 script = ExtResource( 9 )
 
+[node name="Start" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 56.0
+margin_top = 135.5
+margin_right = -56.0
+margin_bottom = -135.5
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Buffet
+¡Buen Provecho!"
+align = 1
+script = ExtResource( 14 )
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 78.0
+margin_top = 146.5
+margin_right = -78.0
+margin_bottom = -146.5
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Game over"
+uppercase = true
+script = ExtResource( 13 )
+
+[node name="PauseMenu" parent="." instance=ExtResource( 12 )]
+
 [connection signal="hi_score_changed" from="." to="HiScore" method="_on_Day3Ui_hi_score_changed"]
+[connection signal="level_state_changed" from="." to="GameOver" method="_on_Day3Ui_level_state_changed"]
+[connection signal="level_state_changed" from="." to="Start" method="_on_Day3Ui_level_state_changed"]
 [connection signal="lives_left_changed" from="." to="LivesCounter" method="_on_Day3Ui_lives_left_changed"]
+[connection signal="pause_state_changed" from="." to="PauseMenu" method="_on_pause_state_changed"]
 [connection signal="power_up_changed" from="." to="Bars/PowerUpBar" method="_on_Day3Ui_power_up_changed"]
 [connection signal="score_changed" from="." to="Score" method="_on_Day3Ui_score_changed"]
 [connection signal="stamina_changed" from="." to="Bars/StaminaBar" method="_on_Day3Ui_time_changed"]

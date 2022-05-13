@@ -1,7 +1,7 @@
 extends Area2D
 
 signal mega_gun_shot
-signal died
+signal died(remaining_lives)
 
 const SPEED: float = 40.0
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
@@ -66,7 +66,7 @@ func power_up_by(points: int) -> void:
 
 func _die() -> void:
 	player_data.lives -= 1
-	emit_signal("died")
+	emit_signal("died", player_data.lives)
 	queue_free()
 
 
