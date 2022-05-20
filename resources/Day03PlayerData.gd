@@ -7,7 +7,7 @@ signal power_up_count_updated
 signal remaining_lives_updated
 signal stamina_updated
 
-const MAX_LIVES: int = 9
+const MAX_LIVES: int = 2
 const MAX_STAMINA: int = 50
 const MAX_POWER_UP: int = 5
 

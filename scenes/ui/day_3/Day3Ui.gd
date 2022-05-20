@@ -5,6 +5,8 @@ signal hi_score_changed(new_val)
 signal lives_left_changed(new_val)
 signal power_up_changed(new_val)
 signal stamina_changed(new_val, max_val)
+signal pause_state_changed(new_state)
+signal level_state_changed(new_state)
 
 export(Resource) var player_data
 
@@ -40,3 +42,11 @@ func _on_player_data_remaining_lives_updated() -> void:
 
 func _on_player_data_remaining_stamina_updated() -> void:
 	emit_signal("stamina_changed", player_data.stamina, player_data.MAX_STAMINA)
+
+
+func _on_pause_state_changed(new_state):
+	emit_signal("pause_state_changed", new_state)
+
+
+func _on_Day03Level_level_state_changed(new_state):
+	emit_signal("level_state_changed", new_state)
