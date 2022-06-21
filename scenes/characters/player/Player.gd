@@ -86,7 +86,7 @@ func _is_powered_up() -> bool:
 
 func _process_fire() -> void:
 	if not Input.is_action_pressed("fire"):
-		if  _is_powered_up():
+		if _is_powered_up():
 			mega_gun.prepare()
 		return
 

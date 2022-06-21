@@ -10,9 +10,10 @@ const GAME_OVER_DURATION: float = 3.2
 export(PackedScene) var player
 export(Resource) var player_data: Resource
 
-onready var world = $World
+onready var world: = $World
 onready var mega_gun_flash := $Interface/MegaGunFlash
 onready var player_start_position = $World/StartPosition.position
+onready var wave_manager := $WaveManager
 onready var scene_tree = get_tree()
 
 enum LevelState { STARTING, PLAYING, GAME_OVER }
@@ -26,6 +27,7 @@ func _ready() -> void:
 	self.level_state = LevelState.STARTING
 	yield(scene_tree.create_timer(START_DURATION, false), "timeout")
 	self.level_state = LevelState.PLAYING
+	wave_manager.start(world)
 
 
 func _instantiate_player() -> void:
@@ -40,7 +42,8 @@ func _on_Player_died(remaining_lives) -> void:
 	if remaining_lives == 0:
 		self.level_state = LevelState.GAME_OVER
 		yield(scene_tree.create_timer(GAME_OVER_DURATION), "timeout")
-		scene_tree.quit()
+		wave_manager.cancel_wave()
+		#scene_tree.quit()
 	else:
 		yield(scene_tree.create_timer(TIME_BETWEEN_REVIVALS, false), "timeout")
 		_instantiate_player()
@@ -55,3 +58,11 @@ func _input(event):
 func set_level_state(value):
 	level_state = value
 	emit_signal("level_state_changed", level_state)
+
+
+func _on_WaveManager_wave_completed() -> void:
+	print("WAVE COMPLETED!")
+
+
+func _on_WaveManager_all_waves_completed() -> void:
+	print("ALL WAVES COMPLETED!")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/backgrounds/Day03Bg.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/_debug/DebugSpawner.tscn" type="PackedScene" id=2]
@@ -6,14 +6,19 @@
 [ext_resource path="res://scenes/ui/day_3/MegaGunFlash.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/levels/Day03Level.gd" type="Script" id=5]
 [ext_resource path="res://scenes/characters/player/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/characters/enemy/Dron.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/characters/enemy/Drone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/pickups/StormyCloud.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/pickups/Bird.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/levels/WaveManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/instances/Player01Day03Data.tres" type="Resource" id=11]
 
 [node name="Day03Level" type="Node"]
 pause_mode = 2
 script = ExtResource( 5 )
 player = ExtResource( 6 )
+player_data = ExtResource( 11 )
+
+[node name="WaveManager" parent="." instance=ExtResource( 10 )]
 
 [node name="World" type="Node2D" parent="."]
 pause_mode = 1
@@ -37,3 +42,5 @@ things = [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ]
 
 [connection signal="level_state_changed" from="." to="Interface/Day3Ui" method="_on_Day03Level_level_state_changed"]
 [connection signal="pause_state_changed" from="." to="Interface/Day3Ui" method="_on_pause_state_changed"]
+[connection signal="all_waves_completed" from="WaveManager" to="." method="_on_WaveManager_all_waves_completed"]
+[connection signal="wave_completed" from="WaveManager" to="." method="_on_WaveManager_wave_completed"]
