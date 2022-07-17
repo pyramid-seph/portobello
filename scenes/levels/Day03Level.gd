@@ -43,7 +43,7 @@ func _on_Player_died(remaining_lives) -> void:
 		self.level_state = LevelState.GAME_OVER
 		yield(scene_tree.create_timer(GAME_OVER_DURATION), "timeout")
 		wave_manager.cancel_wave()
-		#scene_tree.quit()
+		scene_tree.quit()
 	else:
 		yield(scene_tree.create_timer(TIME_BETWEEN_REVIVALS, false), "timeout")
 		_instantiate_player()
@@ -60,9 +60,13 @@ func set_level_state(value):
 	emit_signal("level_state_changed", level_state)
 
 
-func _on_WaveManager_wave_completed() -> void:
-	print("WAVE COMPLETED!")
+func _on_WaveManager_wave_completed(wave_index: int) -> void:
+	print("WAVE %s COMPLETED!" % str(wave_index))
 
 
 func _on_WaveManager_all_waves_completed() -> void:
 	print("ALL WAVES COMPLETED!")
+
+
+func _on_WaveManager_wave_started(wave_index: int) -> void:
+	print("WAVE %s STARTED!" % str(wave_index))
