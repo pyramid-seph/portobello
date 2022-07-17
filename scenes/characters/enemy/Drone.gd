@@ -21,7 +21,7 @@ export(MovementPattern) var movement_pattern = MovementPattern.VERTICAL_DOWN set
 var _direction: Vector2 = Vector2.DOWN
 var _velocity = _direction * speed
 
-onready var gun = $Gun
+onready var gun := $Gun
 onready var world = get_parent()
 onready var viewport_size = get_viewport_rect().size
 onready var viewport_width = viewport_size.x
@@ -50,6 +50,10 @@ func _process(delta: float) -> void:
 	position += _velocity * delta
 
 
+func shoot() -> bool:
+	return gun.shoot()
+
+
 func explode() -> void:
 	var new_explosion = explosion.instance()
 	new_explosion.centered = animated_sprite.centered
@@ -62,7 +66,6 @@ func kill(killer: Node) -> void:
 	if killer and killer.has_method("add_points_to_score"):
 		killer.add_points_to_score(SCORE_POINTS)
 	explode()
-	queue_free()
 
 
 func set_movement_pattern(value) -> void:
