@@ -10,7 +10,7 @@ const GAME_OVER_DURATION: float = 3.2
 export(PackedScene) var player
 export(Resource) var player_data: Resource
 
-onready var world: = $World
+onready var world := $World
 onready var mega_gun_flash := $Interface/MegaGunFlash
 onready var player_start_position = $World/StartPosition.position
 onready var wave_manager := $WaveManager

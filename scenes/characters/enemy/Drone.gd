@@ -32,6 +32,10 @@ onready var min_pos_x = 0
 onready var max_pos_x = viewport_width - sprite_width
 
 
+func _ready():
+	_correct_initial_pos_x()
+
+
 func _process(delta: float) -> void:
 	match (movement_pattern):
 		MovementPattern.ZIG_ZAG_DOWN:
@@ -68,6 +72,20 @@ func kill(killer: Node) -> void:
 	explode()
 
 
+func _correct_initial_pos_x():
+	if min_pos_x == null:
+		return
+	
+	match (movement_pattern):
+		MovementPattern.SQUARE_UP, MovementPattern.SQUARE_DOWN:
+			if position.x >= max_pos_x:
+				_direction = Vector2.LEFT
+			if position.x <= min_pos_x:
+				_direction = Vector2.RIGHT
+	
+	position.x = clamp(position.x, min_pos_x, max_pos_x)
+
+
 func set_movement_pattern(value) -> void:
 	movement_pattern = value
 	match (movement_pattern):
@@ -82,13 +100,15 @@ func set_movement_pattern(value) -> void:
 		MovementPattern.ZIG_ZAG_DOWN:
 			_direction = Vector2(1, 1)
 		MovementPattern.SQUARE_UP:
-			_direction = Vector2.LEFT
-		MovementPattern.SQUARE_DOWN:
 			_direction = Vector2.RIGHT
+		MovementPattern.SQUARE_DOWN:
+			_direction = Vector2.LEFT
 		_:
 			print_debug("Unknown movement pattern: %s. Will default to VERTICAL_DOWN." % str(value))
 			movement_pattern = MovementPattern.VERTICAL_DOWN
 			_direction = Vector2.DOWN
+	
+	_correct_initial_pos_x()
 
 
 func _on_VisibilityNotifier2D_viewport_exited(_viewport : Viewport) -> void:

@@ -10,5 +10,3 @@ __meta__ = {
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]

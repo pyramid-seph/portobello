@@ -1,6 +1,5 @@
 extends Position2D
 
-signal cooldown_ended
 
 export(PackedScene) var Bullet
 export var bullet_speed = 80
