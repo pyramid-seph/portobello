@@ -77,7 +77,7 @@ func init_movement_04(screen_size) -> InitialMoveState:
 	return initial_movement_state
 
 
-func init_movement_05(screen_size) -> InitialMoveState:
+func init_movement_05(_screen_size) -> InitialMoveState:
 	return InitialMoveState.new()
 
 
