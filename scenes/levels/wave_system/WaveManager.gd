@@ -7,17 +7,19 @@ signal wave_started(wave_index)
 
 const MAX_CONCURRENT_ENEMIES: int = 10
 
+export(Script) var waves_script
+
 onready var screen_size := get_viewport_rect().size
 onready var scene_tree := get_tree()
 
-var _waves_descriptor
+var _waves_descriptor: LevelWaves
 var _spawned_enemies_count: int = 0
 var _enemies_on_screen: int = 0
 var _is_canceled: bool = false
 
 
 func _ready() -> void:
-	_waves_descriptor = Level0Waves.new()
+	_waves_descriptor = waves_script.new() as LevelWaves
 
 
 func start(world: Node2D) -> void:
