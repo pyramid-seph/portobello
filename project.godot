@@ -29,10 +29,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/_shared/HurtBox.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
+"class": "InitialMoveState",
+"language": "GDScript",
+"path": "res://scenes/levels/wave_system/InitialMoveState.gd"
+}, {
+"base": "LevelWaves",
 "class": "Level0Waves",
 "language": "GDScript",
 "path": "res://scenes/levels/wave_system/Level0Waves.gd"
+}, {
+"base": "Reference",
+"class": "LevelWaves",
+"language": "GDScript",
+"path": "res://scenes/levels/wave_system/LevelWaves.gd"
 }, {
 "base": "Reference",
 "class": "Wave",
@@ -44,7 +54,9 @@ _global_script_class_icons={
 "Drone": "",
 "GitAPI": "",
 "HurtBox": "",
+"InitialMoveState": "",
 "Level0Waves": "",
+"LevelWaves": "",
 "Wave": ""
 }
 
