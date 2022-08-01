@@ -81,6 +81,10 @@ window/stretch/aspect="keep"
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 
+[gui]
+
+theme/use_hidpi=true
+
 [input]
 
 move_up={

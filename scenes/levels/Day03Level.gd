@@ -14,6 +14,7 @@ onready var world := $World
 onready var mega_gun_flash := $Interface/MegaGunFlash
 onready var player_start_position = $World/StartPosition.position
 onready var wave_manager := $WaveManager
+onready var stamina_spawner := $StaminaSpawner
 onready var scene_tree = get_tree()
 
 enum LevelState { STARTING, PLAYING, GAME_OVER }
@@ -28,6 +29,7 @@ func _ready() -> void:
 	yield(scene_tree.create_timer(START_DURATION, false), "timeout")
 	self.level_state = LevelState.PLAYING
 	wave_manager.start(world)
+	stamina_spawner.enable(world)
 
 
 func _instantiate_player() -> void:
@@ -38,15 +40,12 @@ func _instantiate_player() -> void:
 	world.add_child(new_player)
 
 
-func _on_Player_died(remaining_lives) -> void:
-	if remaining_lives == 0:
-		self.level_state = LevelState.GAME_OVER
-		yield(scene_tree.create_timer(GAME_OVER_DURATION), "timeout")
-		wave_manager.cancel_wave()
-		scene_tree.quit()
-	else:
-		yield(scene_tree.create_timer(TIME_BETWEEN_REVIVALS, false), "timeout")
-		_instantiate_player()
+func _game_over():
+	self.level_state = LevelState.GAME_OVER
+	wave_manager.cancel_wave()
+	stamina_spawner.disable()
+	yield(scene_tree.create_timer(GAME_OVER_DURATION), "timeout")
+	scene_tree.quit()
 
 
 func _input(event):
@@ -60,12 +59,20 @@ func set_level_state(value):
 	emit_signal("level_state_changed", level_state)
 
 
+func _on_Player_died(remaining_lives) -> void:
+	if remaining_lives == 0:
+		_game_over()
+	else:
+		yield(scene_tree.create_timer(TIME_BETWEEN_REVIVALS, false), "timeout")
+		_instantiate_player()
+
+
 func _on_WaveManager_wave_completed(wave_index: int) -> void:
 	print("WAVE %s COMPLETED!" % str(wave_index))
 
 
 func _on_WaveManager_all_waves_completed() -> void:
-	print("ALL WAVES COMPLETED!")
+	stamina_spawner.disable()
 
 
 func _on_WaveManager_wave_started(wave_index: int) -> void:

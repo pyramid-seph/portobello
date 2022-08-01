@@ -19,7 +19,7 @@ func _get_waves() -> Array:
 		_create_wave(25, 0.8, "init_movement_02"),
 		_create_wave(35, 1.2, "init_movement_03"),
 		_create_wave(40, 0.8, "init_movement_04"),
-		_create_wave(00, 0.8, "init_movement_05"),
+		_create_wave(00, 2.4, "init_movement_05"),
 		_create_wave(20, 1.2, "init_movement_06"),
 		_create_wave(20, 1.2, "init_movement_07"),
 		_create_wave(30, 1.2, "init_movement_08"),
