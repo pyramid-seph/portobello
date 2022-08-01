@@ -17,6 +17,8 @@ onready var max_pos_x = viewport_width - sprite_width
 
 
 func _ready() -> void:
+	position.x = clamp(position.x, min_pos_x, max_pos_x)
+	
 	if randi() % 2 == 0:
 		velocity.x *= -1
 

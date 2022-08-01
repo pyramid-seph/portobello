@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://_working_on/PowerUpSpawner.gd" type="Script" id=1]
+[ext_resource path="res://resources/instances/Player01Day03Data.tres" type="Resource" id=2]
+[ext_resource path="res://scenes/pickups/StormyCloud.tscn" type="PackedScene" id=3]
+
+[node name="PowerUpSpawner" type="Node2D"]
+script = ExtResource( 1 )
+player_data = ExtResource( 2 )
+power_up_item = ExtResource( 3 )
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

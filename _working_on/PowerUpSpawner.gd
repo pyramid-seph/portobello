@@ -2,7 +2,7 @@ extends Node2D
 
 
 export(Resource) var player_data: Resource
-export(PackedScene) var stamina_item
+export(PackedScene) var power_up_item
 export var cooldown : float = 0.08
 
 onready var screen_size = get_viewport_rect().size
@@ -22,7 +22,7 @@ func enable(world):
 		return
 	
 	_world = world
-	
+
 	_state = State.READY
 	_enqueue_spawn()
 
@@ -42,29 +42,30 @@ func _try_spawn():
 	if _state != State.ENQUEUED:
 		return
 	
-	if player_data.stamina > player_data.MAX_STAMINA * 0.3:
-		if randi() % 50 == 0:
-			_instance_new_stamina_item()
+	if player_data.power_up_count < player_data.MAX_POWER_UP:
+		if randi() % 75 == 0:
+			_instance_new_power_up_item()
 		else:
 			_state = State.READY
 			_enqueue_spawn()
 	else:
-		_instance_new_stamina_item()
+		_state = State.READY
+		_enqueue_spawn();
 
 
-func _instance_new_stamina_item():
+func _instance_new_power_up_item():
 	if _state != State.ENQUEUED:
 		return
 	
-	var new_stamina_item = stamina_item.instance()
-	var initial_pos = Vector2(randi() % int(screen_size.x - 20) + 10, 3)
-	new_stamina_item.global_position = initial_pos
-	new_stamina_item.connect("tree_exited", self, "_on_StaminaItem_tree_exited")
-	_world.add_child(new_stamina_item)
+	var new_power_up_item = power_up_item.instance()
+	var initial_pos = Vector2(randi() % int(screen_size.x - 30) + 10, 3)
+	new_power_up_item.global_position = initial_pos
+	new_power_up_item.connect("tree_exited", self, "_on_Item_tree_exited")
+	_world.add_child(new_power_up_item)
 	_state = State.INSTANCED
 
 
-func _on_StaminaItem_tree_exited():
+func _on_Item_tree_exited():
 	if _state == State.INSTANCED:
 		_state = State.READY
 		_enqueue_spawn()

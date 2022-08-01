@@ -15,6 +15,7 @@ onready var mega_gun_flash := $Interface/MegaGunFlash
 onready var player_start_position = $World/StartPosition.position
 onready var wave_manager := $WaveManager
 onready var stamina_spawner := $StaminaSpawner
+onready var power_up_spawner := $PowerUpSpawner
 onready var scene_tree = get_tree()
 
 enum LevelState { STARTING, PLAYING, GAME_OVER }
@@ -30,6 +31,7 @@ func _ready() -> void:
 	self.level_state = LevelState.PLAYING
 	wave_manager.start(world)
 	stamina_spawner.enable(world)
+	power_up_spawner.enable(world)
 
 
 func _instantiate_player() -> void:
@@ -44,6 +46,7 @@ func _game_over():
 	self.level_state = LevelState.GAME_OVER
 	wave_manager.cancel_wave()
 	stamina_spawner.disable()
+	power_up_spawner.disable()
 	yield(scene_tree.create_timer(GAME_OVER_DURATION), "timeout")
 	scene_tree.quit()
 
@@ -73,6 +76,7 @@ func _on_WaveManager_wave_completed(wave_index: int) -> void:
 
 func _on_WaveManager_all_waves_completed() -> void:
 	stamina_spawner.disable()
+	power_up_spawner.disable();
 
 
 func _on_WaveManager_wave_started(wave_index: int) -> void:
