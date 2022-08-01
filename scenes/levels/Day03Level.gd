@@ -76,7 +76,7 @@ func _on_WaveManager_wave_completed(wave_index: int) -> void:
 
 func _on_WaveManager_all_waves_completed() -> void:
 	stamina_spawner.disable()
-	power_up_spawner.disable();
+	power_up_spawner.disable()
 
 
 func _on_WaveManager_wave_started(wave_index: int) -> void:
