@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/backgrounds/Day03Bg.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/wave_system/Level0Waves.gd" type="Script" id=2]
@@ -11,12 +11,19 @@
 [ext_resource path="res://_working_on/PowerUpSpawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/levels/WaveManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/instances/Player01Day03Data.tres" type="Resource" id=11]
+[ext_resource path="res://scenes/levels/DroneShootManager.gd" type="Script" id=12]
 
 [node name="Day03Level" type="Node"]
 pause_mode = 2
 script = ExtResource( 5 )
 player = ExtResource( 6 )
 player_data = ExtResource( 11 )
+
+[node name="DroneShootManager" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="CooldownTimer" type="Timer" parent="DroneShootManager"]
+pause_mode = 1
 
 [node name="WaveManager" parent="." instance=ExtResource( 10 )]
 waves_script = ExtResource( 2 )
@@ -44,6 +51,10 @@ pause_mode = 1
 
 [connection signal="level_state_changed" from="." to="Interface/Day3Ui" method="_on_Day03Level_level_state_changed"]
 [connection signal="pause_state_changed" from="." to="Interface/Day3Ui" method="_on_pause_state_changed"]
+[connection signal="timeout" from="DroneShootManager/CooldownTimer" to="DroneShootManager" method="_on_CooldownTimer_timeout"]
 [connection signal="all_waves_completed" from="WaveManager" to="." method="_on_WaveManager_all_waves_completed"]
+[connection signal="all_waves_completed" from="WaveManager" to="DroneShootManager" method="_on_WaveManager_all_waves_completed"]
 [connection signal="wave_completed" from="WaveManager" to="." method="_on_WaveManager_wave_completed"]
+[connection signal="wave_completed" from="WaveManager" to="DroneShootManager" method="_on_WaveManager_wave_completed"]
 [connection signal="wave_started" from="WaveManager" to="." method="_on_WaveManager_wave_started"]
+[connection signal="wave_started" from="WaveManager" to="DroneShootManager" method="_on_WaveManager_wave_started"]

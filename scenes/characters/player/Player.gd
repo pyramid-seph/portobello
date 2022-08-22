@@ -42,6 +42,7 @@ func explode() -> void:
 	var new_explosion = explosion.instance()
 	new_explosion.global_position = global_position
 	world.add_child(new_explosion)
+	Input.start_joy_vibration(0, 0.25, 0.25, 0.25)
 	_die()
 
 
@@ -49,6 +50,7 @@ func plummet() -> void:
 	var new_fall = fall.instance()
 	new_fall.global_position = global_position
 	world.add_child(new_fall)
+	Input.start_joy_vibration(0, 0.25, 0.25, 0.25)
 	_die()
 
 

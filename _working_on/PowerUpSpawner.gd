@@ -3,9 +3,9 @@ extends Node2D
 
 export(Resource) var player_data: Resource
 export(PackedScene) var power_up_item
-export var cooldown : float = 0.08
+export var cooldown: float = Utils.FRAME_TIME
 
-onready var screen_size = get_viewport_rect().size
+onready var screen_size: Vector2 = get_viewport_rect().size
 onready var timer = $Cooldown
 
 var _state: int = State.DISABLED
@@ -14,7 +14,7 @@ var _world: Node2D
 enum State { DISABLED, READY, ENQUEUED, INSTANCED }
 
 
-func enable(world) -> void:
+func enable(world: Node2D) -> void:
 	if _state != State.DISABLED:
 		disable()
 	
@@ -29,6 +29,7 @@ func enable(world) -> void:
 
 func disable() -> void:
 	_state = State.DISABLED
+	_world = null
 	timer.stop()
 
 

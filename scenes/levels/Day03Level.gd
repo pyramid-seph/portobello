@@ -18,6 +18,7 @@ onready var stamina_spawner := $StaminaSpawner
 onready var power_up_spawner := $PowerUpSpawner
 onready var scene_tree = get_tree()
 
+
 enum LevelState { STARTING, PLAYING, GAME_OVER }
 
 var level_state: int = LevelState.STARTING setget set_level_state

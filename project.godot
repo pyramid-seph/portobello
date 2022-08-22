@@ -66,6 +66,10 @@ config/name="Bucho Portobello"
 run/main_scene="res://scenes/levels/Day03Level.tscn"
 config/icon="res://art/_shared/ui_counter_lives.png"
 
+[autoload]
+
+Utils="*res://utils/Utils.gd"
+
 [display]
 
 window/size/width=240

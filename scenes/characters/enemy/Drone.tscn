@@ -20,7 +20,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Drone" type="Area2D" groups=["enemies"]]
+[node name="Drone" type="Area2D" groups=["drone", "enemies"]]
 collision_layer = 2
 input_pickable = false
 script = ExtResource( 4 )

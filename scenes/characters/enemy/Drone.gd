@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 
 
 func shoot() -> bool:
-	return gun.shoot()
+	return gun.shoot(Vector2.DOWN)
 
 
 func explode() -> void:
