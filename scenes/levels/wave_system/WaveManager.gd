@@ -60,6 +60,8 @@ func start(world: Node2D) -> void:
 		while (_enemies_on_screen > 0 and not _is_canceled):
 			yield(scene_tree, "idle_frame")
 		
+		yield(scene_tree.create_timer(wave.time_between_waves, false), "timeout")
+		
 		emit_signal("wave_completed", wave_index)
 	
 	if not _is_canceled:
