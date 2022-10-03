@@ -2,7 +2,7 @@ extends Area2D
 class_name Drone
 
 const SCORE_POINTS: int = 10
-const DIRECTION := Vector2(1, 1)
+const DIRECTION: Vector2 = Vector2(1, 1)
 
 enum MovementPattern {
 	VERTICAL_DOWN,
@@ -11,28 +11,52 @@ enum MovementPattern {
 	HORIZONTAL_LEFT,
 	SQUARE_UP,
 	SQUARE_DOWN,
-	ZIG_ZAG_DOWN
+	ZIG_ZAG_DOWN,
 }
 
-export var speed: float = 48.0
-export(PackedScene) var explosion: PackedScene = preload("res://scenes/objects/Explosion.tscn")
-export(MovementPattern) var movement_pattern = MovementPattern.VERTICAL_DOWN setget set_movement_pattern
+@export var speed: float = 48.0
+@export var explosion: PackedScene = preload("res://scenes/objects/Explosion.tscn")
+@export var movement_pattern: MovementPattern = MovementPattern.VERTICAL_DOWN :
+	get:
+		return movement_pattern
+	set(mod_value):
+		movement_pattern = mod_value
+		match (movement_pattern):
+			MovementPattern.VERTICAL_DOWN:
+				_direction = Vector2.DOWN
+			MovementPattern.VERTICAL_UP:
+				_direction = Vector2.UP
+			MovementPattern.HORIZONTAL_LEFT:
+				_direction = Vector2.LEFT
+			MovementPattern.HORIZONTAL_RIGHT:
+				_direction = Vector2.RIGHT
+			MovementPattern.ZIG_ZAG_DOWN:
+				_direction = Vector2(1, 1)
+			MovementPattern.SQUARE_UP:
+				_direction = Vector2.RIGHT
+			MovementPattern.SQUARE_DOWN:
+				_direction = Vector2.LEFT
+			_:
+				print_debug("Unknown movement pattern: %s. Will default to VERTICAL_DOWN." % str(mod_value))
+				movement_pattern = MovementPattern.VERTICAL_DOWN
+				_direction = Vector2.DOWN
+		_correct_initial_pos_x()
 
 var _direction: Vector2 = Vector2.DOWN
-var _velocity = _direction * speed
+var _velocity: Vector2 = _direction * speed
 
-onready var gun := $Gun
-onready var world = get_parent()
-onready var viewport_size = get_viewport_rect().size
-onready var viewport_width = viewport_size.x
-onready var viewport_height = viewport_size.y
-onready var animated_sprite = $AnimatedSprite
-onready var sprite_width = animated_sprite.frames.get_frame("default", 0).get_width()
-onready var min_pos_x = 0
-onready var max_pos_x = viewport_width - sprite_width
+@onready var gun := $Gun
+@onready var world: Node2D = get_parent()
+@onready var viewport_size: Vector2 = get_viewport_rect().size
+@onready var viewport_width: float = viewport_size.x
+@onready var viewport_height: float = viewport_size.y
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite_width: float = animated_sprite.frames.get_frame("default", 0).get_width()
+@onready var min_pos_x: float = 0.0
+@onready var max_pos_x: float = viewport_width - sprite_width
 
 
-func _ready():
+func _ready() -> void:
 	_correct_initial_pos_x()
 
 
@@ -59,10 +83,11 @@ func shoot() -> bool:
 
 
 func explode() -> void:
-	var new_explosion = explosion.instance()
+	var new_explosion = explosion.instantiate()
 	new_explosion.centered = animated_sprite.centered
 	new_explosion.global_position = global_position
 	world.add_child(new_explosion)
+
 	queue_free()
 
 
@@ -72,8 +97,8 @@ func kill(killer: Node) -> void:
 	explode()
 
 
-func _correct_initial_pos_x():
-	if min_pos_x == null:
+func _correct_initial_pos_x() -> void:
+	if not min_pos_x or not max_pos_x:
 		return
 	
 	match (movement_pattern):
@@ -86,34 +111,9 @@ func _correct_initial_pos_x():
 	position.x = clamp(position.x, min_pos_x, max_pos_x)
 
 
-func set_movement_pattern(value) -> void:
-	movement_pattern = value
-	match (movement_pattern):
-		MovementPattern.VERTICAL_DOWN:
-			_direction = Vector2.DOWN
-		MovementPattern.VERTICAL_UP:
-			_direction = Vector2.UP
-		MovementPattern.HORIZONTAL_LEFT:
-			_direction = Vector2.LEFT
-		MovementPattern.HORIZONTAL_RIGHT:
-			_direction = Vector2.RIGHT
-		MovementPattern.ZIG_ZAG_DOWN:
-			_direction = Vector2(1, 1)
-		MovementPattern.SQUARE_UP:
-			_direction = Vector2.RIGHT
-		MovementPattern.SQUARE_DOWN:
-			_direction = Vector2.LEFT
-		_:
-			print_debug("Unknown movement pattern: %s. Will default to VERTICAL_DOWN." % str(value))
-			movement_pattern = MovementPattern.VERTICAL_DOWN
-			_direction = Vector2.DOWN
-	
-	_correct_initial_pos_x()
-
-
-func _on_VisibilityNotifier2D_viewport_exited(_viewport : Viewport) -> void:
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 
-func _on_Dron_area_entered(area: Area2D) -> void:
+func _on_drone_area_entered(area: Area2D) -> void:
 	kill(area)

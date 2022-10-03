@@ -7,15 +7,46 @@ signal power_up_count_updated
 signal remaining_lives_updated
 signal stamina_updated
 
-const MAX_LIVES: int = 99
+const MAX_LIVES: int = 9
 const MAX_STAMINA: int = 50
 const MAX_POWER_UP: int = 5
 
-var score: int = 0 setget set_score
-var hi_score: int = 0 setget set_hi_score
-var lives: int = MAX_LIVES setget set_lives
-var stamina: int = MAX_STAMINA setget set_stamina
-var power_up_count: int = 0 setget set_power_up_count
+var score: int = 0 :
+	get:
+		return score
+	set(mod_value):
+		score = mod_value
+		emit_signal("score_updated")
+		if score > hi_score:
+			self.hi_score = score
+
+var hi_score: int = 0 :
+	get:
+		return hi_score
+	set(mod_value):
+		hi_score = mod_value
+		emit_signal("hi_score_updated")
+
+var lives: int = MAX_LIVES :
+	get:
+		return lives
+	set(mod_value):
+		lives = clampi(mod_value, 0, MAX_LIVES)
+		emit_signal("remaining_lives_updated")
+
+var stamina: int = MAX_STAMINA :
+	get:
+		return stamina
+	set(mod_value):
+		stamina = clampi(mod_value, 0, MAX_STAMINA)
+		emit_signal("stamina_updated")
+
+var power_up_count: int = 0 :
+	get:
+		return power_up_count
+	set(mod_value):
+		power_up_count = clampi(mod_value, 0, MAX_POWER_UP)
+		emit_signal("power_up_count_updated")
 
 
 func reset():
@@ -37,29 +68,9 @@ func reset_power_up() -> void:
 	self.power_up_count = 0
 
 
-func set_score(value) -> void:
-	score = value
-	emit_signal("score_updated")
-
-	if score > hi_score:
-		self.hi_score = score
+func maximize_power_up() -> void:
+	self.power_up_count = MAX_POWER_UP
 
 
-func set_power_up_count(value: int) -> void:
-	power_up_count = int(clamp(value, 0, MAX_POWER_UP))
-	emit_signal("power_up_count_updated")
-
-
-func set_hi_score(value: int) -> void:
-	hi_score = value
-	emit_signal("hi_score_updated")
-
-
-func set_lives(value: int) -> void:
-	lives = int(clamp(value, 0, MAX_LIVES))
-	emit_signal("remaining_lives_updated")
-
-
-func set_stamina(value: int) -> void:
-	stamina = int(clamp(value, 0, MAX_STAMINA))
-	emit_signal("stamina_updated")
+func is_power_up_maximized() -> bool:
+	return self.power_up_count == MAX_POWER_UP

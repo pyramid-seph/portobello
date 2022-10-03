@@ -15,6 +15,7 @@ func shoot() -> bool:
 
 	get_tree().call_group("enemies", "kill", owner)
 	get_tree().call_group("bullets", "queue_free")
+	get_tree().call_group("enemy_bullet", "queue_free")
 	
 	Input.start_joy_vibration(0, 0.25, 0.25, 0.25)
 

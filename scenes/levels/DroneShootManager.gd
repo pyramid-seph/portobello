@@ -4,7 +4,7 @@ extends Node
 const COOLDOWN_SECONDS: float = 0.8
 const MAX_CONCURRENT_BULLETS: int = 10
 
-onready var cooldown_timer := $CooldownTimer
+@onready var cooldown_timer: Timer = $CooldownTimer
 
 var _disabled: bool = false
 
@@ -29,15 +29,15 @@ func _stop_cooldown() -> void:
 	cooldown_timer.stop()
 
 
-func _on_WaveManager_wave_started(_wave_index) -> void:
+func _on_wave_manager_wave_started(_wave_index: int) -> void:
 	_start_cooldown()
 
 
-func _on_WaveManager_wave_completed(_wave_index) -> void:
+func _on_wave_manager_wave_completed(_wave_index: int) -> void:
 	_stop_cooldown()
 
 
-func _on_WaveManager_all_waves_completed() -> void:
+func _on_wave_manager_all_waves_completed() -> void:
 	disable()
 
 

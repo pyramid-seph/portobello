@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://art/day_3/tiles_objects.png" type="Texture" id=1]
+[ext_resource path="res://art/day_3/tiles_objects.png" type="Texture2D" id=1]
 [ext_resource path="res://scenes/pickups/Bird.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -31,7 +31,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource( 3 )
 frame = 1
 playing = true

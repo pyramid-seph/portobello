@@ -5,9 +5,9 @@ const SPEED = 48
 const DIRECTION = Vector2.DOWN
 const VELOCITY = SPEED * DIRECTION
 
-onready var animated_sprite = $AnimatedSprite
-onready var viewport_size = get_viewport_rect().size
-onready var viewport_height = viewport_size.y
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var viewport_size = get_viewport_rect().size
+@onready var viewport_height = viewport_size.y
 
 
 func _ready() -> void:
@@ -16,12 +16,12 @@ func _ready() -> void:
 	animated_sprite.play()
 
 
-func _process(delta) -> void:
+func _process(delta: float) -> void:
 	_move(delta)
 	_autoremove()
 
 
-func _move(delta) -> void:
+func _move(delta: float) -> void:
 	position += VELOCITY * delta
 
 

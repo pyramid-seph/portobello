@@ -1,6 +1,6 @@
 extends ColorRect
 
-const DURATION := 0.08
+const DURATION := 0.08 # TODO El tiempo hace que se oculten las explosiones ¿Será que debiera ser menos el flash o más la explosión?
 
 
 func _ready():
@@ -9,7 +9,7 @@ func _ready():
 
 func _flash():
 	visible = true
-	yield(get_tree().create_timer(DURATION, false), "timeout")
+	await get_tree().create_timer(DURATION, false).timeout
 	visible = false
 
 

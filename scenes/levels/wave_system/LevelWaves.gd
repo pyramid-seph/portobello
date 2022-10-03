@@ -1,4 +1,4 @@
-extends Reference
+extends RefCounted
 class_name LevelWaves
 
 
@@ -6,7 +6,7 @@ func _get_enemy_scene() -> PackedScene:
 	return null
 
 
-func _get_waves() -> Array:
+func _get_waves() -> Array[Wave]:
 	return [];
 
 
@@ -20,5 +20,5 @@ func _create_wave(
 	wave.enemy_count = enemy_count
 	wave.time_between_spawns = time_between_spawns
 	wave.time_between_waves = time_between_waves
-	wave.get_initial_move_state_func = funcref(self, init_move_state_func_name)
+	wave.get_initial_move_state_func = Callable(self, init_move_state_func_name)
 	return wave

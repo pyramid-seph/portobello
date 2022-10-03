@@ -5,7 +5,7 @@ const FRAME_TIME = 0.08
 
 
 static func rand_item(arr: Array) -> Node:
-	if arr == null or arr.empty():
+	if arr == null or arr.is_empty():
 		return null
 	
 	return arr[randi() % arr.size()]

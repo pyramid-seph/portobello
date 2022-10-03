@@ -1,13 +1,13 @@
-extends Position2D
+extends Marker2D
 
 
-export(PackedScene) var Bullet
-export var bullet_speed = 80
-export var cooldown = 1.0
-export var ignore_cooldown: bool = false
+@export var Bullet: PackedScene
+@export var bullet_speed: float = 80.0
+@export var cooldown: float = 1.0
+@export var ignore_cooldown: bool = false
 
-onready var _root = $"/root"
-onready var _cooldown_timer = $CooldownTimer
+@onready var _root := $"/root"
+@onready var _cooldown_timer := $CooldownTimer
 
 
 func _ready():
@@ -15,7 +15,7 @@ func _ready():
 
 
 func _spawn_bullet(direction: Vector2):
-	var bullet = Bullet.instance()
+	var bullet = Bullet.instantiate()
 	bullet.position = global_position
 	bullet.direction = direction
 	bullet.speed = bullet_speed

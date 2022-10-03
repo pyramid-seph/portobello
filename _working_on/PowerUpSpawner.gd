@@ -1,17 +1,17 @@
 extends Node2D
 
 
-export(Resource) var player_data: Resource
-export(PackedScene) var power_up_item
-export var cooldown: float = Utils.FRAME_TIME
+@export var player_data: Resource
+@export var power_up_item: PackedScene
+@export var cooldown: float = Utils.FRAME_TIME
 
-onready var screen_size: Vector2 = get_viewport_rect().size
-onready var timer = $Cooldown
+@onready var screen_size: Vector2 = get_viewport_rect().size
+@onready var timer: Timer = $Cooldown
+
+enum State { DISABLED, READY, ENQUEUED, INSTANCED }
 
 var _state: int = State.DISABLED
 var _world: Node2D
-
-enum State { DISABLED, READY, ENQUEUED, INSTANCED }
 
 
 func enable(world: Node2D) -> void:
@@ -58,10 +58,10 @@ func _instance_new_power_up_item() -> void:
 	if _state != State.ENQUEUED:
 		return
 	
-	var new_power_up_item = power_up_item.instance()
+	var new_power_up_item = power_up_item.instantiate()
 	var initial_pos := Vector2(randi() % int(screen_size.x - 30) + 10, 3)
 	new_power_up_item.global_position = initial_pos
-	new_power_up_item.connect("tree_exited", self, "_on_Item_tree_exited")
+	new_power_up_item.tree_exited.connect(_on_Item_tree_exited)
 	_world.add_child(new_power_up_item)
 	_state = State.INSTANCED
 

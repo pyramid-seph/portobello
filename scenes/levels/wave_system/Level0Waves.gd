@@ -2,14 +2,14 @@ extends LevelWaves
 class_name Level0Waves
 
 
-var _waves = null
+var _waves: Array[Wave] = []
 
 
 func _get_enemy_scene() -> PackedScene:
 	return preload ("res://scenes/characters/enemy/Drone.tscn")
 
 
-func _get_waves() -> Array:
+func _get_waves() -> Array[Wave]:
 	if _waves:
 		return _waves
 	
