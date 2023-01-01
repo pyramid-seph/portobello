@@ -1,42 +1,38 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://cj8l7ibo6ewaq"]
 
-[ext_resource path="res://art/day_3/tiles_objects.png" type="Texture2D" id=1]
-[ext_resource path="res://scenes/pickups/Bird.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="1"]
+[ext_resource type="Script" path="res://scenes/pickups/Bird.gd" id="2"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 16, 16, 16 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(32, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 32, 16, 16 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(0, 32, 16, 16)
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+[sub_resource type="SpriteFrames" id="3"]
+animations = [{
+"frames": [SubResource("1"), SubResource("2")],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4, 2 )
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(8, 4)
 
 [node name="Bird" type="Area2D" groups=["pickups"]]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+script = ExtResource("2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource( 3 )
-frame = 1
+frames = SubResource("3")
 playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 8, 8 )
-shape = SubResource( 4 )
+position = Vector2(8, 8)
+shape = SubResource("4")

@@ -32,9 +32,9 @@ var level_state: int = LevelState.STARTING :
 
 func _ready() -> void:
 	_instantiate_player()
-	self.level_state = LevelState.STARTING
+	level_state = LevelState.STARTING
 	await scene_tree.create_timer(START_DURATION, false).timeout
-	self.level_state = LevelState.PLAYING
+	level_state = LevelState.PLAYING
 	wave_manager.start(world)
 	stamina_spawner.enable(world)
 	power_up_spawner.enable(world)
@@ -49,7 +49,7 @@ func _instantiate_player() -> void:
 
 
 func _game_over() -> void:
-	self.level_state = LevelState.GAME_OVER
+	level_state = LevelState.GAME_OVER
 	wave_manager.cancel_wave()
 	stamina_spawner.disable()
 	power_up_spawner.disable()

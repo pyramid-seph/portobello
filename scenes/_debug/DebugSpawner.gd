@@ -63,4 +63,4 @@ func _process_key_input(event):
 		KEY_9:
 			new_index = 8
 	if (new_index != -1):
-		self._selected_thing_index = new_index
+		_selected_thing_index = new_index
