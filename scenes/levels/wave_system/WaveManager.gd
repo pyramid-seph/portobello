@@ -27,7 +27,7 @@ func start(world: Node2D) -> void:
 	
 	if world == null:
 		print("Completing wave because start_wave requires world cannot be null.")
-		emit_signal("all_waves_completed")
+		all_waves_completed.emit()
 		return
 	
 	var wave_index = -1
@@ -36,7 +36,7 @@ func start(world: Node2D) -> void:
 		_enemies_on_screen = 0
 		wave_index += 1
 		
-		emit_signal("wave_started", wave_index)
+		wave_started.emit(wave_index)
 		
 		await scene_tree.create_timer(wave.time_between_spawns, false).timeout
 		while (_spawned_enemies_count < wave.enemy_count and not _is_canceled):
@@ -62,10 +62,10 @@ func start(world: Node2D) -> void:
 		
 		await scene_tree.create_timer(wave.time_between_waves, false).timeout
 		
-		emit_signal("wave_completed", wave_index)
+		wave_completed.emit(wave_index)
 	
 	if not _is_canceled:
-		emit_signal("all_waves_completed")
+		all_waves_completed.emit()
 
 
 func cancel_wave() -> void:

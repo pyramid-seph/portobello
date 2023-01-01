@@ -27,7 +27,7 @@ var level_state: int = LevelState.STARTING :
 		return level_state
 	set(mod_value):
 		level_state = mod_value
-		emit_signal("level_state_changed", level_state)
+		level_state_changed.emit(level_state)
 
 
 func _ready() -> void:
@@ -60,7 +60,7 @@ func _game_over() -> void:
 func _input(event: InputEvent) -> void:
 	if level_state == LevelState.PLAYING and event.is_action_pressed("pause"): 
 		scene_tree.paused = not scene_tree.paused
-		emit_signal("pause_state_changed", scene_tree.paused)
+		pause_state_changed.emit(scene_tree.paused)
 
 
 func _on_Player_died(remaining_lives: int) -> void:

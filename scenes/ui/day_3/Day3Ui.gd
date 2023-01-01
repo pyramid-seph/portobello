@@ -8,7 +8,7 @@ signal stamina_changed(new_val, max_val)
 signal pause_state_changed(new_state)
 signal level_state_changed(new_state)
 
-@export var player_data: Resource
+@export var player_data: Day03PlayerData
 
 
 func _ready() -> void:
@@ -25,28 +25,28 @@ func _ready() -> void:
 
 
 func _on_player_data_score_updated() -> void:
-	emit_signal("score_changed", player_data.score)
+	score_changed.emit(player_data.score)
 
 
 func _on_player_data_hi_score_updated() -> void:
-	emit_signal("hi_score_changed", player_data.hi_score)
+	hi_score_changed.emit(player_data.hi_score)
 
 
 func _on_player_data_power_up_count_updated() -> void:
-	emit_signal("power_up_changed", player_data.power_up_count, player_data.MAX_POWER_UP)
+	power_up_changed.emit(player_data.power_up_count, player_data.MAX_POWER_UP)
 
 
 func _on_player_data_remaining_lives_updated() -> void:
-	emit_signal("lives_left_changed", player_data.lives)
+	lives_left_changed.emit(player_data.lives)
 
 
 func _on_player_data_remaining_stamina_updated() -> void:
-	emit_signal("stamina_changed", player_data.stamina, player_data.MAX_STAMINA)
+	stamina_changed.emit(player_data.stamina, player_data.MAX_STAMINA)
 
 
 func _on_day_03_level_pause_state_changed(new_state: bool) -> void:
-	emit_signal("pause_state_changed", new_state)
+	pause_state_changed.emit(new_state)
 
 
 func _on_day_03_level_level_state_changed(new_state: int) -> void:
-	emit_signal("level_state_changed", new_state)
+	level_state_changed.emit(new_state)

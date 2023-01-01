@@ -69,7 +69,7 @@ config/icon="res://art/_shared/ui_counter_lives.png"
 
 [autoload]
 
-Utils="*res://utils/Utils.gd"
+Utils="*res://autoloads/Utils.gd"
 
 [display]
 

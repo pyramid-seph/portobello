@@ -15,4 +15,4 @@ signal hurt(who)
 
 
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	emit_signal("hurt", area)
+	hurt.emit(area)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dy0ka8ot8meai"]
 
-[ext_resource path="res://scenes/_shared/SolidColorBackground.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://scenes/_shared/SolidColorBackground.gd" id="1"]
 
 [node name="SolidColorBackground" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")

@@ -68,7 +68,7 @@ func power_up_by(points: int) -> void:
 
 func _die() -> void:
 	player_data.lives -= 1
-	emit_signal("died", player_data.lives)
+	died.emit(player_data.lives)
 	queue_free()
 
 
@@ -97,7 +97,7 @@ func _process_fire() -> void:
 
 	if mega_gun.shoot():
 		player_data.power_up_count = 0
-		emit_signal("mega_gun_shot")
+		mega_gun_shot.emit()
 
 
 func _move(velocity: Vector2, delta: float) -> void:
