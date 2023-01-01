@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-export var dangerous_level : float = 0.5
+@export var dangerous_level : float = 0.5
 
-onready var progress_bar = $ProgressBar
+@onready var progress_bar = $ProgressBar
 
 
 func _on_Day3Ui_time_changed(new_val, max_value):
@@ -10,7 +10,7 @@ func _on_Day3Ui_time_changed(new_val, max_value):
 
 	var new_tint
 	if new_val > max_value * dangerous_level:
-		new_tint = ColorN("blue")
+		new_tint = Color.BLUE
 	else:
 		new_tint = Color8(237, 107, 247)
 

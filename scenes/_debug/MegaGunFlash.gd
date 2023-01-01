@@ -9,7 +9,7 @@ func _ready():
 
 func _flash():
 	visible = true
-	yield(get_tree().create_timer(DURATION, false), "timeout")
+	await get_tree().create_timer(DURATION, false).timeout
 	visible = false
 
 

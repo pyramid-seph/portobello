@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/ui/day_3/PauseMenu.gd" type="Script" id=1]
 
 [node name="PauseMenu" type="Control"]
-pause_mode = 2
+process_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,10 +14,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -7.0
-margin_right = 20.0
-margin_bottom = 7.0
+offset_left = -20.0
+offset_top = -7.0
+offset_right = 20.0
+offset_bottom = 7.0
 text = "Pause"
 
 [node name="BlinkTimer" type="Timer" parent="."]

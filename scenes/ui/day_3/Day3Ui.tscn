@@ -18,10 +18,10 @@
 [node name="Day3Ui" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -29,18 +29,18 @@ __meta__ = {
 player_data = ExtResource( 11 )
 
 [node name="Bars" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 theme = ExtResource( 3 )
 
 [node name="StaminaBar" parent="Bars" instance=ExtResource( 4 )]
-margin_right = 64.0
+offset_right = 64.0
 script = ExtResource( 8 )
 
 [node name="PowerUpBar" parent="Bars" instance=ExtResource( 5 )]
-margin_top = 14.0
-margin_right = 64.0
-margin_bottom = 24.0
+offset_top = 14.0
+offset_right = 64.0
+offset_bottom = 24.0
 script = ExtResource( 10 )
 
 [node name="LivesCounter" parent="." instance=ExtResource( 2 )]
@@ -48,17 +48,17 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -30.0
-margin_top = -19.0
-margin_right = 0.0
-margin_bottom = 0.0
+offset_left = -30.0
+offset_top = -19.0
+offset_right = 0.0
+offset_bottom = 0.0
 script = ExtResource( 6 )
 
 [node name="Score" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 14.0
+offset_left = -40.0
+offset_bottom = 14.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "10000"
@@ -69,9 +69,9 @@ script = ExtResource( 7 )
 [node name="HiScore" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -20.0
-margin_right = 20.0
-margin_bottom = 14.0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 14.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "hi 100"
@@ -84,10 +84,10 @@ script = ExtResource( 9 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 56.0
-margin_top = 135.5
-margin_right = -56.0
-margin_bottom = -135.5
+offset_left = 56.0
+offset_top = 135.5
+offset_right = -56.0
+offset_bottom = -135.5
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Buffet
@@ -99,10 +99,10 @@ script = ExtResource( 14 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 78.0
-margin_top = 146.5
-margin_right = -78.0
-margin_bottom = -146.5
+offset_left = 78.0
+offset_top = 146.5
+offset_right = -78.0
+offset_bottom = -146.5
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Game over"

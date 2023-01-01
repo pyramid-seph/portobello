@@ -6,22 +6,22 @@ signal died(remaining_lives)
 const SPEED: float = 40.0
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
-export(Resource) var player_data: Resource
-export(PackedScene) var fall: PackedScene
-export(PackedScene) var explosion: PackedScene
+@export var player_data: Resource: Resource
+@export var fall: PackedScene: PackedScene
+@export var explosion: PackedScene: PackedScene
 
-onready var world := get_parent()
-onready var gun := $Gun
-onready var mega_gun := $MegaGun
-onready var hurt_box := $HurtBox
-onready var animation_player := $AnimationPlayer
-onready var animated_sprite := $AnimatedSprite
-onready var player_extents = $CollisionShape2D.shape.extents
-onready var screen_size := get_viewport_rect().size
-onready var min_pos_x: float = player_extents.x
-onready var min_pos_y: float = player_extents.y
-onready var max_pos_x: float = screen_size.x - player_extents.x
-onready var max_pos_y: float = screen_size.y - player_extents.y
+@onready var world := get_parent()
+@onready var gun := $Gun
+@onready var mega_gun := $MegaGun
+@onready var hurt_box := $HurtBox
+@onready var animation_player := $AnimationPlayer
+@onready var animated_sprite := $AnimatedSprite2D
+@onready var player_extents = $CollisionShape2D.shape.extents
+@onready var screen_size := get_viewport_rect().size
+@onready var min_pos_x: float = player_extents.x
+@onready var min_pos_y: float = player_extents.y
+@onready var max_pos_x: float = screen_size.x - player_extents.x
+@onready var max_pos_y: float = screen_size.y - player_extents.y
 
 
 func _ready() -> void:
@@ -39,14 +39,14 @@ func start_timed_invincibility() -> void:
 
 
 func explode() -> void:
-	var new_explosion = explosion.instance()
+	var new_explosion = explosion.instantiate()
 	new_explosion.global_position = global_position
 	world.add_child(new_explosion)
 	_die()
 
 
 func plummet() -> void:
-	var new_fall = fall.instance()
+	var new_fall = fall.instantiate()
 	new_fall.global_position = global_position
 	world.add_child(new_fall)
 	_die()

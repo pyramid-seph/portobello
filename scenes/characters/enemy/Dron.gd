@@ -3,11 +3,11 @@ extends Area2D
 const SPEED: float = 48.0
 const SCORE_POINTS: int = 10
 
-export(PackedScene) var explosion : PackedScene
-export var direction: Vector2 = Vector2.DOWN
+@export var explosion: PackedScene : PackedScene
+@export var direction: Vector2 = Vector2.DOWN
 
-onready var world = get_parent()
-onready var gun = $Gun
+@onready var world = get_parent()
+@onready var gun = $Gun
 
 
 func _process(delta: float) -> void:
@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 
 func explode() -> void:
-	var new_explosion = explosion.instance()
+	var new_explosion = explosion.instantiate()
 	new_explosion.global_position = global_position
 	world.add_child(new_explosion)
 	queue_free()
@@ -28,7 +28,7 @@ func kill(killer: Node) -> void:
 	queue_free()
 
 
-func _on_VisibilityNotifier2D_viewport_exited(_viewport : Viewport) -> void:
+func _on_VisibilityNotifier2D_viewport_exited(_viewport : SubViewport) -> void:
 	queue_free()
 
 

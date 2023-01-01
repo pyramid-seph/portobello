@@ -11,11 +11,11 @@ const MAX_LIVES: int = 2
 const MAX_STAMINA: int = 50
 const MAX_POWER_UP: int = 5
 
-var score: int = 0 setget set_score
-var hi_score: int = 0 setget set_hi_score
-var lives: int = MAX_LIVES setget set_lives
-var stamina: int = MAX_STAMINA setget set_stamina
-var power_up_count: int = 0 setget set_power_up_count
+var score: int = 0 : set = set_score
+var hi_score: int = 0 : set = set_hi_score
+var lives: int = MAX_LIVES : set = set_lives
+var stamina: int = MAX_STAMINA : set = set_stamina
+var power_up_count: int = 0 : set = set_power_up_count
 
 
 func reset():
