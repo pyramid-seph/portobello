@@ -7,7 +7,7 @@
 size = Vector2(4, 14)
 
 [node name="EnemyBullet" type="Area2D" groups=["enemy_bullet"]]
-collision_layer = 8
+collision_layer = 16
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
