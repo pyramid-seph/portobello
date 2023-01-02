@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"Day03PlayerData",
 "language": &"GDScript",
 "path": "res://resources/Day03PlayerData.gd"
+}, {
+"base": "RefCounted",
+"class": &"SaveData",
+"language": &"GDScript",
+"path": "res://autoloads/SaveData.gd"
 }]
 _global_script_class_icons={
-"Day03PlayerData": ""
+"Day03PlayerData": "",
+"SaveData": ""
 }
 
 [application]
@@ -24,6 +30,11 @@ config/name="Bucho Portobello"
 run/main_scene="res://scenes/levels/Day03Level.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://art/_shared/ui_counter_lives.png"
+
+[autoload]
+
+SaveDataManager="*res://autoloads/SaveDataManager.gd"
+Utils="*res://autoloads/Utils.gd"
 
 [display]
 

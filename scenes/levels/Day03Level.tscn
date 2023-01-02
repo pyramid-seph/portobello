@@ -28,10 +28,18 @@ process_mode = 1
 
 [node name="MegaGunFlash" parent="Interface" instance=ExtResource("4")]
 anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Day3Ui" parent="Interface" instance=ExtResource("3")]
 layout_mode = 3
 anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DebugSpawner" parent="." instance=ExtResource("2")]
 process_mode = 1
