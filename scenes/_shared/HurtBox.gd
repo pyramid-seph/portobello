@@ -4,9 +4,9 @@ extends Area2D
 signal hurt(who)
 
 
-export(bool) var invincible := false setget set_invincible
+@export var invincible: bool := false : set = set_invincible
 
-onready var collision_shape := $CollisionShape2D
+@onready var collision_shape := $CollisionShape2D
 
 
 func set_invincible(value: bool) -> void:

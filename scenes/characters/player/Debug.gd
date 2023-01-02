@@ -1,7 +1,7 @@
 extends Node
 
-onready var scene_tree = get_tree()
-onready var player = get_parent()
+@onready var scene_tree = get_tree()
+@onready var player = get_parent()
 
 
 func _ready():

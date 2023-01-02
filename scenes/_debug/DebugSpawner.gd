@@ -1,11 +1,11 @@
 extends Node
 
-export var world_path := NodePath()
-export(Array, PackedScene) var things := []
+@export var world_path := NodePath()
+@export var things := [] # (Array, PackedScene)
 
-var _selected_thing_index: int = 0 setget set_selected_thing_index
+var _selected_thing_index: int = 0 : set = set_selected_thing_index
 
-onready var world := get_node(world_path)
+@onready var world := get_node(world_path)
 
 
 func _ready():
@@ -22,8 +22,8 @@ func _process_mouse_input(event):
 	if not event is InputEventMouseButton:
 		return
 
-	if event.button_index == BUTTON_LEFT and event.pressed:
-		var new_thing = things[_selected_thing_index].instance()
+	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var new_thing = things[_selected_thing_index].instantiate()
 		new_thing.position = event.position
 		world.add_child(new_thing)
 

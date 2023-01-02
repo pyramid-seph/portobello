@@ -7,42 +7,42 @@ const START_DURATION: float = 1.6
 const TIME_BETWEEN_REVIVALS: float = 1.2
 const GAME_OVER_DURATION: float = 3.2
 
-export(PackedScene) var player
-export(Resource) var player_data: Resource
+@export var player: PackedScene
+@export var player_data: Resource: Resource
 
-onready var world = $World
-onready var mega_gun_flash := $Interface/MegaGunFlash
-onready var player_start_position = $World/StartPosition.position
-onready var scene_tree = get_tree()
+@onready var world = $World3D
+@onready var mega_gun_flash := $Interface/MegaGunFlash
+@onready var player_start_position = $World3D/StartPosition.position
+@onready var scene_tree = get_tree()
 
 enum LevelState { STARTING, PLAYING, GAME_OVER }
 
-var level_state: int = LevelState.STARTING setget set_level_state
+var level_state: int = LevelState.STARTING : set = set_level_state
 
 
 func _ready() -> void:
 	randomize()
 	_instantiate_player()
 	self.level_state = LevelState.STARTING
-	yield(scene_tree.create_timer(START_DURATION, false), "timeout")
+	await scene_tree.create_timer(START_DURATION, false).timeout
 	self.level_state = LevelState.PLAYING
 
 
 func _instantiate_player() -> void:
-	var new_player = player.instance()
+	var new_player = player.instantiate()
 	new_player.position = player_start_position
-	new_player.connect("died", self, "_on_Player_died")
-	new_player.connect("mega_gun_shot", mega_gun_flash, "_on_Player_mega_gun_shot")
+	new_player.connect("died",Callable(self,"_on_Player_died"))
+	new_player.connect("mega_gun_shot",Callable(mega_gun_flash,"_on_Player_mega_gun_shot"))
 	world.add_child(new_player)
 
 
 func _on_Player_died(remaining_lives) -> void:
 	if remaining_lives == 0:
 		self.level_state = LevelState.GAME_OVER
-		yield(scene_tree.create_timer(GAME_OVER_DURATION), "timeout")
+		await scene_tree.create_timer(GAME_OVER_DURATION).timeout
 		scene_tree.quit()
 	else:
-		yield(scene_tree.create_timer(TIME_BETWEEN_REVIVALS, false), "timeout")
+		await scene_tree.create_timer(TIME_BETWEEN_REVIVALS, false).timeout
 		_instantiate_player()
 
 

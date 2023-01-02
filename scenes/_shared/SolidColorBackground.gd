@@ -1,7 +1,7 @@
-tool
+@tool
 extends Node2D
 
-export(Color) var color = Color8(255, 0, 255)
+@export var color: Color = Color8(255, 0, 255)
 
 
 func _draw():

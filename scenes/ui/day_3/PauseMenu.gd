@@ -1,7 +1,7 @@
 extends Control
 
-onready var blink_timer = $BlinkTimer
-onready var pause_label = $PauseLabel
+@onready var blink_timer = $BlinkTimer
+@onready var pause_label = $PauseLabel
 
 
 func _on_BlinkTimer_timeout():

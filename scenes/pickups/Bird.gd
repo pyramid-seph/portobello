@@ -8,12 +8,12 @@ const BASE_STAMINA := 20
 
 var velocity: Vector2 = SPEED * DIRECTION
 
-onready var viewport_size = get_viewport_rect().size
-onready var viewport_width = viewport_size.x
-onready var viewport_height = viewport_size.y
-onready var sprite_width = $AnimatedSprite.frames.get_frame("default", 0).get_width()
-onready var min_pos_x = 0
-onready var max_pos_x = viewport_width - sprite_width
+@onready var viewport_size = get_viewport_rect().size
+@onready var viewport_width = viewport_size.x
+@onready var viewport_height = viewport_size.y
+@onready var sprite_width = $AnimatedSprite2D.frames.get_frame("default", 0).get_width()
+@onready var min_pos_x = 0
+@onready var max_pos_x = viewport_width - sprite_width
 
 
 func _ready() -> void:
