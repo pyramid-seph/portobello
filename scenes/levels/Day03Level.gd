@@ -58,7 +58,7 @@ func _game_over() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if level_state == LevelState.PLAYING and event.is_action_pressed("pause"): 
+	if level_state == LevelState.PLAYING and event.is_action_pressed("pause"):
 		scene_tree.paused = not scene_tree.paused
 		pause_state_changed.emit(scene_tree.paused)
 
