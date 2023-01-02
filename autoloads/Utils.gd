@@ -19,6 +19,11 @@ func get_item_count_in_group(group: String) -> int:
 	return get_tree().get_nodes_in_group(group).size()
 
 
-func vibrate_joy(weak_magnitude: float, strong_magnitude: float, duration: float = 0.0, device: int = 0):
+func vibrate_joy(
+	device: int = 0, 
+	weak_magnitude: float = 0.25,
+	strong_magnitude: float = 0.25,
+	duration: float = 0.0,
+) -> void:
 	if SaveDataManager.save_data.is_vibration_enabled:
 		Input.start_joy_vibration(device, weak_magnitude, strong_magnitude, duration)

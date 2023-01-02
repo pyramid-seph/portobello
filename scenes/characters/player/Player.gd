@@ -42,7 +42,7 @@ func explode() -> void:
 	var new_explosion = explosion.instantiate()
 	new_explosion.global_position = global_position
 	world.add_child(new_explosion)
-	Utils.vibrate_joy(0.25, 0.25, 0.25)
+	Utils.vibrate_joy()
 	_die()
 
 
@@ -50,7 +50,7 @@ func plummet() -> void:
 	var new_fall = fall.instantiate()
 	new_fall.global_position = global_position
 	world.add_child(new_fall)
-	Utils.vibrate_joy(0.25, 0.25, 0.25)
+	Utils.vibrate_joy()
 	_die()
 
 

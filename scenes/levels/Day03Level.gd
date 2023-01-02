@@ -9,7 +9,7 @@ const TIME_BETWEEN_REVIVALS: float = 1.2
 const GAME_OVER_DURATION: float = 3.2
 
 @export var player: PackedScene
-@export var player_data: Resource
+@export var player_data: Day03PlayerData
 
 @onready var world := $World
 @onready var mega_gun_flash := $Interface/MegaGunFlash
