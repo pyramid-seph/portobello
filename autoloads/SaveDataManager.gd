@@ -13,7 +13,6 @@ var _is_saving: bool = false
 
 
 func _ready() -> void:
-	reset_save_data()
 	saving_started.connect(func(): _is_saving = true)
 	saving_finished.connect(func(): _is_saving = false)
 	_load()
@@ -71,3 +70,7 @@ func _load() -> void:
 	
 	var json_string := file.get_as_text()
 	var data = JSON.parse_string(json_string)
+	if data:
+		save_data = SaveData.from_json(data)
+	else: # Got an error while parsing the json.
+		reset_save_data()

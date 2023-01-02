@@ -45,6 +45,11 @@ _global_script_classes=[{
 "path": "res://scenes/levels/wave_system/LevelWaves.gd"
 }, {
 "base": "RefCounted",
+"class": &"SaveData",
+"language": &"GDScript",
+"path": "res://autoloads/SaveData.gd"
+}, {
+"base": "RefCounted",
 "class": &"Wave",
 "language": &"GDScript",
 "path": "res://scenes/levels/wave_system/Wave.gd"
@@ -57,6 +62,7 @@ _global_script_class_icons={
 "InitialMoveState": "",
 "Level0Waves": "",
 "LevelWaves": "",
+"SaveData": "",
 "Wave": ""
 }
 
@@ -70,6 +76,7 @@ config/icon="res://art/_shared/ui_counter_lives.png"
 [autoload]
 
 Utils="*res://autoloads/Utils.gd"
+SaveDataManager="*res://autoloads/SaveDataManager.gd"
 
 [display]
 
