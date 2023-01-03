@@ -15,7 +15,7 @@
 [node name="Day03Level" type="Node"]
 process_mode = 3
 script = ExtResource("5")
-player = ExtResource("6")
+player_scene = ExtResource("6")
 player_data = ExtResource("11")
 
 [node name="DroneShootManager" type="Node" parent="."]

@@ -10,6 +10,7 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 @export var fall: PackedScene
 @export var explosion: PackedScene
 
+var _is_dead: bool = false
 var is_input_enabled: bool = true:
 	set(value):
 		is_input_enabled = value
@@ -20,15 +21,17 @@ var is_input_enabled: bool = true:
 @onready var world: Node2D = get_parent()
 @onready var gun := $Gun
 @onready var mega_gun := $MegaGun
-@onready var hurt_box := $HurtBox
+@onready var hurt_box := $HurtBox as HurtBox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player_extents: Vector2 = $CollisionShape2D.shape.extents
+@onready var collision_shape: = $CollisionShape2D as CollisionShape2D
+@onready var player_extents: Vector2 = collision_shape.shape.extents
 @onready var screen_size: Vector2 = get_viewport_rect().size
 @onready var min_pos_x: float = player_extents.x
 @onready var min_pos_y: float = player_extents.y
 @onready var max_pos_x: float = screen_size.x - player_extents.x
 @onready var max_pos_y: float = screen_size.y - player_extents.y
+@onready var stamina_timer := $StaminaDepletionTimer as Timer
 
 
 func _ready() -> void:
@@ -73,10 +76,37 @@ func power_up_by(points: int) -> void:
 	player_data.power_up_count += points
 
 
+func revive(skip_timed_invincibility: bool = false) -> void:
+	if not _is_dead:
+		return
+
+	_is_dead = false
+	set_process_input(true)
+	set_process(true)
+	set_physics_process(true)
+	set_process_unhandled_input(true)
+	visible = true
+	player_data.reset_stamina()
+	collision_shape.disabled = false
+	hurt_box.invincible = false
+	stamina_timer.start()
+	if not skip_timed_invincibility:
+		start_timed_invincibility()
+
+
 func _die() -> void:
+	if _is_dead: return
+	_is_dead = true
+	set_process_input(false)
+	set_process(false)
+	set_physics_process(false)
+	set_process_unhandled_input(false)
+	collision_shape.set_deferred("disabled", true)
+	hurt_box.invincible = true
+	visible = false
 	player_data.lives -= 1
 	died.emit(player_data.lives)
-	queue_free()
+	stamina_timer.stop()
 
 
 func _process_movement(delta: float) -> void:
@@ -119,17 +149,20 @@ func _move(velocity: Vector2, delta: float) -> void:
 
 
 func _on_HurtBox_hurt(who: Area2D) -> void:
+	if _is_dead: return
 	if who.has_method("explode"):
 		who.explode()
 	explode()
 
 
 func _on_Player_area_entered(area: Area2D) -> void:
+	if _is_dead: return
 	if area.has_method("pick_up"):
 		area.pick_up(self)
 
 
 func _on_StaminaDepletionTimer_timeout() -> void:
+	if _is_dead: return
 	player_data.stamina -= STAMINA_POINTS_DEPLETED_PER_TICK
 	if player_data.stamina == 0:
 		plummet()

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b234bn7d8hw66"]
 
-[ext_resource type="PackedScene" path="res://scenes/_shared/SolidColorBackground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dy0ka8ot8meai" path="res://scenes/_shared/SolidColorBackground.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/backgrounds/Day03Bg.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/backgrounds/BgDecorWave.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/backgrounds/BgDecorCloud.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://f77kj4ys6vq7" path="res://scenes/backgrounds/BgDecorCloud.tscn" id="4"]
 
 [node name="Day03Bg" type="ParallaxBackground"]
 script = ExtResource("2")

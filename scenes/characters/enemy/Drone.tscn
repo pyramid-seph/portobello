@@ -5,16 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="3"]
 [ext_resource type="Script" path="res://scenes/characters/enemy/Drone.gd" id="4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7le3i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0boh"]
 size = Vector2(14, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0td4s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_blr40"]
 atlas = ExtResource("3")
 region = Rect2(16, 32, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_e86cm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhfpe"]
 animations = [{
-"frames": [SubResource("AtlasTexture_0td4s")],
+"frames": [SubResource("AtlasTexture_blr40")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -28,10 +28,10 @@ script = ExtResource("4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_7le3i")
+shape = SubResource("RectangleShape2D_g0boh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("SpriteFrames_e86cm")
+frames = SubResource("SpriteFrames_lhfpe")
 playing = true
 centered = false
 
