@@ -31,21 +31,24 @@ var level_state: int = LevelState.STARTING :
 
 
 func _ready() -> void:
-	_instantiate_player()
+	var player = _instantiate_player()
+	player.is_input_enabled = false
 	level_state = LevelState.STARTING
 	await scene_tree.create_timer(START_DURATION, false).timeout
 	level_state = LevelState.PLAYING
+	player.is_input_enabled = true
 	wave_manager.start(world)
 	stamina_spawner.enable(world)
 	power_up_spawner.enable(world)
 
 
-func _instantiate_player() -> void:
+func _instantiate_player() -> Node:
 	var new_player = player.instantiate()
 	new_player.position = player_start_position
 	new_player.died.connect(_on_Player_died)
 	new_player.mega_gun_shot.connect(mega_gun_flash._on_Player_mega_gun_shot)
 	world.add_child(new_player)
+	return new_player
 
 
 func _game_over() -> void:

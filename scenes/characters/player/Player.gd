@@ -10,6 +10,13 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 @export var fall: PackedScene
 @export var explosion: PackedScene
 
+var is_input_enabled: bool = true:
+	set(value):
+		is_input_enabled = value
+		if not is_input_enabled: mega_gun.revert_preparations()
+	get:
+		return is_input_enabled
+
 @onready var world: Node2D = get_parent()
 @onready var gun := $Gun
 @onready var mega_gun := $MegaGun
@@ -73,6 +80,8 @@ func _die() -> void:
 
 
 func _process_movement(delta: float) -> void:
+	if not is_input_enabled: return
+	
 	var velocity = SPEED * Input.get_vector(
 		"move_left",
 		"move_right",
@@ -85,16 +94,19 @@ func _process_movement(delta: float) -> void:
 func _is_powered_up() -> bool:
 	return player_data.is_power_up_maximized()
 
+
 func _process_fire() -> void:
+	if not is_input_enabled: return
+	
 	if not Input.is_action_pressed("fire"):
 		if _is_powered_up():
 			mega_gun.prepare()
 		return
-
+	
 	if not _is_powered_up():
 		gun.shoot(Vector2.UP)
 		return
-
+	
 	if mega_gun.shoot():
 		player_data.power_up_count = 0
 		mega_gun_shot.emit()

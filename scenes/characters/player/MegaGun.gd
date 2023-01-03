@@ -3,6 +3,10 @@ extends Node
 var _is_prepared: bool = false
 
 
+func revert_preparations() -> void:
+	_is_prepared = false
+
+
 func prepare() -> void:
 	_is_prepared = true
 
