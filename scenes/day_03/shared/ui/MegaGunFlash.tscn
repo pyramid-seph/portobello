@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scenes/ui/MegaGunFlash.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/ui/MegaGunFlash.gd" id="1"]
 
 [node name="MegaGunFlash" type="ColorRect"]
 visible = false

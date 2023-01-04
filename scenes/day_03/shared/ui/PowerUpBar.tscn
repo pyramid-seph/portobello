@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd0mqckia4og5"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/ui/_shared/Bar.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/Bar.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d16g60q03k2re" path="res://art/_shared/ui_counter_power.png" id="2"]
 
 [sub_resource type="Animation" id="2"]

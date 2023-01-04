@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu0yao80f7vxa"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/ui/_shared/Bar.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/Bar.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://b1ldw26sv5ng" path="res://art/_shared/ui_counter_time.png" id="2"]
 
 [node name="TimeLeftBar" instance=ExtResource("1")]

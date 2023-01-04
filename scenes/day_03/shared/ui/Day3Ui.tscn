@@ -1,19 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4h2jfeyw2kj8"]
+[gd_scene load_steps=15 format=3 uid="uid://wlo36cv6fbss"]
 
-[ext_resource type="Script" path="res://scenes/ui/day_3/Day3Ui.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://ccw0h8ealqmis" path="res://scenes/ui/_shared/LivesCounter.tscn" id="2"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/ui/Day3Ui.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
 [ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://theme/theme.tres" id="3"]
-[ext_resource type="PackedScene" uid="uid://bu0yao80f7vxa" path="res://scenes/ui/_shared/TimeLeftBar.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://cd0mqckia4og5" path="res://scenes/ui/_shared/PowerUpBar.tscn" id="5"]
-[ext_resource type="Script" path="res://scenes/ui/_shared/LivesCounter.gd" id="6"]
-[ext_resource type="Script" path="res://scenes/ui/day_3/Score.gd" id="7"]
-[ext_resource type="Script" path="res://scenes/ui/_shared/TimeLeftBar.gd" id="8"]
-[ext_resource type="Script" path="res://scenes/ui/day_3/HiScore.gd" id="9"]
-[ext_resource type="Script" path="res://scenes/ui/_shared/PowerUpBar.gd" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/TimeLeftBar.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/shared/ui/PowerUpBar.tscn" id="5"]
+[ext_resource type="Script" path="res://scenes/_shared/ui/LivesCounter.gd" id="6"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/ui/Score.gd" id="7"]
+[ext_resource type="Script" path="res://scenes/_shared/ui/TimeLeftBar.gd" id="8"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/ui/HiScore.gd" id="9"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/ui/PowerUpBar.gd" id="10"]
 [ext_resource type="Resource" path="res://resources/instances/Player01Day03Data.tres" id="11"]
-[ext_resource type="PackedScene" uid="uid://wlowrekb8xt" path="res://scenes/ui/day_3/PauseMenu.tscn" id="12"]
-[ext_resource type="Script" path="res://scenes/ui/day_3/GameOver.gd" id="13"]
-[ext_resource type="Script" path="res://scenes/ui/day_3/Start.gd" id="14"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/PauseMenu.tscn" id="12"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/ui/GameOver.gd" id="13"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/ui/Start.gd" id="14"]
 
 [node name="Day3Ui" type="Control"]
 layout_mode = 3
@@ -30,22 +30,22 @@ script = ExtResource("1")
 player_data = ExtResource("11")
 
 [node name="Bars" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2i(50, 0)
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("3")
 
 [node name="StaminaBar" parent="Bars" instance=ExtResource("4")]
-offset_right = 50.0
+layout_mode = 2
 script = ExtResource("8")
 
 [node name="PowerUpBar" parent="Bars" instance=ExtResource("5")]
-offset_top = 14.0
-offset_right = 50.0
-offset_bottom = 24.0
+layout_mode = 2
 script = ExtResource("10")
 
 [node name="LivesCounter" parent="." instance=ExtResource("2")]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -60,6 +60,7 @@ grow_vertical = 0
 script = ExtResource("6")
 
 [node name="Score" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -73,6 +74,7 @@ vertical_alignment = 1
 script = ExtResource("7")
 
 [node name="HiScore" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -88,6 +90,7 @@ script = ExtResource("9")
 
 [node name="Start" type="Label" parent="."]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -106,6 +109,7 @@ script = ExtResource("14")
 
 [node name="GameOver" type="Label" parent="."]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -124,6 +128,7 @@ script = ExtResource("13")
 
 [node name="PauseMenu" parent="." instance=ExtResource("12")]
 process_mode = 3
+layout_mode = 1
 grow_horizontal = 2
 grow_vertical = 2
 

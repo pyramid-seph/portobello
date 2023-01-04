@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://wlowrekb8xt"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scenes/ui/day_3/PauseMenu.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/_shared/ui/PauseMenu.gd" id="1"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2

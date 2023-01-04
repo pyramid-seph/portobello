@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccw0h8ealqmis"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/ui/_shared/Counter.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/Counter.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="3"]
 
 [node name="LivesCounter" instance=ExtResource("1")]

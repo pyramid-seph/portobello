@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3bkd2g3y5ojn"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/day_03/level_01/backgrounds/Day03Bg.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/levels/wave_system/Level0Waves.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://15kgil43mpeu" path="res://scenes/day_03/shared/player/Player.tscn" id="2_hu6n3"]
-[ext_resource type="PackedScene" uid="uid://b4h2jfeyw2kj8" path="res://scenes/ui/day_3/Day3Ui.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/ui/day_3/MegaGunFlash.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/shared/ui/Day3Ui.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/shared/ui/MegaGunFlash.tscn" id="4"]
 [ext_resource type="Script" path="res://scenes/levels/Day03Level.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://dpydt5u68h02d" path="res://scenes/levels/wave_system/WaveManager.tscn" id="7_wctff"]
 [ext_resource type="PackedScene" path="res://_working_on/StaminaSpawner.tscn" id="8"]
