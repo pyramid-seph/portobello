@@ -6,7 +6,7 @@ var _waves: Array[Wave] = []
 
 
 func _get_enemy_scene() -> PackedScene:
-	return preload ("res://scenes/characters/enemy/Drone.tscn")
+	return preload("res://scenes/day_03/level_01/enemies/Drone.tscn")
 
 
 func _get_waves() -> Array[Wave]:

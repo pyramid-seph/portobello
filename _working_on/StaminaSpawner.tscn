@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm4n2v0yumhob"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://resources/Day03PlayerData.gd" id="1"]
 [ext_resource type="Script" path="res://_working_on/StaminaSpawner.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/pickups/Bird.tscn" id="3_6ycxa"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/shared/pickups/Bird.tscn" id="3_6ycxa"]
 
 [node name="StaminaSpawner" type="Node2D"]
 script = ExtResource("2")

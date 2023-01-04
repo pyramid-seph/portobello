@@ -1,21 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqhv4xmf00swy"]
+[gd_scene load_steps=12 format=3 uid="uid://d3bkd2g3y5ojn"]
 
-[ext_resource type="PackedScene" uid="uid://b234bn7d8hw66" path="res://scenes/backgrounds/Day03Bg.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/level_01/backgrounds/Day03Bg.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/levels/wave_system/Level0Waves.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://15kgil43mpeu" path="res://scenes/day_03/shared/player/Player.tscn" id="2_hu6n3"]
 [ext_resource type="PackedScene" uid="uid://b4h2jfeyw2kj8" path="res://scenes/ui/day_3/Day3Ui.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://du27lfd1iian7" path="res://scenes/ui/day_3/MegaGunFlash.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/day_3/MegaGunFlash.tscn" id="4"]
 [ext_resource type="Script" path="res://scenes/levels/Day03Level.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://d1iviyc6k7ebr" path="res://scenes/characters/player/Player.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://dm4n2v0yumhob" path="res://_working_on/StaminaSpawner.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://qpdnruhuk4cc" path="res://_working_on/PowerUpSpawner.tscn" id="9"]
-[ext_resource type="PackedScene" uid="uid://dpydt5u68h02d" path="res://scenes/levels/WaveManager.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://dpydt5u68h02d" path="res://scenes/levels/wave_system/WaveManager.tscn" id="7_wctff"]
+[ext_resource type="PackedScene" path="res://_working_on/StaminaSpawner.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://_working_on/PowerUpSpawner.tscn" id="9"]
 [ext_resource type="Resource" path="res://resources/instances/Player01Day03Data.tres" id="11"]
 [ext_resource type="Script" path="res://scenes/levels/DroneShootManager.gd" id="12"]
 
 [node name="Day03Level" type="Node"]
 process_mode = 3
 script = ExtResource("5")
-player_scene = ExtResource("6")
+player_scene = ExtResource("2_hu6n3")
 player_data = ExtResource("11")
 
 [node name="DroneShootManager" type="Node" parent="."]
@@ -26,16 +26,15 @@ script = ExtResource("12")
 process_mode = 1
 one_shot = true
 
-[node name="WaveManager" parent="." instance=ExtResource("10")]
-process_mode = 1
-waves_script = ExtResource("2")
-
 [node name="StaminaSpawner" parent="." instance=ExtResource("8")]
 process_mode = 1
 player_data = ExtResource("11")
 
 [node name="PowerUpSpawner" parent="." instance=ExtResource("9")]
 process_mode = 1
+
+[node name="WaveManager" parent="." instance=ExtResource("7_wctff")]
+waves_script = ExtResource("2")
 
 [node name="World" type="Node2D" parent="."]
 process_mode = 1

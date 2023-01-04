@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c007o5i2rv036"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" uid="uid://px818gn0xlpf" path="res://scenes/objects/EnemyBullet.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://0xiwcdw75vd5" path="res://scenes/objects/Gun.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="3"]
-[ext_resource type="Script" path="res://scenes/characters/enemy/Drone.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Drone.gd" id="4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0boh"]
 size = Vector2(14, 16)

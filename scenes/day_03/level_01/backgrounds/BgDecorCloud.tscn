@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://f77kj4ys6vq7"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Texture2D" uid="uid://ba4yayucmq2rd" path="res://art/day_3/tiles_background.png" id="1"]
-[ext_resource type="Script" path="res://scenes/backgrounds/BgDecorCloud.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/backgrounds/BgDecorCloud.gd" id="2"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")

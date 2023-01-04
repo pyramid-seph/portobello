@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cj8l7ibo6ewaq"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="1"]
-[ext_resource type="Script" path="res://scenes/pickups/Bird.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/day_03/shared/pickups/Bird.gd" id="2"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")

@@ -22,7 +22,7 @@ _global_script_classes=[{
 "base": "Area2D",
 "class": &"Drone",
 "language": &"GDScript",
-"path": "res://scenes/characters/enemy/Drone.gd"
+"path": "res://scenes/day_03/level_01/enemies/Drone.gd"
 }, {
 "base": "Area2D",
 "class": &"HurtBox",
