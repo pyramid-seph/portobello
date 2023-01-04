@@ -41,7 +41,7 @@ func _on_wave_manager_all_waves_completed() -> void:
 	disable()
 
 
-func _on_CooldownTimer_timeout() -> void:
+func _on_cooldown_timer_timeout() -> void:
 	if _disabled:
 		return
 

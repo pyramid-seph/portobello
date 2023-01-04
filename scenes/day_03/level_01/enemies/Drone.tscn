@@ -1,20 +1,20 @@
 [gd_scene load_steps=8 format=3]
 
-[ext_resource type="PackedScene" uid="uid://px818gn0xlpf" path="res://scenes/objects/EnemyBullet.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://0xiwcdw75vd5" path="res://scenes/objects/Gun.tscn" id="2"]
-[ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="3"]
-[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Drone.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Drone.gd" id="1_2ejxn"]
+[ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="2_4cy21"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="3_o27jy"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="4_kujg5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0boh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbag6"]
 size = Vector2(14, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_blr40"]
-atlas = ExtResource("3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwxca"]
+atlas = ExtResource("2_4cy21")
 region = Rect2(16, 32, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lhfpe"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_g18uv"]
 animations = [{
-"frames": [SubResource("AtlasTexture_blr40")],
+"frames": [SubResource("AtlasTexture_vwxca")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -24,20 +24,20 @@ animations = [{
 collision_layer = 2
 collision_mask = 9
 input_pickable = false
-script = ExtResource("4")
+script = ExtResource("1_2ejxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_g0boh")
+shape = SubResource("RectangleShape2D_vbag6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("SpriteFrames_lhfpe")
+frames = SubResource("SpriteFrames_g18uv")
 playing = true
 centered = false
 
-[node name="Gun" parent="." instance=ExtResource("2")]
+[node name="Gun" parent="." instance=ExtResource("3_o27jy")]
 position = Vector2(8, 20)
-Bullet = ExtResource("1")
+Bullet = ExtResource("4_kujg5")
 cooldown = 0.8
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

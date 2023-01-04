@@ -1,21 +1,21 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://x7621e6njmsk"]
 
 [ext_resource type="PackedScene" path="res://scenes/day_03/level_01/backgrounds/Day03Bg.tscn" id="1"]
-[ext_resource type="Script" path="res://scenes/levels/wave_system/Level0Waves.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://15kgil43mpeu" path="res://scenes/day_03/shared/player/Player.tscn" id="2_hu6n3"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/shared/ui/Day3Ui.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/shared/ui/MegaGunFlash.tscn" id="4"]
-[ext_resource type="Script" path="res://scenes/levels/Day03Level.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://dpydt5u68h02d" path="res://scenes/levels/wave_system/WaveManager.tscn" id="7_wctff"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/wave_system/Level0Waves.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dysg0nj8lgs81" path="res://scenes/day_03/_shared/player/Player.tscn" id="2_7jo31"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/ui/MegaGunFlash.tscn" id="4"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/Day03Level.gd" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/wave_system/WaveManager.tscn" id="7_wctff"]
 [ext_resource type="PackedScene" path="res://_working_on/StaminaSpawner.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://_working_on/PowerUpSpawner.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/ui/Day3Ui.tscn" id="10_inxwm"]
 [ext_resource type="Resource" path="res://resources/instances/Player01Day03Data.tres" id="11"]
-[ext_resource type="Script" path="res://scenes/levels/DroneShootManager.gd" id="12"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/DroneShootManager.gd" id="12"]
 
 [node name="Day03Level" type="Node"]
 process_mode = 3
 script = ExtResource("5")
-player_scene = ExtResource("2_hu6n3")
+player_scene = ExtResource("2_7jo31")
 player_data = ExtResource("11")
 
 [node name="DroneShootManager" type="Node" parent="."]
@@ -47,15 +47,15 @@ position = Vector2(120, 280)
 [node name="Interface" type="Node" parent="."]
 process_mode = 1
 
+[node name="Day3Ui" parent="Interface" instance=ExtResource("10_inxwm")]
+
 [node name="MegaGunFlash" parent="Interface" instance=ExtResource("4")]
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Day3Ui" parent="Interface" instance=ExtResource("3")]
-
 [connection signal="level_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_level_state_changed"]
 [connection signal="pause_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_pause_state_changed"]
-[connection signal="timeout" from="DroneShootManager/CooldownTimer" to="DroneShootManager" method="_on_CooldownTimer_timeout"]
+[connection signal="timeout" from="DroneShootManager/CooldownTimer" to="DroneShootManager" method="_on_cooldown_timer_timeout"]
 [connection signal="all_waves_completed" from="WaveManager" to="." method="_on_wave_manager_all_waves_completed"]
 [connection signal="all_waves_completed" from="WaveManager" to="DroneShootManager" method="_on_wave_manager_all_waves_completed"]
 [connection signal="wave_completed" from="WaveManager" to="." method="_on_wave_manager_wave_completed"]

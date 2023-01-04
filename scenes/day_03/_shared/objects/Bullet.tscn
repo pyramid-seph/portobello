@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgmttpvng1xuy"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="1"]
-[ext_resource type="Script" path="res://scenes/objects/Bullet.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/objects/Bullet.gd" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 3.0

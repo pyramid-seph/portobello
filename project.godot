@@ -12,7 +12,7 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"Day03Level",
 "language": &"GDScript",
-"path": "res://scenes/levels/Day03Level.gd"
+"path": "res://scenes/day_03/level_01/Day03Level.gd"
 }, {
 "base": "Resource",
 "class": &"Day03PlayerData",
@@ -32,17 +32,17 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"InitialMoveState",
 "language": &"GDScript",
-"path": "res://scenes/levels/wave_system/InitialMoveState.gd"
+"path": "res://scenes/day_03/_shared/wave_system/InitialMoveState.gd"
 }, {
 "base": "LevelWaves",
 "class": &"Level0Waves",
 "language": &"GDScript",
-"path": "res://scenes/levels/wave_system/Level0Waves.gd"
+"path": "res://scenes/day_03/_shared/wave_system/Level0Waves.gd"
 }, {
 "base": "RefCounted",
 "class": &"LevelWaves",
 "language": &"GDScript",
-"path": "res://scenes/levels/wave_system/LevelWaves.gd"
+"path": "res://scenes/day_03/_shared/wave_system/LevelWaves.gd"
 }, {
 "base": "RefCounted",
 "class": &"SaveData",
@@ -52,7 +52,7 @@ _global_script_classes=[{
 "base": "RefCounted",
 "class": &"Wave",
 "language": &"GDScript",
-"path": "res://scenes/levels/wave_system/Wave.gd"
+"path": "res://scenes/day_03/_shared/wave_system/Wave.gd"
 }]
 _global_script_class_icons={
 "Day03Level": "",
@@ -69,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Bucho Portobello"
-run/main_scene="res://scenes/levels/Day03Level.tscn"
+run/main_scene="res://scenes/day_03/level_01/Day03Level.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://art/_shared/ui_counter_lives.png"
 

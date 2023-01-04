@@ -15,7 +15,7 @@ enum MovementPattern {
 }
 
 @export var speed: float = 48.0
-@export var explosion: PackedScene = preload("res://scenes/objects/Explosion.tscn")
+@export var explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/Explosion.tscn")
 @export var movement_pattern: MovementPattern = MovementPattern.VERTICAL_DOWN :
 	get:
 		return movement_pattern
