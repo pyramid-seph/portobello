@@ -25,6 +25,11 @@ _global_script_classes=[{
 "path": "res://scenes/day_03/level_01/enemies/Drone.gd"
 }, {
 "base": "Area2D",
+"class": &"HiveDrone",
+"language": &"GDScript",
+"path": "res://scenes/day_03/level_01/enemies/HiveDrone.gd"
+}, {
+"base": "Area2D",
 "class": &"HurtBox",
 "language": &"GDScript",
 "path": "res://scenes/_shared/HurtBox.gd"
@@ -58,6 +63,7 @@ _global_script_class_icons={
 "Day03Level": "",
 "Day03PlayerData": "",
 "Drone": "",
+"HiveDrone": "",
 "HurtBox": "",
 "InitialMoveState": "",
 "Level0Waves": "",

@@ -15,8 +15,8 @@ enum MovementPattern {
 }
 
 @export var speed: float = 48.0
-@export var explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/Explosion.tscn")
-@export var movement_pattern: MovementPattern = MovementPattern.VERTICAL_DOWN :
+@export var explosion: PackedScene
+@export var movement_pattern: MovementPattern = MovementPattern.VERTICAL_DOWN:
 	get:
 		return movement_pattern
 	set(mod_value):
@@ -82,19 +82,18 @@ func shoot() -> bool:
 	return gun.shoot(Vector2.DOWN)
 
 
-func explode() -> void:
+func kill(killer: Node) -> void:
+	if killer and killer.has_method("add_points_to_score"):
+		killer.add_points_to_score(SCORE_POINTS)
+	_explode()
+
+
+func _explode() -> void:
 	var new_explosion = explosion.instantiate()
 	new_explosion.centered = animated_sprite.centered
 	new_explosion.global_position = global_position
 	world.add_child(new_explosion)
-
 	queue_free()
-
-
-func kill(killer: Node) -> void:
-	if killer and killer.has_method("add_points_to_score"):
-		killer.add_points_to_score(SCORE_POINTS)
-	explode()
 
 
 func _correct_initial_pos_x() -> void:

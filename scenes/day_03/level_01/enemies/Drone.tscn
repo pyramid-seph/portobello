@@ -1,20 +1,21 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://c80tvb1llmg60"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Drone.gd" id="1_2ejxn"]
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="2_4cy21"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_kurrx"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="3_o27jy"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="4_kujg5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbag6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ylk"]
 size = Vector2(14, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwxca"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e823x"]
 atlas = ExtResource("2_4cy21")
 region = Rect2(16, 32, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_g18uv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpb53"]
 animations = [{
-"frames": [SubResource("AtlasTexture_vwxca")],
+"frames": [SubResource("AtlasTexture_e823x")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -25,13 +26,14 @@ collision_layer = 2
 collision_mask = 9
 input_pickable = false
 script = ExtResource("1_2ejxn")
+explosion = ExtResource("2_kurrx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_vbag6")
+shape = SubResource("RectangleShape2D_v3ylk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("SpriteFrames_g18uv")
+frames = SubResource("SpriteFrames_qpb53")
 playing = true
 centered = false
 

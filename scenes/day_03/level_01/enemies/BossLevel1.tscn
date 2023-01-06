@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="PackedScene" path="res://scenes/day_03/level_01/enemies/Drone.tscn" id="1_odc7b"]
-
-[node name="BossLevel1" type="Node2D"]
-
-[node name="Drone" parent="." instance=ExtResource("1_odc7b")]

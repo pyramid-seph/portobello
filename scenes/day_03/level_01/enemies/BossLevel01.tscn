@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgdw8a453sbl7"]
+
+[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/BossLevel01.gd" id="1_kwt87"]
+[ext_resource type="PackedScene" uid="uid://ccqea1b3vs81u" path="res://scenes/day_03/level_01/enemies/HiveDrone.tscn" id="2_njsbs"]
+
+[node name="BossLevel01" type="Node2D"]
+script = ExtResource("1_kwt87")
+metadata/_edit_lock_ = true
+
+[node name="Hive" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone00" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(3, 0)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone01" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(22, 0)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone02" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(41, 0)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone03" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(11, 17)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone04" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(0, 17)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone05" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(44, 17)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone06" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(33, 17)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone07" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(4, 34)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone08" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(22, 34)
+metadata/_edit_lock_ = true
+
+[node name="HiveDrone09" parent="Hive" instance=ExtResource("2_njsbs")]
+position = Vector2(40, 34)
+metadata/_edit_lock_ = true
