@@ -5,47 +5,61 @@
 
 [node name="BossLevel01" type="Node2D"]
 script = ExtResource("1_kwt87")
+autostart = true
 metadata/_edit_lock_ = true
 
 [node name="Hive" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
+[node name="BottomRight" type="Marker2D" parent="Hive"]
+position = Vector2(92, 33)
+metadata/_edit_lock_ = true
+
 [node name="HiveDrone00" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(3, 0)
+position = Vector2(19, 0)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone01" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(22, 0)
+position = Vector2(38, 0)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone02" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(41, 0)
+position = Vector2(57, 0)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone03" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(11, 17)
+position = Vector2(27, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone04" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(0, 17)
+position = Vector2(16, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone05" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(44, 17)
+position = Vector2(60, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone06" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(33, 17)
+position = Vector2(49, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone07" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(4, 34)
+position = Vector2(20, 34)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone08" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(22, 34)
+position = Vector2(38, 34)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone09" parent="Hive" instance=ExtResource("2_njsbs")]
-position = Vector2(40, 34)
+position = Vector2(56, 34)
 metadata/_edit_lock_ = true
+
+[node name="MovementTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GunTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]
