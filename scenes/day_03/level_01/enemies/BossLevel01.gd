@@ -1,6 +1,9 @@
 extends Node2D
 
 
+const SCORE_POINTS: int = 78
+
+
 @export var speed: float = 48.0
 
 var _direction: Vector2 = Vector2.LEFT

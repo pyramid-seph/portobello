@@ -1,22 +1,16 @@
 extends Area2D
 class_name HiveDrone
 
-signal dead
+signal dead(killer)
 
-const SCORE_POINTS: int = 10
 
 @export var hp: int = 50
+@export var is_immune_to_bullets: bool = false
 @export var explosion: PackedScene
 
 @onready var gun := $Gun
 @onready var world: Node2D = get_parent()
-@onready var viewport_size: Vector2 = get_viewport_rect().size
-@onready var viewport_width: float = viewport_size.x
-@onready var viewport_height: float = viewport_size.y
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sprite_width: float = animated_sprite.frames.get_frame("default", 0).get_width()
-@onready var min_pos_x: float = 0.0
-@onready var max_pos_x: float = viewport_width - sprite_width
 
 
 func shoot() -> bool:
@@ -32,14 +26,8 @@ func hurt(killer: Node) -> void:
 
 
 func kill(killer: Node) -> void:
-	if killer and killer.has_method("add_points_to_score"):
-		killer.add_points_to_score(SCORE_POINTS)
-	_explode()
-
-
-func _explode() -> void:
 	_spawn_explosion()
-	dead.emit()
+	dead.emit(killer)
 	queue_free()
 
 
@@ -51,7 +39,7 @@ func _spawn_explosion() -> void:
 
 
 func _on_drone_area_entered(area: Area2D) -> void:
+	if is_queued_for_deletion() or is_immune_to_bullets:
+		return
 	if area.is_in_group("bullets"):
 		hurt(area.shooter)
-	else:
-		kill(area)

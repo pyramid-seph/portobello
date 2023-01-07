@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="2_4cy21"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_kurrx"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="3_o27jy"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="4_kujg5"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="4_kujg5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ylk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw1bw"]
 size = Vector2(14, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e823x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyjqw"]
 atlas = ExtResource("2_4cy21")
 region = Rect2(16, 32, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qpb53"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vt6ol"]
 animations = [{
-"frames": [SubResource("AtlasTexture_e823x")],
+"frames": [SubResource("AtlasTexture_yyjqw")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -30,10 +30,10 @@ explosion = ExtResource("2_kurrx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_v3ylk")
+shape = SubResource("RectangleShape2D_jw1bw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("SpriteFrames_qpb53")
+frames = SubResource("SpriteFrames_vt6ol")
 playing = true
 centered = false
 
