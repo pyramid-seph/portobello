@@ -1,9 +1,14 @@
 extends ParallaxBackground
 
+
 @export var scroll_speed: float = 16.0
 @export var cloud: PackedScene
 @export var wave: PackedScene
+@export var mega_gun_flash_duration_sec: float = 0.08
+@export var mega_gun_flash_color: Color = Color8(255, 0, 255)
+@export var sea_color: Color = Color8(255, 0, 255)
 
+@onready var solid_color_rect := $SolidColorRect
 @onready var bg_layer := $BgLayer
 @onready var base_window_size := Vector2(
 	ProjectSettings.get_setting("display/window/size/width"),
@@ -11,9 +16,11 @@ extends ParallaxBackground
 )
 
 var _offset_local: float = 0.0
+var _tween: Tween
 
 
 func _ready() -> void:
+	solid_color_rect.color = sea_color
 	bg_layer.motion_mirroring = base_window_size
 	_generate_bg_layer()
 
@@ -56,3 +63,13 @@ func _generate_bg_layer() -> void:
 		if col == 0:
 			row += 1
 		_spawn_bg_sprite(col, row, cell_size)
+
+
+func _on_mega_gun_shot() -> void:
+	solid_color_rect.color = mega_gun_flash_color
+	if _tween:
+		_tween.stop()
+	_tween = create_tween()
+	_tween.tween_callback(func(): 
+		solid_color_rect.color = sea_color
+	).set_delay(mega_gun_flash_duration_sec)

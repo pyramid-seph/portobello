@@ -14,7 +14,7 @@ const GAME_OVER_DURATION: float = 3.2
 var _player: Node2D
 
 @onready var world := $World
-@onready var mega_gun_flash := $Interface/MegaGunFlash
+@onready var world_background := $World/Day03Bg
 @onready var player_start_position = $World/StartPosition.position
 @onready var wave_manager := $WaveManager
 @onready var stamina_spawner := $StaminaSpawner
@@ -54,7 +54,7 @@ func _instantiate_player() -> Node:
 	var new_player = player_scene.instantiate()
 	new_player.position = player_start_position
 	new_player.died.connect(_on_Player_died)
-	new_player.mega_gun_shot.connect(mega_gun_flash._on_Player_mega_gun_shot)
+	new_player.mega_gun_shot.connect(world_background._on_mega_gun_shot)
 	world.add_child(new_player)
 	return new_player
 

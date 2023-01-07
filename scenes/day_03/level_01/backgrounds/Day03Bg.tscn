@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://c7kn1ggk81xe1"]
 
 [ext_resource type="PackedScene" uid="uid://dy0ka8ot8meai" path="res://scenes/_shared/SolidColorBackground.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/backgrounds/Day03Bg.gd" id="2"]
@@ -9,6 +9,8 @@
 script = ExtResource("2")
 cloud = ExtResource("4")
 wave = ExtResource("3")
+mega_gun_flash_color = Color(1, 1, 0, 1)
+sea_color = Color(0.356863, 0.8, 0.65098, 1)
 
 [node name="SolidColorRect" parent="." instance=ExtResource("1")]
 color = Color(0.356863, 0.8, 0.65098, 1)

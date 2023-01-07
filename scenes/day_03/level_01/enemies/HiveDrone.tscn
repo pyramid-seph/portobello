@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="1_q0aej"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="2_7641s"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_vjdhq"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="3_85mj7"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="3_85mj7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cheb"]
 atlas = ExtResource("1_q0aej")
