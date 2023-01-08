@@ -51,7 +51,7 @@ func _on_cooldown_timer_timeout() -> void:
 		return
 
 	var drone = Utils.rand_item_in_group("drone")
-	if drone:
+	if drone and not drone.is_queued_for_deletion():
 		drone.shoot()
 		_start_cooldown()
 	else:
