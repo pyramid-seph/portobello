@@ -85,10 +85,10 @@ func shoot() -> bool:
 func kill(killer: Node) -> void:
 	if killer and killer.has_method("add_points_to_score"):
 		killer.add_points_to_score(SCORE_POINTS)
-	_explode()
+	explode()
 
 
-func _explode() -> void:
+func explode() -> void:
 	var new_explosion = explosion.instantiate()
 	new_explosion.centered = animated_sprite.centered
 	new_explosion.global_position = global_position
