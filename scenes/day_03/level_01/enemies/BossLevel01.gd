@@ -10,9 +10,9 @@ const TIME_BETWEEN_MOVEMENT_PHASE_1: float = 1.6
 const TIME_BETWEEN_MOVEMENT_PHASE_2: float = 0.8
 const TIME_BETWEEN_MOVEMENT_PHASE_3: float = 0.3
 const TIME_BETWEEN_SHOTS_PHASE_DEFAULT: float = 0.8
-const TIME_BETWEEN_SHOTS_PHASE_3: float = 0.8
+const TIME_BETWEEN_SHOTS_PHASE_3: float = 0.4
 
-@export var autostart: bool = false
+@export var auto_start: bool = false
 
 var _enemies_left: int = 0
 var _horizontal_direction: float = 1
@@ -34,17 +34,21 @@ func _ready() -> void:
 			continue
 		_enemies_left += 1
 		var drone = child as HiveDrone
-		drone.dead.connect(func(): 
+		drone.dead.connect(func(_killer):
 			_enemies_left -= 1
 			print("_enemies_left: %s" % _enemies_left)
 			_update_curr_phase()
-			if _enemies_left <= 0: dead.emit()
+			if _enemies_left <= 0:
+				dead.emit()
+				queue_free()
 		)
-	if autostart: start()
+	
+	if auto_start: start()
 
 
 func start() -> void:
 	_update_curr_phase()
+	gun_timer.start(TIME_BETWEEN_SHOTS_PHASE_DEFAULT)
 
 
 func _move() -> void:
@@ -72,11 +76,37 @@ func _update_curr_phase() -> void:
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_2)
 
 
+func _start_gun_cooldown(duration: float) -> void:
+	gun_timer.start(duration)
+
+
 func _on_gun_timer_timeout() -> void:
-	pass
+	var drone = Utils.rand_child_in_group(hive, "enemies")
+	if drone and not drone.is_queued_for_deletion():
+		drone.shoot()
+		var duration: float = 0.0
+		if _enemies_left > 1:
+			duration = TIME_BETWEEN_SHOTS_PHASE_DEFAULT
+		else:
+			duration = TIME_BETWEEN_SHOTS_PHASE_3
+		_start_gun_cooldown(duration)
+	else:
+		_start_gun_cooldown(Utils.FRAME_TIME)
 
 
 func _on_movement_timer_timeout() -> void:
 	_move()
 	_update_curr_phase()
 	print("position: %s" % position)
+
+
+func _kill_all_but_one() -> void:
+	var item = Utils.childre_in_group(hive, "enemies")
+	for i in item.size() - 1:
+		item[i].kill(null)
+
+
+func _unhandled_input(event) -> void:
+	if event.is_action_pressed("debug_kill"):
+		_kill_all_but_one()
+		get_viewport().set_input_as_handled()

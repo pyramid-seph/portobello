@@ -5,14 +5,10 @@
 
 [node name="BossLevel01" type="Node2D"]
 script = ExtResource("1_kwt87")
-autostart = true
+auto_start = true
 metadata/_edit_lock_ = true
 
 [node name="Hive" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="BottomRight" type="Marker2D" parent="Hive"]
-position = Vector2(92, 33)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone00" parent="Hive" instance=ExtResource("2_njsbs")]
@@ -53,6 +49,10 @@ metadata/_edit_lock_ = true
 
 [node name="HiveDrone09" parent="Hive" instance=ExtResource("2_njsbs")]
 position = Vector2(56, 34)
+metadata/_edit_lock_ = true
+
+[node name="BottomRight" type="Marker2D" parent="Hive"]
+position = Vector2(92, 33)
 metadata/_edit_lock_ = true
 
 [node name="MovementTimer" type="Timer" parent="."]

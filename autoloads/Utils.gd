@@ -11,6 +11,17 @@ func rand_item(arr: Array) -> Node:
 	return arr[randi() % arr.size()]
 
 
+func childre_in_group(node: Node, group: String) -> Array[Node]:
+	return node.get_children().filter(
+		func(child: Node): return child.is_in_group(group)
+	)
+
+
+func rand_child_in_group(node: Node, group: String) -> Node:
+	var candidates = childre_in_group(node, group)
+	return rand_item(candidates)
+
+
 func rand_item_in_group(group: String) -> Node:
 	return rand_item(get_tree().get_nodes_in_group(group))
 
