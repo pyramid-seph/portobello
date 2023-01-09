@@ -36,7 +36,7 @@ func _ready() -> void:
 		var drone = child as HiveDrone
 		drone.dead.connect(func(_killer):
 			_enemies_left -= 1
-			print("_enemies_left: %s" % _enemies_left)
+			#print("_enemies_left: %s" % _enemies_left)
 			_update_curr_phase()
 			if _enemies_left <= 0:
 				dead.emit()
@@ -61,18 +61,18 @@ func _move() -> void:
 
 func _update_curr_phase() -> void:
 	if _enemies_left == 1:
-		print("phase_3")
+		#print("phase_3")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_3)
 		return
-	elif _enemies_left < 0:
+	elif _enemies_left <= 0:
 		movement_timer.stop()
 		return
-	print("bottom_right_marker.global_position.y: %s" % bottom_right_marker.global_position.y )
+	#print("bottom_right_marker.global_position.y: %s" % bottom_right_marker.global_position.y )
 	if bottom_right_marker.global_position.y < viewport_height / 6:
-		print("phase_1")
+		#print("phase_1")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_1)
 	else:
-		print("phase_2")
+		#print("phase_2")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_2)
 
 
@@ -81,8 +81,31 @@ func _start_gun_cooldown(duration: float) -> void:
 
 
 func _on_gun_timer_timeout() -> void:
-	var drone = Utils.rand_child_in_group(hive, "enemies")
+	if _enemies_left < 0:
+		gun_timer.stop()
+		return
+	if _enemies_left == 1:
+		var drone = Utils.first_or_null(
+			Utils.children_in_group(hive, "enemies"), 
+			func(i: Node): return not i.is_queued_for_deletion()
+		) as HiveDrone
+		if drone:
+			print("Alone but sane (AND PEW PEWING!)")
+			drone.shoot()
+			_start_gun_cooldown(TIME_BETWEEN_SHOTS_PHASE_DEFAULT)
+		else:
+			gun_timer.stop()
+		return
+	
+	var selected_index: int = randi() % 10
+	var candidates = Utils.children_in_group(hive, "enemies")
+	if selected_index > candidates.size() - 1:
+		print("ALREADY DELETED!")
+		_start_gun_cooldown(Utils.FRAME_TIME)
+		return
+	var drone = candidates[selected_index]
 	if drone and not drone.is_queued_for_deletion():
+		print("ALIVE AND PEW PEWING")
 		drone.shoot()
 		var duration: float = 0.0
 		if _enemies_left > 1:
@@ -91,19 +114,21 @@ func _on_gun_timer_timeout() -> void:
 			duration = TIME_BETWEEN_SHOTS_PHASE_3
 		_start_gun_cooldown(duration)
 	else:
+		print("QUEUED FOR DELETION!")
 		_start_gun_cooldown(Utils.FRAME_TIME)
 
 
 func _on_movement_timer_timeout() -> void:
 	_move()
 	_update_curr_phase()
-	print("position: %s" % position)
+	#print("position: %s" % position)
 
 
 func _kill_all_but_one() -> void:
-	var item = Utils.childre_in_group(hive, "enemies")
+	var item = Utils.children_in_group(hive, "enemies")
 	for i in item.size() - 1:
 		item[i].kill(null)
+		await get_tree().create_timer(2.4, false).timeout
 
 
 func _unhandled_input(event) -> void:
