@@ -51,7 +51,7 @@ var _velocity: Vector2 = _direction * speed
 @onready var viewport_width: float = viewport_size.x
 @onready var viewport_height: float = viewport_size.y
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sprite_width: float = animated_sprite.frames.get_frame("default", 0).get_width()
+@onready var sprite_width: float = animated_sprite.frames.get_frame_texture("default", 0).get_width()
 @onready var min_pos_x: float = 0.0
 @onready var max_pos_x: float = viewport_width - sprite_width
 

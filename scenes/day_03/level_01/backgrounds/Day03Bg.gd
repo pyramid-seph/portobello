@@ -32,7 +32,7 @@ func _process(delta) -> void:
 
 func _get_sprite_size() -> Vector2:
 	var reference_sprite = cloud.instantiate()
-	var frame = reference_sprite.frames.get_frame("default", 0)
+	var frame = reference_sprite.frames.get_frame_texture("default", 0)
 	var size = Vector2(frame.get_width(), frame.get_height())
 	reference_sprite.queue_free()
 	return size

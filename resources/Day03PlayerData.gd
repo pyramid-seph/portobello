@@ -9,7 +9,7 @@ signal stamina_updated
 
 const MAX_LIVES: int = 9
 const MAX_STAMINA: int = 50
-const MAX_POWER_UP: int = 0#5
+const MAX_POWER_UP: int = 5
 
 var score: int = 0 :
 	get:
