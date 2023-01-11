@@ -9,7 +9,7 @@ signal dead(killer)
 @export var explosion: PackedScene
 
 @onready var gun := $Gun
-@onready var world: Node2D = get_parent()
+@onready var world := get_parent()
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
