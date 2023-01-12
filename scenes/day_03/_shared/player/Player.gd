@@ -18,7 +18,7 @@ var is_input_enabled: bool = true:
 	get:
 		return is_input_enabled
 
-@onready var world: Node2D = get_parent()
+@onready var world = get_parent()
 @onready var gun := $Gun
 @onready var mega_gun := $MegaGun
 @onready var hurt_box := $HurtBox as HurtBox
@@ -150,6 +150,8 @@ func _move(velocity: Vector2, delta: float) -> void:
 
 func _on_HurtBox_hurt(who: Area2D) -> void:
 	if _is_dead: return
+	if who.is_in_group("bullets"): 
+		who.queue_free() # WORKAROUND See _on_area_entered FIXME in Bullet.gd
 	if who.has_method("explode"):
 		who.explode()
 	explode()

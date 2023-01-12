@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(_area: Area2D) -> void:
+	# FIXME: Bullets don't disppear after colliding with player
 	queue_free()
 
 

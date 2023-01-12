@@ -1,13 +1,13 @@
 [gd_scene load_steps=20 format=3 uid="uid://dysg0nj8lgs81"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/Player.gd" id="1_4sjiv"]
-[ext_resource type="Resource" path="res://resources/instances/Player01Day03Data.tres" id="2_detm5"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="2_detm5"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Fall.tscn" id="3_cd4lh"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="4_ic4pr"]
 [ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/shield.png" id="5_ewt8i"]
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="6_7tk4n"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="7_73f8j"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Bullet.tscn" id="8_hkxe6"]
+[ext_resource type="PackedScene" uid="uid://ruvkqoipfqq0" path="res://scenes/day_03/_shared/objects/Bullet.tscn" id="8_hkxe6"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/MegaGun.gd" id="9_sgjia"]
 [ext_resource type="PackedScene" uid="uid://x4p8lisvdmfg" path="res://scenes/_shared/HurtBox.tscn" id="10_rpmt2"]
 
@@ -102,7 +102,13 @@ region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
-"frames": [SubResource("3"), SubResource("4")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}],
 "loop": true,
 "name": &"default",
 "speed": 12.5

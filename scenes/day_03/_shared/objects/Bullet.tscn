@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://ruvkqoipfqq0"]
 
 [ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/objects/Bullet.gd" id="2"]
