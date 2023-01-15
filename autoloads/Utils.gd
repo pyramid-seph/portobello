@@ -17,6 +17,16 @@ func first_or_null(arr: Array, callable: Callable):
 		return null
 	return result[0]
 
+
+func count(arr: Array, callable: Callable) -> int:
+	var total = 0
+	if arr:
+		for item in arr:
+			if callable.call(item):
+				total += 1
+	return total
+
+
 func children_in_group(node: Node, group: String) -> Array[Node]:
 	return node.get_children().filter(
 		func(child: Node): return child.is_in_group(group)
