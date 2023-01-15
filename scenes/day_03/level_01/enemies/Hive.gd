@@ -11,6 +11,7 @@ const TIME_BETWEEN_MOVEMENT_PHASE_2: float = 0.8
 const TIME_BETWEEN_MOVEMENT_PHASE_3: float = 0.3
 const TIME_BETWEEN_SHOTS_PHASE_DEFAULT: float = 0.8
 const TIME_BETWEEN_SHOTS_PHASE_3: float = 0.4
+const SPRITE_WIDTH: float = 16.0
 
 @export var auto_start: bool = false
 
@@ -24,8 +25,8 @@ var _hive_drones: Array[HiveDrone]
 @onready var viewport_size: Vector2 = get_viewport_rect().size
 @onready var viewport_width: float = viewport_size.x
 @onready var viewport_height: float = viewport_size.y
-@onready var min_pos_x: float = 0.0
-@onready var max_pos_x: float = viewport_width - 6 * 16
+@onready var min_pos_x: float = SPRITE_WIDTH
+@onready var max_pos_x: float = viewport_width - SPRITE_WIDTH
 
 
 func _ready() -> void:
@@ -36,10 +37,13 @@ func _ready() -> void:
 		_hive_drones.append(drone)
 		drone.dead.connect(_on_drone_dead)
 	
-	if auto_start: start()
+	if auto_start:
+		global_position.x = viewport_size.x / 2 - 30
+		start()
 
 
 func start() -> void:
+	visible = true
 	_update_curr_phase()
 	gun_timer.start(TIME_BETWEEN_SHOTS_PHASE_DEFAULT)
 
@@ -49,7 +53,7 @@ func _count_enemies_left() -> int:
 
 
 func _move() -> void:
-	if position.x > max_pos_x or position.x < min_pos_x:
+	if bottom_right_marker.global_position.x > max_pos_x or position.x < min_pos_x:
 		_horizontal_direction *= -1
 		if bottom_right_marker.global_position.y < viewport_height / 2:
 			position.y += MOVE_DISTANCE_Y
@@ -59,7 +63,7 @@ func _move() -> void:
 func _update_curr_phase() -> void:
 	var enemies_left = _count_enemies_left()
 	if enemies_left == 1:
-		print("phase_3")
+		#print("phase_3")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_3)
 		return
 	elif enemies_left <= 0:
@@ -67,10 +71,10 @@ func _update_curr_phase() -> void:
 		return
 	
 	if bottom_right_marker.global_position.y < viewport_height / 6:
-		print("phase_1")
+		#print("phase_1")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_1)
 	else:
-		print("phase_2")
+		#print("phase_2")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_2)
 
 
@@ -80,7 +84,7 @@ func _start_gun_cooldown(duration: float) -> void:
 
 func _on_gun_timer_timeout() -> void:
 	var enemies_left = _count_enemies_left()
-	print("enemies_left: %s" % enemies_left)
+	#print("enemies_left: %s" % enemies_left)
 	
 	if enemies_left < 0:
 		gun_timer.stop()
@@ -114,7 +118,6 @@ func _on_gun_timer_timeout() -> void:
 func _on_movement_timer_timeout() -> void:
 	_move()
 	_update_curr_phase()
-	#print("position: %s" % position)
 
 
 func _on_drone_dead(_killer) -> void:

@@ -12,47 +12,47 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone00" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(19, 0)
+position = Vector2(3, 0)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone01" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(38, 0)
+position = Vector2(22, 0)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone02" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(57, 0)
+position = Vector2(41, 0)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone03" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(27, 17)
+position = Vector2(11, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone04" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(16, 17)
+position = Vector2(0, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone05" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(60, 17)
+position = Vector2(44, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone06" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(49, 17)
+position = Vector2(33, 17)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone07" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(20, 34)
+position = Vector2(4, 34)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone08" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(38, 34)
+position = Vector2(22, 34)
 metadata/_edit_lock_ = true
 
 [node name="HiveDrone09" parent="Body" instance=ExtResource("2_hohpq")]
-position = Vector2(56, 34)
+position = Vector2(40, 34)
 metadata/_edit_lock_ = true
 
 [node name="BottomRight" type="Marker2D" parent="Body"]
-position = Vector2(92, 33)
+position = Vector2(60, 33)
 metadata/_edit_lock_ = true
 
 [node name="MovementTimer" type="Timer" parent="."]
