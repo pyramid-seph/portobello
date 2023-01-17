@@ -8,70 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node",
-"class": &"Day03Level",
-"language": &"GDScript",
-"path": "res://scenes/day_03/level_01/Day03Level.gd"
-}, {
-"base": "Resource",
-"class": &"Day03PlayerData",
-"language": &"GDScript",
-"path": "res://resources/Day03PlayerData.gd"
-}, {
-"base": "Area2D",
-"class": &"Drone",
-"language": &"GDScript",
-"path": "res://scenes/day_03/level_01/enemies/Drone.gd"
-}, {
-"base": "Area2D",
-"class": &"HiveDrone",
-"language": &"GDScript",
-"path": "res://scenes/day_03/level_01/enemies/HiveDrone.gd"
-}, {
-"base": "Area2D",
-"class": &"HurtBox",
-"language": &"GDScript",
-"path": "res://scenes/_shared/HurtBox.gd"
-}, {
-"base": "Resource",
-"class": &"InitialMoveState",
-"language": &"GDScript",
-"path": "res://scenes/day_03/_shared/wave_system/InitialMoveState.gd"
-}, {
-"base": "LevelWaves",
-"class": &"Level0Waves",
-"language": &"GDScript",
-"path": "res://scenes/day_03/_shared/wave_system/Level0Waves.gd"
-}, {
-"base": "RefCounted",
-"class": &"LevelWaves",
-"language": &"GDScript",
-"path": "res://scenes/day_03/_shared/wave_system/LevelWaves.gd"
-}, {
-"base": "RefCounted",
-"class": &"SaveData",
-"language": &"GDScript",
-"path": "res://autoloads/SaveData.gd"
-}, {
-"base": "RefCounted",
-"class": &"Wave",
-"language": &"GDScript",
-"path": "res://scenes/day_03/_shared/wave_system/Wave.gd"
-}]
-_global_script_class_icons={
-"Day03Level": "",
-"Day03PlayerData": "",
-"Drone": "",
-"HiveDrone": "",
-"HurtBox": "",
-"InitialMoveState": "",
-"Level0Waves": "",
-"LevelWaves": "",
-"SaveData": "",
-"Wave": ""
-}
-
 [application]
 
 config/name="Bucho Portobello"
@@ -97,6 +33,10 @@ window/size/width=240
 window/size/height=320
 window/size/test_width=720
 window/size/test_height=960
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [gdnative]
 
