@@ -2,21 +2,22 @@ extends Node2D
 
 
 signal dead
+signal almost_dead
 
 
 const MOVE_DISTANCE_X: float = 12.0
 const MOVE_DISTANCE_Y: float = 8.0
 const TIME_BETWEEN_MOVEMENT_PHASE_1: float = 1.6
 const TIME_BETWEEN_MOVEMENT_PHASE_2: float = 0.8
-const TIME_BETWEEN_MOVEMENT_PHASE_3: float = 0.3
-const TIME_BETWEEN_SHOTS_PHASE_DEFAULT: float = 0.8
-const TIME_BETWEEN_SHOTS_PHASE_3: float = 0.4
+const TIME_BETWEEN_MOVEMENT_PHASE_3: float = 0.4
+const TIME_BETWEEN_MOVEMENT_PHASE_4: float = 0.15
+const GUNS_COOLDOWN: float = 0.4
 const SPRITE_WIDTH: float = 16.0
 
 @export var auto_start: bool = false
 
 var _horizontal_direction: float = 1
-var _hive_drones: Array[HiveDrone]
+var _hive_drones: Array[HiveDrone] = []
 
 @onready var body := $Body
 @onready var movement_timer := $MovementTimer as Timer
@@ -43,13 +44,8 @@ func _ready() -> void:
 
 
 func start() -> void:
-	visible = true
 	_update_curr_phase()
-	gun_timer.start(TIME_BETWEEN_SHOTS_PHASE_DEFAULT)
-
-
-func _count_enemies_left() -> int:
-	return Utils.count(_hive_drones, func(item: HiveDrone): return not item.is_dead)
+	_start_gun_cooldown(GUNS_COOLDOWN)
 
 
 func _move() -> void:
@@ -61,58 +57,56 @@ func _move() -> void:
 
 
 func _update_curr_phase() -> void:
-	var enemies_left = _count_enemies_left()
-	if enemies_left == 1:
-		#print("phase_3")
-		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_3)
+	var drones = _get_drones_left()
+	if drones.is_empty():
 		return
-	elif enemies_left <= 0:
-		movement_timer.stop()
+	if drones.size() == 1:
+		print("phase 4")
+		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_4) # TODO Should be 0
 		return
 	
 	if bottom_right_marker.global_position.y < viewport_height / 6:
-		#print("phase_1")
+		print("phase 1")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_1)
-	else:
-		#print("phase_2")
+	elif bottom_right_marker.global_position.y < viewport_height / 4:
+		print("phase 2")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_2)
-
+	else:
+		print("phase 3")
+		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_3)
 
 func _start_gun_cooldown(duration: float) -> void:
 	gun_timer.start(duration)
 
 
+func _get_drones_left() -> Array[HiveDrone]:
+	return _hive_drones.filter(func(drone): return not drone.is_dead)
+
+
 func _on_gun_timer_timeout() -> void:
-	var enemies_left = _count_enemies_left()
-	#print("enemies_left: %s" % enemies_left)
-	
-	if enemies_left < 0:
-		gun_timer.stop()
+	var drones = _get_drones_left()
+	if drones.is_empty():
 		return
 	
-	if enemies_left == 1:
-		var drone = Utils.first_or_null(
-			_hive_drones, 
-			func(i: Node): return not i.is_dead
-		) as HiveDrone
-		if drone and not drone.is_dead:
-			drone.shoot()
-			_start_gun_cooldown(TIME_BETWEEN_SHOTS_PHASE_DEFAULT)
-		else:
-			gun_timer.stop()
-		return
-	
-	var drone := Utils.rand_item(_hive_drones)
-	if not drone.is_dead:
+	var drone = Utils.rand_item(drones)
+	if drone and not drone.is_dead:
 		drone.shoot()
-		var duration: float = 0.0
-		if enemies_left > 1:
-			duration = TIME_BETWEEN_SHOTS_PHASE_DEFAULT
-		else:
-			duration = TIME_BETWEEN_SHOTS_PHASE_3
-		_start_gun_cooldown(duration)
+		_start_gun_cooldown(GUNS_COOLDOWN)
 	else:
-		_start_gun_cooldown(Utils.FRAME_TIME)
+		_start_gun_cooldown(Utils.FRAME_TIME) # TODO Or is it just wait for the next _process?
+
+
+func _on_drone_dead(_killer) -> void:
+	var drones = _get_drones_left()
+	var enemies_left = drones.size()
+	if enemies_left > 1:
+		return
+	if enemies_left == 1:
+		drones[0].is_immune_to_bullets = true
+		almost_dead.emit()
+	else:
+		dead.emit()
+		queue_free()
 
 
 func _on_movement_timer_timeout() -> void:
@@ -120,17 +114,10 @@ func _on_movement_timer_timeout() -> void:
 	_update_curr_phase()
 
 
-func _on_drone_dead(_killer) -> void:
-	_update_curr_phase()
-	if _count_enemies_left() <= 0:
-		dead.emit()
-		queue_free()
-
-
 func _kill_all_but_one() -> void:
 	for i in _hive_drones.size() - 1:
 		_hive_drones[i].kill(null)
-		await get_tree().create_timer(2.4, false).timeout
+		#await get_tree().create_timer(2.4, false).timeout
 
 
 func _unhandled_input(event) -> void:
