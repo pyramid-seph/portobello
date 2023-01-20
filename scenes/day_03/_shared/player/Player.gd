@@ -68,12 +68,28 @@ func add_points_to_score(points: int) -> void:
 	player_data.score += points
 
 
+func reset_power_up() -> void:
+	player_data.reset_power_up()
+
+
+func reset_stamina() -> void:
+	player_data.reset_stamina()
+
+
 func add_stamina(stamina: int) -> void:
 	player_data.stamina += stamina
 
 
 func power_up_by(points: int) -> void:
 	player_data.power_up_count += points
+
+
+func stop_stamina_lose(pause_lose: bool) -> void:
+	if _is_dead: return
+	if pause_lose:
+		stamina_timer.stop()
+	else:
+		stamina_timer.start()
 
 
 func revive(skip_timed_invincibility: bool = false) -> void:

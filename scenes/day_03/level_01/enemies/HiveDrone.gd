@@ -53,7 +53,9 @@ func _spawn_explosion() -> void:
 
 
 func _on_drone_area_entered(area: Area2D) -> void:
-	if is_dead or is_immune_to_bullets:
+	if is_dead:
 		return
-	if area.is_in_group("bullets"):
+	if is_immune_to_bullets:
+		_spawn_explosion()
+	elif area.is_in_group("bullets"):
 		hurt(area.shooter)

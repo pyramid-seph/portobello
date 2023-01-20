@@ -4,6 +4,7 @@ extends Node2D
 @export var player_data: Resource
 @export var stamina_item: PackedScene
 @export var cooldown: float = Utils.FRAME_TIME
+@export var random: bool = true
 
 @onready var screen_size: Vector2 = get_viewport_rect().size
 @onready var timer: Timer = $Cooldown
@@ -43,17 +44,19 @@ func _try_spawn() -> void:
 	if _state != State.ENQUEUED:
 		return
 	
-	if player_data.stamina > player_data.MAX_STAMINA * 0.3:
+	if not random:
+		_spawn_new_stamina_item()
+	elif player_data.stamina > player_data.MAX_STAMINA * 0.3:
 		if randi() % 50 == 0:
-			_instance_new_stamina_item()
+			_spawn_new_stamina_item()
 		else:
 			_state = State.READY
 			_enqueue_spawn()
 	else:
-		_instance_new_stamina_item()
+		_spawn_new_stamina_item()
 
 
-func _instance_new_stamina_item() -> void:
+func _spawn_new_stamina_item() -> void:
 	if _state != State.ENQUEUED:
 		return
 	

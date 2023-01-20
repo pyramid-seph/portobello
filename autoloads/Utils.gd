@@ -33,6 +33,12 @@ func children_in_group(node: Node, group: String) -> Array[Node]:
 	)
 
 
+func queue_free_group(node: Node, group: String) -> void:
+	var items = children_in_group(node, group)
+	for item in items:
+		item.queue_free()
+
+
 func rand_child_in_group(node: Node, group: String) -> Node:
 	var candidates = children_in_group(node, group)
 	return rand_item(candidates)

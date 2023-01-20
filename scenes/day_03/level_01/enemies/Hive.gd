@@ -39,6 +39,7 @@ func _ready() -> void:
 		drone.dead.connect(_on_drone_dead)
 	
 	if auto_start:
+		global_position.y = 3
 		global_position.x = viewport_size.x / 2 - 30
 		start()
 
@@ -48,11 +49,14 @@ func start() -> void:
 	_start_gun_cooldown(GUNS_COOLDOWN)
 
 
+var y_moves = 0
 func _move() -> void:
 	if bottom_right_marker.global_position.x > max_pos_x or position.x < min_pos_x:
 		_horizontal_direction *= -1
 		if bottom_right_marker.global_position.y < viewport_height / 2:
 			position.y += MOVE_DISTANCE_Y
+			y_moves += 1
+			print("Y Moves: %s - %s" % [y_moves, position.y])
 	position.x += _horizontal_direction * MOVE_DISTANCE_X
 
 
@@ -61,18 +65,18 @@ func _update_curr_phase() -> void:
 	if drones.is_empty():
 		return
 	if drones.size() == 1:
-		print("phase 4")
+		#print("phase 4")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_4) # TODO Should be 0
 		return
 	
 	if bottom_right_marker.global_position.y < viewport_height / 6:
-		print("phase 1")
+		#print("phase 1")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_1)
 	elif bottom_right_marker.global_position.y < viewport_height / 4:
-		print("phase 2")
+		#print("phase 2")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_2)
 	else:
-		print("phase 3")
+		#print("phase 3")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_3)
 
 func _start_gun_cooldown(duration: float) -> void:
@@ -112,15 +116,3 @@ func _on_drone_dead(_killer) -> void:
 func _on_movement_timer_timeout() -> void:
 	_move()
 	_update_curr_phase()
-
-
-func _kill_all_but_one() -> void:
-	for i in _hive_drones.size() - 1:
-		_hive_drones[i].kill(null)
-		#await get_tree().create_timer(2.4, false).timeout
-
-
-func _unhandled_input(event) -> void:
-	if event.is_action_pressed("debug_kill"):
-		_kill_all_but_one()
-		get_viewport().set_input_as_handled()

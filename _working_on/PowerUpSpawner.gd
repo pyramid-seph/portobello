@@ -4,6 +4,7 @@ extends Node2D
 @export var player_data: Resource
 @export var power_up_item: PackedScene
 @export var cooldown: float = Utils.FRAME_TIME
+@export var random: bool = true
 
 @onready var screen_size: Vector2 = get_viewport_rect().size
 @onready var timer: Timer = $Cooldown
@@ -44,8 +45,10 @@ func _try_spawn() -> void:
 		return
 	
 	if player_data.power_up_count < player_data.MAX_POWER_UP:
-		if randi() % 75 == 0:
-			_instance_new_power_up_item()
+		if not random:
+			_spawn_new_power_up_item()
+		elif randi() % 75 == 0:
+			_spawn_new_power_up_item()
 		else:
 			_state = State.READY
 			_enqueue_spawn()
@@ -54,7 +57,7 @@ func _try_spawn() -> void:
 		_enqueue_spawn();
 
 
-func _instance_new_power_up_item() -> void:
+func _spawn_new_power_up_item() -> void:
 	if _state != State.ENQUEUED:
 		return
 	
