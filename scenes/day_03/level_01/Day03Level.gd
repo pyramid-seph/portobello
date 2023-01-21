@@ -106,7 +106,6 @@ func _on_wave_manager_all_waves_completed() -> void:
 	_boss = _instantiate_boss()
 	_boss.dead.connect(_on_boss_dead)
 	_boss.almost_dead.connect(_on_boss_almost_dead)
-	_boss.ready
 	_boss.start()
 
 
