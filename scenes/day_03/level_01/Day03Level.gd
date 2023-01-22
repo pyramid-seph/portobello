@@ -3,6 +3,7 @@ class_name Day03Level
 
 signal level_state_changed(new_state)
 signal pause_state_changed(new_state)
+signal waves_completed
 
 const START_DURATION: float = 1.6
 const TIME_BETWEEN_REVIVALS: float = 1.2
@@ -54,8 +55,8 @@ func _input(event: InputEvent) -> void:
 
 func _instantiate_boss() -> Node:
 	var boss = boss_scene.instantiate()
-	boss.global_position.y = 3
-	boss.global_position.x =  world.get_viewport_rect().size.x / 2 - 30
+	boss.position.y = (3 + boss.body_height()) * -1
+	boss.position.x =  world.get_viewport_rect().size.x / 2 - 30
 	world.add_child(boss)
 	return boss
 
@@ -92,21 +93,22 @@ func _on_wave_manager_wave_completed(wave_index: int) -> void:
 
 
 func _on_wave_manager_all_waves_completed() -> void:
-	Utils.queue_free_group(world, "bullets")
-	Utils.queue_free_group(world, "pickups")
-	stamina_spawner.disable()
+	if _player.is_dead(): return
+	get_tree().call_group("bullets", "queue_free")
+	get_tree().call_group("pickups", "queue_free")
 	stamina_spawner.cooldown = Utils.FRAME_TIME
 	stamina_spawner.random = false
-	stamina_spawner.enable(world)
+	stamina_spawner.disable()
 	power_up_spawner.disable()
 	_player.reset_power_up()
 	_player.reset_stamina()
-	_player.start_timed_invincibility()
+	_player.is_input_enabled = false
+	_player.stop_stamina_lose(true)
 	_player.position = player_start_position
 	_boss = _instantiate_boss()
 	_boss.dead.connect(_on_boss_dead)
 	_boss.almost_dead.connect(_on_boss_almost_dead)
-	_boss.start()
+	waves_completed.emit()
 
 
 func _on_wave_manager_wave_started(wave_index: int) -> void:
@@ -121,7 +123,18 @@ func _on_boss_dead() -> void:
 
 
 func _on_boss_almost_dead() -> void:
-	print("ALMOST DEAD!!")
 	power_up_spawner.enable(world)
 	power_up_spawner.cooldown = Utils.FRAME_TIME
 	power_up_spawner.random = false
+
+
+func _on_day_3_ui_boss_alert_finished() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(_boss, "position:y", 3.0, 4.32).set_trans(Tween.TRANS_LINEAR)
+	tween.finished.connect(func():
+		stamina_spawner.enable(world)
+		_player.stop_stamina_lose(false)
+		_player.start_timed_invincibility()
+		_player.is_input_enabled = true
+		_boss.start()
+	)

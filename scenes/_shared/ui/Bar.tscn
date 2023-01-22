@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource path="res://art/_shared/ui_counter_lives.png" type="Texture2D" id=1]
-[ext_resource path="res://theme/theme.tres" type="Theme" id=2]
-[ext_resource path="res://art/_shared/ui_bar_background.png" type="Texture2D" id=3]
-[ext_resource path="res://art/_shared/ui_bar_foreground.png" type="Texture2D" id=4]
+[ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="1"]
+[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://bbka4j1487dy0" path="res://art/_shared/ui_bar_background.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://ds6a4ktnks5qu" path="res://art/_shared/ui_bar_foreground.png" id="4"]
 
 [node name="Bar" type="HBoxContainer"]
 offset_right = 10.0

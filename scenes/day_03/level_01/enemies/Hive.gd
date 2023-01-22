@@ -49,6 +49,10 @@ func start() -> void:
 	_start_gun_cooldown(GUNS_COOLDOWN)
 
 
+func body_height() -> float:
+	return SPRITE_WIDTH * 3
+
+
 var y_moves = 0
 func _move() -> void:
 	if bottom_right_marker.global_position.x > max_pos_x or position.x < min_pos_x:

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource path="res://art/_shared/ui_counter_power.png" type="Texture2D" id=1]
-[ext_resource path="res://theme/theme.tres" type="Theme" id=2]
+[ext_resource type="Texture2D" uid="uid://d16g60q03k2re" path="res://art/_shared/ui_counter_power.png" id="1"]
+[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="2"]
 
 [sub_resource type="FontFile" id=1]
 

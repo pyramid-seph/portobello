@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://omapikmtl4qq"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Day3Ui.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
-[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://theme/theme.tres" id="3"]
+[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="3_61hbj"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/TimeLeftBar.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/ui/PowerUpBar.tscn" id="5"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/LivesCounter.gd" id="6"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scenes/_shared/ui/TimeLeftBar.gd" id="8"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/HiScore.gd" id="9"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PowerUpBar.gd" id="10"]
-[ext_resource type="Resource" path="res://resources/instances/Player01Day03Data.tres" id="11"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/PauseMenu.tscn" id="12"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/GameOver.gd" id="13"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Start.gd" id="14"]
@@ -34,7 +34,6 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("3")
 
 [node name="StaminaBar" parent="Bars" instance=ExtResource("4")]
 layout_mode = 2
@@ -67,7 +66,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 14.0
 grow_horizontal = 0
-theme = ExtResource("3")
+theme = ExtResource("3_61hbj")
 text = "10000"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -82,10 +81,9 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 14.0
 grow_horizontal = 2
-theme = ExtResource("3")
-text = "hi 100"
+theme = ExtResource("3_61hbj")
+text = "Hi 100"
 vertical_alignment = 1
-uppercase = true
 script = ExtResource("9")
 
 [node name="Start" type="Label" parent="."]
@@ -100,7 +98,7 @@ offset_right = -56.0
 offset_bottom = -135.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3")
+theme = ExtResource("3_61hbj")
 text = "Buffet
 ¡Buen Provecho!"
 horizontal_alignment = 1
@@ -119,7 +117,7 @@ offset_right = -78.0
 offset_bottom = -146.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3")
+theme = ExtResource("3_61hbj")
 text = "Game over"
 horizontal_alignment = 1
 vertical_alignment = 1

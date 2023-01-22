@@ -44,6 +44,9 @@ func _process(delta: float) -> void:
 	_process_fire()
 
 
+func is_dead() -> bool:
+	return _is_dead
+
 func start_timed_invincibility() -> void:
 	animation_player.play("invincible")
 

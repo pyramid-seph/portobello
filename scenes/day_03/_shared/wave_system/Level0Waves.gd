@@ -14,17 +14,18 @@ func _get_waves() -> Array[Wave]:
 		return _waves
 	
 	_waves = [
-		_create_wave(50, 0.4, 0.4, "init_movement_00"),
-		_create_wave(50, 0.8, 0.4, "init_movement_01"),
-		_create_wave(25, 0.8, 0.4, "init_movement_02"),
-		_create_wave(35, 1.2, 0.4, "init_movement_03"),
-		_create_wave(40, 0.8, 2.4, "init_movement_04"),
-		_create_wave(00, 2.4, 0.0, "init_movement_05"),
-		_create_wave(20, 1.2, 0.4, "init_movement_06"),
-		_create_wave(20, 1.2, 0.4, "init_movement_07"),
-		_create_wave(30, 1.2, 0.4, "init_movement_08"),
-		_create_wave(10, 1.2, 0.4, "init_movement_09"),
-		_create_wave(20, 1.2, 0.4, "init_movement_10"),
+		_create_wave(0, 0.4, 5, "init_movement_00"),
+#		_create_wave(50, 0.4, 0.4, "init_movement_00"),
+#		_create_wave(50, 0.8, 0.4, "init_movement_01"),
+#		_create_wave(25, 0.8, 0.4, "init_movement_02"),
+#		_create_wave(35, 1.2, 0.4, "init_movement_03"),
+#		_create_wave(40, 0.8, 2.4, "init_movement_04"),
+#		_create_wave(00, 2.4, 0.0, "init_movement_05"),
+#		_create_wave(20, 1.2, 0.4, "init_movement_06"),
+#		_create_wave(20, 1.2, 0.4, "init_movement_07"),
+#		_create_wave(30, 1.2, 0.4, "init_movement_08"),
+#		_create_wave(10, 1.2, 0.4, "init_movement_09"),
+#		_create_wave(20, 1.2, 0.4, "init_movement_10"),
 	]
 	return _waves
 
