@@ -129,7 +129,7 @@ func _on_boss_almost_dead() -> void:
 
 
 func _on_day_3_ui_boss_alert_finished() -> void:
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.tween_property(_boss, "position:y", 3.0, 4.32).set_trans(Tween.TRANS_LINEAR)
 	tween.finished.connect(func():
 		stamina_spawner.enable(world)

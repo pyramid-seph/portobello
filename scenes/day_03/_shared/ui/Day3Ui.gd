@@ -11,6 +11,8 @@ signal boss_alert_finished
 
 @export var player_data: Day03PlayerData
 
+@onready var _boss_alert := $BossAlert
+
 
 func _ready() -> void:
 	player_data.score_updated.connect(_on_player_data_score_updated)
@@ -53,5 +55,9 @@ func _on_day_03_level_level_state_changed(new_state: int) -> void:
 	level_state_changed.emit(new_state)
 
 
-func _on_day_03_level_waves_completed():
-	get_tree().create_timer(5.0, false).timeout.connect(func(): boss_alert_finished.emit())
+func _on_day_03_level_waves_completed() -> void:
+	_boss_alert.start()
+
+
+func _on_boss_alert_finished():
+	boss_alert_finished.emit()

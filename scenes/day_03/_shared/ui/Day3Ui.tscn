@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://omapikmtl4qq"]
+[gd_scene load_steps=16 format=3 uid="uid://omapikmtl4qq"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Day3Ui.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
@@ -11,35 +11,38 @@
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/HiScore.gd" id="9"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PowerUpBar.gd" id="10"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
-[ext_resource type="PackedScene" path="res://scenes/_shared/ui/PauseMenu.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://0i766k0lxqlc" path="res://scenes/_shared/ui/PauseMenu.tscn" id="12"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/GameOver.gd" id="13"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Start.gd" id="14"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/BossAlert.gd" id="15_mlyv2"]
 
 [node name="Day3Ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1")
 player_data = ExtResource("11")
 
-[node name="Bars" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(50, 0)
+[node name="BarsMargin" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 50.0
 offset_bottom = 40.0
+theme_override_constants/margin_top = 4
 
-[node name="StaminaBar" parent="Bars" instance=ExtResource("4")]
+[node name="Bars" type="VBoxContainer" parent="BarsMargin"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="StaminaBar" parent="BarsMargin/Bars" instance=ExtResource("4")]
 layout_mode = 2
 script = ExtResource("8")
 
-[node name="PowerUpBar" parent="Bars" instance=ExtResource("5")]
+[node name="PowerUpBar" parent="BarsMargin/Bars" instance=ExtResource("5")]
 layout_mode = 2
 script = ExtResource("10")
 
@@ -124,17 +127,49 @@ vertical_alignment = 1
 uppercase = true
 script = ExtResource("13")
 
-[node name="PauseMenu" parent="." instance=ExtResource("12")]
-process_mode = 3
+[node name="BossAlert" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_mlyv2")
+duration_sec = 2.4
+color_1 = Color(0.968627, 0.745098, 0.505882, 1)
+color_2 = Color(0.980392, 0.67451, 0.345098, 1)
+
+[node name="Label" type="Label" parent="BossAlert"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -13.0
+offset_right = 31.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_61hbj")
+text = "¡Peligro!"
+
+[node name="Timer" type="Timer" parent="BossAlert"]
+one_shot = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("12")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
 [connection signal="hi_score_changed" from="." to="HiScore" method="_on_Day3Ui_hi_score_changed"]
 [connection signal="level_state_changed" from="." to="Start" method="_on_Day3Ui_level_state_changed"]
 [connection signal="level_state_changed" from="." to="GameOver" method="_on_Day3Ui_level_state_changed"]
 [connection signal="lives_left_changed" from="." to="LivesCounter" method="_on_Day3Ui_lives_left_changed"]
 [connection signal="pause_state_changed" from="." to="PauseMenu" method="_on_day_3_ui_pause_state_changed"]
-[connection signal="power_up_changed" from="." to="Bars/PowerUpBar" method="_on_Day3Ui_power_up_changed"]
+[connection signal="power_up_changed" from="." to="BarsMargin/Bars/PowerUpBar" method="_on_Day3Ui_power_up_changed"]
 [connection signal="score_changed" from="." to="Score" method="_on_Day3Ui_score_changed"]
-[connection signal="stamina_changed" from="." to="Bars/StaminaBar" method="_on_Day3Ui_time_changed"]
+[connection signal="stamina_changed" from="." to="BarsMargin/Bars/StaminaBar" method="_on_Day3Ui_time_changed"]
+[connection signal="finished" from="BossAlert" to="." method="_on_boss_alert_finished"]
