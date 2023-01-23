@@ -1,30 +1,27 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bd3t2gf6d155n"]
 
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="1"]
-[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="2"]
+[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="1_lwlkc"]
 [ext_resource type="Texture2D" uid="uid://bbka4j1487dy0" path="res://art/_shared/ui_bar_background.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://ds6a4ktnks5qu" path="res://art/_shared/ui_bar_foreground.png" id="4"]
 
 [node name="Bar" type="HBoxContainer"]
 offset_right = 10.0
 offset_bottom = 10.0
-theme = ExtResource( 2 )
+theme = ExtResource("1_lwlkc")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
-offset_right = 2.0
-offset_bottom = 10.0
-theme = ExtResource( 2 )
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 4 )
+layout_mode = 2
+theme = ExtResource("1_lwlkc")
 nine_patch_stretch = true
 stretch_margin_left = 1
 stretch_margin_top = 1
 stretch_margin_right = 1
 stretch_margin_bottom = 1
+texture_under = ExtResource("3")
+texture_progress = ExtResource("4")
 
 [node name="Icon" type="TextureRect" parent="."]
-offset_left = 6.0
-offset_right = 16.0
-offset_bottom = 10.0
-theme = ExtResource( 2 )
-texture = ExtResource( 1 )
+layout_mode = 2
+theme = ExtResource("1_lwlkc")
+texture = ExtResource("1")

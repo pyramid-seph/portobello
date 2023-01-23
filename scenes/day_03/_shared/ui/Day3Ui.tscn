@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Day3Ui.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
 [ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="3_61hbj"]
-[ext_resource type="PackedScene" path="res://scenes/_shared/ui/TimeLeftBar.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/ui/PowerUpBar.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://ci5d20jij6q7c" path="res://scenes/_shared/ui/TimeLeftBar.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cwqvrgqp2kstp" path="res://scenes/day_03/_shared/ui/PowerUpBar.tscn" id="5"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/LivesCounter.gd" id="6"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Score.gd" id="7"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/TimeLeftBar.gd" id="8"]
@@ -40,6 +40,7 @@ layout_mode = 2
 
 [node name="StaminaBar" parent="BarsMargin/Bars" instance=ExtResource("4")]
 layout_mode = 2
+size_flags_horizontal = 1
 script = ExtResource("8")
 
 [node name="PowerUpBar" parent="BarsMargin/Bars" instance=ExtResource("5")]
