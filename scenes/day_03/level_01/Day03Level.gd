@@ -120,7 +120,10 @@ func _on_boss_dead() -> void:
 	power_up_spawner.disable()
 	_player.stop_stamina_lose(true)
 	level_state = LevelState.LEVEL_COMPLETE
-	print("YOU WIN!!!!!!!!!!!!!")
+	get_tree().create_timer(5.0, false).timeout.connect(func():
+		# start score sequence
+		pass
+	)
 
 
 func _on_boss_almost_dead() -> void:
