@@ -25,7 +25,7 @@ var _boss: Node2D
 @onready var scene_tree = get_tree()
 
 
-enum LevelState { STARTING, PLAYING, GAME_OVER }
+enum LevelState { STARTING, PLAYING, GAME_OVER, LEVEL_COMPLETE }
 
 var level_state: int = LevelState.STARTING :
 	get:
@@ -119,6 +119,7 @@ func _on_boss_dead() -> void:
 	stamina_spawner.disable()
 	power_up_spawner.disable()
 	_player.stop_stamina_lose(true)
+	level_state = LevelState.LEVEL_COMPLETE
 	print("YOU WIN!!!!!!!!!!!!!")
 
 

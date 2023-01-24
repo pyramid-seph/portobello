@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://omapikmtl4qq"]
+[gd_scene load_steps=18 format=3 uid="uid://omapikmtl4qq"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Day3Ui.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Start.gd" id="14"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/BossAlert.gd" id="15_mlyv2"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/MainCourseLabelContainer.gd" id="16_ph4cm"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PiecoOfCakeLabel.gd" id="17_2v547"]
 
 [node name="Day3Ui" type="Control"]
 layout_mode = 3
@@ -123,6 +124,7 @@ offset_bottom = -146.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_61hbj")
+theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
 text = "Game over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -196,9 +198,31 @@ theme_override_constants/line_spacing = 0
 text = "¡Buen provecho!"
 horizontal_alignment = 1
 
+[node name="PiecoOfCakeLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_61hbj")
+theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+text = "¡Pan comido!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("17_2v547")
+
 [connection signal="hi_score_changed" from="." to="HiScore" method="_on_Day3Ui_hi_score_changed"]
 [connection signal="level_state_changed" from="." to="Start" method="_on_Day3Ui_level_state_changed"]
 [connection signal="level_state_changed" from="." to="GameOver" method="_on_Day3Ui_level_state_changed"]
+[connection signal="level_state_changed" from="." to="PiecoOfCakeLabel" method="_on_day_3_ui_level_state_changed"]
 [connection signal="lives_left_changed" from="." to="LivesCounter" method="_on_Day3Ui_lives_left_changed"]
 [connection signal="pause_state_changed" from="." to="PauseMenu" method="_on_day_3_ui_pause_state_changed"]
 [connection signal="power_up_changed" from="." to="BarsMargin/Bars/PowerUpBar" method="_on_Day3Ui_power_up_changed"]
