@@ -1,25 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccqea1b3vs81u"]
+[gd_scene load_steps=7 format=3 uid="uid://ctjsn0u6b60n6"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/HiveDrone.gd" id="1_ovbu3"]
-[ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="1_q0aej"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="2_7641s"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_vjdhq"]
+[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_vjdhq"]
 [ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="3_85mj7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cheb"]
-atlas = ExtResource("1_q0aej")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6tpq0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cheb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="3_glums"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rdfu"]
 size = Vector2(14, 16)
@@ -30,9 +15,9 @@ collision_mask = 8
 script = ExtResource("1_ovbu3")
 explosion = ExtResource("2_vjdhq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, 8)
-frames = SubResource("SpriteFrames_6tpq0")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_glums")
+centered = false
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

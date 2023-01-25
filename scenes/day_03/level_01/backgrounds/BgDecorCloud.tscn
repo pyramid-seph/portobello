@@ -1,19 +1,27 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://x03b0s1547ss"]
 
-[ext_resource type="Texture2D" uid="uid://ba4yayucmq2rd" path="res://art/day_3/tiles_background.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://nx5dqv7ydbi3" path="res://art/day_3/bg_cloud_0.png" id="1_7xuhe"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/backgrounds/BgDecorCloud.gd" id="2"]
-
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("1")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("1")
-region = Rect2(16, 0, 16, 16)
+[ext_resource type="Texture2D" uid="uid://52ibquxhxli5" path="res://art/day_3/bg_cloud_1.png" id="2_qmqla"]
 
 [sub_resource type="SpriteFrames" id="3"]
 animations = [{
-"frames": [SubResource("1"), SubResource("1"), SubResource("1"), SubResource("2"), SubResource("2")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7xuhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7xuhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7xuhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qmqla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qmqla")
+}],
 "loop": true,
 "name": &"default",
 "speed": 5.0

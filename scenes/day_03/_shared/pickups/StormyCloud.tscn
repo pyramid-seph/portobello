@@ -1,46 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlvoyt7kmaqck"]
+[gd_scene load_steps=7 format=3 uid="uid://dlvoyt7kmaqck"]
 
-[ext_resource type="Texture2D" uid="uid://cws14klkbm7bk" path="res://art/day_3/tiles_objects.png" id="1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/pickups/StormyCloud.gd" id="2"]
-
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("1")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("1")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("1")
-region = Rect2(32, 0, 16, 16)
+[ext_resource type="Texture2D" uid="uid://82mnd81a4in1" path="res://art/day_3/pickup_stormy_cloud_0.png" id="2_34byx"]
+[ext_resource type="Texture2D" uid="uid://chywriq5d53pr" path="res://art/day_3/pickup_stormy_cloud_1.png" id="3_08v1p"]
+[ext_resource type="Texture2D" uid="uid://o6sppwsbu2is" path="res://art/day_3/pickup_stormy_cloud_2.png" id="4_sswvo"]
 
 [sub_resource type="SpriteFrames" id="4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": ExtResource("2_34byx")
 }, {
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": ExtResource("2_34byx")
 }, {
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": ExtResource("2_34byx")
 }, {
 "duration": 1.0,
-"texture": SubResource("2")
+"texture": ExtResource("3_08v1p")
 }, {
 "duration": 1.0,
-"texture": SubResource("2")
+"texture": ExtResource("3_08v1p")
 }, {
 "duration": 1.0,
-"texture": SubResource("2")
+"texture": ExtResource("3_08v1p")
 }, {
 "duration": 1.0,
-"texture": SubResource("3")
+"texture": ExtResource("4_sswvo")
 }, {
 "duration": 1.0,
-"texture": SubResource("3")
+"texture": ExtResource("4_sswvo")
 }],
 "loop": true,
 "name": &"default",
@@ -58,7 +48,7 @@ script = ExtResource("2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource("4")
-frame = 3
+playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

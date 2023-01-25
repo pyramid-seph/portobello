@@ -1,31 +1,26 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://dtupug8l7pp0d"]
 
-[ext_resource type="PackedScene" path="res://scenes/day_03/level_01/backgrounds/BgDecorCloud.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://ba4yayucmq2rd" path="res://art/day_3/tiles_background.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://x03b0s1547ss" path="res://scenes/day_03/level_01/backgrounds/BgDecorCloud.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bom2jcxt6ctn7" path="res://art/day_3/bg_wave_0.png" id="2_ycpnp"]
+[ext_resource type="Texture2D" uid="uid://bpq8w4lkwqvim" path="res://art/day_3/bg_wave_1.png" id="3_wmtuw"]
+[ext_resource type="Texture2D" uid="uid://d0mwxi177r23u" path="res://art/day_3/bg_wave_2.png" id="4_sgo1s"]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 16, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 16, 16, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 32, 16, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ycpnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wmtuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sgo1s")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[node name="BgDecorWave" instance=ExtResource( 1 )]
-frames = SubResource( 4 )
-frame = 2
+[node name="BgDecorWave" instance=ExtResource("1")]
+frames = SubResource("4")

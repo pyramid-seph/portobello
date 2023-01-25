@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4layxlfqxcpk"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Hive.gd" id="1_y5hvm"]
-[ext_resource type="PackedScene" uid="uid://ccqea1b3vs81u" path="res://scenes/day_03/level_01/enemies/HiveDrone.tscn" id="2_hohpq"]
+[ext_resource type="PackedScene" uid="uid://ctjsn0u6b60n6" path="res://scenes/day_03/level_01/enemies/HiveDrone.tscn" id="2_hohpq"]
 
 [node name="Hive" type="Node2D"]
 script = ExtResource("1_y5hvm")
