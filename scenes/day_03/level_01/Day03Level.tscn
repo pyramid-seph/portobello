@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7kn1ggk81xe1" path="res://scenes/day_03/level_01/backgrounds/Day03Bg.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/wave_system/Level0Waves.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://dysg0nj8lgs81" path="res://scenes/day_03/_shared/player/Player.tscn" id="2_7jo31"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/player/Player.tscn" id="2_7jo31"]
 [ext_resource type="PackedScene" uid="uid://c4layxlfqxcpk" path="res://scenes/day_03/level_01/enemies/Hive.tscn" id="2_wer3w"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/Day03Level.gd" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/wave_system/WaveManager.tscn" id="7_wctff"]

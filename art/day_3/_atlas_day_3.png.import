@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uisfobfu2fmd"
-path="res://.godot/imported/shield.png-263de85505ed26a14922dd5a628d23e7.ctex"
+uid="uid://bdvg23kj48vl0"
+path="res://.godot/imported/_atlas_day_3.png-9f843aea903a50e3f908ea5f4f2f5fed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_3/shield.png"
-dest_files=["res://.godot/imported/shield.png-263de85505ed26a14922dd5a628d23e7.ctex"]
+source_file="res://art/day_3/_atlas_day_3.png"
+dest_files=["res://.godot/imported/_atlas_day_3.png-9f843aea903a50e3f908ea5f4f2f5fed.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dysg0nj8lgs81"]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/Player.gd" id="1_4sjiv"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="2_detm5"]
 [ext_resource type="PackedScene" uid="uid://307m5mfkh6fg" path="res://scenes/day_03/_shared/objects/Fall.tscn" id="3_cd4lh"]
 [ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="4_ic4pr"]
-[ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/shield.png" id="5_ewt8i"]
+[ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/_atlas_day_3_shield.png" id="5_ewt8i"]
 [ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/player_0.png" id="6_gp5t4"]
 [ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/player_1.png" id="7_7qucd"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="7_73f8j"]
