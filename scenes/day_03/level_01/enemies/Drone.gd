@@ -50,8 +50,8 @@ var _velocity: Vector2 = _direction * speed
 @onready var viewport_size: Vector2 = get_viewport_rect().size
 @onready var viewport_width: float = viewport_size.x
 @onready var viewport_height: float = viewport_size.y
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sprite_width: float = animated_sprite.frames.get_frame_texture("default", 0).get_width()
+@onready var sprite := $Sprite2D as Sprite2D
+@onready var sprite_width: float = sprite.texture.get_width()
 @onready var min_pos_x: float = 0.0
 @onready var max_pos_x: float = viewport_width - sprite_width
 
@@ -90,7 +90,7 @@ func kill(killer: Node) -> void:
 
 func explode() -> void:
 	var new_explosion = explosion.instantiate()
-	new_explosion.centered = animated_sprite.centered
+	new_explosion.centered = sprite.centered
 	new_explosion.global_position = global_position
 	world.add_child(new_explosion)
 	queue_free()
