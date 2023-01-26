@@ -163,11 +163,6 @@ text = "¡Peligro!"
 [node name="Timer" type="Timer" parent="BossAlert"]
 one_shot = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("12")]
-process_mode = 3
-visible = false
-layout_mode = 1
-
 [node name="MainCourseLabelContainer" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1
@@ -218,6 +213,11 @@ text = "¡Pan comido!"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("17_2v547")
+
+[node name="PauseMenu" parent="." instance=ExtResource("12")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
 [connection signal="hi_score_changed" from="." to="HiScore" method="_on_Day3Ui_hi_score_changed"]
 [connection signal="level_state_changed" from="." to="Start" method="_on_Day3Ui_level_state_changed"]

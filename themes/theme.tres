@@ -5,5 +5,7 @@
 [resource]
 default_font = ExtResource("1_kwidn")
 default_font_size = 16
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+CheckBox/font_sizes/font_size = 16
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 16
