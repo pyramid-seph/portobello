@@ -25,14 +25,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_rpjji")
 theme_override_styles/panel = SubResource("StyleBoxFlat_hi4pj")
 script = ExtResource("1")
+show_auto_fire = true
 
 [node name="PauseDialog" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_rpjji")
 theme_override_styles/panel = SubResource("StyleBoxFlat_8m7mq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseDialog"]
@@ -47,23 +48,62 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="VibrateCheckbox" type="CheckButton" parent="PauseDialog/VBoxContainer"]
+[node name="VibrateCheckButton" type="CheckButton" parent="PauseDialog/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../GiveUpButton")
+focus_previous = NodePath("../GiveUpButton")
 text = "Vibrar"
 
-[node name="AutofireCheckbox" type="CheckButton" parent="PauseDialog/VBoxContainer"]
+[node name="AutofireCheckButton" type="CheckButton" parent="PauseDialog/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Autofuego"
 
-[node name="GiveUpLabel" type="Button" parent="PauseDialog/VBoxContainer"]
+[node name="GiveUpButton" type="Button" parent="PauseDialog/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../VibrateCheckButton")
+focus_next = NodePath("../VibrateCheckButton")
 text = "Rendirse"
 flat = true
 alignment = 0
 
-[connection signal="toggled" from="PauseDialog/VBoxContainer/VibrateCheckbox" to="PauseDialog" method="_on_vibrate_checkbox_toggled"]
-[connection signal="toggled" from="PauseDialog/VBoxContainer/AutofireCheckbox" to="PauseDialog" method="_on_autofire_checkbox_toggled"]
-[connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpLabel" to="PauseDialog" method="_on_give_up_label_pressed"]
+[node name="ConfirmExitLevelDialog" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8m7mq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmExitLevelDialog"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="ConfirmExitLevelDialog/VBoxContainer"]
+layout_mode = 2
+text = "Perderás tu progreso.
+¿Rendirse?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmExitLevelDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="NoButton" type="Button" parent="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No"
+flat = true
+
+[node name="YesButton" type="Button" parent="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sí"
+flat = true
+
+[connection signal="toggled" from="PauseDialog/VBoxContainer/VibrateCheckButton" to="." method="_on_vibrate_check_button_toggled"]
+[connection signal="toggled" from="PauseDialog/VBoxContainer/AutofireCheckButton" to="." method="_on_autofire_check_button_toggled"]
+[connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
+[connection signal="pressed" from="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
