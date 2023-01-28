@@ -1,62 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwqvrgqp2kstp"]
+[gd_scene load_steps=3 format=3 uid="uid://cwqvrgqp2kstp"]
 
-[ext_resource type="PackedScene" path="res://scenes/_shared/ui/Bar.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bd3t2gf6d155n" path="res://scenes/_shared/ui/Bar.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d16g60q03k2re" path="res://art/_shared/ui_counter_power.png" id="2"]
-
-[sub_resource type="Animation" id="2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:tint_progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="1"]
-resource_name = "max_power_up_reached"
-length = 0.24
-loop_mode = 1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:tint_progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.16),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 0.494118, 0.494118, 1), Color(1, 0, 0, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_156bm"]
-_data = {
-"RESET": SubResource("2"),
-"max_power_up_reached": SubResource("1")
-}
 
 [node name="PowerUpBar" instance=ExtResource("1")]
 
 [node name="ProgressBar" parent="." index="0"]
 custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 tint_progress = Color(1, 0, 0, 1)
 
 [node name="Icon" parent="." index="1"]
-layout_mode = 2
 texture = ExtResource("2")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_156bm")
-}
