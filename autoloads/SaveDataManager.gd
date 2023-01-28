@@ -56,7 +56,7 @@ func _ensure_file_exist() -> void:
 
 func _on_file_open_error() -> void:
 	var error = FileAccess.get_open_error()
-	var errorMsg := "Error while accesing save data: %s" % error
+	var errorMsg = "Error while accesing save data: %s" % error
 	error_while_saving.emit(errorMsg)
 
 

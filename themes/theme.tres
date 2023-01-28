@@ -1,13 +1,28 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bbe27g83qkw34"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bbe27g83qkw34"]
 
 [ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/Courier_Prime/CourierPrime-Regular.ttf" id="1_kwidn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7tcb"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.258824, 0.721569, 0.737255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
 
 [resource]
 default_font = ExtResource("1_kwidn")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
-CheckBox/colors/font_color = Color(0, 0, 0, 1)
-CheckBox/font_sizes/font_size = 16
 CheckButton/colors/font_color = Color(0, 0, 0, 1)
+CheckButton/colors/font_focus_color = Color(0, 0, 0, 1)
+CheckButton/colors/font_hover_color = Color(0, 0, 0, 1)
+CheckButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+CheckButton/colors/font_pressed_color = Color(0, 0, 0, 1)
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 16
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_p7tcb")

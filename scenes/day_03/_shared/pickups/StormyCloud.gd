@@ -11,7 +11,7 @@ const VELOCITY = SPEED * DIRECTION
 
 
 func _ready() -> void:
-	var frames_count = animated_sprite.frames.get_frame_count("default")
+	var frames_count = animated_sprite.sprite_frames.get_frame_count("default")
 	animated_sprite.frame = randi() % frames_count
 	animated_sprite.play()
 

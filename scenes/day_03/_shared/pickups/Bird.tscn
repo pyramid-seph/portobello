@@ -28,8 +28,10 @@ monitoring = false
 script = ExtResource("2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("3")
-playing = true
+sprite_frames = SubResource("3")
+autoplay = "default"
+frame = 1
+frame_progress = 0.224615
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

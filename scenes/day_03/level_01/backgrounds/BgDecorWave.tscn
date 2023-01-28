@@ -23,4 +23,5 @@ animations = [{
 }]
 
 [node name="BgDecorWave" instance=ExtResource("1")]
-frames = SubResource("4")
+sprite_frames = SubResource("4")
+autoplay = "default"

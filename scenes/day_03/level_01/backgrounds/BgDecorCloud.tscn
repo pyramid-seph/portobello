@@ -28,7 +28,7 @@ animations = [{
 }]
 
 [node name="BgDecorCloud" type="AnimatedSprite2D"]
-frames = SubResource("3")
-playing = true
+sprite_frames = SubResource("3")
+autoplay = "default"
 centered = false
 script = ExtResource("2")
