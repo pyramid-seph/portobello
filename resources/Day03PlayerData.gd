@@ -41,7 +41,7 @@ var stamina: int = MAX_STAMINA :
 		stamina = clampi(mod_value, 0, MAX_STAMINA)
 		emit_signal("stamina_updated")
 
-var power_up_count: int = MAX_POWER_UP :
+var power_up_count: int = 0 :
 	get:
 		return power_up_count
 	set(mod_value):

@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://omapikmtl4qq"]
+[gd_scene load_steps=20 format=3 uid="uid://wlkw3c1bf7uc"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Day3Ui.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
-[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="3_61hbj"]
+[ext_resource type="PackedScene" uid="uid://hea75xvs37ja" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
+[ext_resource type="Theme" path="res://themes/theme.tres" id="3_61hbj"]
 [ext_resource type="PackedScene" uid="uid://ci5d20jij6q7c" path="res://scenes/_shared/ui/TimeLeftBar.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cwqvrgqp2kstp" path="res://scenes/day_03/_shared/ui/PowerUpBar.tscn" id="5"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/LivesCounter.gd" id="6"]
@@ -11,10 +11,12 @@
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/HiScore.gd" id="9"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PowerUpBar.gd" id="10"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
-[ext_resource type="PackedScene" uid="uid://0i766k0lxqlc" path="res://scenes/_shared/ui/PauseMenu.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://ddmi5m0j002ea" path="res://scenes/_shared/ui/PauseMenu.tscn" id="12"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/GameOver.gd" id="13"]
+[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/courier_prime/CourierPrime-BoldItalic.ttf" id="13_baoxv"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Start.gd" id="14"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/BossAlert.gd" id="15_mlyv2"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="16_ha6bd"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/MainCourseLabelContainer.gd" id="16_ph4cm"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PiecoOfCakeLabel.gd" id="17_2v547"]
 
@@ -73,6 +75,8 @@ offset_left = -40.0
 offset_bottom = 14.0
 grow_horizontal = 0
 theme = ExtResource("3_61hbj")
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
 text = "10000"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -88,6 +92,8 @@ offset_right = 20.0
 offset_bottom = 14.0
 grow_horizontal = 2
 theme = ExtResource("3_61hbj")
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
 text = "Hi 100"
 vertical_alignment = 1
 script = ExtResource("9")
@@ -125,6 +131,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_61hbj")
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("13_baoxv")
+theme_override_font_sizes/font_size = 18
 text = "Game over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -158,6 +166,8 @@ offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_61hbj")
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
 text = "¡Peligro!"
 
 [node name="Timer" type="Timer" parent="BossAlert"]
@@ -184,12 +194,16 @@ label_2_font_color_out = Color(0.345098, 0.345098, 0.345098, 1)
 [node name="Label" type="Label" parent="MainCourseLabelContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
 text = "Plato fuerte"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="MainCourseLabelContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
 text = "¡Buen provecho!"
 horizontal_alignment = 1
 
@@ -209,6 +223,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_61hbj")
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("13_baoxv")
+theme_override_font_sizes/font_size = 18
 text = "¡Pan comido!"
 horizontal_alignment = 1
 vertical_alignment = 1
