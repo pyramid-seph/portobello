@@ -17,8 +17,8 @@
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Start.gd" id="14"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/BossAlert.gd" id="15_mlyv2"]
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="16_ha6bd"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/MainCourseLabelContainer.gd" id="16_ph4cm"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PiecoOfCakeLabel.gd" id="17_2v547"]
+[ext_resource type="PackedScene" uid="uid://dse6x5xc6acq6" path="res://scenes/_shared/ui/TwoLineTimedLabel.tscn" id="17_q8r8e"]
 
 [node name="Day3Ui" type="Control"]
 layout_mode = 3
@@ -173,39 +173,17 @@ text = "¡Peligro!"
 [node name="Timer" type="Timer" parent="BossAlert"]
 one_shot = true
 
-[node name="MainCourseLabelContainer" type="VBoxContainer" parent="."]
+[node name="MainCourseLabel" parent="." instance=ExtResource("17_q8r8e")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -28.0
-offset_right = 63.0
-offset_bottom = 28.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_61hbj")
-script = ExtResource("16_ph4cm")
-label_2_font_color_out = Color(0.345098, 0.345098, 0.345098, 1)
-
-[node name="Label" type="Label" parent="MainCourseLabelContainer"]
-layout_mode = 2
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("16_ha6bd")
-theme_override_font_sizes/font_size = 16
-text = "Plato fuerte"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MainCourseLabelContainer"]
-layout_mode = 2
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("16_ha6bd")
-theme_override_font_sizes/font_size = 16
-text = "¡Buen provecho!"
-horizontal_alignment = 1
+offset_left = -72.0
+offset_top = -20.5
+offset_right = 72.0
+offset_bottom = 20.5
+text_1 = "Plato fuerte"
+text_2 = "¡Buen provecho!"
+label_font_color = Color(0, 0, 0, 1)
+label_font_color_out = Color(0.345098, 0.345098, 0.345098, 1)
 
 [node name="PiecoOfCakeLabel" type="Label" parent="."]
 visible = false

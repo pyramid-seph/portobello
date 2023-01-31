@@ -12,7 +12,7 @@ signal boss_alert_finished
 @export var player_data: Day03PlayerData
 
 @onready var _boss_alert := $BossAlert
-@onready var _main_course := $MainCourseLabelContainer
+@onready var _main_course_label := $MainCourseLabel
 
 
 func _ready() -> void:
@@ -61,7 +61,7 @@ func _on_day_03_level_waves_completed() -> void:
 
 
 func _on_boss_alert_finished():
-	_main_course.visible = true
-	_main_course.start(4.32)
+	_main_course_label.visible = true
+	_main_course_label.start()
 	boss_alert_finished.emit()
 	
