@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/wave_system/WaveManager.tscn" id="7_wctff"]
 [ext_resource type="PackedScene" path="res://_working_on/StaminaSpawner.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://_working_on/PowerUpSpawner.tscn" id="9"]
-[ext_resource type="PackedScene" uid="uid://omapikmtl4qq" path="res://scenes/day_03/_shared/ui/Day3Ui.tscn" id="10_inxwm"]
+[ext_resource type="PackedScene" uid="uid://wlkw3c1bf7uc" path="res://scenes/day_03/_shared/ui/Day3Ui.tscn" id="10_inxwm"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/DroneShootManager.gd" id="12"]
 

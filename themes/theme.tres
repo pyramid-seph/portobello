@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://y72soc2heqau"]
 
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="1_5gwpy"]
 [ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/courier_prime/CourierPrime-Regular.ttf" id="1_kwidn"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://wlkw3c1bf7uc"]
+[gd_scene load_steps=19 format=3 uid="uid://wlkw3c1bf7uc"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Day3Ui.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://hea75xvs37ja" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
-[ext_resource type="Theme" path="res://themes/theme.tres" id="3_61hbj"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_61hbj"]
 [ext_resource type="PackedScene" uid="uid://ci5d20jij6q7c" path="res://scenes/_shared/ui/TimeLeftBar.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cwqvrgqp2kstp" path="res://scenes/day_03/_shared/ui/PowerUpBar.tscn" id="5"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/LivesCounter.gd" id="6"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://ddmi5m0j002ea" path="res://scenes/_shared/ui/PauseMenu.tscn" id="12"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/GameOver.gd" id="13"]
 [ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/courier_prime/CourierPrime-BoldItalic.ttf" id="13_baoxv"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Start.gd" id="14"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/BossAlert.gd" id="15_mlyv2"]
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="16_ha6bd"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PiecoOfCakeLabel.gd" id="17_2v547"]
@@ -98,24 +97,15 @@ text = "Hi 100"
 vertical_alignment = 1
 script = ExtResource("9")
 
-[node name="Start" type="Label" parent="."]
-visible = false
+[node name="StartLabels" parent="." instance=ExtResource("17_q8r8e")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = 135.5
-offset_right = -56.0
-offset_bottom = -135.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_61hbj")
-text = "Buffet
-¡Buen Provecho!"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("14")
+text_1 = "Buffet"
+text_2 = "¡Buen provecho!"
+label_font_color = Color(0.945098, 0.188235, 0.188235, 1)
+label_font_color_out = Color(0.956863, 0.282353, 0.156863, 1)
+duration_sec = 1.6
+label_2_visibility_delay_sec = 0.8
+label_2_fade_out_delay_sec = 0.56
 
 [node name="GameOver" type="Label" parent="."]
 visible = false
@@ -138,6 +128,37 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 script = ExtResource("13")
+
+[node name="MainCourseLabels" parent="." instance=ExtResource("17_q8r8e")]
+layout_mode = 1
+text_1 = "Plato fuerte"
+text_2 = "¡Buen provecho!"
+label_font_color = Color(0, 0, 0, 1)
+label_font_color_out = Color(0.345098, 0.345098, 0.345098, 1)
+preview_labels = false
+
+[node name="PiecoOfCakeLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -12.5
+offset_right = 65.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_61hbj")
+theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("13_baoxv")
+theme_override_font_sizes/font_size = 18
+text = "¡Pan comido!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("17_2v547")
 
 [node name="BossAlert" type="ColorRect" parent="."]
 visible = false
@@ -173,48 +194,12 @@ text = "¡Peligro!"
 [node name="Timer" type="Timer" parent="BossAlert"]
 one_shot = true
 
-[node name="MainCourseLabel" parent="." instance=ExtResource("17_q8r8e")]
-visible = false
-layout_mode = 1
-offset_left = -72.0
-offset_top = -20.5
-offset_right = 72.0
-offset_bottom = 20.5
-text_1 = "Plato fuerte"
-text_2 = "¡Buen provecho!"
-label_font_color = Color(0, 0, 0, 1)
-label_font_color_out = Color(0.345098, 0.345098, 0.345098, 1)
-
-[node name="PiecoOfCakeLabel" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_61hbj")
-theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-theme_override_fonts/font = ExtResource("13_baoxv")
-theme_override_font_sizes/font_size = 18
-text = "¡Pan comido!"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("17_2v547")
-
 [node name="PauseMenu" parent="." instance=ExtResource("12")]
 process_mode = 3
 visible = false
 layout_mode = 1
 
 [connection signal="hi_score_changed" from="." to="HiScore" method="_on_Day3Ui_hi_score_changed"]
-[connection signal="level_state_changed" from="." to="Start" method="_on_Day3Ui_level_state_changed"]
 [connection signal="level_state_changed" from="." to="GameOver" method="_on_Day3Ui_level_state_changed"]
 [connection signal="level_state_changed" from="." to="PiecoOfCakeLabel" method="_on_day_3_ui_level_state_changed"]
 [connection signal="lives_left_changed" from="." to="LivesCounter" method="_on_Day3Ui_lives_left_changed"]

@@ -12,7 +12,8 @@ signal boss_alert_finished
 @export var player_data: Day03PlayerData
 
 @onready var _boss_alert := $BossAlert
-@onready var _main_course_label := $MainCourseLabel
+@onready var _start_labels := $StartLabels
+@onready var _main_course_label := $MainCourseLabels
 
 
 func _ready() -> void:
@@ -26,6 +27,10 @@ func _ready() -> void:
 	_on_player_data_hi_score_updated()
 	_on_player_data_remaining_lives_updated()
 	_on_player_data_power_up_count_updated()
+
+
+func _start_game_presentation() -> void:
+	_start_labels.start()
 
 
 func _on_player_data_score_updated() -> void:
@@ -53,6 +58,8 @@ func _on_day_03_level_pause_state_changed(new_state: bool) -> void:
 
 
 func _on_day_03_level_level_state_changed(new_state: int) -> void:
+	if new_state == Day03Level.LevelState.STARTING:
+		_start_game_presentation()
 	level_state_changed.emit(new_state)
 
 
