@@ -2,101 +2,108 @@
 extends Control
 
 
+const TIME_BETWEEN_FADES: float = Utils.FRAME_TIME
+
 @export var text_1: String = "Hi":
 	set(value):
 		text_1 = value
 		if Engine.is_editor_hint():
-			_set_label_text_1()
+			_set_label_1_text()
 	get:
 		return text_1
 @export var text_2: String = "World!":
 	set(value):
 		text_2 = value
 		if Engine.is_editor_hint():
-			_set_label_text_2()
+			_set_label_2_text()
 	get:
 		return text_2
-@export_color_no_alpha var label_font_color = Color.MAGENTA:
+@export_color_no_alpha var font_color_normal: Color = Color.MAGENTA:
 	set(value):
-		label_font_color = value
+		font_color_normal = value
 		if Engine.is_editor_hint():
-			_change_label_1_color(label_font_color)
+			_change_label_1_color(font_color_normal)
+			_change_label_2_color(font_color_normal)
 	get:
-		return label_font_color
-@export_color_no_alpha var label_font_color_out = Color("ff7fff")
+		return font_color_normal
+@export_color_no_alpha var font_color_fade_1: Color = Color.MAGENTA
+@export_color_no_alpha var font_color_fade_2: Color = Color.MAGENTA
+@export_color_no_alpha var font_color_fade_3: Color = Color.MAGENTA
 @export var duration_sec: float = 4.32
-@export var label_2_visibility_delay_sec: float = 1.6
-@export var label_2_fade_out_delay_sec: float = 1.36
+@export var label_2_visible_delay_sec: float = 1.60
 @export var preview_labels: bool = true:
 	set(value):
 		preview_labels = value
 		if Engine.is_editor_hint():
-			if label_1: label_1.visible = preview_labels
-			if label_2: label_2.visible = preview_labels
+			_change_labels_visible(preview_labels)
 	get:
 		return preview_labels
 
 var _tween: Tween
 
-@onready var label_1 := $Labels/Label as Label
-@onready var label_2 := $Labels/Label2 as Label
+@onready var _labels = $Labels
+@onready var _label_1 := $Labels/Label as Label
+@onready var _label_2 := $Labels/Label2 as Label
 
 
 func _ready() -> void:
-	_set_label_text_1()
-	_set_label_text_2()
-	_change_label_1_color(label_font_color)
-	_change_label_2_color(label_font_color)
+	_set_label_1_text()
+	_set_label_2_text()
+	_change_label_1_color(font_color_normal)
+	_change_label_2_color(font_color_normal)
 	
 	if Engine.is_editor_hint():
-		label_1.visible = preview_labels
-		label_2.visible = preview_labels
+		_change_labels_visible(preview_labels)
 	else:
-		label_1.visible = false
-		label_2.visible = false
+		_change_labels_visible(false)
 
 
 func start() -> void:
-	label_1.visible = true
-	label_2.visible = false
-	_set_label_text_1()
-	_set_label_text_2()
-	_change_label_1_color(label_font_color)
-	_change_label_2_color(label_font_color)
-	var finish_delay_sec = label_2_visibility_delay_sec - label_2_fade_out_delay_sec
+	_labels.visible = true
+	_set_label_1_text()
+	_set_label_2_text()
+	_change_label_1_color(font_color_normal)
+	_change_label_2_color(Color.TRANSPARENT)
 	
 	if _tween: _tween.kill()
 	_tween = create_tween()
-	_tween.tween_callback(func(): 
-		label_2.visible = true
-	).set_delay(duration_sec - label_2_visibility_delay_sec)
 	_tween.tween_callback(
-		_change_label_2_color.bind(label_font_color_out)
-	).set_delay(label_2_fade_out_delay_sec)
+		_change_label_2_color.bind(font_color_normal)
+	).set_delay(label_2_visible_delay_sec)
+	_tween.tween_interval(duration_sec - label_2_visible_delay_sec - 3 * TIME_BETWEEN_FADES)
+	_tween.tween_callback(_change_label_2_color.bind(font_color_fade_1))
+	_tween.tween_interval(TIME_BETWEEN_FADES)
+	_tween.tween_callback(_change_label_2_color.bind(font_color_fade_2))
+	_tween.tween_interval(TIME_BETWEEN_FADES)
+	_tween.tween_callback(_change_label_2_color.bind(font_color_fade_3))
+	_tween.tween_interval(TIME_BETWEEN_FADES)
 	_tween.tween_callback(func(): 
-		label_1.visible = false
-		label_2.visible = false
+		_change_labels_visible(false)
 		_tween = null
-	).set_delay(finish_delay_sec)
+	)
 
 
-func _set_label_text_1() -> void:
-	if not label_1: return
-	label_1.text = text_1
+func _set_label_1_text() -> void:
+	if _label_1: _label_1.text = text_1
 
 
-func _set_label_text_2() -> void:
-	if not label_2: return
-	label_2.text = text_2
+func _set_label_2_text() -> void:
+	if _label_2: _label_2.text = text_2
+
+
+func _change_labels_visible(value: bool) -> void:
+	if _labels: _labels.visible = value
+
+
+func _change_label_color(label: Label, color: Color) -> void:
+	if not label: return
+	label.remove_theme_color_override("font_color")
+	label.add_theme_color_override("font_color", color)
 
 
 func _change_label_1_color(color: Color) -> void:
-	if not label_1: return
-	label_1.remove_theme_color_override("font_color")
-	label_1.add_theme_color_override("font_color", color)
+	_change_label_color(_label_1, color)
 
 
 func _change_label_2_color(color: Color) -> void:
-	if not label_2: return
-	label_2.remove_theme_color_override("font_color")
-	label_2.add_theme_color_override("font_color", color)
+	_change_label_color(_label_2, color)
