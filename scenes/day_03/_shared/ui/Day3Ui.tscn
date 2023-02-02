@@ -28,6 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("3_61hbj")
 script = ExtResource("1")
 player_data = ExtResource("11")
 
@@ -102,10 +103,17 @@ layout_mode = 1
 text_1 = "Buffet"
 text_2 = "¡Buen provecho!"
 font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
-font_color_fade_1 = Color(0.956863, 0.282353, 0.156863, 1)
-font_color_fade_3 = Color(0.94902, 0.505882, 0.505882, 1)
+font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
 duration_sec = 1.6
 label_2_visible_delay_sec = 0.8
+
+[node name="MainCourseLabels" parent="." instance=ExtResource("17_q8r8e")]
+layout_mode = 1
+text_1 = "Plato fuerte"
+text_2 = "¡Buen provecho!"
+font_color_normal = Color(0, 0, 0, 1)
+font_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
+preview_labels = false
 
 [node name="GameOver" type="Label" parent="."]
 visible = false
@@ -128,15 +136,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 script = ExtResource("13")
-
-[node name="MainCourseLabels" parent="." instance=ExtResource("17_q8r8e")]
-layout_mode = 1
-text_1 = "Plato fuerte"
-text_2 = "¡Buen provecho!"
-font_color_normal = Color(0, 0, 0, 1)
-font_color_fade_1 = Color(0, 0, 0, 1)
-font_color_fade_3 = Color(0.345098, 0.345098, 0.345098, 1)
-preview_labels = false
 
 [node name="PiecoOfCakeLabel" type="Label" parent="."]
 visible = false

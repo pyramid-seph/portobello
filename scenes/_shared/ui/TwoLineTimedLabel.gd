@@ -2,7 +2,7 @@
 extends Control
 
 
-const TIME_BETWEEN_FADES: float = Utils.FRAME_TIME
+const FADE_OUT_DURATION_SEC: float = 3 * Utils.FRAME_TIME
 
 @export var text_1: String = "Hi":
 	set(value):
@@ -26,8 +26,7 @@ const TIME_BETWEEN_FADES: float = Utils.FRAME_TIME
 			_change_label_2_color(font_color_normal)
 	get:
 		return font_color_normal
-@export_color_no_alpha var font_color_fade_1: Color = Color.MAGENTA
-@export_color_no_alpha var font_color_fade_3: Color = Color.MAGENTA
+@export_color_no_alpha var font_color_fade: Color = Color.MAGENTA
 @export var duration_sec: float = 4.32
 @export var label_2_visible_delay_sec: float = 1.60
 @export var preview_labels: bool = true:
@@ -58,7 +57,7 @@ func _ready() -> void:
 
 
 func start() -> void:
-	_labels.visible = true
+	_change_labels_visible(true)
 	_set_label_1_text()
 	_set_label_2_text()
 	_change_label_1_color(font_color_normal)
@@ -66,15 +65,14 @@ func start() -> void:
 	
 	if _tween: _tween.kill()
 	_tween = create_tween()
-	_tween.tween_callback(
-		_change_label_2_color.bind(font_color_normal)
-	).set_delay(label_2_visible_delay_sec)
-	_tween.tween_interval(duration_sec - label_2_visible_delay_sec - 3 * TIME_BETWEEN_FADES)
+	_tween.tween_interval(label_2_visible_delay_sec)
+	_tween.tween_callback(_change_label_2_color.bind(font_color_normal))
+	_tween.tween_interval(duration_sec - label_2_visible_delay_sec - FADE_OUT_DURATION_SEC)
 	_tween.tween_method(
 		_change_label_2_color,
-		font_color_fade_1,
-		font_color_fade_3,
-		3 * TIME_BETWEEN_FADES
+		font_color_normal,
+		font_color_fade,
+		FADE_OUT_DURATION_SEC
 	).set_trans(Tween.TRANS_LINEAR)
 	_tween.tween_callback(func(): 
 		_change_labels_visible(false)
