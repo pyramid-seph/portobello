@@ -27,7 +27,6 @@ const TIME_BETWEEN_FADES: float = Utils.FRAME_TIME
 	get:
 		return font_color_normal
 @export_color_no_alpha var font_color_fade_1: Color = Color.MAGENTA
-@export_color_no_alpha var font_color_fade_2: Color = Color.MAGENTA
 @export_color_no_alpha var font_color_fade_3: Color = Color.MAGENTA
 @export var duration_sec: float = 4.32
 @export var label_2_visible_delay_sec: float = 1.60
@@ -71,12 +70,12 @@ func start() -> void:
 		_change_label_2_color.bind(font_color_normal)
 	).set_delay(label_2_visible_delay_sec)
 	_tween.tween_interval(duration_sec - label_2_visible_delay_sec - 3 * TIME_BETWEEN_FADES)
-	_tween.tween_callback(_change_label_2_color.bind(font_color_fade_1))
-	_tween.tween_interval(TIME_BETWEEN_FADES)
-	_tween.tween_callback(_change_label_2_color.bind(font_color_fade_2))
-	_tween.tween_interval(TIME_BETWEEN_FADES)
-	_tween.tween_callback(_change_label_2_color.bind(font_color_fade_3))
-	_tween.tween_interval(TIME_BETWEEN_FADES)
+	_tween.tween_method(
+		_change_label_2_color,
+		font_color_fade_1,
+		font_color_fade_3,
+		3 * TIME_BETWEEN_FADES
+	).set_trans(Tween.TRANS_LINEAR)
 	_tween.tween_callback(func(): 
 		_change_labels_visible(false)
 		_tween = null
