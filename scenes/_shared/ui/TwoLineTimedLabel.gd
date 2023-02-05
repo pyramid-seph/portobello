@@ -92,15 +92,9 @@ func _change_labels_visible(value: bool) -> void:
 	if _labels: _labels.visible = value
 
 
-func _change_label_color(label: Label, color: Color) -> void:
-	if not label: return
-	label.remove_theme_color_override("font_color")
-	label.add_theme_color_override("font_color", color)
-
-
 func _change_label_1_color(color: Color) -> void:
-	_change_label_color(_label_1, color)
+	Utils.change_label_color(_label_1, color)
 
 
 func _change_label_2_color(color: Color) -> void:
-	_change_label_color(_label_2, color)
+	Utils.change_label_color(_label_2, color)

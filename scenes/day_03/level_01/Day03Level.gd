@@ -8,6 +8,7 @@ signal waves_completed
 const START_DURATION: float = 1.6
 const TIME_BETWEEN_REVIVALS: float = 1.2
 const GAME_OVER_DURATION: float = 3.2
+const RESULTS_SCREEN_DELAY: float = 10.45
 
 @export var boss_scene: PackedScene
 @export var player_scene: PackedScene
@@ -23,6 +24,7 @@ var _boss: Node2D
 @onready var stamina_spawner := $StaminaSpawner
 @onready var power_up_spawner := $PowerUpSpawner
 @onready var scene_tree = get_tree()
+@onready var results_screen = $ResultsScreenBuffet
 
 
 enum LevelState { STARTING, PLAYING, GAME_OVER, LEVEL_COMPLETE }
@@ -120,9 +122,14 @@ func _on_boss_dead() -> void:
 	power_up_spawner.disable()
 	_player.stop_stamina_lose(true)
 	level_state = LevelState.LEVEL_COMPLETE
-	get_tree().create_timer(5.0, false).timeout.connect(func():
-		# start score sequence
-		pass
+	get_tree().create_timer(RESULTS_SCREEN_DELAY, false).timeout.connect(func():
+		# TODO Destroy or disable the current world, game systems and interface.
+		_player.is_input_enabled = false
+		var total_score = results_screen.start(player_data.lives, player_data.score)
+		# TODO high scores are stored for different levels and modes.
+		if total_score > SaveDataManager.save_data.high_scores.buff_three_a:
+			SaveDataManager.save_data.high_scores.buff_three_a = total_score
+			SaveDataManager.save()
 	)
 
 
@@ -143,3 +150,10 @@ func _on_day_3_ui_boss_alert_finished() -> void:
 		_player.is_input_enabled = true
 		_boss.start()
 	)
+
+
+func _on_results_screen_buffet_results_presented() -> void:
+	# show level complete screen. On story mode add as much lives as awarded on this level
+	# On buffet mode, load the title screen
+	# On story mode, load the next level
+	pass

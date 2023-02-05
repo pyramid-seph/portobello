@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://x7621e6njmsk"]
+[gd_scene load_steps=13 format=3 uid="uid://x7621e6njmsk"]
 
 [ext_resource type="PackedScene" uid="uid://c7kn1ggk81xe1" path="res://scenes/day_03/level_01/backgrounds/Day03Bg.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/wave_system/Level0Waves.gd" id="2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://wlkw3c1bf7uc" path="res://scenes/day_03/_shared/ui/Day3Ui.tscn" id="10_inxwm"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/DroneShootManager.gd" id="12"]
+[ext_resource type="PackedScene" uid="uid://b5d01sbijtn2d" path="res://scenes/_shared/ui/ResultsScreen.tscn" id="12_gnrla"]
 
 [node name="Day03Level" type="Node"]
 process_mode = 3
@@ -50,6 +51,9 @@ process_mode = 1
 
 [node name="Day3Ui" parent="Interface" instance=ExtResource("10_inxwm")]
 
+[node name="ResultsScreenBuffet" parent="." instance=ExtResource("12_gnrla")]
+preview = false
+
 [connection signal="level_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_level_state_changed"]
 [connection signal="pause_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_pause_state_changed"]
 [connection signal="waves_completed" from="." to="Interface/Day3Ui" method="_on_day_03_level_waves_completed"]
@@ -61,3 +65,4 @@ process_mode = 1
 [connection signal="wave_started" from="WaveManager" to="." method="_on_wave_manager_wave_started"]
 [connection signal="wave_started" from="WaveManager" to="DroneShootManager" method="_on_wave_manager_wave_started"]
 [connection signal="boss_alert_finished" from="Interface/Day3Ui" to="." method="_on_day_3_ui_boss_alert_finished"]
+[connection signal="results_presented" from="ResultsScreenBuffet" to="." method="_on_results_screen_buffet_results_presented"]

@@ -60,3 +60,8 @@ func vibrate_joy(
 ) -> void:
 	if SaveDataManager.save_data.is_vibration_enabled:
 		Input.start_joy_vibration(device, weak_magnitude, strong_magnitude, duration)
+
+func change_label_color(label: Label, color: Color) -> void:
+	if not label: return
+	label.remove_theme_color_override("font_color")
+	label.add_theme_color_override("font_color", color)
