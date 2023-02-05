@@ -1,34 +1,17 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://drt2fo403br8e"]
 
 [ext_resource type="Texture2D" uid="uid://d16g60q03k2re" path="res://art/_shared/ui_counter_power.png" id="1"]
-[ext_resource type="Theme" uid="uid://bbe27g83qkw34" path="res://themes/theme.tres" id="2"]
-
-[sub_resource type="FontFile" id=1]
-
-[sub_resource type="FontFile" id=2]
-font_data = SubResource( 1 )
-
-[sub_resource type="Theme" id=3]
-default_font = SubResource( 2 )
 
 [node name="Counter" type="HBoxContainer"]
 offset_right = 24.0
 offset_bottom = 19.0
-theme = SubResource( 3 )
 
 [node name="Icon" type="TextureRect" parent="."]
-offset_right = 10.0
-offset_bottom = 19.0
-theme = ExtResource( 2 )
-texture = ExtResource( 1 )
+layout_mode = 2
+texture = ExtResource("1")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="."]
-offset_left = 14.0
-offset_right = 30.0
-offset_bottom = 19.0
-minimum_size = Vector2( 10, 0 )
-theme = ExtResource( 2 )
+layout_mode = 2
 text = "99"
-valign = 1
 max_lines_visible = 1

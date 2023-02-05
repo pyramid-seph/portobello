@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://wlkw3c1bf7uc"]
+[gd_scene load_steps=22 format=3 uid="uid://wlkw3c1bf7uc"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/Day3Ui.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://hea75xvs37ja" path="res://scenes/_shared/ui/LivesCounter.tscn" id="2"]
@@ -18,6 +18,32 @@
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="16_ha6bd"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/PiecoOfCakeLabel.gd" id="17_2v547"]
 [ext_resource type="PackedScene" uid="uid://dse6x5xc6acq6" path="res://scenes/_shared/ui/TwoLineTimedLabel.tscn" id="17_q8r8e"]
+
+[sub_resource type="FontFile" id="1"]
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([SubResource("1")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="3"]
+default_font = SubResource("2")
 
 [node name="Day3Ui" type="Control"]
 layout_mode = 3
@@ -45,10 +71,12 @@ layout_mode = 2
 [node name="StaminaBar" parent="BarsMargin/Bars" instance=ExtResource("4")]
 layout_mode = 2
 size_flags_horizontal = 1
+theme = ExtResource("3_61hbj")
 script = ExtResource("8")
 
 [node name="PowerUpBar" parent="BarsMargin/Bars" instance=ExtResource("5")]
 layout_mode = 2
+theme = ExtResource("3_61hbj")
 script = ExtResource("10")
 
 [node name="LivesCounter" parent="." instance=ExtResource("2")]
@@ -64,6 +92,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = SubResource("3")
 script = ExtResource("6")
 
 [node name="Score" type="Label" parent="."]
