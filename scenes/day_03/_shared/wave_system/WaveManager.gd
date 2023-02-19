@@ -44,7 +44,7 @@ func start(world: Node2D) -> void:
 				await scene_tree.create_timer(Utils.FRAME_TIME, false).timeout
 				continue
 			
-			var new_enemy = _waves_descriptor._get_enemy_scene().instantiate()
+			var new_enemy = wave.enemy_scene.instantiate()
 			var initial_move_state: InitialMoveState = wave.get_initial_move_state_func.call(screen_size)
 			new_enemy.global_position = initial_move_state.position
 			new_enemy.movement_pattern = initial_move_state.movement_pattern

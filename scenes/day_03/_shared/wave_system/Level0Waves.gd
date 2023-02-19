@@ -5,8 +5,7 @@ class_name Level0Waves
 var _waves: Array[Wave] = []
 
 
-func _get_enemy_scene() -> PackedScene:
-	return preload("res://scenes/day_03/level_01/enemies/Drone.tscn")
+var drone_scene = preload("res://scenes/day_03/level_01/enemies/Drone.tscn")
 
 
 func _get_waves() -> Array[Wave]:
@@ -14,7 +13,7 @@ func _get_waves() -> Array[Wave]:
 		return _waves
 	
 	_waves = [
-		_create_wave(10, 0.4, 5, init_movement_00),
+		_create_wave(10, 0.4, 5, init_movement_00, drone_scene),
 #		_create_wave(50, 0.4, 0.4, init_movement_00),
 #		_create_wave(50, 0.8, 0.4, init_movement_01),
 #		_create_wave(25, 0.8, 0.4, init_movement_02),
