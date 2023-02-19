@@ -7,6 +7,10 @@ var _tween: Tween
 @onready var progress_bar := $ProgressBar as TextureProgressBar
 
 
+func _ready() -> void:
+	progress_bar.set_tint_progress(NORMAL_COLOR)
+
+
 func _set_progress_color(color: Color) -> void:
 	progress_bar.set_tint_progress(color)
 

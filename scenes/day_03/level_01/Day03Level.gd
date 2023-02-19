@@ -125,7 +125,12 @@ func _on_boss_dead() -> void:
 	get_tree().create_timer(RESULTS_SCREEN_DELAY, false).timeout.connect(func():
 		# TODO Destroy or disable the current world, game systems and interface.
 		_player.is_input_enabled = false
-		var total_score = results_screen.start(player_data.lives, player_data.score)
+		results_screen.is_last_level = true # TODO
+		var total_score = results_screen.start(
+			player_data.lives, 
+			player_data.score,
+			SaveDataManager.save_data.high_scores.buff_three_a
+		)
 		# TODO high scores are stored for different levels and modes.
 		if total_score > SaveDataManager.save_data.high_scores.buff_three_a:
 			SaveDataManager.save_data.high_scores.buff_three_a = total_score
@@ -152,7 +157,7 @@ func _on_day_3_ui_boss_alert_finished() -> void:
 	)
 
 
-func _on_results_screen_buffet_results_presented() -> void:
+func _on_results_screen_buffet_results_presented(total_score: int) -> void:
 	# show level complete screen. On story mode add as much lives as awarded on this level
 	# On buffet mode, load the title screen
 	# On story mode, load the next level
