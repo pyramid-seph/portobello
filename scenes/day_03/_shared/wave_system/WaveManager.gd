@@ -50,10 +50,12 @@ func start(world: Node2D) -> void:
 			new_enemy.movement_pattern = initial_move_state.movement_pattern
 			new_enemy.tree_exited.connect(_on_Enemy_tree_exited)
 			
+			
 			world.add_child(new_enemy)
 			
 			_enemies_on_screen += 1
 			_spawned_enemies_count += 1
+			new_enemy.label.text = str(_spawned_enemies_count)# TODO DELETE
 			
 			await scene_tree.create_timer(wave.time_between_spawns, false).timeout
 		

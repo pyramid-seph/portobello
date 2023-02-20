@@ -55,6 +55,7 @@ var _velocity: Vector2 = _direction * speed
 @onready var min_pos_x: float = 0.0
 @onready var max_pos_x: float = viewport_width - sprite_width
 @onready var _is_ready: bool = true
+@onready var label := $Label as Label
 
 
 func _ready() -> void:
