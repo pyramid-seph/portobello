@@ -13,6 +13,7 @@ const RESULTS_SCREEN_DELAY: float = 10.45
 @export var boss_scene: PackedScene
 @export var player_scene: PackedScene
 @export var player_data: Day03PlayerData
+@export var player_invincible: bool = false
 
 var _player: Node2D
 var _boss: Node2D
@@ -68,6 +69,7 @@ func _instantiate_player() -> Node:
 	new_player.position = player_start_position
 	new_player.died.connect(_on_Player_died)
 	new_player.mega_gun_shot.connect(world_background._on_mega_gun_shot)
+	new_player.debug_invincible = player_invincible
 	world.add_child(new_player)
 	return new_player
 

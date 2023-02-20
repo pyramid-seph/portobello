@@ -9,6 +9,7 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 @export var player_data: Day03PlayerData
 @export var fall: PackedScene
 @export var explosion: PackedScene
+@export var debug_invincible: bool = false
 
 var _is_dead: bool = false
 var is_input_enabled: bool = true:
@@ -168,7 +169,7 @@ func _move(velocity: Vector2, delta: float) -> void:
 
 
 func _on_HurtBox_hurt(who: Area2D) -> void:
-	if _is_dead: return
+	if _is_dead or debug_invincible: return
 	if who.is_in_group("bullets"): 
 		who.queue_free() # WORKAROUND See _on_area_entered FIXME in Bullet.gd
 	if who.has_method("explode"):
@@ -183,7 +184,7 @@ func _on_Player_area_entered(area: Area2D) -> void:
 
 
 func _on_StaminaDepletionTimer_timeout() -> void:
-	if _is_dead: return
+	if _is_dead or debug_invincible: return
 	player_data.stamina -= STAMINA_POINTS_DEPLETED_PER_TICK
 	if player_data.stamina == 0:
 		plummet()

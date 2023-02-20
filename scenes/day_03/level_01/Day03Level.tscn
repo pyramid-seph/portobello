@@ -19,6 +19,7 @@ script = ExtResource("5")
 boss_scene = ExtResource("2_wer3w")
 player_scene = ExtResource("2_7jo31")
 player_data = ExtResource("11")
+player_invincible = true
 
 [node name="DroneShootManager" type="Node" parent="."]
 process_mode = 1

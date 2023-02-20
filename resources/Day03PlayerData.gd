@@ -16,6 +16,7 @@ var score: int = 0 :
 		return score
 	set(mod_value):
 		score = mod_value
+		emit_signal("score_updated")
 
 var hi_score: int = 0 :
 	get:

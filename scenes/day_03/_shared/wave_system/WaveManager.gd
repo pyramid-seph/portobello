@@ -63,7 +63,7 @@ func start(world: Node2D) -> void:
 		await scene_tree.create_timer(wave.time_between_waves, false).timeout
 		
 		wave_completed.emit(wave_index)
-	
+		
 	if not _is_canceled:
 		all_waves_completed.emit()
 
@@ -71,9 +71,7 @@ func start(world: Node2D) -> void:
 func cancel_wave() -> void:
 	_is_canceled = true
 
-
 func _on_Enemy_tree_exited() -> void:
 	if _is_canceled:
 		return
-	
 	_enemies_on_screen = maxi(_enemies_on_screen - 1, 0)

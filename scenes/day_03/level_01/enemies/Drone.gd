@@ -54,6 +54,7 @@ var _velocity: Vector2 = _direction * speed
 @onready var sprite_width: float = sprite.texture.get_width()
 @onready var min_pos_x: float = 0.0
 @onready var max_pos_x: float = viewport_width - sprite_width
+@onready var _is_ready: bool = true
 
 
 func _ready() -> void:
@@ -97,8 +98,7 @@ func explode() -> void:
 
 
 func _correct_initial_pos_x() -> void:
-	if not min_pos_x or not max_pos_x:
-		return
+	if not _is_ready: return
 	
 	match (movement_pattern):
 		MovementPattern.SQUARE_UP, MovementPattern.SQUARE_DOWN:
@@ -106,7 +106,6 @@ func _correct_initial_pos_x() -> void:
 				_direction = Vector2.LEFT
 			if position.x <= min_pos_x:
 				_direction = Vector2.RIGHT
-	
 	position.x = clamp(position.x, min_pos_x, max_pos_x)
 
 
