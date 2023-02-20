@@ -38,7 +38,7 @@ cooldown = 0.8
 ignore_cooldown = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(0, 0, 16, 16)
+rect = Rect2(1, 0, 14, 16)
 
 [node name="Label" type="Label" parent="."]
 visible = false
