@@ -16,6 +16,8 @@ const SPRITE_WIDTH: float = 16.0
 
 @export var auto_start: bool = false
 
+var world: Node2D
+
 var _horizontal_direction: float = 1
 var _hive_drones: Array[HiveDrone] = []
 
@@ -97,7 +99,7 @@ func _on_gun_timer_timeout() -> void:
 		return
 	
 	var drone = Utils.rand_item(drones)
-	if drone and not drone.is_dead:
+	if drone and not drone.is_dead:		
 		drone.shoot()
 		_start_gun_cooldown(GUNS_COOLDOWN)
 	else:
