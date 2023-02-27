@@ -10,11 +10,11 @@ extends Marker2D
 @onready var _cooldown_timer := $CooldownTimer
 
 
-func _ready():
+func _ready() -> void:
 	_start_cooldown_timer()
 
 
-func _spawn_bullet(direction: Vector2):
+func _spawn_bullet(direction: Vector2) -> void:
 	var bullet = Bullet.instantiate()
 	bullet.position = global_position
 	bullet.direction = direction
@@ -23,7 +23,7 @@ func _spawn_bullet(direction: Vector2):
 	_root.add_child(bullet)
 
 
-func shoot(direction):
+func shoot(direction: Vector2) -> bool:
 	var can_shoot: bool = ignore_cooldown or _cooldown_timer.is_stopped()
 	if can_shoot:
 		_spawn_bullet(direction)

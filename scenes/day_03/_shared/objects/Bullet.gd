@@ -7,7 +7,7 @@ var shooter:
 	set(value):
 		_shooter = weakref(value)
 	get:
-		return _shooter.get_ref()
+		return _shooter.get_ref() if _shooter else null
 
 var _shooter: WeakRef
 
