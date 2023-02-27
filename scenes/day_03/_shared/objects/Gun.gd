@@ -6,12 +6,22 @@ extends Marker2D
 @export var cooldown: float = 1.0
 @export var ignore_cooldown: bool = false
 
-@onready var _root := $"/root"
-@onready var _cooldown_timer := $CooldownTimer
+var world: Node2D
+
+@onready var _cooldown_timer := $CooldownTimer as Timer
 
 
 func _ready() -> void:
 	_start_cooldown_timer()
+
+
+func _world_or_default() -> Node2D:
+	if world:
+		return world
+	elif owner and owner.get_parent():
+		return owner.get_parent()
+	else:
+		return get_node("/root")
 
 
 func _spawn_bullet(direction: Vector2) -> void:
@@ -20,7 +30,7 @@ func _spawn_bullet(direction: Vector2) -> void:
 	bullet.direction = direction
 	bullet.speed = bullet_speed
 	bullet.shooter = owner
-	_root.add_child(bullet)
+	_world_or_default().add_child(bullet)
 
 
 func shoot(direction: Vector2) -> bool:
