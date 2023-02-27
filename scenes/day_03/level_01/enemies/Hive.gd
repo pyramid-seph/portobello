@@ -16,11 +16,18 @@ const SPRITE_WIDTH: float = 16.0
 
 @export var auto_start: bool = false
 
-var world: Node2D
+var world:
+	set(value):
+		world = value
+		if not _is_ready: return
+		for child in Utils.children_in_group(body, "enemies"):
+			var drone = child as HiveDrone
+			drone.world = value
 
 var _horizontal_direction: float = 1
 var _hive_drones: Array[HiveDrone] = []
 
+@onready var _is_ready = true
 @onready var body := $Body
 @onready var movement_timer := $MovementTimer as Timer
 @onready var gun_timer := $GunTimer as Timer
@@ -33,10 +40,9 @@ var _hive_drones: Array[HiveDrone] = []
 
 
 func _ready() -> void:
-	for child in body.get_children():
-		if not child.is_in_group("enemies"):
-			continue
+	for child in Utils.children_in_group(body, "enemies"):
 		var drone = child as HiveDrone
+		drone.world = world
 		_hive_drones.append(drone)
 		drone.dead.connect(_on_drone_dead)
 	
@@ -90,7 +96,7 @@ func _start_gun_cooldown(duration: float) -> void:
 
 
 func _get_drones_left() -> Array[HiveDrone]:
-	return _hive_drones.filter(func(drone): return not drone.is_dead)
+	return _hive_drones.filter(func(drone): return not drone._is_dead)
 
 
 func _on_gun_timer_timeout() -> void:
@@ -99,7 +105,7 @@ func _on_gun_timer_timeout() -> void:
 		return
 	
 	var drone = Utils.rand_item(drones)
-	if drone and not drone.is_dead:		
+	if drone and not drone._is_dead:
 		drone.shoot()
 		_start_gun_cooldown(GUNS_COOLDOWN)
 	else:

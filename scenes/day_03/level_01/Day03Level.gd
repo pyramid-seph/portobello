@@ -60,6 +60,7 @@ func _instantiate_boss() -> Node:
 	var boss = boss_scene.instantiate()
 	boss.position.y = (3 + boss.body_height()) * -1
 	boss.position.x =  world.get_viewport_rect().size.x / 2 - 30
+	boss.world = world
 	world.add_child(boss)
 	return boss
 

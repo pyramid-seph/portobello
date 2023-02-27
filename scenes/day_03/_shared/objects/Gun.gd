@@ -26,7 +26,7 @@ func _world_or_default() -> Node2D:
 
 func _spawn_bullet(direction: Vector2) -> void:
 	var bullet = Bullet.instantiate()
-	bullet.position = global_position
+	bullet.global_position = global_position
 	bullet.direction = direction
 	bullet.speed = bullet_speed
 	bullet.shooter = owner
