@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cl2j7tlqoyl30" path="res://art/day_3/object_fall.png" id="2_jfvln"]
 
 [node name="Fall" instance=ExtResource("2")]
+z_index = 5
 texture = ExtResource("2_jfvln")
 
 [node name="Timer" parent="." index="0"]

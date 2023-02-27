@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/_atlas_day_3_shield.png" id="5_ewt8i"]
 [ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/player_0.png" id="6_gp5t4"]
 [ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/player_1.png" id="7_7qucd"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="7_73f8j"]
+[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="7_73f8j"]
 [ext_resource type="PackedScene" uid="uid://ruvkqoipfqq0" path="res://scenes/day_03/_shared/objects/Bullet.tscn" id="8_hkxe6"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/MegaGun.gd" id="9_sgjia"]
 [ext_resource type="PackedScene" uid="uid://x4p8lisvdmfg" path="res://scenes/_shared/HurtBox.tscn" id="10_rpmt2"]
@@ -129,11 +129,13 @@ libraries = {
 
 [node name="ShieldSprite" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 texture = SubResource("9")
 region_enabled = true
 region_rect = Rect2(20, 0, 20, 20)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("1")
 autoplay = "default"
 
