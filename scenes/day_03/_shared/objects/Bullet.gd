@@ -16,6 +16,12 @@ func _init() -> void:
 	set_as_top_level(true)
 
 
+func _ready() -> void:
+	if not get_viewport_rect().has_point(global_position):
+		process_mode = Node.PROCESS_MODE_DISABLED
+		queue_free()
+
+
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 

@@ -11,8 +11,8 @@ extends ParallaxBackground
 @onready var solid_color_rect := $SolidColorRect
 @onready var bg_layer := $BgLayer
 @onready var base_window_size := Vector2(
-	ProjectSettings.get_setting("display/window/size/width"),
-	ProjectSettings.get_setting("display/window/size/height")
+	ProjectSettings.get_setting("display/window/size/viewport_width"),
+	ProjectSettings.get_setting("display/window/size/viewport_height")
 )
 
 var _offset_local: float = 0.0

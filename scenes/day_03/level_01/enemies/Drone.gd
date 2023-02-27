@@ -115,7 +115,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func _on_drone_area_entered(area: Area2D) -> void:
-	if area.is_in_group("bullets"):
-		kill(area.shooter)
-	else:
-		kill(area)
+	var killer = area.shooter if area.is_in_group("bullets") else area
+	kill(killer)
