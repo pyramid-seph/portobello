@@ -111,6 +111,7 @@ animations = [{
 size = Vector2(8, 16)
 
 [node name="Player" type="Area2D" groups=["players"]]
+z_index = -90
 collision_mask = 4
 input_pickable = false
 monitorable = false
@@ -129,13 +130,11 @@ libraries = {
 
 [node name="ShieldSprite" type="Sprite2D" parent="."]
 visible = false
-z_index = 1
 texture = SubResource("9")
 region_enabled = true
 region_rect = Rect2(20, 0, 20, 20)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
 sprite_frames = SubResource("1")
 autoplay = "default"
 
