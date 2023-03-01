@@ -45,9 +45,9 @@ func _ready() -> void:
 	await scene_tree.create_timer(START_DURATION, false).timeout
 	level_state = LevelState.PLAYING
 	_player.is_input_enabled = true
-	wave_manager.start(world)
 	stamina_spawner.enable(world)
 	power_up_spawner.enable(world)
+	wave_manager.start(world)
 
 
 func _input(event: InputEvent) -> void:
@@ -98,6 +98,7 @@ func _on_wave_manager_wave_completed(wave_index: int) -> void:
 
 
 func _on_wave_manager_all_waves_completed() -> void:
+	print("All waves completed!")
 	if _player.is_dead(): return
 	get_tree().call_group("bullets", "queue_free")
 	get_tree().call_group("pickups", "queue_free")
