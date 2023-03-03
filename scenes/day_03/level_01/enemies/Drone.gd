@@ -41,12 +41,16 @@ enum MovementPattern {
 				movement_pattern = MovementPattern.VERTICAL_DOWN
 				_direction = Vector2.DOWN
 		_correct_initial_pos_x()
+var world: Node2D:
+	set(value):
+		world = value
+		if not _is_ready: return
+		gun.world = value
 
 var _direction: Vector2 = Vector2.DOWN
 var _velocity: Vector2 = _direction * speed
 
 @onready var gun := $Gun
-@onready var world: Node2D = get_parent()
 @onready var viewport_size: Vector2 = get_viewport_rect().size
 @onready var viewport_width: float = viewport_size.x
 @onready var viewport_height: float = viewport_size.y
@@ -94,8 +98,17 @@ func explode() -> void:
 	var new_explosion = explosion.instantiate()
 	new_explosion.centered = sprite.centered
 	new_explosion.global_position = global_position
-	world.add_child(new_explosion)
+	_world_or_default().add_child(new_explosion)
 	queue_free()
+
+
+func _world_or_default() -> Node2D:
+	if world:
+		return world
+	elif owner and owner.get_parent():
+		return owner.get_parent()
+	else:
+		return get_node("/root")
 
 
 func _correct_initial_pos_x() -> void:
