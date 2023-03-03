@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_5rdfu")
 metadata/_edit_lock_ = true
 
 [node name="Gun" parent="." instance=ExtResource("2_7641s")]
-position = Vector2(8, 20)
+position = Vector2(8, 17)
 Bullet = ExtResource("3_85mj7")
 ignore_cooldown = true
 

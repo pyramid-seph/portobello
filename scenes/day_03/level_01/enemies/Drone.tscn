@@ -33,7 +33,7 @@ texture = ExtResource("3_dquwd")
 centered = false
 
 [node name="Gun" parent="." instance=ExtResource("3_o27jy")]
-position = Vector2(8, 20)
+position = Vector2(8, 17)
 Bullet = ExtResource("4_kujg5")
 cooldown = 0.8
 ignore_cooldown = true
