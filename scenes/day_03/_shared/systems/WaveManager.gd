@@ -9,13 +9,13 @@ const MAX_CONCURRENT_ENEMIES: int = 10
 
 @export var waves_script: Script
 
-@onready var screen_size: Vector2 = get_viewport_rect().size
-@onready var scene_tree := get_tree()
-
 var _waves_descriptor: LevelWaves
 var _spawned_enemies_count: int = 0
 var _enemies_on_screen: int = 0
 var _is_canceled: bool = false
+
+@onready var screen_size: Vector2 = get_viewport_rect().size
+@onready var scene_tree := get_tree()
 
 
 func _ready() -> void:
@@ -39,7 +39,7 @@ func start(world: Node2D) -> void:
 		wave_started.emit(wave_index)
 		
 		await scene_tree.create_timer(wave.time_between_spawns, false).timeout
-		while (_spawned_enemies_count < wave.enemy_count and not _is_canceled):
+		while _spawned_enemies_count < wave.enemy_count and not _is_canceled:
 			if _enemies_on_screen >= MAX_CONCURRENT_ENEMIES:
 				await scene_tree.create_timer(Utils.FRAME_TIME, false).timeout
 				continue
@@ -57,7 +57,7 @@ func start(world: Node2D) -> void:
 			
 			await scene_tree.create_timer(wave.time_between_spawns, false).timeout
 		
-		while (_enemies_on_screen > 0 and not _is_canceled):
+		while _enemies_on_screen > 0 and not _is_canceled:
 			await scene_tree.create_timer(Utils.FRAME_TIME, false).timeout
 		
 		await scene_tree.create_timer(wave.time_between_waves, false).timeout

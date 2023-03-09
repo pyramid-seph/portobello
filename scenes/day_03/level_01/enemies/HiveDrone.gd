@@ -57,10 +57,8 @@ func _world_or_default() -> Node2D:
 
 func _die(killer: Node) -> void:
 	_is_dead = true
-	set_process(false)
-	set_physics_process(false)
-	collision_shape.set_deferred("disabled", true)
 	visible = false
+	call_deferred("set_process_mode", Node.PROCESS_MODE_DISABLED)
 	dead.emit(killer)
 
 
