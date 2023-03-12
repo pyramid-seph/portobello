@@ -8,12 +8,9 @@ extends ParallaxBackground
 @export var mega_gun_flash_color: Color = Color8(255, 0, 255)
 @export var sea_color: Color = Color8(255, 0, 255)
 
-@onready var solid_color_rect := $SolidColorRect
-@onready var bg_layer := $BgLayer
-@onready var base_window_size := Vector2(
-	ProjectSettings.get_setting("display/window/size/viewport_width"),
-	ProjectSettings.get_setting("display/window/size/viewport_height")
-)
+@onready var solid_color_rect := $SolidColorRect as ColorRect
+@onready var bg_layer := $BgLayer as ParallaxLayer
+@onready var base_window_size: Vector2 = get_viewport().get_visible_rect().size
 
 var _offset_local: float = 0.0
 var _tween: Tween
@@ -21,7 +18,7 @@ var _tween: Tween
 
 func _ready() -> void:
 	solid_color_rect.color = sea_color
-	bg_layer.motion_mirroring = base_window_size
+	bg_layer.motion_mirroring = Vector2(0, base_window_size.y)
 	_generate_bg_layer()
 
 
@@ -53,10 +50,10 @@ func _spawn_bg_sprite(col: int, row: int, cell_size: Vector2) -> void:
 
 func _generate_bg_layer() -> void:
 	var cell_size = _get_sprite_size()
-	var hcell_count = int(ceil(base_window_size.x / cell_size.x))
-	var vcell_count = int(ceil(base_window_size.y / cell_size.y))
+	var hcell_count = ceili(base_window_size.x / cell_size.x)
+	var vcell_count = ceili(base_window_size.y / cell_size.y)
 	var cell_count = hcell_count * vcell_count
-
+	
 	var row = -1
 	for i in range(cell_count):
 		var col = i % hcell_count
@@ -70,6 +67,6 @@ func _on_mega_gun_shot() -> void:
 	if _tween:
 		_tween.stop()
 	_tween = create_tween()
-	_tween.tween_callback(func(): 
-		solid_color_rect.color = sea_color
+	_tween.tween_callback(
+		solid_color_rect.set_color.bind(sea_color)
 	).set_delay(mega_gun_flash_duration_sec)

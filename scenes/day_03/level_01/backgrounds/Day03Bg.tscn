@@ -20,3 +20,4 @@ grow_vertical = 2
 color = Color(0.356863, 0.8, 0.65098, 1)
 
 [node name="BgLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 1)
