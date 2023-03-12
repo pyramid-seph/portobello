@@ -1,7 +1,7 @@
 extends ParallaxBackground
 
 
-@export var scroll_speed: float = 16.0
+@export var scroll_speed: float = 0.0
 @export var cloud: PackedScene
 @export var wave: PackedScene
 @export var mega_gun_flash_duration_sec: float = 0.08

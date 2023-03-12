@@ -3,7 +3,7 @@ extends Area2D
 signal mega_gun_shot
 signal died(remaining_lives)
 
-const SPEED: float = 40.0
+const SPEED: float = 62.5
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
 @export var player_data: Day03PlayerData

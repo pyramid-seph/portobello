@@ -1,7 +1,7 @@
 extends Area2D
 
 const SCORE_POINTS: int = 50
-const SPEED: float = 32.0
+const SPEED: float = 50.0
 const DIRECTION: Vector2 = Vector2(1, 1)
 const MIN_STAMINA: int = 5
 const BASE_STAMINA: int = 20

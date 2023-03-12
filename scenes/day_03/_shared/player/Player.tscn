@@ -145,6 +145,7 @@ autostart = true
 [node name="Gun" parent="." instance=ExtResource("7_73f8j")]
 position = Vector2(0, -10)
 Bullet = ExtResource("8_hkxe6")
+bullet_speed = 125.0
 cooldown = 0.16
 
 [node name="MegaGun" type="Node" parent="."]

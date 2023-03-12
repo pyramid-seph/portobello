@@ -14,7 +14,7 @@ enum MovementPattern {
 	ZIG_ZAG_DOWN,
 }
 
-@export var speed: float = 48.0
+@export var speed: float = 87.5
 @export var explosion: PackedScene
 @export var movement_pattern: MovementPattern = MovementPattern.VERTICAL_DOWN:
 	get:

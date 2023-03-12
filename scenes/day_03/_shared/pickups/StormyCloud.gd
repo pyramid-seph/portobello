@@ -1,7 +1,7 @@
 extends Area2D
 
 const SCORE_POINTS = 50
-const SPEED = 48
+const SPEED = 75
 const DIRECTION = Vector2.DOWN
 const VELOCITY = SPEED * DIRECTION
 

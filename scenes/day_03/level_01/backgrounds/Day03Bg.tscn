@@ -6,6 +6,7 @@
 
 [node name="Day03Bg" type="ParallaxBackground"]
 script = ExtResource("2")
+scroll_speed = 12.5
 cloud = ExtResource("4")
 wave = ExtResource("3")
 mega_gun_flash_color = Color(1, 1, 0, 1)
