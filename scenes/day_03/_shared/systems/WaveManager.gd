@@ -1,3 +1,4 @@
+class_name WaveManager
 extends Node2D
 
 signal all_waves_completed

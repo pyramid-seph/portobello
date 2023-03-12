@@ -12,10 +12,8 @@ func rand_item(arr: Array) -> Node:
 
 
 func first_or_null(arr: Array, callable: Callable):
-	var result = arr.filter(callable)
-	if result.is_empty():
-		return null
-	return result[0]
+	var filtered_arr = arr.filter(callable)
+	return null if filtered_arr.is_empty() else filtered_arr[0]
 
 
 func count(arr: Array, callable: Callable) -> int:
@@ -59,7 +57,13 @@ func vibrate_joy(
 	duration: float = 0.25,
 ) -> void:
 	if SaveDataManager.save_data.is_vibration_enabled:
-		Input.start_joy_vibration(device, weak_magnitude, strong_magnitude, duration)
+		Input.start_joy_vibration(
+			device, 
+			weak_magnitude, 
+			strong_magnitude, 
+			duration
+		)
+
 
 func change_label_color(label: Label, color: Color) -> void:
 	if not label: return
