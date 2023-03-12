@@ -45,7 +45,7 @@ process_mode = 1
 [node name="Day03Bg" parent="World" instance=ExtResource("1")]
 
 [node name="StartPosition" type="Marker2D" parent="World"]
-position = Vector2(120, 280)
+position = Vector2(121, 294)
 
 [node name="Interface" type="Node" parent="."]
 process_mode = 1
