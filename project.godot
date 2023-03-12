@@ -29,10 +29,6 @@ window/size/window_width_override=720
 window/size/window_height_override=906
 window/handheld/orientation=1
 window/stretch/mode="viewport"
-window/size/width=240
-window/size/height=302
-window/size/test_width=720
-window/size/test_height=906
 
 [gdnative]
 
