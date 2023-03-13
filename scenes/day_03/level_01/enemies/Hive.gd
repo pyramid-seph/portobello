@@ -5,8 +5,6 @@ signal dead
 signal almost_dead
 
 
-const MOVE_DISTANCE_X: float = 12.0
-const MOVE_DISTANCE_Y: float = 8.0
 const TIME_BETWEEN_MOVEMENT_PHASE_1: float = 1.6
 const TIME_BETWEEN_MOVEMENT_PHASE_2: float = 0.8
 const TIME_BETWEEN_MOVEMENT_PHASE_3: float = 0.4
@@ -37,6 +35,8 @@ var _hive_drones: Array[HiveDrone] = []
 @onready var viewport_height: float = viewport_size.y
 @onready var min_pos_x: float = SPRITE_WIDTH
 @onready var max_pos_x: float = viewport_width - SPRITE_WIDTH
+@onready var move_distance_x: float = floorf(viewport_width / 20)
+@onready var move_distance_y: float = floorf((viewport_height / 2) / 20)
 
 
 func _ready() -> void:
@@ -66,10 +66,10 @@ func _move() -> void:
 	if bottom_right_marker.global_position.x > max_pos_x or position.x < min_pos_x:
 		_horizontal_direction *= -1
 		if bottom_right_marker.global_position.y < viewport_height / 2:
-			position.y += MOVE_DISTANCE_Y
+			position.y += move_distance_y
 			y_moves += 1
-			print("Y Moves: %s - %s" % [y_moves, position.y])
-	position.x += _horizontal_direction * MOVE_DISTANCE_X
+			print("Y Moves: %s - %s" % [y_moves, bottom_right_marker.global_position.y])
+	position.x += _horizontal_direction * move_distance_x
 
 
 func _update_curr_phase() -> void:
@@ -77,15 +77,15 @@ func _update_curr_phase() -> void:
 	if drones.is_empty():
 		return
 	if drones.size() == 1:
-		#print("phase 4")
+#		print("phase 4")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_4) # TODO Should be 0
 		return
 	
 	if bottom_right_marker.global_position.y < viewport_height / 6:
-		#print("phase 1")
+#		print("phase 1")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_1)
 	elif bottom_right_marker.global_position.y < viewport_height / 4:
-		#print("phase 2")
+		print("phase 2")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_2)
 	else:
 		#print("phase 3")
