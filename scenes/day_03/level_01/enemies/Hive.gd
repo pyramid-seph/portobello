@@ -8,7 +8,7 @@ signal almost_dead
 const TIME_BETWEEN_MOVEMENT_PHASE_1: float = 1.6
 const TIME_BETWEEN_MOVEMENT_PHASE_2: float = 0.8
 const TIME_BETWEEN_MOVEMENT_PHASE_3: float = 0.4
-const TIME_BETWEEN_MOVEMENT_PHASE_4: float = 0.15
+const TIME_BETWEEN_MOVEMENT_PHASE_4: float = Utils.FRAME_TIME
 const GUNS_COOLDOWN: float = 0.4
 const SPRITE_WIDTH: float = 16.0
 
@@ -61,14 +61,11 @@ func body_height() -> float:
 	return SPRITE_WIDTH * 3
 
 
-var y_moves = 0
 func _move() -> void:
 	if bottom_right_marker.global_position.x > max_pos_x or position.x < min_pos_x:
 		_horizontal_direction *= -1
 		if bottom_right_marker.global_position.y < viewport_height / 2:
 			position.y += move_distance_y
-			y_moves += 1
-			print("Y Moves: %s - %s" % [y_moves, bottom_right_marker.global_position.y])
 	position.x += _horizontal_direction * move_distance_x
 
 
@@ -77,7 +74,7 @@ func _update_curr_phase() -> void:
 	if drones.is_empty():
 		return
 	if drones.size() == 1:
-		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_4) # TODO Should be 0
+		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_4)
 		return
 	
 	if bottom_right_marker.global_position.y < floorf(viewport_height / 6):
