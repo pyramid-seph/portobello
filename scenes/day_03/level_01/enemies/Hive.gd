@@ -77,18 +77,14 @@ func _update_curr_phase() -> void:
 	if drones.is_empty():
 		return
 	if drones.size() == 1:
-#		print("phase 4")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_4) # TODO Should be 0
 		return
 	
-	if bottom_right_marker.global_position.y < viewport_height / 6:
-#		print("phase 1")
+	if bottom_right_marker.global_position.y < floorf(viewport_height / 6):
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_1)
-	elif bottom_right_marker.global_position.y < viewport_height / 4:
-		print("phase 2")
+	elif bottom_right_marker.global_position.y < floorf(viewport_height / 4):
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_2)
 	else:
-		#print("phase 3")
 		movement_timer.start(TIME_BETWEEN_MOVEMENT_PHASE_3)
 
 func _start_gun_cooldown(duration: float) -> void:
