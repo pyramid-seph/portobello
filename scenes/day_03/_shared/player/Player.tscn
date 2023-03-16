@@ -117,8 +117,8 @@ input_pickable = false
 monitorable = false
 script = ExtResource("1_4sjiv")
 player_data = ExtResource("2_detm5")
-fall = ExtResource("3_cd4lh")
-explosion = ExtResource("4_ic4pr")
+Fall = ExtResource("3_cd4lh")
+Explosion = ExtResource("4_ic4pr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("8")

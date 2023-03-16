@@ -7,8 +7,8 @@ const SPEED: float = 62.5
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
 @export var player_data: Day03PlayerData
-@export var fall: PackedScene
-@export var explosion: PackedScene
+@export var Fall: PackedScene
+@export var Explosion: PackedScene
 @export var debug_invincible: bool = false
 
 var _is_dead: bool = false
@@ -53,17 +53,17 @@ func start_timed_invincibility() -> void:
 
 
 func explode() -> void:
-	var new_explosion = explosion.instantiate()
-	new_explosion.global_position = global_position
-	world.add_child(new_explosion)
+	var explosion = Explosion.instantiate()
+	explosion.global_position = global_position
+	world.add_child(explosion)
 	Utils.vibrate_joy()
 	_die()
 
 
 func plummet() -> void:
-	var new_fall = fall.instantiate()
-	new_fall.global_position = global_position
-	world.add_child(new_fall)
+	var fall = Fall.instantiate()
+	fall.global_position = global_position
+	world.add_child(fall)
 	Utils.vibrate_joy()
 	_die()
 

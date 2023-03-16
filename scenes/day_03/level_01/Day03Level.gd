@@ -41,10 +41,12 @@ var level_state: int = LevelState.STARTING :
 func _ready() -> void:
 	_player = _instantiate_player()
 	_player.is_input_enabled = false
+	_player.stop_stamina_lose(true)
 	level_state = LevelState.STARTING
 	await scene_tree.create_timer(START_DURATION, false).timeout
 	level_state = LevelState.PLAYING
 	_player.is_input_enabled = true
+	_player.stop_stamina_lose(false)
 	stamina_spawner.enable(world)
 	power_up_spawner.enable(world)
 	wave_manager.start(world)
