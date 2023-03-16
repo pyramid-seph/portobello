@@ -186,5 +186,6 @@ func _on_Player_area_entered(area: Area2D) -> void:
 func _on_StaminaDepletionTimer_timeout() -> void:
 	if _is_dead or debug_invincible: return
 	player_data.stamina -= STAMINA_POINTS_DEPLETED_PER_TICK
+	
 	if player_data.stamina == 0:
 		plummet()

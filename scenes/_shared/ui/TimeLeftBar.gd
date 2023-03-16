@@ -7,6 +7,7 @@ extends HBoxContainer
 
 func _on_Day3Ui_time_changed(new_val: float, max_value: float):
 	progress_bar.value = new_val * progress_bar.max_value / max_value
+	print(str(progress_bar.value))
 
 	var new_tint
 	if new_val > max_value * dangerous_level:
