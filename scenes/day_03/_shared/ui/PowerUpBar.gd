@@ -4,7 +4,7 @@ const NORMAL_COLOR: Color = Color8(250, 172, 88)
 
 var _tween: Tween
 
-@onready var progress_bar := $ProgressBar as TextureProgressBar
+@onready var progress_bar := %ProgressBar as TextureProgressBar
 
 
 func _ready() -> void:

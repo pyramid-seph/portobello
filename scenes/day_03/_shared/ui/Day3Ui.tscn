@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://dse6x5xc6acq6" path="res://scenes/_shared/ui/TwoLineTimedLabel.tscn" id="17_q8r8e"]
 
 [sub_resource type="FontFile" id="1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 face_index = null
 embolden = null
 transform = null
@@ -31,6 +34,9 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [sub_resource type="FontFile" id="2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 fallbacks = Array[Font]([SubResource("1")])
 face_index = null
 embolden = null
@@ -60,13 +66,13 @@ player_data = ExtResource("11")
 
 [node name="BarsMargin" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 40.0
-theme_override_constants/margin_top = 4
+offset_right = 61.0
+offset_bottom = 20.0
+theme_override_constants/margin_top = 3
 
 [node name="Bars" type="VBoxContainer" parent="BarsMargin"]
-custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_constants/separation = -3
 
 [node name="StaminaBar" parent="BarsMargin/Bars" instance=ExtResource("4")]
 layout_mode = 2
@@ -86,8 +92,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -19.0
+offset_left = -24.0
+offset_top = -22.0
 offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0

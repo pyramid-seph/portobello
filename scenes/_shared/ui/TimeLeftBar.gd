@@ -2,7 +2,7 @@ extends HBoxContainer
 
 @export var dangerous_level: float = 0.5
 
-@onready var progress_bar = $ProgressBar
+@onready var progress_bar = %ProgressBar
 
 
 func _on_Day3Ui_time_changed(new_val: float, max_value: float):
