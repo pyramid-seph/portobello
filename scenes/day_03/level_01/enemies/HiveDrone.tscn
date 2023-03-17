@@ -14,7 +14,7 @@ z_index = -60
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_ovbu3")
-explosion = ExtResource("2_vjdhq")
+Explosion = ExtResource("2_vjdhq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_glums")

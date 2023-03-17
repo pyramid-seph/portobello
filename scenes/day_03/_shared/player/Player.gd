@@ -97,18 +97,11 @@ func stop_stamina_lose(pause_lose: bool) -> void:
 
 
 func revive(skip_timed_invincibility: bool = false) -> void:
-	if not _is_dead:
-		return
-
+	if not _is_dead: return
 	_is_dead = false
-	set_process_input(true)
-	set_process(true)
-	set_physics_process(true)
-	set_process_unhandled_input(true)
+	process_mode = Node.PROCESS_MODE_INHERIT
 	visible = true
 	player_data.reset_stamina()
-	collision_shape.disabled = false
-	hurt_box.invincible = false
 	stamina_timer.start()
 	if not skip_timed_invincibility:
 		start_timed_invincibility()
@@ -117,16 +110,11 @@ func revive(skip_timed_invincibility: bool = false) -> void:
 func _die() -> void:
 	if _is_dead: return
 	_is_dead = true
-	set_process_input(false)
-	set_process(false)
-	set_physics_process(false)
-	set_process_unhandled_input(false)
-	collision_shape.set_deferred("disabled", true)
-	hurt_box.invincible = true
+	set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	visible = false
+	stamina_timer.stop()
 	player_data.lives -= 1
 	died.emit(player_data.lives)
-	stamina_timer.stop()
 
 
 func _process_movement(delta: float) -> void:

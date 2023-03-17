@@ -6,7 +6,7 @@ signal dead(killer)
 
 @export var hp: int = 50
 @export var is_immune_to_bullets: bool = false
-@export var explosion: PackedScene
+@export var Explosion: PackedScene
 
 var world: Node2D:
 	set(value):
@@ -63,7 +63,7 @@ func _die(killer: Node) -> void:
 
 
 func _spawn_explosion() -> void:
-	var new_explosion = explosion.instantiate()
+	var new_explosion = Explosion.instantiate()
 	new_explosion.centered = false
 	new_explosion.global_position = global_position
 	_world_or_default().add_child(new_explosion)
