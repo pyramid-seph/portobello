@@ -1,5 +1,6 @@
 extends Node
 
+
 var _is_prepared: bool = false
 
 
@@ -12,13 +13,12 @@ func prepare() -> void:
 
 
 func shoot() -> bool:
-	if not _is_prepared:
-		return false
+	if not _is_prepared: return false
 	
 	_is_prepared = false
-	
-	get_tree().call_group("enemies", "kill", owner)
-	get_tree().call_group("bullets", "queue_free")
+	var scene_tree = get_tree()
+	scene_tree.call_group("enemies", "kill", owner, true)
+	scene_tree.call_group("bullets", "kill", owner, true)
 	
 	Utils.vibrate_joy()
 	

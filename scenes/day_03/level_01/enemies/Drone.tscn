@@ -22,7 +22,7 @@ collision_layer = 2
 collision_mask = 9
 input_pickable = false
 script = ExtResource("1_2ejxn")
-explosion = ExtResource("2_kurrx")
+Explosion = ExtResource("2_kurrx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)

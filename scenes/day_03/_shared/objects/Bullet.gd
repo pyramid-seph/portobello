@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var score_points_gun: int = 0
+@export var score_points_mega_gun: int = 0
 @export var speed: float = 0.0
 @export var direction: Vector2 = Vector2.ZERO
 
@@ -20,6 +22,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position += direction * speed * delta
+
+
+func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
+	if killer and killer.has_method("add_points_to_score"):
+		killer.add_points_to_score(
+			score_points_mega_gun if killed_by_mega_gun else score_points_gun
+		)
+	queue_free()
 
 
 func _on_area_entered(_area: Area2D) -> void:

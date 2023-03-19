@@ -11,6 +11,7 @@ z_index = -80
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("2")
+score_points_mega_gun = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_i65fw")

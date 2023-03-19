@@ -1,7 +1,8 @@
 extends Area2D
 class_name Drone
 
-const SCORE_POINTS: int = 10
+const SCORE_POINTS_GUN: int = 10
+const SCORE_POINTS_MEGA_GUN: int = 5
 const DIRECTION: Vector2 = Vector2(1, 1)
 
 enum MovementPattern {
@@ -14,8 +15,8 @@ enum MovementPattern {
 	ZIG_ZAG_DOWN,
 }
 
+@export var Explosion: PackedScene
 @export var speed: float = 87.5
-@export var explosion: PackedScene
 @export var movement_pattern: MovementPattern = MovementPattern.VERTICAL_DOWN:
 	get:
 		return movement_pattern
@@ -88,17 +89,19 @@ func shoot() -> bool:
 	return gun.shoot(Vector2.DOWN)
 
 
-func kill(killer: Node) -> void:
+func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
 	if killer and killer.has_method("add_points_to_score"):
-		killer.add_points_to_score(SCORE_POINTS)
+		killer.add_points_to_score(
+			SCORE_POINTS_MEGA_GUN if killed_by_mega_gun else SCORE_POINTS_GUN
+		)
 	explode()
 
 
 func explode() -> void:
-	var new_explosion = explosion.instantiate()
-	new_explosion.centered = sprite.centered
-	new_explosion.global_position = global_position
-	_world_or_default().add_child(new_explosion)
+	var explosion = Explosion.instantiate()
+	explosion.centered = sprite.centered
+	explosion.global_position = global_position
+	_world_or_default().add_child(explosion)
 	queue_free()
 
 

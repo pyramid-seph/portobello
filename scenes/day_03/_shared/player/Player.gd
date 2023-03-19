@@ -13,13 +13,14 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 @export var is_autofire_enabled: bool = false
 @export var debug_invincible: bool = false
 
-var _is_dead: bool = false
 var is_input_enabled: bool = true:
 	set(value):
 		is_input_enabled = value
 		if not is_input_enabled: mega_gun.revert_preparations()
 	get:
 		return is_input_enabled
+
+var _is_dead: bool = false
 
 @onready var world = get_parent()
 @onready var gun := $Gun
