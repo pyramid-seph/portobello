@@ -1,21 +1,23 @@
-extends Node
 class_name Day03Level
+extends Node
 
 signal level_state_changed(new_state)
 signal pause_state_changed(new_state)
 signal waves_completed
+
+enum LevelState { STARTING, PLAYING, GAME_OVER, LEVEL_COMPLETE }
 
 const START_DURATION: float = 1.6
 const TIME_BETWEEN_REVIVALS: float = 1.2
 const GAME_OVER_DURATION: float = 3.2
 const RESULTS_SCREEN_DELAY: float = 10.45
 
-@export var boss_scene: PackedScene
-@export var player_scene: PackedScene
+@export var Boss: PackedScene
+@export var Player: PackedScene
 @export var player_data: Day03PlayerData
 @export var player_invincible: bool = false
 
-var _player: Node2D
+var _player: Day03Player
 var _boss: Node2D
 
 @onready var world := $World
@@ -27,8 +29,6 @@ var _boss: Node2D
 @onready var scene_tree = get_tree()
 @onready var results_screen = $ResultsScreenBuffet
 
-
-enum LevelState { STARTING, PLAYING, GAME_OVER, LEVEL_COMPLETE }
 
 var level_state: int = LevelState.STARTING :
 	get:
@@ -63,7 +63,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _instantiate_boss() -> Node:
-	var boss = boss_scene.instantiate()
+	var boss = Boss.instantiate()
 	boss.position.y = (3 + boss.body_height()) * -1
 	boss.position.x =  world.get_viewport_rect().size.x / 2 - 30
 	boss.world = world
@@ -71,14 +71,14 @@ func _instantiate_boss() -> Node:
 	return boss
 
 
-func _instantiate_player() -> Node:
-	var new_player = player_scene.instantiate()
-	new_player.position = player_start_position
-	new_player.died.connect(_on_Player_died)
-	new_player.mega_gun_shot.connect(world_background._on_mega_gun_shot)
-	new_player.debug_invincible = player_invincible
-	world.add_child(new_player)
-	return new_player
+func _instantiate_player() -> Day03Player:
+	var player = Player.instantiate()
+	player.position = player_start_position
+	player.died.connect(_on_Player_died)
+	player.mega_gun_shot.connect(world_background._on_mega_gun_shot)
+	player.debug_invincible = player_invincible
+	world.add_child(player)
+	return player
 
 
 func _game_over() -> void:

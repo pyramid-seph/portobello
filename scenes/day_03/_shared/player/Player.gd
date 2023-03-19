@@ -1,3 +1,4 @@
+class_name Day03Player
 extends Area2D
 
 signal mega_gun_shot

@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rdfu"]
 size = Vector2(14, 16)
 
-[node name="HiveDrone" type="Area2D" groups=["drone", "enemies"]]
+[node name="HiveDrone" type="Area2D" groups=["enemies", "hive_drones"]]
 z_index = -60
 collision_layer = 2
 collision_mask = 8

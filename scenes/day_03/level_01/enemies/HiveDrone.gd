@@ -39,11 +39,15 @@ func hurt(killer: Node) -> void:
 		kill(killer)
 
 
-func kill(killer: Node) -> void:
-	if _is_dead:
-		return
+func explode() -> void:
+	if _is_dead: return
 	_spawn_explosion()
-	_die(killer)
+	_die()
+
+
+func kill(_killer: Node) -> void:
+	if _is_dead: return
+	explode()
 
 
 func _world_or_default() -> Node2D:
@@ -55,11 +59,11 @@ func _world_or_default() -> Node2D:
 		return get_node("/root")
 
 
-func _die(killer: Node) -> void:
+func _die() -> void:
 	_is_dead = true
 	visible = false
 	call_deferred("set_process_mode", Node.PROCESS_MODE_DISABLED)
-	dead.emit(killer)
+	dead.emit()
 
 
 func _spawn_explosion() -> void:
@@ -70,9 +74,8 @@ func _spawn_explosion() -> void:
 
 
 func _on_drone_area_entered(area: Area2D) -> void:
-	if _is_dead:
-		return
+	if _is_dead: return
 	if is_immune_to_bullets:
 		_spawn_explosion()
-	elif area.is_in_group("bullets"):
+	elif area.is_in_group("bullets"): 
 		hurt(area.shooter)
