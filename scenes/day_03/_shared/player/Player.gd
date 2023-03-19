@@ -9,6 +9,7 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 @export var player_data: Day03PlayerData
 @export var Fall: PackedScene
 @export var Explosion: PackedScene
+@export var is_autofire_enabled: bool = false
 @export var debug_invincible: bool = false
 
 var _is_dead: bool = false
@@ -47,6 +48,7 @@ func _process(delta: float) -> void:
 
 func is_dead() -> bool:
 	return _is_dead
+
 
 func start_timed_invincibility() -> void:
 	animation_player.play("invincible")
@@ -133,10 +135,18 @@ func _is_powered_up() -> bool:
 	return player_data.is_power_up_maximized()
 
 
+func _can_autofire() -> bool:
+	return is_autofire_enabled and not _is_powered_up()
+	
+
+func _is_trying_to_fire() -> bool:
+	return Input.is_action_pressed("fire") or _can_autofire()
+
+
 func _process_fire() -> void:
 	if not is_input_enabled: return
 	
-	if not Input.is_action_pressed("fire"):
+	if not _is_trying_to_fire():
 		if _is_powered_up():
 			mega_gun.prepare()
 		return
@@ -146,7 +156,7 @@ func _process_fire() -> void:
 		return
 	
 	if mega_gun.shoot():
-		player_data.power_up_count = 0
+		reset_power_up()
 		mega_gun_shot.emit()
 
 
