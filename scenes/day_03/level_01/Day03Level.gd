@@ -42,6 +42,10 @@ func _ready() -> void:
 	_player = _instantiate_player()
 	_player.is_input_enabled = false
 	_player.stop_stamina_lose(true)
+	_player.is_autofire_enabled = SaveDataManager.save_data.is_autofire_enabled
+	SaveDataManager.save_data.is_autofire_enabled_changed.connect(
+		func(_old_val, new_val): _player.is_autofire_enabled = new_val
+	)
 	level_state = LevelState.STARTING
 	await scene_tree.create_timer(START_DURATION, false).timeout
 	level_state = LevelState.PLAYING

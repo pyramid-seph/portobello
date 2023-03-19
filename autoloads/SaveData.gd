@@ -1,13 +1,22 @@
 class_name SaveData
 extends RefCounted
 
+signal is_autofire_enabled_changed(old_val, new_val)
+
+
 const VERSION: int = 1
 
 var version: int = VERSION
 # First day is 1. "The lost chapter" does not count.
 var latest_day_completed: int = 0
 var is_vibration_enabled: bool = true
-var is_autofire_enabled: bool = true
+var is_autofire_enabled: bool = true:
+	set(value):
+		var old_is_autofire_enabled = is_autofire_enabled
+		is_autofire_enabled = value
+		is_autofire_enabled_changed.emit(old_is_autofire_enabled, is_autofire_enabled)
+	get:
+		return is_autofire_enabled
 var stars: Stars = Stars.new()
 var high_scores: HighScores = HighScores.new()
 
