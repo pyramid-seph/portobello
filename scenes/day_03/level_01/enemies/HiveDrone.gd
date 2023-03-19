@@ -45,7 +45,7 @@ func explode() -> void:
 	_die()
 
 
-func kill(_killer: Node) -> void:
+func kill(_killer: Node, _killed_by_mega_gun: bool = false) -> void:
 	if _is_dead: return
 	explode()
 

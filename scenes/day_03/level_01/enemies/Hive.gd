@@ -105,7 +105,7 @@ func _on_gun_timer_timeout() -> void:
 		_start_gun_cooldown(Utils.FRAME_TIME)
 
 
-func _on_drone_dead(_killer: Node) -> void:
+func _on_drone_dead() -> void:
 	var drones = _get_drones_left()
 	var enemies_left = drones.size()
 	if enemies_left > 1:
