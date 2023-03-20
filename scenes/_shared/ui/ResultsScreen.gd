@@ -40,7 +40,7 @@ func start(lives: int, score: int, high_score: int) -> int:
 	# TODO if is_last_level or not HISTORY_MODE
 	if is_last_level:
 		extra_lives = mini(
-			floori(score / 1_000), 
+			int(score / 1_000), 
 			Day03PlayerData.MAX_LIVES - lives
 		)
 	_score_label.text = "Score = %s" % score
