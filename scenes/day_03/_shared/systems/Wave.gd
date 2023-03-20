@@ -1,5 +1,5 @@
-extends RefCounted
 class_name Wave
+extends RefCounted
 
 var enemy_count: int = 0
 var time_between_spawns: float = 0.0
