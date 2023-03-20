@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://cu2mqxat6vyjm"]
+
+[ext_resource type="Texture2D" uid="uid://d038j14u56qpr" path="res://art/day_3/enemy_ufo_0.png" id="1_ijtth"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/RegularUfo.gd" id="1_uaq2c"]
+[ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="2_s1ksp"]
+[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_vaps8"]
+[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="5_ix0jq"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="6_0sjve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elnjg"]
+size = Vector2(14, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0m6rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ijtth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s1ksp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RegularUfo" type="Area2D" groups=["enemies", "regular_ufo"]]
+script = ExtResource("1_uaq2c")
+Explosion = ExtResource("2_vaps8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_elnjg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0m6rv")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+centered = false
+
+[node name="Gun" parent="." instance=ExtResource("5_ix0jq")]
+Bullet = ExtResource("6_0sjve")
+bullet_speed = 125.0
+ignore_cooldown = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(0, 0, 16, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

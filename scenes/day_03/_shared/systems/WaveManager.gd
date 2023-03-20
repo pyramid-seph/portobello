@@ -54,7 +54,6 @@ func start(world: Node2D) -> void:
 			
 			_enemies_on_screen += 1
 			_spawned_enemies_count += 1
-			new_enemy.label.text = str(_spawned_enemies_count)# TODO DELETE
 			
 			await scene_tree.create_timer(wave.time_between_spawns, false).timeout
 		
