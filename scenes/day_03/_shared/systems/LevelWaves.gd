@@ -18,5 +18,5 @@ func _create_wave(
 	wave.time_between_spawns = time_between_spawns
 	wave.time_between_waves = time_between_waves
 	wave.get_initial_move_state_func = init_move_state_func_name
-	wave.enemy_scene = enemy_scene
+	wave.Enemy = enemy_scene
 	return wave
