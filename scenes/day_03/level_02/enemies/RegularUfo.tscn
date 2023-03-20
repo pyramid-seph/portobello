@@ -25,6 +25,10 @@ animations = [{
 }]
 
 [node name="RegularUfo" type="Area2D" groups=["enemies", "regular_ufo"]]
+z_index = -60
+collision_layer = 2
+collision_mask = 9
+input_pickable = false
 script = ExtResource("1_uaq2c")
 Explosion = ExtResource("2_vaps8")
 

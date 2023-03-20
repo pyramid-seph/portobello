@@ -23,16 +23,23 @@ func _ready() -> void:
 	_waves_descriptor = waves_script.new() as LevelWaves
 
 
-func start(world: Node2D) -> void:
+func start(world: Node2D, player: Day03Player) -> void:
 	_is_canceled = false
 	
 	if world == null:
-		print("Completing wave because start_wave requires world cannot be null.")
+		print("Completing wave because world cannot be null.")
+		all_waves_completed.emit()
+		return
+	
+	if player == null:
+		print("Completing wave because player cannot be null.")
 		all_waves_completed.emit()
 		return
 	
 	var wave_index = -1
-	for wave in _waves_descriptor._get_waves():
+	for wave in _waves_descriptor.get_waves():
+		var wave_enemy_index = 0
+		var wave_memo = {}
 		_spawned_enemies_count = 0
 		_enemies_on_screen = 0
 		wave_index += 1
@@ -48,14 +55,20 @@ func start(world: Node2D) -> void:
 				continue
 			
 			var enemy = wave.Enemy.instantiate()
-			var initial_move_state: InitialMoveState = wave.get_initial_move_state_func.call(_screen_size)
-			enemy.global_position = initial_move_state.position
-			enemy.movement_pattern = initial_move_state.movement_pattern
+			var movement = wave.calculate_pattern.call(
+				wave_enemy_index,
+				player.global_position,
+				_screen_size,
+				wave_memo
+			)
+			enemy.global_position = movement.initial_global_position
+			enemy.movement_pattern = movement.pattern
 			enemy.tree_exited.connect(_on_Enemy_tree_exited, CONNECT_ONE_SHOT)
 			world.add_child(enemy)
 			
 			_enemies_on_screen += 1
 			_spawned_enemies_count += 1
+			wave_enemy_index += 1
 			
 			_timer.start(wave.time_between_spawns)
 			await _timer.timeout

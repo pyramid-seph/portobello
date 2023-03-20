@@ -2,21 +2,13 @@ extends RefCounted
 class_name LevelWaves
 
 
-func _get_waves() -> Array[Wave]:
+var _waves: Array[Wave]
+
+
+func get_waves() -> Array[Wave]:
+	if _waves.is_empty(): _waves = _create_waves()
+	return _waves
+
+
+func _create_waves() -> Array[Wave]:
 	return [];
-
-
-func _create_wave(
-	enemy_count: int, 
-	time_between_spawns: float,
-	time_between_waves: float,
-	init_move_state_func_name: Callable,
-	enemy_scene: PackedScene
-) -> Wave:
-	var wave = Wave.new()
-	wave.enemy_count = enemy_count
-	wave.time_between_spawns = time_between_spawns
-	wave.time_between_waves = time_between_waves
-	wave.get_initial_move_state_func = init_move_state_func_name
-	wave.Enemy = enemy_scene
-	return wave

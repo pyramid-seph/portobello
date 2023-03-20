@@ -1,121 +1,125 @@
 extends LevelWaves
 
 
-var _waves: Array[Wave] = []
+const INITIAL_Y = "initial_y"
 
 var RegularUfo = preload("res://scenes/day_03/level_02/enemies/RegularUfo.tscn")
+var MetallicUfo = preload("res://scenes/day_03/level_02/enemies/RegularUfo.tscn")
 
 
-func _get_waves() -> Array[Wave]:
-	if _waves: return _waves
-	
-	_waves = [
-		_create_wave(50, 0.4, 0.4, _init_movement_00, RegularUfo),
-		_create_wave(50, 0.8, 0.4, _init_movement_01, RegularUfo),
-		_create_wave(25, 0.8, 0.4, _init_movement_02, RegularUfo),
-		_create_wave(35, 1.2, 0.4, _init_movement_03, RegularUfo),
-		_create_wave(40, 0.8, 2.4, _init_movement_04, RegularUfo),
+func _create_waves() -> Array[Wave]:
+	return [
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_00, RegularUfo),
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_01, RegularUfo),
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_02, RegularUfo),
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_03, RegularUfo),
+		Wave.create(60, 0.40, 0.40, _calculate_pattern_04, RegularUfo),
+		Wave.create(10, 1.60, 1.60, _calculate_pattern_05, RegularUfo),
+		Wave.create(20, 0.24, 0.24, _calculate_pattern_06, RegularUfo),
+		Wave.create(20, 1.60, 1.60, _calculate_pattern_07, RegularUfo),
+		Wave.create(20, 1.60, 1.60, _calculate_pattern_08, MetallicUfo),
+		Wave.create(30, 0.80, 0.80, _calculate_pattern_09, MetallicUfo),
 	]
-	return _waves
 
 
-func _init_movement_00(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.VERTICAL_DOWN
-	initial_movement_state.position.x = randi() % int(screen_size.x - 40) + 10
-	initial_movement_state.position.y = 3
-	return initial_movement_state
+func _calculate_pattern_00(
+	_wave_enemy_index: int, 
+	player_global_pos: Vector2, 
+	_screen_size: Vector2, 
+	wave_memo: Dictionary
+) -> SimpleMovement:
+	var movement = SimpleMovement.new()
+	movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
+	movement.initial_global_position.x = 0
+	var pos_y = wave_memo.get(INITIAL_Y, player_global_pos.y)
+	wave_memo[INITIAL_Y] = pos_y
+	movement.initial_global_position.y = pos_y
+	return movement
 
 
-func _init_movement_01(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	if randi() % 2 == 0:
-		initial_movement_state.movement_pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
-		initial_movement_state.position.x = 0
+func _calculate_pattern_01(wave_enemy_index, player_global_pos, screen_size, wave_memo) -> SimpleMovement:
+	return _calculate_pattern_00(wave_enemy_index, player_global_pos, screen_size, wave_memo)
+
+
+func _calculate_pattern_02(_wave_enemy_index, player_global_pos, screen_size, wave_memo) -> SimpleMovement:
+	var movement = SimpleMovement.new()
+	movement.pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
+	movement.initial_global_position.x = screen_size.x
+	var pos_y = wave_memo.get(INITIAL_Y, player_global_pos.y)
+	wave_memo[INITIAL_Y] = pos_y
+	movement.initial_global_position.y = pos_y
+	return movement
+
+
+func _calculate_pattern_03(wave_enemy_index, player_global_pos, screen_size, wave_memo) -> SimpleMovement:
+	if wave_enemy_index < 5:
+		return _calculate_pattern_00(wave_enemy_index, player_global_pos, screen_size, wave_memo)
 	else:
-		initial_movement_state.movement_pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
-		initial_movement_state.position.x =  screen_size.x
-	initial_movement_state.position.y = randi() % int(screen_size.y - 10) + 3
-	return initial_movement_state
+		if wave_enemy_index == 5: wave_memo.erase(INITIAL_Y)
+		return _calculate_pattern_02(wave_enemy_index, player_global_pos, screen_size, wave_memo)
 
 
-func _init_movement_02(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
-	initial_movement_state.position.x = 0
-	initial_movement_state.position.y = randi() % int(screen_size.y - 10) + 3
-	return initial_movement_state
+func _calculate_pattern_04(_wave_enemy_index, player_global_pos, _screen_size, _wave_memo) -> SimpleMovement:
+	var movement = SimpleMovement.new()
+	movement.pattern = EnemyMovement.Pattern.VERTICAL_DOWN
+	movement.initial_global_position.x = player_global_pos.x
+	movement.initial_global_position.y = 0
+	return movement
 
 
-func _init_movement_03(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
+func _calculate_pattern_05(_wave_enemy_index, player_global_pos, _screen_size, _wave_memo) -> SimpleMovement:
+	var movement = SimpleMovement.new()
+	movement.pattern = EnemyMovement.Pattern.ZIG_ZAG_DOWN
+	movement.initial_global_position.x = player_global_pos.x
+	movement.initial_global_position.y = 0
+	return movement
+
+
+func _calculate_pattern_06(_wave_enemy_index, player_global_pos, _screen_size, _wave_memo) -> SimpleMovement:
+	var movement = SimpleMovement.new()
+	movement.pattern = EnemyMovement.Pattern.SQUARE_DOWN
+	movement.initial_global_position.x = player_global_pos.x
+	movement.initial_global_position.y = 0
+	return movement
+
+
+func _calculate_pattern_07(_wave_enemy_index, player_global_pos, screen_size, _wave_memo) -> SimpleMovement:
+	var movement = SimpleMovement.new()
+	movement.pattern = EnemyMovement.Pattern.VERTICAL_UP
+	movement.initial_global_position.x = player_global_pos.x
+	movement.initial_global_position.y = screen_size.y
+	return movement
+
+
+func _calculate_pattern_08(_wave_enemy_index, player_global_pos, screen_size, _wave_memo) -> SimpleMovement:
+	var movement = SimpleMovement.new()
 	if randi() % 2 == 0:
-		initial_movement_state.movement_pattern = EnemyMovement.Pattern.VERTICAL_DOWN
-		initial_movement_state.position.y = 0
+		movement.initial_global_position.x = player_global_pos.x
+		if randi() % 2 == 0:
+			movement.pattern = EnemyMovement.Pattern.VERTICAL_DOWN
+			movement.initial_global_position.y = 0
+		else:
+			movement.pattern = EnemyMovement.Pattern.VERTICAL_UP
+			movement.initial_global_position.y = screen_size.y - 6
 	else:
-		initial_movement_state.movement_pattern = EnemyMovement.Pattern.VERTICAL_UP
-		initial_movement_state.position.y = screen_size.y - 6
-	initial_movement_state.position.x = randi() % int(screen_size.x - 40) + 10	
-	return initial_movement_state
+		if randi() % 2 == 0:
+			movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
+			movement.initial_global_position.x = 0
+		else:
+			movement.pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
+			movement.initial_global_position.x = screen_size.x
+		movement.initial_global_position.y = player_global_pos.y
+	return movement
 
 
-func _init_movement_04(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
-	initial_movement_state.position.x = screen_size.x
-	initial_movement_state.position.y = randi() % int(screen_size.y - 10) + 3
-	return initial_movement_state
-
-
-func _init_movement_05(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.SQUARE_UP
+func _calculate_pattern_09(_wave_enemy_index, player_global_pos, screen_size, _wave_memo) -> SimpleMovement:
+	var movement = SimpleMovement.new()
 	if randi() % 2 == 0:
-		initial_movement_state.position.x = 0
+		movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
+		movement.initial_global_position.x = 0
 	else:
-		initial_movement_state.position.x = screen_size.x
-	initial_movement_state.position.y = screen_size.y - 15
-	return initial_movement_state
-
-
-func _init_movement_06(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.ZIG_ZAG_DOWN
-	match randi() % 4:
-		0, 3:
-			initial_movement_state.position.x = randi() % int(screen_size.x - 20) + 10
-			initial_movement_state.position.y = 3
-		1:
-			initial_movement_state.position.x = screen_size.x - 16
-			initial_movement_state.position.y = randi() % 40 + 10
-		2: 
-			initial_movement_state.position.x = 16
-			initial_movement_state.position.y = randi() % 40 + 10
-	return initial_movement_state
-
-
-func _init_movement_07(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.SQUARE_DOWN
-	initial_movement_state.position.x = randi() % int(screen_size.x - 20) + 10
-	initial_movement_state.position.y = 3
-	return initial_movement_state
-
-
-func _init_movement_08(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.SQUARE_DOWN
-	if randi() % 2 == 0:
-		initial_movement_state.position.x = 0
-	else:
-		initial_movement_state.position.x = screen_size.x
-	initial_movement_state.position.y = randi() % int(screen_size.y - 10) + 3
-	return initial_movement_state
-
-
-func _init_movement_09(screen_size) -> InitialMoveState:
-	var initial_movement_state = InitialMoveState.new()
-	initial_movement_state.movement_pattern = EnemyMovement.Pattern.VERTICAL_UP
-	initial_movement_state.position.x = randi() % int(screen_size.x - 40) + 10
-	initial_movement_state.position.y = screen_size.y - 6
-	return initial_movement_state
+		movement.pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
+		movement.initial_global_position.x = screen_size.x
+	movement.initial_global_position.y = player_global_pos.y
+	return movement
+	

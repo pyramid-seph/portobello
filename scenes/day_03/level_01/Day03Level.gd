@@ -53,7 +53,7 @@ func _ready() -> void:
 	_player.stop_stamina_lose(false)
 	stamina_spawner.enable(world)
 	power_up_spawner.enable(world)
-	wave_manager.start(world)
+	wave_manager.start(world, _player)
 
 
 func _input(event: InputEvent) -> void:
