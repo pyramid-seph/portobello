@@ -1,44 +1,35 @@
 extends Area2D
-class_name RegularUfo
+class_name Drone
 
 const SCORE_POINTS_GUN: int = 10
 const SCORE_POINTS_MEGA_GUN: int = 5
 
-enum MovementPattern {
-	VERTICAL_DOWN,
-	VERTICAL_UP,
-	HORIZONTAL_RIGHT,
-	HORIZONTAL_LEFT,
-	SQUARE_UP,
-	SQUARE_DOWN,
-	ZIG_ZAG_DOWN,
-}
 
 @export var Explosion: PackedScene
 @export var speed: float = 87.5
-@export var movement_pattern: MovementPattern = MovementPattern.VERTICAL_DOWN:
+@export var movement_pattern: EnemyMovement.Pattern = EnemyMovement.Pattern.VERTICAL_DOWN:
 	get:
 		return movement_pattern
 	set(mod_value):
 		movement_pattern = mod_value
 		match (movement_pattern):
-			MovementPattern.VERTICAL_DOWN:
+			EnemyMovement.Pattern.VERTICAL_DOWN:
 				_direction = Vector2.DOWN
-			MovementPattern.VERTICAL_UP:
+			EnemyMovement.Pattern.VERTICAL_UP:
 				_direction = Vector2.UP
-			MovementPattern.HORIZONTAL_LEFT:
+			EnemyMovement.Pattern.HORIZONTAL_LEFT:
 				_direction = Vector2.LEFT
-			MovementPattern.HORIZONTAL_RIGHT:
+			EnemyMovement.Pattern.HORIZONTAL_RIGHT:
 				_direction = Vector2.RIGHT
-			MovementPattern.ZIG_ZAG_DOWN:
+			EnemyMovement.Pattern.ZIG_ZAG_DOWN:
 				_direction = Vector2(1, 1)
-			MovementPattern.SQUARE_UP:
+			EnemyMovement.Pattern.SQUARE_UP:
 				_direction = Vector2.RIGHT
-			MovementPattern.SQUARE_DOWN:
+			EnemyMovement.Pattern.SQUARE_DOWN:
 				_direction = Vector2.LEFT
 			_:
 				print_debug("Unknown movement pattern: %s. Will default to VERTICAL_DOWN." % str(mod_value))
-				movement_pattern = MovementPattern.VERTICAL_DOWN
+				movement_pattern = EnemyMovement.Pattern.VERTICAL_DOWN
 				_direction = Vector2.DOWN
 		_correct_initial_pos_x()
 var world: Node2D:
@@ -67,14 +58,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	match (movement_pattern):
-		MovementPattern.ZIG_ZAG_DOWN:
+		EnemyMovement.Pattern.ZIG_ZAG_DOWN:
 			if position.x > max_pos_x or position.x < min_pos_x:
 				_direction.x *= -1
-		MovementPattern.SQUARE_UP:
+		EnemyMovement.Pattern.SQUARE_UP:
 			if position.x > max_pos_x or position.x < min_pos_x:
 				_direction.x *= -1
 				position.y -= 30 + randi() % 10
-		MovementPattern.SQUARE_DOWN:
+		EnemyMovement.Pattern.SQUARE_DOWN:
 			if position.x > max_pos_x or position.x < min_pos_x:
 				_direction.x *= -1
 				position.y += 30 + randi() % 10
@@ -116,7 +107,7 @@ func _correct_initial_pos_x() -> void:
 	if not _is_ready: return
 	
 	match (movement_pattern):
-		MovementPattern.SQUARE_UP, MovementPattern.SQUARE_DOWN:
+		EnemyMovement.Pattern.SQUARE_UP, EnemyMovement.Pattern.SQUARE_DOWN:
 			if position.x >= max_pos_x:
 				_direction = Vector2.LEFT
 			if position.x <= min_pos_x:

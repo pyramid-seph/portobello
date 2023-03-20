@@ -3,23 +3,18 @@ extends LevelWaves
 
 var _waves: Array[Wave] = []
 
-var Drone = preload("res://scenes/day_03/level_01/enemies/Drone.tscn")
+var RegularUfo = preload("res://scenes/day_03/level_02/enemies/RegularUfo.tscn")
 
 
 func _get_waves() -> Array[Wave]:
 	if _waves: return _waves
 	
 	_waves = [
-		_create_wave(50, 0.4, 0.4, _init_movement_00, Drone),
-		_create_wave(50, 0.8, 0.4, _init_movement_01, Drone),
-		_create_wave(25, 0.8, 0.4, _init_movement_02, Drone),
-		_create_wave(35, 1.2, 0.4, _init_movement_03, Drone),
-		_create_wave(40, 0.8, 2.4, _init_movement_04, Drone),
-		_create_wave(20, 1.2, 0.4, _init_movement_05, Drone),
-		_create_wave(20, 1.2, 0.4, _init_movement_06, Drone),
-		_create_wave(30, 1.2, 0.4, _init_movement_07, Drone),
-		_create_wave(10, 1.2, 0.4, _init_movement_08, Drone),
-		_create_wave(20, 1.2, 0.4, _init_movement_09, Drone),
+		_create_wave(50, 0.4, 0.4, _init_movement_00, RegularUfo),
+		_create_wave(50, 0.8, 0.4, _init_movement_01, RegularUfo),
+		_create_wave(25, 0.8, 0.4, _init_movement_02, RegularUfo),
+		_create_wave(35, 1.2, 0.4, _init_movement_03, RegularUfo),
+		_create_wave(40, 0.8, 2.4, _init_movement_04, RegularUfo),
 	]
 	return _waves
 
@@ -39,7 +34,7 @@ func _init_movement_01(screen_size) -> InitialMoveState:
 		initial_movement_state.position.x = 0
 	else:
 		initial_movement_state.movement_pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
-		initial_movement_state.position.x = screen_size.x
+		initial_movement_state.position.x =  screen_size.x
 	initial_movement_state.position.y = randi() % int(screen_size.y - 10) + 3
 	return initial_movement_state
 
