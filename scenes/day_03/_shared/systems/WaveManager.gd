@@ -1,14 +1,14 @@
 class_name WaveManager
 extends Node2D
 
+
 signal all_waves_completed
 signal wave_completed(wave_index)
 signal wave_started(wave_index)
 
-
 const MAX_CONCURRENT_ENEMIES: int = 10
 
-@export var waves_script: Script
+@export var WavesScript: Script
 
 var _waves_descriptor: LevelWaves
 var _spawned_enemies_count: int = 0
@@ -20,7 +20,7 @@ var _is_canceled: bool = false
 
 
 func _ready() -> void:
-	_waves_descriptor = waves_script.new() as LevelWaves
+	_waves_descriptor = WavesScript.new() as LevelWaves
 
 
 func start(world: Node2D, player: Day03Player) -> void:
@@ -91,5 +91,6 @@ func cancel_wave() -> void:
 
 
 func _on_Enemy_tree_exited() -> void:
-	if _is_canceled: return
+	if _is_canceled:
+		return
 	_enemies_on_screen = maxi(_enemies_on_screen - 1, 0)

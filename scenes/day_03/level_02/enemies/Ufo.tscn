@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu2mqxat6vyjm"]
+[gd_scene load_steps=9 format=3 uid="uid://b2lh4vb228iqd"]
 
-[ext_resource type="Texture2D" uid="uid://d038j14u56qpr" path="res://art/day_3/enemy_ufo_0.png" id="1_ijtth"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/RegularUfo.gd" id="1_uaq2c"]
-[ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="2_s1ksp"]
-[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_vaps8"]
-[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="5_ix0jq"]
-[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="6_0sjve"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/Ufo.gd" id="1_2vfco"]
+[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_dinko"]
+[ext_resource type="Texture2D" uid="uid://d038j14u56qpr" path="res://art/day_3/enemy_ufo_0.png" id="3_sef7x"]
+[ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="4_dejlw"]
+[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="5_yanns"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="6_ear8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elnjg"]
 size = Vector2(14, 16)
@@ -14,10 +14,10 @@ size = Vector2(14, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ijtth")
+"texture": ExtResource("3_sef7x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_s1ksp")
+"texture": ExtResource("4_dejlw")
 }],
 "loop": true,
 "name": &"default",
@@ -29,8 +29,10 @@ z_index = -60
 collision_layer = 2
 collision_mask = 9
 input_pickable = false
-script = ExtResource("1_uaq2c")
-Explosion = ExtResource("2_vaps8")
+script = ExtResource("1_2vfco")
+Explosion = ExtResource("2_dinko")
+score_points_gun = 10
+score_points_mega_gun = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
@@ -43,8 +45,8 @@ frame = 1
 frame_progress = 1.0
 centered = false
 
-[node name="Gun" parent="." instance=ExtResource("5_ix0jq")]
-Bullet = ExtResource("6_0sjve")
+[node name="Gun" parent="." instance=ExtResource("5_yanns")]
+Bullet = ExtResource("6_ear8g")
 bullet_speed = 125.0
 ignore_cooldown = true
 

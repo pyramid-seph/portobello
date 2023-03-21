@@ -3,30 +3,30 @@ extends LevelWaves
 
 const INITIAL_Y = "initial_y"
 
-var RegularUfo = preload("res://scenes/day_03/level_02/enemies/RegularUfo.tscn")
-var MetallicUfo = preload("res://scenes/day_03/level_02/enemies/RegularUfo.tscn")
+const Ufo = preload("res://scenes/day_03/level_02/enemies/Ufo.tscn")
+const Block = preload("res://scenes/day_03/level_02/enemies/Block.tscn")
 
 
 func _create_waves() -> Array[Wave]:
 	return [
-		Wave.create(10, 0.24, 0.24, _calculate_pattern_00, RegularUfo),
-		Wave.create(10, 0.24, 0.24, _calculate_pattern_01, RegularUfo),
-		Wave.create(10, 0.24, 0.24, _calculate_pattern_02, RegularUfo),
-		Wave.create(10, 0.24, 0.24, _calculate_pattern_03, RegularUfo),
-		Wave.create(60, 0.40, 0.40, _calculate_pattern_04, RegularUfo),
-		Wave.create(10, 1.60, 1.60, _calculate_pattern_05, RegularUfo),
-		Wave.create(20, 0.24, 0.24, _calculate_pattern_06, RegularUfo),
-		Wave.create(20, 1.60, 1.60, _calculate_pattern_07, RegularUfo),
-		Wave.create(20, 1.60, 1.60, _calculate_pattern_08, MetallicUfo),
-		Wave.create(30, 0.80, 0.80, _calculate_pattern_09, MetallicUfo),
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_00, Ufo),
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_01, Ufo),
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_02, Ufo),
+		Wave.create(10, 0.24, 0.24, _calculate_pattern_03, Ufo),
+		Wave.create(60, 0.40, 0.40, _calculate_pattern_04, Ufo),
+		Wave.create(10, 1.60, 1.60, _calculate_pattern_05, Ufo),
+		Wave.create(20, 0.24, 0.24, _calculate_pattern_06, Ufo),
+		Wave.create(20, 1.60, 1.60, _calculate_pattern_07, Ufo),
+		Wave.create(20, 1.60, 1.60, _calculate_pattern_08, Block),
+		Wave.create(30, 0.80, 0.80, _calculate_pattern_09, Block),
 	]
 
 
 func _calculate_pattern_00(
-	_wave_enemy_index: int, 
-	player_global_pos: Vector2, 
-	_screen_size: Vector2, 
-	wave_memo: Dictionary
+		_wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		_screen_size: Vector2, 
+		wave_memo: Dictionary,
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
@@ -37,11 +37,26 @@ func _calculate_pattern_00(
 	return movement
 
 
-func _calculate_pattern_01(wave_enemy_index, player_global_pos, screen_size, wave_memo) -> SimpleMovement:
-	return _calculate_pattern_00(wave_enemy_index, player_global_pos, screen_size, wave_memo)
+func _calculate_pattern_01(
+		wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		screen_size: Vector2, 
+		wave_memo: Dictionary,
+) -> SimpleMovement:
+	return _calculate_pattern_00(
+		wave_enemy_index, 
+		player_global_pos,
+		screen_size,
+		wave_memo
+	)
 
 
-func _calculate_pattern_02(_wave_enemy_index, player_global_pos, screen_size, wave_memo) -> SimpleMovement:
+func _calculate_pattern_02(
+		_wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		screen_size: Vector2, 
+		wave_memo: Dictionary,
+) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	movement.pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
 	movement.initial_global_position.x = screen_size.x
@@ -51,15 +66,35 @@ func _calculate_pattern_02(_wave_enemy_index, player_global_pos, screen_size, wa
 	return movement
 
 
-func _calculate_pattern_03(wave_enemy_index, player_global_pos, screen_size, wave_memo) -> SimpleMovement:
+func _calculate_pattern_03(
+		wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		screen_size: Vector2, 
+		wave_memo: Dictionary,
+) -> SimpleMovement:
 	if wave_enemy_index < 5:
-		return _calculate_pattern_00(wave_enemy_index, player_global_pos, screen_size, wave_memo)
+		return _calculate_pattern_00(
+				wave_enemy_index,
+				player_global_pos,
+				screen_size,
+				wave_memo
+		)
 	else:
 		if wave_enemy_index == 5: wave_memo.erase(INITIAL_Y)
-		return _calculate_pattern_02(wave_enemy_index, player_global_pos, screen_size, wave_memo)
+		return _calculate_pattern_02(
+				wave_enemy_index, 
+				player_global_pos, 
+				screen_size, 
+				wave_memo
+		)
 
 
-func _calculate_pattern_04(_wave_enemy_index, player_global_pos, _screen_size, _wave_memo) -> SimpleMovement:
+func _calculate_pattern_04(
+		_wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		_screen_size: Vector2, 
+		_wave_memo: Dictionary,
+) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	movement.pattern = EnemyMovement.Pattern.VERTICAL_DOWN
 	movement.initial_global_position.x = player_global_pos.x
@@ -67,7 +102,12 @@ func _calculate_pattern_04(_wave_enemy_index, player_global_pos, _screen_size, _
 	return movement
 
 
-func _calculate_pattern_05(_wave_enemy_index, player_global_pos, _screen_size, _wave_memo) -> SimpleMovement:
+func _calculate_pattern_05(
+	_wave_enemy_index: int, 
+	player_global_pos: Vector2, 
+	_screen_size: Vector2, 
+	_wave_memo: Dictionary,
+) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	movement.pattern = EnemyMovement.Pattern.ZIG_ZAG_DOWN
 	movement.initial_global_position.x = player_global_pos.x
@@ -75,7 +115,12 @@ func _calculate_pattern_05(_wave_enemy_index, player_global_pos, _screen_size, _
 	return movement
 
 
-func _calculate_pattern_06(_wave_enemy_index, player_global_pos, _screen_size, _wave_memo) -> SimpleMovement:
+func _calculate_pattern_06(
+		_wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		_screen_size: Vector2, 
+		_wave_memo: Dictionary,
+) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	movement.pattern = EnemyMovement.Pattern.SQUARE_DOWN
 	movement.initial_global_position.x = player_global_pos.x
@@ -83,7 +128,12 @@ func _calculate_pattern_06(_wave_enemy_index, player_global_pos, _screen_size, _
 	return movement
 
 
-func _calculate_pattern_07(_wave_enemy_index, player_global_pos, screen_size, _wave_memo) -> SimpleMovement:
+func _calculate_pattern_07(
+		_wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		screen_size: Vector2, 
+		_wave_memo: Dictionary,
+) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	movement.pattern = EnemyMovement.Pattern.VERTICAL_UP
 	movement.initial_global_position.x = player_global_pos.x
@@ -91,7 +141,12 @@ func _calculate_pattern_07(_wave_enemy_index, player_global_pos, screen_size, _w
 	return movement
 
 
-func _calculate_pattern_08(_wave_enemy_index, player_global_pos, screen_size, _wave_memo) -> SimpleMovement:
+func _calculate_pattern_08(
+		_wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		screen_size: Vector2, 
+		_wave_memo: Dictionary,
+) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	if randi() % 2 == 0:
 		movement.initial_global_position.x = player_global_pos.x
@@ -112,7 +167,12 @@ func _calculate_pattern_08(_wave_enemy_index, player_global_pos, screen_size, _w
 	return movement
 
 
-func _calculate_pattern_09(_wave_enemy_index, player_global_pos, screen_size, _wave_memo) -> SimpleMovement:
+func _calculate_pattern_09(
+		_wave_enemy_index: int, 
+		player_global_pos: Vector2, 
+		screen_size: Vector2, 
+		_wave_memo: Dictionary,
+) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	if randi() % 2 == 0:
 		movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
@@ -122,4 +182,3 @@ func _calculate_pattern_09(_wave_enemy_index, player_global_pos, screen_size, _w
 		movement.initial_global_position.x = screen_size.x
 	movement.initial_global_position.y = player_global_pos.y
 	return movement
-	

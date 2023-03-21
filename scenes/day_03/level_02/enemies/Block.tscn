@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyt2d2xj5gbld"]
+
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/Ufo.gd" id="1_p4dnc"]
+[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_6p2dj"]
+[ext_resource type="Texture2D" uid="uid://c4gtk1xb3hvfc" path="res://art/day_3/enemy_duck_block_black.png" id="3_ijd4a"]
+[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="4_7mmee"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="5_1ryl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elnjg"]
+size = Vector2(14, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0m6rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ijd4a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Block" type="Area2D" groups=["enemies", "regular_ufo"]]
+z_index = -60
+collision_layer = 2
+collision_mask = 9
+input_pickable = false
+script = ExtResource("1_p4dnc")
+Explosion = ExtResource("2_6p2dj")
+score_points_gun = 10
+score_points_mega_gun = 5
+is_immune_to_bullets = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_elnjg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0m6rv")
+autoplay = "default"
+centered = false
+
+[node name="Gun" parent="." instance=ExtResource("4_7mmee")]
+Bullet = ExtResource("5_1ryl3")
+bullet_speed = 125.0
+ignore_cooldown = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(0, 0, 16, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,8 +1,8 @@
-extends Area2D
 class_name HiveDrone
+extends Area2D
+
 
 signal dead(killer)
-
 
 @export var hp: int = 50
 @export var is_immune_to_bullets: bool = false
@@ -74,7 +74,8 @@ func _spawn_explosion() -> void:
 
 
 func _on_drone_area_entered(area: Area2D) -> void:
-	if _is_dead: return
+	if _is_dead: 
+		return
 	if is_immune_to_bullets:
 		_spawn_explosion()
 	elif area.is_in_group("bullets"): 

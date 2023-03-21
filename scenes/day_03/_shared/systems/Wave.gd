@@ -8,11 +8,11 @@ var calculate_pattern: Callable
 var Enemy: PackedScene
 
 static func create(
-	enemy_count_val: int, 
-	time_between_spawns_val: float,
-	time_between_waves_val: float,
-	calculate_pattern_val: Callable,
-	enemy_scene_val: PackedScene
+		enemy_count_val: int, 
+		time_between_spawns_val: float,
+		time_between_waves_val: float,
+		calculate_pattern_val: Callable,
+		enemy_scene_val: PackedScene
 ) -> Wave:
 	var wave = Wave.new()
 	wave.enemy_count = enemy_count_val

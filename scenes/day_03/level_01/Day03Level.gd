@@ -1,6 +1,7 @@
 class_name Day03Level
 extends Node
 
+
 signal level_state_changed(new_state)
 signal pause_state_changed(new_state)
 signal waves_completed

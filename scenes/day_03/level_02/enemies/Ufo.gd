@@ -1,8 +1,4 @@
 extends Area2D
-class_name RegularUfo
-
-const SCORE_POINTS_GUN: int = 10
-const SCORE_POINTS_MEGA_GUN: int = 5
 
 
 @export var Explosion: PackedScene
@@ -32,6 +28,10 @@ const SCORE_POINTS_MEGA_GUN: int = 5
 				movement_pattern = EnemyMovement.Pattern.VERTICAL_DOWN
 				_direction = Vector2.DOWN
 		_correct_initial_pos_x()
+@export var score_points_gun: int = 0
+@export var score_points_mega_gun: int = 0
+@export var is_immune_to_bullets: bool = false
+
 var world: Node2D:
 	set(value):
 		world = value
@@ -81,17 +81,21 @@ func shoot() -> bool:
 func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
 	if killer and killer.has_method("add_points_to_score"):
 		killer.add_points_to_score(
-			SCORE_POINTS_MEGA_GUN if killed_by_mega_gun else SCORE_POINTS_GUN
+			score_points_mega_gun if killed_by_mega_gun else score_points_gun
 		)
 	explode()
 
 
 func explode() -> void:
-	var explosion = Explosion.instantiate()
-	explosion.centered = _animated_sprite.centered
-	explosion.global_position = global_position
-	_world_or_default().add_child(explosion)
+	_spawn_explosion()
 	queue_free()
+
+
+func _spawn_explosion() -> void:
+	var new_explosion = Explosion.instantiate()
+	new_explosion.centered = _animated_sprite.centered
+	new_explosion.global_position = global_position
+	_world_or_default().add_child(new_explosion)
 
 
 func _world_or_default() -> Node2D:
@@ -120,5 +124,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	var killer = area.shooter if area.is_in_group("bullets") else area
-	kill(killer)
+	if is_immune_to_bullets:
+		_spawn_explosion()
+	else:
+		var killer = area.shooter if area.is_in_group("bullets") else area
+		kill(killer)
