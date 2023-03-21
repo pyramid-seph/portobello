@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="5_1ryl3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elnjg"]
-size = Vector2(14, 16)
+size = Vector2(16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0m6rv"]
 animations = [{
