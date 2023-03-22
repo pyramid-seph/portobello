@@ -27,8 +27,6 @@ collision_mask = 9
 input_pickable = false
 script = ExtResource("1_p4dnc")
 Explosion = ExtResource("2_6p2dj")
-score_points_gun = 10
-score_points_mega_gun = 5
 is_immune_to_bullets = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -41,6 +39,7 @@ autoplay = "default"
 centered = false
 
 [node name="Gun" parent="." instance=ExtResource("4_7mmee")]
+position = Vector2(8, 17)
 Bullet = ExtResource("5_1ryl3")
 bullet_speed = 125.0
 ignore_cooldown = true

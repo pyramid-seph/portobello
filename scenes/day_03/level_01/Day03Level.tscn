@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cp4tq5frnbdcb" path="res://scenes/day_03/_shared/player/Player.tscn" id="2_7jo31"]
 [ext_resource type="PackedScene" uid="uid://c4layxlfqxcpk" path="res://scenes/day_03/level_01/enemies/Hive.tscn" id="2_wer3w"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/Day03Level.gd" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/systems/StaminaSpawner.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://c5ssrh6nrjva3" path="res://scenes/day_03/_shared/systems/StaminaSpawner.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://do4sxpr6sod1n" path="res://scenes/day_03/_shared/systems/WaveManager.tscn" id="8_h6wpu"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/systems/PowerUpSpawner.tscn" id="9"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/Level01Waves.gd" id="9_lv8fx"]
+[ext_resource type="PackedScene" uid="uid://53pwijw64ttc" path="res://scenes/day_03/_shared/systems/PowerUpSpawner.tscn" id="9"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/Level01Waves.gd" id="9_3bnhu"]
 [ext_resource type="PackedScene" uid="uid://wlkw3c1bf7uc" path="res://scenes/day_03/_shared/ui/Day3Ui.tscn" id="10_inxwm"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/DroneShootManager.gd" id="12"]
@@ -30,14 +30,12 @@ process_mode = 1
 one_shot = true
 
 [node name="StaminaSpawner" parent="." instance=ExtResource("8")]
-process_mode = 1
 player_data = ExtResource("11")
 
 [node name="PowerUpSpawner" parent="." instance=ExtResource("9")]
-process_mode = 1
 
 [node name="WaveManager" parent="." instance=ExtResource("8_h6wpu")]
-WavesScript = ExtResource("9_lv8fx")
+WavesScript = ExtResource("9_3bnhu")
 
 [node name="World" type="Node2D" parent="."]
 process_mode = 1

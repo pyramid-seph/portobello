@@ -24,7 +24,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="RegularUfo" type="Area2D" groups=["enemies", "regular_ufo"]]
+[node name="Ufo" type="Area2D" groups=["enemies", "regular_ufo"]]
 z_index = -60
 collision_layer = 2
 collision_mask = 9
@@ -46,6 +46,7 @@ frame_progress = 1.0
 centered = false
 
 [node name="Gun" parent="." instance=ExtResource("5_yanns")]
+position = Vector2(8, 17)
 Bullet = ExtResource("6_ear8g")
 bullet_speed = 125.0
 ignore_cooldown = true

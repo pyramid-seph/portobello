@@ -69,13 +69,13 @@ func _process(delta: float) -> void:
 			if position.x > _max_pos_x or position.x < _min_pos_x:
 				_direction.x *= -1
 				position.y += 30 + randi() % 10
-	
+
 	_velocity = _direction * speed
 	position += _velocity * delta
 
 
-func shoot() -> bool:
-	return _gun.shoot(Vector2.DOWN)
+func shoot(direction: Vector2 = Vector2.DOWN) -> bool:
+	return _gun.shoot(direction)
 
 
 func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:

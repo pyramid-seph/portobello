@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://c5ssrh6nrjva3"]
 
 [ext_resource type="Script" path="res://resources/Day03PlayerData.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/systems/StaminaSpawner.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://doe0rru1mm2fv" path="res://scenes/day_03/_shared/pickups/Bird.tscn" id="3_6ycxa"]
 
 [node name="StaminaSpawner" type="Node2D"]
+process_mode = 1
 script = ExtResource("2")
 player_data = ExtResource("1")
 stamina_item = ExtResource("3_6ycxa")
