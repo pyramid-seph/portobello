@@ -27,6 +27,7 @@ collision_mask = 9
 input_pickable = false
 script = ExtResource("1_p4dnc")
 Explosion = ExtResource("2_6p2dj")
+score_points_mega_gun = 50
 is_immune_to_bullets = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
