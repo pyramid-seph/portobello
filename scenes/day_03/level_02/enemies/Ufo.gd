@@ -52,6 +52,11 @@ var _velocity: Vector2 = _direction * speed
 @onready var _is_ready: bool = true
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire"):
+		shoot(Vector2.UP)
+
+
 func _ready() -> void:
 	_correct_initial_pos_x()
 
@@ -71,7 +76,8 @@ func _process(delta: float) -> void:
 				position.y += 30 + randi() % 10
 
 	_velocity = _direction * speed
-	position += _velocity * delta
+	position = Vector2(120,120)
+	#position += _velocity * delta
 
 
 func shoot(direction: Vector2 = Vector2.DOWN) -> bool:
