@@ -36,12 +36,13 @@ var world: Node2D:
 	set(value):
 		world = value
 		if not _is_ready: return
-		_gun.world = value
+		_bottom_gun.world = value
 
 var _direction: Vector2 = Vector2.DOWN
 var _velocity: Vector2 = _direction * speed
 
-@onready var _gun := $Gun
+@onready var _bottom_gun := $BottomGun
+@onready var _top_gun := $TopGun
 @onready var _viewport_size: Vector2 = get_viewport_rect().size
 @onready var _viewport_width: float = _viewport_size.x
 @onready var _viewport_height: float = _viewport_size.y
@@ -50,11 +51,6 @@ var _velocity: Vector2 = _direction * speed
 @onready var _min_pos_x: float = 0.0
 @onready var _max_pos_x: float = _viewport_width - _sprite_width
 @onready var _is_ready: bool = true
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire"):
-		shoot(Vector2.UP)
 
 
 func _ready() -> void:
@@ -76,12 +72,15 @@ func _process(delta: float) -> void:
 				position.y += 30 + randi() % 10
 
 	_velocity = _direction * speed
-	position = Vector2(120,120)
-	#position += _velocity * delta
+	position += _velocity * delta
 
 
-func shoot(direction: Vector2 = Vector2.DOWN) -> bool:
-	return _gun.shoot(direction)
+func fire_bottom_gun() -> bool:
+	return _bottom_gun.shoot(Vector2.DOWN)
+
+
+func fire_top_gun() -> bool:
+	return _top_gun.shoot(Vector2.UP)
 
 
 func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:

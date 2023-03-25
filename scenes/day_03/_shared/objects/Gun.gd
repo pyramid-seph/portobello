@@ -1,3 +1,5 @@
+@icon("res://ui/icons/pistol-gun.svg")
+class_name Gun
 extends Marker2D
 
 
