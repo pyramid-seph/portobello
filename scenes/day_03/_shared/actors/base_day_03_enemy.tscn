@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://drvu0mov0ok2m"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.gd" id="1_u8kdk"]
+[ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="2_ot8c6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtxue"]
+size = Vector2(16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2apo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ot8c6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BaseDay03Enemy" type="Area2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 9
+input_pickable = false
+script = ExtResource("1_u8kdk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_mtxue")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c2apo")
+autoplay = "default"
+centered = false
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(0, 0, 16, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

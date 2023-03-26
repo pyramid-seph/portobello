@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu1wgm0y05b12"]
+
+[ext_resource type="PackedScene" uid="uid://drvu0mov0ok2m" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.tscn" id="1_18ayd"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.gd" id="1_tb1ga"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="2_0qgyf"]
+
+[node name="MovingDay03Enemy" instance=ExtResource("1_18ayd")]
+script = ExtResource("1_tb1ga")
+speed = 0.0
+movement_pattern = 0
+
+[node name="SimpleMover" type="Node" parent="." index="3"]
+script = ExtResource("2_0qgyf")

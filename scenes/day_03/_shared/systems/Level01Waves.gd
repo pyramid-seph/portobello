@@ -1,7 +1,7 @@
 extends LevelWaves
 
 
-const Drone = preload("res://scenes/day_03/level_01/enemies/Drone.tscn")
+const Drone = preload("res://scenes/day_03/level_01/enemies/drone.tscn")
 
 
 func _create_waves() -> Array[Wave]:

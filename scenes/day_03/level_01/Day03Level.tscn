@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c5ssrh6nrjva3" path="res://scenes/day_03/_shared/systems/StaminaSpawner.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://do4sxpr6sod1n" path="res://scenes/day_03/_shared/systems/WaveManager.tscn" id="8_h6wpu"]
 [ext_resource type="PackedScene" uid="uid://53pwijw64ttc" path="res://scenes/day_03/_shared/systems/PowerUpSpawner.tscn" id="9"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/Level02Waves.gd" id="9_xxdq8"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/Level01Waves.gd" id="9_g5tp5"]
 [ext_resource type="PackedScene" uid="uid://wlkw3c1bf7uc" path="res://scenes/day_03/_shared/ui/Day3Ui.tscn" id="10_inxwm"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/DroneShootManager.gd" id="12"]
@@ -35,7 +35,7 @@ player_data = ExtResource("11")
 [node name="PowerUpSpawner" parent="." instance=ExtResource("9")]
 
 [node name="WaveManager" parent="." instance=ExtResource("8_h6wpu")]
-WavesScript = ExtResource("9_xxdq8")
+WavesScript = ExtResource("9_g5tp5")
 
 [node name="World" type="Node2D" parent="."]
 process_mode = 1

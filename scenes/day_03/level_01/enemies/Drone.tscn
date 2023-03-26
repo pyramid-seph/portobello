@@ -1,43 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://c80tvb1llmg60"]
+[gd_scene load_steps=7 format=3 uid="uid://vh4kwxjygn5c"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Drone.gd" id="1_2ejxn"]
-[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_kurrx"]
-[ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="3_dquwd"]
-[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="3_o27jy"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="4_ig4np"]
-[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="4_kujg5"]
+[ext_resource type="PackedScene" uid="uid://bu1wgm0y05b12" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_x1vje"]
+[ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="2_3nu01"]
+[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="2_v5sji"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/drone.gd" id="2_w21ul"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="3_puev8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik2km"]
-size = Vector2(14, 16)
+[sub_resource type="SpriteFrames" id="SpriteFrames_ncslv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3nu01")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="Drone" type="Area2D" groups=["drone", "enemies"]]
+[node name="Drone" groups=["drone"] instance=ExtResource("1_x1vje")]
 z_index = -60
-collision_layer = 2
-collision_mask = 9
-input_pickable = false
-script = ExtResource("1_2ejxn")
-Explosion = ExtResource("2_kurrx")
+script = ExtResource("2_w21ul")
+speed = 87.5
+score_points_gun = 10
+score_points_mega_gun = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_ik2km")
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_ncslv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_dquwd")
-centered = false
-
-[node name="SimpleMover" type="Node" parent="."]
-script = ExtResource("4_ig4np")
-
-[node name="Gun" parent="." instance=ExtResource("3_o27jy")]
+[node name="Gun" parent="." index="4" instance=ExtResource("2_v5sji")]
 position = Vector2(8, 17)
-Bullet = ExtResource("4_kujg5")
+Bullet = ExtResource("3_puev8")
 bullet_speed = 125.0
 cooldown = 0.8
 ignore_cooldown = true
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(1, 0, 14, 16)
-
-[connection signal="area_entered" from="." to="." method="_on_drone_area_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

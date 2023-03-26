@@ -1,67 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2lh4vb228iqd"]
+[gd_scene load_steps=8 format=3 uid="uid://dvmwsfcvalv7x"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/Ufo.gd" id="1_2vfco"]
-[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_dinko"]
-[ext_resource type="Texture2D" uid="uid://d038j14u56qpr" path="res://art/day_3/enemy_ufo_0.png" id="3_sef7x"]
-[ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="4_dejlw"]
-[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="5_yanns"]
-[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="6_ear8g"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="7_7yssb"]
+[ext_resource type="PackedScene" uid="uid://bu1wgm0y05b12" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_xe03b"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/ufo.gd" id="2_nhoik"]
+[ext_resource type="Texture2D" uid="uid://d038j14u56qpr" path="res://art/day_3/enemy_ufo_0.png" id="2_wmd7j"]
+[ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="3_3hdy1"]
+[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="4_mo5jo"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="5_ed5w7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_elnjg"]
-size = Vector2(14, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0m6rv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nghcw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sef7x")
+"texture": ExtResource("2_wmd7j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dejlw")
+"texture": ExtResource("3_3hdy1")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Ufo" type="Area2D" groups=["enemies", "regular_ufo"]]
+[node name="Ufo" instance=ExtResource("1_xe03b")]
 z_index = -60
-position = Vector2(120, 120)
-collision_layer = 2
-collision_mask = 9
-input_pickable = false
-script = ExtResource("1_2vfco")
-Explosion = ExtResource("2_dinko")
-score_points_gun = 10
-score_points_mega_gun = 5
+script = ExtResource("2_nhoik")
+speed = 87.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_elnjg")
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_nghcw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_0m6rv")
-autoplay = "default"
-centered = false
-
-[node name="SimpleMover" type="Node" parent="."]
-script = ExtResource("7_7yssb")
-
-[node name="TopGun" parent="." instance=ExtResource("5_yanns")]
+[node name="TopGun" parent="." index="4" instance=ExtResource("4_mo5jo")]
 position = Vector2(8, -3)
-Bullet = ExtResource("6_ear8g")
+Bullet = ExtResource("5_ed5w7")
 bullet_speed = 125.0
 ignore_cooldown = true
 
-[node name="BottomGun" parent="." instance=ExtResource("5_yanns")]
+[node name="BottomGun" parent="." index="5" instance=ExtResource("4_mo5jo")]
 position = Vector2(8, 17)
-Bullet = ExtResource("6_ear8g")
+Bullet = ExtResource("5_ed5w7")
 bullet_speed = 125.0
 ignore_cooldown = true
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(0, 0, 16, 16)
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
