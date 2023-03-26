@@ -61,7 +61,7 @@ func start(world: Node2D, player: Day03Player) -> void:
 				_screen_size,
 				wave_memo
 			)
-			enemy.global_position = movement.initial_global_position
+			enemy.global_position = movement.initial_global_position			
 			enemy.movement_pattern = movement.pattern
 			enemy.tree_exited.connect(_on_Enemy_tree_exited, CONNECT_ONE_SHOT)
 			world.add_child(enemy)

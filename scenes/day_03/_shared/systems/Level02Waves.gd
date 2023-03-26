@@ -17,8 +17,6 @@ func _create_waves() -> Array[Wave]:
 		Wave.create(10, 1.60, 1.60, _calculate_pattern_05, Ufo),
 		Wave.create(20, 0.24, 0.24, _calculate_pattern_06, Ufo),
 		Wave.create(20, 1.60, 1.60, _calculate_pattern_07, Ufo),
-		Wave.create(20, 1.60, 1.60, _calculate_pattern_08, Block),
-		Wave.create(30, 0.80, 0.80, _calculate_pattern_09, Block),
 	]
 
 
@@ -29,7 +27,7 @@ func _calculate_pattern_00(
 		wave_memo: Dictionary,
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
-	movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
+	movement.pattern = SimpleMover.Pattern.HORIZONTAL_RIGHT
 	movement.initial_global_position.x = 0
 	var pos_y = wave_memo.get(INITIAL_Y, player_global_pos.y)
 	wave_memo[INITIAL_Y] = pos_y
@@ -58,7 +56,7 @@ func _calculate_pattern_02(
 		wave_memo: Dictionary,
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
-	movement.pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
+	movement.pattern = SimpleMover.Pattern.HORIZONTAL_LEFT
 	movement.initial_global_position.x = screen_size.x
 	var pos_y = wave_memo.get(INITIAL_Y, player_global_pos.y)
 	wave_memo[INITIAL_Y] = pos_y
@@ -96,7 +94,7 @@ func _calculate_pattern_04(
 		_wave_memo: Dictionary,
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
-	movement.pattern = EnemyMovement.Pattern.VERTICAL_DOWN
+	movement.pattern = SimpleMover.Pattern.VERTICAL_DOWN
 	movement.initial_global_position.x = player_global_pos.x
 	movement.initial_global_position.y = 0
 	return movement
@@ -109,7 +107,7 @@ func _calculate_pattern_05(
 	_wave_memo: Dictionary,
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
-	movement.pattern = EnemyMovement.Pattern.ZIG_ZAG_DOWN
+	movement.pattern = SimpleMover.Pattern.ZIG_ZAG_DOWN
 	movement.initial_global_position.x = player_global_pos.x
 	movement.initial_global_position.y = 0
 	return movement
@@ -122,7 +120,7 @@ func _calculate_pattern_06(
 		_wave_memo: Dictionary,
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
-	movement.pattern = EnemyMovement.Pattern.SQUARE_DOWN
+	movement.pattern = SimpleMover.Pattern.SQUARE_DOWN
 	movement.initial_global_position.x = player_global_pos.x
 	movement.initial_global_position.y = 0
 	return movement
@@ -135,7 +133,7 @@ func _calculate_pattern_07(
 		_wave_memo: Dictionary,
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
-	movement.pattern = EnemyMovement.Pattern.VERTICAL_UP
+	movement.pattern = SimpleMover.Pattern.VERTICAL_UP
 	movement.initial_global_position.x = player_global_pos.x
 	movement.initial_global_position.y = screen_size.y
 	return movement
@@ -151,17 +149,17 @@ func _calculate_pattern_08(
 	if randi() % 2 == 0:
 		movement.initial_global_position.x = player_global_pos.x
 		if randi() % 2 == 0:
-			movement.pattern = EnemyMovement.Pattern.VERTICAL_DOWN
+			movement.pattern = SimpleMover.Pattern.VERTICAL_DOWN
 			movement.initial_global_position.y = 0
 		else:
-			movement.pattern = EnemyMovement.Pattern.VERTICAL_UP
+			movement.pattern = SimpleMover.Pattern.VERTICAL_UP
 			movement.initial_global_position.y = screen_size.y - 6
 	else:
 		if randi() % 2 == 0:
-			movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
+			movement.pattern = SimpleMover.Pattern.HORIZONTAL_RIGHT
 			movement.initial_global_position.x = 0
 		else:
-			movement.pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
+			movement.pattern = SimpleMover.Pattern.HORIZONTAL_LEFT
 			movement.initial_global_position.x = screen_size.x
 		movement.initial_global_position.y = player_global_pos.y
 	return movement
@@ -175,10 +173,10 @@ func _calculate_pattern_09(
 ) -> SimpleMovement:
 	var movement = SimpleMovement.new()
 	if randi() % 2 == 0:
-		movement.pattern = EnemyMovement.Pattern.HORIZONTAL_RIGHT
+		movement.pattern = SimpleMover.Pattern.HORIZONTAL_RIGHT
 		movement.initial_global_position.x = 0
 	else:
-		movement.pattern = EnemyMovement.Pattern.HORIZONTAL_LEFT
+		movement.pattern = SimpleMover.Pattern.HORIZONTAL_LEFT
 		movement.initial_global_position.x = screen_size.x
 	movement.initial_global_position.y = player_global_pos.y
 	return movement

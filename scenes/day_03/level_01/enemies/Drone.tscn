@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c80tvb1llmg60"]
+[gd_scene load_steps=8 format=3 uid="uid://c80tvb1llmg60"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Drone.gd" id="1_2ejxn"]
 [ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_kurrx"]
 [ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="3_dquwd"]
 [ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="3_o27jy"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="4_ig4np"]
 [ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="4_kujg5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik2km"]
@@ -24,6 +25,9 @@ shape = SubResource("RectangleShape2D_ik2km")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_dquwd")
 centered = false
+
+[node name="SimpleMover" type="Node" parent="."]
+script = ExtResource("4_ig4np")
 
 [node name="Gun" parent="." instance=ExtResource("3_o27jy")]
 position = Vector2(8, 17)

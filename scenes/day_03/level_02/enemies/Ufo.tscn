@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2lh4vb228iqd"]
+[gd_scene load_steps=10 format=3 uid="uid://b2lh4vb228iqd"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/Ufo.gd" id="1_2vfco"]
 [ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_dinko"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="4_dejlw"]
 [ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="5_yanns"]
 [ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="6_ear8g"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="7_7yssb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elnjg"]
 size = Vector2(14, 16)
@@ -26,6 +27,7 @@ animations = [{
 
 [node name="Ufo" type="Area2D" groups=["enemies", "regular_ufo"]]
 z_index = -60
+position = Vector2(120, 120)
 collision_layer = 2
 collision_mask = 9
 input_pickable = false
@@ -41,9 +43,10 @@ shape = SubResource("RectangleShape2D_elnjg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0m6rv")
 autoplay = "default"
-frame = 1
-frame_progress = 1.0
 centered = false
+
+[node name="SimpleMover" type="Node" parent="."]
+script = ExtResource("7_7yssb")
 
 [node name="TopGun" parent="." instance=ExtResource("5_yanns")]
 position = Vector2(8, -3)

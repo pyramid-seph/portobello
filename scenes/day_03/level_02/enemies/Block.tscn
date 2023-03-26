@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyt2d2xj5gbld"]
+[gd_scene load_steps=7 format=3 uid="uid://cyt2d2xj5gbld"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/Ufo.gd" id="1_p4dnc"]
-[ext_resource type="PackedScene" uid="uid://caffyvchkq0h" path="res://scenes/day_03/_shared/objects/Explosion.tscn" id="2_6p2dj"]
 [ext_resource type="Texture2D" uid="uid://c4gtk1xb3hvfc" path="res://art/day_3/enemy_duck_block_black.png" id="3_ijd4a"]
 [ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="4_7mmee"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="4_oaths"]
 [ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="5_1ryl3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elnjg"]
@@ -25,10 +24,6 @@ z_index = -60
 collision_layer = 2
 collision_mask = 9
 input_pickable = false
-script = ExtResource("1_p4dnc")
-Explosion = ExtResource("2_6p2dj")
-score_points_mega_gun = 50
-is_immune_to_bullets = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
@@ -38,6 +33,9 @@ shape = SubResource("RectangleShape2D_elnjg")
 sprite_frames = SubResource("SpriteFrames_0m6rv")
 autoplay = "default"
 centered = false
+
+[node name="SimpleMover" type="Node" parent="."]
+script = ExtResource("4_oaths")
 
 [node name="Gun" parent="." instance=ExtResource("4_7mmee")]
 position = Vector2(8, 17)

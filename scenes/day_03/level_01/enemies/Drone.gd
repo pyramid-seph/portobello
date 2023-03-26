@@ -1,81 +1,40 @@
-extends Area2D
 class_name Drone
+extends Area2D
 
 const SCORE_POINTS_GUN: int = 10
 const SCORE_POINTS_MEGA_GUN: int = 5
 
 
 @export var Explosion: PackedScene
-@export var speed: float = 87.5
-@export var movement_pattern: EnemyMovement.Pattern = EnemyMovement.Pattern.VERTICAL_DOWN:
-	get:
-		return movement_pattern
-	set(mod_value):
-		movement_pattern = mod_value
-		match (movement_pattern):
-			EnemyMovement.Pattern.VERTICAL_DOWN:
-				_direction = Vector2.DOWN
-			EnemyMovement.Pattern.VERTICAL_UP:
-				_direction = Vector2.UP
-			EnemyMovement.Pattern.HORIZONTAL_LEFT:
-				_direction = Vector2.LEFT
-			EnemyMovement.Pattern.HORIZONTAL_RIGHT:
-				_direction = Vector2.RIGHT
-			EnemyMovement.Pattern.ZIG_ZAG_DOWN:
-				_direction = Vector2(1, 1)
-			EnemyMovement.Pattern.SQUARE_UP:
-				_direction = Vector2.RIGHT
-			EnemyMovement.Pattern.SQUARE_DOWN:
-				_direction = Vector2.LEFT
-			_:
-				print_debug("Unknown movement pattern: %s. Will default to VERTICAL_DOWN." % str(mod_value))
-				movement_pattern = EnemyMovement.Pattern.VERTICAL_DOWN
-				_direction = Vector2.DOWN
-		_correct_initial_pos_x()
+@export var speed: float = 87.5:
+	set(value): 
+		speed = value
+		_on_set_speed()
+@export var movement_pattern: SimpleMover.Pattern:
+	set(value):
+		movement_pattern = value
+		_on_set_movement_pattern()
+
 var world: Node2D:
 	set(value):
 		world = value
-		if not _is_ready: return
-		gun.world = value
+		_on_set_world()
 
-var _direction: Vector2 = Vector2.DOWN
-var _velocity: Vector2 = _direction * speed
-
-@onready var gun := $Gun
-@onready var viewport_size: Vector2 = get_viewport_rect().size
-@onready var viewport_width: float = viewport_size.x
-@onready var viewport_height: float = viewport_size.y
-@onready var sprite := $Sprite2D as Sprite2D
-@onready var sprite_width: float = sprite.texture.get_width()
-@onready var min_pos_x: float = 0.0
-@onready var max_pos_x: float = viewport_width - sprite_width
+@onready var _gun := $Gun as Gun
+@onready var _simple_mover := $SimpleMover as SimpleMover
+@onready var _sprite := $Sprite2D as Sprite2D
 @onready var _is_ready: bool = true
 
 
 func _ready() -> void:
-	_correct_initial_pos_x()
-
-
-func _process(delta: float) -> void:
-	match (movement_pattern):
-		EnemyMovement.Pattern.ZIG_ZAG_DOWN:
-			if position.x > max_pos_x or position.x < min_pos_x:
-				_direction.x *= -1
-		EnemyMovement.Pattern.SQUARE_UP:
-			if position.x > max_pos_x or position.x < min_pos_x:
-				_direction.x *= -1
-				position.y -= 30 + randi() % 10
-		EnemyMovement.Pattern.SQUARE_DOWN:
-			if position.x > max_pos_x or position.x < min_pos_x:
-				_direction.x *= -1
-				position.y += 30 + randi() % 10
-	
-	_velocity = _direction * speed
-	position += _velocity * delta
+	_on_set_world()
+	_on_set_speed()
+	_setup_min_max_x_movement()
+	_on_set_movement_pattern()
 
 
 func shoot() -> bool:
-	return gun.shoot(Vector2.DOWN)
+	return _gun.shoot(Vector2.DOWN)
 
 
 func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
@@ -88,7 +47,7 @@ func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
 
 func explode() -> void:
 	var explosion = Explosion.instantiate()
-	explosion.centered = sprite.centered
+	explosion.centered = _sprite.centered
 	explosion.global_position = global_position
 	_world_or_default().add_child(explosion)
 	queue_free()
@@ -103,16 +62,27 @@ func _world_or_default() -> Node2D:
 		return get_node("/root")
 
 
-func _correct_initial_pos_x() -> void:
-	if not _is_ready: return
-	
-	match (movement_pattern):
-		EnemyMovement.Pattern.SQUARE_UP, EnemyMovement.Pattern.SQUARE_DOWN:
-			if position.x >= max_pos_x:
-				_direction = Vector2.LEFT
-			if position.x <= min_pos_x:
-				_direction = Vector2.RIGHT
-	position.x = clamp(position.x, min_pos_x, max_pos_x)
+func _on_set_speed() -> void:
+	if _is_ready:
+		_simple_mover.speed = speed
+
+
+func _on_set_movement_pattern() -> void:
+	if _is_ready:
+		_simple_mover.pattern = movement_pattern
+
+
+func _on_set_world() -> void:
+	if _is_ready:
+		_gun.world = _world_or_default()
+
+
+func _setup_min_max_x_movement() -> void:
+	var viewport_size: Vector2 = get_viewport_rect().size
+	var viewport_width: float = viewport_size.x
+	var sprite_width: float = _sprite.texture.get_width()
+	_simple_mover.min_pos_x = 0.0
+	_simple_mover.max_pos_x = viewport_width - sprite_width
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
