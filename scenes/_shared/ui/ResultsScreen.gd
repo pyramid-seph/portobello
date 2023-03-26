@@ -39,10 +39,7 @@ func start(lives: int, score: int, high_score: int) -> int:
 	var extra_lives: int = 0
 	# TODO if is_last_level or not HISTORY_MODE
 	if is_last_level:
-		extra_lives = mini(
-			int(score / 1_000), 
-			Day03PlayerData.MAX_LIVES - lives
-		)
+		extra_lives = mini(score / 1_000, Day03PlayerData.MAX_LIVES - lives)
 	_score_label.text = "Score = %s" % score
 	_lives_bonus_label.text = "Bono = %s x 1000 = %s" % [lives, bonus]
 	_total_score_label.text = "Total = %s" % total_score
