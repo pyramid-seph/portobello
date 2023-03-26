@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7kn1ggk81xe1" path="res://scenes/day_03/level_01/backgrounds/Day03Bg.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://cp4tq5frnbdcb" path="res://scenes/day_03/_shared/player/Player.tscn" id="2_7jo31"]
-[ext_resource type="PackedScene" uid="uid://c4layxlfqxcpk" path="res://scenes/day_03/level_01/enemies/Hive.tscn" id="2_wer3w"]
+[ext_resource type="PackedScene" uid="uid://bp80vrxj2g20" path="res://scenes/day_03/level_01/enemies/Hive.tscn" id="2_wer3w"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/Day03Level.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://c5ssrh6nrjva3" path="res://scenes/day_03/_shared/systems/StaminaSpawner.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://do4sxpr6sod1n" path="res://scenes/day_03/_shared/systems/WaveManager.tscn" id="8_h6wpu"]
@@ -19,7 +19,6 @@ script = ExtResource("5")
 Boss = ExtResource("2_wer3w")
 Player = ExtResource("2_7jo31")
 player_data = ExtResource("11")
-player_invincible = true
 
 [node name="DroneShootManager" type="Node" parent="."]
 process_mode = 1

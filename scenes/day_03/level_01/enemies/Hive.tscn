@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4layxlfqxcpk"]
+[gd_scene load_steps=3 format=3 uid="uid://bp80vrxj2g20"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/Hive.gd" id="1_y5hvm"]
-[ext_resource type="PackedScene" uid="uid://ctjsn0u6b60n6" path="res://scenes/day_03/level_01/enemies/HiveDrone.tscn" id="2_hohpq"]
+[ext_resource type="PackedScene" uid="uid://bkk46rfcsb87e" path="res://scenes/day_03/level_01/enemies/hive_drone.tscn" id="2_5k2f8"]
 
 [node name="Hive" type="Node2D"]
 script = ExtResource("1_y5hvm")
@@ -10,43 +10,43 @@ metadata/_edit_lock_ = true
 [node name="Body" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone00" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone00" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(3, 0)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone01" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone01" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(22, 0)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone02" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone02" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(41, 0)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone03" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone03" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(11, 16)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone04" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone04" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(0, 16)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone05" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone05" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(44, 16)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone06" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone06" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(33, 16)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone07" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone07" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(6, 32)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone08" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone08" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(22, 32)
 metadata/_edit_lock_ = true
 
-[node name="HiveDrone09" parent="Body" instance=ExtResource("2_hohpq")]
+[node name="HiveDrone09" parent="Body" instance=ExtResource("2_5k2f8")]
 position = Vector2(38, 32)
 metadata/_edit_lock_ = true
 

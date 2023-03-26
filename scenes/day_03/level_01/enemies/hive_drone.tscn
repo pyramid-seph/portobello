@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkk46rfcsb87e"]
+
+[ext_resource type="PackedScene" uid="uid://drvu0mov0ok2m" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.tscn" id="1_k7jal"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/hive_drone.gd" id="2_gj6no"]
+[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="3_l5rwn"]
+[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="4_5m7u5"]
+
+[node name="HiveDrone" groups=["hive_drones"] instance=ExtResource("1_k7jal")]
+z_index = -60
+collision_mask = 8
+script = ExtResource("2_gj6no")
+hp = 50
+dispose_mode = 1
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(1, 0)
+scale = Vector2(0.875, 1)
+
+[node name="Gun" parent="." index="3" instance=ExtResource("3_l5rwn")]
+position = Vector2(8, 17)
+Bullet = ExtResource("4_5m7u5")
+bullet_speed = 125.0
+ignore_cooldown = true

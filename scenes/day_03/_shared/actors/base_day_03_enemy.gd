@@ -2,11 +2,16 @@ extends Area2D
 
 signal died
 
+enum DisposeMode {
+	DESTROY,
+	DISABLE_PROCESS,
+}
 
 @export var score_points_gun: int = 0
 @export var score_points_mega_gun: int = 0
 @export var hp: int = 1
 @export var is_immune_to_bullets: bool = false
+@export var dispose_mode: DisposeMode = DisposeMode.DESTROY
 @export var Explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/Explosion.tscn")
 
 var world: Node2D:
@@ -61,12 +66,16 @@ func get_animated_sprite() -> AnimatedSprite2D:
 	return _animated_sprite
 
 
-func _on_set_world(new_world) -> void:
+func _on_set_world(_new_world) -> void:
 	pass
 
 
-func _on_dead() -> void:
-	queue_free()
+func _dispose() -> void:
+	if dispose_mode == DisposeMode.DISABLE_PROCESS:
+		visible = false
+		call_deferred("set_process_mode", Node.PROCESS_MODE_DISABLED)
+	else:
+		queue_free()
 
 
 func _spawn_explosion() -> void:
@@ -83,7 +92,7 @@ func _internal_on_set_world() -> void:
 
 func _die() -> void:
 	_is_dead = true
-	_on_dead()
+	_dispose()
 	died.emit()
 
 
@@ -92,12 +101,14 @@ func _world_or_default() -> Node2D:
 		return world
 	elif owner and owner.get_parent():
 		return owner.get_parent()
+	elif owner:
+		return owner
 	else:
 		return get_node("/root")
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
+	_dispose()
 
 
 func _on_area_entered(area: Area2D) -> void:

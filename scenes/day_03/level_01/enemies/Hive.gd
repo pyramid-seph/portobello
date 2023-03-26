@@ -1,7 +1,7 @@
 extends Node2D
 
 
-signal dead
+signal died
 signal almost_dead
 
 
@@ -44,7 +44,7 @@ func _ready() -> void:
 		var drone = child as HiveDrone
 		drone.world = world
 		_hive_drones.append(drone)
-		drone.dead.connect(_on_drone_dead)
+		drone.died.connect(_on_drone_dead)
 	
 	if auto_start:
 		global_position.y = 3
@@ -89,7 +89,7 @@ func _start_gun_cooldown(duration: float) -> void:
 
 
 func _get_drones_left() -> Array[HiveDrone]:
-	return _hive_drones.filter(func(drone): return not drone._is_dead)
+	return _hive_drones.filter(func(drone): return not drone.is_dead())
 
 
 func _on_gun_timer_timeout() -> void:
@@ -97,8 +97,8 @@ func _on_gun_timer_timeout() -> void:
 	if drones.is_empty():
 		return
 	
-	var drone = Utils.rand_item(drones)
-	if drone and not drone._is_dead:
+	var drone: HiveDrone = Utils.rand_item(drones)
+	if drone and not drone.is_dead():
 		drone.shoot()
 		_start_gun_cooldown(GUNS_COOLDOWN)
 	else:
@@ -114,7 +114,7 @@ func _on_drone_dead() -> void:
 		drones[0].is_immune_to_bullets = true
 		almost_dead.emit()
 	else:
-		dead.emit()
+		died.emit()
 		queue_free()
 
 
