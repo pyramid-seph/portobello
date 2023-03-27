@@ -27,8 +27,9 @@ func _ready() -> void:
 
 
 func pick_up(picker) -> void:
-	if picker.is_in_group("players"):
+	if picker.has_method("add_points_to_score"):
 		picker.add_points_to_score(score_points_pickup)
+	if picker.has_method("power_up_by"):
 		picker.power_up_by(1)
 	queue_free()
 
