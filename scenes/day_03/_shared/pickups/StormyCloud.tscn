@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlvoyt7kmaqck"]
+[gd_scene load_steps=8 format=3 uid="uid://dlvoyt7kmaqck"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/pickups/StormyCloud.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://82mnd81a4in1" path="res://art/day_3/pickup_stormy_cloud_0.png" id="2_34byx"]
 [ext_resource type="Texture2D" uid="uid://chywriq5d53pr" path="res://art/day_3/pickup_stormy_cloud_1.png" id="3_08v1p"]
 [ext_resource type="Texture2D" uid="uid://o6sppwsbu2is" path="res://art/day_3/pickup_stormy_cloud_2.png" id="4_sswvo"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="5_5l86y"]
 
 [sub_resource type="SpriteFrames" id="4"]
 animations = [{
@@ -46,6 +47,9 @@ collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("2")
+speed = 75.0
+movement_pattern = 1
+score_points_pickup = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("4")
@@ -55,3 +59,11 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
 shape = SubResource("5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(1, 1, 14, 14)
+
+[node name="SimpleMover" type="Node" parent="."]
+script = ExtResource("5_5l86y")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

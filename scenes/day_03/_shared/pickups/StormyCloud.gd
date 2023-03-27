@@ -1,37 +1,56 @@
 extends Area2D
 
-const SCORE_POINTS = 50
-const SPEED = 75
-const DIRECTION = Vector2.DOWN
-const VELOCITY = SPEED * DIRECTION
 
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var viewport_size = get_viewport_rect().size
-@onready var viewport_height = viewport_size.y
+@export var speed: float = 0:
+	set(value): 
+		speed = value
+		_on_set_speed()
+@export var movement_pattern: SimpleMover.Pattern:
+	set(value):
+		movement_pattern = value
+		_on_set_movement_pattern()
+@export var score_points_pickup: int = 0
+
+@onready var _is_ready: bool = true
+@onready var _animated_sprite = $AnimatedSprite2D as AnimatedSprite2D
+@onready var _simple_mover = $SimpleMover as SimpleMover
+@onready var _viewport: Rect2 = get_viewport_rect()
 
 
 func _ready() -> void:
-	var frames_count = animated_sprite.sprite_frames.get_frame_count("default")
-	animated_sprite.frame = randi() % frames_count
-	animated_sprite.play()
-
-
-func _process(delta: float) -> void:
-	_move(delta)
-	_autoremove()
-
-
-func _move(delta: float) -> void:
-	position += VELOCITY * delta
-
-
-func _autoremove() -> void:
-	if position.y >= viewport_height:
-		queue_free()
+	_on_set_speed()
+	_setup_min_max_x_movement()
+	_on_set_movement_pattern()
+	var frames_count = _animated_sprite.sprite_frames.get_frame_count("default")
+	_animated_sprite.frame = randi() % frames_count
+	_animated_sprite.play()
 
 
 func pick_up(picker) -> void:
 	if picker.is_in_group("players"):
-		picker.add_points_to_score(SCORE_POINTS)
+		picker.add_points_to_score(score_points_pickup)
 		picker.power_up_by(1)
+	queue_free()
+
+
+func is_ready() -> bool:
+	return _is_ready
+
+
+func _on_set_speed() -> void:
+	if is_ready():
+		_simple_mover.speed = speed
+
+
+func _on_set_movement_pattern() -> void:
+	if is_ready():
+		_simple_mover.pattern = movement_pattern
+
+
+func _setup_min_max_x_movement() -> void:
+	_simple_mover.min_pos_x = 0.0
+	_simple_mover.max_pos_x = _viewport.size.x
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
