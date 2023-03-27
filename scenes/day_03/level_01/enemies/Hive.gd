@@ -4,15 +4,12 @@ extends Node2D
 signal died
 signal almost_dead
 
-
 const TIME_BETWEEN_MOVEMENT_PHASE_1: float = 1.6
 const TIME_BETWEEN_MOVEMENT_PHASE_2: float = 0.8
 const TIME_BETWEEN_MOVEMENT_PHASE_3: float = 0.4
 const TIME_BETWEEN_MOVEMENT_PHASE_4: float = Utils.FRAME_TIME
 const GUNS_COOLDOWN: float = 0.4
 const SPRITE_WIDTH: float = 16.0
-
-@export var auto_start: bool = false
 
 var world:
 	set(value):
@@ -45,11 +42,6 @@ func _ready() -> void:
 		drone.world = world
 		_hive_drones.append(drone)
 		drone.died.connect(_on_drone_dead)
-	
-	if auto_start:
-		global_position.y = 3
-		global_position.x = viewport_size.x / 2 - 30
-		start()
 
 
 func start() -> void:
@@ -89,7 +81,7 @@ func _start_gun_cooldown(duration: float) -> void:
 
 
 func _get_drones_left() -> Array[HiveDrone]:
-	return _hive_drones.filter(func(drone): return not drone.is_dead())
+	return _hive_drones.filter(func(drone: HiveDrone): return not drone.is_dead())
 
 
 func _on_gun_timer_timeout() -> void:

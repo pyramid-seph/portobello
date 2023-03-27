@@ -11,6 +11,7 @@ enum DisposeMode {
 @export var score_points_mega_gun: int = 0
 @export var hp: int = 1
 @export var is_immune_to_bullets: bool = false
+@export var is_immune_to_impacts: bool = false
 @export var dispose_mode: DisposeMode = DisposeMode.DESTROY
 @export var Explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/Explosion.tscn")
 
@@ -42,6 +43,12 @@ func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
 		killer.add_points_to_score(
 			score_points_mega_gun if killed_by_mega_gun else score_points_gun
 		)
+	explode()
+
+
+func impacted() -> void:
+	if is_immune_to_impacts:
+		return
 	explode()
 
 

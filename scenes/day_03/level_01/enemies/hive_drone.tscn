@@ -10,6 +10,7 @@ z_index = -60
 collision_mask = 8
 script = ExtResource("2_gj6no")
 hp = 50
+is_immune_to_impacts = true
 dispose_mode = 1
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
