@@ -28,9 +28,7 @@ var _max_pos: Vector2
 @onready var _mega_gun := $MegaGun
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
 @onready var _animation_sprite := $AnimatedSprite2D as AnimatedSprite2D
-@onready var _collision_shape: = $CollisionShape2D as CollisionShape2D
 @onready var _stamina_timer := $StaminaDepletionTimer as Timer
-@onready var _movement_restriction: Rect2 = get_viewport_rect()
 
 
 func _ready() -> void:

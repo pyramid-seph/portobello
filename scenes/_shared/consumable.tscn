@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtp6152wue0hu"]
+
+[ext_resource type="Script" path="res://scenes/_shared/consumable.gd" id="1_rgubp"]
+
+[node name="Consumable" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_rgubp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+autoplay = "default"
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." groups=["consumables"]]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
