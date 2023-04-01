@@ -1,4 +1,4 @@
-extends MovingConsumable
+extends MovingItem
 
 
 func _on_pick_up(picker) -> void:

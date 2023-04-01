@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/_shared/consumable.gd" id="1_rgubp"]
 
-[node name="Consumable" type="Area2D"]
+[node name="Item" type="Area2D" groups=["items"]]
 collision_layer = 4
 collision_mask = 0
 monitoring = false

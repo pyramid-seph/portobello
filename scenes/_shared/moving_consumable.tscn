@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://crnedmsoddirr"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dtp6152wue0hu" path="res://scenes/_shared/consumable.tscn" id="1_6m43s"]
-[ext_resource type="Script" path="res://scenes/_shared/moving_consumable.gd" id="2_yfqt2"]
+[ext_resource type="PackedScene" uid="uid://dtp6152wue0hu" path="res://scenes/_shared/item.tscn" id="1_6m43s"]
+[ext_resource type="Script" path="res://scenes/_shared/moving_item.gd" id="2_yfqt2"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="2_yqm3s"]
 
-[node name="MovingConsumable" instance=ExtResource("1_6m43s")]
+[node name="MovingItem" instance=ExtResource("1_6m43s")]
 script = ExtResource("2_yfqt2")
-speed = 0.0
-movement_pattern = 0
+score_points_pick_up = null
+randomize_starting_frame = null
+speed = null
+movement_pattern = null
 
 [node name="SimpleMover" type="Node" parent="." index="3"]
 script = ExtResource("2_yqm3s")

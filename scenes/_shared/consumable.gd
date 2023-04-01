@@ -1,4 +1,4 @@
-class_name Consumable
+class_name Item
 extends Area2D
 
 
@@ -16,6 +16,10 @@ func _ready() -> void:
 
 func is_ready() -> bool:
 	return _is_ready
+
+
+func get_animated_sprite() -> AnimatedSprite2D:
+	return _animated_sprite
 
 
 func pick_up(picker) -> void:

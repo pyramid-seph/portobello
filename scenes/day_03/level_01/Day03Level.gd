@@ -16,7 +16,7 @@ const RESULTS_SCREEN_DELAY: float = 10.45
 @export var Boss: PackedScene
 @export var Player: PackedScene
 @export var player_data: Day03PlayerData
-@export var is_player_instantiated_in_god_mode: bool = false
+@export var is_god_mode_enabled: bool = false
 
 var _player: Day03Player
 var _boss: Node2D
@@ -31,7 +31,7 @@ var _boss: Node2D
 @onready var results_screen = $ResultsScreenBuffet
 
 
-var level_state: int = LevelState.STARTING :
+var level_state: LevelState = LevelState.STARTING :
 	get:
 		return level_state
 	set(mod_value):
@@ -77,7 +77,7 @@ func _instantiate_player() -> Day03Player:
 	player.position = player_start_position
 	player.died.connect(_on_Player_died)
 	player.mega_gun_shot.connect(world_background._on_mega_gun_shot)
-	player.is_god_mode_enabled = is_player_instantiated_in_god_mode
+	player.is_god_mode_enabled = is_god_mode_enabled
 	world.add_child(player)
 	return player
 
@@ -108,7 +108,7 @@ func _on_wave_manager_all_waves_completed() -> void:
 	print("All waves completed!")
 	if _player.is_dead(): return
 	get_tree().call_group("bullets", "queue_free")
-	get_tree().call_group("pickups", "queue_free")
+	get_tree().call_group("items", "queue_free")
 	stamina_spawner.cooldown = Utils.FRAME_TIME
 	stamina_spawner.random = false
 	stamina_spawner.disable()

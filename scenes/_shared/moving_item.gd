@@ -1,5 +1,5 @@
-class_name MovingConsumable
-extends Consumable
+class_name MovingItem
+extends Item
 
 
 @export var speed: float:
@@ -33,5 +33,6 @@ func _on_set_movement_pattern() -> void:
 
 
 func _setup_min_max_x_movement() -> void:
+	var texture: Texture2D = get_animated_sprite().sprite_frames.get_frame_texture("default", 0)
 	_simple_mover.min_pos_x = 0.0
-	_simple_mover.max_pos_x = _viewport.size.x
+	_simple_mover.max_pos_x = _viewport.size.x - texture.get_width()

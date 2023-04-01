@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" path="res://resources/Day03PlayerData.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/systems/StaminaSpawner.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/consumables/Bird.tscn" id="3_6ycxa"]
 
 [node name="StaminaSpawner" type="Node2D"]
 process_mode = 1
 script = ExtResource("2")
 player_data = ExtResource("1")
-stamina_item = ExtResource("3_6ycxa")
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true

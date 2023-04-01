@@ -6,8 +6,8 @@ extends Node2D
 @export var cooldown: float = Utils.FRAME_TIME
 @export var random: bool = true
 
-@onready var screen_size: Vector2 = get_viewport_rect().size
-@onready var timer: Timer = $Cooldown
+@onready var _screen_size: Vector2 = get_viewport_rect().size
+@onready var _timer := $Cooldown as Timer
 
 enum State { DISABLED, READY, ENQUEUED, INSTANCED }
 
@@ -31,13 +31,13 @@ func enable(world: Node2D) -> void:
 func disable() -> void:
 	_state = State.DISABLED
 	_world = null
-	timer.stop()
+	_timer.stop()
 
 
 func _enqueue_spawn() -> void:
 	if _state == State.READY:
 		_state = State.ENQUEUED
-		timer.start(cooldown)
+		_timer.start(cooldown)
 
 
 func _try_spawn() -> void:
@@ -62,7 +62,7 @@ func _spawn_power_up_item() -> void:
 		return
 	
 	var power_up_item = PowerUpItem.instantiate()
-	var initial_pos := Vector2(randi() % int(screen_size.x - 30) + 10, 3)
+	var initial_pos := Vector2(randi() % int(_screen_size.x - 30) + 10, 3)
 	power_up_item.global_position = initial_pos
 	power_up_item.tree_exited.connect(_on_Item_tree_exited)
 	_world.add_child(power_up_item)

@@ -11,6 +11,7 @@ enum Pattern {
 	SQUARE_UP,
 	SQUARE_DOWN,
 	ZIG_ZAG_DOWN,
+	ZIG_ZAG_DOWN_RANDOM_HORIZONTAL,
 }
 
 var speed: float = 0.0
@@ -28,12 +29,12 @@ var pattern := Pattern.NONE:
 				_direction = Vector2.LEFT
 			Pattern.HORIZONTAL_RIGHT:
 				_direction = Vector2.RIGHT
-			Pattern.ZIG_ZAG_DOWN:
-				_direction = Vector2(1, 1)
 			Pattern.SQUARE_UP:
 				_direction = Vector2.RIGHT
 			Pattern.SQUARE_DOWN:
 				_direction = Vector2.LEFT
+			Pattern.ZIG_ZAG_DOWN, Pattern.ZIG_ZAG_DOWN_RANDOM_HORIZONTAL:
+				_direction = Vector2(1, 1)
 			_:
 				_direction = Vector2.ZERO
 		_ensure_correct_pos_x()
@@ -44,13 +45,16 @@ var _velocity: Vector2 = _direction * speed
 
 func _ready() -> void:
 	await get_parent().ready
+	if pattern == Pattern.ZIG_ZAG_DOWN_RANDOM_HORIZONTAL:
+		if randi() % 2 == 0:
+			_direction.x *= -1
 	_ensure_correct_pos_x()
 
 
 func _process(delta: float) -> void:
 	var curr_pos = _get_parent_positon()
 	match (pattern):
-		Pattern.ZIG_ZAG_DOWN:
+		Pattern.ZIG_ZAG_DOWN, Pattern.ZIG_ZAG_DOWN_RANDOM_HORIZONTAL:
 			if curr_pos.x > max_pos_x or curr_pos.x < min_pos_x:
 				_direction.x *= -1
 		Pattern.SQUARE_UP:
