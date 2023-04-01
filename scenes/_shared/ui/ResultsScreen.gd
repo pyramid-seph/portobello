@@ -3,6 +3,7 @@ extends Control
 
 signal results_presented(total_score)
 
+const Utils = preload("res://scenes/_shared/utils.gd")
 const BONUS_MULTIPLIER: int = 1000
 const INITIAL_DELAY: float = 0.8
 const LABELS_DELAY: float = 0.4
@@ -30,6 +31,7 @@ var _tween: Tween
 
 
 func _ready() -> void:
+	Utils.FRAME_TIME
 	_ensure_reset_ui()
 
 
@@ -67,20 +69,21 @@ func _tween_results_screen(lives: int, score: int, total_score: int, high_score:
 	Utils.change_label_color(_new_high_score_label, Color.TRANSPARENT)
 	if _tween: _tween.kill()
 	_tween = create_tween()
-	_tween.tween_callback(
-		Utils.change_label_color.bind(_score_label, RESULTS_LABELS_COLOR)
+	_tween.tween_callback(func():
+		Utils.change_label_color(_score_label, RESULTS_LABELS_COLOR)
 	).set_delay(INITIAL_DELAY)
-	_tween.tween_callback(
-		Utils.change_label_color.bind(_lives_bonus_label, RESULTS_LABELS_COLOR)
+	_tween.tween_callback(func():
+		Utils.change_label_color(_lives_bonus_label, RESULTS_LABELS_COLOR)
 	).set_delay(LABELS_DELAY)
-	_tween.tween_callback(
-		Utils.change_label_color.bind(_total_score_label, RESULTS_LABELS_COLOR)
+	_tween.tween_callback(func():
+		Utils.change_label_color(_total_score_label, RESULTS_LABELS_COLOR)
 	).set_delay(LABELS_DELAY)
 	var extra_lives_delay: float = 0.0
 	if extra_lives > 0:
 		extra_lives_delay = LABELS_DELAY * 2
-		_tween.tween_callback(
-			Utils.change_label_color.bind(_extra_lives_label, RESULTS_LABELS_COLOR)
+#		Utils.bind("change_label_color", _extra_lives_label, RESULTS_LABELS_COLOR)
+		_tween.tween_callback(func():
+			Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR)
 		).set_delay(extra_lives_delay)
 	_tween.tween_callback(func():
 		_results_container.visible = false

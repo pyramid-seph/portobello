@@ -17,8 +17,8 @@ config/icon="res://art/_shared/ui_counter_lives.png"
 
 [autoload]
 
-Utils="*res://autoloads/Utils.gd"
 SaveDataManager="*res://autoloads/SaveDataManager.gd"
+SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 
 [display]
 

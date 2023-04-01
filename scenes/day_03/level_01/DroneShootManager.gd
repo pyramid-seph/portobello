@@ -43,7 +43,7 @@ func _on_wave_manager_all_waves_completed() -> void:
 func _on_cooldown_timer_timeout() -> void:
 	if _disabled: return
 	
-	var enemy_bullet_count = Utils.get_item_count_in_group("enemy_bullet")
+	var enemy_bullet_count = SceneTreeUtils.get_item_count_in_group("enemy_bullet")
 	if enemy_bullet_count >= MAX_CONCURRENT_BULLETS:
 		_start_cooldown(Utils.FRAME_TIME)
 		return
