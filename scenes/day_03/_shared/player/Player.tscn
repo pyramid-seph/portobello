@@ -117,6 +117,9 @@ input_pickable = false
 monitorable = false
 script = ExtResource("1_4sjiv")
 _player_data = ExtResource("2_detm5")
+move_offset_left = -4
+move_offset_right = 4
+move_offset_top = 2
 Fall = ExtResource("3_cd4lh")
 Explosion = ExtResource("4_ic4pr")
 

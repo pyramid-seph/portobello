@@ -1,5 +1,5 @@
-extends RefCounted
 class_name LevelWaves
+extends RefCounted
 
 
 var _waves: Array[Wave]

@@ -16,7 +16,7 @@ const RESULTS_SCREEN_DELAY: float = 10.45
 @export var Boss: PackedScene
 @export var Player: PackedScene
 @export var player_data: Day03PlayerData
-@export var player_invincible: bool = false
+@export var is_player_instantiated_in_god_mode: bool = false
 
 var _player: Day03Player
 var _boss: Node2D
@@ -73,11 +73,11 @@ func _instantiate_boss() -> Node:
 
 
 func _instantiate_player() -> Day03Player:
-	var player = Player.instantiate()
+	var player = Player.instantiate() as Day03Player
 	player.position = player_start_position
 	player.died.connect(_on_Player_died)
 	player.mega_gun_shot.connect(world_background._on_mega_gun_shot)
-	player.debug_invincible = player_invincible
+	player.is_god_mode_enabled = is_player_instantiated_in_god_mode
 	world.add_child(player)
 	return player
 

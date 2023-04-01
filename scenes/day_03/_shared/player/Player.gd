@@ -9,7 +9,11 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
 @export var _player_data: Day03PlayerData
 @export var is_autofire_enabled: bool = false
-@export var debug_invincible: bool = false
+@export var is_god_mode_enabled: bool = false
+@export var move_offset_left: int
+@export var move_offset_bottom: int
+@export var move_offset_right: int
+@export var move_offset_top: int
 @export var Fall: PackedScene
 @export var Explosion: PackedScene
 
@@ -26,6 +30,7 @@ var _max_pos: Vector2
 @onready var _animation_sprite := $AnimatedSprite2D as AnimatedSprite2D
 @onready var _collision_shape: = $CollisionShape2D as CollisionShape2D
 @onready var _stamina_timer := $StaminaDepletionTimer as Timer
+@onready var _movement_restriction: Rect2 = get_viewport_rect()
 
 
 func _ready() -> void:
@@ -111,12 +116,11 @@ func revive(skip_timed_invincibility: bool = false) -> void:
 
 func _calculate_max_movement() -> void:
 	var screen_size: Vector2 = get_viewport_rect().size
-	var texture := _animation_sprite.sprite_frames.get_frame_texture("default", 0) as Texture2D
-	var player_extents: Vector2 = _collision_shape.shape.extents
-	_min_pos.x = -player_extents.x
-	_min_pos.y = 2
-	_max_pos.x = screen_size.x - texture.get_width() + player_extents.x
-	_max_pos.y = screen_size.y - texture.get_height()
+	var texture: Texture2D = _animation_sprite.sprite_frames.get_frame_texture("default", 0)
+	_min_pos.x = move_offset_left
+	_min_pos.y = move_offset_top
+	_max_pos.x = screen_size.x - texture.get_width() + move_offset_right
+	_max_pos.y = screen_size.y - texture.get_height() + move_offset_bottom
 
 
 func _die() -> void:
@@ -186,7 +190,7 @@ func _on_HurtBox_hurt(who: Area2D) -> void:
 		who.impacted()
 	elif who.has_method("explode"):
 		who.explode()
-	if not debug_invincible:
+	if not is_god_mode_enabled:
 		explode()
 
 
@@ -198,7 +202,7 @@ func _on_Player_area_entered(area: Area2D) -> void:
 
 
 func _on_StaminaDepletionTimer_timeout() -> void:
-	if _is_dead or debug_invincible:
+	if _is_dead or is_god_mode_enabled:
 		return
 	add_stamina(-STAMINA_POINTS_DEPLETED_PER_TICK)
 	if is_stamina_depleted():
