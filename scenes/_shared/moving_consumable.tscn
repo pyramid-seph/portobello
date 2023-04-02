@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dtp6152wue0hu" path="res://scenes/_shared/item.tscn" id="1_6m43s"]
 [ext_resource type="Script" path="res://scenes/_shared/moving_item.gd" id="2_yfqt2"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/simple_mover.gd" id="2_yqm3s"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/simple_mover.gd" id="2_yqm3s"]
 
 [node name="MovingItem" instance=ExtResource("1_6m43s")]
 script = ExtResource("2_yfqt2")
