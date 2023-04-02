@@ -24,9 +24,9 @@ var _boss: Node2D
 @onready var _world := $World
 @onready var _world_background := $World/Day03Bg
 @onready var _player_start_position = $World/StartPosition.position
-@onready var _wave_manager := $WaveManager
-@onready var _stamina_spawner := $StaminaSpawner
-@onready var _power_up_spawner := $PowerUpSpawner
+@onready var _wave_manager := $Systems/WaveManager
+@onready var _stamina_spawner := $Systems/StaminaSpawner
+@onready var _power_up_spawner := $Systems/PowerUpSpawner
 @onready var _scene_tree = get_tree()
 @onready var _results_screen = $ResultsScreenBuffet
 
