@@ -20,6 +20,7 @@ process_mode = 3
 script = ExtResource("5")
 Boss = ExtResource("2_wer3w")
 Player = ExtResource("2_7jo31")
+_player_data = ExtResource("11")
 
 [node name="DroneShootManager" type="Node" parent="."]
 process_mode = 1
