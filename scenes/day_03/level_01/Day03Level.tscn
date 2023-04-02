@@ -20,8 +20,6 @@ process_mode = 3
 script = ExtResource("5")
 Boss = ExtResource("2_wer3w")
 Player = ExtResource("2_7jo31")
-player_data = ExtResource("11")
-is_god_mode_enabled = true
 
 [node name="DroneShootManager" type="Node" parent="."]
 process_mode = 1

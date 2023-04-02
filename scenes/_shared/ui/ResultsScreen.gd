@@ -81,7 +81,6 @@ func _tween_results_screen(lives: int, score: int, total_score: int, high_score:
 	var extra_lives_delay: float = 0.0
 	if extra_lives > 0:
 		extra_lives_delay = LABELS_DELAY * 2
-#		Utils.bind("change_label_color", _extra_lives_label, RESULTS_LABELS_COLOR)
 		_tween.tween_callback(func():
 			Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR)
 		).set_delay(extra_lives_delay)
