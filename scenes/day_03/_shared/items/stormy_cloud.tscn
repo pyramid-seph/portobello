@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/_shared/moving_consumable.tscn" id="1_srnir"]
+[ext_resource type="PackedScene" uid="uid://brj67hm7ypmn8" path="res://scenes/_shared/moving_item.tscn" id="1_srnir"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/items/stormy_cloud.gd" id="2_gle03"]
 [ext_resource type="Texture2D" uid="uid://82mnd81a4in1" path="res://art/day_3/pickup_stormy_cloud_0.png" id="3_ou3mi"]
 [ext_resource type="Texture2D" uid="uid://chywriq5d53pr" path="res://art/day_3/pickup_stormy_cloud_1.png" id="4_xlu78"]

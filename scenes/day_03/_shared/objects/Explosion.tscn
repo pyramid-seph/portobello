@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://caffyvchkq0h"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://6ts32itxoylp" path="res://scenes/_shared/ShortLivedSprite.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/short_lived_sprite.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq53a6iqt04jk" path="res://art/day_3/object_explosion.png" id="2_vqewr"]
 
 [node name="Explosion" instance=ExtResource("1")]

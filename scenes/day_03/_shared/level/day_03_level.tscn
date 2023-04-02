@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://blyfcctk8v3ta"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level.gd" id="1_wjcvv"]
+[ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="2_ola5u"]
+[ext_resource type="PackedScene" uid="uid://mits7m1g22ia" path="res://scenes/day_03/_shared/player/player.tscn" id="3_x4rdx"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="4_0lkhk"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/systems/drone_shoot_manager.gd" id="5_hhbu5"]
+[ext_resource type="PackedScene" uid="uid://cwr1ojj4316st" path="res://scenes/day_03/_shared/systems/stamina_spawner.tscn" id="6_2hiem"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/items/bird.tscn" id="7_c3nnm"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/systems/power_up_spawner.tscn" id="8_ypucm"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/items/stormy_cloud.tscn" id="9_e6eku"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/systems/wave_manager.tscn" id="10_yasqi"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_01_waves.gd" id="11_57qmp"]
+[ext_resource type="PackedScene" uid="uid://bg6r1v71n7n0s" path="res://scenes/day_03/_shared/backgrounds/day_03_bg.tscn" id="12_206kv"]
+[ext_resource type="PackedScene" uid="uid://bfidgn8t0dudh" path="res://scenes/day_03/_shared/ui/day_03_ui.tscn" id="13_f3m4q"]
+[ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="14_h26du"]
+
+[node name="Day03Level" type="Node"]
+process_mode = 3
+script = ExtResource("1_wjcvv")
+Boss = ExtResource("2_ola5u")
+Player = ExtResource("3_x4rdx")
+_player_data = ExtResource("4_0lkhk")
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="DroneShootManager" type="Node" parent="Systems"]
+process_mode = 1
+script = ExtResource("5_hhbu5")
+
+[node name="CooldownTimer" type="Timer" parent="Systems/DroneShootManager"]
+process_mode = 1
+one_shot = true
+
+[node name="StaminaSpawner" parent="Systems" instance=ExtResource("6_2hiem")]
+player_data = ExtResource("4_0lkhk")
+StaminaItem = ExtResource("7_c3nnm")
+
+[node name="PowerUpSpawner" parent="Systems" instance=ExtResource("8_ypucm")]
+PowerUpItem = ExtResource("9_e6eku")
+
+[node name="WaveManager" parent="Systems" instance=ExtResource("10_yasqi")]
+WavesScript = ExtResource("11_57qmp")
+
+[node name="World" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="Day03Bg" parent="World" instance=ExtResource("12_206kv")]
+
+[node name="StartPosition" type="Marker2D" parent="World"]
+position = Vector2(117, 286)
+
+[node name="Interface" type="Node" parent="."]
+process_mode = 1
+
+[node name="Day3Ui" parent="Interface" instance=ExtResource("13_f3m4q")]
+
+[node name="ResultsScreenBuffet" parent="." instance=ExtResource("14_h26du")]
+
+[connection signal="level_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_level_state_changed"]
+[connection signal="pause_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_pause_state_changed"]
+[connection signal="waves_completed" from="." to="Interface/Day3Ui" method="_on_day_03_level_waves_completed"]
+[connection signal="timeout" from="Systems/DroneShootManager/CooldownTimer" to="Systems/DroneShootManager" method="_on_cooldown_timer_timeout"]
+[connection signal="all_waves_completed" from="Systems/WaveManager" to="." method="_on_wave_manager_all_waves_completed"]
+[connection signal="all_waves_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_all_waves_completed"]
+[connection signal="wave_completed" from="Systems/WaveManager" to="." method="_on_wave_manager_wave_completed"]
+[connection signal="wave_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_wave_completed"]
+[connection signal="wave_started" from="Systems/WaveManager" to="." method="_on_wave_manager_wave_started"]
+[connection signal="wave_started" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_wave_started"]
+[connection signal="boss_alert_finished" from="Interface/Day3Ui" to="." method="_on_day_3_ui_boss_alert_finished"]
+[connection signal="results_presented" from="ResultsScreenBuffet" to="." method="_on_results_screen_buffet_results_presented"]

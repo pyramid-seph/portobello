@@ -13,7 +13,7 @@ enum DisposeMode {
 @export var is_immune_to_bullets: bool = false
 @export var is_immune_to_impacts: bool = false
 @export var dispose_mode: DisposeMode = DisposeMode.DESTROY
-@export var Explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/Explosion.tscn")
+@export var Explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/explosion.tscn")
 
 var world: Node2D:
 	set(value): 

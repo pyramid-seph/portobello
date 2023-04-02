@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvmwsfcvalv7x"]
+[gd_scene load_steps=8 format=3 uid="uid://ia6wnprew2fj"]
 
-[ext_resource type="PackedScene" uid="uid://bu1wgm0y05b12" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_xe03b"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_xe03b"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/ufo.gd" id="2_nhoik"]
 [ext_resource type="Texture2D" uid="uid://d038j14u56qpr" path="res://art/day_3/enemy_ufo_0.png" id="2_wmd7j"]
 [ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="3_3hdy1"]
-[ext_resource type="PackedScene" uid="uid://cukdrliaqbnkj" path="res://scenes/day_03/_shared/objects/Gun.tscn" id="4_mo5jo"]
-[ext_resource type="PackedScene" uid="uid://c7v4hhqshvlkr" path="res://scenes/day_03/_shared/objects/EnemyBullet.tscn" id="5_ed5w7"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="4_mo5jo"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="5_ed5w7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nghcw"]
 animations = [{

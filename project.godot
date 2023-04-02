@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Bucho Portobello"
-run/main_scene="res://scenes/day_03/level_01/Day03Level.tscn"
+run/main_scene="res://scenes/day_03/_shared/level/day_03_level.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://art/_shared/ui_counter_lives.png"
 
 [autoload]
 
-SaveDataManager="*res://autoloads/SaveDataManager.gd"
+SaveDataManager="*res://autoloads/save_sata_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 
 [display]
