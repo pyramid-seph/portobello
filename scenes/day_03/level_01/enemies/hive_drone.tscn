@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bqgvcndlue3si"]
 
 [ext_resource type="PackedScene" uid="uid://drvu0mov0ok2m" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.tscn" id="1_k7jal"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/hive_drone.gd" id="2_gj6no"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://csyep514u36ex"]
 
-[ext_resource type="PackedScene" uid="uid://bu1wgm0y05b12" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_uvggw"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_uvggw"]
 [ext_resource type="Texture2D" uid="uid://c4gtk1xb3hvfc" path="res://art/day_3/enemy_duck_block_black.png" id="2_ipxdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stiek"]
@@ -22,6 +22,7 @@ z_index = -60
 speed = 87.5
 score_points_mega_gun = 50
 is_immune_to_bullets = true
+is_immune_to_impacts = true
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_stiek")

@@ -1,5 +1,5 @@
 class_name HiveDrone
-extends "res://scenes/day_03/_shared/actors/base_day_03_enemy.gd"
+extends BaseDay03Enemy
 
 
 @onready var _gun := $Gun as Gun

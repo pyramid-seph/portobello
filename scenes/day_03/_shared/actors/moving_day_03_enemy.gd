@@ -1,5 +1,5 @@
 class_name MovingDay03Enemy
-extends "res://scenes/day_03/_shared/actors/base_day_03_enemy.gd"
+extends BaseDay03Enemy
 
 @export var speed: float = 0:
 	set(value): 
@@ -33,7 +33,6 @@ func _on_set_movement_pattern() -> void:
 func _setup_min_max_x_movement() -> void:
 	var viewport_size: Vector2 = get_viewport_rect().size
 	var viewport_width: float = viewport_size.x
-	var sprite_width: float = get_animated_sprite().sprite_frames.get_frame_texture(
-			"default", 0).get_width()
+	var sprite_width: float = get_width()
 	_simple_mover.min_pos_x = 0.0
 	_simple_mover.max_pos_x = viewport_width - sprite_width

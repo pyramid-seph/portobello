@@ -1,3 +1,4 @@
+class_name BaseDay03Enemy
 extends Area2D
 
 signal died
@@ -69,8 +70,12 @@ func hurt(killer: Node, damage: int = 1) -> void:
 		kill(killer)
 
 
-func get_animated_sprite() -> AnimatedSprite2D:
-	return _animated_sprite
+func get_width() -> float:
+	return _animated_sprite.sprite_frames.get_frame_texture("default", 0).get_width()
+
+
+func get_height() -> float:
+	return _animated_sprite.sprite_frames.get_frame_texture("default", 0).get_height()
 
 
 func _on_set_world(_new_world) -> void:
@@ -87,7 +92,7 @@ func _dispose() -> void:
 
 func _spawn_explosion() -> void:
 	var explosion = Explosion.instantiate()
-	explosion.centered = get_animated_sprite().centered
+	explosion.centered = _animated_sprite.centered
 	explosion.global_position = global_position
 	_world_or_default().add_child(explosion)
 

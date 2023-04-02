@@ -21,7 +21,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ufo" instance=ExtResource("1_xe03b")]
+[node name="Ufo" groups=["ufos"] instance=ExtResource("1_xe03b")]
 z_index = -60
 script = ExtResource("2_nhoik")
 speed = 87.5
