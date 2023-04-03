@@ -1,0 +1,125 @@
+[gd_scene load_steps=17 format=3 uid="uid://cel3c3orrn2r2"]
+
+[ext_resource type="Texture2D" uid="uid://d3876elyydfqw" path="res://art/day_3/mothership_bg.png" id="1_4dg63"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership.gd" id="1_rwox7"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_4tvvn"]
+[ext_resource type="PackedScene" uid="uid://csyep514u36ex" path="res://scenes/day_03/level_02/enemies/block.tscn" id="3_g4gu8"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="4_abmav"]
+[ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="5_71wh4"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/block_spawner.gd" id="5_86apb"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/bullet_cleaner.gd" id="6_5wxb7"]
+[ext_resource type="Texture2D" uid="uid://cqradgo1f7v2y" path="res://art/day_3/object_alien.png" id="7_7088d"]
+[ext_resource type="PackedScene" uid="uid://dondj5uyx2tpf" path="res://scenes/day_03/level_02/enemies/laser_balls.tscn" id="8_2v5kt"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="9_7uxf0"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="10_jem0f"]
+[ext_resource type="PackedScene" uid="uid://mits7m1g22ia" path="res://scenes/day_03/_shared/player/player.tscn" id="11_fi6wp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4six"]
+size = Vector2(128, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f155"]
+size = Vector2(128, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dky2g"]
+font = ExtResource("10_jem0f")
+
+[node name="Motership" type="Node2D"]
+script = ExtResource("1_rwox7")
+_hp = 500
+Explosion = ExtResource("2_4tvvn")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_4dg63")
+centered = false
+
+[node name="AlienHologram" type="Sprite2D" parent="."]
+position = Vector2(112, 237)
+texture = ExtResource("7_7088d")
+centered = false
+
+[node name="BlockSpawner" type="Marker2D" parent="."]
+position = Vector2(120, 142)
+script = ExtResource("5_86apb")
+_block = ExtResource("3_g4gu8")
+
+[node name="Timer" type="Timer" parent="BlockSpawner"]
+one_shot = true
+
+[node name="Weakness" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weakness"]
+position = Vector2(120, 135)
+shape = SubResource("RectangleShape2D_b4six")
+
+[node name="Gun" parent="." instance=ExtResource("4_abmav")]
+position = Vector2(120, 142)
+Bullet = ExtResource("5_71wh4")
+
+[node name="Line2D" type="Line2D" parent="Gun"]
+points = PackedVector2Array(0, 0, 0, 129)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="BulletCleaner" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("6_5wxb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletCleaner"]
+position = Vector2(120, 281)
+shape = SubResource("RectangleShape2D_3f155")
+
+[node name="LaserBallsGun" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="LaserBallsGun"]
+
+[node name="LaserBalls0" parent="LaserBallsGun" instance=ExtResource("8_2v5kt")]
+position = Vector2(28, 143)
+
+[node name="LaserBalls1" parent="LaserBallsGun" instance=ExtResource("8_2v5kt")]
+position = Vector2(28, 175)
+
+[node name="LaserBalls2" parent="LaserBallsGun" instance=ExtResource("8_2v5kt")]
+position = Vector2(28, 207)
+
+[node name="LaserBalls3" parent="LaserBallsGun" instance=ExtResource("8_2v5kt")]
+position = Vector2(28, 239)
+
+[node name="Dialog" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("9_7uxf0")
+
+[node name="ColorRect" type="ColorRect" parent="Dialog"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Dialog/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Lorem ipsum dolor sit amet"
+label_settings = SubResource("LabelSettings_dky2g")
+
+[node name="Player" parent="." instance=ExtResource("11_fi6wp")]
+z_index = 100
+position = Vector2(137, 243)
+is_god_mode_enabled = true
+move_offset_left = 52
+move_offset_bottom = -31
+move_offset_right = -52
+move_offset_top = 143
+
+[connection signal="timeout" from="BlockSpawner/Timer" to="BlockSpawner" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Weakness" to="." method="_on_weakness_area_entered"]
+[connection signal="area_entered" from="BulletCleaner" to="BulletCleaner" method="_on_area_entered"]
