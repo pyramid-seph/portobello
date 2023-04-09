@@ -33,7 +33,8 @@ func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
 
 
 func _on_area_entered(_area: Area2D) -> void:
-	# FIXME: Bullets don't disppear after colliding with player
+	# FIXME: Bullets don't disppear after colliding with player. 
+	# It's happening because the player's hurtbox is NOT monitorable
 	queue_free()
 
 

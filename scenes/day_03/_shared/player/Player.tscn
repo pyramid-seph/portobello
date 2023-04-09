@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/player_0.png" id="6_aq72p"]
 [ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/player_1.png" id="7_r1arf"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="8_s2mvn"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/bullet.tscn" id="9_8x2q1"]
+[ext_resource type="PackedScene" uid="uid://da2fw2fh22lgh" path="res://scenes/day_03/_shared/objects/bullet.tscn" id="9_8x2q1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/mega_gun.gd" id="10_vakmx"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/hurt_box.tscn" id="11_w0umc"]
 

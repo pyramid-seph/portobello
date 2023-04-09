@@ -23,13 +23,13 @@ SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 [display]
 
 window/size/viewport_width=240
-window/size/viewport_height=302
+window/size/viewport_height=303
 window/size/resizable=false
 window/size/extend_to_title=true
 window/size/window_width_override=720
-window/size/window_height_override=906
-window/handheld/orientation=1
+window/size/window_height_override=909
 window/stretch/mode="viewport"
+window/handheld/orientation=1
 
 [editor]
 
@@ -128,9 +128,9 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true
-textures/canvas_textures/default_texture_filter=0
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false

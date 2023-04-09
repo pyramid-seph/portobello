@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciph4tyjsvddo"]
+
+[ext_resource type="PackedScene" uid="uid://kv2p4bo0vtva" path="res://scenes/day_03/level_02/enemies/motership/motership_ball_mini.tscn" id="1_a3no6"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/pair_of_mini_balls.gd" id="1_ky66c"]
+
+[node name="PairOfMiniBalls" type="Node2D"]
+script = ExtResource("1_ky66c")
+
+[node name="LeftMotershipBallMini" parent="." instance=ExtResource("1_a3no6")]
+metadata/_edit_lock_ = true
+
+[node name="RightMotershipBallMini" parent="." instance=ExtResource("1_a3no6")]
+position = Vector2(16, 0)

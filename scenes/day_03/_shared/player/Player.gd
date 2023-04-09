@@ -42,6 +42,10 @@ func _process(delta: float) -> void:
 	_process_fire()
 
 
+func size() -> Vector2:
+	return _animation_sprite.sprite_frames.get_frame_texture("default", 0).get_size()
+
+
 func is_dead() -> bool:
 	return _is_dead
 

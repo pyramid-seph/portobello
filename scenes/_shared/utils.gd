@@ -6,10 +6,7 @@ const FRAME_TIME: float = 0.08
 
 
 static func rand_item(arr: Array) -> Node:
-	if arr == null or arr.is_empty():
-		return null
-	
-	return arr[randi() % arr.size()]
+	return arr.pick_random() if arr else null
 
 
 static func first_or_null(arr: Array, callable: Callable):
@@ -63,3 +60,8 @@ static func change_label_color(label: Label, color: Color) -> void:
 		return
 	label.remove_theme_color_override("font_color")
 	label.add_theme_color_override("font_color", color)
+
+
+static func safe_disconnect(sg: Signal, callable: Callable) -> void:
+	if sg.is_connected(callable):
+		sg.disconnect(callable)
