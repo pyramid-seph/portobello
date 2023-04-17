@@ -32,7 +32,7 @@ func _ready() -> void:
 
 
 func _activate() -> void:
-	_timer.start(_cooldown)
+	call_deferred("_spawn_block")
 
 
 func _deactivate() -> void:
@@ -59,7 +59,7 @@ func _on_is_max_speed_enabled_set() -> void:
 		_cooldown = _normal_cooldown
 
 
-func _on_timer_timeout() -> void:
+func _spawn_block() -> void:
 	if target:
 		var block = Block.instantiate() as MovingDay03Enemy
 		add_child(block) # TODO What is world?
@@ -70,3 +70,7 @@ func _on_timer_timeout() -> void:
 	else:
 		print("No target set. Will retry next timeout.")
 	_timer.start(_cooldown)
+
+
+func _on_timer_timeout() -> void:
+	_spawn_block()

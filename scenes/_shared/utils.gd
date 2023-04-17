@@ -62,6 +62,11 @@ static func change_label_color(label: Label, color: Color) -> void:
 	label.add_theme_color_override("font_color", color)
 
 
+static func safe_disconnect_all(sg: Signal) -> void:
+	for conn in sg.get_connections():
+		safe_disconnect(conn["signal"], conn.callable)
+
+
 static func safe_disconnect(sg: Signal, callable: Callable) -> void:
 	if sg.is_connected(callable):
 		sg.disconnect(callable)

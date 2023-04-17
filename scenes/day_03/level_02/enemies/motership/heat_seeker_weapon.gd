@@ -39,11 +39,10 @@ func _process(_delta: float) -> void:
 
 
 func _activate() -> void:
-	_start_cooldown()
+	_seek_an_destroy()
 
 
 func _deactivate() -> void:
-	_timer.stop()
 	_reset_weapon()
 
 
@@ -52,6 +51,9 @@ func _reset_weapon() -> void:
 		_tween.kill()
 	_reset_sight()
 	_target_locked = false
+	if not _timer.is_stopped(): # Otherwise CONNECT_ONE_SHOT makes trouble.
+		Utils.safe_disconnect_all(_timer.timeout)
+		_timer.stop()
 
 
 func _reset_sight() -> void:
@@ -80,7 +82,7 @@ func _shoot_burst() -> void:
 			break
 		_gun.shoot(Vector2.DOWN)
 		_timer.start(_time_between_bullets_sec)
-		await _timer.timeout # TODO Can this await be interrupted on deactivate?
+		await _timer.timeout
 
 
 func _shoot_gun() -> void:
@@ -90,7 +92,8 @@ func _shoot_gun() -> void:
 		return
 	
 	_timer.start(_time_between_bursts_sec)
-	await _timer.timeout # TODO Can this await be interrupted on deactivate?
+	
+	await _timer.timeout
 	
 	await _shoot_burst()
 	
@@ -99,8 +102,7 @@ func _shoot_gun() -> void:
 		_start_cooldown()
 
 
-func _on_cooldown_timeout() -> void:
-	_reset_weapon()
+func _seek_an_destroy() -> void:
 	_tween = create_tween()
 	_tween.tween_callback(func(): _laser_sight.visible = true)
 	_tween.tween_interval(_laser_sight_duration_sec)
@@ -113,3 +115,8 @@ func _on_cooldown_timeout() -> void:
 		_reset_sight()
 		_shoot_gun()
 	)
+
+
+func _on_cooldown_timeout() -> void:
+	_reset_weapon()
+	_seek_an_destroy()
