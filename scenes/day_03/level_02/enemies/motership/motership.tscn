@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b6jhi0dccn53r"]
+[gd_scene load_steps=26 format=3 uid="uid://b6jhi0dccn53r"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/motership.gd" id="1_lyngl"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_wk4gl"]
@@ -19,16 +19,22 @@
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="12_nf8bl"]
 [ext_resource type="Texture2D" uid="uid://b8pjqd3prajm1" path="res://art/day_3/enemy_duck_block_yellow.png" id="13_8ybbm"]
 [ext_resource type="PackedScene" uid="uid://mits7m1g22ia" path="res://scenes/day_03/_shared/player/player.tscn" id="13_167n6"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/hurt_box.tscn" id="17_7j845"]
 [ext_resource type="PackedScene" uid="uid://ciph4tyjsvddo" path="res://scenes/day_03/level_02/enemies/motership/pair_of_mini_balls.tscn" id="19_67e7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dky2g"]
 font = ExtResource("12_nf8bl")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4six"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwyhk"]
 size = Vector2(128, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3f155"]
 size = Vector2(128, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4227b"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
 
 [node name="Motership" type="Node2D"]
 script = ExtResource("1_lyngl")
@@ -150,65 +156,61 @@ metadata/_edit_lock_ = true
 [node name="Timer" type="Timer" parent="LaserBallsWeapon"]
 one_shot = true
 
-[node name="WeakPoint" type="Area2D" parent="."]
+[node name="HurtBox" parent="." instance=ExtResource("17_7j845")]
 position = Vector2(56, 127)
-collision_layer = 2
+collision_layer = 0
 collision_mask = 8
-input_pickable = false
-metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock0" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock0" type="Sprite2D" parent="HurtBox"]
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock1" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock1" type="Sprite2D" parent="HurtBox"]
 position = Vector2(16, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock2" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock2" type="Sprite2D" parent="HurtBox"]
 position = Vector2(32, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock3" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock3" type="Sprite2D" parent="HurtBox"]
 position = Vector2(48, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock4" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock4" type="Sprite2D" parent="HurtBox"]
 position = Vector2(64, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock5" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock5" type="Sprite2D" parent="HurtBox"]
 position = Vector2(80, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock6" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock6" type="Sprite2D" parent="HurtBox"]
 position = Vector2(96, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock7" type="Sprite2D" parent="WeakPoint"]
+[node name="WeakPointBlock7" type="Sprite2D" parent="HurtBox"]
 position = Vector2(112, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WeakPoint"]
+[node name="CollisionShape2D" parent="HurtBox" index="8"]
 position = Vector2(64, 8)
-shape = SubResource("RectangleShape2D_b4six")
-debug_color = Color(1, 0, 0, 0.419608)
-metadata/_edit_lock_ = true
+shape = SubResource("RectangleShape2D_lwyhk")
 
 [node name="ObjectCleaner" type="Area2D" parent="."]
 position = Vector2(0, -2)
@@ -279,28 +281,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HpLabel" type="Label" parent="FlashContainer"]
-anchors_preset = 5
+[node name="Debug" type="Node" parent="."]
+
+[node name="HpLabel" type="Label" parent="Debug"]
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 26.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -37.0
+offset_right = 28.0
 grow_horizontal = 2
-text = "1000
+grow_vertical = 0
+text = "HP 500
 "
+label_settings = SubResource("LabelSettings_4227b")
 
 [node name="Player" parent="." instance=ExtResource("13_167n6")]
 z_index = 100
 position = Vector2(137, 243)
+is_autofire_enabled = true
 is_god_mode_enabled = true
 move_offset_left = 52
 move_offset_bottom = -31
 move_offset_right = -52
 move_offset_top = 143
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="visibility_changed" from="AlienHologram" to="AlienHologram" method="_on_visibility_changed"]
 [connection signal="timeout" from="BlockSpawnerWeapon/Timer" to="BlockSpawnerWeapon" method="_on_timer_timeout"]
@@ -309,9 +315,10 @@ autostart = true
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon2" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
 [connection signal="timeout" from="LaserBallsWeapon/Timer" to="LaserBallsWeapon" method="_on_timer_timeout"]
-[connection signal="area_entered" from="WeakPoint" to="." method="_on_weak_point_area_entered"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="area_exited" from="ObjectCleaner" to="ObjectCleaner" method="_on_area_exited"]
 
+[editable path="HurtBox"]
 [editable path="PairOfMiniBallsLeft"]
 [editable path="PairOfMiniBallsCenter"]
 [editable path="PairOfMiniBallsRight"]

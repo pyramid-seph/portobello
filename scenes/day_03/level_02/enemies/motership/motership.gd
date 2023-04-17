@@ -9,7 +9,7 @@ signal died
 		_on_debug_show_hp_set()
 @export var _hp: int = 1:
 	set(value):
-		_hp = value
+		_hp = maxi(value, 0)
 		_update_hp_label()
 @export var _phase_2_at_hp: int = 1
 @export var _phase_3_at_hp: int = 1
@@ -23,14 +23,14 @@ var _player: Day03Player
 @onready var _laser_balls_weapon := $LaserBallsWeapon
 @onready var _alien_hologram := $AlienHologram
 @onready var _flash := %Flash
-@onready var _hp_label := $FlashContainer/HpLabel as Label
+@onready var _hp_label := $Debug/HpLabel as Label
 @onready var _is_ready: bool = true
 
 
 func _ready() -> void:
 	initialize($Player)
+	_update_hp_label() 
 	_on_debug_show_hp_set()
-	$Timer.timeout.connect(func(): _hp -= 1)
 
 
 func initialize(player: Day03Player) -> void:
@@ -56,7 +56,6 @@ func _update_hp_label() -> void:
 func _on_debug_show_hp_set() -> void:
 	if is_ready():
 		_hp_label.visible = debug_show_hp
-		_update_hp_label() 
 
 
 func _remove_hazards() -> void:
@@ -106,10 +105,20 @@ func _die() -> void:
 	if is_dead():
 		return
 	
+	_is_dead = true
 	_disable_wapons()
 	_remove_hazards()
 	_explode()
 	died.emit()
+
+
+func _hurt( ) -> void:
+	if is_dead():
+		return
+	
+	_hp -= 1
+	if _hp <= 0:
+		_die()
 
 
 func _spawn_explosion(pos: Vector2) -> void:
@@ -118,9 +127,6 @@ func _spawn_explosion(pos: Vector2) -> void:
 	explosion.position = pos
 
 
-func _on_weak_point_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_laser_balls_cannon_charged() -> void:
-	pass # Replace with function body.
+func _on_hurt_box_hurt(who) -> void:
+	_hurt()
+	who.queue_free()
