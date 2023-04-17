@@ -5,8 +5,10 @@ extends Node2D
 		target = value
 @export var is_active: bool:
 	set(value):
+		var old_is_active = is_active
 		is_active = value
-		_on_set_is_active()
+		if old_is_active != is_active:
+			_on_set_is_active()
 @export var _cooldown_sec: float = 1.0
 @export var _laser_sight_duration_sec: float = 1.0
 @export var _warning_duration_sec: float = 1.0
@@ -51,6 +53,7 @@ func _reset_weapon() -> void:
 	_reset_sight()
 	_target_locked = false
 
+
 func _reset_sight() -> void:
 	_laser_sight.visible = false
 	_laser_sight_warning.visible = false
@@ -77,7 +80,7 @@ func _shoot_burst() -> void:
 			break
 		_gun.shoot(Vector2.DOWN)
 		_timer.start(_time_between_bullets_sec)
-		await _timer.timeout
+		await _timer.timeout # TODO Can this await be interrupted on deactivate?
 
 
 func _shoot_gun() -> void:
@@ -87,7 +90,7 @@ func _shoot_gun() -> void:
 		return
 	
 	_timer.start(_time_between_bursts_sec)
-	await _timer.timeout
+	await _timer.timeout # TODO Can this await be interrupted on deactivate?
 	
 	await _shoot_burst()
 	

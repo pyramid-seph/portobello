@@ -40,7 +40,9 @@ outline_size = 4
 script = ExtResource("1_lyngl")
 debug_show_hp = true
 _hp = 500
-_phase_2_at_hp = 150
+_activate_block_spawner_at_hp = 400
+_speed_up_block_spawner_at_hp = 200
+_activate_heat_seeker_at_hp = 150
 Explosion = ExtResource("2_wk4gl")
 
 [node name="Floor" type="Sprite2D" parent="."]
@@ -91,9 +93,9 @@ label_settings = SubResource("LabelSettings_dky2g")
 [node name="BlockSpawnerWeapon" type="Node2D" parent="."]
 position = Vector2(120, 142)
 script = ExtResource("5_yw3ju")
-_cooldown = 1.2
+_normal_cooldown = 1.2
+_sped_up_cooldown = 0.8
 Block = ExtResource("6_svbuj")
-metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="BlockSpawnerWeapon"]
 one_shot = true
@@ -161,6 +163,12 @@ position = Vector2(56, 127)
 collision_layer = 0
 collision_mask = 8
 
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(64, 8)
+shape = SubResource("RectangleShape2D_lwyhk")
+debug_color = Color(0, 1, 0, 0.419608)
+metadata/_edit_lock_ = true
+
 [node name="WeakPointBlock0" type="Sprite2D" parent="HurtBox"]
 texture = ExtResource("13_8ybbm")
 centered = false
@@ -208,10 +216,6 @@ texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" parent="HurtBox" index="8"]
-position = Vector2(64, 8)
-shape = SubResource("RectangleShape2D_lwyhk")
-
 [node name="ObjectCleaner" type="Area2D" parent="."]
 position = Vector2(0, -2)
 collision_layer = 0
@@ -222,7 +226,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectCleaner"]
 position = Vector2(120, 263)
 shape = SubResource("RectangleShape2D_3f155")
-debug_color = Color(0, 1, 0, 0.419608)
+debug_color = Color(0.901961, 0.847059, 0, 0.419608)
 
 [node name="PairOfMiniBallsLeft" parent="." instance=ExtResource("19_67e7r")]
 position = Vector2(8, 287)

@@ -9,10 +9,13 @@ signal died
 		_on_debug_show_hp_set()
 @export var _hp: int = 1:
 	set(value):
+		var _old_hp = _hp
 		_hp = maxi(value, 0)
-		_update_hp_label()
-@export var _phase_2_at_hp: int = 1
-@export var _phase_3_at_hp: int = 1
+		if _old_hp != _hp:
+			_on_hp_changed()
+@export var _activate_block_spawner_at_hp: int = 1
+@export var _speed_up_block_spawner_at_hp: int = 1
+@export var _activate_heat_seeker_at_hp: int = 1
 @export var Explosion: PackedScene
 
 var _is_dead: bool = false
@@ -31,6 +34,7 @@ func _ready() -> void:
 	initialize($Player)
 	_update_hp_label() 
 	_on_debug_show_hp_set()
+	_on_hp_changed()
 
 
 func initialize(player: Day03Player) -> void:
@@ -56,6 +60,19 @@ func _update_hp_label() -> void:
 func _on_debug_show_hp_set() -> void:
 	if is_ready():
 		_hp_label.visible = debug_show_hp
+
+
+func _activate_weapons() -> void:
+	if not is_ready():
+		return
+	_heat_seeker_weapon.is_active = _hp <= _activate_heat_seeker_at_hp
+	_block_spawner_weapon.is_active = _hp <= _activate_block_spawner_at_hp
+	_block_spawner_weapon.is_max_speed_enabled = _hp <= _speed_up_block_spawner_at_hp
+
+
+func _on_hp_changed() -> void:
+	_update_hp_label()
+	_activate_weapons()
 
 
 func _remove_hazards() -> void:

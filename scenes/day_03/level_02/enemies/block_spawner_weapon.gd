@@ -2,19 +2,33 @@ extends Node2D
 
 
 @export var target: Node2D
-@export var _cooldown: float = 1.0
 @export var is_active: bool:
 	set(value):
+		var old_is_active = is_active
 		is_active = value
-		_on_set_is_active()
+		if old_is_active != is_active:
+			_on_is_active_set()
+@export var is_max_speed_enabled: bool = false:
+	set(value):
+		var old_is_max_speed_enabled = is_max_speed_enabled
+		is_max_speed_enabled = value
+		if old_is_max_speed_enabled != is_max_speed_enabled:
+			_on_is_max_speed_enabled_set()
+
+@export var _normal_cooldown: float = 1.0
+@export var _sped_up_cooldown: float = 1.0
+		
 @export var Block: PackedScene
+
+var _cooldown: float = 0.0
 
 @onready var _timer := $Timer as Timer
 @onready var _is_ready: bool = true
 
 
 func _ready() -> void:
-	_on_set_is_active()
+	_on_is_active_set()
+	_on_is_max_speed_enabled_set()
 
 
 func _activate() -> void:
@@ -25,7 +39,7 @@ func _deactivate() -> void:
 	_timer.stop()
 
 
-func _on_set_is_active() -> void:
+func _on_is_active_set() -> void:
 	if not _is_ready:
 		return
 	
@@ -33,6 +47,16 @@ func _on_set_is_active() -> void:
 		_activate()
 	else:
 		_deactivate()
+
+
+func _on_is_max_speed_enabled_set() -> void:
+	if not _is_ready:
+		return
+	
+	if is_max_speed_enabled:
+		_cooldown = _sped_up_cooldown
+	else:
+		_cooldown = _normal_cooldown
 
 
 func _on_timer_timeout() -> void:

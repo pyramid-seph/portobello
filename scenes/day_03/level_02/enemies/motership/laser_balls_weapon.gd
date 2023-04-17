@@ -5,8 +5,10 @@ extends Node2D
 @export var _cooldown: float = 1.0
 @export var is_active: bool:
 	set(value):
+		var old_is_active = is_active
 		is_active = value
-		_on_set_is_active()
+		if old_is_active != is_active:
+			_on_set_is_active()
 
 var _pattern: Array[LaserBallsCannon]
 
