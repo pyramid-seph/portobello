@@ -1,8 +1,7 @@
 extends Node2D
 
-@export var target: Node2D:
-	set(value):
-		target = value
+@export var target: Node2D
+@export var world: Node2D
 @export var is_active: bool:
 	set(value):
 		var old_is_active = is_active
@@ -29,7 +28,7 @@ var _tween: Tween
 func _ready() -> void:
 	_on_set_is_active()
 	_reset_sight()
-	_gun.world = get_parent() # TODO
+	_gun.world = world
 
 
 func _process(_delta: float) -> void:

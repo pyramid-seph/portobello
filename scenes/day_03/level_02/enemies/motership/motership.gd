@@ -24,14 +24,16 @@ var _player: Day03Player
 @onready var _block_spawner_weapon := $BlockSpawnerWeapon
 @onready var _heat_seeker_weapon := $HeatSeekerWeapon
 @onready var _laser_balls_weapon := $LaserBallsWeapon
-@onready var _alien_hologram := $AlienHologram
+@onready var _alien_hologram := $Inside/AlienHologram
 @onready var _flash := %Flash
 @onready var _hp_label := $Debug/HpLabel as Label
 @onready var _is_ready: bool = true
+@onready var _inside := $Inside as Node2D
+@onready var _explosions_container := $ExplosionsContainer as Node2D
 
 
 func _ready() -> void:
-	initialize($Player)
+	initialize($Inside/Player)
 	_update_hp_label() 
 	_on_debug_show_hp_set()
 	_on_hp_changed()
@@ -42,6 +44,7 @@ func initialize(player: Day03Player) -> void:
 	_heat_seeker_weapon.target = _player
 	_block_spawner_weapon.target = _player
 	_laser_balls_weapon.target = _player
+	get_tree().create_timer(2.5).timeout.connect(_explode, CONNECT_ONE_SHOT) 
 
 
 func is_dead() -> bool:
@@ -59,7 +62,7 @@ func _update_hp_label() -> void:
 
 func _on_debug_show_hp_set() -> void:
 	if is_ready():
-		_hp_label.visible = debug_show_hp
+		_hp_label.visible = debug_show_hp and OS.is_debug_build()
 
 
 func _activate_weapons() -> void:
@@ -76,10 +79,10 @@ func _on_hp_changed() -> void:
 
 
 func _remove_hazards() -> void:
-	var bullets = Utils.children_in_group(self, "enemy_bullets")
+	var bullets = Utils.children_in_group(_inside, "enemy_bullets")
 	for bullet in bullets:
-		_spawn_explosion(bullet.position)
-	Utils.queue_free_group(self, "bullets")
+		_spawn_explosion(bullet.global_position)
+	Utils.queue_free_group(_inside, "bullets")
 	get_tree().call_group("enemies", "explode")
 
 
@@ -113,9 +116,12 @@ func _animate_explosions() -> void:
 
 
 func _explode() -> void:
+	if is_dead():
+		return
 	Utils.vibrate_joy(0, 0.25, 0.25, 2.9)
 	_animate_flash()
 	_animate_explosions()
+	_die()
 
 
 func _die() -> void:
@@ -125,7 +131,6 @@ func _die() -> void:
 	_is_dead = true
 	_disable_wapons()
 	_remove_hazards()
-	_explode()
 	died.emit()
 
 
@@ -135,12 +140,12 @@ func _hurt( ) -> void:
 	
 	_hp -= 1
 	if _hp <= 0:
-		_die()
+		_explode()
 
 
 func _spawn_explosion(pos: Vector2) -> void:
 	var explosion = Explosion.instantiate()
-	add_child(explosion)
+	_explosions_container.add_child(explosion)
 	explosion.position = pos
 
 
