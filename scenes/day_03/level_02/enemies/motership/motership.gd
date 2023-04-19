@@ -44,7 +44,6 @@ func initialize(player: Day03Player) -> void:
 	_heat_seeker_weapon.target = _player
 	_block_spawner_weapon.target = _player
 	_laser_balls_weapon.target = _player
-	get_tree().create_timer(2.5).timeout.connect(_explode, CONNECT_ONE_SHOT) 
 
 
 func is_dead() -> bool:
@@ -146,9 +145,10 @@ func _hurt( ) -> void:
 func _spawn_explosion(pos: Vector2) -> void:
 	var explosion = Explosion.instantiate()
 	_explosions_container.add_child(explosion)
-	explosion.position = pos
+	explosion.z_index = 0
+	explosion.global_position = pos
 
 
-func _on_hurt_box_hurt(who) -> void:
+func _on_hurt_box_hurt(who: Area2D) -> void:
 	_hurt()
 	who.queue_free()
