@@ -33,13 +33,13 @@ var _player: Day03Player
 
 
 func _ready() -> void:
-	initialize($Inside/Player)
+	abduct($Inside/Player)
 	_update_hp_label() 
 	_on_debug_show_hp_set()
 	_on_hp_changed()
 
 
-func initialize(player: Day03Player) -> void:
+func abduct(player: Day03Player) -> void:
 	_player = player
 	_heat_seeker_weapon.target = _player
 	_block_spawner_weapon.target = _player
