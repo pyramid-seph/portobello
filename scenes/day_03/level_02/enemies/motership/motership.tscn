@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b6jhi0dccn53r"]
+[gd_scene load_steps=26 format=3 uid="uid://7frae6sug118"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/motership.gd" id="1_lyngl"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_wk4gl"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/heat_seeker_weapon.gd" id="7_gjhag"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="7_rkunh"]
 [ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="8_coaat"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/object_cleaner.gd" id="9_2gn5d"]
 [ext_resource type="Texture2D" uid="uid://dcmolxxqilyi3" path="res://art/day_3/dotted_line.png" id="9_441i0"]
 [ext_resource type="PackedScene" uid="uid://bx2bi5maro6nn" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.tscn" id="10_oilhl"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_weapon.gd" id="11_gqj8r"]
@@ -20,12 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://b8pjqd3prajm1" path="res://art/day_3/enemy_duck_block_yellow.png" id="13_8ybbm"]
 [ext_resource type="PackedScene" uid="uid://mits7m1g22ia" path="res://scenes/day_03/_shared/player/player.tscn" id="13_167n6"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/hurt_box.tscn" id="17_7j845"]
+[ext_resource type="PackedScene" uid="uid://dvq3mnqmcgelf" path="res://scenes/_shared/clean_up_zone.tscn" id="18_f0wfx"]
 [ext_resource type="PackedScene" uid="uid://ciph4tyjsvddo" path="res://scenes/day_03/level_02/enemies/motership/pair_of_mini_balls.tscn" id="19_67e7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwyhk"]
 size = Vector2(128, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f155"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uueik"]
 size = Vector2(144, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dky2g"]
@@ -156,6 +156,12 @@ collision_layer = 0
 collision_mask = 8
 metadata/_edit_lock_ = true
 
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(64, 8)
+shape = SubResource("RectangleShape2D_lwyhk")
+debug_color = Color(0, 1, 0, 0.419608)
+metadata/_edit_lock_ = true
+
 [node name="WeakPointBlock0" type="Sprite2D" parent="HurtBox"]
 texture = ExtResource("13_8ybbm")
 centered = false
@@ -203,23 +209,14 @@ texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" parent="HurtBox" index="8"]
-position = Vector2(64, 8)
-shape = SubResource("RectangleShape2D_lwyhk")
-debug_color = Color(0, 1, 0, 0.419608)
-metadata/_edit_lock_ = true
-
-[node name="ObjectCleaner" type="Area2D" parent="."]
-position = Vector2(0, -2)
-collision_layer = 0
+[node name="CleanUpZone" parent="." instance=ExtResource("18_f0wfx")]
+position = Vector2(120, 281)
 collision_mask = 18
-script = ExtResource("9_2gn5d")
-metadata/_edit_lock_ = true
+clean_up_behavior = 1
+groups = Array[String](["bullets", "enemies"])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectCleaner"]
-position = Vector2(120, 263)
-shape = SubResource("RectangleShape2D_3f155")
-debug_color = Color(0.901961, 0.847059, 0, 0.419608)
+[node name="CollisionShape2D" parent="CleanUpZone" index="0"]
+shape = SubResource("RectangleShape2D_uueik")
 
 [node name="PairOfMiniBallsLeft" parent="." instance=ExtResource("19_67e7r")]
 position = Vector2(8, 287)
@@ -330,9 +327,9 @@ label_settings = SubResource("LabelSettings_4227b")
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
 [connection signal="timeout" from="LaserBallsWeapon/Timer" to="LaserBallsWeapon" method="_on_timer_timeout"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
-[connection signal="area_exited" from="ObjectCleaner" to="ObjectCleaner" method="_on_area_exited"]
 
 [editable path="HurtBox"]
+[editable path="CleanUpZone"]
 [editable path="PairOfMiniBallsLeft"]
 [editable path="PairOfMiniBallsCenter"]
 [editable path="PairOfMiniBallsRight"]
