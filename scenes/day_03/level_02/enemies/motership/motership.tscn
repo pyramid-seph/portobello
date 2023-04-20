@@ -26,7 +26,7 @@
 size = Vector2(128, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3f155"]
-size = Vector2(128, 20)
+size = Vector2(144, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dky2g"]
 font = ExtResource("12_nf8bl")
@@ -85,6 +85,7 @@ world = NodePath("../Inside")
 _normal_cooldown = 1.2
 _sped_up_cooldown = 0.8
 Block = ExtResource("6_svbuj")
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="BlockSpawnerWeapon"]
 one_shot = true
@@ -99,6 +100,7 @@ _warning_duration_sec = 0.4
 _time_between_bullets_sec = 0.08
 _time_between_bursts_sec = 0.8
 _bullets_per_burst = 10
+metadata/_edit_lock_ = true
 
 [node name="Gun" parent="HeatSeekerWeapon" instance=ExtResource("7_rkunh")]
 Bullet = ExtResource("8_coaat")
@@ -152,11 +154,6 @@ one_shot = true
 position = Vector2(56, 127)
 collision_layer = 0
 collision_mask = 8
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(64, 8)
-shape = SubResource("RectangleShape2D_lwyhk")
-debug_color = Color(0, 1, 0, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="WeakPointBlock0" type="Sprite2D" parent="HurtBox"]
@@ -204,6 +201,12 @@ metadata/_edit_lock_ = true
 position = Vector2(112, 0)
 texture = ExtResource("13_8ybbm")
 centered = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="HurtBox" index="8"]
+position = Vector2(64, 8)
+shape = SubResource("RectangleShape2D_lwyhk")
+debug_color = Color(0, 1, 0, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="ObjectCleaner" type="Area2D" parent="."]
@@ -265,6 +268,7 @@ position = Vector2(8, 0)
 color = Color(1, 0, 0, 1)
 
 [node name="ExplosionsContainer" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Dialog" type="Control" parent="."]
 visible = false
