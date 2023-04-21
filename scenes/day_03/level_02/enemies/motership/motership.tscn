@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="7_rkunh"]
 [ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="8_coaat"]
 [ext_resource type="Texture2D" uid="uid://dcmolxxqilyi3" path="res://art/day_3/dotted_line.png" id="9_441i0"]
-[ext_resource type="PackedScene" uid="uid://bx2bi5maro6nn" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.tscn" id="10_oilhl"]
+[ext_resource type="PackedScene" uid="uid://spq6o43sfcc1" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.tscn" id="10_oilhl"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_weapon.gd" id="11_gqj8r"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="11_imjsu"]
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="12_nf8bl"]
@@ -38,12 +38,12 @@ outline_size = 4
 
 [node name="Motership" type="Node2D"]
 script = ExtResource("1_lyngl")
-debug_show_hp = true
 _hp = 500
 _activate_block_spawner_at_hp = 400
 _speed_up_block_spawner_at_hp = 200
 _activate_heat_seeker_at_hp = 150
 Explosion = ExtResource("2_wk4gl")
+debug_show_hp = true
 
 [node name="Inside" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -65,13 +65,16 @@ _flicker_duration_sec = 0.08
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Inside" instance=ExtResource("13_167n6")]
-position = Vector2(137, 243)
-is_autofire_enabled = true
+position = Vector2(145, 200)
 is_god_mode_enabled = true
 move_offset_left = 52
 move_offset_bottom = -31
 move_offset_right = -52
 move_offset_top = 143
+
+[node name="StartPosition" type="Marker2D" parent="Inside"]
+position = Vector2(116, 255)
+metadata/_edit_lock_ = true
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("3_4nxgv")
@@ -322,9 +325,13 @@ label_settings = SubResource("LabelSettings_4227b")
 [connection signal="visibility_changed" from="Inside/AlienHologram" to="Inside/AlienHologram" method="_on_visibility_changed"]
 [connection signal="timeout" from="BlockSpawnerWeapon/Timer" to="BlockSpawnerWeapon" method="_on_timer_timeout"]
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon0" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon0" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon1" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon1" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon2" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon2" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
 [connection signal="timeout" from="LaserBallsWeapon/Timer" to="LaserBallsWeapon" method="_on_timer_timeout"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 

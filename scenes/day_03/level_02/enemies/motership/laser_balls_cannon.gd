@@ -12,8 +12,8 @@ signal target_detected
 		_on_stand_by_color_set()
 @export_color_no_alpha var _charging_color := Color.MAGENTA
 @export var _charging_duration_sec: float = 1.0
-@export_color_no_alpha var _charged_color := Color.MAGENTA
-@export var _charged_duration_sec: float = 1.0
+@export_color_no_alpha var _detecting_color := Color.MAGENTA
+@export var _detecting_duration_sec: float = 1.0
 @export_color_no_alpha var _laser_ext_color_1 := Color.MAGENTA
 @export_color_no_alpha var _laser_ext_color_2 := Color.MAGENTA
 @export_color_no_alpha var _laser_int_color_1 := Color.MAGENTA
@@ -39,10 +39,6 @@ func _ready() -> void:
 	_on_stand_by_color_set()
 
 
-func is_charged() -> bool:
-	return _state_machine.is_in_state("Charged")
-
-
 func is_discharged() -> bool:
 	return _state_machine.is_in_state("Discharged")
 
@@ -56,7 +52,7 @@ func deactivate() -> void:
 	_state_machine.deactivate()
 
 
-func _fire() -> void:
+func fire() -> void:
 	if not Engine.is_editor_hint():
 		_state_machine.fire()
 
@@ -77,4 +73,4 @@ func _on_stand_by_color_set() -> void:
 
 
 func _on_laser_area_entered(area: Area2D) -> void:
-	print("_on_laser_area_entered: %s" % area.name)
+	target_detected.emit()

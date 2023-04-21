@@ -3,10 +3,6 @@ extends Node2D
 
 signal died
 
-@export var debug_show_hp: bool = false:
-	set(value):
-		debug_show_hp = value
-		_on_debug_show_hp_set()
 @export var _hp: int = 1:
 	set(value):
 		var _old_hp = _hp
@@ -17,6 +13,11 @@ signal died
 @export var _speed_up_block_spawner_at_hp: int = 1
 @export var _activate_heat_seeker_at_hp: int = 1
 @export var Explosion: PackedScene
+@export_group("Debug", "debug_")
+@export var debug_show_hp: bool = false:
+	set(value):
+		debug_show_hp = value
+		_on_debug_show_hp_set()
 
 var _is_dead: bool = false
 var _player: Day03Player
@@ -30,6 +31,7 @@ var _player: Day03Player
 @onready var _is_ready: bool = true
 @onready var _inside := $Inside as Node2D
 @onready var _explosions_container := $ExplosionsContainer as Node2D
+@onready var _start_position := $Inside/StartPosition
 
 
 func _ready() -> void:
@@ -41,6 +43,7 @@ func _ready() -> void:
 
 func abduct(player: Day03Player) -> void:
 	_player = player
+	_player.global_position = _start_position.global_position
 	_heat_seeker_weapon.target = _player
 	_block_spawner_weapon.target = _player
 	_laser_balls_weapon.target = _player
@@ -150,5 +153,6 @@ func _spawn_explosion(pos: Vector2) -> void:
 
 
 func _on_hurt_box_hurt(who: Area2D) -> void:
-	_hurt()
+	_spawn_explosion(who.global_position)
 	who.queue_free()
+	_hurt()

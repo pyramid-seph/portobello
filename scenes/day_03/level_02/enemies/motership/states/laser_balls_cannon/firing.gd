@@ -10,7 +10,7 @@ func enter() -> void:
 	_tween = create_tween()
 	_tween.tween_callback(func():
 		cannon._set_laser_visibility(true)
-		cannon._change_balls_color(cannon._charged_color)
+		cannon._change_balls_color(cannon._detecting_color)
 	)
 	_tween.set_loops(loops)
 	_tween.tween_callback(cannon._inner_color.set_modulate.bind(cannon._laser_int_color_1))

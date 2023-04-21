@@ -29,12 +29,12 @@ func _activate() -> void:
 
 
 func _deactivate() -> void:
-	_pattern.clear()
-	_timer.stop()
 	_cannon_0.deactivate()
 	_cannon_1.deactivate()
 	_cannon_2.deactivate()
 	_cannon_3.deactivate()
+	_pattern.clear()
+	_timer.stop()
 
 
 func _on_set_is_active() -> void:
@@ -93,8 +93,7 @@ func _randomize_cannons_charge() -> void:
 
 
 func _fire_charged_cannon(cannon: Node) -> void:
-	if cannon.is_charged():
-		cannon.fire()
+	cannon.fire()
 
 
 func _on_timer_timeout() -> void:
@@ -108,10 +107,8 @@ func _on_timer_timeout() -> void:
 
 
 func _on_laser_balls_cannon_target_detected() -> void:
-	_fire_charged_cannon(_cannon_0)
-	_fire_charged_cannon(_cannon_1)
-	_fire_charged_cannon(_cannon_2)
-	_fire_charged_cannon(_cannon_3)
+	for cannon in _pattern:
+		cannon.fire()
 
 
 func _on_laser_balls_cannon_discharged() -> void:

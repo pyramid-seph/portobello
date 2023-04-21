@@ -14,4 +14,4 @@ func exit() -> void:
 
 
 func _on_charging_timer_timeout() -> void:
-	state_machine.change_state("Tracking")
+	state_machine.change_state("Detecting")

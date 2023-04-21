@@ -161,6 +161,7 @@ script = ExtResource("10_vakmx")
 [node name="HurtBox" parent="." instance=ExtResource("11_w0umc")]
 position = Vector2(8, 8)
 collision_mask = 18
+monitorable = true
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0, 0)
