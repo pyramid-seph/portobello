@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://spq6o43sfcc1"]
+[gd_scene load_steps=11 format=3 uid="uid://spq6o43sfcc1"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.gd" id="1_4dg2f"]
 [ext_resource type="PackedScene" uid="uid://pokyleuxj61d" path="res://scenes/day_03/level_02/enemies/motership/motership_ball.tscn" id="1_70o5a"]
+[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="2_u8mdr"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon_state_machine.gd" id="3_0t5xr"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/stand_by.gd" id="4_78yud"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/charging.gd" id="5_q4iqa"]
@@ -12,7 +13,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fd4x2"]
 size = Vector2(144, 18)
 
-[node name="LaserBallsCannon" type="Node2D"]
+[node name="LaserBallsCannon" type="Node2D" groups=["enemy_bullets"]]
 script = ExtResource("1_4dg2f")
 _stand_by_color = Color(0, 0, 1, 1)
 _charging_color = Color(0.980392, 0.67451, 0.345098, 1)
@@ -28,9 +29,10 @@ _laser_duration_sec = 0.8
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Laser" type="Area2D" parent="."]
+[node name="Laser" type="Node2D" parent="."]
 process_mode = 4
-collision_layer = 16
+z_index = -50
+z_as_relative = false
 
 [node name="OuterColor" type="Line2D" parent="Laser"]
 visible = false
@@ -44,7 +46,10 @@ position = Vector2(30, 16)
 points = PackedVector2Array(0, 0, 124, 0)
 width = 16.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
+[node name="Hitbox" type="Area2D" parent="Laser"]
+script = ExtResource("2_u8mdr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Hitbox"]
 position = Vector2(92, 16)
 shape = SubResource("RectangleShape2D_fd4x2")
 debug_color = Color(1, 0, 0, 0.419608)
@@ -76,4 +81,4 @@ script = ExtResource("7_h04pi")
 [node name="Discharged" type="Node" parent="StateMachine"]
 script = ExtResource("8_i6llu")
 
-[connection signal="area_entered" from="Laser" to="." method="_on_laser_area_entered"]
+[connection signal="hit" from="Laser/Hitbox" to="." method="_on_hitbox_hit"]

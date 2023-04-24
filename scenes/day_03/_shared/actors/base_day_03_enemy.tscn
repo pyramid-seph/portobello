@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://drvu0mov0ok2m"]
+[gd_scene load_steps=7 format=3 uid="uid://drvu0mov0ok2m"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.gd" id="1_u8kdk"]
+[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="2_aodou"]
 [ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="2_ot8c6"]
+[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="3_sl1yr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtxue"]
-size = Vector2(16, 16)
+size = Vector2(14, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c2apo"]
 animations = [{
@@ -17,15 +19,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BaseDay03Enemy" type="Area2D" groups=["enemies"]]
-collision_layer = 2
-collision_mask = 9
-input_pickable = false
+[node name="BaseDay03Enemy" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_u8kdk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("2_aodou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_mtxue")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_sl1yr")
+killer_groups = Array[String](["player_bullets"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_mtxue")
+debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c2apo")
@@ -35,5 +47,6 @@ centered = false
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(0, 0, 16, 16)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

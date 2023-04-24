@@ -1,5 +1,5 @@
 class_name BaseDay03Enemy
-extends Area2D
+extends Node2D
 
 signal died
 
@@ -123,10 +123,15 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	_dispose()
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_hitbox_hit(_hitbox:Hitbox, hurtbox: Hurtbox) -> void:
 	if is_dead(): 
 		return
+	if hurtbox.owner.is_in_group("players"):
+		impacted()
+
+
+func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
 	if is_immune_to_bullets:
 		_spawn_explosion()
-	elif area.is_in_group("bullets"): 
-		hurt(area.shooter)
+	else:
+		hurt(hitbox.owner.shooter)

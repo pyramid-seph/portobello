@@ -1,18 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://mits7m1g22ia"]
+[gd_scene load_steps=19 format=3 uid="uid://d201sdqnu65bt"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/player.gd" id="1_o3ipy"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="2_jf564"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/fall.tscn" id="3_y57w7"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="4_myd3x"]
+[ext_resource type="PackedScene" uid="uid://cdi2dku78c2an" path="res://scenes/day_03/_shared/objects/fall.tscn" id="3_y57w7"]
+[ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="4_myd3x"]
 [ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/_atlas_day_3_shield.png" id="5_73oqx"]
 [ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/player_0.png" id="6_aq72p"]
 [ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/player_1.png" id="7_r1arf"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="8_s2mvn"]
-[ext_resource type="PackedScene" uid="uid://da2fw2fh22lgh" path="res://scenes/day_03/_shared/objects/bullet.tscn" id="9_8x2q1"]
+[ext_resource type="PackedScene" uid="uid://da2fw2fh22lgh" path="res://scenes/day_03/_shared/objects/player_bullet.tscn" id="9_8x2q1"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/mega_gun.gd" id="10_vakmx"]
-[ext_resource type="PackedScene" path="res://scenes/_shared/hurt_box.tscn" id="11_w0umc"]
+[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="12_6i17m"]
 
 [sub_resource type="RectangleShape2D" id="8"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="7"]
 size = Vector2(8, 16)
 
 [sub_resource type="Animation" id="11"]
@@ -41,6 +44,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Rect2(20, 0, 20, 20)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:invincible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="10"]
 resource_name = "invincible"
@@ -61,26 +76,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HurtBox:invincible")
+tracks/1/path = NodePath("ShieldSprite:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ShieldSprite:region_rect")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.08, 1.2, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(0, 0, 20, 20), Rect2(20, 0, 20, 20), Rect2(40, 0, 20, 20), Rect2(0, 0, 20, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:invincible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vkqq"]
@@ -107,14 +122,8 @@ animations = [{
 "speed": 12.5
 }]
 
-[sub_resource type="RectangleShape2D" id="7"]
-size = Vector2(8, 16)
-
-[node name="Player" type="Area2D" groups=["players"]]
+[node name="Player" type="Node2D" groups=["players"]]
 z_index = -90
-collision_mask = 4
-input_pickable = false
-monitorable = false
 script = ExtResource("1_o3ipy")
 _player_data = ExtResource("2_jf564")
 move_offset_left = -4
@@ -123,9 +132,22 @@ move_offset_top = 2
 Fall = ExtResource("3_y57w7")
 Explosion = ExtResource("4_myd3x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Pickupbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickupbox"]
 position = Vector2(8, 8)
 shape = SubResource("8")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(8, 8)
+script = ExtResource("12_6i17m")
+killer_groups = Array[String](["enemies", "enemy_bullets"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("7")
+debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -158,17 +180,6 @@ cooldown = 0.16
 [node name="MegaGun" type="Node" parent="."]
 script = ExtResource("10_vakmx")
 
-[node name="HurtBox" parent="." instance=ExtResource("11_w0umc")]
-position = Vector2(8, 8)
-collision_mask = 18
-monitorable = true
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0, 0)
-shape = SubResource("7")
-
-[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
-[connection signal="timeout" from="StaminaDepletionTimer" to="." method="_on_StaminaDepletionTimer_timeout"]
-[connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
-
-[editable path="HurtBox"]
+[connection signal="area_entered" from="Pickupbox" to="." method="_on_pickup_area_area_entered"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="timeout" from="StaminaDepletionTimer" to="." method="_on_stamina_depletion_timer_timeout"]

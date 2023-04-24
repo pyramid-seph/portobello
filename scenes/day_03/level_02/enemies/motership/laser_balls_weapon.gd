@@ -1,7 +1,6 @@
 extends Node2D
 
 
-@export var target: Node2D
 @export var _cooldown: float = 1.0
 @export var is_active: bool:
 	set(value):
@@ -48,7 +47,6 @@ func _on_set_is_active() -> void:
 
 
 func _randomize_cannons_charge() -> void:
-	print("Randomizing pattern")
 	_pattern.clear()
 	var pattern = randi() % 13
 	match pattern:
@@ -97,22 +95,16 @@ func _fire_charged_cannon(cannon: Node) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if target:
-		_randomize_cannons_charge()
-		print("Cannon count: %s" % _pattern.size())
-		for cannon in _pattern:
-			cannon.charge()
-	else:
-		print("No target set.")
+	_randomize_cannons_charge()
+	for cannon in _pattern:
+		cannon.charge()
 
 
-func _on_laser_balls_cannon_target_detected() -> void:
+func _on_laser_balls_cannon_target_detected(_target: Node2D) -> void:
 	for cannon in _pattern:
 		cannon.fire()
 
 
 func _on_laser_balls_cannon_discharged() -> void:
-	print("all discharged: %s" % _pattern.all(func(cannon): return cannon.is_discharged()))
 	if _pattern.all(func(cannon): return cannon.is_discharged()):
-		print("==============================================================")
 		_timer.start(_cooldown)

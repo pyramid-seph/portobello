@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bmfc5e84lpwkj"]
 
 [ext_resource type="PackedScene" path="res://scenes/_shared/short_lived_sprite.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq53a6iqt04jk" path="res://art/day_3/object_explosion.png" id="2_vqewr"]
@@ -6,6 +6,7 @@
 [node name="Explosion" instance=ExtResource("1")]
 z_index = -40
 texture = ExtResource("2_vqewr")
+centered = false
 
 [node name="Timer" parent="." index="0"]
 wait_time = 0.08

@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 @export var score_points_gun: int = 0
 @export var score_points_mega_gun: int = 0
@@ -32,11 +32,9 @@ func kill(killer: Node, killed_by_mega_gun: bool = false) -> void:
 	queue_free()
 
 
-func _on_area_entered(_area: Area2D) -> void:
-	# FIXME: Bullets don't disppear after colliding with player. 
-	# It's happening because the player's hurtbox is NOT monitorable
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+func _on_hitbox_hit(_hitbox: Hitbox, _hurtbox: Hurtbox) -> void:
 	queue_free()

@@ -1,5 +1,5 @@
 class_name Day03Player
-extends Area2D
+extends Node2D
 
 signal mega_gun_shot
 signal died(remaining_lives)
@@ -56,17 +56,17 @@ func start_timed_invincibility() -> void:
 
 func explode() -> void:
 	var explosion = Explosion.instantiate()
+	_world.add_child(explosion)
 	explosion.centered = _animation_sprite.centered
 	explosion.global_position = global_position
-	_world.add_child(explosion)
 	Utils.vibrate_joy()
 	_die()
 
 
 func plummet() -> void:
 	var fall = Fall.instantiate()
-	fall.global_position = global_position
 	_world.add_child(fall)
+	fall.global_position = global_position
 	Utils.vibrate_joy()
 	_die()
 
@@ -126,7 +126,8 @@ func _calculate_max_movement() -> void:
 
 
 func _die() -> void:
-	if _is_dead: return
+	if _is_dead: 
+		return
 	_is_dead = true
 	set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	visible = false
@@ -183,29 +184,21 @@ func _move(velocity: Vector2, delta: float) -> void:
 	position.y = clamp(position.y, _min_pos.y, _max_pos.y)
 
 
-func _on_HurtBox_hurt(who: Area2D) -> void:
-	if _is_dead:
-		return
-	if who.is_in_group("bullets"): 
-		who.queue_free() # WORKAROUND See _on_area_entered FIXME in Bullet.gd
-	elif who.has_method("impacted"):
-		who.impacted()
-	elif who.has_method("explode"):
-		who.explode()
+func _on_hurtbox_hurt(_hitbox: Hitbox) -> void:
 	if not is_god_mode_enabled:
 		explode()
 
 
-func _on_Player_area_entered(area: Area2D) -> void:
-	if _is_dead:
-		return
-	if area.has_method("pick_up"):
-		area.pick_up(self)
-
-
-func _on_StaminaDepletionTimer_timeout() -> void:
+func _on_stamina_depletion_timer_timeout() -> void:
 	if _is_dead or is_god_mode_enabled:
 		return
 	add_stamina(-STAMINA_POINTS_DEPLETED_PER_TICK)
 	if is_stamina_depleted():
 		plummet()
+
+
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	if _is_dead:
+		return
+	if area.has_method("pick_up"):
+		area.pick_up(self)

@@ -46,7 +46,6 @@ func abduct(player: Day03Player) -> void:
 	_player.global_position = _start_position.global_position
 	_heat_seeker_weapon.target = _player
 	_block_spawner_weapon.target = _player
-	_laser_balls_weapon.target = _player
 
 
 func is_dead() -> bool:
@@ -145,14 +144,16 @@ func _hurt( ) -> void:
 		_explode()
 
 
-func _spawn_explosion(pos: Vector2) -> void:
+func _spawn_explosion(pos: Vector2,
+		center: bool = false, 
+		world: Node2D = _explosions_container) -> void:
 	var explosion = Explosion.instantiate()
-	_explosions_container.add_child(explosion)
+	world.add_child(explosion)
 	explosion.z_index = 0
+	explosion.centered = center
 	explosion.global_position = pos
 
 
-func _on_hurt_box_hurt(who: Area2D) -> void:
-	_spawn_explosion(who.global_position)
-	who.queue_free()
+func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
+	_spawn_explosion(hitbox.owner.global_position, true, _inside)
 	_hurt()

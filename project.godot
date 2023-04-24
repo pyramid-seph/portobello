@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bucho Portobello"
-run/main_scene="res://scenes/day_03/_shared/level/day_03_level.tscn"
+run/main_scene="res://scenes/day_03/level_02/enemies/motership/motership.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://art/_shared/ui_counter_lives.png"
 
@@ -116,8 +116,8 @@ pause={
 
 [layer_names]
 
-2d_physics/layer_1="player"
-2d_physics/layer_2="enemies"
+2d_physics/layer_1="hurtboxes"
+2d_physics/layer_2="hitboxes"
 2d_physics/layer_3="pickups"
 2d_physics/layer_4="player_bullets"
 2d_physics/layer_5="enemy_bullets"

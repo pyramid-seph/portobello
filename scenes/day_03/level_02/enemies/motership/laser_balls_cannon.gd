@@ -4,7 +4,7 @@ extends Node2D
 
 
 signal discharged
-signal target_detected
+signal target_detected(target)
 
 @export_color_no_alpha var _stand_by_color := Color.MAGENTA:
 	set(value):
@@ -20,15 +20,13 @@ signal target_detected
 @export_color_no_alpha var _laser_int_color_2 := Color.MAGENTA
 @export var _laser_duration_sec: float = 1.0
 
-var target: Node2D
-
 var _tween_charge: Tween
 var _tween_fire: Tween
 
 @onready var _timer := $Timer as Timer
 @onready var _left_ball := $LeftBall
 @onready var _right_ball := $RightBall
-@onready var _laser := $Laser as Area2D
+@onready var _laser := $Laser as Node2D
 @onready var _outer_color := $Laser/OuterColor as Line2D
 @onready var _inner_color := $Laser/InnerColor as Line2D
 @onready var _state_machine := $StateMachine as LaserBallsCannonStateMachine
@@ -72,5 +70,5 @@ func _on_stand_by_color_set() -> void:
 		_change_balls_color(_stand_by_color)
 
 
-func _on_laser_area_entered(area: Area2D) -> void:
-	target_detected.emit()
+func _on_hitbox_hit(_hitbox: Hitbox, hurtbox: Hurtbox) -> void:
+	target_detected.emit(hurtbox.owner)

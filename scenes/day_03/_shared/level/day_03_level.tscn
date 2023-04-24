@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level.gd" id="1_wjcvv"]
 [ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="2_ola5u"]
-[ext_resource type="PackedScene" uid="uid://mits7m1g22ia" path="res://scenes/day_03/_shared/player/player.tscn" id="3_x4rdx"]
+[ext_resource type="PackedScene" uid="uid://d201sdqnu65bt" path="res://scenes/day_03/_shared/player/player.tscn" id="3_x4rdx"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="4_0lkhk"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/systems/drone_shoot_manager.gd" id="5_hhbu5"]
 [ext_resource type="PackedScene" uid="uid://cwr1ojj4316st" path="res://scenes/day_03/_shared/systems/stamina_spawner.tscn" id="6_2hiem"]
