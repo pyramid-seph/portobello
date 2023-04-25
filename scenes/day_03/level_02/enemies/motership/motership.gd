@@ -19,7 +19,6 @@ signal died
 		debug_show_hp = value
 		_on_debug_show_hp_set()
 
-var _is_dead: bool = false
 var _player: Day03Player
 
 @onready var _block_spawner_weapon := $BlockSpawnerWeapon
@@ -49,7 +48,7 @@ func abduct(player: Day03Player) -> void:
 
 
 func is_dead() -> bool:
-	return _is_dead
+	return _hp <= 0
 
 
 func is_ready() -> bool:
@@ -129,13 +128,12 @@ func _die() -> void:
 	if is_dead():
 		return
 	
-	_is_dead = true
 	_disable_wapons()
 	_remove_hazards()
 	died.emit()
 
 
-func _hurt( ) -> void:
+func _take_damage() -> void:
 	if is_dead():
 		return
 	
@@ -154,6 +152,10 @@ func _spawn_explosion(pos: Vector2,
 	explosion.global_position = pos
 
 
-func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
-	_spawn_explosion(hitbox.owner.global_position, true, _inside)
-	_hurt()
+func _on_hurtbox_hurt(_hitbox: Hitbox) -> void:
+	_take_damage()
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.owner and area.owner.is_in_group("player_bullets"):
+		_spawn_explosion(area.owner.global_position, true, _inside)

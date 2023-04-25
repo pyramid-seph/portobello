@@ -66,6 +66,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="Inside" instance=ExtResource("13_167n6")]
 position = Vector2(145, 200)
+is_god_mode_enabled = true
 move_offset_left = 52
 move_offset_bottom = -31
 move_offset_right = -52
@@ -216,6 +217,7 @@ metadata/_edit_lock_ = true
 [node name="Hurtbox" type="Area2D" parent="Weakpoint"]
 script = ExtResource("17_s7cdp")
 killer_groups = Array[String](["player_bullets"])
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weakpoint/Hurtbox"]
 position = Vector2(120, 135)
@@ -223,14 +225,23 @@ shape = SubResource("RectangleShape2D_lwyhk")
 debug_color = Color(0, 1, 0, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="CleanUpZone" parent="." instance=ExtResource("18_f0wfx")]
+[node name="CleanUpZoneTop" parent="." instance=ExtResource("18_f0wfx")]
+position = Vector2(120, 117)
+collision_mask = 18
+groups = Array[String](["player_bullets"])
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CleanUpZoneTop" index="0"]
+shape = SubResource("RectangleShape2D_uueik")
+
+[node name="CleanUpZoneBottom" parent="." instance=ExtResource("18_f0wfx")]
 position = Vector2(120, 281)
 collision_mask = 18
 clean_up_behavior = 1
 groups = Array[String](["bullets", "enemies"])
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" parent="CleanUpZone" index="0"]
+[node name="CollisionShape2D" parent="CleanUpZoneBottom" index="0"]
 shape = SubResource("RectangleShape2D_uueik")
 
 [node name="PairOfMiniBallsLeft" parent="." instance=ExtResource("19_67e7r")]
@@ -345,9 +356,11 @@ label_settings = SubResource("LabelSettings_4227b")
 [connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
 [connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
 [connection signal="timeout" from="LaserBallsWeapon/Timer" to="LaserBallsWeapon" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Weakpoint/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="hurt" from="Weakpoint/Hurtbox" to="." method="_on_hurtbox_hurt"]
 
-[editable path="CleanUpZone"]
+[editable path="CleanUpZoneTop"]
+[editable path="CleanUpZoneBottom"]
 [editable path="PairOfMiniBallsLeft"]
 [editable path="PairOfMiniBallsCenter"]
 [editable path="PairOfMiniBallsRight"]
