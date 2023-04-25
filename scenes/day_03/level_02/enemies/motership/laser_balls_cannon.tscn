@@ -31,7 +31,7 @@ one_shot = true
 
 [node name="Laser" type="Node2D" parent="."]
 process_mode = 4
-z_index = -50
+z_index = -110
 z_as_relative = false
 
 [node name="OuterColor" type="Line2D" parent="Laser"]

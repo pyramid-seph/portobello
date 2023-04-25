@@ -49,7 +49,7 @@ debug_show_hp = true
 metadata/_edit_lock_ = true
 
 [node name="Floor" type="Sprite2D" parent="Inside"]
-z_index = -100
+z_index = -500
 position = Vector2(56, 143)
 texture = ExtResource("3_5chgg")
 centered = false
@@ -66,8 +66,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="Inside" instance=ExtResource("13_167n6")]
 position = Vector2(145, 200)
-is_autofire_enabled = true
-is_god_mode_enabled = true
 move_offset_left = 52
 move_offset_bottom = -31
 move_offset_right = -52
@@ -107,6 +105,8 @@ _bullets_per_burst = 10
 metadata/_edit_lock_ = true
 
 [node name="Gun" parent="HeatSeekerWeapon" instance=ExtResource("7_rkunh")]
+z_index = -100
+z_as_relative = false
 Bullet = ExtResource("8_coaat")
 cooldown = 8.0
 ignore_cooldown = true
@@ -155,6 +155,7 @@ metadata/_edit_lock_ = true
 one_shot = true
 
 [node name="Weakpoint" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="WeakPointBlock0" type="Sprite2D" parent="Weakpoint"]
 z_index = -50
@@ -227,6 +228,7 @@ position = Vector2(120, 281)
 collision_mask = 18
 clean_up_behavior = 1
 groups = Array[String](["bullets", "enemies"])
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="CleanUpZone" index="0"]
 shape = SubResource("RectangleShape2D_uueik")

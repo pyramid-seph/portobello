@@ -41,6 +41,7 @@ var _level_state: LevelState = LevelState.STARTING :
 
 func _ready() -> void:
 	_player = _instantiate_player()
+	_player.is_god_mode_enabled = true
 	_player.is_input_enabled = false
 	_player.stop_stamina_lose(true)
 	_player.is_autofire_enabled = SaveDataManager.save_data.is_autofire_enabled
