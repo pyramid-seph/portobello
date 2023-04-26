@@ -19,6 +19,7 @@ signal died
 		debug_show_hp = value
 		_on_debug_show_hp_set()
 
+var _is_dead: bool
 var _player: Day03Player
 
 @onready var _block_spawner_weapon := $BlockSpawnerWeapon
@@ -48,7 +49,7 @@ func abduct(player: Day03Player) -> void:
 
 
 func is_dead() -> bool:
-	return _hp <= 0
+	return _is_dead
 
 
 func is_ready() -> bool:
@@ -115,19 +116,13 @@ func _animate_explosions() -> void:
 	tween_explosion.tween_interval(Utils.FRAME_TIME)
 
 
-func _explode() -> void:
-	if is_dead():
-		return
-	Utils.vibrate_joy(0, 0.25, 0.25, 2.9)
-	_animate_flash()
-	_animate_explosions()
-	_die()
-
-
 func _die() -> void:
 	if is_dead():
 		return
-	
+	_is_dead = true
+	Utils.vibrate_joy(0, 0.25, 0.25, 2.9)
+	_animate_flash()
+	_animate_explosions()
 	_disable_wapons()
 	_remove_hazards()
 	died.emit()
@@ -139,7 +134,7 @@ func _take_damage() -> void:
 	
 	_hp -= 1
 	if _hp <= 0:
-		_explode()
+		_die()
 
 
 func _spawn_explosion(pos: Vector2,

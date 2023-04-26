@@ -66,6 +66,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="Inside" instance=ExtResource("13_167n6")]
 position = Vector2(145, 200)
+is_autofire_enabled = true
 is_god_mode_enabled = true
 move_offset_left = 52
 move_offset_bottom = -31
