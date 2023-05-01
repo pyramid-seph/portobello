@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr14ynhm21h10"]
+
+[ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
+[ext_resource type="Texture2D" uid="uid://jn8be7ygqnnj" path="res://art/title_screen_guide.png" id="1_oesus"]
+[ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_bg.gd" id="2_prsyc"]
+[ext_resource type="Texture2D" uid="uid://ydnoqkd04fkt" path="res://art/menu_screen/title.png" id="3_oe3xx"]
+[ext_resource type="Texture2D" uid="uid://d0q3xvjq2e100" path="res://art/menu_screen/menu_bg_day_01.png" id="3_of2ca"]
+
+[node name="TitleScreenScene" type="Node2D"]
+script = ExtResource("1_17j6l")
+
+[node name="TitleScreen" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Guide" type="Node2D" parent="TitleScreen"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TitleScreen/Guide"]
+texture = ExtResource("1_oesus")
+centered = false
+
+[node name="TitleScreenBg" type="ParallaxBackground" parent="TitleScreen"]
+script = ExtResource("2_prsyc")
+scroll_speed = 12.5
+game_texture = ExtResource("3_of2ca")
+game_color = Color(0.486275, 0.882353, 0.580392, 1)
+_cell_size = Vector2(30, 30)
+
+[node name="ColorRect" type="ColorRect" parent="TitleScreen/TitleScreenBg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.486275, 0.882353, 0.580392, 1)
+
+[node name="BgLayer" type="ParallaxLayer" parent="TitleScreen/TitleScreenBg"]
+motion_mirroring = Vector2(1562, 0)
+
+[node name="Title" type="Sprite2D" parent="TitleScreen"]
+position = Vector2(63, 40)
+texture = ExtResource("3_oe3xx")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="LogosRoll" type="Node2D" parent="."]

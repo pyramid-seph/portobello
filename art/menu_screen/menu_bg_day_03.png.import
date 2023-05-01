@@ -2,15 +2,15 @@
 
 importer="texture_atlas"
 type="Texture2D"
-uid="uid://ydnoqkd04fkt"
-path="res://.godot/imported/title.png-4e18aee531143a35b603c18d3f688832.res"
+uid="uid://ccodss78tx5dq"
+path="res://.godot/imported/menu_bg_day_03.png-810dd31b0c46281b2d3211068927dfb0.res"
 group_file="res://art/menu_screen/title_screen_atlas.png"
 valid=true
 [deps]
 
 
-source_file="res://art/menu_screen/title.png"
-dest_files=["res://.godot/imported/title.png-4e18aee531143a35b603c18d3f688832.res"]
+source_file="res://art/menu_screen/menu_bg_day_03.png"
+dest_files=["res://.godot/imported/menu_bg_day_03.png-810dd31b0c46281b2d3211068927dfb0.res"]
 
 [params]
 
