@@ -3,7 +3,6 @@ extends Node
 @export var is_cold_boot: bool = true
 
 @onready var _title_screen = $TitleScreen
-@onready var _title_screen_bg := $TitleScreen/TitleScreenBg
 @onready var _logos_roll := $LogosRoll
 
 
