@@ -1,17 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=11 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Texture2D" uid="uid://jn8be7ygqnnj" path="res://art/title_screen_guide.png" id="1_oesus"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_bg.gd" id="2_prsyc"]
 [ext_resource type="Texture2D" uid="uid://ydnoqkd04fkt" path="res://art/menu_screen/title.png" id="3_oe3xx"]
 [ext_resource type="Texture2D" uid="uid://d0q3xvjq2e100" path="res://art/menu_screen/menu_bg_day_01.png" id="3_of2ca"]
 [ext_resource type="Texture2D" uid="uid://i37nr0nsawys" path="res://art/menu_screen/splash.png" id="6_0gi6x"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/logos_roll.gd" id="6_t81ja"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="7_2qrv5"]
+[ext_resource type="Script" path="res://scenes/_shared/title_screen/game_title.gd" id="7_pvylf"]
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
 
-[node name="TitleScreen" type="Node2D" parent="."]
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_j83cx")
 metadata/_edit_lock_ = true
 
 [node name="Guide" type="Node2D" parent="TitleScreen"]
@@ -35,15 +45,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.486275, 0.882353, 0.580392, 1)
+metadata/_edit_lock_ = true
 
 [node name="BgLayer" type="ParallaxLayer" parent="TitleScreen/TitleScreenBg"]
 motion_mirroring = Vector2(1562, 0)
-
-[node name="Title" type="Sprite2D" parent="TitleScreen"]
-position = Vector2(63, 40)
-texture = ExtResource("3_oe3xx")
-centered = false
 metadata/_edit_lock_ = true
+
+[node name="GameTitle" type="TextureRect" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 40.0
+offset_right = 63.0
+offset_bottom = 40.0
+texture = ExtResource("3_oe3xx")
+script = ExtResource("7_pvylf")
+metadata/_edit_lock_ = true
+
+[node name="StarsLabel" type="Label" parent="TitleScreen/GameTitle"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -25.0
+offset_bottom = 3.0
+grow_horizontal = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("7_2qrv5")
+theme_override_font_sizes/font_size = 24
+text = "***"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Panel" type="PanelContainer" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 161.0
+offset_right = -2.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TitleScreen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Menú del día < 1 >"
+vertical_alignment = 1
 
 [node name="LogosRoll" type="Control" parent="."]
 visible = false
