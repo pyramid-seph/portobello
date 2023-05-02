@@ -1,16 +1,25 @@
-extends Node2D
+extends Node
 
+@export var is_cold_boot: bool = true
+
+@onready var _title_screen = $TitleScreen
 @onready var _title_screen_bg := $TitleScreen/TitleScreenBg
+@onready var _logos_roll := $LogosRoll
 
 
 func _ready() -> void:
-	_test_title_screen_bg()
+	if is_cold_boot:
+		_enable_title_screen(false)
+		_logos_roll.start()
+	else:
+		_enable_title_screen(true)
 
 
-func _test_title_screen_bg() -> void:
-	_title_screen_bg.game_color = Color.html("7CE194")
-	_title_screen_bg.game_texture = preload("res://art/menu_screen/menu_bg_day_01.png")
-	get_tree().create_timer(3.0, false).timeout.connect(func():
-		_title_screen_bg.game_color = Color.html("E98BEA")
-		_title_screen_bg.game_texture = preload("res://art/menu_screen/menu_bg_day_03.png")
-	)
+func _enable_title_screen(value: bool) -> void:
+	_title_screen.visible = value
+	_title_screen.process_mode = Node.PROCESS_MODE_DISABLED if not value else Node.PROCESS_MODE_ALWAYS
+
+
+func _on_logos_roll_rolled() -> void:
+	_logos_roll.visible = false
+	_enable_title_screen(true)
