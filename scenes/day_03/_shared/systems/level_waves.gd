@@ -1,5 +1,5 @@
 class_name LevelWaves
-extends RefCounted
+extends Node
 
 
 var _waves: Array[Wave]

@@ -8,9 +8,8 @@ signal wave_started(wave_index)
 
 const MAX_CONCURRENT_ENEMIES: int = 10
 
-@export var WavesScript: Script
-
 var _waves_descriptor: LevelWaves
+
 var _spawned_enemies_count: int = 0
 var _enemies_on_screen: int = 0
 var _is_canceled: bool = false
@@ -20,19 +19,15 @@ var _is_canceled: bool = false
 
 
 func _ready() -> void:
-	_waves_descriptor = WavesScript.new() as LevelWaves
+	_waves_descriptor = Utils.first_or_null(get_children(), func(child): 
+		return child as LevelWaves != null
+	)
 
 
 func start(world: Node2D, player: Day03Player) -> void:
 	_is_canceled = false
 	
-	if world == null:
-		print("Completing wave because world cannot be null.")
-		all_waves_completed.emit()
-		return
-	
-	if player == null:
-		print("Completing wave because player cannot be null.")
+	if not _pre_start_checks_passed(world, player):
 		all_waves_completed.emit()
 		return
 	
@@ -63,7 +58,7 @@ func start(world: Node2D, player: Day03Player) -> void:
 			)
 			enemy.global_position = movement.initial_global_position
 			enemy.movement_pattern = movement.pattern
-			enemy.tree_exited.connect(_on_Enemy_tree_exited, CONNECT_ONE_SHOT)
+			enemy.tree_exited.connect(_on_enemy_tree_exited, CONNECT_ONE_SHOT)
 			world.add_child(enemy)
 			
 			_enemies_on_screen += 1
@@ -90,7 +85,23 @@ func cancel_wave() -> void:
 	_is_canceled = true
 
 
-func _on_Enemy_tree_exited() -> void:
+func _pre_start_checks_passed(world: Node2D, player: Day03Player) -> bool:
+	if world == null:
+		print("Completing wave phase  because world cannot be null.")
+		return false
+	
+	if player == null:
+		print("Completing wave phase  because player cannot be null.")
+		return false
+	
+	if _waves_descriptor == null:
+		print("Completing wave phase because level waves descriptor cannot be null.")
+		return false
+	
+	return true
+
+
+func _on_enemy_tree_exited() -> void:
 	if _is_canceled:
 		return
 	_enemies_on_screen = maxi(_enemies_on_screen - 1, 0)

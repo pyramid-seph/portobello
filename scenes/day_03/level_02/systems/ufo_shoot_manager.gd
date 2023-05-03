@@ -5,18 +5,12 @@ const MAX_CONCURRENT_BULLETS: int = 10
 
 @export var cooldown_sec: float = 1
 
-var _world: Node2D
-var _player: Day03Player
-
-@onready var _cooldown_timer := $CooldownTimer as Timer
-
+@export var _world: Node2D
+@export var _player: Day03Player
 
 var _disabled: bool = false
 
-
-func initialize(world: Node2D, player: Day03Player) -> void:
-	_world = world
-	_player = player
+@onready var _cooldown_timer := $CooldownTimer as Timer
 
 
 func enable(immediate: bool = false) -> void:

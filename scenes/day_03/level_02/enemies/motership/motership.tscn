@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://7frae6sug118"]
+[gd_scene load_steps=25 format=3 uid="uid://7frae6sug118"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/motership.gd" id="1_lyngl"]
 [ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_wk4gl"]
@@ -17,7 +17,6 @@
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="11_imjsu"]
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="12_nf8bl"]
 [ext_resource type="Texture2D" uid="uid://b8pjqd3prajm1" path="res://art/day_3/enemy_duck_block_yellow.png" id="13_8ybbm"]
-[ext_resource type="PackedScene" uid="uid://d201sdqnu65bt" path="res://scenes/day_03/_shared/player/player.tscn" id="13_167n6"]
 [ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="17_s7cdp"]
 [ext_resource type="PackedScene" uid="uid://dvq3mnqmcgelf" path="res://scenes/_shared/clean_up_zone.tscn" id="18_f0wfx"]
 [ext_resource type="PackedScene" uid="uid://ciph4tyjsvddo" path="res://scenes/day_03/level_02/enemies/motership/pair_of_mini_balls.tscn" id="19_67e7r"]
@@ -63,15 +62,6 @@ centered = false
 script = ExtResource("6_fhdi3")
 _flicker_duration_sec = 0.08
 metadata/_edit_lock_ = true
-
-[node name="Player" parent="Inside" instance=ExtResource("13_167n6")]
-position = Vector2(145, 200)
-is_autofire_enabled = true
-is_god_mode_enabled = true
-move_offset_left = 52
-move_offset_bottom = -31
-move_offset_right = -52
-move_offset_top = 143
 
 [node name="StartPosition" type="Marker2D" parent="Inside"]
 position = Vector2(116, 255)

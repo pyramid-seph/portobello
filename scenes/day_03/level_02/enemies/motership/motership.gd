@@ -35,7 +35,6 @@ var _player: Day03Player
 
 
 func _ready() -> void:
-	abduct($Inside/Player)
 	_update_hp_label() 
 	_on_debug_show_hp_set()
 	_on_hp_changed()
@@ -44,8 +43,14 @@ func _ready() -> void:
 func abduct(player: Day03Player) -> void:
 	_player = player
 	_player.global_position = _start_position.global_position
+	# TODO change player offset. This does not work
+#	_player.move_offset_left = 52
+#	_player.move_offset_bottom = -31
+#	_player.move_offset_right = -52
+#	_player.move_offset_top = 143
 	_heat_seeker_weapon.target = _player
 	_block_spawner_weapon.target = _player
+	
 
 
 func is_dead() -> bool:
