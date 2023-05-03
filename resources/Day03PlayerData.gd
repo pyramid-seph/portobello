@@ -11,14 +11,14 @@ const MAX_LIVES: int = 9
 const MAX_STAMINA: int = 50
 const MAX_POWER_UP: int = 5
 
-var score: int = 0:
+var score: int:
 	set(value):
-		score = value
+		score = maxi(value, 0)
 		score_updated.emit()
 
-var hi_score: int = 0:
+var hi_score: int:
 	set(value):
-		hi_score = value
+		hi_score = maxi(value, 0)
 		hi_score_updated.emit()
 
 var lives: int = MAX_LIVES:
@@ -31,7 +31,7 @@ var stamina: int = MAX_STAMINA:
 		stamina = clampi(value, 0, MAX_STAMINA)
 		stamina_updated.emit()
 
-var power_up_count: int = 0:
+var power_up_count: int:
 	set(value):
 		power_up_count = clampi(value, 0, MAX_POWER_UP)
 		power_up_count_updated.emit()
