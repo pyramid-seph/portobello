@@ -1,5 +1,5 @@
-extends Resource
 class_name Day03PlayerData
+extends Resource
 
 signal score_updated
 signal hi_score_updated
@@ -11,64 +11,58 @@ const MAX_LIVES: int = 9
 const MAX_STAMINA: int = 50
 const MAX_POWER_UP: int = 5
 
-var score: int = 0 :
-	get:
-		return score
-	set(mod_value):
-		score = mod_value
-		emit_signal("score_updated")
+var score: int = 0:
+	set(value):
+		score = value
+		score_updated.emit()
 
-var hi_score: int = 0 :
-	get:
-		return hi_score
-	set(mod_value):
-		hi_score = mod_value
-		emit_signal("hi_score_updated")
+var hi_score: int = 0:
+	set(value):
+		hi_score = value
+		hi_score_updated.emit()
 
-var lives: int = MAX_LIVES :
-	get:
-		return lives
-	set(mod_value):
-		lives = clampi(mod_value, 0, MAX_LIVES)
-		emit_signal("remaining_lives_updated")
+var lives: int = MAX_LIVES:
+	set(value):
+		lives = clampi(value, 0, MAX_LIVES)
+		remaining_lives_updated.emit()
 
-var stamina: int = MAX_STAMINA :
-	get:
-		return stamina
-	set(mod_value):
-		stamina = clampi(mod_value, 0, MAX_STAMINA)
-		emit_signal("stamina_updated")
+var stamina: int = MAX_STAMINA:
+	set(value):
+		stamina = clampi(value, 0, MAX_STAMINA)
+		stamina_updated.emit()
 
-var power_up_count: int = 0 :
-	get:
-		return power_up_count
-	set(mod_value):
-		power_up_count = clampi(mod_value, 0, MAX_POWER_UP)
-		emit_signal("power_up_count_updated")
+var power_up_count: int = 0:
+	set(value):
+		power_up_count = clampi(value, 0, MAX_POWER_UP)
+		power_up_count_updated.emit()
 
 
 func reset():
-	self.score = 0
+	reset_score()
 	reset_stamina()
 	reset_lives()
 	reset_power_up()
 
 
+func reset_score() -> void:
+	score = 0
+
+
 func reset_stamina() -> void:
-	self.stamina = MAX_STAMINA
+	stamina = MAX_STAMINA
 
 
 func reset_lives() -> void:
-	self.lives = MAX_LIVES
+	lives = MAX_LIVES
 
 
 func reset_power_up() -> void:
-	self.power_up_count = 0
+	power_up_count = 0
 
 
 func maximize_power_up() -> void:
-	self.power_up_count = MAX_POWER_UP
+	power_up_count = MAX_POWER_UP
 
 
 func is_power_up_maximized() -> bool:
-	return self.power_up_count == MAX_POWER_UP
+	return power_up_count == MAX_POWER_UP

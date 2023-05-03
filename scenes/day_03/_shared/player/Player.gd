@@ -10,12 +10,13 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 @export var _player_data: Day03PlayerData
 @export var is_autofire_enabled: bool = false
 @export var is_god_mode_enabled: bool = false
+@export var Fall: PackedScene
+@export var Explosion: PackedScene
+@export_group("Move offset", "move_offset")
 @export var move_offset_left: int
 @export var move_offset_bottom: int
 @export var move_offset_right: int
 @export var move_offset_top: int
-@export var Fall: PackedScene
-@export var Explosion: PackedScene
 
 var is_input_enabled: bool = true
 

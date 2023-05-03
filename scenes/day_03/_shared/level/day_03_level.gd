@@ -107,6 +107,8 @@ func _on_player_died(remaining_lives: int) -> void:
 		_timer.start(TIME_BETWEEN_REVIVALS)
 		await _timer.timeout
 		_player.revive()
+		# TODO position depends of phase
+		# TODO stamina timer does not deplete on leven 2 boss fight
 		_player.position = _wave_phase_start_marker.position
 	else:
 		_game_over()
