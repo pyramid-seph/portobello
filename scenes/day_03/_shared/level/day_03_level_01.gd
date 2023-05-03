@@ -28,7 +28,7 @@ func _start_boss_fight() -> void:
 	_stamina_spawner.enable(_world)
 	_stamina_spawner.cooldown = Utils.FRAME_TIME
 	_stamina_spawner.random = false
-	_player.stop_stamina_lose(false)
+	_player.is_losing_stamina = true
 	_boss.start()
 
 

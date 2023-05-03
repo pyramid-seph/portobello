@@ -8,8 +8,14 @@ const SPEED: float = 62.5
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
 @export var _player_data: Day03PlayerData
-@export var is_autofire_enabled: bool = false
-@export var is_god_mode_enabled: bool = false
+@export var is_autofire_enabled: bool
+@export var is_god_mode_enabled: bool
+@export var is_losing_stamina: bool = true:
+	set(value):
+		var old_value = is_losing_stamina
+		is_losing_stamina = value
+		if is_losing_stamina != old_value:
+			_on_losing_stamina_changed()
 @export var Fall: PackedScene
 @export var Explosion: PackedScene
 @export_group("Move offset", "move_offset")
@@ -20,10 +26,11 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
 var is_input_enabled: bool = true
 
-var _is_dead: bool = false
+var _is_dead: bool
 var _min_pos: Vector2
 var _max_pos: Vector2
 
+@onready var _is_ready: bool = true
 @onready var _world = get_parent()
 @onready var _gun := $Gun as Gun
 @onready var _mega_gun := $MegaGun
@@ -35,6 +42,7 @@ var _max_pos: Vector2
 func _ready() -> void:
 	_calculate_max_movement()
 	reset_stamina()
+	_on_losing_stamina_changed()
 	start_timed_invincibility()
 
 
@@ -96,13 +104,13 @@ func power_up_by(points: int) -> void:
 	_player_data.power_up_count += points
 
 
-func stop_stamina_depletion(pause_depletion: bool) -> void:
-	if _is_dead:
+func _on_losing_stamina_changed() -> void:
+	if not _is_ready or is_dead():
 		return
-	if pause_depletion:
-		_stamina_timer.stop()
-	else:
+	if is_losing_stamina:
 		_stamina_timer.start()
+	else:
+		_stamina_timer.stop()
 
 
 func revive(skip_timed_invincibility: bool = false) -> void:
@@ -112,7 +120,7 @@ func revive(skip_timed_invincibility: bool = false) -> void:
 	process_mode = Node.PROCESS_MODE_INHERIT
 	visible = true
 	_player_data.reset_stamina()
-	_stamina_timer.start()
+	_on_losing_stamina_changed()
 	if not skip_timed_invincibility:
 		start_timed_invincibility()
 
