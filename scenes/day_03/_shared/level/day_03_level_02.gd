@@ -15,7 +15,7 @@ func _play_boss_introduction() -> void:
 	# Black screen
 	_boss.process_mode = Node.PROCESS_MODE_INHERIT
 	_boss.visible = true
-	_boss.abduct(_player)
+	_boss.player = _player
 	# alien dialog
 	_timer.start(3.0)
 	await _timer.timeout

@@ -10,8 +10,12 @@ static func rand_item(arr: Array) -> Node:
 
 
 static func first_or_null(arr: Array, callable: Callable):
-	var filtered_arr = arr.filter(callable)
-	return null if filtered_arr.is_empty() else filtered_arr[0]
+	if arr == null or arr.is_empty():
+		return null
+	for item in arr:
+		if callable.call(item):
+			return item
+	return null
 
 
 static func count(arr: Array, callable: Callable) -> int:
@@ -25,7 +29,8 @@ static func count(arr: Array, callable: Callable) -> int:
 
 static func children_in_group(node: Node, group: String) -> Array[Node]:
 	return node.get_children().filter(
-		func(child: Node): return child.is_in_group(group)
+		func(child: Node): 
+			return child.is_in_group(group)
 	)
 
 
@@ -70,3 +75,13 @@ static func safe_disconnect_all(sg: Signal) -> void:
 static func safe_disconnect(sg: Signal, callable: Callable) -> void:
 	if sg.is_connected(callable):
 		sg.disconnect(callable)
+
+static func safe_reparent(node: Node, new_parent: Node, keep_global_transform: bool = true) -> void:
+	assert(node != null, "node cannot be null")
+	assert(new_parent != null, "new_parent cannot be null")
+	if node.get_parent() == new_parent:
+		return
+	if node.get_parent() == null:
+		new_parent.add_child(node)
+	else:
+		node.reparent(new_parent, keep_global_transform)

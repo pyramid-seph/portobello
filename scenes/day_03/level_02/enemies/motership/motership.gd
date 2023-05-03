@@ -12,6 +12,10 @@ signal died
 @export var _activate_block_spawner_at_hp: int = 1
 @export var _speed_up_block_spawner_at_hp: int = 1
 @export var _activate_heat_seeker_at_hp: int = 1
+@export var player: Day03Player:
+	set(value):
+		player = value
+		_on_player_set()
 @export var Explosion: PackedScene
 @export_group("Debug", "debug_")
 @export var debug_show_hp: bool = false:
@@ -20,7 +24,6 @@ signal died
 		_on_debug_show_hp_set()
 
 var _is_dead: bool
-var _player: Day03Player
 
 @onready var _block_spawner_weapon := $BlockSpawnerWeapon
 @onready var _heat_seeker_weapon := $HeatSeekerWeapon
@@ -35,21 +38,18 @@ var _player: Day03Player
 
 
 func _ready() -> void:
+	_on_player_set()
 	_update_hp_label() 
 	_on_debug_show_hp_set()
 	_on_hp_changed()
 
 
-func abduct(player: Day03Player) -> void:
-	_player = player
-	_inside.add_child(_player)
-	_player.global_position = _start_position.global_position
-	_player.move_offset_left = 52
-	_player.move_offset_bottom = -31
-	_player.move_offset_right = -52
-	_player.move_offset_top = 143
-	_heat_seeker_weapon.target = _player
-	_block_spawner_weapon.target = _player
+func _on_player_set() -> void:
+	if not _is_ready:
+		return
+	_move_player_inside()
+	_heat_seeker_weapon.target = player
+	_block_spawner_weapon.target = player
 
 
 func is_dead() -> bool:
@@ -58,6 +58,17 @@ func is_dead() -> bool:
 
 func is_ready() -> bool:
 	return _is_ready
+
+
+func _move_player_inside() -> void:
+	if player == null:
+		return
+	Utils.safe_reparent(player, _inside)
+	player.global_position = _start_position.global_position
+	player.move_offset_left = 52
+	player.move_offset_bottom = -31
+	player.move_offset_right = -52
+	player.move_offset_top = 143
 
 
 func _update_hp_label() -> void:
