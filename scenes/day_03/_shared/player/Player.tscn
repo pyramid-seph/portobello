@@ -129,8 +129,8 @@ _player_data = ExtResource("2_jf564")
 Fall = ExtResource("3_y57w7")
 Explosion = ExtResource("4_myd3x")
 move_offset_left = -4
-move_offset_right = 4
 move_offset_top = 2
+move_offset_right = 4
 
 [node name="Pickupbox" type="Area2D" parent="."]
 collision_layer = 0

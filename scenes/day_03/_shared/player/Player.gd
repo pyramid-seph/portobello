@@ -18,11 +18,24 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 			_on_losing_stamina_changed()
 @export var Fall: PackedScene
 @export var Explosion: PackedScene
+
 @export_group("Move offset", "move_offset")
-@export var move_offset_left: int
-@export var move_offset_bottom: int
-@export var move_offset_right: int
-@export var move_offset_top: int
+@export var move_offset_left: int:
+	set(value):
+		move_offset_left = value
+		_calculate_max_movement()
+@export var move_offset_top: int:
+	set(value):
+		move_offset_top = value
+		_calculate_max_movement()
+@export var move_offset_right: int:
+	set(value):
+		move_offset_right = value
+		_calculate_max_movement()
+@export var move_offset_bottom: int:
+	set(value):
+		move_offset_bottom = value
+		_calculate_max_movement()
 
 var is_input_enabled: bool = true
 
@@ -126,6 +139,8 @@ func revive(skip_timed_invincibility: bool = false) -> void:
 
 
 func _calculate_max_movement() -> void:
+	if not _is_ready:
+		return
 	var screen_size: Vector2 = get_viewport_rect().size
 	var texture: Texture2D = _animation_sprite.sprite_frames.get_frame_texture("default", 0)
 	_min_pos.x = move_offset_left
