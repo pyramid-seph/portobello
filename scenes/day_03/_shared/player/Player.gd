@@ -19,7 +19,7 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 @export var Fall: PackedScene
 @export var Explosion: PackedScene
 
-@export_group("Move offset", "move_offset")
+@export_group("Move offset", "move_offset_")
 @export var move_offset_left: int:
 	set(value):
 		move_offset_left = value
