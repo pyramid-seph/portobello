@@ -96,10 +96,10 @@ func power_up_by(points: int) -> void:
 	_player_data.power_up_count += points
 
 
-func stop_stamina_lose(pause_lose: bool) -> void:
+func stop_stamina_depletion(pause_depletion: bool) -> void:
 	if _is_dead:
 		return
-	if pause_lose:
+	if pause_depletion:
 		_stamina_timer.stop()
 	else:
 		_stamina_timer.start()

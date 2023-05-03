@@ -57,13 +57,13 @@ func _configure_player() -> void:
 func _start_wave_phase() -> void:
 	_player.position = _wave_phase_start_marker.position
 	_player.is_input_enabled = false
-	_player.stop_stamina_lose(true)
+	_player.stop_stamina_depletion(true)
 	_level_state = LevelState.STARTING
 	_timer.start(START_DURATION)
 	await _timer.timeout
 	_level_state = LevelState.PLAYING
 	_player.is_input_enabled = true
-	_player.stop_stamina_lose(false)
+	_player.stop_stamina_depletion(false)
 	_stamina_spawner.enable(_world)
 	_power_up_spawner.enable(_world)
 	_wave_manager.start(_world, _player)
@@ -77,7 +77,7 @@ func _start_boss_phase() -> void:
 	_player.reset_power_up()
 	_player.reset_stamina()
 	_player.is_input_enabled = false
-	_player.stop_stamina_lose(true)
+	_player.stop_stamina_depletion(true)
 	waves_completed.emit()
 
 
@@ -135,7 +135,7 @@ func _on_boss_introduction_played() -> void:
 func _on_level_complete() -> void:
 	_stamina_spawner.disable()
 	_power_up_spawner.disable()
-	_player.stop_stamina_lose(true)
+	_player.stop_stamina_depletion(true)
 	_level_state = LevelState.LEVEL_COMPLETE
 	_timer.start(RESULTS_SCREEN_DELAY)
 	await _timer.timeout
