@@ -7,7 +7,7 @@ extends Node2D
 		var old_is_active = is_active
 		is_active = value
 		if old_is_active != is_active:
-			_on_set_is_active()
+			_on_is_active_changed()
 
 var _pattern: Array[LaserBallsCannon]
 
@@ -20,7 +20,7 @@ var _pattern: Array[LaserBallsCannon]
 
 
 func _ready() -> void:
-	_on_set_is_active()
+	_on_is_active_changed()
 
 
 func _activate() -> void:
@@ -36,7 +36,7 @@ func _deactivate() -> void:
 	_timer.stop()
 
 
-func _on_set_is_active() -> void:
+func _on_is_active_changed() -> void:
 	if not _is_ready:
 		return
 	

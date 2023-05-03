@@ -17,8 +17,9 @@ func _play_boss_introduction() -> void:
 	_boss.visible = true
 	_boss.player = _player
 	# alien dialog
-	_timer.start(3.0)
+	_timer.start(5.0)
 	await _timer.timeout
+	_boss.is_attacking = true
 
 
 func _start_boss_fight() -> void:

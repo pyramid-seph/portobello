@@ -8,13 +8,13 @@ extends Node2D
 		var old_is_active = is_active
 		is_active = value
 		if old_is_active != is_active:
-			_on_is_active_set()
+			_on_is_active_changed()
 @export var is_max_speed_enabled: bool = false:
 	set(value):
 		var old_is_max_speed_enabled = is_max_speed_enabled
 		is_max_speed_enabled = value
 		if old_is_max_speed_enabled != is_max_speed_enabled:
-			_on_is_max_speed_enabled_set()
+			_on_is_max_speed_enabled_changed()
 
 @export var _normal_cooldown: float = 1.0
 @export var _sped_up_cooldown: float = 1.0
@@ -28,8 +28,8 @@ var _cooldown: float = 0.0
 
 
 func _ready() -> void:
-	_on_is_active_set()
-	_on_is_max_speed_enabled_set()
+	_on_is_active_changed()
+	_on_is_max_speed_enabled_changed()
 
 
 func _activate() -> void:
@@ -40,7 +40,7 @@ func _deactivate() -> void:
 	_timer.stop()
 
 
-func _on_is_active_set() -> void:
+func _on_is_active_changed() -> void:
 	if not _is_ready:
 		return
 	
@@ -50,7 +50,7 @@ func _on_is_active_set() -> void:
 		_deactivate()
 
 
-func _on_is_max_speed_enabled_set() -> void:
+func _on_is_max_speed_enabled_changed() -> void:
 	if not _is_ready:
 		return
 	

@@ -9,6 +9,12 @@ signal died
 		_hp = maxi(value, 0)
 		if _old_hp != _hp:
 			_on_hp_changed()
+@export var is_attacking: bool:
+	set(value):
+		var old_value = is_attacking
+		is_attacking = value
+		if is_attacking != old_value:
+			_on_is_attacking_changed()
 @export var _activate_block_spawner_at_hp: int = 1
 @export var _speed_up_block_spawner_at_hp: int = 1
 @export var _activate_heat_seeker_at_hp: int = 1
@@ -39,17 +45,9 @@ var _is_dead: bool
 
 func _ready() -> void:
 	_on_player_set()
-	_update_hp_label() 
 	_on_debug_show_hp_set()
 	_on_hp_changed()
-
-
-func _on_player_set() -> void:
-	if not _is_ready:
-		return
-	_move_player_inside()
-	_heat_seeker_weapon.target = player
-	_block_spawner_weapon.target = player
+	_on_is_attacking_changed()
 
 
 func is_dead() -> bool:
@@ -72,26 +70,48 @@ func _move_player_inside() -> void:
 
 
 func _update_hp_label() -> void:
-	if is_ready():
-		_hp_label.text = "HP: %s" % _hp
+	_hp_label.text = "HP: %s" % _hp
 
+
+func _on_player_set() -> void:
+	if not _is_ready:
+		return
+	_move_player_inside()
+	_heat_seeker_weapon.target = player
+	_block_spawner_weapon.target = player
 
 func _on_debug_show_hp_set() -> void:
 	if is_ready():
 		_hp_label.visible = debug_show_hp and OS.is_debug_build()
 
 
-func _activate_weapons() -> void:
-	if not is_ready():
+func _on_is_attacking_changed() -> void:
+	if not _is_ready:
 		return
+	if is_attacking:
+		_enable_weapons()
+	else:
+		_disable_weapons()
+
+
+func _disable_weapons() -> void:
+	_heat_seeker_weapon.is_active = false
+	_block_spawner_weapon.is_active = false
+	_laser_balls_weapon.is_active = false
+
+
+func _enable_weapons() -> void:
+	_laser_balls_weapon.is_active = true
 	_heat_seeker_weapon.is_active = _hp <= _activate_heat_seeker_at_hp
 	_block_spawner_weapon.is_active = _hp <= _activate_block_spawner_at_hp
 	_block_spawner_weapon.is_max_speed_enabled = _hp <= _speed_up_block_spawner_at_hp
 
 
 func _on_hp_changed() -> void:
+	if not is_ready():
+		return
 	_update_hp_label()
-	_activate_weapons()
+	_enable_weapons()
 
 
 func _remove_hazards() -> void:
@@ -100,12 +120,6 @@ func _remove_hazards() -> void:
 		_spawn_explosion(bullet.global_position)
 	Utils.queue_free_group(_inside, "bullets")
 	get_tree().call_group("enemies", "explode")
-
-
-func _disable_wapons() -> void:
-	_heat_seeker_weapon.is_active = false
-	_block_spawner_weapon.is_active = false
-	_laser_balls_weapon.is_active = false
 
 
 func _animate_flash() -> void:
@@ -135,10 +149,10 @@ func _die() -> void:
 	if is_dead():
 		return
 	_is_dead = true
+	is_attacking = false
 	Utils.vibrate_joy(0, 0.25, 0.25, 2.9)
 	_animate_flash()
 	_animate_explosions()
-	_disable_wapons()
 	_remove_hazards()
 	died.emit()
 

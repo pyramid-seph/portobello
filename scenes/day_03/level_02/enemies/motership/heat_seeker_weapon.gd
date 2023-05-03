@@ -7,7 +7,7 @@ extends Node2D
 		var old_is_active = is_active
 		is_active = value
 		if old_is_active != is_active:
-			_on_set_is_active()
+			_on_is_active_changed()
 @export var _cooldown_sec: float = 1.0
 @export var _laser_sight_duration_sec: float = 1.0
 @export var _warning_duration_sec: float = 1.0
@@ -26,7 +26,7 @@ var _tween: Tween
 
 
 func _ready() -> void:
-	_on_set_is_active()
+	_on_is_active_changed()
 	_reset_sight()
 	_gun.world = world
 
@@ -60,7 +60,7 @@ func _reset_sight() -> void:
 	_laser_sight_warning.visible = false
 
 
-func _on_set_is_active() -> void:
+func _on_is_active_changed() -> void:
 	if not _is_ready:
 		return
 	
