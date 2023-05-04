@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://blyfcctk8v3ta"]
+[gd_scene load_steps=12 format=3 uid="uid://cjai2rj84ghyr"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level.gd" id="1_wjcvv"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_boss_fight.gd" id="2_wci2p"]
 [ext_resource type="PackedScene" uid="uid://d201sdqnu65bt" path="res://scenes/day_03/_shared/player/player.tscn" id="3_x4rdx"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="4_0lkhk"]
 [ext_resource type="PackedScene" uid="uid://cwr1ojj4316st" path="res://scenes/day_03/_shared/systems/stamina_spawner.tscn" id="6_2hiem"]
@@ -11,11 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://bg6r1v71n7n0s" path="res://scenes/day_03/_shared/backgrounds/day_03_bg.tscn" id="12_206kv"]
 [ext_resource type="PackedScene" uid="uid://bfidgn8t0dudh" path="res://scenes/day_03/_shared/ui/day_03_ui.tscn" id="13_f3m4q"]
 
-[node name="Day03Level" type="Node" node_paths=PackedStringArray("_player_marker_boss_phase", "_player")]
+[node name="Day03Level" type="Node" node_paths=PackedStringArray("_player")]
 process_mode = 3
 script = ExtResource("1_wjcvv")
-_player_marker_boss_phase = NodePath("World/WavePhaseStartMarker")
 _player = NodePath("World/Player")
+
+[node name="BossFight" type="Node" parent="."]
+script = ExtResource("2_wci2p")
 
 [node name="Systems" type="Node" parent="."]
 
@@ -41,13 +44,14 @@ position = Vector2(117, 286)
 [node name="Interface" type="Node" parent="."]
 process_mode = 1
 
-[node name="Day3Ui" parent="Interface" instance=ExtResource("13_f3m4q")]
+[node name="Day03Ui" parent="Interface" instance=ExtResource("13_f3m4q")]
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="level_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_level_state_changed"]
-[connection signal="pause_state_changed" from="." to="Interface/Day3Ui" method="_on_day_03_level_pause_state_changed"]
-[connection signal="waves_completed" from="." to="Interface/Day3Ui" method="_on_day_03_level_waves_completed"]
+[connection signal="level_state_changed" from="." to="Interface/Day03Ui" method="_on_day_03_level_level_state_changed"]
+[connection signal="pause_state_changed" from="." to="Interface/Day03Ui" method="_on_day_03_level_pause_state_changed"]
+[connection signal="waves_completed" from="." to="Interface/Day03Ui" method="_on_day_03_level_waves_completed"]
+[connection signal="completed" from="BossFight" to="." method="_on_boss_fight_completed"]
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="." method="_on_wave_manager_all_waves_completed"]
-[connection signal="boss_alert_finished" from="Interface/Day3Ui" to="." method="_on_day_3_ui_boss_alert_finished"]
+[connection signal="boss_alert_finished" from="Interface/Day03Ui" to="." method="_on_day_3_ui_boss_alert_finished"]

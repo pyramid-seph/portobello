@@ -1,3 +1,4 @@
+class_name  Day03Ui
 extends Node
 
 signal score_changed(new_val)
@@ -27,6 +28,11 @@ func _ready() -> void:
 	_on_player_data_hi_score_updated()
 	_on_player_data_remaining_lives_updated()
 	_on_player_data_power_up_count_updated()
+
+
+func start_main_course_presentation() -> void:
+	_main_course_label.visible = true
+	_main_course_label.start()
 
 
 func _start_game_presentation() -> void:
@@ -68,7 +74,4 @@ func _on_day_03_level_waves_completed() -> void:
 
 
 func _on_boss_alert_finished():
-	_main_course_label.visible = true
-	_main_course_label.start()
 	boss_alert_finished.emit()
-	

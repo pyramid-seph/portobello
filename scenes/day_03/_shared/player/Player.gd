@@ -3,6 +3,7 @@ extends Node2D
 
 signal mega_gun_shot
 signal died(remaining_lives)
+signal revived
 
 const SPEED: float = 62.5
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
@@ -136,6 +137,7 @@ func revive(skip_timed_invincibility: bool = false) -> void:
 	_on_losing_stamina_changed()
 	if not skip_timed_invincibility:
 		start_timed_invincibility()
+	revived.emit()
 
 
 func _calculate_max_movement() -> void:

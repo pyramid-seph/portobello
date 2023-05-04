@@ -49,7 +49,7 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 [sub_resource type="Theme" id="3"]
 default_font = SubResource("2")
 
-[node name="Day3Ui" type="Control"]
+[node name="Day03Ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

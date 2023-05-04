@@ -14,7 +14,6 @@ const TIME_BETWEEN_REVIVALS: float = 1.2
 const GAME_OVER_DURATION: float = 3.2
 const RESULTS_SCREEN_DELAY: float = 10.45
 
-@export var _player_marker_boss_phase: Marker2D
 @export var _player: Day03Player
 
 @export_group("Debug", "_debug")
@@ -31,11 +30,12 @@ var _level_state: LevelState = LevelState.STARTING:
 @onready var _is_ready: bool = true
 @onready var _world := $World
 @onready var _world_background := $World/Day03Bg
-@onready var _wave_phase_start_marker := $World/WavePhaseStartMarker as Marker2D
+@onready var _world_player_start_marker := $World/WavePhaseStartMarker as Marker2D
 @onready var _wave_manager := $Systems/WaveManager as WaveManager
 @onready var _stamina_spawner := $Systems/StaminaSpawner
 @onready var _power_up_spawner := $Systems/PowerUpSpawner
 @onready var _timer := $Timer as Timer
+@onready var _boss_fight := $BossFight as Day03BossFight
 
 
 func _ready() -> void:
@@ -55,7 +55,7 @@ func _configure_player() -> void:
 
 
 func _start_wave_phase() -> void:
-	_player.position = _wave_phase_start_marker.position
+	_player.position = _world_player_start_marker.position
 	_player.is_input_enabled = false
 	_player.is_losing_stamina = false
 	_level_state = LevelState.STARTING
@@ -106,30 +106,11 @@ func _on_player_died(remaining_lives: int) -> void:
 	if remaining_lives > 0:
 		_timer.start(TIME_BETWEEN_REVIVALS)
 		await _timer.timeout
+		if _player.get_parent() == _world:
+			_player.position = _world_player_start_marker.position
 		_player.revive()
-		# TODO position depends of phase
-		# TODO stamina timer does not deplete on leven 2 boss fight
-		_player.position = _wave_phase_start_marker.position
 	else:
 		_game_over()
-
-
-func _play_boss_introduction() -> void:
-	_on_boss_introduction_played()
-
-
-func _prepare_boss() -> void:
-	pass
-
-
-func _start_boss_fight() -> void:
-	_on_level_complete()
-
-
-func _on_boss_introduction_played() -> void:
-	_start_boss_fight()
-	_player.start_timed_invincibility()
-	_player.is_input_enabled = true
 
 
 func _on_level_complete() -> void:
@@ -143,11 +124,14 @@ func _on_level_complete() -> void:
 
 
 func _on_day_3_ui_boss_alert_finished() -> void:
-	_prepare_boss()
-	await _play_boss_introduction()
-	_on_boss_introduction_played()
+	_boss_fight.prepare()
+	_boss_fight.start()
 
 
 func _on_wave_manager_all_waves_completed() -> void:
 	if not _player.is_dead():
 		_start_boss_phase()
+
+
+func _on_boss_fight_completed() -> void:
+	_on_level_complete()

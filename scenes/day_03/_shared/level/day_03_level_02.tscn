@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2y8ad6yqxp0h"]
+[gd_scene load_steps=5 format=3 uid="uid://c2y8ad6yqxp0h"]
 
 [ext_resource type="PackedScene" uid="uid://blyfcctk8v3ta" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_02_waves.gd" id="2_1y1mh"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level_02.gd" id="2_x78pq"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.tscn" id="3_i5cuv"]
 [ext_resource type="PackedScene" uid="uid://7frae6sug118" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
 
-[node name="Day03Level02" node_paths=PackedStringArray("_boss") instance=ExtResource("1_ttrf2")]
-script = ExtResource("2_x78pq")
-_boss = NodePath("World/Motership")
+[node name="Day03Level02" instance=ExtResource("1_ttrf2")]
 
 [node name="Level02Waves" type="Node" parent="Systems/WaveManager" index="1"]
 script = ExtResource("2_1y1mh")

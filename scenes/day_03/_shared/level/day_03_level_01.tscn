@@ -1,24 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8css4pbffygt"]
+[gd_scene load_steps=6 format=3 uid="uid://wrm5u67h8dys"]
 
-[ext_resource type="PackedScene" uid="uid://blyfcctk8v3ta" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_dfqff"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level_01.gd" id="2_4wbwh"]
+[ext_resource type="PackedScene" uid="uid://cjai2rj84ghyr" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_dfqff"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/boss_fight/day_03_level_01_boss_fight.gd" id="2_p20nx"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_01_waves.gd" id="3_hgugf"]
 [ext_resource type="PackedScene" uid="uid://crhr2l33jctpy" path="res://scenes/day_03/_shared/systems/drone_shoot_manager.tscn" id="4_alffp"]
 [ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="5_8yjdr"]
 
-[node name="Day03Level01" node_paths=PackedStringArray("_boss") instance=ExtResource("1_dfqff")]
-script = ExtResource("2_4wbwh")
-_boss = NodePath("World/Hive")
-_debug_is_god_mode_enabled = true
+[node name="Day03Level01" instance=ExtResource("1_dfqff")]
+
+[node name="BossFight" parent="." index="0" node_paths=PackedStringArray("_player")]
+script = ExtResource("2_p20nx")
+_player = NodePath("../World/Player")
+Hive = ExtResource("5_8yjdr")
 
 [node name="Level01Waves" type="Node" parent="Systems/WaveManager" index="1"]
 script = ExtResource("3_hgugf")
 
 [node name="DroneShootManager" parent="Systems" index="3" instance=ExtResource("4_alffp")]
-
-[node name="Hive" parent="World" index="3" instance=ExtResource("5_8yjdr")]
-process_mode = 4
-position = Vector2(0, -73)
 
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_all_waves_completed"]
 [connection signal="wave_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_wave_completed"]
