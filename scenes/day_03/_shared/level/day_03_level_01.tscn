@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="5_8yjdr"]
 
 [node name="Day03Level01" instance=ExtResource("1_dfqff")]
+_debug_is_god_mode_enabled = true
 
 [node name="BossFight" parent="." index="0" node_paths=PackedStringArray("_player")]
 script = ExtResource("2_p20nx")

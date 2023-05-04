@@ -11,8 +11,13 @@ enum DisposeMode {
 @export var score_points_gun: int
 @export var score_points_mega_gun: int
 @export var hp: int = 1
-@export var is_immune_to_bullets: bool = false
-@export var is_immune_to_impacts: bool = false
+@export var is_immune_to_bullets: bool:
+	set(value):
+		var old_value = is_immune_to_bullets
+		is_immune_to_bullets = value
+		if is_immune_to_bullets != old_value:
+			_on_bullet_immunity_changed()
+@export var is_immune_to_impacts: bool
 @export var dispose_mode: DisposeMode = DisposeMode.DESTROY
 @export var Explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/explosion.tscn")
 
@@ -76,6 +81,10 @@ func get_width() -> float:
 
 func get_height() -> float:
 	return _animated_sprite.sprite_frames.get_frame_texture("default", 0).get_height()
+
+# override
+func _on_bullet_immunity_changed() -> void:
+	pass
 
 
 func _on_set_world(_new_world) -> void:
