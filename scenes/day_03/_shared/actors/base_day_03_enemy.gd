@@ -8,8 +8,8 @@ enum DisposeMode {
 	DISABLE_PROCESS,
 }
 
-@export var score_points_gun: int = 0
-@export var score_points_mega_gun: int = 0
+@export var score_points_gun: int
+@export var score_points_mega_gun: int
 @export var hp: int = 1
 @export var is_immune_to_bullets: bool = false
 @export var is_immune_to_impacts: bool = false
@@ -131,7 +131,5 @@ func _on_hitbox_hit(_hitbox:Hitbox, hurtbox: Hurtbox) -> void:
 
 
 func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
-	if is_immune_to_bullets:
-		_spawn_explosion()
-	else:
+	if not is_immune_to_bullets:
 		hurt(hitbox.owner.shooter)
