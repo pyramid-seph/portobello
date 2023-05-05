@@ -19,6 +19,8 @@ config/icon="res://art/_shared/ui_counter_lives.png"
 
 SaveDataManager="*res://autoloads/save_sata_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
+SceneChanger="*res://autoloads/SceneChanger.tscn"
+Game="*res://autoloads/game.gd"
 
 [display]
 

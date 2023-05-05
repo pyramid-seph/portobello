@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cpudh4mekidtu"
-path="res://.godot/imported/CourierPrime-Regular.ttf-c15f9a7730365861a45abe5b82a20bc8.fontdata"
+path="res://.godot/imported/CourierPrime-Regular.ttf-effd73753360390aff0e1685c6517d6c.fontdata"
 
 [deps]
 
-source_file="res://art/fonts/courier_prime/CourierPrime-Regular.ttf"
-dest_files=["res://.godot/imported/CourierPrime-Regular.ttf-c15f9a7730365861a45abe5b82a20bc8.fontdata"]
+source_file="res://art/fonts/Courier_Prime/CourierPrime-Regular.ttf"
+dest_files=["res://.godot/imported/CourierPrime-Regular.ttf-effd73753360390aff0e1685c6517d6c.fontdata"]
 
 [params]
 

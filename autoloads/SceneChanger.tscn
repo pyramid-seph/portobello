@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://8k034qvxjmd8"]
+
+[ext_resource type="Script" path="res://autoloads/scene_changer.gd" id="1_wichc"]
+[ext_resource type="PackedScene" uid="uid://cr14ynhm21h10" path="res://scenes/_shared/title_screen/title_screen_scene.tscn" id="2_lbbp0"]
+[ext_resource type="Texture2D" uid="uid://wwx4ny446mjr" path="res://art/_shared/ui_loading_0.png" id="2_w05wq"]
+[ext_resource type="Texture2D" uid="uid://bc6i3vg67kqhg" path="res://art/_shared/ui_loading_1.png" id="3_ebxdm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y403"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w05wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ebxdm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SceneChanger" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_wichc")
+TitleScreen = ExtResource("2_lbbp0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(207, 284)
+sprite_frames = SubResource("SpriteFrames_8y403")
+frame = 1
+frame_progress = 0.685154
+centered = false
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

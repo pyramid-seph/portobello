@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4y8xeoab202m"
-path="res://.godot/imported/loading.png-d7c29fde51a4874dcc80ee65d968fdc9.ctex"
+uid="uid://dpjxr28rrgvac"
+path="res://.godot/imported/ui_shared_atlas.png-786c1f75c8043f307c222c6de54bd473.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/_shared/loading.png"
-dest_files=["res://.godot/imported/loading.png-d7c29fde51a4874dcc80ee65d968fdc9.ctex"]
+source_file="res://art/_shared/ui_shared_atlas.png"
+dest_files=["res://.godot/imported/ui_shared_atlas.png-786c1f75c8043f307c222c6de54bd473.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

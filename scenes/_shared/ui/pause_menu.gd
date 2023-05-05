@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		if not _scene_tree.paused and Game.is_pause_disabled:
+			return
 		_scene_tree.paused = not _scene_tree.paused
 		_show_menu(_scene_tree.paused)
 

@@ -4,7 +4,8 @@ extends Node
 
 signal level_state_changed(new_state)
 signal waves_completed
-signal completed
+signal completed(lives: int, score: int)
+signal failed
 
 enum LevelState { STARTING, PLAYING, GAME_OVER, LEVEL_COMPLETE }
 
@@ -103,7 +104,7 @@ func _game_over() -> void:
 	_power_up_spawner.disable()
 	_timer.start(GAME_OVER_DURATION)
 	await _timer.timeout
-	get_tree().quit()
+	failed.emit()
 
 
 func _on_player_revived() -> void:
@@ -122,7 +123,7 @@ func _on_level_complete() -> void:
 	_level_state = LevelState.LEVEL_COMPLETE
 	_timer.start(RESULTS_SCREEN_DELAY)
 	await _timer.timeout
-	completed.emit()
+	completed.emit(_player.get_lives(), _player.get_score())
 
 
 func _on_day_3_ui_boss_alert_finished() -> void:

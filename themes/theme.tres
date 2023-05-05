@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=10 format=3 uid="uid://y72soc2heqau"]
 
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="1_5gwpy"]
-[ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/courier_prime/CourierPrime-Regular.ttf" id="1_kwidn"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="1_5gwpy"]
+[ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/Courier_Prime/CourierPrime-Regular.ttf" id="1_kwidn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ora2p"]
 bg_color = Color(0.647059, 0.862745, 0.878431, 1)
