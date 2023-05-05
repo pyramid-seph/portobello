@@ -4,8 +4,8 @@ const LINES_POS_1: float = 4.0
 const LINES_POS_2: float = 21.0
 
 @export var _color_duration: float = 1.0
-@export_color_no_alpha var _ray_color_1: Color
-@export_color_no_alpha var _ray_color_2: Color
+@export var _ray_color_1: Color = Color.MAGENTA
+@export var _ray_color_2: Color = Color.MAGENTA
 @export var _autostart: bool 
 
 var _tween: Tween

@@ -322,13 +322,12 @@ text = "HP 500
 label_settings = SubResource("LabelSettings_4227b")
 
 [node name="AbductionRay" type="Node2D" parent="."]
-z_index = -110
 z_as_relative = false
 position = Vector2(120, 311)
 script = ExtResource("21_41s2u")
 _color_duration = 0.08
-_ray_color_1 = Color(1, 1, 0, 1)
-_ray_color_2 = Color(1, 1, 1, 1)
+_ray_color_1 = Color(1, 1, 0, 0.501961)
+_ray_color_2 = Color(1, 1, 1, 0.501961)
 metadata/_edit_lock_ = true
 
 [node name="Ray" type="Line2D" parent="AbductionRay"]
