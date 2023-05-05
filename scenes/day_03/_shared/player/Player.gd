@@ -2,13 +2,14 @@ class_name Day03Player
 extends Node2D
 
 signal mega_gun_shot
-signal died(remaining_lives)
+signal died(remaining_lives: int)
 signal revived
-
-const SPEED: float = 62.5
-const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
+signal out_of_lives
 
 @export var _player_data: Day03PlayerData
+@export var _time_between_revivals_sec: float = 1.0
+@export var _stamina_depleted_per_tick: int = 1
+@export var _speed: float
 @export var is_input_enabled: bool = true
 @export var _start_with_timed_invincibility: bool
 @export var is_autofire_enabled: bool
@@ -52,6 +53,7 @@ var _max_pos: Vector2
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
 @onready var _animation_sprite := $AnimatedSprite2D as AnimatedSprite2D
 @onready var _stamina_timer := $StaminaDepletionTimer as Timer
+@onready var _revival_timer := $RevivalTimer as Timer
 
 
 func _ready() -> void:
@@ -120,16 +122,7 @@ func power_up_by(points: int) -> void:
 	_player_data.power_up_count += points
 
 
-func _on_losing_stamina_changed() -> void:
-	if not _is_ready or is_dead():
-		return
-	if is_losing_stamina:
-		_stamina_timer.start()
-	else:
-		_stamina_timer.stop()
-
-
-func revive(skip_timed_invincibility: bool = false) -> void:
+func _revive(skip_timed_invincibility: bool = false) -> void:
 	if not _is_dead:
 		return
 	_is_dead = false
@@ -168,7 +161,7 @@ func _process_movement(delta: float) -> void:
 	if not is_input_enabled:
 		return
 	
-	var velocity = SPEED * Input.get_vector(
+	var velocity = _speed * Input.get_vector(
 		"move_left",
 		"move_right",
 		"move_up",
@@ -212,6 +205,26 @@ func _move(velocity: Vector2, delta: float) -> void:
 	position.y = clamp(position.y, _min_pos.y, _max_pos.y)
 
 
+func _on_losing_stamina_changed() -> void:
+	if not _is_ready or is_dead():
+		return
+	if is_losing_stamina:
+		_stamina_timer.start()
+	else:
+		_stamina_timer.stop()
+
+
+func _on_died(remaining_lives: int) -> void:
+	print("_on_died")
+	if remaining_lives > 0:
+		print("enqueue_revive")
+		_revival_timer.start(_time_between_revivals_sec)
+		_revival_timer.timeout.connect(_revive, CONNECT_ONE_SHOT)
+	else:
+		print("emit out of lives")
+		out_of_lives.emit()
+
+
 func _on_hurtbox_hurt(_hitbox: Hitbox) -> void:
 	if not is_god_mode_enabled:
 		explode()
@@ -220,7 +233,7 @@ func _on_hurtbox_hurt(_hitbox: Hitbox) -> void:
 func _on_stamina_depletion_timer_timeout() -> void:
 	if _is_dead or is_god_mode_enabled:
 		return
-	add_stamina(-STAMINA_POINTS_DEPLETED_PER_TICK)
+	add_stamina(-_stamina_depleted_per_tick)
 	if is_stamina_depleted():
 		plummet()
 

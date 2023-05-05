@@ -10,7 +10,6 @@ signal completed
 enum LevelState { STARTING, PLAYING, GAME_OVER, LEVEL_COMPLETE }
 
 const START_DURATION: float = 1.6
-const TIME_BETWEEN_REVIVALS: float = 1.2
 const GAME_OVER_DURATION: float = 3.2
 const RESULTS_SCREEN_DELAY: float = 10.45
 
@@ -43,7 +42,7 @@ var _level_state: LevelState = LevelState.STARTING:
 
 func _ready() -> void:
 	_on_debug_is_god_mode_enabled_set()
-	_configure_player()
+	_set_up_player()
 	await _start_level()
 	if _debug_start_at_boss_fight:
 		_start_boss_phase()
@@ -51,8 +50,9 @@ func _ready() -> void:
 		_start_wave_phase()
 
 
-func _configure_player() -> void:
-	_player.died.connect(_on_player_died)
+func _set_up_player() -> void:
+	_player.revived.connect(_on_player_revived)
+	_player.out_of_lives.connect(_on_player_out_of_lives)
 	_player.mega_gun_shot.connect(_world_background._on_mega_gun_shot)
 	_player.is_autofire_enabled = SaveDataManager.save_data.is_autofire_enabled
 	SaveDataManager.save_data.is_autofire_enabled_changed.connect(
@@ -113,15 +113,13 @@ func _game_over() -> void:
 	get_tree().quit()
 
 
-func _on_player_died(remaining_lives: int) -> void:
-	if remaining_lives > 0:
-		_timer.start(TIME_BETWEEN_REVIVALS)
-		await _timer.timeout
-		if _player.get_parent() == _world:
-			_player.position = _world_player_start_marker.position
-		_player.revive()
-	else:
-		_game_over()
+func _on_player_revived() -> void:
+	if _player.get_parent() == _world:
+		_player.position = _world_player_start_marker.position
+
+
+func _on_player_out_of_lives() -> void:
+	_game_over()
 
 
 func _on_level_complete() -> void:

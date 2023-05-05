@@ -126,6 +126,9 @@ animations = [{
 z_index = -90
 script = ExtResource("1_o3ipy")
 _player_data = ExtResource("2_jf564")
+_time_between_revivals_sec = 1.2
+_stamina_depleted_per_tick = 4
+_speed = 62.5
 Fall = ExtResource("3_y57w7")
 Explosion = ExtResource("4_myd3x")
 move_offset_left = -4
@@ -171,6 +174,10 @@ centered = false
 wait_time = 2.0
 autostart = true
 
+[node name="RevivalTimer" type="Timer" parent="."]
+process_mode = 1
+one_shot = true
+
 [node name="Gun" parent="." instance=ExtResource("8_s2mvn")]
 position = Vector2(8, -2)
 Bullet = ExtResource("9_8x2q1")
@@ -180,6 +187,7 @@ cooldown = 0.16
 [node name="MegaGun" type="Node" parent="."]
 script = ExtResource("10_vakmx")
 
+[connection signal="died" from="." to="." method="_on_died"]
 [connection signal="area_entered" from="Pickupbox" to="." method="_on_pickup_area_area_entered"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="timeout" from="StaminaDepletionTimer" to="." method="_on_stamina_depletion_timer_timeout"]
