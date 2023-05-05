@@ -3,7 +3,6 @@ extends Node
 
 
 signal level_state_changed(new_state)
-signal pause_state_changed(new_state)
 signal waves_completed
 signal completed
 
@@ -90,12 +89,6 @@ func _start_boss_phase() -> void:
 	_player.is_input_enabled = false
 	_player.is_losing_stamina = false
 	waves_completed.emit()
-
-
-func _input(event: InputEvent) -> void:
-	if _level_state == LevelState.PLAYING and event.is_action_pressed("pause"):
-		get_tree().paused = not get_tree().paused
-		pause_state_changed.emit(get_tree().paused)
 
 
 func _on_debug_is_god_mode_enabled_set() -> void:

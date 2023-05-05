@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bfidgn8t0dudh" path="res://scenes/day_03/_shared/ui/day_03_ui.tscn" id="13_f3m4q"]
 
 [node name="Day03Level" type="Node" node_paths=PackedStringArray("_player")]
-process_mode = 3
+process_mode = 1
 script = ExtResource("1_wjcvv")
 _player = NodePath("World/Player")
 
@@ -50,7 +50,6 @@ process_mode = 1
 one_shot = true
 
 [connection signal="level_state_changed" from="." to="Interface/Day03Ui" method="_on_day_03_level_level_state_changed"]
-[connection signal="pause_state_changed" from="." to="Interface/Day03Ui" method="_on_day_03_level_pause_state_changed"]
 [connection signal="waves_completed" from="." to="Interface/Day03Ui" method="_on_day_03_level_waves_completed"]
 [connection signal="completed" from="BossFight" to="." method="_on_boss_fight_completed"]
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="." method="_on_wave_manager_all_waves_completed"]

@@ -15,7 +15,7 @@ enum Level {
 @export var level: Day03Game.Level
 
 
-func _on_level_complete(level: Level) -> void:
+func _on_level_completed(level: Level) -> void:
 	pass
 
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bucho Portobello"
-run/main_scene="res://scenes/day_03/level_02/enemies/motership/motership.tscn"
+run/main_scene="res://scenes/day_03/_shared/game/day_03_game.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://art/_shared/ui_counter_lives.png"
 
