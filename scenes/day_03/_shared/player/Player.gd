@@ -69,6 +69,14 @@ func _process(delta: float) -> void:
 	_process_fire()
 
 
+func get_lives() -> int:
+	return _player_data.lives
+
+
+func get_score() -> int:
+	return _player_data.score
+
+
 func size() -> Vector2:
 	return _animation_sprite.sprite_frames.get_frame_texture("default", 0).get_size()
 
@@ -215,13 +223,10 @@ func _on_losing_stamina_changed() -> void:
 
 
 func _on_died(remaining_lives: int) -> void:
-	print("_on_died")
 	if remaining_lives > 0:
-		print("enqueue_revive")
 		_revival_timer.start(_time_between_revivals_sec)
 		_revival_timer.timeout.connect(_revive, CONNECT_ONE_SHOT)
 	else:
-		print("emit out of lives")
 		out_of_lives.emit()
 
 
