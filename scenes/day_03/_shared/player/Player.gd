@@ -9,6 +9,8 @@ const SPEED: float = 62.5
 const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 
 @export var _player_data: Day03PlayerData
+@export var is_input_enabled: bool = true
+@export var _start_with_timed_invincibility: bool
 @export var is_autofire_enabled: bool
 @export var is_god_mode_enabled: bool
 @export var is_losing_stamina: bool = true:
@@ -38,7 +40,6 @@ const STAMINA_POINTS_DEPLETED_PER_TICK: int = 4
 		move_offset_bottom = value
 		_calculate_max_movement()
 
-var is_input_enabled: bool = true
 
 var _is_dead: bool
 var _min_pos: Vector2
@@ -57,7 +58,8 @@ func _ready() -> void:
 	_calculate_max_movement()
 	reset_stamina()
 	_on_losing_stamina_changed()
-	start_timed_invincibility()
+	if _start_with_timed_invincibility:
+		start_timed_invincibility()
 
 
 func _process(delta: float) -> void:

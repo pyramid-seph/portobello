@@ -82,7 +82,7 @@ func _move_player_inside() -> void:
 	Utils.safe_reparent(player, _inside)
 	player.global_position = _start_position.global_position
 	player.move_offset_left = 52
-	player.move_offset_bottom = -31
+	player.move_offset_bottom = -32
 	player.move_offset_right = -52
 	player.move_offset_top = 143
 

@@ -13,6 +13,7 @@ var _boss: Node2D
 @onready var _timer := $Timer as Timer
 @onready var _player_abduction_timer := $PlayerAbductionTimer as Timer
 @onready var _start_marker := $"../World/WavePhaseStartMarker" as Marker2D
+@onready var _sea_bg := $"../World/Day03Bg"
 
 
 func prepare() -> void:
@@ -38,6 +39,7 @@ func _play_boss_introduction() -> void:
 	await _tween_player_abduction()
 	_boss.stop_abduction_ray()
 	_ui.change_black_screen_visibility(true)
+	_sea_bg.process_mode = Node.PROCESS_MODE_DISABLED
 	_timer.start(0.8)
 	await _timer.timeout
 	_boss.position = Vector2.ZERO

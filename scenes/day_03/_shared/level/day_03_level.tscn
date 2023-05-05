@@ -37,7 +37,7 @@ process_mode = 1
 [node name="Day03Bg" parent="World" instance=ExtResource("12_206kv")]
 
 [node name="WavePhaseStartMarker" type="Marker2D" parent="World"]
-position = Vector2(117, 286)
+position = Vector2(112, 287)
 
 [node name="Player" parent="World" instance=ExtResource("3_x4rdx")]
 

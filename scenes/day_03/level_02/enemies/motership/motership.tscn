@@ -73,7 +73,7 @@ _flicker_duration_sec = 0.08
 metadata/_edit_lock_ = true
 
 [node name="StartPosition" type="Marker2D" parent="Inside"]
-position = Vector2(116, 255)
+position = Vector2(112, 255)
 metadata/_edit_lock_ = true
 
 [node name="Body" type="Sprite2D" parent="."]
@@ -260,7 +260,7 @@ position = Vector2(8, 1)
 color = Color(0, 0, 1, 1)
 
 [node name="PairOfMiniBallsCenter" parent="." instance=ExtResource("19_67e7r")]
-position = Vector2(104, 288)
+position = Vector2(108, 288)
 _color_one = Color(0, 1, 0, 1)
 _color_two = Color(1, 0, 0, 1)
 _color_three = Color(0, 0, 1, 1)
@@ -271,7 +271,7 @@ metadata/_edit_lock_ = true
 color = Color(0, 1, 0, 1)
 
 [node name="RightMotershipBallMini" parent="PairOfMiniBallsCenter" index="1"]
-position = Vector2(8, 0)
+position = Vector2(9, 0)
 color = Color(0, 1, 0, 1)
 
 [node name="PairOfMiniBallsRight" parent="." instance=ExtResource("19_67e7r")]

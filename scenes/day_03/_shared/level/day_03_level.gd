@@ -44,6 +44,7 @@ var _level_state: LevelState = LevelState.STARTING:
 func _ready() -> void:
 	_on_debug_is_god_mode_enabled_set()
 	_configure_player()
+	await _start_level()
 	if _debug_start_at_boss_fight:
 		_start_boss_phase()
 	else:
@@ -60,16 +61,20 @@ func _configure_player() -> void:
 	)
 
 
-func _start_wave_phase() -> void:
+func _start_level() -> void:
 	_player.position = _world_player_start_marker.position
 	_player.is_input_enabled = false
 	_player.is_losing_stamina = false
 	_level_state = LevelState.STARTING
 	_timer.start(START_DURATION)
-	await _timer.timeout
 	_level_state = LevelState.PLAYING
+	await _timer.timeout
+
+
+func _start_wave_phase() -> void:
 	_player.is_input_enabled = true
 	_player.is_losing_stamina = true
+	_player.start_timed_invincibility()
 	_stamina_spawner.enable(_world)
 	_power_up_spawner.enable(_world)
 	_wave_manager.start(_world, _player)
