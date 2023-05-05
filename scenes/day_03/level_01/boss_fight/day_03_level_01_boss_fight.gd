@@ -19,13 +19,15 @@ func prepare() -> void:
 	_boss.died.connect(_on_hive_dead)
 	_boss.almost_dead.connect(_on_hive_almost_dead)
 	_player.position = _start_marker.position
+	_ui.change_bars_visibility(false)
+	_ui.change_score_visibility(false)
 
 
 func start() -> void:
 	_play_boss_introduction()
 
 
-func _play_boss_introduction() -> void:
+func _play_boss_introduction() -> void:	
 	_boss.position.y = (3 + _boss.body_height()) * -1
 	_boss.position.x =  _world.get_viewport_rect().size.x / 2 - 30
 	_ui.start_main_course_presentation()
@@ -36,6 +38,8 @@ func _play_boss_introduction() -> void:
 
 
 func _start_boss_fight() -> void:
+	_ui.change_bars_visibility(true)
+	_ui.change_score_visibility(true)
 	_player.start_timed_invincibility()
 	_player.is_input_enabled = true
 	_stamina_spawner.enable(_world)

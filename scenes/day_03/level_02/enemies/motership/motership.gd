@@ -3,6 +3,7 @@ extends Node2D
 
 signal died
 
+
 @export var _hp: int = 1:
 	set(value):
 		var _old_hp = _hp
@@ -41,6 +42,8 @@ var _is_dead: bool
 @onready var _inside := $Inside as Node2D
 @onready var _explosions_container := $ExplosionsContainer as Node2D
 @onready var _start_position := $Inside/StartPosition
+@onready var _abduction_ray := $AbductionRay
+@onready var _dialogue := $Dialogue as Dialogue
 
 
 func _ready() -> void:
@@ -56,6 +59,21 @@ func is_dead() -> bool:
 
 func is_ready() -> bool:
 	return _is_ready
+
+
+func start_abduction_ray() -> void:
+	_abduction_ray.start()
+
+
+func stop_abduction_ray() -> void:
+	_abduction_ray.stop()
+
+
+func introduce_alien() -> void:
+	_alien_hologram.visible = true
+	_dialogue.start()
+	await _dialogue.finished
+	_alien_hologram.visible = false
 
 
 func _move_player_inside() -> void:

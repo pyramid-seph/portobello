@@ -21,6 +21,9 @@ const RESULTS_SCREEN_DELAY: float = 10.45
 	set(value):
 		_debug_is_god_mode_enabled = value and OS.is_debug_build()
 		_on_debug_is_god_mode_enabled_set()
+@export var _debug_start_at_boss_fight: bool:
+	set(value):
+		_debug_start_at_boss_fight = value and OS.is_debug_build()
 
 var _level_state: LevelState = LevelState.STARTING:
 	set(value):
@@ -41,7 +44,10 @@ var _level_state: LevelState = LevelState.STARTING:
 func _ready() -> void:
 	_on_debug_is_god_mode_enabled_set()
 	_configure_player()
-	_start_wave_phase()
+	if _debug_start_at_boss_fight:
+		_start_boss_phase()
+	else:
+		_start_wave_phase()
 
 
 func _configure_player() -> void:

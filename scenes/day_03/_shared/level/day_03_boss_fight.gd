@@ -10,7 +10,3 @@ func prepare() -> void:
 
 func start() -> void:
 	completed.emit()
-
-
-#	_player.start_timed_invincibility()
-#	_player.is_input_enabled = true

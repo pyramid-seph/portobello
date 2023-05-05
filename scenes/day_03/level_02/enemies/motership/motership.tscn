@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://7frae6sug118"]
+[gd_scene load_steps=27 format=3 uid="uid://btgqdmv7oc3yl"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/motership.gd" id="1_lyngl"]
 [ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_wk4gl"]
 [ext_resource type="Texture2D" uid="uid://d3876elyydfqw" path="res://art/day_3/mothership_bg.png" id="3_4nxgv"]
 [ext_resource type="Texture2D" uid="uid://b6batmime15u3" path="res://art/day_3/mothership_interior.png" id="3_5chgg"]
 [ext_resource type="Texture2D" uid="uid://cqradgo1f7v2y" path="res://art/day_3/object_alien.png" id="4_3xeh6"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/block_spawner_weapon.gd" id="5_yw3ju"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/block_spawner_weapon.gd" id="5_yw3ju"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/alien_hologram.gd" id="6_fhdi3"]
 [ext_resource type="PackedScene" uid="uid://csyep514u36ex" path="res://scenes/day_03/level_02/enemies/block.tscn" id="6_svbuj"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/heat_seeker_weapon.gd" id="7_gjhag"]
@@ -14,12 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://dcmolxxqilyi3" path="res://art/day_3/dotted_line.png" id="9_441i0"]
 [ext_resource type="PackedScene" uid="uid://spq6o43sfcc1" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.tscn" id="10_oilhl"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_weapon.gd" id="11_gqj8r"]
-[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="11_imjsu"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="12_nf8bl"]
 [ext_resource type="Texture2D" uid="uid://b8pjqd3prajm1" path="res://art/day_3/enemy_duck_block_yellow.png" id="13_8ybbm"]
 [ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="17_s7cdp"]
 [ext_resource type="PackedScene" uid="uid://dvq3mnqmcgelf" path="res://scenes/_shared/clean_up_zone.tscn" id="18_f0wfx"]
 [ext_resource type="PackedScene" uid="uid://ciph4tyjsvddo" path="res://scenes/day_03/level_02/enemies/motership/pair_of_mini_balls.tscn" id="19_67e7r"]
+[ext_resource type="PackedScene" uid="uid://cjldxfd1a76li" path="res://scenes/_shared/dialogue.tscn" id="20_jn5ls"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/abduction_ray.gd" id="21_41s2u"]
+[ext_resource type="Script" path="res://resources/dialogue_line.gd" id="21_kwipx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwyhk"]
 size = Vector2(128, 16)
@@ -27,13 +28,22 @@ size = Vector2(128, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uueik"]
 size = Vector2(144, 20)
 
-[sub_resource type="LabelSettings" id="LabelSettings_dky2g"]
-font = ExtResource("12_nf8bl")
-
 [sub_resource type="LabelSettings" id="LabelSettings_4227b"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 outline_size = 4
+
+[sub_resource type="Resource" id="Resource_12ni2"]
+script = ExtResource("21_kwipx")
+text = "No permitiremos que acabes"
+delay_sec = 0.0
+duration_sec = 2.0
+
+[sub_resource type="Resource" id="Resource_dptue"]
+script = ExtResource("21_kwipx")
+text = "con nuestro alimento"
+delay_sec = 0.0
+duration_sec = 2.0
 
 [node name="Motership" type="Node2D"]
 script = ExtResource("1_lyngl")
@@ -42,7 +52,6 @@ _activate_block_spawner_at_hp = 400
 _speed_up_block_spawner_at_hp = 200
 _activate_heat_seeker_at_hp = 150
 Explosion = ExtResource("2_wk4gl")
-debug_show_hp = true
 
 [node name="Inside" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -284,30 +293,6 @@ color = Color(1, 0, 0, 1)
 [node name="ExplosionsContainer" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="Dialog" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = ExtResource("11_imjsu")
-metadata/_edit_lock_ = true
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="Dialog"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="Dialog/ColorRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "No permitiremos que acabes"
-label_settings = SubResource("LabelSettings_dky2g")
-
 [node name="FlashContainer" type="Node" parent="."]
 
 [node name="Flash" type="ColorRect" parent="FlashContainer"]
@@ -335,6 +320,106 @@ grow_vertical = 0
 text = "HP 500
 "
 label_settings = SubResource("LabelSettings_4227b")
+
+[node name="AbductionRay" type="Node2D" parent="."]
+z_index = -110
+z_as_relative = false
+position = Vector2(120, 311)
+script = ExtResource("21_41s2u")
+_color_duration = 0.08
+_ray_color_1 = Color(1, 1, 0, 1)
+_ray_color_2 = Color(1, 1, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="Ray" type="Line2D" parent="AbductionRay"]
+points = PackedVector2Array(0, 0, 0, 273)
+width = 64.0
+metadata/_edit_lock_ = true
+
+[node name="AbductionLines" type="Node2D" parent="AbductionRay"]
+metadata/_edit_lock_ = true
+
+[node name="Line" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line2" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 34)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line3" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 68)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line4" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 102)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line5" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 136)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line6" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 170)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line7" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 204)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line8" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 238)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Dialogue" parent="." instance=ExtResource("20_jn5ls")]
+_dialogue = Array[ExtResource("21_kwipx")]([SubResource("Resource_12ni2"), SubResource("Resource_dptue")])
 
 [connection signal="visibility_changed" from="Inside/AlienHologram" to="Inside/AlienHologram" method="_on_visibility_changed"]
 [connection signal="timeout" from="BlockSpawnerWeapon/Timer" to="BlockSpawnerWeapon" method="_on_timer_timeout"]

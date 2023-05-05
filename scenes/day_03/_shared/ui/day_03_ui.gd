@@ -9,12 +9,17 @@ signal stamina_changed(new_val, max_val)
 signal pause_state_changed(new_state)
 signal level_state_changed(new_state)
 signal boss_alert_finished
+signal main_course_presented
 
 @export var player_data: Day03PlayerData
 
 @onready var _boss_alert := $BossAlert
 @onready var _start_labels := $StartLabels
 @onready var _main_course_label := $MainCourseLabels
+@onready var _score_label := $Score
+@onready var _hi_score_label := $HiScore
+@onready var _bars := $BarsMargin/Bars
+@onready var _black_screen := $BlackScreen
 
 
 func _ready() -> void:
@@ -30,9 +35,22 @@ func _ready() -> void:
 	_on_player_data_power_up_count_updated()
 
 
-func start_main_course_presentation() -> void:
+func start_main_course_presentation(_duration_sec: float = -1) -> void:
 	_main_course_label.visible = true
 	_main_course_label.start()
+
+
+func change_bars_visibility(is_visible: bool) -> void:
+	_bars.visible = is_visible
+
+
+func change_score_visibility(is_visible: bool) -> void:
+	_score_label.visible = is_visible
+	_hi_score_label.visible = is_visible
+
+
+func change_black_screen_visibility(is_visible: bool) -> void:
+	_black_screen.visible = is_visible
 
 
 func _start_game_presentation() -> void:
@@ -75,3 +93,7 @@ func _on_day_03_level_waves_completed() -> void:
 
 func _on_boss_alert_finished():
 	boss_alert_finished.emit()
+
+
+func _on_main_course_labels_finished() -> void:
+	main_course_presented.emit()

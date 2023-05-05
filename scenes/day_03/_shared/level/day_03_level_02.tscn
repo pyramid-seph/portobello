@@ -1,11 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2y8ad6yqxp0h"]
+[gd_scene load_steps=7 format=3 uid="uid://c2y8ad6yqxp0h"]
 
-[ext_resource type="PackedScene" uid="uid://blyfcctk8v3ta" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
+[ext_resource type="PackedScene" uid="uid://cjai2rj84ghyr" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_02_waves.gd" id="2_1y1mh"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/boss_fight/day_03_level_02_boss_fight.gd" id="2_qu7pv"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.tscn" id="3_i5cuv"]
-[ext_resource type="PackedScene" uid="uid://7frae6sug118" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
+[ext_resource type="PackedScene" uid="uid://btgqdmv7oc3yl" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
+[ext_resource type="Texture2D" uid="uid://bsb6ocl5los0g" path="res://art/motership_intro_guide.png" id="6_t8kjm"]
 
 [node name="Day03Level02" instance=ExtResource("1_ttrf2")]
+
+[node name="BossFight" parent="." index="0" node_paths=PackedStringArray("_player")]
+script = ExtResource("2_qu7pv")
+_player = NodePath("../World/Player")
+Motership = ExtResource("5_27b35")
+
+[node name="PlayerAbductionTimer" type="Timer" parent="BossFight" index="0"]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="BossFight" index="1"]
+one_shot = true
 
 [node name="Level02Waves" type="Node" parent="Systems/WaveManager" index="1"]
 script = ExtResource("2_1y1mh")
@@ -17,10 +30,10 @@ _player = NodePath("../../World/Player")
 [node name="Day03Bg" parent="World" index="0"]
 sea_color = Color(0.254902, 0.603922, 0.670588, 1)
 
-[node name="Motership" parent="World" index="3" instance=ExtResource("5_27b35")]
-process_mode = 4
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
 visible = false
-debug_show_hp = false
+texture = ExtResource("6_t8kjm")
+centered = false
 
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="Systems/UfoShootManager" method="_on_wave_manager_all_waves_completed"]
 [connection signal="wave_completed" from="Systems/WaveManager" to="Systems/UfoShootManager" method="_on_wave_manager_wave_completed"]

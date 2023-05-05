@@ -1,6 +1,7 @@
 @tool
 extends Control
 
+signal finished
 
 const FADE_OUT_DURATION_SEC: float = 3 * Utils.FRAME_TIME
 
@@ -56,7 +57,7 @@ func _ready() -> void:
 		_change_labels_visible(false)
 
 
-func start() -> void:
+func start(override_duration_sec: float = -1) -> void:
 	_change_labels_visible(true)
 	_set_label_1_text()
 	_set_label_2_text()
@@ -67,7 +68,10 @@ func start() -> void:
 	_tween = create_tween()
 	_tween.tween_interval(label_2_visible_delay_sec)
 	_tween.tween_callback(_change_label_2_color.bind(font_color_normal))
-	_tween.tween_interval(duration_sec - label_2_visible_delay_sec - FADE_OUT_DURATION_SEC)
+	var duration = duration_sec
+	if override_duration_sec > -1:
+		duration = override_duration_sec
+	_tween.tween_interval(duration - label_2_visible_delay_sec - FADE_OUT_DURATION_SEC)
 	_tween.tween_method(
 		_change_label_2_color,
 		font_color_normal,
@@ -76,6 +80,7 @@ func start() -> void:
 	).set_trans(Tween.TRANS_LINEAR)
 	_tween.tween_callback(func(): 
 		_change_labels_visible(false)
+		finished.emit()
 		_tween = null
 	)
 
