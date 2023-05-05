@@ -37,7 +37,7 @@ func _ready() -> void:
 
 func start_main_course_presentation(_duration_sec: float = -1) -> void:
 	_main_course_label.visible = true
-	_main_course_label.start()
+	_main_course_label.start(_duration_sec)
 
 
 func change_bars_visibility(is_visible: bool) -> void:
