@@ -40,6 +40,7 @@ func _play_boss_introduction() -> void:
 	_boss.stop_abduction_ray()
 	_ui.change_black_screen_visibility(true)
 	_sea_bg.process_mode = Node.PROCESS_MODE_DISABLED
+	_sea_bg.visible = false
 	_timer.start(0.8)
 	await _timer.timeout
 	_boss.position = Vector2.ZERO
