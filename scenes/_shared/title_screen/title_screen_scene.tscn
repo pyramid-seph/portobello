@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=14 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Texture2D" uid="uid://jn8be7ygqnnj" path="res://art/title_screen_guide.png" id="1_oesus"]
@@ -11,6 +11,12 @@
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="7_2qrv5"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/game_title.gd" id="7_pvylf"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l4el"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sctw"]
+bg_color = Color(1, 1, 1, 0)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
@@ -98,6 +104,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../ShowOptionsBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3l4el")
 text = "Menú del día < 1 >"
 selector_text = "Menú del día"
 options = Array[String](["1", "2", "3"])
@@ -107,6 +114,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_2sctw")
 text = "Buffet < Día 1A >"
 selector_text = "Buffet"
 options = Array[String](["Día 1A", "Día 1B", "Día 1C", "Día 1D", "Día 2", "Día 3A", "Día 3B"])
