@@ -51,5 +51,3 @@ texture = ExtResource("2_w05wq")
 stretch_mode = 2
 frames = Array[Texture2D]([ExtResource("2_w05wq"), ExtResource("3_ebxdm")])
 frame_duration_sec = 0.12
-
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
