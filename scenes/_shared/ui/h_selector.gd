@@ -1,5 +1,5 @@
 @tool
-extends Label
+extends PanelContainer
 
 signal selected(idx: int)
 
@@ -28,12 +28,7 @@ var _current_option_idx: int = SELECTED_NONE:
 		_on_current_option_idx_set()
 
 @onready var _is_ready: bool = true
-@onready var _bg_color_rect := $BackgroundColorRect
-
-
-func _init() -> void:
-	var style_box := StyleBoxEmpty.new()
-	add_theme_stylebox_override("normal", StyleBoxFlat.new())
+@onready var _label := %Label as Label
 
 
 func _ready() -> void:
@@ -81,7 +76,8 @@ func _next_option() -> void:
 
 
 func _update_bg_color() -> void:
-	var curr_theme_style_box := get_theme_stylebox("normal")
+	pass
+	var curr_theme_style_box := get_theme_stylebox("panel")
 	if has_focus():
 		curr_theme_style_box.bg_color = focus_color
 	else:
@@ -92,19 +88,19 @@ func _on_current_option_idx_set() -> void:
 	if not _is_ready:
 		return
 	
-	text = selector_text
+	_label.text = selector_text
 	if _current_option_idx == SELECTED_NONE:
 		return
 	
 	if options.size() == 1:
-		text += options[0]
+		_label.text += options[0]
 		return
 	
 	if loop_options or _current_option_idx > 0:
-		text += " < "
-	text += options[_current_option_idx]
+		_label.text += " < "
+	_label.text += options[_current_option_idx]
 	if loop_options or _current_option_idx < options.size() - 1:
-		text += " >"
+		_label.text += " >"
 
 
 func _on_selector_text_set() -> void:
