@@ -21,7 +21,6 @@ selector_text = "Example"
 options = Array[String](["Lorem", "Ipsum"])
 
 [node name="Label" type="Label" parent="."]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("3_nks1b")

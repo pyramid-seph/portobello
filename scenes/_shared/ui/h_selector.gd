@@ -28,7 +28,7 @@ var _current_option_idx: int = SELECTED_NONE:
 		_on_current_option_idx_set()
 
 @onready var _is_ready: bool = true
-@onready var _label := %Label as Label
+@onready var _label := $Label as Label
 
 
 func _ready() -> void:

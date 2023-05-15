@@ -12,13 +12,13 @@
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/game_title.gd" id="7_pvylf"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b35gd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itdtg"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojnbd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grexa"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -109,7 +109,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowOptionsBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_b35gd")
+theme_override_styles/panel = SubResource("StyleBoxFlat_itdtg")
 selector_text = "Menú del día"
 options = Array[String](["1", "2", "3"])
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -118,8 +118,8 @@ focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_ojnbd")
-selector_text = "Bugffet"
+theme_override_styles/panel = SubResource("StyleBoxFlat_grexa")
+selector_text = "Buffet"
 options = Array[String](["Día 1A", "Día 1B", "Día 1C", "Día 1D", "Día 2", "Día 3A", "Día 3B"])
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 

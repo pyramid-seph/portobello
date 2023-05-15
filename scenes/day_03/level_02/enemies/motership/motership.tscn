@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://btgqdmv7oc3yl"]
+[gd_scene load_steps=27 format=3]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/motership.gd" id="1_lyngl"]
 [ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_wk4gl"]

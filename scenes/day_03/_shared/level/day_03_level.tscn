@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjai2rj84ghyr"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level.gd" id="1_wjcvv"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_boss_fight.gd" id="2_wci2p"]
-[ext_resource type="PackedScene" uid="uid://d201sdqnu65bt" path="res://scenes/day_03/_shared/player/Player.tscn" id="3_x4rdx"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/player/player.tscn" id="3_x4rdx"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="4_0lkhk"]
 [ext_resource type="PackedScene" uid="uid://cwr1ojj4316st" path="res://scenes/day_03/_shared/systems/stamina_spawner.tscn" id="6_2hiem"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/items/bird.tscn" id="7_c3nnm"]

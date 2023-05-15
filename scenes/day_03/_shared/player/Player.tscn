@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d201sdqnu65bt"]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/player/player.gd" id="1_o3ipy"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="2_jf564"]
