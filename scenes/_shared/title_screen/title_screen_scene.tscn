@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=15 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Texture2D" uid="uid://jn8be7ygqnnj" path="res://art/title_screen_guide.png" id="1_oesus"]
@@ -11,14 +11,15 @@
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="7_2qrv5"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/game_title.gd" id="7_pvylf"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
+[ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itdtg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56br3"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grexa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a314n"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -107,18 +108,18 @@ layout_mode = 2
 [node name="StoryModeGameSelector" parent="TitleScreen/Panel/VBoxContainer" instance=ExtResource("9_d05si")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../ShowOptionsBtn")
+focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_itdtg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_56br3")
 selector_text = "Menú del día"
-options = Array[String](["1", "2", "3"])
+options = Array[String](["1", "2", "3", "EX"])
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="ScoreAttackGameSelector" parent="TitleScreen/Panel/VBoxContainer" instance=ExtResource("9_d05si")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_grexa")
+theme_override_styles/panel = SubResource("StyleBoxFlat_a314n")
 selector_text = "Buffet"
 options = Array[String](["Día 1A", "Día 1B", "Día 1C", "Día 1D", "Día 2", "Día 3A", "Día 3B"])
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -134,10 +135,24 @@ alignment = 0
 [node name="ShowOptionsBtn" type="Button" parent="TitleScreen/Panel/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowScoresBtn")
-focus_neighbor_bottom = NodePath("../StoryModeGameSelector")
+focus_neighbor_bottom = NodePath("../ExitGameBtn")
 button_mask = 0
 text = "Opciones"
 alignment = 0
+
+[node name="ExitGameBtn" type="Button" parent="TitleScreen/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../ShowOptionsBtn")
+focus_neighbor_bottom = NodePath("../StoryModeGameSelector")
+button_mask = 0
+text = "Salir"
+alignment = 0
+
+[node name="ConfirmExitDialog" parent="." instance=ExtResource("10_dgmig")]
+visible = false
+body_text = "¿Salir del juego?"
+positive_btn_text = "Sí"
 
 [node name="LogosRoll" type="Control" parent="."]
 visible = false
@@ -180,5 +195,8 @@ one_shot = true
 [connection signal="selected" from="TitleScreen/Panel/VBoxContainer/ScoreAttackGameSelector" to="." method="_on_score_attack_game_selector_selected"]
 [connection signal="pressed" from="TitleScreen/Panel/VBoxContainer/ShowScoresBtn" to="." method="_on_show_scores_btn_pressed"]
 [connection signal="pressed" from="TitleScreen/Panel/VBoxContainer/ShowOptionsBtn" to="." method="_on_show_options_btn_pressed"]
+[connection signal="pressed" from="TitleScreen/Panel/VBoxContainer/ExitGameBtn" to="." method="_on_exit_game_btn_pressed"]
+[connection signal="negative_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_negative_btn_pressed"]
+[connection signal="positive_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_positive_btn_pressed"]
 [connection signal="rolled" from="LogosRoll" to="." method="_on_logos_roll_rolled"]
 [connection signal="timeout" from="LogosRoll/Timer" to="LogosRoll" method="_on_timer_timeout"]

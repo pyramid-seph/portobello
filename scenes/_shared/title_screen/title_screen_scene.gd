@@ -5,6 +5,8 @@ extends Node
 @onready var _title_screen = $TitleScreen
 @onready var _logos_roll := $LogosRoll
 @onready var _story_mode_game_selector = %StoryModeGameSelector
+@onready var _exit_game_btn = %ExitGameBtn
+@onready var _confirm_exit_dialog = $ConfirmExitDialog
 
 
 func _ready() -> void:
@@ -43,3 +45,15 @@ func _on_show_scores_btn_pressed() -> void:
 
 func _on_show_options_btn_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_exit_game_btn_pressed() -> void:
+	_confirm_exit_dialog.visible = true
+
+
+func _on_confirm_exit_dialog_negative_btn_pressed() -> void:
+	_exit_game_btn.call_deferred("grab_focus")
+
+
+func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
+	get_tree().quit()
