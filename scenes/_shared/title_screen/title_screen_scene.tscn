@@ -153,6 +153,7 @@ alignment = 0
 visible = false
 body_text = "¿Salir del juego?"
 positive_btn_text = "Sí"
+hide_shadow = null
 
 [node name="LogosRoll" type="Control" parent="."]
 visible = false

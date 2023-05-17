@@ -76,7 +76,6 @@ func _next_option() -> void:
 
 
 func _update_bg_color() -> void:
-	pass
 	var curr_theme_style_box := get_theme_stylebox("panel")
 	if has_focus():
 		curr_theme_style_box.bg_color = focus_color

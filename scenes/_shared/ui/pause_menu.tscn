@@ -1,26 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene load_steps=6 format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
 [ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="3_4jtb8"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="4_0gg1k"]
+[ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="5_tyfqu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hi4pj"]
 bg_color = Color(0, 0, 0, 0.784314)
 corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pf02d"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.258824, 0.721569, 0.737255, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 4
-anti_aliasing = false
 
 [node name="PauseMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -73,42 +60,16 @@ text = "Rendirse"
 flat = true
 alignment = 0
 
-[node name="ConfirmExitLevelDialog" type="PanelContainer" parent="."]
+[node name="ConfirmExitLevelDialog" parent="." instance=ExtResource("5_tyfqu")]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_pf02d")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmExitLevelDialog"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="ConfirmExitLevelDialog/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_0gg1k")
-text = "Perderás tu progreso.
+body_text = "Perderás tu progreso.
 ¿Rendirse?"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmExitLevelDialog/VBoxContainer"]
-layout_mode = 2
-
-[node name="NoButton" type="Button" parent="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "No"
-flat = true
-
-[node name="YesButton" type="Button" parent="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Sí"
-flat = true
+positive_btn_text = "Sí"
+hide_shadow = true
 
 [connection signal="toggled" from="PauseDialog/VBoxContainer/VibrateCheckButton" to="." method="_on_vibrate_check_button_toggled"]
 [connection signal="toggled" from="PauseDialog/VBoxContainer/AutofireCheckButton" to="." method="_on_autofire_check_button_toggled"]
 [connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
-[connection signal="pressed" from="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
-[connection signal="pressed" from="ConfirmExitLevelDialog/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="negative_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_negative_btn_pressed"]
+[connection signal="positive_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_positive_btn_pressed"]

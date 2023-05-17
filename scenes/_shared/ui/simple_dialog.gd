@@ -4,7 +4,9 @@ extends PanelContainer
 signal positive_btn_pressed
 signal negative_btn_pressed
 
-@export var body_text: String = "Body":
+const DEFAULT_SHADOW_COLOR := Color("#000000C8")
+
+@export_multiline var body_text: String = "Body":
 	set(value):
 		body_text = value
 		_on_body_text_set()
@@ -16,6 +18,10 @@ signal negative_btn_pressed
 	set(value):
 		positive_btn_text = value
 		_on_positive_btn_text_set()
+@export var hide_shadow: bool = false:
+	set(value):
+		hide_shadow = value
+		_on_hide_shadow_set()
 
 @onready var _is_ready: bool = true
 @onready var _body_label := %BodyLabel as Label
@@ -27,6 +33,7 @@ func _ready() -> void:
 	_on_body_text_set()
 	_on_negative_btn_text_set()
 	_on_positive_btn_text_set()
+	_on_hide_shadow_set()
 	_on_visibility_changed()
 
 
@@ -47,6 +54,16 @@ func _on_negative_btn_text_set() -> void:
 func _on_body_text_set() -> void:
 	if _is_ready:
 		_body_label.text = body_text
+
+
+func _on_hide_shadow_set() -> void:
+	if not _is_ready:
+		return
+	var curr_theme_style_box := get_theme_stylebox("panel")
+	if hide_shadow:
+		curr_theme_style_box.bg_color = Color.TRANSPARENT
+	else:
+		curr_theme_style_box.bg_color = DEFAULT_SHADOW_COLOR
 
 
 func _on_negative_btn_pressed() -> void:

@@ -8,7 +8,6 @@ extends Control
 @onready var _confirm_exit_dialog = $ConfirmExitLevelDialog
 @onready var _autofire_checkbox := %AutofireCheckButton as CheckButton
 @onready var _vibrate_checkbox := %VibrateCheckButton as CheckButton
-@onready var _no_button := %NoButton
 @onready var _scene_tree := get_tree()
 
 
@@ -65,16 +64,15 @@ func _on_autofire_check_button_toggled(button_pressed: bool) -> void:
 func _on_give_up_button_pressed() -> void:
 	_pause_dialog.visible = false
 	_confirm_exit_dialog.visible = true
-	_no_button.call_deferred("grab_focus")
 
 
-func _on_no_button_pressed() -> void:
+func _on_confirm_exit_level_dialog_negative_btn_pressed() -> void:
 	_confirm_exit_dialog.visible = false
 	_pause_dialog.visible = true
 	_give_up_button.call_deferred("grab_focus")
 
 
-func _on_yes_button_pressed() -> void:
+func _on_confirm_exit_level_dialog_positive_btn_pressed() -> void:
 	SaveDataManager.save()
 	print("YOU GAVE UP!!!!")
 	# TODO return to title screen
