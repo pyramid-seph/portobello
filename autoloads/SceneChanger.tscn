@@ -22,7 +22,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="LodingAnimContainer" type="HBoxContainer" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -36,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_rwund")
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="LodingAnimContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
@@ -45,9 +46,15 @@ theme_override_font_sizes/font_size = 16
 text = "Cargando"
 vertical_alignment = 1
 
-[node name="AnimatedTextureRect" parent="HBoxContainer" instance=ExtResource("5_qq1kj")]
+[node name="AnimatedTextureRect" parent="LodingAnimContainer" instance=ExtResource("5_qq1kj")]
 layout_mode = 2
 texture = ExtResource("2_w05wq")
 stretch_mode = 2
 frames = Array[Texture2D]([ExtResource("2_w05wq"), ExtResource("3_ebxdm")])
 frame_duration_sec = 0.12
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
