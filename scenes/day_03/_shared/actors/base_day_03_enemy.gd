@@ -22,7 +22,7 @@ enum DisposeMode {
 @export var Explosion: PackedScene = preload("res://scenes/day_03/_shared/objects/explosion.tscn")
 
 var world: Node2D:
-	set(value): 
+	set(value):
 		world = value
 		_internal_on_set_world()
 
@@ -124,6 +124,8 @@ func _world_or_default() -> Node2D:
 		return owner.get_parent()
 	elif owner:
 		return owner
+	elif get_parent() is Node2D:
+		return get_parent()
 	else:
 		return get_node("/root")
 
