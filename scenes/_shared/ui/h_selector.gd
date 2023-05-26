@@ -1,7 +1,8 @@
 @tool
+class_name HSelector
 extends PanelContainer
 
-signal selected(idx: int)
+signal selected(value)
 
 const SELECTED_NONE: int = -1
 
@@ -9,7 +10,7 @@ const SELECTED_NONE: int = -1
 	set(value):
 		selector_text = value
 		_on_selector_text_set()
-@export var options: Array[String]:
+@export var options: Array:
 	set(value):
 		options = value
 		_on_options_set()
@@ -43,7 +44,8 @@ func _gui_input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("ui_accept"):
-		selected.emit(_current_option_idx)
+		if _current_option_idx > SELECTED_NONE:
+			selected.emit(_get_value_for_option(_current_option_idx))
 		accept_event()
 	if event.is_action_pressed("ui_left"):
 		_previous_option()
@@ -83,6 +85,22 @@ func _update_bg_color() -> void:
 		curr_theme_style_box.bg_color = Color.TRANSPARENT
 
 
+func _get_label_for_option(idx: int) -> String:
+	var option = options[idx]
+	if typeof(option) == TYPE_DICTIONARY:
+		return option.label
+	else:
+		return option
+
+
+func _get_value_for_option(idx: int):
+	var option = options[idx]
+	if typeof(option) == TYPE_DICTIONARY:
+		return option.value
+	else:
+		return idx
+
+
 func _on_current_option_idx_set() -> void:
 	if not _is_ready:
 		return
@@ -92,12 +110,12 @@ func _on_current_option_idx_set() -> void:
 		return
 	
 	if options.size() == 1:
-		_label.text += options[0]
+		_label.text += _get_label_for_option(0)
 		return
 	
 	if loop_options or _current_option_idx > 0:
 		_label.text += " < "
-	_label.text += options[_current_option_idx]
+	_label.text += _get_label_for_option(_current_option_idx)
 	if loop_options or _current_option_idx < options.size() - 1:
 		_label.text += " >"
 
