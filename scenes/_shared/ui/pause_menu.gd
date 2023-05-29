@@ -74,5 +74,5 @@ func _on_confirm_exit_level_dialog_negative_btn_pressed() -> void:
 
 func _on_confirm_exit_level_dialog_positive_btn_pressed() -> void:
 	SaveDataManager.save()
-	print("YOU GAVE UP!!!!")
-	# TODO return to title screen
+	_scene_tree.paused = false
+	Game.start(Game.Minigame.TITLE_SCREEN)
