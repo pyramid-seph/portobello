@@ -12,6 +12,10 @@ var save_data: SaveData
 var _is_saving: bool = false
 
 
+func _init() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
 func _ready() -> void:
 	saving_started.connect(func(): _is_saving = true)
 	saving_finished.connect(func(): _is_saving = false)

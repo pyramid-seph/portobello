@@ -85,3 +85,7 @@ static func safe_reparent(node: Node, new_parent: Node, keep_global_transform: b
 		new_parent.add_child(node)
 	else:
 		node.reparent(new_parent, keep_global_transform)
+
+
+static func last(arr: Array):
+	return null if arr.is_empty() else arr[arr.size() - 1]

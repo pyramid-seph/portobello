@@ -13,13 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5h7qi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irbi2"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t8vf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnvh2"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -27,7 +27,6 @@ bg_color = Color(1, 1, 1, 0)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
-is_cold_boot = false
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -110,18 +109,19 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_5h7qi")
+theme_override_styles/panel = SubResource("StyleBoxFlat_irbi2")
 selector_text = "Menú del día"
-options = Array[String](["1", "2", "3", "EX"])
+options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="ScoreAttackGameSelector" parent="TitleScreen/Panel/VBoxContainer" instance=ExtResource("9_d05si")]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_8t8vf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bnvh2")
 selector_text = "Buffet"
-options = Array[String](["Día 1A", "Día 1B", "Día 1C", "Día 1D", "Día 2", "Día 3A", "Día 3B"])
+options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="ShowScoresBtn" type="Button" parent="TitleScreen/Panel/VBoxContainer"]
@@ -191,8 +191,8 @@ texture = ExtResource("6_0gi6x")
 [node name="Timer" type="Timer" parent="LogosRoll"]
 one_shot = true
 
-[connection signal="selected" from="TitleScreen/Panel/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_game_selector_selected"]
-[connection signal="selected" from="TitleScreen/Panel/VBoxContainer/ScoreAttackGameSelector" to="." method="_on_score_attack_game_selector_selected"]
+[connection signal="selected" from="TitleScreen/Panel/VBoxContainer/StoryModeGameSelector" to="." method="_on_minigame_selected"]
+[connection signal="selected" from="TitleScreen/Panel/VBoxContainer/ScoreAttackGameSelector" to="." method="_on_minigame_selected"]
 [connection signal="pressed" from="TitleScreen/Panel/VBoxContainer/ShowScoresBtn" to="." method="_on_show_scores_btn_pressed"]
 [connection signal="pressed" from="TitleScreen/Panel/VBoxContainer/ShowOptionsBtn" to="." method="_on_show_options_btn_pressed"]
 [connection signal="pressed" from="TitleScreen/Panel/VBoxContainer/ExitGameBtn" to="." method="_on_exit_game_btn_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://8k034qvxjmd8"]
 
 [ext_resource type="Script" path="res://autoloads/scene_changer.gd" id="1_wichc"]
-[ext_resource type="PackedScene" uid="uid://cr14ynhm21h10" path="res://scenes/_shared/title_screen/title_screen_scene.tscn" id="2_lbbp0"]
+[ext_resource type="Script" path="res://autoloads/threaded_loader.gd" id="2_ux1p7"]
 [ext_resource type="Texture2D" uid="uid://wwx4ny446mjr" path="res://art/_shared/ui_loading_0.png" id="2_w05wq"]
 [ext_resource type="Texture2D" uid="uid://bc6i3vg67kqhg" path="res://art/_shared/ui_loading_1.png" id="3_ebxdm"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_rwund"]
@@ -11,7 +11,10 @@
 [node name="SceneChanger" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_wichc")
-TitleScreen = ExtResource("2_lbbp0")
+_loading_animation_delay_sec = 0.2
+
+[node name="ThreadedLoader" type="Node" parent="."]
+script = ExtResource("2_ux1p7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
