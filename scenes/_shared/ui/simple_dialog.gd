@@ -49,6 +49,8 @@ func _on_positive_btn_text_set() -> void:
 func _on_negative_btn_text_set() -> void:
 	if _is_ready:
 		_negative_btn.text = negative_btn_text
+		_negative_btn.visible = not negative_btn_text.is_empty()
+		_grab_focus()
 
 
 func _on_body_text_set() -> void:
@@ -64,6 +66,13 @@ func _on_hide_shadow_set() -> void:
 		curr_theme_style_box.bg_color = Color.TRANSPARENT
 	else:
 		curr_theme_style_box.bg_color = DEFAULT_SHADOW_COLOR
+
+
+func _grab_focus() -> void:
+	if Engine.is_editor_hint():
+		return
+	var btn = _negative_btn if _negative_btn.visible else _positive_btn
+	btn.call_deferred("grab_focus")
 
 
 func _on_negative_btn_pressed() -> void:
@@ -84,4 +93,4 @@ func _on_visibility_changed() -> void:
 	if Engine.is_editor_hint() or not _is_ready:
 		return
 	if visible:
-		_negative_btn.call_deferred("grab_focus")
+		_grab_focus()

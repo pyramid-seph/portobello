@@ -8,6 +8,7 @@ var _request: ThreadedLoader.Request
 @onready var _timer := $Timer as Timer
 @onready var _loading_anim_container := $LodingAnimContainer
 @onready var _threaded_loader := $ThreadedLoader as ThreadedLoader
+@onready var _error_dialog := $ErrorDialog
 
 
 func _ready() -> void:
@@ -21,18 +22,18 @@ func load_resource(path: String) -> Resource:
 		return null
 	
 	visible = true
-	var current_scene := Utils.last(get_node("/root").get_children()) as Node
-	if current_scene:
-		current_scene.queue_free()
-		await get_tree().process_frame
-		current_scene = null
+#	var current_scene := Utils.last(get_node("/root").get_children()) as Node
+#	if current_scene:
+#		current_scene.queue_free()
+#		await get_tree().process_frame
+#		current_scene = null
 	
 	_request = _threaded_loader.request(path)
 	
 	if _request.status == ThreadedLoader.Request.Status.ERROR:
 		visible = false
 		_request = null
-		# TODO What should we show in case of error?
+		_error_dialog.visible = true
 		return null
 	
 	await get_tree().create_timer(_min_duration_sec).timeout
@@ -49,6 +50,17 @@ func load_resource(path: String) -> Resource:
 
 
 func change_to_scene(path: String, shared_data: Dictionary = {}) -> void:
+	if _request:
+		print("Already changing the scene. Ignoring.")
+		return
+	
+	visible = true
+	var current_scene := Utils.last(get_node("/root").get_children()) as Node
+	if current_scene:
+		current_scene.queue_free()
+		await get_tree().process_frame
+		current_scene = null
+	
 	# TODO maybe  i should move this to Game?
 	var resource = await load_resource(path)
 	if resource:
@@ -68,3 +80,7 @@ func _on_visibility_changed() -> void:
 	else:
 		_loading_anim_container.visible = false
 		_timer.stop()
+
+
+func _on_simple_dialog_positive_btn_pressed() -> void:
+	get_tree().quit(1)
