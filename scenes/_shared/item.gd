@@ -2,6 +2,8 @@ class_name Item
 extends Area2D
 
 
+signal consumed_or_exited_screen
+
 @export var score_points_pick_up: int
 @export var randomize_starting_frame: bool
 
@@ -27,14 +29,15 @@ func pick_up(picker) -> void:
 	queue_free()
 
 
+# Override
+func _on_pick_up(_picker) -> void:
+	pass
+
+
 func _internal_on_pick_up(picker) -> void:
 	if picker.has_method("add_points_to_score"):
 		picker.add_points_to_score(score_points_pick_up)
 	_on_pick_up(picker)
-
-
-func _on_pick_up(_picker) -> void:
-	pass
 
 
 func _randomize_frame() -> void:
@@ -45,3 +48,5 @@ func _randomize_frame() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+	consumed_or_exited_screen.emit()
+

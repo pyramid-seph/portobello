@@ -1,18 +1,18 @@
 extends Node2D
 
 
+enum SpawnerState { DISABLED, READY, ENQUEUED, INSTANCED }
+
 @export var player_data: Resource
 @export var StaminaItem: PackedScene
 @export var cooldown: float = Utils.FRAME_TIME
 @export var random: bool = true
 
-@onready var _screen_size: Vector2 = get_viewport_rect().size
-@onready var _timer := $Cooldown as Timer
-
-enum SpawnerState { DISABLED, READY, ENQUEUED, INSTANCED }
-
 var _state: SpawnerState = SpawnerState.DISABLED
 var _world: Node2D
+
+@onready var _screen_size: Vector2 = get_viewport_rect().size
+@onready var _timer := $Cooldown as Timer
 
 
 func enable(world: Node2D) -> void:
@@ -60,20 +60,20 @@ func _spawn_new_stamina_item() -> void:
 	if _state != SpawnerState.ENQUEUED:
 		return
 	
-	var stamina_item = StaminaItem.instantiate()
+	var item = StaminaItem.instantiate()
 	var initial_pos := Vector2(randi() % int(_screen_size.x - 20) + 10, 3)
-	stamina_item.global_position = initial_pos
-	stamina_item.tree_exited.connect(_on_Item_tree_exited)
-	_world.add_child(stamina_item)
+	item.global_position = initial_pos
+	item.consumed_or_exited_screen.connect(_on_item_consumed_or_exited_screen)
+	_world.add_child(item)
 	_state = SpawnerState.INSTANCED
 
 
-func _on_Item_tree_exited() -> void:
+func _on_item_consumed_or_exited_screen() -> void:
 	if _state == SpawnerState.INSTANCED:
 		_state = SpawnerState.READY
 		_enqueue_spawn()
 
 
-func _on_Cooldown_timeout() -> void:
+func _on_cooldown_timeout() -> void:
 	if _state == SpawnerState.ENQUEUED:
 		_try_spawn()

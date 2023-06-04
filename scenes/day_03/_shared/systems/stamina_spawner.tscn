@@ -11,4 +11,4 @@ player_data = ExtResource("1")
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
