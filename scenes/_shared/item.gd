@@ -26,6 +26,7 @@ func get_animated_sprite() -> AnimatedSprite2D:
 
 func pick_up(picker) -> void:
 	_internal_on_pick_up(picker)
+	consumed_or_exited_screen.emit()
 	queue_free()
 
 
@@ -47,6 +48,6 @@ func _randomize_frame() -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
 	consumed_or_exited_screen.emit()
+	queue_free()
 
