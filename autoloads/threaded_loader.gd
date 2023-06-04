@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		set_process(false)
 
 
-func request(path: String, use_sub_threads: bool = false) -> Request:
+func make_request(path: String, use_sub_threads: bool = false) -> Request:
 	if _queue.has(path):
 		return _queue[path]
 	
@@ -63,3 +63,14 @@ class Request:
 	var loaded_resource: Resource
 	var status: Request.Status = Status.IN_PROGRESS
 	var progress: float
+	
+	func is_in_progress() -> bool:
+		return status == Status.IN_PROGRESS
+	
+	
+	func is_loaded() -> bool:
+		return status == Status.LOADED
+	
+	
+	func is_error() -> bool:
+		return status == Status.ERROR

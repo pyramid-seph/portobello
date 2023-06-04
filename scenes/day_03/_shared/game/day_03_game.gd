@@ -1,6 +1,9 @@
 class_name Day03Game
 extends Node
 
+const _CUTSCENE_PATH_DAY_01 = "res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.tscn"
+const _LEVEL_PATH_FORMAT =  "res://scenes/day_03/_shared/level/day_03_level_%02d.tscn"
+
 enum Level {
 	STORY_MODE_DAY_01,
 	STORY_MODE_DAY_02,
@@ -9,41 +12,57 @@ enum Level {
 }
 
 @export var _level: Day03Game.Level = Day03Game.Level.STORY_MODE_DAY_01
-@export var _skip_cutscenes: bool = false
+@export_group("Debug", "_debug")
+@export var _debug_skip_cutscenes: bool = false:
+	get:
+		return _debug_skip_cutscenes and OS.is_debug_build()
 
 var _level_instance: Day03Level
 
-@onready var is_ready: bool = true
 @onready var _results_screen := $ResultsScreenBuffet
 
 
 func _ready() -> void:
-	play_level()
+	_start_minigame()
 
 
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_level = data.level
-	if data.has("skip_cutscenes"):
-		_skip_cutscenes = data.skip_cutscenes
 
 
-func play_level() -> void:
+func _play_level() -> void:
 	if _level_instance:
 		_level_instance.queue_free()
 	
 	match _level:
 		Day03Game.Level.STORY_MODE_DAY_01,\
 		Day03Game.Level.SCORE_ATTACK_3A:
-			_level_instance = load("res://scenes/day_03/_shared/level/day_03_level_01.tscn").instantiate() as Day03Level
-			_level_instance.completed.connect(_on_level_completed)
-			add_child(_level_instance)
+			_load_level(1)
 		Day03Game.Level.SCORE_ATTACK_3B:
-			_level_instance = load("res://scenes/day_03/_shared/level/day_03_level_02.tscn").instantiate() as Day03Level
-			_level_instance.completed.connect(_on_level_completed)
-			add_child(_level_instance)
+			_load_level(2)
 		_:
 			Game.start(Game.Minigame.TITLE_SCREEN)
+
+
+func _start_minigame() -> void:
+	if _debug_skip_cutscenes or _level != Day03Game.Level.STORY_MODE_DAY_01:
+		_play_level()
+	else:
+		var old_scene = _get_level_scene()
+		await SceneChanger.change_to_scene(_CUTSCENE_PATH_DAY_01, {}, old_scene)
+		_get_level_scene().finished.connect(_play_level)
+
+
+func _get_level_scene() -> Node:
+	return Utils.last_child($Level)
+
+
+func _load_level(level: int, lives: int = Day03PlayerData.MAX_LIVES) -> void:
+	var path = _LEVEL_PATH_FORMAT % level
+	var shared_data = { "lives": lives }
+	await SceneChanger.change_to_scene(path, shared_data, _get_level_scene())
+	_get_level_scene().completed.connect(_on_level_completed)
 
 
 func _get_high_score() -> int:

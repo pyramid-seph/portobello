@@ -8,4 +8,8 @@ script = ExtResource("1_fcdcw")
 
 [node name="ResultsScreenBuffet" parent="." instance=ExtResource("2_5qwej")]
 
+[node name="Level" type="Node" parent="."]
+
+[node name="Placeholder" type="Node" parent="Level"]
+
 [connection signal="results_presented" from="ResultsScreenBuffet" to="." method="_on_results_screen_results_presented"]

@@ -12,7 +12,8 @@
 [node name="SceneChanger" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_wichc")
-_loading_animation_delay_sec = 0.2
+_min_duration_sec = 0.32
+_loading_animation_delay_sec = 0.64
 
 [node name="ThreadedLoader" type="Node" parent="."]
 script = ExtResource("2_ux1p7")
@@ -67,6 +68,8 @@ negative_btn_text = ""
 positive_btn_text = "Salir"
 hide_shadow = true
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="scene_change_error" from="." to="." method="_on_scene_change_error"]
+[connection signal="scene_change_finished" from="." to="." method="_on_scene_change_finished"]
+[connection signal="scene_change_started" from="." to="." method="_on_scene_change_started"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="positive_btn_pressed" from="ErrorDialog" to="." method="_on_simple_dialog_positive_btn_pressed"]

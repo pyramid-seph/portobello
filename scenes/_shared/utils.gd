@@ -76,6 +76,7 @@ static func safe_disconnect(sg: Signal, callable: Callable) -> void:
 	if sg.is_connected(callable):
 		sg.disconnect(callable)
 
+
 static func safe_reparent(node: Node, new_parent: Node, keep_global_transform: bool = true) -> void:
 	assert(node != null, "node cannot be null")
 	assert(new_parent != null, "new_parent cannot be null")
@@ -89,3 +90,7 @@ static func safe_reparent(node: Node, new_parent: Node, keep_global_transform: b
 
 static func last(arr: Array):
 	return null if arr.is_empty() else arr[arr.size() - 1]
+
+
+static func last_child(node: Node):
+	return null if node == null else last(node.get_children())

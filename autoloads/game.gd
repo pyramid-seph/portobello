@@ -26,6 +26,11 @@ func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
+func _ready() -> void:
+	SceneChanger.scene_change_started.connect(_on_scene_change_started)
+	SceneChanger.scene_change_finished.connect(_on_scene_change_finished)
+
+
 func get_current_minigame() -> Minigame:
 	return _current_minigame
 
@@ -59,3 +64,11 @@ func _get_minigame_start_level(minigame: Minigame) -> int:
 			return Day03Game.Level.SCORE_ATTACK_3B
 		_:
 			return -1
+
+
+func _on_scene_change_started() -> void:
+	Game.is_pause_disabled = true
+
+
+func _on_scene_change_finished() -> void:
+	Game.is_pause_disabled = false
