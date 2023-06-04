@@ -42,7 +42,7 @@ func _play_level() -> void:
 		Day03Game.Level.SCORE_ATTACK_3B:
 			_load_level(2)
 		_:
-			Game.start(Game.Minigame.TITLE_SCREEN)
+			_go_to_title_screen()
 
 
 func _start_minigame() -> void:
@@ -62,7 +62,9 @@ func _load_level(level: int, lives: int = Day03PlayerData.MAX_LIVES) -> void:
 	var path = _LEVEL_PATH_FORMAT % level
 	var shared_data = { "lives": lives }
 	await SceneChanger.change_to_scene(path, shared_data, _get_level_scene())
-	_get_level_scene().completed.connect(_on_level_completed)
+	var level_scene = _get_level_scene()
+	level_scene.completed.connect(_on_level_completed)
+	level_scene.failed.connect(_on_level_failed)
 
 
 func _get_high_score() -> int:
@@ -93,6 +95,10 @@ func _set_stars(stars: int) -> void:
 		SaveDataManager.save_data.stars.day_three = new_stars_max
 
 
+func _go_to_title_screen() -> void:
+	Game.start(Game.Minigame.TITLE_SCREEN)
+
+
 func _on_level_completed(lives: int, score: int) -> void:
 	_results_screen.is_last_level = true # TODO
 	var high_score = _get_high_score()
@@ -107,9 +113,13 @@ func _on_level_completed(lives: int, score: int) -> void:
 	SaveDataManager.save()
 
 
+func _on_level_failed() -> void:
+	_go_to_title_screen()
+
+
 func _on_results_screen_results_presented(total_score) -> void:
 	if _level == Day03Game.Level.STORY_MODE_DAY_01:
 		pass # load next level if level 1 (and pass current score and lives!);
 			# otherwise load credits with Game.start(Day03Game.Level.CREDITS)
 	else:
-		Game.start(Game.Minigame.TITLE_SCREEN)
+		_go_to_title_screen()
