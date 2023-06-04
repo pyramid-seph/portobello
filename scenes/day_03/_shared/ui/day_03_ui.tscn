@@ -10,10 +10,10 @@
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="12"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/hi_score.gd" id="12_pqisy"]
-[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/courier_prime/CourierPrime-BoldItalic.ttf" id="13_baoxv"]
+[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="13_baoxv"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/game_over.gd" id="15_hyx32"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/boss_alert.gd" id="15_mlyv2"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="16_ha6bd"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="16_ha6bd"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/piece_of_cake_label.gd" id="16_yasp3"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="17_q8r8e"]
 

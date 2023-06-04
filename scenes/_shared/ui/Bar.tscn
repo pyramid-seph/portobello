@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bd3t2gf6d155n"]
 
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://bbka4j1487dy0" path="res://art/_shared/ui_bar_background.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://ds6a4ktnks5qu" path="res://art/_shared/ui_bar_foreground.png" id="4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4x7ob"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_77l20"]
 
 [node name="Bar" type="HBoxContainer"]
 offset_right = 10.0
@@ -16,8 +18,9 @@ stretch_margin_left = 1
 stretch_margin_top = 1
 stretch_margin_right = 1
 stretch_margin_bottom = 1
-texture_under = ExtResource("3")
-texture_progress = ExtResource("4")
+texture_under = SubResource("CanvasTexture_4x7ob")
+texture_progress = SubResource("CanvasTexture_77l20")
+tint_under = Color(0, 0, 0, 1)
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
