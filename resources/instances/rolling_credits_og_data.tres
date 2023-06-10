@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="RollingCredits" load_steps=12 format=3 uid="uid://bpca423ydapsn"]
+
+[ext_resource type="Script" path="res://resources/credit.gd" id="1_p318k"]
+[ext_resource type="Script" path="res://resources/rolling_credits.gd" id="2_oso56"]
+
+[sub_resource type="Resource" id="Resource_ravbf"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "- Bucho Busca Comida -"
+names = Array[String](["Staff Original"])
+
+[sub_resource type="Resource" id="Resource_28kcf"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Idea original"
+names = Array[String](["Pyramid Seph"])
+
+[sub_resource type="Resource" id="Resource_mavye"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Guión"
+names = Array[String](["Fabiola Alonso Carrizales", "Pyramid Seph"])
+
+[sub_resource type="Resource" id="Resource_hjc78"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Diseño de personajes"
+names = Array[String](["Fabiola Alonso Carrizales"])
+
+[sub_resource type="Resource" id="Resource_afi6i"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Sprites"
+names = Array[String](["Fabiola Alonso Carrizales", "Pyramid Seph"])
+
+[sub_resource type="Resource" id="Resource_p3odf"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Programación"
+names = Array[String](["Gabriel Pech Ceh", "Pyramid Seph"])
+
+[sub_resource type="Resource" id="Resource_l0ovs"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Pruebas"
+names = Array[String](["Roger Alonso Noh Canché", "Nelson Solís Montero", "Jesús Elías Díaz Martínez"])
+
+[sub_resource type="Resource" id="Resource_by40c"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Pruebas"
+names = Array[String](["José Francisco Morales Breck"])
+
+[sub_resource type="Resource" id="Resource_lxsxo"]
+script = ExtResource("1_p318k")
+duration_sec = 4.0
+job = "Comodín"
+names = Array[String](["Arasan"])
+
+[resource]
+script = ExtResource("2_oso56")
+list = Array[ExtResource("1_p318k")]([SubResource("Resource_ravbf"), SubResource("Resource_28kcf"), SubResource("Resource_mavye"), SubResource("Resource_hjc78"), SubResource("Resource_afi6i"), SubResource("Resource_p3odf"), SubResource("Resource_l0ovs"), SubResource("Resource_by40c"), SubResource("Resource_lxsxo")])

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RollingCredits" load_steps=6 format=3 uid="uid://kmr1uhgtp68d"]
+
+[ext_resource type="Script" path="res://resources/credit.gd" id="1_x4py4"]
+[ext_resource type="Script" path="res://resources/rolling_credits.gd" id="2_7insv"]
+
+[sub_resource type="Resource" id="Resource_7vbap"]
+script = ExtResource("1_x4py4")
+duration_sec = 4.0
+job = "- Bucho Busca Comida -"
+names = Array[String](["The Portobello Edition"])
+
+[sub_resource type="Resource" id="Resource_mi53c"]
+script = ExtResource("1_x4py4")
+duration_sec = 4.0
+job = "Conversión"
+names = Array[String](["Pyramid Seph"])
+
+[sub_resource type="Resource" id="Resource_57w2e"]
+script = ExtResource("1_x4py4")
+duration_sec = 4.0
+job = "Comodín"
+names = Array[String](["Arasan"])
+
+[resource]
+script = ExtResource("2_7insv")
+list = Array[ExtResource("1_x4py4")]([SubResource("Resource_7vbap"), SubResource("Resource_mi53c"), SubResource("Resource_57w2e")])

@@ -8,7 +8,7 @@ signal finished
 
 func _ready() -> void:
 	if _autostart:
-		play()
+		pass#play()
 
 
 func _input(event: InputEvent) -> void:

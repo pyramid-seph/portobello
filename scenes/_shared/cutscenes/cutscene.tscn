@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fdgxvi0mndtq"]
 
-[ext_resource type="Script" path="res://scenes/_shared/cutscene.gd" id="1_kh4gp"]
+[ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene.gd" id="1_kh4gp"]
 
 [node name="Cutscene" type="Node2D"]
 script = ExtResource("1_kh4gp")

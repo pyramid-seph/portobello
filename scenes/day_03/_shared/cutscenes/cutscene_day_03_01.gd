@@ -1,4 +1,4 @@
-extends "res://scenes/_shared/cutscene.gd"
+extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
 const _DURATION_SEC_IMAGE: float = 3.6
 const _DURATION_SEC_DAY_TITLE: float = 1.2

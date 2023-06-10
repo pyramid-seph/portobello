@@ -9,7 +9,7 @@ func _ready() -> void:
 	set_process(false)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var removed = []
 	for path in _queue:
 		var request := _queue[path] as Request
