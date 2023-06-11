@@ -1,6 +1,7 @@
 class_name Day03Game
 extends Node
 
+const _CREDITS_PATH = "res://scenes/_shared/cutscenes/cutscene_credits.tscn"
 const _CUTSCENE_PATH_DAY_01 = "res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.tscn"
 const _LEVEL_PATH_FORMAT =  "res://scenes/day_03/_shared/level/day_03_level_%02d.tscn"
 
@@ -68,7 +69,7 @@ func _load_level(level: int, lives: int = Day03PlayerData.MAX_LIVES) -> void:
 
 
 func _get_high_score() -> int:
-	match Game.get_level_instance():
+	match _level:
 		Day03Game.Level.STORY_MODE_DAY_01:
 			return SaveDataManager.save_data.high_scores.day_three
 		Day03Game.Level.SCORE_ATTACK_3A:
@@ -80,7 +81,7 @@ func _get_high_score() -> int:
 
 
 func _set_high_score(new_high_score: int) -> void:
-	match Game.get_level_instance():
+	match _level:
 		Day03Game.Level.STORY_MODE_DAY_01:
 			SaveDataManager.save_data.high_scores.day_three = new_high_score
 		Day03Game.Level.SCORE_ATTACK_3A:
@@ -111,6 +112,7 @@ func _on_level_completed(lives: int, score: int) -> void:
 		_set_high_score(high_score)
 	_set_stars(0)
 	SaveDataManager.save()
+	SceneChanger.change_to_scene(_CREDITS_PATH)
 
 
 func _on_level_failed() -> void:
@@ -119,7 +121,11 @@ func _on_level_failed() -> void:
 
 func _on_results_screen_results_presented(total_score) -> void:
 	if _level == Day03Game.Level.STORY_MODE_DAY_01:
-		pass # load next level if level 1 (and pass current score and lives!);
-			# otherwise load credits with Game.start(Day03Game.Level.CREDITS)
+		SceneChanger.change_to_scene(_CREDITS_PATH)
+		pass
+		# load next level if level 1 (and pass current score and lives!);
+		# otherwise load credits with Game.start(Day03Game.Level.CREDITS)
+	elif  _level == Day03Game.Level.STORY_MODE_DAY_02:
+		SceneChanger.change_to_scene(_CREDITS_PATH)
 	else:
 		_go_to_title_screen()
