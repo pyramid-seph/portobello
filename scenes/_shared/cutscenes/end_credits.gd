@@ -5,36 +5,50 @@ signal finished
 @export var _original_credits: RollingCredits
 @export var _port_credits: RollingCredits
 
-@export_group("Debug", "_debug")
-@export var _debug_autostart: bool:
-	get:
-		return _debug_autostart and OS.is_debug_build()
-
 @onready var _job_label := %JobLabel as Label
 @onready var _names_label := %NamesLabel as Label
 @onready var _timer := $Timer as Timer
+@onready var _moon_sprite := $MoonSprite
+@onready var _flying_credits_bucho := $FlyingCreditsBucho
+@onready var _parallax_bg := $SeaSparklesParallaxBackground
+@onready var _ui := $UiComponents
 
 
-func _ready() -> void:
-	if _debug_autostart:
-		roll_all()
 
-
-func roll_all() -> void:
-	await roll(_original_credits)
-	await roll(_port_credits)
+func play() -> void:
+	_moon_sprite.visible = true
+	_flying_credits_bucho.visible = true
+	_parallax_bg.visible = true
+	_ui.visible = true
+	_parallax_bg.process_mode = Node.PROCESS_MODE_INHERIT
+	await _roll(_original_credits)
+	await _roll(_port_credits)
 	_job_label.text = "GameCL"
 	_names_label.text = "\n¡Gracias por jugar!"
 	_timer.start(4.0)
 	await _timer.timeout
 	_job_label.text = ""
 	_names_label.text = ""
+	_moon_sprite.visible = false
+	_flying_credits_bucho.visible = false
+	_ui.visible = false
+	_parallax_bg.visible = false
+	_parallax_bg.process_mode = Node.PROCESS_MODE_DISABLED
 	_timer.start(2.0)
 	await _timer.timeout
 	finished.emit()
 
 
-func roll(creditsRes: RollingCredits) -> void:
+func stop() -> void:
+	_timer.stop()
+	_moon_sprite.visible = false
+	_flying_credits_bucho.visible = false
+	_ui.visible = false
+	_parallax_bg.visible = false
+	_parallax_bg.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _roll(creditsRes: RollingCredits) -> void:
 	for credit in creditsRes.list:
 		_job_label.text = credit.job
 		_names_label.text = "\n".join(credit.names)

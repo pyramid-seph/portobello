@@ -8,16 +8,20 @@ signal finished
 
 func _ready() -> void:
 	if _autostart:
-		pass#play()
+		play()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
-		_internal_stop()
+		finish()
 
 
 func play() -> void:
 	_play()
+
+
+func finish() -> void:
+	_internal_stop()
 
 
 # Override

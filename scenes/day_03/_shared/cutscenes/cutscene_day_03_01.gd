@@ -23,7 +23,7 @@ func _play() -> void:
 	_tween.tween_interval(_DURATION_SEC_DAY_TITLE)
 	_tween.finished.connect(func():
 		_day_label.visible = false
-		finished.emit()
+		finish()
 	)
 
 
