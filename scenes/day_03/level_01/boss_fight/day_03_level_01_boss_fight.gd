@@ -27,7 +27,7 @@ func start() -> void:
 	_play_boss_introduction()
 
 
-func _play_boss_introduction() -> void:	
+func _play_boss_introduction() -> void:
 	_boss.position.y = (3 + _boss.body_height()) * -1
 	_boss.position.x =  _world.get_viewport_rect().size.x / 2 - 30
 	_ui.start_main_course_presentation()

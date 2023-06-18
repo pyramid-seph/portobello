@@ -27,26 +27,30 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	SceneChanger.scene_change_started.connect(_on_scene_change_started)
-	SceneChanger.scene_change_finished.connect(_on_scene_change_finished)
+	SceneChanger.change_started.connect(_on_scene_change_started)
+	SceneChanger.change_finished.connect(_on_scene_change_finished)
 
 
-func get_current_minigame() -> Minigame:
-	return _current_minigame
-
-
-func start(level: Minigame) -> void:
-	if _current_minigame == level:
+func start(minigame: Minigame) -> void:
+	if _current_minigame == minigame:
 		return
-	_current_minigame = level
-	var path = _get_scene_file_path(level)
-	var minigame_start_level = _get_minigame_start_level(level)
-	SceneChanger.change_to_scene(path, { "level": minigame_start_level })
+	_current_minigame = minigame
+	var path = _get_start_path(minigame)
+	var minigame_start_level = _get_minigame_start_level(minigame)
+	var shared_data = {}
+	if minigame_start_level != -1:
+		shared_data["level"] = minigame_start_level
+	SceneChanger.change_to_scene(path, shared_data)
 
 
-func _get_scene_file_path(minigame: Minigame) -> String:
+func _get_start_path(minigame: Minigame) -> String:
 	match minigame:
-		Minigame.STORY_DAY_03, \
+		Minigame.STORY_DAY_01:
+			return "res://scenes/day_01/_shared/cutscenes/cutscene_day_01_01.tscn"
+		Minigame.STORY_DAY_02:
+			return "res://scenes/day_02/_shared/cutscenes/cutscene_day_02_01.tscn"
+		Minigame.STORY_DAY_03:
+			return "res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.tscn"
 		Minigame.SCORE_ATTACK_3A, \
 		Minigame.SCORE_ATTACK_3B:
 			return "res://scenes/day_03/_shared/game/day_03_game.tscn"
@@ -67,8 +71,8 @@ func _get_minigame_start_level(minigame: Minigame) -> int:
 
 
 func _on_scene_change_started() -> void:
-	Game.is_pause_disabled = true
+	is_pause_disabled = true
 
 
 func _on_scene_change_finished() -> void:
-	Game.is_pause_disabled = false
+	is_pause_disabled = false

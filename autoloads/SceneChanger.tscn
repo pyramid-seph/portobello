@@ -68,8 +68,8 @@ negative_btn_text = ""
 positive_btn_text = "Salir"
 hide_shadow = true
 
-[connection signal="scene_change_error" from="." to="." method="_on_scene_change_error"]
-[connection signal="scene_change_finished" from="." to="." method="_on_scene_change_finished"]
-[connection signal="scene_change_started" from="." to="." method="_on_scene_change_started"]
+[connection signal="change_error" from="." to="." method="_on_change_error"]
+[connection signal="change_finished" from="." to="." method="_on_change_finished"]
+[connection signal="change_started" from="." to="." method="_on_change_started"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="positive_btn_pressed" from="ErrorDialog" to="." method="_on_simple_dialog_positive_btn_pressed"]

@@ -7,6 +7,7 @@ signal waves_completed
 signal completed(lives: int, score: int)
 signal failed
 
+enum GameMode { STORY, SCORE_ATTACK }
 enum LevelState { STARTING, PLAYING, GAME_OVER, LEVEL_COMPLETE }
 
 const START_DURATION: float = 1.6
@@ -14,6 +15,7 @@ const GAME_OVER_DURATION: float = 3.2
 const RESULTS_SCREEN_DELAY: float = 10.45
 
 @export var _player: Day03Player
+@export var game_mode: GameMode
 
 @export_group("Debug", "_debug")
 @export var _debug_is_god_mode_enabled: bool:
@@ -38,8 +40,7 @@ var _level_state: LevelState = LevelState.STARTING:
 @onready var _power_up_spawner := $Systems/PowerUpSpawner
 @onready var _timer := $Timer as Timer
 @onready var _boss_fight := $BossFight as Day03BossFight
-
-
+		
 func _ready() -> void:
 	_on_debug_is_god_mode_enabled_set()
 	_set_up_player()
@@ -48,6 +49,11 @@ func _ready() -> void:
 		_start_boss_phase()
 	else:
 		_start_wave_phase()
+
+
+func set_lives(lives: int) -> void: 
+	if _is_ready:
+		_player.lives = lives
 
 
 func _set_up_player() -> void:
@@ -123,7 +129,16 @@ func _on_level_complete() -> void:
 	_level_state = LevelState.LEVEL_COMPLETE
 	_timer.start(RESULTS_SCREEN_DELAY)
 	await _timer.timeout
-	completed.emit(_player.get_lives(), _player.get_score())
+	# TODO Show results screen
+#	_on_results_screen_finished()
+	completed.emit(_player.lives, _player.get_score())
+
+
+func _on_results_screen_finished() -> void:
+	if game_mode == GameMode.STORY:
+		pass
+	else:
+		Game.start(Game.Minigame.TITLE_SCREEN)
 
 
 func _on_day_3_ui_boss_alert_finished() -> void:

@@ -43,3 +43,5 @@ vertical_alignment = 1
 z_index = 1
 position = Vector2(120, 152)
 texture = ExtResource("1_2g317")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

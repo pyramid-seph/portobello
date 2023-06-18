@@ -1,10 +1,6 @@
 class_name Day03Game
 extends Node
 
-const _CREDITS_PATH = "res://scenes/_shared/cutscenes/cutscene_credits.tscn"
-const _CUTSCENE_PATH_DAY_01 = "res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.tscn"
-const _LEVEL_PATH_FORMAT =  "res://scenes/day_03/_shared/level/day_03_level_%02d.tscn"
-
 enum Level {
 	STORY_MODE_DAY_01,
 	STORY_MODE_DAY_02,
@@ -12,60 +8,51 @@ enum Level {
 	SCORE_ATTACK_3B,
 }
 
+@export var _paca: PackedScene
 @export var _level: Day03Game.Level = Day03Game.Level.STORY_MODE_DAY_01
-@export_group("Debug", "_debug")
-@export var _debug_skip_cutscenes: bool = false:
-	get:
-		return _debug_skip_cutscenes and OS.is_debug_build()
 
-var _level_instance: Day03Level
+var _initial_lives: int = Day03PlayerData.MAX_LIVES
 
 @onready var _results_screen := $ResultsScreenBuffet
+@onready var _level_01_placeholder : InstancePlaceholder = $Day03Level01
+@onready var _level_02_placeholder : InstancePlaceholder = $Day03Level02
 
 
 func _ready() -> void:
-	_start_minigame()
+	_play_level()
 
 
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_level = data.level
+	if data.has("lives"):
+		_initial_lives = data.lives
 
 
 func _play_level() -> void:
-	if _level_instance:
-		_level_instance.queue_free()
-	
+	var mode = null
+	var level_instance: Day03Level = null
 	match _level:
-		Day03Game.Level.STORY_MODE_DAY_01,\
+		Day03Game.Level.STORY_MODE_DAY_01:
+			level_instance = _level_01_placeholder.create_instance()
+			mode = Day03Level.GameMode.STORY
+		Day03Game.Level.STORY_MODE_DAY_02:
+			level_instance = _level_02_placeholder.create_instance()
+			mode = Day03Level.GameMode.STORY
 		Day03Game.Level.SCORE_ATTACK_3A:
-			_load_level(1)
+			level_instance = _level_01_placeholder.create_instance()
+			mode = Day03Level.GameMode.SCORE_ATTACK
 		Day03Game.Level.SCORE_ATTACK_3B:
-			_load_level(2)
+			level_instance = _level_02_placeholder.create_instance()
+			mode = Day03Level.GameMode.SCORE_ATTACK
 		_:
 			_go_to_title_screen()
-
-
-func _start_minigame() -> void:
-	if _debug_skip_cutscenes or _level != Day03Game.Level.STORY_MODE_DAY_01:
-		_play_level()
-	else:
-		var old_scene = _get_level_scene()
-		await SceneChanger.change_to_scene(_CUTSCENE_PATH_DAY_01, {}, old_scene)
-		_get_level_scene().finished.connect(_play_level)
-
-
-func _get_level_scene() -> Node:
-	return Utils.last_child($Level)
-
-
-func _load_level(level: int, lives: int = Day03PlayerData.MAX_LIVES) -> void:
-	var path = _LEVEL_PATH_FORMAT % level
-	var shared_data = { "lives": lives }
-	await SceneChanger.change_to_scene(path, shared_data, _get_level_scene())
-	var level_scene = _get_level_scene()
-	level_scene.completed.connect(_on_level_completed)
-	level_scene.failed.connect(_on_level_failed)
+	
+	if level_instance:
+		level_instance.failed.connect(_on_level_failed)
+		level_instance.completed.connect(_on_level_completed)
+		level_instance.set_lives(_initial_lives)
+		level_instance.game_mode = mode
 
 
 func _get_high_score() -> int:
@@ -101,7 +88,7 @@ func _go_to_title_screen() -> void:
 
 
 func _on_level_completed(lives: int, score: int) -> void:
-	_results_screen.is_last_level = true # TODO
+	_results_screen.is_last_level = _level == Day03Game.Level.STORY_MODE_DAY_02
 	var high_score = _get_high_score()
 	var total_score = _results_screen.start(
 		lives, 
@@ -112,7 +99,6 @@ func _on_level_completed(lives: int, score: int) -> void:
 		_set_high_score(high_score)
 	_set_stars(0)
 	SaveDataManager.save()
-	SceneChanger.change_to_scene(_CREDITS_PATH)
 
 
 func _on_level_failed() -> void:
@@ -121,11 +107,11 @@ func _on_level_failed() -> void:
 
 func _on_results_screen_results_presented(total_score) -> void:
 	if _level == Day03Game.Level.STORY_MODE_DAY_01:
-		SceneChanger.change_to_scene(_CREDITS_PATH)
-		pass
-		# load next level if level 1 (and pass current score and lives!);
-		# otherwise load credits with Game.start(Day03Game.Level.CREDITS)
+		SceneChanger.change_to_scene(
+				"res://scenes/day_03/_shared/game/day_03_game.tscn",
+				 { "level": Level.STORY_MODE_DAY_02, "lives": 8 }
+		)
 	elif  _level == Day03Game.Level.STORY_MODE_DAY_02:
-		SceneChanger.change_to_scene(_CREDITS_PATH)
+		Game.start(Game.Minigame.CREDITS)
 	else:
 		_go_to_title_screen()

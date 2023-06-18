@@ -46,6 +46,12 @@ var _is_dead: bool
 var _min_pos: Vector2
 var _max_pos: Vector2
 
+var lives: int:
+	set(value):
+		_player_data.lives = value
+	get:
+		return _player_data.lives
+
 @onready var _is_ready: bool = true
 @onready var _world = get_parent()
 @onready var _gun := $Gun as Gun
@@ -67,10 +73,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_process_movement(delta)
 	_process_fire()
-
-
-func get_lives() -> int:
-	return _player_data.lives
 
 
 func get_score() -> int:

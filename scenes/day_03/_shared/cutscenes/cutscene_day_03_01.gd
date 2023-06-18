@@ -30,3 +30,7 @@ func _play() -> void:
 func _clean_up() -> void:
 	if _tween and _tween.is_running():
 		_tween.kill()
+
+
+func _on_finished() -> void:
+	SceneChanger.change_to_scene("res://scenes/day_03/_shared/game/day_03_game.tscn")

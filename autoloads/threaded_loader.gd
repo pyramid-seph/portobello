@@ -59,7 +59,7 @@ class Request:
 		LOADED,
 		ERROR,
 	}
-
+ 
 	var loaded_resource: Resource
 	var status: Request.Status = Status.IN_PROGRESS
 	var progress: float
