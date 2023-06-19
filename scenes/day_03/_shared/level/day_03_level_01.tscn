@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="5_8yjdr"]
 
 [node name="Day03Level01" instance=ExtResource("1_dfqff")]
+_save_data_story_mode_score_name = "day_three"
+_save_data_score_attack_mode_score_name = "buff_three_a"
+_save_data_stars_name = "day_one"
+_debug_start_at_boss_fight = true
 
 [node name="BossFight" parent="." index="0" node_paths=PackedStringArray("_player")]
 script = ExtResource("2_p20nx")
@@ -17,6 +21,13 @@ Hive = ExtResource("5_8yjdr")
 script = ExtResource("3_hgugf")
 
 [node name="DroneShootManager" parent="Systems" index="3" instance=ExtResource("4_alffp")]
+
+[node name="ResultsScreen" parent="Interface" index="1"]
+_stars_evaluation_mode = 1
+_stars_threshold_two = 9000
+_stars_threshold_three = 12000
+_stars_threshold_four = 12500
+_stars_threshold_five = 15000
 
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_all_waves_completed"]
 [connection signal="wave_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_wave_completed"]

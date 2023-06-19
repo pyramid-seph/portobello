@@ -75,8 +75,16 @@ func _process(delta: float) -> void:
 	_process_fire()
 
 
+func get_high_score() -> int:
+	return _player_data.hi_score
+
+
 func get_score() -> int:
 	return _player_data.score
+
+
+func set_score(value: int) -> void:
+	_player_data.score = value
 
 
 func size() -> Vector2:

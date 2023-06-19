@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2h71m1hkjgum"]
+[gd_scene load_steps=13 format=3 uid="uid://2h71m1hkjgum"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level.gd" id="1_wjcvv"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_boss_fight.gd" id="2_wci2p"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/items/stormy_cloud.tscn" id="9_e6eku"]
 [ext_resource type="PackedScene" uid="uid://clo8ecw1nr7f2" path="res://scenes/day_03/_shared/systems/wave_manager.tscn" id="10_yasqi"]
 [ext_resource type="PackedScene" uid="uid://bg6r1v71n7n0s" path="res://scenes/day_03/_shared/backgrounds/day_03_bg.tscn" id="12_206kv"]
+[ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="12_f7tyd"]
 [ext_resource type="PackedScene" uid="uid://bfidgn8t0dudh" path="res://scenes/day_03/_shared/ui/day_03_ui.tscn" id="13_f3m4q"]
 
 [node name="Day03Level" type="Node" node_paths=PackedStringArray("_player")]
@@ -46,6 +47,8 @@ process_mode = 1
 
 [node name="Day03Ui" parent="Interface" instance=ExtResource("13_f3m4q")]
 
+[node name="ResultsScreen" parent="Interface" instance=ExtResource("12_f7tyd")]
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
@@ -54,3 +57,4 @@ one_shot = true
 [connection signal="completed" from="BossFight" to="." method="_on_boss_fight_completed"]
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="." method="_on_wave_manager_all_waves_completed"]
 [connection signal="boss_alert_finished" from="Interface/Day03Ui" to="." method="_on_day_3_ui_boss_alert_finished"]
+[connection signal="finished" from="Interface/ResultsScreen" to="." method="_on_results_screen_finished"]

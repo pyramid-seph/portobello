@@ -1,5 +1,5 @@
 class_name  Day03Ui
-extends Node
+extends Control
 
 signal score_changed(new_val)
 signal hi_score_changed(new_val)
@@ -40,17 +40,17 @@ func start_main_course_presentation(_duration_sec: float = -1) -> void:
 	_main_course_label.start(_duration_sec)
 
 
-func change_bars_visibility(is_visible: bool) -> void:
-	_bars.visible = is_visible
+func change_bars_visibility(value: bool) -> void:
+	_bars.visible = value
 
 
-func change_score_visibility(is_visible: bool) -> void:
-	_score_label.visible = is_visible
-	_hi_score_label.visible = is_visible
+func change_score_visibility(value: bool) -> void:
+	_score_label.visible = value
+	_hi_score_label.visible = value
 
 
-func change_black_screen_visibility(is_visible: bool) -> void:
-	_black_screen.visible = is_visible
+func change_black_screen_visibility(value: bool) -> void:
+	_black_screen.visible = value
 
 
 func _start_game_presentation() -> void:
@@ -82,8 +82,14 @@ func _on_day_03_level_pause_state_changed(new_state: bool) -> void:
 
 
 func _on_day_03_level_level_state_changed(new_state: int) -> void:
-	if new_state == Day03Level.LevelState.STARTING:
-		_start_game_presentation()
+	match new_state:
+		Day03Level.LevelState.STARTING:
+			visible = true
+			_start_game_presentation()
+		Day03Level.LevelState.SHOWING_RESULTS:
+			visible = false
+		_:
+			visible = true
 	level_state_changed.emit(new_state)
 
 

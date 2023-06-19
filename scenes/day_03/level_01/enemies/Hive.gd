@@ -40,6 +40,13 @@ func _ready() -> void:
 	for child in Utils.children_in_group(body, "hive_drones"):
 		var drone = child as HiveDrone
 		drone.world = world
+
+
+
+		drone.hp = 1
+
+
+
 		_hive_drones.append(drone)
 		drone.died.connect(_on_drone_dead)
 
