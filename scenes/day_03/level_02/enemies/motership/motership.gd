@@ -3,13 +3,7 @@ extends Node2D
 
 signal died
 
-
-@export var _hp: int = 1:
-	set(value):
-		var _old_hp = _hp
-		_hp = maxi(value, 0)
-		if _old_hp != _hp:
-			_on_hp_changed()
+@export var _initial_hp: int = 1
 @export var is_attacking: bool:
 	set(value):
 		var old_value = is_attacking
@@ -24,32 +18,32 @@ signal died
 		player = value
 		_on_player_set()
 @export var Explosion: PackedScene
-@export_group("Debug", "debug_")
-@export var debug_show_hp: bool = false:
-	set(value):
-		debug_show_hp = value
-		_on_debug_show_hp_set()
 
 var _is_dead: bool
+var _hp: int = 1:
+	set(value):
+		var _old_hp = _hp
+		_hp = maxi(value, 0)
+		if _old_hp != _hp:
+			_on_hp_changed()
 
 @onready var _block_spawner_weapon := $BlockSpawnerWeapon
 @onready var _heat_seeker_weapon := $HeatSeekerWeapon
 @onready var _laser_balls_weapon := $LaserBallsWeapon
 @onready var _alien_hologram := $Inside/AlienHologram
 @onready var _flash := %Flash
-@onready var _hp_label := $Debug/HpLabel as Label
 @onready var _is_ready: bool = true
 @onready var _inside := $Inside as Node2D
 @onready var _explosions_container := $ExplosionsContainer as Node2D
 @onready var _start_position := $Inside/StartPosition
 @onready var _abduction_ray := $AbductionRay
 @onready var _dialogue := $Dialogue as Dialogue
+@onready var _life_bar := %LifeBar as TextureProgressBar
 
 
 func _ready() -> void:
+	_hp = _initial_hp
 	_on_player_set()
-	_on_debug_show_hp_set()
-	_on_hp_changed()
 	_on_is_attacking_changed()
 
 
@@ -87,8 +81,8 @@ func _move_player_inside() -> void:
 	player.move_offset_top = 143
 
 
-func _update_hp_label() -> void:
-	_hp_label.text = "HP: %s" % _hp
+func _update_hp_bar() -> void:
+	_life_bar.value = (_hp * _life_bar.max_value) / _initial_hp
 
 
 func _on_player_set() -> void:
@@ -97,10 +91,6 @@ func _on_player_set() -> void:
 	_move_player_inside()
 	_heat_seeker_weapon.target = player
 	_block_spawner_weapon.target = player
-
-func _on_debug_show_hp_set() -> void:
-	if is_ready():
-		_hp_label.visible = debug_show_hp and OS.is_debug_build()
 
 
 func _on_is_attacking_changed() -> void:
@@ -128,7 +118,7 @@ func _enable_weapons() -> void:
 func _on_hp_changed() -> void:
 	if not is_ready():
 		return
-	_update_hp_label()
+	_update_hp_bar()
 	_enable_weapons()
 
 
