@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="5_8yjdr"]
 
 [node name="Day03Level01" instance=ExtResource("1_dfqff")]
+_results_screen_delay_sec = 2.4
 _save_data_story_mode_score_name = "day_three"
 _save_data_score_attack_mode_score_name = "buff_three_a"
 _save_data_stars_name = "day_one"

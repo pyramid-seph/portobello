@@ -10,7 +10,7 @@ enum StarsEvaluationMode {
 
 const BONUS_MULTIPLIER: int = 1000
 const MAX_LIVES: int = 9
-const LEVEL_RESULTS_INITIAL_INTERVAL_SEC: float = 3.2
+const LEVEL_RESULTS_INITIAL_INTERVAL_SEC: float = 0.8
 const LEVEL_RESULTS_LABELS_DELAY_SEC: float = 0.4
 const LEVEL_RESULTS_LAST_INTERVAL_SEC: float = 3.2
 const LEVEL_COMPLETED_DURATION_SEC: float = 3.2

@@ -18,10 +18,10 @@ enum LevelState {
 
 const START_DURATION: float = 1.6
 const GAME_OVER_DURATION: float = 3.2
-const RESULTS_SCREEN_DELAY: float = 10.45
 
 @export var _player: Day03Player
 @export var _game_mode: Game.Mode
+@export var _results_screen_delay_sec: float = 1.0
 
 @export_group("Save Data", "_save_data")
 @export var _save_data_story_mode_score_name: String
@@ -171,7 +171,7 @@ func _on_boss_fight_completed() -> void:
 	_power_up_spawner.disable()
 	_player.is_losing_stamina = false
 	_level_state = LevelState.LEVEL_COMPLETE
-	_timer.start(RESULTS_SCREEN_DELAY)
+	_timer.start(_results_screen_delay_sec)
 	await _timer.timeout
 	_world.set_process(PROCESS_MODE_DISABLED)
 	_world.visible = false
