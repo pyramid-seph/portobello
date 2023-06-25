@@ -1,5 +1,10 @@
 extends Node
 
+enum Mode { 
+	SCORE_ATTACK,
+	STORY,
+}
+
 enum Minigame {
 	TITLE_SCREEN,
 	STORY_DAY_01,

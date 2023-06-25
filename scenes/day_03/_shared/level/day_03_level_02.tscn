@@ -1,13 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2y8ad6yqxp0h"]
 
-[ext_resource type="PackedScene" uid="uid://cjai2rj84ghyr" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
+[ext_resource type="PackedScene" uid="uid://2h71m1hkjgum" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_02_waves.gd" id="2_1y1mh"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/boss_fight/day_03_level_02_boss_fight.gd" id="2_qu7pv"]
 [ext_resource type="PackedScene" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.tscn" id="3_i5cuv"]
-[ext_resource type="PackedScene" uid="uid://btgqdmv7oc3yl" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
 [ext_resource type="Texture2D" uid="uid://bsb6ocl5los0g" path="res://art/motership_intro_guide.png" id="6_t8kjm"]
 
 [node name="Day03Level02" instance=ExtResource("1_ttrf2")]
+_debug_is_god_mode_enabled = true
+_debug_start_at_boss_fight = true
 
 [node name="BossFight" parent="." index="0" node_paths=PackedStringArray("_player")]
 script = ExtResource("2_qu7pv")

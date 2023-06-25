@@ -8,20 +8,23 @@ enum StarsEvaluationMode {
 	SCORE,
 }
 
-const Utils = preload("res://scenes/_shared/utils.gd")
 const BONUS_MULTIPLIER: int = 1000
-const INITIAL_DELAY: float = 0.8
-const LABELS_DELAY: float = 0.4
-const LAST_INTERVAL: float = 4.0
-const COMPLETED_DELAY: float = 4.0
+const MAX_LIVES: int = 9
+const LEVEL_RESULTS_INITIAL_INTERVAL_SEC: float = 3.2
+const LEVEL_RESULTS_LABELS_DELAY_SEC: float = 0.4
+const LEVEL_RESULTS_LAST_INTERVAL_SEC: float = 3.2
+const LEVEL_COMPLETED_DURATION_SEC: float = 3.2
+const STARS_DELAY_SEC: float = 0.6
+const STARS_DURATION_SEC: float = 0.4
+const STARS_LAST_INTERVAL_SEC: float = 1.4
 const RESULTS_LABELS_COLOR: Color = Color.WHITE
 const COMPLETE_LABELS_COLOR: Color = Color("F13030")
-const MAX_LIVES = 9
-
-# TODO if this is the last level, print "reto completado"; otherwise print ¡Pan Comido!
-@export var is_last_level: bool = false
-@export var level_complete_text: String = "¡Pan comido!"
-@export var last_level_complete_text: String = "¡Reto completado!"
+const MINIGAME_COMPLETE_TEXT: String = "¡Reto completado!"
+const STARS_RESULT_ONE_TEXT: String = "¡Yawn!"
+const STARS_RESULT_TWO_TEXT: String = "¡No está mal!"
+const STARS_RESULT_THREE_TEXT: String = "¡Bien!"
+const STARS_RESULT_FOUR_TEXT: String = "¡Muy bien!"
+const STARS_RESULT_FIVE_TEXT: String = "¡Prrrrrrfecto!"
 
 @export_group("Stars", "_stars")
 @export var _stars_evaluation_mode: StarsEvaluationMode
@@ -31,6 +34,15 @@ const MAX_LIVES = 9
 @export var _stars_threshold_five: int
 
 var _tween: Tween
+var _is_last_level: bool
+var _game_mode: Game.Mode
+var _bonus: int
+var _total_score: int
+var _extra_lives: int = -1
+var _stars: int = -1
+var _lives: int
+var _score: int
+var _high_score: int
 
 @onready var _background_color_rect := $ColorRect
 @onready var _results_container := $ColorRect/MarginContainer/ResultsContainer
@@ -39,7 +51,6 @@ var _tween: Tween
 @onready var _score_label := %ScoreLabel as Label
 @onready var _lives_bonus_label := %LivesBonusLabel as Label
 @onready var _total_score_label := %TotalScoreLabel as Label
-@onready var _level_complete_label := %LevelCompleteLabel as Label
 @onready var _extra_lives_label := %ExtraLivesLabel as Label
 @onready var _stars_label := %StarsLabel as Label
 @onready var _evaluation_label := %EvaluationLabel as Label
@@ -50,26 +61,35 @@ func _ready() -> void:
 	_ensure_reset_ui()
 
 
-func start(lives: int, score: int, high_score: int) -> void:
-	var bonus: int = BONUS_MULTIPLIER * lives
-	var total_score: int = score + bonus
-	var extra_lives: int = 0
-	# TODO if is_last_level or not HISTORY_MODE
-	if is_last_level:
+func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, high_score: int) -> void:
+	_lives = lives
+	_score = score
+	_high_score = high_score
+	_game_mode = game_mode
+	_is_last_level = is_last_level
+	
+	_bonus = BONUS_MULTIPLIER * lives
+	_total_score = score + _bonus
+	_extra_lives = _calculate_extra_lives(_lives, _total_score)
+	_stars = _calculate_stars(_lives, _total_score)
+	
+	# TODO Save results to disk
+	
+	await _present_results()
+	finished.emit(_total_score, _extra_lives, _stars)
+
+
+func _calculate_extra_lives(lives: int, score: int) -> int:
+	var extra_lives: int = -1
+	if _game_mode == Game.Mode.STORY and not _is_last_level:
 		extra_lives = mini(score / 1_000, MAX_LIVES - lives)
-	_score_label.text = "Score = %s" % score
-	_lives_bonus_label.text = "Bono = %s x 1000 = %s" % [lives, bonus]
-	_total_score_label.text = "Total = %s" % total_score
-	var lives_text = "vida"
-	if extra_lives > 1:
-		lives_text += "s"
-	_extra_lives_label.text = "¡%s %s extra!" % [extra_lives, lives_text]
-	_level_complete_label.text = _get_level_complete_text()
-	var stars = _calculate_stars(lives, total_score)
-	_tween_results_screen(lives, score, total_score, high_score, extra_lives, stars)
+	return extra_lives
 
 
 func _calculate_stars(lives: int, score: int) -> int:
+	if _game_mode != Game.Mode.STORY or not _is_last_level:
+		return -1
+	
 	if _stars_evaluation_mode == StarsEvaluationMode.LIVES:
 		return _calculate_stars_by(lives)
 	return _calculate_stars_by(score)
@@ -88,6 +108,47 @@ func _calculate_stars_by(value: int) -> int:
 	return stars
 
 
+func _get_stars_result_text(stars: int) -> String:
+	match stars:
+		1:
+			return STARS_RESULT_ONE_TEXT
+		2:
+			return STARS_RESULT_TWO_TEXT
+		3:
+			return STARS_RESULT_THREE_TEXT
+		4:
+			return STARS_RESULT_FOUR_TEXT
+		5:
+			return STARS_RESULT_FIVE_TEXT
+		_:
+			return ""
+
+
+func _change_results_labels_color(color: Color) -> void:
+	Utils.change_label_color(_score_label, color)
+	Utils.change_label_color(_lives_bonus_label, color)
+	Utils.change_label_color(_total_score_label, color)
+	Utils.change_label_color(_extra_lives_label, color)
+
+
+func _build_extra_lives_text(extra_lives: int) -> String:
+	if extra_lives < 1:
+		return ""
+	
+	var lives_text = "vida"
+	if extra_lives > 1:
+		lives_text += "s"
+	return "¡%s %s extra!" % [extra_lives, lives_text]
+
+
+func _setup_label_texts() -> void:
+	_score_label.text = "Score = %s" % _score
+	_lives_bonus_label.text = "Bono = %s x 1000 = %s" % [_lives, _bonus]
+	_total_score_label.text = "Total = %s" % _total_score
+	_extra_lives_label.text = _build_extra_lives_text(_extra_lives)
+	_evaluation_label.text = _get_stars_result_text(_stars)
+
+
 func _ensure_reset_ui() -> void:
 	_background_color_rect.visible = false
 	_results_container.visible = false
@@ -99,83 +160,77 @@ func _ensure_reset_ui() -> void:
 	Utils.change_label_color(_new_high_score_label, Color.TRANSPARENT)
 
 
-func _tween_results_screen(lives: int, score: int, total_score: int, high_score: int, extra_lives: int, stars: int) -> void:
-	_results_container.visible = true
-	_background_color_rect.visible = true
-	_change_results_labels_color(Color.TRANSPARENT)
-	Utils.change_label_color(_new_high_score_label, Color.TRANSPARENT)
-	if _tween: _tween.kill()
-	_tween = create_tween()
-	_tween.tween_callback(func():
-		Utils.change_label_color(_score_label, RESULTS_LABELS_COLOR)
-	).set_delay(INITIAL_DELAY)
-	_tween.tween_callback(func():
-		Utils.change_label_color(_lives_bonus_label, RESULTS_LABELS_COLOR)
-	).set_delay(LABELS_DELAY)
-	_tween.tween_callback(func():
-		Utils.change_label_color(_total_score_label, RESULTS_LABELS_COLOR)
-	).set_delay(LABELS_DELAY)
-	var extra_lives_delay: float = 0.0
-	if extra_lives > 0:
-		extra_lives_delay = LABELS_DELAY * 2
-		_tween.tween_callback(func():
-			Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR)
-		).set_delay(extra_lives_delay)
-	_tween.tween_callback(func():
-		_results_container.visible = false
-		_level_completed_container.visible = true
-		if total_score > high_score:
-			Utils.change_label_color(_new_high_score_label, COMPLETE_LABELS_COLOR)
-	).set_delay(COMPLETED_DELAY - extra_lives_delay)
-	_tween.tween_interval(LAST_INTERVAL)
+func _tween_level_results() -> void:
+	_tween.tween_callback(func(): 
+		_results_container.visible = true
+		_change_results_labels_color(Color.TRANSPARENT)
+	)
+	_tween.tween_interval(LEVEL_RESULTS_INITIAL_INTERVAL_SEC)
+	_tween.tween_callback(func(): Utils.change_label_color(_score_label, RESULTS_LABELS_COLOR))
+	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
+	_tween.tween_callback(func(): Utils.change_label_color(_lives_bonus_label, RESULTS_LABELS_COLOR))
+	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
+	_tween.tween_callback(func(): Utils.change_label_color(_total_score_label, RESULTS_LABELS_COLOR))
+	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
+	if _extra_lives > 0:
+		_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
+		_tween.tween_callback(func(): Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR))
+	_tween.tween_interval(LEVEL_RESULTS_LAST_INTERVAL_SEC)
+	_tween.tween_callback(func(): _results_container.visible = false)
+
+
+func _tween_minigame_results() -> void:
+	if not _is_last_level:
+		return
 	
-	if stars > 0:
-		_tween.tween_callback(func():
-			_level_completed_container.visible = false
-			_stars_container.visible = true
-			_evaluation_label.visible = false
-			_stars_label.text = ""
-		)
-		for i in stars:
-			_tween.tween_interval(0.4)
-			_tween.tween_callback(func():
-				_stars_label.text += "*" if i == 0 else " *"
-			)
-		_tween.tween_callback(func():
-			_evaluation_label.text = _get_stars_evaluation_name(stars)
-			_evaluation_label.visible = true
-		)
-		_tween.tween_interval(1.8)
-	_tween.finished.connect(func(): 
-		finished.emit(total_score, extra_lives, stars)
+	_tween.tween_callback(func():
+		_level_completed_container.visible = true
+		var high_score_label_color
+		if _total_score > _high_score:
+			high_score_label_color = COMPLETE_LABELS_COLOR
+		else:
+			high_score_label_color = Color.TRANSPARENT
+		Utils.change_label_color(_new_high_score_label, high_score_label_color)
+	)
+	_tween.tween_interval(LEVEL_COMPLETED_DURATION_SEC)
+	_tween.tween_callback(func():
+		_level_completed_container.visible = false
 	)
 
 
-func _get_stars_evaluation_name(stars: int) -> String:
-	match stars:
-		1:
-			return "¡Yawn!"
-		2:
-			return "¡No está mal!"
-		3:
-			return "¡Bien!"
-		4:
-			return "¡Muy bien!"
-		5:
-			return "¡Prrrrrrfecto!"
-		_:
-			return ""
+func _tween_stars_results() -> void:
+	if _stars <= 0:
+		return
+	
+	_tween.tween_callback(func():
+		_stars_container.visible = true
+		_evaluation_label.visible = false
+		_stars_label.text = ""
+	)
+	_tween.tween_interval(STARS_DELAY_SEC)
+	for i in _stars:
+		_tween.tween_callback(func():
+			_stars_label.text += "*" if i == 0 else " *"
+		)
+		_tween.tween_interval(STARS_DURATION_SEC)
+	_tween.tween_callback(func():
+		_evaluation_label.visible = true
+	)
+	_tween.tween_interval(STARS_LAST_INTERVAL_SEC)
+	_tween.tween_callback(func():
+		_stars_container.visible = false
+	)
 
 
-func _get_level_complete_text() -> String:
-	if is_last_level:
-		return "¡Pan comido!\n "
-	else:
-		return "¡Reto completado!\n "
-
-
-func _change_results_labels_color(color: Color) -> void:
-	Utils.change_label_color(_score_label, color)
-	Utils.change_label_color(_lives_bonus_label, color)
-	Utils.change_label_color(_total_score_label, color)
-	Utils.change_label_color(_extra_lives_label, color)
+func _present_results() -> Signal:
+	_setup_label_texts()
+	
+	if _tween:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.tween_callback(func(): _background_color_rect.visible = true)
+	_tween_level_results()
+	_tween_minigame_results()
+	_tween_stars_results()
+	_tween.tween_callback(func(): _background_color_rect.visible = false)
+	return _tween.finished

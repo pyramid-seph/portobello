@@ -8,7 +8,6 @@ enum Level {
 	SCORE_ATTACK_3B,
 }
 
-@export var _paca: PackedScene
 @export var _level: Day03Game.Level = Day03Game.Level.STORY_MODE_DAY_01
 
 var _initial_lives: int = Day03PlayerData.MAX_LIVES
@@ -38,17 +37,17 @@ func _play_level() -> void:
 	match _level:
 		Day03Game.Level.STORY_MODE_DAY_01:
 			level_instance = _level_01_placeholder.create_instance()
-			mode = Day03Level.GameMode.STORY
+			mode = Game.Mode.STORY
 		Day03Game.Level.STORY_MODE_DAY_02:
 			level_instance = _level_02_placeholder.create_instance()
 			level_pos = 1
-			mode = Day03Level.GameMode.STORY
+			mode = Game.Mode.STORY
 		Day03Game.Level.SCORE_ATTACK_3A:
 			level_instance = _level_01_placeholder.create_instance()
-			mode = Day03Level.GameMode.SCORE_ATTACK
+			mode = Game.Mode.SCORE_ATTACK
 		Day03Game.Level.SCORE_ATTACK_3B:
 			level_instance = _level_02_placeholder.create_instance()
-			mode = Day03Level.GameMode.SCORE_ATTACK
+			mode = Game.Mode.SCORE_ATTACK
 		_:
 			_go_to_title_screen()
 	
@@ -56,11 +55,11 @@ func _play_level() -> void:
 		level_instance.failed.connect(_on_level_failed)
 		level_instance.beaten.connect(_on_level_beaten)
 		level_instance.start(
-				mode,
-				_initial_lives,
-				_initial_score,
-				level_pos,
-				_is_last_level()
+			mode,
+			level_pos,
+			_is_last_level(),
+			_initial_lives,
+			_initial_score,
 		)
 
 
@@ -82,7 +81,7 @@ func _on_level_failed() -> void:
 	_go_to_title_screen()
 
 
-func _on_level_beaten(lives: int, total_score: int) -> void:
+func _on_level_beaten(lives: int, total_score: int, stars: int) -> void:
 	if _level == Day03Game.Level.STORY_MODE_DAY_01:
 		SceneChanger.change_to_scene(
 				"res://scenes/day_03/_shared/game/day_03_game.tscn",

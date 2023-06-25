@@ -4,17 +4,16 @@ extends Node
 
 signal level_state_changed(new_state)
 signal waves_completed
-signal beaten(lives: int, total_score: int)
+signal beaten(lives: int, total_score: int, stars: int)
 signal failed
 
-enum GameMode { STORY, SCORE_ATTACK }
 enum LevelState { 
 	READY, 
 	STARTING, 
 	PLAYING, 
 	GAME_OVER,
 	LEVEL_COMPLETE,
-	SHOWING_RESULTS
+	SHOWING_RESULTS,
 }
 
 const START_DURATION: float = 1.6
@@ -22,7 +21,7 @@ const GAME_OVER_DURATION: float = 3.2
 const RESULTS_SCREEN_DELAY: float = 10.45
 
 @export var _player: Day03Player
-@export var game_mode: GameMode
+@export var _game_mode: Game.Mode
 
 @export_group("Save Data", "_save_data")
 @export var _save_data_story_mode_score_name: String
@@ -60,14 +59,14 @@ func _ready() -> void:
 	_on_debug_is_god_mode_enabled_set()
 	_set_up_player()
 	if get_parent() == $"/root":
-		start(game_mode, Day03PlayerData.MAX_LIVES, 0, 0, true)
+		start(_game_mode, 0, false, Day03PlayerData.MAX_LIVES, 0)
 
 
-func start(mode: Day03Level.GameMode, lives: int, score: int, level_pos: int, is_last_level: bool) -> void:
+func start(mode: Game.Mode, level_pos: int, is_last_level: bool, lives: int, score: int) -> void:
 	if _level_state != LevelState.READY:
 		return
 	_level_state = LevelState.STARTING
-	game_mode = mode
+	_game_mode = mode
 	_player.lives = lives
 	_player.set_score(score)
 	_is_last_level = is_last_level
@@ -80,7 +79,7 @@ func start(mode: Day03Level.GameMode, lives: int, score: int, level_pos: int, is
 
 
 func _load_high_score() -> void:
-	if game_mode == GameMode.STORY:
+	if _game_mode == Game.Mode.STORY:
 		pass
 	else:
 		pass
@@ -152,25 +151,9 @@ func _on_player_out_of_lives() -> void:
 	_game_over()
 
 
-func _on_level_complete() -> void:
-	_stamina_spawner.disable()
-	_power_up_spawner.disable()
-	_player.is_losing_stamina = false
-	_level_state = LevelState.LEVEL_COMPLETE
-	_timer.start(RESULTS_SCREEN_DELAY)
-	await _timer.timeout
-	_world.set_process(PROCESS_MODE_DISABLED)
-	_level_state = LevelState.SHOWING_RESULTS
-	_results_screen.start(
-			_player.lives, 
-			_player.get_score(), 
-			_player.get_high_score()
-	)
-
-
 func _on_results_screen_finished(total_score: int, extra_lives: int, stars: int) -> void:
 	_player.lives += extra_lives
-	beaten.emit(_player.lives, total_score)
+	beaten.emit(_player.lives, total_score, stars)
 
 
 func _on_day_3_ui_boss_alert_finished() -> void:
@@ -184,4 +167,19 @@ func _on_wave_manager_all_waves_completed() -> void:
 
 
 func _on_boss_fight_completed() -> void:
-	_on_level_complete()
+	_stamina_spawner.disable()
+	_power_up_spawner.disable()
+	_player.is_losing_stamina = false
+	_level_state = LevelState.LEVEL_COMPLETE
+	_timer.start(RESULTS_SCREEN_DELAY)
+	await _timer.timeout
+	_world.set_process(PROCESS_MODE_DISABLED)
+	_world.visible = false
+	_level_state = LevelState.SHOWING_RESULTS
+	_results_screen.start(
+		_game_mode,
+		_is_last_level,
+		_player.lives, 
+		_player.get_score(), 
+		_player.get_high_score()
+	)

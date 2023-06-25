@@ -26,7 +26,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_gc208")
-is_last_level = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -108,7 +107,6 @@ size_flags_vertical = 4
 theme_override_constants/separation = -4
 
 [node name="LevelCompleteLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
 theme_override_fonts/font = ExtResource("2_3udlg")
@@ -129,6 +127,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="StarsContainer" type="PanelContainer" parent="ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
