@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://ia6wnprew2fj"]
+
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_xe03b"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/ufo.gd" id="2_nhoik"]
+[ext_resource type="Texture2D" uid="uid://d038j14u56qpr" path="res://art/day_3/enemy_ufo_0.png" id="2_wmd7j"]
+[ext_resource type="Texture2D" uid="uid://be00cm68j2tu5" path="res://art/day_3/enemy_ufo_1.png" id="3_3hdy1"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="4_mo5jo"]
+[ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="5_ed5w7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nghcw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wmd7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3hdy1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ufo" groups=["ufos"] instance=ExtResource("1_xe03b")]
+z_index = -60
+script = ExtResource("2_nhoik")
+speed = 87.5
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_nghcw")
+
+[node name="TopGun" parent="." index="4" instance=ExtResource("4_mo5jo")]
+position = Vector2(8, -3)
+Bullet = ExtResource("5_ed5w7")
+bullet_speed = 125.0
+ignore_cooldown = true
+
+[node name="BottomGun" parent="." index="5" instance=ExtResource("4_mo5jo")]
+position = Vector2(8, 17)
+Bullet = ExtResource("5_ed5w7")
+bullet_speed = 125.0
+ignore_cooldown = true

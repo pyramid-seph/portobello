@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuetmcqjfq18v"]
+
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_x1vje"]
+[ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="2_3nu01"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="2_v5sji"]
+[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/drone.gd" id="2_w21ul"]
+[ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="3_puev8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ncslv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3nu01")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Drone" groups=["drone"] instance=ExtResource("1_x1vje")]
+z_index = -60
+script = ExtResource("2_w21ul")
+speed = 87.5
+score_points_gun = 10
+score_points_mega_gun = 5
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_ncslv")
+
+[node name="Gun" parent="." index="3" instance=ExtResource("2_v5sji")]
+position = Vector2(8, 17)
+Bullet = ExtResource("3_puev8")
+bullet_speed = 125.0
+cooldown = 0.8
+ignore_cooldown = true

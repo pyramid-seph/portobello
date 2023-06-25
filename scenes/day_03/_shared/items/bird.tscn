@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" uid="uid://brj67hm7ypmn8" path="res://scenes/_shared/moving_item.tscn" id="1_htd8b"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/items/bird.gd" id="2_g1tn3"]
+[ext_resource type="Texture2D" uid="uid://pho1o16a8h25" path="res://art/day_3/pickup_bird_0.png" id="3_6ocvl"]
+[ext_resource type="Texture2D" uid="uid://cmojv8tts3gle" path="res://art/day_3/pickup_bird_1.png" id="4_lrvqd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sugky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6ocvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lrvqd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drdwf"]
+size = Vector2(8, 4)
+
+[node name="Bird" instance=ExtResource("1_htd8b")]
+z_index = -30
+script = ExtResource("2_g1tn3")
+speed = 50.0
+movement_pattern = 8
+score_points_pick_up = 50
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_sugky")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_drdwf")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(8, 8)
+scale = Vector2(0.4, 0.2)

@@ -1,0 +1,250 @@
+[gd_scene load_steps=20 format=3 uid="uid://bfidgn8t0dudh"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/day_03_ui.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/lives_counter.tscn" id="2"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_61hbj"]
+[ext_resource type="PackedScene" uid="uid://dtlk1u7ur0rxv" path="res://scenes/_shared/ui/stamina_bar.tscn" id="4_ekhmu"]
+[ext_resource type="Script" path="res://scenes/_shared/ui/lives_counter.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://cwqvrgqp2kstp" path="res://scenes/day_03/_shared/ui/power_up_bar.tscn" id="6_ncns2"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/score.gd" id="9_5cfq4"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="12"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/hi_score.gd" id="12_pqisy"]
+[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="13_baoxv"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/game_over.gd" id="15_hyx32"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/boss_alert.gd" id="15_mlyv2"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="16_ha6bd"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/piece_of_cake_label.gd" id="16_yasp3"]
+[ext_resource type="PackedScene" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="17_q8r8e"]
+
+[sub_resource type="FontFile" id="1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+fallbacks = Array[Font]([SubResource("1")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="3"]
+default_font = SubResource("2")
+
+[node name="Day03Ui" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_61hbj")
+script = ExtResource("1")
+player_data = ExtResource("11")
+
+[node name="BarsMargin" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 61.0
+offset_bottom = 20.0
+theme_override_constants/margin_top = 3
+
+[node name="Bars" type="VBoxContainer" parent="BarsMargin"]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="StaminaBar" parent="BarsMargin/Bars" instance=ExtResource("4_ekhmu")]
+layout_mode = 2
+
+[node name="PowerUpBar" parent="BarsMargin/Bars" instance=ExtResource("6_ncns2")]
+layout_mode = 2
+
+[node name="LivesCounter" parent="." instance=ExtResource("2")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -22.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("3")
+script = ExtResource("6")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme = ExtResource("3_61hbj")
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
+text = "10000"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("9_5cfq4")
+
+[node name="HiScore" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 14.0
+grow_horizontal = 2
+theme = ExtResource("3_61hbj")
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
+text = "Hi 100"
+vertical_alignment = 1
+script = ExtResource("12_pqisy")
+
+[node name="StartLabels" parent="." instance=ExtResource("17_q8r8e")]
+layout_mode = 1
+text_1 = "Buffet"
+text_2 = "¡Buen provecho!"
+font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
+font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
+duration_sec = 1.6
+label_2_visible_delay_sec = 0.8
+
+[node name="MainCourseLabels" parent="." instance=ExtResource("17_q8r8e")]
+layout_mode = 1
+text_1 = "Plato fuerte"
+text_2 = "¡Buen provecho!"
+font_color_normal = Color(0, 0, 0, 1)
+font_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
+preview_labels = false
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 78.0
+offset_top = 146.5
+offset_right = -78.0
+offset_bottom = -146.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_61hbj")
+theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("13_baoxv")
+theme_override_font_sizes/font_size = 18
+text = "Game over"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("15_hyx32")
+
+[node name="PiecoOfCakeLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -12.5
+offset_right = 65.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_61hbj")
+theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("13_baoxv")
+theme_override_font_sizes/font_size = 18
+text = "¡Pan comido!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("16_yasp3")
+
+[node name="BossAlert" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_mlyv2")
+duration_sec = 2.4
+color_1 = Color(0.968627, 0.745098, 0.505882, 1)
+color_2 = Color(0.980392, 0.67451, 0.345098, 1)
+
+[node name="Label" type="Label" parent="BossAlert"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -13.0
+offset_right = 31.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_61hbj")
+theme_override_fonts/font = ExtResource("16_ha6bd")
+theme_override_font_sizes/font_size = 16
+text = "¡Peligro!"
+
+[node name="Timer" type="Timer" parent="BossAlert"]
+one_shot = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("12")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="hi_score_changed" from="." to="HiScore" method="_on_day_3_ui_hi_score_changed"]
+[connection signal="level_state_changed" from="." to="GameOver" method="_on_day_3_ui_level_state_changed"]
+[connection signal="level_state_changed" from="." to="PiecoOfCakeLabel" method="_on_day_3_ui_level_state_changed"]
+[connection signal="lives_left_changed" from="." to="LivesCounter" method="_on_day_3_ui_lives_left_changed"]
+[connection signal="pause_state_changed" from="." to="PauseMenu" method="_on_day_3_ui_pause_state_changed"]
+[connection signal="power_up_changed" from="." to="BarsMargin/Bars/PowerUpBar" method="_on_day_3_ui_power_up_changed"]
+[connection signal="score_changed" from="." to="Score" method="_on_Day3Ui_score_changed"]
+[connection signal="stamina_changed" from="." to="BarsMargin/Bars/StaminaBar" method="_on_day_3_ui_stamina_changed"]
+[connection signal="finished" from="MainCourseLabels" to="." method="_on_main_course_labels_finished"]
+[connection signal="finished" from="BossAlert" to="." method="_on_boss_alert_finished"]

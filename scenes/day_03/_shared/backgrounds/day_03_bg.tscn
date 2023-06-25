@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg6r1v71n7n0s"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/backgrounds/day_03_bg.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cs04bvlq1tqjr" path="res://scenes/day_03/_shared/backgrounds/bg_decor_wave.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dhydiy1l74um" path="res://scenes/day_03/_shared/backgrounds/bg_decor_cloud.tscn" id="4"]
+
+[node name="Day03Bg" type="ParallaxBackground"]
+script = ExtResource("2")
+scroll_speed = 12.5
+cloud = ExtResource("4")
+wave = ExtResource("3")
+mega_gun_flash_color = Color(1, 1, 0, 1)
+sea_color = Color(0.356863, 0.8, 0.65098, 1)
+
+[node name="SolidColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.356863, 0.8, 0.65098, 1)
+
+[node name="BgLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 1)

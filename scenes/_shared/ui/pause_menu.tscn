@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0itsp3jm2p1k"]
+
+[ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
+[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="3_4jtb8"]
+[ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="5_tyfqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hi4pj"]
+bg_color = Color(0, 0, 0, 0.784314)
+corner_detail = 1
+
+[node name="PauseMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rpjji")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hi4pj")
+script = ExtResource("1")
+show_auto_fire = true
+
+[node name="PauseDialog" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseDialog"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PauseLabel" type="Label" parent="PauseDialog/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4jtb8")
+theme_override_font_sizes/font_size = 18
+text = "Pausa"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VibrateCheckButton" type="CheckButton" parent="PauseDialog/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../GiveUpButton")
+focus_previous = NodePath("../GiveUpButton")
+text = "Vibrar"
+
+[node name="AutofireCheckButton" type="CheckButton" parent="PauseDialog/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Autofuego"
+
+[node name="GiveUpButton" type="Button" parent="PauseDialog/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../VibrateCheckButton")
+focus_next = NodePath("../VibrateCheckButton")
+text = "Rendirse"
+flat = true
+alignment = 0
+
+[node name="ConfirmExitLevelDialog" parent="." instance=ExtResource("5_tyfqu")]
+visible = false
+layout_mode = 2
+body_text = "Perderás tu progreso.
+¿Rendirse?"
+positive_btn_text = "Sí"
+hide_shadow = true
+
+[connection signal="toggled" from="PauseDialog/VBoxContainer/VibrateCheckButton" to="." method="_on_vibrate_check_button_toggled"]
+[connection signal="toggled" from="PauseDialog/VBoxContainer/AutofireCheckButton" to="." method="_on_autofire_check_button_toggled"]
+[connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
+[connection signal="negative_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_negative_btn_pressed"]
+[connection signal="positive_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_positive_btn_pressed"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://clo8ecw1nr7f2"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/wave_manager.gd" id="1"]
+
+[node name="WaveManager" type="Node2D"]
+process_mode = 1
+script = ExtResource("1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

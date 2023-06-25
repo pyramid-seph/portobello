@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ibcjinjlhhi"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/game/day_03_game.gd" id="1_fcdcw"]
+
+[node name="Day03Game" type="Node"]
+script = ExtResource("1_fcdcw")
+
+[node name="Day03Level01" parent="." instance_placeholder="res://scenes/day_03/_shared/level/day_03_level_01.tscn"]
+
+[node name="Day03Level02" parent="." instance_placeholder="res://scenes/day_03/_shared/level/day_03_level_02.tscn"]

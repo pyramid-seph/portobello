@@ -1,34 +1,20 @@
 [remap]
 
-importer="texture"
-type="CompressedTexture2D"
-uid="uid://ciqqs2tij5nvh"
-path="res://.godot/imported/ui_counter_cat_food.png-187c6039c3339052fed59c18d0989bac.ctex"
-metadata={
-"vram_texture": false
-}
-
+importer="texture_atlas"
+type="Texture2D"
+uid="uid://085ky11hend8"
+path="res://.godot/imported/ui_counter_cat_food.png-187c6039c3339052fed59c18d0989bac.res"
+group_file="res://art/_shared/ui_shared_atlas.png"
+valid=true
 [deps]
 
+
 source_file="res://art/_shared/ui_counter_cat_food.png"
-dest_files=["res://.godot/imported/ui_counter_cat_food.png-187c6039c3339052fed59c18d0989bac.ctex"]
+dest_files=["res://.godot/imported/ui_counter_cat_food.png-187c6039c3339052fed59c18d0989bac.res"]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
-compress/hdr_compression=1
-compress/bptc_ldr=0
-compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/normal_map_invert_y=false
-process/hdr_as_srgb=false
-process/hdr_clamp_exposure=false
-process/size_limit=0
-detect_3d/compress_to=1
+atlas_file="res://art/_shared/ui_shared_atlas.png"
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true
