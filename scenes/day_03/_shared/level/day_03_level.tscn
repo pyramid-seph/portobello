@@ -57,4 +57,5 @@ one_shot = true
 [connection signal="completed" from="BossFight" to="." method="_on_boss_fight_completed"]
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="." method="_on_wave_manager_all_waves_completed"]
 [connection signal="boss_alert_finished" from="Interface/Day03Ui" to="." method="_on_day_3_ui_boss_alert_finished"]
+[connection signal="calculated" from="Interface/ResultsScreen" to="." method="_on_results_screen_calculated"]
 [connection signal="finished" from="Interface/ResultsScreen" to="." method="_on_results_screen_finished"]

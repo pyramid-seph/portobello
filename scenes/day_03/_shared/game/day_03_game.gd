@@ -81,7 +81,7 @@ func _on_level_failed() -> void:
 	_go_to_title_screen()
 
 
-func _on_level_beaten(lives: int, total_score: int, stars: int) -> void:
+func _on_level_beaten(lives: int, total_score: int, _stars: int) -> void:
 	if _level == Day03Game.Level.STORY_MODE_DAY_01:
 		SceneChanger.change_to_scene(
 				"res://scenes/day_03/_shared/game/day_03_game.tscn",

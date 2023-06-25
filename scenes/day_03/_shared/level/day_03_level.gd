@@ -16,17 +16,18 @@ enum LevelState {
 	SHOWING_RESULTS,
 }
 
+const DAY_INDEX = 2
 const START_DURATION: float = 1.6
 const GAME_OVER_DURATION: float = 3.2
+const PROP_NAME_STORY_SAVE_DATA_HIGH_SCORE: String = "high_scores:day_three"
+const PROP_NAME_STORY_SAVE_DATA_STARS: String = "stars:day_three"
 
 @export var _player: Day03Player
 @export var _game_mode: Game.Mode
 @export var _results_screen_delay_sec: float = 1.0
 
 @export_group("Save Data", "_save_data")
-@export var _save_data_story_mode_score_name: String
 @export var _save_data_score_attack_mode_score_name: String
-@export var _save_data_stars_name: String
 
 @export_group("Debug", "_debug")
 @export var _debug_is_god_mode_enabled: bool:
@@ -70,7 +71,7 @@ func start(mode: Game.Mode, level_pos: int, is_last_level: bool, lives: int, sco
 	_player.lives = lives
 	_player.set_score(score)
 	_is_last_level = is_last_level
-	_load_high_score()
+	_player.set_high_score(_get_high_score())
 	await _start_level()
 	if _debug_start_at_boss_fight:
 		_start_boss_phase()
@@ -78,11 +79,13 @@ func start(mode: Game.Mode, level_pos: int, is_last_level: bool, lives: int, sco
 		_start_wave_phase()
 
 
-func _load_high_score() -> void:
+func _get_high_score() -> int:
+	var prop_name: String
 	if _game_mode == Game.Mode.STORY:
-		pass
+		prop_name = PROP_NAME_STORY_SAVE_DATA_HIGH_SCORE
 	else:
-		pass
+		prop_name = _get_score_attack_high_score_prop_name()
+	return SaveDataManager.save_data.get_indexed(prop_name)
 
 
 func _set_up_player() -> void:
@@ -127,9 +130,8 @@ func _start_boss_phase() -> void:
 	waves_completed.emit()
 
 
-func _on_debug_is_god_mode_enabled_set() -> void:
-	if _is_ready:
-		_player.is_god_mode_enabled = _debug_is_god_mode_enabled
+func _get_score_attack_high_score_prop_name() -> String:
+	return "high_scores:%s" % _save_data_score_attack_mode_score_name
 
 
 func _game_over() -> void:
@@ -140,6 +142,11 @@ func _game_over() -> void:
 	_timer.start(GAME_OVER_DURATION)
 	await _timer.timeout
 	failed.emit()
+
+
+func _on_debug_is_god_mode_enabled_set() -> void:
+	if _is_ready:
+		_player.is_god_mode_enabled = _debug_is_god_mode_enabled
 
 
 func _on_player_revived() -> void:
@@ -174,6 +181,7 @@ func _on_boss_fight_completed() -> void:
 	_timer.start(_results_screen_delay_sec)
 	await _timer.timeout
 	_world.set_process(PROCESS_MODE_DISABLED)
+	_world.set_process_input(false)
 	_world.visible = false
 	_level_state = LevelState.SHOWING_RESULTS
 	_results_screen.start(
@@ -183,3 +191,23 @@ func _on_boss_fight_completed() -> void:
 		_player.get_score(), 
 		_player.get_high_score()
 	)
+
+
+func _on_results_screen_calculated(new_high_score: int, stars: int) -> void:
+	if _game_mode == Game.Mode.STORY and _is_last_level:
+		SaveDataManager.save_data.set_indexed(
+			PROP_NAME_STORY_SAVE_DATA_HIGH_SCORE,
+			 new_high_score
+		)
+		SaveDataManager.save_data.set_indexed(
+			PROP_NAME_STORY_SAVE_DATA_STARS,
+			 stars
+		)
+		var curr_progress = SaveDataManager.save_data.latest_day_completed
+		SaveDataManager.save_data.latest_day_completed = maxi(curr_progress, DAY_INDEX)
+	elif _game_mode == Game.Mode.SCORE_ATTACK:
+		SaveDataManager.save_data.set_indexed(
+			_get_score_attack_high_score_prop_name(),
+			 new_high_score
+		)
+	SaveDataManager.save()

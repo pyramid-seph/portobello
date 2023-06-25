@@ -79,6 +79,10 @@ func get_high_score() -> int:
 	return _player_data.hi_score
 
 
+func set_high_score(value: int) -> void:
+	_player_data.hi_score = value
+
+
 func get_score() -> int:
 	return _player_data.score
 

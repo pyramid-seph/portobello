@@ -1,6 +1,7 @@
 extends Control
 
 
+signal calculated(new_high_score: int, stars: int)
 signal finished(total_score: int, extra_lives: int, stars: int)
 
 enum StarsEvaluationMode {
@@ -38,15 +39,15 @@ var _is_last_level: bool
 var _game_mode: Game.Mode
 var _bonus: int
 var _total_score: int
-var _extra_lives: int = -1
-var _stars: int = -1
+var _extra_lives: int
+var _stars: int
 var _lives: int
 var _score: int
-var _high_score: int
+var _curr_high_score: int
 
 @onready var _background_color_rect := $ColorRect
 @onready var _results_container := $ColorRect/MarginContainer/ResultsContainer
-@onready var _new_high_score_label := %NewHighScoreLabel as Label
+@onready var _new_curr_high_score_label := %NewHighScoreLabel as Label
 @onready var _level_completed_container := $ColorRect/LevelCompletedContainer
 @onready var _score_label := %ScoreLabel as Label
 @onready var _lives_bonus_label := %LivesBonusLabel as Label
@@ -64,7 +65,7 @@ func _ready() -> void:
 func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, high_score: int) -> void:
 	_lives = lives
 	_score = score
-	_high_score = high_score
+	_curr_high_score = high_score
 	_game_mode = game_mode
 	_is_last_level = is_last_level
 	
@@ -73,14 +74,15 @@ func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, hi
 	_extra_lives = _calculate_extra_lives(_lives, _total_score)
 	_stars = _calculate_stars(_lives, _total_score)
 	
-	# TODO Save results to disk
+	var new_high_score = maxi(_curr_high_score, _total_score)
+	calculated.emit(new_high_score, _stars)
 	
 	await _present_results()
 	finished.emit(_total_score, _extra_lives, _stars)
 
 
 func _calculate_extra_lives(lives: int, score: int) -> int:
-	var extra_lives: int = -1
+	var extra_lives: int = 0
 	if _game_mode == Game.Mode.STORY and not _is_last_level:
 		extra_lives = mini(score / 1_000, MAX_LIVES - lives)
 	return extra_lives
@@ -88,7 +90,7 @@ func _calculate_extra_lives(lives: int, score: int) -> int:
 
 func _calculate_stars(lives: int, score: int) -> int:
 	if _game_mode != Game.Mode.STORY or not _is_last_level:
-		return -1
+		return 0
 	
 	if _stars_evaluation_mode == StarsEvaluationMode.LIVES:
 		return _calculate_stars_by(lives)
@@ -157,7 +159,7 @@ func _ensure_reset_ui() -> void:
 	_evaluation_label.visible = false
 	_stars_label.text = ""
 	_change_results_labels_color(Color.TRANSPARENT)
-	Utils.change_label_color(_new_high_score_label, Color.TRANSPARENT)
+	Utils.change_label_color(_new_curr_high_score_label, Color.TRANSPARENT)
 
 
 func _tween_level_results() -> void:
@@ -186,11 +188,11 @@ func _tween_minigame_results() -> void:
 	_tween.tween_callback(func():
 		_level_completed_container.visible = true
 		var high_score_label_color
-		if _total_score > _high_score:
+		if _total_score > _curr_high_score:
 			high_score_label_color = COMPLETE_LABELS_COLOR
 		else:
 			high_score_label_color = Color.TRANSPARENT
-		Utils.change_label_color(_new_high_score_label, high_score_label_color)
+		Utils.change_label_color(_new_curr_high_score_label, high_score_label_color)
 	)
 	_tween.tween_interval(LEVEL_COMPLETED_DURATION_SEC)
 	_tween.tween_callback(func():

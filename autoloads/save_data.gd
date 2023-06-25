@@ -8,15 +8,13 @@ const VERSION: int = 1
 
 var version: int = VERSION
 # First day is 1. "The lost chapter" does not count.
-var latest_day_completed: int = 0
+var latest_day_completed: int
 var is_vibration_enabled: bool = true
 var is_autofire_enabled: bool = true:
 	set(value):
 		var old_is_autofire_enabled = is_autofire_enabled
 		is_autofire_enabled = value
 		is_autofire_enabled_changed.emit(old_is_autofire_enabled, is_autofire_enabled)
-	get:
-		return is_autofire_enabled
 var stars: Stars = Stars.new()
 var high_scores: HighScores = HighScores.new()
 
@@ -66,17 +64,18 @@ static func from_json(json: Dictionary) -> SaveData:
 
 
 class HighScores extends RefCounted:
-	var buff_one_a: int = 0
-	var buff_one_b: int = 0
-	var buff_one_c: int = 0
-	var buff_one_d: int = 0
-	var buff_two: int = 0
-	var buff_three_a: int = 0
-	var buff_three_b: int = 0
-	var day_two: int = 0
-	var day_three: int = 0
+	var buff_one_a: int
+	var buff_one_b: int
+	var buff_one_c: int
+	var buff_one_d: int
+	var buff_two: int
+	var buff_three_a: int
+	var buff_three_b: int
+	var day_two: int
+	var day_three: int
+
 
 class Stars extends RefCounted:
-	var day_one: int = 0
-	var day_two: int = 0
-	var day_three: int = 0
+	var day_one: int
+	var day_two: int
+	var day_three: int
