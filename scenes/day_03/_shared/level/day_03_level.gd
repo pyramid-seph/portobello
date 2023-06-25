@@ -39,6 +39,7 @@ const PROP_NAME_STORY_SAVE_DATA_STARS: String = "stars:day_three"
 		_debug_start_at_boss_fight = value and OS.is_debug_build()
 
 var _is_last_level: bool
+var _level_index: int
 var _level_state: LevelState = LevelState.READY:
 	set(value):
 		_level_state = value
@@ -54,6 +55,7 @@ var _level_state: LevelState = LevelState.READY:
 @onready var _timer := $Timer as Timer
 @onready var _boss_fight := $BossFight as Day03BossFight
 @onready var _results_screen := $Interface/ResultsScreen
+@onready var _day_3_ui := $Interface/Day03Ui
 
 
 func _ready() -> void:
@@ -63,7 +65,7 @@ func _ready() -> void:
 		start(_game_mode, 0, false, Day03PlayerData.MAX_LIVES, 0)
 
 
-func start(mode: Game.Mode, level_pos: int, is_last_level: bool, lives: int, score: int) -> void:
+func start(mode: Game.Mode, level_index: int, is_last_level: bool, lives: int, score: int) -> void:
 	if _level_state != LevelState.READY:
 		return
 	_level_state = LevelState.STARTING
@@ -71,6 +73,7 @@ func start(mode: Game.Mode, level_pos: int, is_last_level: bool, lives: int, sco
 	_player.lives = lives
 	_player.set_score(score)
 	_is_last_level = is_last_level
+	_level_index = level_index
 	_player.set_high_score(_get_high_score())
 	await _start_level()
 	if _debug_start_at_boss_fight:
@@ -104,6 +107,7 @@ func _start_level() -> void:
 	_player.is_input_enabled = false
 	_player.is_losing_stamina = false
 	_level_state = LevelState.STARTING
+	_day_3_ui.start_game_presentation(_game_mode, _level_index)
 	_timer.start(START_DURATION)
 	_level_state = LevelState.PLAYING
 	await _timer.timeout

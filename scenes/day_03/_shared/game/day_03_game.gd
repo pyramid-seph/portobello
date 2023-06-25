@@ -33,14 +33,14 @@ func set_shared_data(data: Dictionary = {}) -> void:
 func _play_level() -> void:
 	var mode = null
 	var level_instance: Day03Level = null
-	var level_pos = 0
+	var level_index = 0
 	match _level:
 		Day03Game.Level.STORY_MODE_DAY_01:
 			level_instance = _level_01_placeholder.create_instance()
 			mode = Game.Mode.STORY
 		Day03Game.Level.STORY_MODE_DAY_02:
 			level_instance = _level_02_placeholder.create_instance()
-			level_pos = 1
+			level_index = 1
 			mode = Game.Mode.STORY
 		Day03Game.Level.SCORE_ATTACK_3A:
 			level_instance = _level_01_placeholder.create_instance()
@@ -56,7 +56,7 @@ func _play_level() -> void:
 		level_instance.beaten.connect(_on_level_beaten)
 		level_instance.start(
 			mode,
-			level_pos,
+			level_index,
 			_is_last_level(),
 			_initial_lives,
 			_initial_score,

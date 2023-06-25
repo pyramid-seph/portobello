@@ -53,7 +53,13 @@ func change_black_screen_visibility(value: bool) -> void:
 	_black_screen.visible = value
 
 
-func _start_game_presentation() -> void:
+func start_game_presentation(mode: Game.Mode, index: int) -> void:
+	var line_1: String
+	if mode == Game.Mode.STORY:
+		line_1 = "Plato %s" % (index + 1)
+	else:
+		line_1 = "Buffet"
+	_start_labels.text_1 = line_1
 	_start_labels.start()
 
 
@@ -85,7 +91,6 @@ func _on_day_03_level_level_state_changed(new_state: int) -> void:
 	match new_state:
 		Day03Level.LevelState.STARTING:
 			visible = true
-			_start_game_presentation()
 		Day03Level.LevelState.SHOWING_RESULTS:
 			visible = false
 		_:
