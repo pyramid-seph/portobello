@@ -9,7 +9,6 @@
 [node name="Day03Level01" instance=ExtResource("1_dfqff")]
 _results_screen_delay_sec = 2.4
 _save_data_score_attack_mode_score_name = "buff_three_a"
-_debug_start_at_boss_fight = true
 
 [node name="BossFight" parent="." index="0" node_paths=PackedStringArray("_player")]
 script = ExtResource("2_p20nx")
