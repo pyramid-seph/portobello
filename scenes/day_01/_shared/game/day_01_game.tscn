@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqn328nqhcfq7"]
+
+[ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
+[ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
+
+[node name="Day01Game" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_745ra")
+
+[node name="Interface" type="Node" parent="."]
+
+[node name="ResultsScreen" parent="Interface" instance=ExtResource("2_28578")]
+visible = false
+
+[connection signal="calculated" from="Interface/ResultsScreen" to="." method="_on_results_screen_calculated"]
+[connection signal="finished" from="Interface/ResultsScreen" to="." method="_on_results_screen_finished"]

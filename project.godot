@@ -19,7 +19,7 @@ config/icon="res://art/_shared/ui_counter_lives.png"
 
 SaveDataManager="*res://autoloads/save_data_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
-SceneChanger="*res://autoloads/SceneChanger.tscn"
+SceneChanger="*res://autoloads/scene_changer.tscn"
 Game="*res://autoloads/game.gd"
 
 [display]

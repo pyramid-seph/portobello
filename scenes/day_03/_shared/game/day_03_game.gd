@@ -63,12 +63,6 @@ func _play_level() -> void:
 		)
 
 
-func _set_stars(stars: int) -> void:
-	var new_stars_max = maxi(stars, SaveDataManager.save_data.stars.day_three)
-	if _level == Day03Game.Level.STORY_MODE_DAY_02:
-		SaveDataManager.save_data.stars.day_three = new_stars_max
-
-
 func _go_to_title_screen() -> void:
 	Game.start(Game.Minigame.TITLE_SCREEN)
 
