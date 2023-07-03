@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bynxlhbyd7t0i"
-path="res://.godot/imported/day_0_player.png-f46473a0e168ca6f664e9e144dd81378.ctex"
+uid="uid://cmrsbu8bn4our"
+path="res://.godot/imported/status_effects.png-3e0ed7c5fabd04c145bbb44e29358dcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_0/day_0_player.png"
-dest_files=["res://.godot/imported/day_0_player.png-f46473a0e168ca6f664e9e144dd81378.ctex"]
+source_file="res://art/day_ex/status_effects.png"
+dest_files=["res://.godot/imported/status_effects.png-3e0ed7c5fabd04c145bbb44e29358dcc.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

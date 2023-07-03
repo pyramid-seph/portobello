@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qh6abs2h885y"
-path="res://.godot/imported/battle_background_house.png-783b7222cff367fda1bf42110eb46e35.ctex"
+uid="uid://dw4vtvfyouxnf"
+path="res://.godot/imported/day_01_furniture_couch_small.png-6637b0b6daa89b9c9f6dd2a13fdb29e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_1/battle_background_house.png"
-dest_files=["res://.godot/imported/battle_background_house.png-783b7222cff367fda1bf42110eb46e35.ctex"]
+source_file="res://art/day_1/day_01_furniture_couch_small.png"
+dest_files=["res://.godot/imported/day_01_furniture_couch_small.png-6637b0b6daa89b9c9f6dd2a13fdb29e3.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

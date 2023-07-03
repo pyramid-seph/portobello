@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6owjptk1yym1"
-path="res://.godot/imported/day_1_player.png-7c9e8b34c952a06546fa602388c149fe.ctex"
+uid="uid://dqpdh7q420bhc"
+path="res://.godot/imported/day_01_furniture_table_small.png-adefd3708992d55fc1e90ba955c3471e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_1/day_1_player.png"
-dest_files=["res://.godot/imported/day_1_player.png-7c9e8b34c952a06546fa602388c149fe.ctex"]
+source_file="res://art/day_1/day_01_furniture_table_small.png"
+dest_files=["res://.godot/imported/day_01_furniture_table_small.png-adefd3708992d55fc1e90ba955c3471e.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

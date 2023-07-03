@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxrw4osqb4djl"
-path="res://.godot/imported/enemies_and_powers_atlas_0.png-f0aa3ee9197e252cce5516ab3c64e075.ctex"
+uid="uid://befjr0d5ldojt"
+path="res://.godot/imported/day_01_player_body.png-d0ca386f91c58910b3ed6c9dc6cfc9b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_1/enemies_and_powers_atlas_0.png"
-dest_files=["res://.godot/imported/enemies_and_powers_atlas_0.png-f0aa3ee9197e252cce5516ab3c64e075.ctex"]
+source_file="res://art/day_1/day_01_player_body.png"
+dest_files=["res://.godot/imported/day_01_player_body.png-d0ca386f91c58910b3ed6c9dc6cfc9b1.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw4vtvfyouxnf"
-path="res://.godot/imported/couch_small.png-94757a719cb5376efa8e2201ba70d2de.ctex"
+uid="uid://fqfbse76jpg1"
+path="res://.godot/imported/day_01_player_head_0.png-dbb325a524fcd9fd17e44a7bc9cba64e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_0/couch_small.png"
-dest_files=["res://.godot/imported/couch_small.png-94757a719cb5376efa8e2201ba70d2de.ctex"]
+source_file="res://art/day_1/day_01_player_head_0.png"
+dest_files=["res://.godot/imported/day_01_player_head_0.png-dbb325a524fcd9fd17e44a7bc9cba64e.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqd3waxa863r3"]
+
+[ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_noa3u"]
+[ext_resource type="Script" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_01.gd" id="2_effvj"]
+
+[node name="CutsceneDay0101" instance=ExtResource("1_noa3u")]
+script = ExtResource("2_effvj")
+_autostart = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]

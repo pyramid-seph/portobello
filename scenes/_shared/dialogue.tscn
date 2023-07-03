@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cjldxfd1a76li"]
 
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="1_fnaa8"]
-[ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/courier_prime/CourierPrime-Regular.ttf" id="2_0pjpj"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="1_fnaa8"]
+[ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/Courier_Prime/CourierPrime-Regular.ttf" id="2_0pjpj"]
 [ext_resource type="Script" path="res://scenes/_shared/dialogue.gd" id="3_px47p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ora2p"]

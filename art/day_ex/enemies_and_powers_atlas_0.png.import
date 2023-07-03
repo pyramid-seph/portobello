@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4adpdy3otdlj"
-path="res://.godot/imported/battle_background_backyard.png-6d142bd18877e61fa75e8d0d00dec7f4.ctex"
+uid="uid://dxrw4osqb4djl"
+path="res://.godot/imported/enemies_and_powers_atlas_0.png-53366ad53372b0feeca389e5053e0606.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_1/battle_background_backyard.png"
-dest_files=["res://.godot/imported/battle_background_backyard.png-6d142bd18877e61fa75e8d0d00dec7f4.ctex"]
+source_file="res://art/day_ex/enemies_and_powers_atlas_0.png"
+dest_files=["res://.godot/imported/enemies_and_powers_atlas_0.png-53366ad53372b0feeca389e5053e0606.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
