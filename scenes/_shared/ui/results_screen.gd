@@ -29,6 +29,7 @@ const STARS_RESULT_FIVE_TEXT: String = "¡Prrrrrrfecto!"
 
 @export_group("Stars", "_stars")
 @export var _stars_evaluation_mode: StarsEvaluationMode
+@export var _stars_threshold_one: int
 @export var _stars_threshold_two: int
 @export var _stars_threshold_three: int
 @export var _stars_threshold_four: int
@@ -98,7 +99,7 @@ func _calculate_stars(lives: int, score: int) -> int:
 
 
 func _calculate_stars_by(value: int) -> int:
-	var stars = 1
+	var stars: int = 0
 	if value >= _stars_threshold_five:
 		stars = 5
 	elif value >= _stars_threshold_four:
@@ -107,6 +108,8 @@ func _calculate_stars_by(value: int) -> int:
 		stars = 3
 	elif value >= _stars_threshold_two:
 		stars = 2
+	elif value >= _stars_threshold_one:
+		stars = 1
 	return stars
 
 
