@@ -9,7 +9,7 @@ const MAX_TRUNK_PARTS: int = 98
 @export var inverted_controls: bool
 @export var pace_sec: float = 0.25
 @export var initial_trunk_parts: int = 1
-@export var _trunk_texture: Texture2D 
+@export var TrunkPart: PackedScene
 
 var stop_moving: bool:
 	set(value):
@@ -24,6 +24,7 @@ var _has_crashed: bool:
 		if _is_ready:
 			_dead_head.visible = not _has_crashed
 var _elapsed_time_sec: float
+var _growth_pending: bool
 
 @onready var _is_ready: bool = true
 @onready var _detector := $Head/Area2D as Area2D
@@ -36,15 +37,15 @@ var _elapsed_time_sec: float
 
 
 func _ready() -> void:
-	_first_trunk_part.position.x = _head.position.x - _pixels_per_step
-	_first_trunk_part.position.y = _head.position.y
-	_tail.position.x = _head.position.x - _pixels_per_step * (_trunk.get_child_count() + 1)
-	_tail.position.y = _head.position.y
+	_reset_body()
 
 
 func _process(delta: float) -> void:
 	if _has_crashed or stop_moving:
 		return
+	
+	if OS.is_debug_build() and Input.is_action_pressed("fire"):
+		_growth_pending = true
 	
 	_update_direction()
 	
@@ -57,6 +58,19 @@ func _process(delta: float) -> void:
 func reset() -> void:
 	_elapsed_time_sec = 0.0
 	_curr_dir = INITIAL_DIR
+	_growth_pending = false
+	_reset_body()
+
+
+func _reset_body() -> void:
+	for trunk_part in _trunk.get_children():
+		if trunk_part != _first_trunk_part:
+			trunk_part.queue_free()
+	_head.position = Vector2i(48,32)
+	_first_trunk_part.position.x = _head.position.x - _pixels_per_step
+	_first_trunk_part.position.y = _head.position.y
+	_tail.position.x = _head.position.x - _pixels_per_step * (_trunk.get_child_count() + 1)
+	_tail.position.y = _head.position.y
 
 
 func _update_direction() -> void:
@@ -76,15 +90,32 @@ func _update_direction() -> void:
 
 func _move() -> void:
 	var last_trunk_part = Utils.last_child(_trunk)
-	_tail.position = last_trunk_part.position
+	
+	var new_trunk_part
+	if _growth_pending:
+		new_trunk_part = TrunkPart.instantiate()
+		_growth_pending = false
+	
+	if new_trunk_part:
+		new_trunk_part.position = last_trunk_part.position
+	else:
+		_tail.position = last_trunk_part.position
+	
 	for i in range(_trunk.get_child_count() - 1, 0, -1):
 		var trunk_part = _trunk.get_child(i)
 		var front_trunk_part = _trunk.get_child(i - 1)
 		trunk_part.position = front_trunk_part.position
 		trunk_part.rotation = front_trunk_part.rotation
+	
 	_first_trunk_part.position = _head.position
 	_first_trunk_part.rotation = _head.rotation
-	_tail.rotation = last_trunk_part.rotation
+	
+	if new_trunk_part:
+		_trunk.add_child(new_trunk_part)
+		new_trunk_part.rotation = last_trunk_part.rotation
+	else:
+		_tail.rotation = last_trunk_part.rotation
+		
 	_head.rotation = Vector2(_curr_dir).angle()
 	_head.position += Vector2(_curr_dir * _pixels_per_step)
 

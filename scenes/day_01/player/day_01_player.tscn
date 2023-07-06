@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/day_01/player/day_01_player.gd" id="1_ine60"]
 [ext_resource type="Texture2D" uid="uid://fqfbse76jpg1" path="res://art/day_1/day_01_player_head_0.png" id="2_42v48"]
+[ext_resource type="PackedScene" uid="uid://b8vng1vad0pht" path="res://scenes/day_01/player/trunk_part.tscn" id="2_g6xfj"]
 [ext_resource type="Texture2D" uid="uid://cnapc0s2jtyvf" path="res://art/day_1/day_01_player_head_1.png" id="3_2wbb7"]
 [ext_resource type="Texture2D" uid="uid://h4w3suwv2ba3" path="res://art/day_1/day_01_player_head_dead.png" id="4_3gafk"]
-[ext_resource type="Texture2D" uid="uid://befjr0d5ldojt" path="res://art/day_1/day_01_player_body.png" id="5_f8vqj"]
 [ext_resource type="Texture2D" uid="uid://krqky7l8cubk" path="res://art/day_1/day_01_player_tail_0.png" id="6_1bric"]
 [ext_resource type="Texture2D" uid="uid://dqiiavgmc5qkd" path="res://art/day_1/day_01_player_tail_1.png" id="7_3mg3b"]
 
@@ -42,11 +42,11 @@ animations = [{
 [node name="Day01Player" type="Node"]
 script = ExtResource("1_ine60")
 pace_sec = 1.0
+TrunkPart = ExtResource("2_g6xfj")
 
 [node name="Trunk" type="Node" parent="."]
 
-[node name="TrunkPart000" type="Sprite2D" parent="Trunk"]
-texture = ExtResource("5_f8vqj")
+[node name="TrunkPart000" parent="Trunk" instance=ExtResource("2_g6xfj")]
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hyfm3")
@@ -62,7 +62,6 @@ monitorable = false
 shape = SubResource("RectangleShape2D_chl8n")
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_gigx6")
 autoplay = "default"
 
