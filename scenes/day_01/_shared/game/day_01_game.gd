@@ -34,6 +34,7 @@ var _remaining_treats: int
 var _initial_lives: int = Day03PlayerData.MAX_LIVES
 
 @onready var _results_screen := $Interface/ResultsScreen
+@onready var _player := $World/Day01Player
 
 
 func set_shared_data(data: Dictionary = {}) -> void:
@@ -46,7 +47,7 @@ func _go_to_title_screen() -> void:
 
 
 func _is_last_level() -> bool:
-	return _level != Day01Game.Level.STORY_MODE_LEVEL_01
+	return true
 
 
 func _on_player_crashed() -> void:

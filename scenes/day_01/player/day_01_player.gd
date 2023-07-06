@@ -1,13 +1,15 @@
-extends Node2D
+extends Node
 
 signal ate
 signal crashed
 
 const INITIAL_DIR := Vector2i.RIGHT
-const PIXELS_PER_STEP: int = 7
+const MAX_TRUNK_PARTS: int = 98
 
 @export var inverted_controls: bool
 @export var pace_sec: float = 0.25
+@export var initial_trunk_parts: int = 1
+@export var _trunk_texture: Texture2D 
 
 var stop_moving: bool:
 	set(value):
@@ -19,11 +21,25 @@ var _has_crashed: bool:
 	set(value):
 		_has_crashed = value
 		_elapsed_time_sec = 0.0
+		if _is_ready:
+			_dead_head.visible = not _has_crashed
 var _elapsed_time_sec: float
 
 @onready var _is_ready: bool = true
 @onready var _detector := $Head/Area2D as Area2D
 @onready var _head := $Head as AnimatedSprite2D
+@onready var _trunk := $Trunk
+@onready var _first_trunk_part := $Trunk/TrunkPart000 as Node2D
+@onready var _tail := $Tail as AnimatedSprite2D
+@onready var _dead_head := $DeadHead
+@onready var _pixels_per_step: int = floori(_trunk.get_child(0).get_rect().size.x)
+
+
+func _ready() -> void:
+	_first_trunk_part.position.x = _head.position.x - _pixels_per_step
+	_first_trunk_part.position.y = _head.position.y
+	_tail.position.x = _head.position.x - _pixels_per_step * (_trunk.get_child_count() + 1)
+	_tail.position.y = _head.position.y
 
 
 func _process(delta: float) -> void:
@@ -56,22 +72,21 @@ func _update_direction() -> void:
 	
 	if candidate != Vector2i.ZERO and candidate + _curr_dir != Vector2i.ZERO:
 		_curr_dir = candidate
-	
-
-func _update_head_position() -> void:
-	position += Vector2(_curr_dir * PIXELS_PER_STEP)
 
 
-func _update_head_rotation() -> void:
-	match _curr_dir:
-		Vector2i.DOWN:
-			rotation_degrees = 90
-		Vector2i.UP:
-			rotation_degrees = 270
-		Vector2i.RIGHT:
-			rotation_degrees = 0
-		Vector2i.LEFT:
-			rotation_degrees = 180
+func _move() -> void:
+	var last_trunk_part = Utils.last_child(_trunk)
+	_tail.position = last_trunk_part.position
+	for i in range(_trunk.get_child_count() - 1, 0, -1):
+		var trunk_part = _trunk.get_child(i)
+		var front_trunk_part = _trunk.get_child(i - 1)
+		trunk_part.position = front_trunk_part.position
+		trunk_part.rotation = front_trunk_part.rotation
+	_first_trunk_part.position = _head.position
+	_first_trunk_part.rotation = _head.rotation
+	_tail.rotation = last_trunk_part.rotation
+	_head.rotation = Vector2(_curr_dir).angle()
+	_head.position += Vector2(_curr_dir * _pixels_per_step)
 
 
 func _check_collisions() -> void:
@@ -79,7 +94,6 @@ func _check_collisions() -> void:
 	# If not check if he ate a treat
 	# if he does not crash, update position
 	# if he crashes, do not move the head and firts body part, and change his face to its death face
-	_update_head_position()
-	_update_head_rotation()
+	_move()
 	# TODO ensure animation happens at pace_sec
 	

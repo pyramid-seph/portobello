@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://khte4cqvlkcw"
 path="res://.godot/imported/day_01_tile_wall_3.png-9da706e35d9cf574e9ef2a831a4af840.res"
-group_file="res://art/day_1/day_01_tile_atlas.png"
+group_file="res://art/day_1/day_01_atlas.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/day_01_tile_wall_3.png-9da706e35d9cf574e9ef2a
 
 [params]
 
-atlas_file="res://art/day_1/day_01_tile_atlas.png"
+atlas_file="res://art/day_1/day_01_atlas.png"
 import_mode=0
-crop_to_region=true
+crop_to_region=false
 trim_alpha_border_from_region=true
