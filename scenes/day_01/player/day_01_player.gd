@@ -4,12 +4,18 @@ extends Marker2D
 signal ate
 signal died
 
+enum DeathCause {
+	FATIGUE,
+	CRASH,
+}
+
 const TrunkPart: PackedScene = preload("res://scenes/day_01/player/trunk_part.tscn")
 
 const INITIAL_DIR := Vector2i.RIGHT
 const MAX_TRUNK_PARTS: int = 98
 const DEBUG_POS := Vector2(120, 150)
 
+@export var stamina_sec: float
 @export var inverted_controls: bool
 @export var pace_sec: float = 1.0:
 	set(value):
@@ -21,15 +27,12 @@ var stop_moving: bool:
 		stop_moving = value
 		_elapsed_time_sec = 0.0
 
+var _remaining_stamina: float
 var _curr_dir: Vector2i = INITIAL_DIR
 var _next_dir: Vector2i = _curr_dir
 var _elapsed_time_sec: float
 var _growth_pending: bool
-var _is_dead: bool:
-	set(value):
-		_is_dead = value
-		if _is_dead:
-			died.emit()
+var _is_dead: bool
 
 @onready var _is_ready: bool = true
 @onready var _detector := $Head/Area2D as Area2D
@@ -43,12 +46,18 @@ var _is_dead: bool:
 
 func _ready() -> void:
 	_on_pace_sec_changed()
-	_reset_body()
+	_reset()
 
 
 func _process(delta: float) -> void:
 	if _is_dead or stop_moving or Engine.is_editor_hint():
 		return
+	
+	if stamina_sec > 0:
+		_remaining_stamina -= delta
+		if _remaining_stamina <= 0:
+			_die(DeathCause.FATIGUE)
+			return
 	
 	_update_next_direction()
 	
@@ -89,6 +98,7 @@ func _reset_body() -> void:
 	_tail.position.x = _first_trunk_part.position.x - _pixels_per_step
 	_tail.position.y = _first_trunk_part.position.y
 	_tail.rotation = _head.rotation
+	_head.visible = true
 	_dead_head.visible = false
 	if Engine.is_editor_hint():
 		_tail.stop()
@@ -104,6 +114,7 @@ func _reset() -> void:
 	_next_dir = _curr_dir
 	_growth_pending = false
 	_is_dead = false
+	_remaining_stamina = stamina_sec
 	_reset_body()
 
 
@@ -158,8 +169,11 @@ func _move() -> void:
 	_head.position += Vector2(_curr_dir * _pixels_per_step)
 
 
-func _die() -> void:
-	_is_dead = true
+func _die(cause: DeathCause) -> void:
+	if not _is_dead:
+		_is_dead = true
+		_on_died(cause)
+		died.emit()
 
 
 func _on_pace_sec_changed() -> void:
@@ -171,16 +185,25 @@ func _on_pace_sec_changed() -> void:
 	_tail.sprite_frames.set_animation_speed("default", animation_speed)
 
 
+func _on_died(cause: DeathCause) -> void:
+	_dead_head.visible = true
+	_head.visible = false
+	
+	var dead_head_pos
+	if cause == DeathCause.CRASH:
+		dead_head_pos = _first_trunk_part.position
+	else:
+		dead_head_pos = _head.position
+	_dead_head.position = dead_head_pos
+	_dead_head.rotation = _head.rotation
+	
+	_tail.stop()
+	_head.stop()
+
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if _is_dead or Engine.is_editor_hint():
 		return
+	
 	if area.collision_layer == 2:
-		_die()
-
-
-func _on_died() -> void:
-	_dead_head.visible = true
-	_dead_head.position = _first_trunk_part.position
-	_dead_head.rotation = _head.rotation
-	_tail.stop()
-	_head.stop()
+		_die(DeathCause.CRASH)
