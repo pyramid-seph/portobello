@@ -17,6 +17,7 @@ var stop_moving: bool:
 		_elapsed_time_sec = 0.0
 
 var _curr_dir: Vector2i = INITIAL_DIR
+var _next_dir: Vector2i
 var _is_dead: bool:
 	set(value):
 		_is_dead = value
@@ -87,10 +88,11 @@ func _update_direction() -> void:
 		candidate = Vector2i.DOWN if inverted_controls else Vector2i.UP
 	
 	if candidate != Vector2i.ZERO and candidate + _curr_dir != Vector2i.ZERO:
-		_curr_dir = candidate
+		_next_dir = candidate
 
 
 func _move() -> void:
+	_curr_dir = _next_dir
 	var last_trunk_part = Utils.last_child(_trunk)
 	
 	var new_trunk_part
@@ -127,7 +129,6 @@ func _die() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(str(area.collision_layer))
 	if _is_dead:
 		return
 	if area.collision_layer == 2:
