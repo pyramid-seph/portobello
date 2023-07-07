@@ -11,7 +11,10 @@ const MAX_TRUNK_PARTS: int = 98
 const DEBUG_POS := Vector2(120, 150)
 
 @export var inverted_controls: bool
-@export var pace_sec: float = 1.0
+@export var pace_sec: float = 1.0:
+	set(value):
+		pace_sec = value
+		_on_pace_sec_changed()
 
 var stop_moving: bool:
 	set(value):
@@ -35,10 +38,11 @@ var _is_dead: bool:
 @onready var _first_trunk_part := $Trunk/TrunkPart000 as Node2D
 @onready var _tail := $Tail as AnimatedSprite2D
 @onready var _dead_head := $DeadHead
-@onready var _pixels_per_step: int = floori(_trunk.get_child(0).get_rect().size.x)
+@onready var _pixels_per_step: int = int(_trunk.get_child(0).get_rect().size.x)
 
 
 func _ready() -> void:
+	_on_pace_sec_changed()
 	_reset_body()
 
 
@@ -144,6 +148,15 @@ func _move() -> void:
 
 func _die() -> void:
 	_is_dead = true
+
+
+func _on_pace_sec_changed() -> void:
+	if not _is_ready or Engine.is_editor_hint():
+		return
+	
+	var animation_speed = 0 if is_zero_approx(pace_sec) else int(1 / pace_sec)
+	_head.sprite_frames.set_animation_speed("default", animation_speed)
+	_tail.sprite_frames.set_animation_speed("default", animation_speed)
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

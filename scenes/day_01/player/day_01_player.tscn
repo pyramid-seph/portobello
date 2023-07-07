@@ -43,6 +43,7 @@ animations = [{
 size = Vector2(6, 6)
 
 [node name="Day01Player" type="Marker2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_ine60")
 
 [node name="Trunk" type="Marker2D" parent="."]
