@@ -1,7 +1,7 @@
 extends Node
 
 signal ate
-signal crashed
+signal died
 
 const INITIAL_DIR := Vector2i.RIGHT
 const MAX_TRUNK_PARTS: int = 98
@@ -17,14 +17,13 @@ var stop_moving: bool:
 		_elapsed_time_sec = 0.0
 
 var _curr_dir: Vector2i = INITIAL_DIR
-var _has_crashed: bool:
+var _is_dead: bool:
 	set(value):
-		_has_crashed = value
-		_elapsed_time_sec = 0.0
-		if _is_ready:
-			_dead_head.visible = not _has_crashed
+		_is_dead = value
+		died.emit()
 var _elapsed_time_sec: float
 var _growth_pending: bool
+
 
 @onready var _is_ready: bool = true
 @onready var _detector := $Head/Area2D as Area2D
@@ -41,7 +40,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if _has_crashed or stop_moving:
+	if _is_dead or stop_moving:
 		return
 	
 	if OS.is_debug_build() and Input.is_action_pressed("fire"):
@@ -52,7 +51,7 @@ func _process(delta: float) -> void:
 	_elapsed_time_sec += delta
 	if _elapsed_time_sec >= pace_sec:
 		_elapsed_time_sec = 0.0
-		_check_collisions()
+		_move()
 
 
 func reset() -> void:
@@ -66,11 +65,14 @@ func _reset_body() -> void:
 	for trunk_part in _trunk.get_children():
 		if trunk_part != _first_trunk_part:
 			trunk_part.queue_free()
-	_head.position = Vector2i(48,32)
+	_head.position = Vector2i(100,100)
 	_first_trunk_part.position.x = _head.position.x - _pixels_per_step
 	_first_trunk_part.position.y = _head.position.y
 	_tail.position.x = _head.position.x - _pixels_per_step * (_trunk.get_child_count() + 1)
 	_tail.position.y = _head.position.y
+	_head.visible = true
+	_dead_head.visible = false
+	_first_trunk_part.visible = true
 
 
 func _update_direction() -> void:
@@ -120,11 +122,21 @@ func _move() -> void:
 	_head.position += Vector2(_curr_dir * _pixels_per_step)
 
 
-func _check_collisions() -> void:
-	# Check if bucho crashes with furniture, wall or himself
-	# If not check if he ate a treat
-	# if he does not crash, update position
-	# if he crashes, do not move the head and firts body part, and change his face to its death face
-	_move()
-	# TODO ensure animation happens at pace_sec
-	
+func _die() -> void:
+	_is_dead = true
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print(str(area.collision_layer))
+	if _is_dead:
+		return
+	if area.collision_layer == 2:
+		_die()
+
+
+func _on_died() -> void:
+	_dead_head.visible = true
+	_dead_head.position = _first_trunk_part.position
+	_dead_head.rotation = _head.rotation
+	_first_trunk_part.visible = false
+	_head.visible = false

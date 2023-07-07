@@ -72,3 +72,7 @@ func _on_results_screen_calculated(new_high_score, stars) -> void:
 
 func _on_results_screen_finished(total_score, extra_lives, stars) -> void:
 	pass
+
+
+func _on_day_01_player_died() -> void:
+	print("CRASHED!")

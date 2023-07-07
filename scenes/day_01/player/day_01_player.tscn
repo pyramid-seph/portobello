@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi48jeuci3exe"]
+[gd_scene load_steps=12 format=3 uid="uid://bi48jeuci3exe"]
 
 [ext_resource type="Script" path="res://scenes/day_01/player/day_01_player.gd" id="1_ine60"]
 [ext_resource type="Texture2D" uid="uid://fqfbse76jpg1" path="res://art/day_1/day_01_player_head_0.png" id="2_42v48"]
@@ -39,6 +39,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sseac"]
+size = Vector2(6, 6)
+
 [node name="Day01Player" type="Node"]
 script = ExtResource("1_ine60")
 pace_sec = 1.0
@@ -55,8 +58,8 @@ frame = 1
 frame_progress = 0.809195
 
 [node name="Area2D" type="Area2D" parent="Head"]
-monitoring = false
-monitorable = false
+collision_layer = 0
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
 shape = SubResource("RectangleShape2D_chl8n")
@@ -65,6 +68,16 @@ shape = SubResource("RectangleShape2D_chl8n")
 sprite_frames = SubResource("SpriteFrames_gigx6")
 autoplay = "default"
 
+[node name="Area2D" type="Area2D" parent="Tail"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tail/Area2D"]
+shape = SubResource("RectangleShape2D_sseac")
+
 [node name="DeadHead" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("4_3gafk")
+
+[connection signal="died" from="." to="." method="_on_died"]
+[connection signal="area_entered" from="Head/Area2D" to="." method="_on_area_2d_area_entered"]
