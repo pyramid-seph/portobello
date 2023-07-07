@@ -50,14 +50,6 @@ func _is_last_level() -> bool:
 	return true
 
 
-func _on_player_crashed() -> void:
-	pass # Replace with function body.
-
-
-func _on_player_ate() -> void:
-	pass # Replace with function body.
-
-
 func _on_level_failed() -> void:
 	_go_to_title_screen()
 
@@ -66,13 +58,17 @@ func _on_level_beaten(lives: int, total_score: int, _stars: int) -> void:
 	pass
 
 
+func _on_player_died() -> void:
+	print("DIED!")
+
+
+func _on_player_ate() -> void:
+	print("ATE!")
+
+
 func _on_results_screen_calculated(new_high_score, stars) -> void:
 	pass
 
 
 func _on_results_screen_finished(total_score, extra_lives, stars) -> void:
 	pass
-
-
-func _on_day_01_player_died() -> void:
-	print("CRASHED!")

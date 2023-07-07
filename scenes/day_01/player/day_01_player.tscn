@@ -44,9 +44,8 @@ size = Vector2(6, 6)
 
 [node name="Day01Player" type="Marker2D"]
 script = ExtResource("1_ine60")
-pace_sec = 1.0
 
-[node name="Trunk" type="Node" parent="."]
+[node name="Trunk" type="Marker2D" parent="."]
 
 [node name="TrunkPart000" parent="Trunk" instance=ExtResource("2_g6xfj")]
 position = Vector2(-8, 0)
@@ -54,8 +53,6 @@ position = Vector2(-8, 0)
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hyfm3")
 autoplay = "default"
-frame = 1
-frame_progress = 0.809195
 
 [node name="Area2D" type="Area2D" parent="Head"]
 collision_layer = 0
@@ -68,7 +65,6 @@ shape = SubResource("RectangleShape2D_chl8n")
 position = Vector2(-16, 0)
 sprite_frames = SubResource("SpriteFrames_gigx6")
 autoplay = "default"
-frame_progress = 0.19565
 
 [node name="Area2D" type="Area2D" parent="Tail"]
 collision_layer = 2

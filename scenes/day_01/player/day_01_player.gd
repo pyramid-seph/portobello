@@ -11,7 +11,7 @@ const MAX_TRUNK_PARTS: int = 98
 const DEBUG_POS := Vector2(120, 150)
 
 @export var inverted_controls: bool
-@export var pace_sec: float = 0.25
+@export var pace_sec: float = 1.0
 
 var stop_moving: bool:
 	set(value):
@@ -76,7 +76,7 @@ func _reset_body() -> void:
 	for trunk_part in _trunk.get_children():
 		if trunk_part != _first_trunk_part:
 			trunk_part.queue_free()
-	_head.position = DEBUG_POS if get_parent() == $/root else position
+	_head.global_position = DEBUG_POS if get_parent() == $/root else global_position
 	_first_trunk_part.position.x = _head.position.x - _pixels_per_step
 	_first_trunk_part.position.y = _head.position.y
 	_tail.position.x = _head.position.x - _pixels_per_step * (_trunk.get_child_count() + 1)
@@ -147,8 +147,7 @@ func _die() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(area.get_parent().name)
-	if _is_dead:
+	if _is_dead or Engine.is_editor_hint():
 		return
 	if area.collision_layer == 2:
 		_die()
