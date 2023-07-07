@@ -1,15 +1,17 @@
-extends Node
+@tool
+extends Marker2D
 
 signal ate
 signal died
 
+const TrunkPart: PackedScene = preload("res://scenes/day_01/player/trunk_part.tscn")
+
 const INITIAL_DIR := Vector2i.RIGHT
 const MAX_TRUNK_PARTS: int = 98
+const DEBUG_POS := Vector2(120, 150)
 
 @export var inverted_controls: bool
 @export var pace_sec: float = 0.25
-@export var initial_trunk_parts: int = 1
-@export var TrunkPart: PackedScene
 
 var stop_moving: bool:
 	set(value):
@@ -17,14 +19,14 @@ var stop_moving: bool:
 		_elapsed_time_sec = 0.0
 
 var _curr_dir: Vector2i = INITIAL_DIR
-var _next_dir: Vector2i
+var _next_dir: Vector2i = _curr_dir
+var _elapsed_time_sec: float
+var _growth_pending: bool
 var _is_dead: bool:
 	set(value):
 		_is_dead = value
-		died.emit()
-var _elapsed_time_sec: float
-var _growth_pending: bool
-
+		if _is_dead:
+			died.emit()
 
 @onready var _is_ready: bool = true
 @onready var _detector := $Head/Area2D as Area2D
@@ -41,13 +43,13 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if _is_dead or stop_moving:
+	if _is_dead or stop_moving or Engine.is_editor_hint():
 		return
 	
 	if OS.is_debug_build() and Input.is_action_pressed("fire"):
 		_growth_pending = true
 	
-	_update_direction()
+	_update_next_direction()
 	
 	_elapsed_time_sec += delta
 	if _elapsed_time_sec >= pace_sec:
@@ -58,7 +60,15 @@ func _process(delta: float) -> void:
 func reset() -> void:
 	_elapsed_time_sec = 0.0
 	_curr_dir = INITIAL_DIR
+	_next_dir = _curr_dir
 	_growth_pending = false
+	_is_dead = false
+	_reset_body()
+
+
+func revive() -> void:
+	if not _is_dead:
+		return
 	_reset_body()
 
 
@@ -66,7 +76,7 @@ func _reset_body() -> void:
 	for trunk_part in _trunk.get_children():
 		if trunk_part != _first_trunk_part:
 			trunk_part.queue_free()
-	_head.position = Vector2i(100,100)
+	_head.position = DEBUG_POS if get_parent() == $/root else position
 	_first_trunk_part.position.x = _head.position.x - _pixels_per_step
 	_first_trunk_part.position.y = _head.position.y
 	_tail.position.x = _head.position.x - _pixels_per_step * (_trunk.get_child_count() + 1)
@@ -74,25 +84,33 @@ func _reset_body() -> void:
 	_head.visible = true
 	_dead_head.visible = false
 	_first_trunk_part.visible = true
+	if Engine.is_editor_hint():
+		_tail.stop()
+		_head.stop()
+	else:
+		_tail.play("default")
 
 
-func _update_direction() -> void:
-	var candidate: Vector2i
+func _update_next_direction() -> void:
+	var candidate: Vector2i = _next_dir
 	if Input.is_action_pressed("move_right"):
 		candidate = Vector2i.LEFT if inverted_controls else Vector2i.RIGHT
 	elif Input.is_action_pressed("move_left"):
 		candidate = Vector2i.RIGHT if inverted_controls else Vector2i.LEFT
-	elif  Input.is_action_pressed("move_down"):
+	elif Input.is_action_pressed("move_down"):
 		candidate = Vector2i.UP if inverted_controls else Vector2i.DOWN
-	elif  Input.is_action_pressed("move_up"):
+	elif Input.is_action_pressed("move_up"):
 		candidate = Vector2i.DOWN if inverted_controls else Vector2i.UP
 	
-	if candidate != Vector2i.ZERO and candidate + _curr_dir != Vector2i.ZERO:
+	if candidate + _curr_dir == Vector2i.ZERO:
+		_next_dir = _curr_dir
+	else:
 		_next_dir = candidate
 
 
 func _move() -> void:
 	_curr_dir = _next_dir
+	
 	var last_trunk_part = Utils.last_child(_trunk)
 	
 	var new_trunk_part
@@ -129,6 +147,7 @@ func _die() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	print(area.get_parent().name)
 	if _is_dead:
 		return
 	if area.collision_layer == 2:
@@ -141,3 +160,4 @@ func _on_died() -> void:
 	_dead_head.rotation = _head.rotation
 	_first_trunk_part.visible = false
 	_head.visible = false
+	_tail.stop()

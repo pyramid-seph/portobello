@@ -42,14 +42,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sseac"]
 size = Vector2(6, 6)
 
-[node name="Day01Player" type="Node"]
+[node name="Day01Player" type="Marker2D"]
 script = ExtResource("1_ine60")
 pace_sec = 1.0
-TrunkPart = ExtResource("2_g6xfj")
 
 [node name="Trunk" type="Node" parent="."]
 
 [node name="TrunkPart000" parent="Trunk" instance=ExtResource("2_g6xfj")]
+position = Vector2(-8, 0)
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hyfm3")
@@ -65,8 +65,10 @@ collision_mask = 6
 shape = SubResource("RectangleShape2D_chl8n")
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, 0)
 sprite_frames = SubResource("SpriteFrames_gigx6")
 autoplay = "default"
+frame_progress = 0.19565
 
 [node name="Area2D" type="Area2D" parent="Tail"]
 collision_layer = 2
@@ -80,4 +82,3 @@ visible = false
 texture = ExtResource("4_3gafk")
 
 [connection signal="died" from="." to="." method="_on_died"]
-[connection signal="area_entered" from="Head/Area2D" to="." method="_on_area_2d_area_entered"]
