@@ -22,8 +22,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_chl8n"]
-size = Vector2(6, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wf65"]
+size = Vector2(4, 4)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gigx6"]
 animations = [{
@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sseac"]
-size = Vector2(6, 6)
+size = Vector2(4, 4)
 
 [node name="Day01Player" type="Marker2D"]
 position = Vector2(0, 1)
@@ -51,12 +51,12 @@ sprite_frames = SubResource("SpriteFrames_hyfm3")
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="Head"]
-position = Vector2(0, -1)
 collision_layer = 0
 collision_mask = 6
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
-shape = SubResource("RectangleShape2D_chl8n")
+shape = SubResource("RectangleShape2D_7wf65")
 
 [node name="Trunk" type="Marker2D" parent="."]
 
@@ -71,6 +71,7 @@ autoplay = "default"
 [node name="Area2D" type="Area2D" parent="Tail"]
 collision_layer = 2
 collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tail/Area2D"]
 shape = SubResource("RectangleShape2D_sseac")

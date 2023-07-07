@@ -35,7 +35,6 @@ var _growth_pending: bool
 var _is_dead: bool
 
 @onready var _is_ready: bool = true
-@onready var _detector := $Head/Area2D as Area2D
 @onready var _head := $Head as AnimatedSprite2D
 @onready var _trunk := $Trunk
 @onready var _first_trunk_part := $Trunk/TrunkPart000 as Node2D
@@ -53,11 +52,8 @@ func _process(delta: float) -> void:
 	if _is_dead or stop_moving or Engine.is_editor_hint():
 		return
 	
-	if stamina_sec > 0:
-		_remaining_stamina -= delta
-		if _remaining_stamina <= 0:
-			_die(DeathCause.FATIGUE)
-			return
+	if _update_stamina(delta):
+		return
 	
 	_update_next_direction()
 	
@@ -82,6 +78,15 @@ func revive() -> void:
 	_reset()
 
 
+func _update_stamina(delta: float) -> bool:
+	if stamina_sec > 0:
+		_remaining_stamina -= delta
+		if _remaining_stamina <= 0:
+			_die(DeathCause.FATIGUE)
+			return true
+	return false
+
+
 func _is_root_parent() -> bool:
 	return get_parent() == $/root
 
@@ -100,6 +105,7 @@ func _reset_body() -> void:
 	_tail.rotation = _head.rotation
 	_head.visible = true
 	_dead_head.visible = false
+	_first_trunk_part.visible = true
 	if Engine.is_editor_hint():
 		_tail.stop()
 		_head.stop()
@@ -164,7 +170,7 @@ func _move() -> void:
 		new_trunk_part.rotation = last_trunk_part.rotation
 	else:
 		_tail.rotation = last_trunk_part.rotation
-		
+	
 	_head.rotation = Vector2(_curr_dir).angle()
 	_head.position += Vector2(_curr_dir * _pixels_per_step)
 
@@ -192,6 +198,7 @@ func _on_died(cause: DeathCause) -> void:
 	var dead_head_pos
 	if cause == DeathCause.CRASH:
 		dead_head_pos = _first_trunk_part.position
+		_first_trunk_part.visible = false
 	else:
 		dead_head_pos = _head.position
 	_dead_head.position = dead_head_pos
@@ -202,8 +209,11 @@ func _on_died(cause: DeathCause) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if _is_dead or Engine.is_editor_hint():
+	if _is_dead:
 		return
 	
-	if area.collision_layer == 2:
-		_die(DeathCause.CRASH)
+	match area.collision_layer:
+		Constants.LAYER_HITBOX:
+			_die(DeathCause.CRASH)
+		Constants.LAYER_PICKUP:
+			_growth_pending = true
