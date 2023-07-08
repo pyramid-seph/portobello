@@ -209,6 +209,7 @@ func _on_died(cause: DeathCause) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("_on_area_2d_area_entered")
 	if _is_dead:
 		return
 	
@@ -217,3 +218,17 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			_die(DeathCause.CRASH)
 		Constants.LAYER_PICKUP:
 			_growth_pending = true
+			area.queue_free()
+			ate.emit()
+
+
+func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print("_on_area_2d_area_shape_entered")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("_on_area_2d_body_entered")
+
+
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print("_on_area_2d_body_shape_entered")
