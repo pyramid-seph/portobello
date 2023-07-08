@@ -153,6 +153,7 @@ func _move() -> void:
 	
 	if new_trunk_part:
 		new_trunk_part.position = last_trunk_part.position
+		new_trunk_part.rotation = last_trunk_part.rotation
 	else:
 		_tail.position = last_trunk_part.position
 	
@@ -167,7 +168,6 @@ func _move() -> void:
 	
 	if new_trunk_part:
 		_trunk.add_child(new_trunk_part)
-		new_trunk_part.rotation = last_trunk_part.rotation
 	else:
 		_tail.rotation = last_trunk_part.rotation
 	
