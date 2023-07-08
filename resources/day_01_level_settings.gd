@@ -16,7 +16,7 @@ enum ObstacleCourseType {
 @export var dialogue: Array[DialogueLine]
 
 
-func is_time_based() -> bool:
+func is_time_limited() -> bool:
 	return stamina_sec > 0
 
 

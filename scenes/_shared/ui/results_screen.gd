@@ -228,6 +228,7 @@ func _tween_stars_results() -> void:
 
 
 func _present_results() -> Signal:
+	visible = true
 	_setup_label_texts()
 	
 	if _tween:

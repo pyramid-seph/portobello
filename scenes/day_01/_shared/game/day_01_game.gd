@@ -50,13 +50,13 @@ func _set_up_level() -> void:
 	_player.inverted_controls = _level_settings.inverted_controls
 	_player.pace_sec= _level_settings.pace_sec
 	_player.stamina_sec = _level_settings.stamina_sec
-	_ui.set_is_stamina_bar_visible(_level_settings.is_time_based())
+	_ui.set_is_stamina_bar_visible(_level_settings.is_time_limited())
 
 
 func _start_level() -> void:
 	_player.can_move = false
-	# TODO Show presentation.
-	# Await until presentation ends
+	_ui.show_level_start(Game.Mode.SCORE_ATTACK, 0)
+	await _ui.start_level_finished
 	_player.can_move = true
 
 
@@ -80,11 +80,8 @@ func _on_eaten_treats_chaanged() -> void:
 
 
 func _on_level_failed() -> void:
-	# * Show game over label
-	# * Await until it dissapers
-	# * Show results screen if it is a score attack level
-	#     * Await until the results screen finishes
-	#     * Save results
+	_ui.show_game_over()
+	await _ui.game_over_finished
 	_go_to_title_screen()
 
 
@@ -98,6 +95,8 @@ func _on_player_died() -> void:
 	if _remaining_lives <= 0:
 		_on_level_failed()
 	else:
+		# show time out if needed
+		# else, wait until timer stops
 		_timer.start(REVIVAL_DELAY_SEC)
 		await _timer.timeout
 		_player.revive()
@@ -119,7 +118,7 @@ func _on_results_screen_calculated(new_high_score, stars) -> void:
 
 
 func _on_results_screen_finished(total_score, extra_lives, stars) -> void:
-	pass
+	_go_to_title_screen()
 
 
 func _on_player_stamina_changed(stamina) -> void:
