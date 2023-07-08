@@ -80,8 +80,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		revive()
 
 
-func revive() -> void:
-	if not _is_dead:
+func revive(force: bool = false) -> void:
+	if not _is_dead and not force:
 		return
 	_reset()
 

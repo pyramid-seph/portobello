@@ -46,9 +46,10 @@ func set_shared_data(data: Dictionary = {}) -> void:
 		_level = data.level
 
 
-func _set_up_level() -> void:	
+func _set_up_level() -> void:
+	_player.revive(true)
 	_eaten_treats = 0
-	_remaining_lives = _level_settings.max_lives
+	_remaining_lives = _level_settings.max_lives # TODO only if this is the first level
 	_player.inverted_controls = _level_settings.inverted_controls
 	_player.pace_sec= _level_settings.pace_sec
 	_player.stamina_sec = _level_settings.stamina_sec
@@ -91,7 +92,17 @@ func _on_level_beaten() -> void:
 	_player.can_move = false
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
+	
+	# if last_level
+	#   show results screen
+	#   await until it ends
+	#   save stuff
+	#   go back to the title screen
+	#   return
+	# else
 	_set_up_level() # TODO Set up next level
+	# TODO Play cutscene
+	# Await 'til cutscene finishes
 	_start_level() # TODO start level
 
 
