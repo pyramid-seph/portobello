@@ -46,7 +46,7 @@ func set_shared_data(data: Dictionary = {}) -> void:
 		_level = data.level
 
 
-func _set_up_level() -> void:
+func _set_up_level() -> void:	
 	_eaten_treats = 0
 	_remaining_lives = _level_settings.max_lives
 	_player.inverted_controls = _level_settings.inverted_controls
@@ -87,9 +87,12 @@ func _on_level_failed() -> void:
 	_go_to_title_screen()
 
 
-func _on_level_beaten(lives: int, total_score: int, _stars: int) -> void:
-	# set up next level
-	pass
+func _on_level_beaten() -> void:
+	_player.can_move = false
+	_ui.show_level_beaten()
+	await _ui.level_beaten_finished
+	_set_up_level() # TODO Set up next level
+	_start_level() # TODO start level
 
 
 func _on_player_died(cause: Player.DeathCause) -> void:
@@ -114,7 +117,7 @@ func _on_player_ate() -> void:
 		return
 	
 	if _eaten_treats >= _level_settings.treats:
-		_on_level_beaten(0, 0, 0)
+		_on_level_beaten()
 
 
 func _on_results_screen_calculated(new_high_score, stars) -> void:

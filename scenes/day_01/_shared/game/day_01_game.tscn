@@ -1,17 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqn328nqhcfq7"]
+[gd_scene load_steps=12 format=3 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
 [ext_resource type="Texture2D" uid="uid://l6m7rv51mula" path="res://art/day_1/_day_01_ui_guide.png" id="2_e3b2r"]
 [ext_resource type="Script" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
 [ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/day_01_tile_atlas.png" id="3_71sjy"]
+[ext_resource type="PackedScene" uid="uid://yhr74i70c14h" path="res://scenes/day_01/_shared/treat.tscn" id="6_d2bhx"]
 [ext_resource type="PackedScene" uid="uid://bi48jeuci3exe" path="res://scenes/day_01/player/day_01_player.tscn" id="6_kn384"]
 [ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_game_ui.tscn" id="6_s8541"]
 
 [sub_resource type="Resource" id="Resource_vg7wr"]
 script = ExtResource("2_fmqcn")
 pace_sec = 0.25
-stamina_sec = 5.0
+stamina_sec = 100.0
 obstacle_course_type = 0
 inverted_controls = false
 max_lives = 2
@@ -60,7 +61,6 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 [node name="Day01Game" type="Node"]
 process_mode = 1
 script = ExtResource("1_745ra")
-_level = null
 _level_settings = SubResource("Resource_vg7wr")
 
 [node name="Timer" type="Timer" parent="."]
@@ -101,6 +101,9 @@ layer_1/tile_data = PackedInt32Array(1835012, 0, 0, 1769476, 0, 0, 1703940, 0, 0
 [node name="Day01Player" parent="World" instance=ExtResource("6_kn384")]
 z_index = -1
 position = Vector2(100, 148)
+
+[node name="Treat" parent="World" instance=ExtResource("6_d2bhx")]
+position = Vector2(160, 148)
 
 [node name="Interface" type="Node" parent="."]
 
