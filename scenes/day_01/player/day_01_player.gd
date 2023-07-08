@@ -188,7 +188,7 @@ func _move() -> void:
 
 
 func _eat(thing: Node) -> void:
-	_growth_pending = true
+	_growth_pending = _trunk.get_child_count() < MAX_TRUNK_PARTS
 	thing.queue_free()
 	ate.emit()
 
