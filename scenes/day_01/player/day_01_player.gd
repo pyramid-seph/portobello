@@ -2,7 +2,7 @@
 extends Marker2D
 
 signal ate
-signal died
+signal died(death_cause: DeathCause)
 signal stamina_changed(value: float)
 
 enum DeathCause {
@@ -197,7 +197,7 @@ func _die(cause: DeathCause) -> void:
 	if not _is_dead:
 		_is_dead = true
 		_on_died(cause)
-		died.emit()
+		died.emit(cause)
 
 
 func _on_pace_sec_changed() -> void:

@@ -6,15 +6,15 @@
 [ext_resource type="Script" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
 [ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/day_01_tile_atlas.png" id="3_71sjy"]
 [ext_resource type="PackedScene" uid="uid://bi48jeuci3exe" path="res://scenes/day_01/player/day_01_player.tscn" id="6_kn384"]
-[ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/day_01_game_ui.tscn" id="6_s8541"]
+[ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_game_ui.tscn" id="6_s8541"]
 
 [sub_resource type="Resource" id="Resource_vg7wr"]
 script = ExtResource("2_fmqcn")
 pace_sec = 0.25
-stamina_sec = 10.0
+stamina_sec = 5.0
 obstacle_course_type = 0
 inverted_controls = false
-max_lives = 1
+max_lives = 2
 treats = 1
 dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
 
@@ -60,6 +60,7 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 [node name="Day01Game" type="Node"]
 process_mode = 1
 script = ExtResource("1_745ra")
+_level = null
 _level_settings = SubResource("Resource_vg7wr")
 
 [node name="Timer" type="Timer" parent="."]

@@ -1,6 +1,8 @@
 class_name Day01Game
 extends Node
 
+const Player = preload("res://scenes/day_01/player/day_01_player.gd")
+const Day01Ui = preload("res://scenes/day_01/_shared/ui/day_01_game_ui.gd")
 
 enum Level {
 	STORY_MODE_LEVEL_01,
@@ -27,10 +29,10 @@ var _eaten_treats: int:
 		_eaten_treats = value
 		_on_eaten_treats_chaanged()
 
-@onready var _is_ready: bool = true
-@onready var _results_screen = $Interface/ResultsScreen
-@onready var _player = $World/Day01Player
-@onready var _ui = $Interface/Day01GameUi
+@onready var _is_ready := true
+@onready var _results_screen := $Interface/ResultsScreen
+@onready var _player := $World/Day01Player as Player
+@onready var _ui := $Interface/Day01GameUi as Day01Ui
 @onready var _timer := $Timer as Timer
 
 
@@ -90,15 +92,17 @@ func _on_level_beaten(lives: int, total_score: int, _stars: int) -> void:
 	pass
 
 
-func _on_player_died() -> void:
+func _on_player_died(cause: Player.DeathCause) -> void:
 	_remaining_lives -= 1
 	if _remaining_lives <= 0:
 		_on_level_failed()
 	else:
-		# show time out if needed
-		# else, wait until timer stops
-		_timer.start(REVIVAL_DELAY_SEC)
-		await _timer.timeout
+		if cause == Player.DeathCause.FATIGUE:
+			_ui.show_time_out()
+			await _ui.time_out_finished
+		else:
+			_timer.start(REVIVAL_DELAY_SEC)
+			await _timer.timeout
 		_player.revive()
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cnfahjhvwxeo2"]
 
-[ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game_ui.gd" id="1_88gay"]
+[ext_resource type="Script" path="res://scenes/day_01/_shared/ui/day_01_game_ui.gd" id="1_vfhqe"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="2_dhqsk"]
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="3_88su3"]
 [ext_resource type="Texture2D" uid="uid://085ky11hend8" path="res://art/_shared/ui_counter_cat_food.png" id="4_4e12d"]
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_88gay")
+script = ExtResource("1_vfhqe")
 
 [node name="LivesCounter" type="HBoxContainer" parent="."]
 layout_mode = 1
