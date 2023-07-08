@@ -48,7 +48,7 @@ func _ready() -> void:
 	_reset()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if _is_dead or stop_moving or Engine.is_editor_hint():
 		return
 	
