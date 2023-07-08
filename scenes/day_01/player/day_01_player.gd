@@ -175,6 +175,12 @@ func _move() -> void:
 	_head.position += Vector2(_curr_dir * _pixels_per_step)
 
 
+func _eat(thing: Node) -> void:
+	_growth_pending = true
+	thing.queue_free()
+	ate.emit()
+
+
 func _die(cause: DeathCause) -> void:
 	if not _is_dead:
 		_is_dead = true
@@ -209,7 +215,6 @@ func _on_died(cause: DeathCause) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("_on_area_2d_area_entered")
 	if _is_dead:
 		return
 	
@@ -217,18 +222,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		Constants.LAYER_HITBOX:
 			_die(DeathCause.CRASH)
 		Constants.LAYER_PICKUP:
-			_growth_pending = true
-			area.queue_free()
-			ate.emit()
-
-
-func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	print("_on_area_2d_area_shape_entered")
+			_eat(area)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("_on_area_2d_body_entered")
-
-
-func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print("_on_area_2d_body_shape_entered")
+	if not _is_dead:
+		_die(DeathCause.CRASH)
