@@ -3,6 +3,7 @@ extends Marker2D
 
 signal ate
 signal died
+signal stamina_changed(value: float)
 
 enum DeathCause {
 	FATIGUE,
@@ -15,24 +16,31 @@ const INITIAL_DIR := Vector2i.RIGHT
 const MAX_TRUNK_PARTS: int = 98
 const DEBUG_POS := Vector2(120, 150)
 
-@export var stamina_sec: float
+@export var stamina_sec: float:
+	set(value):
+		stamina_sec = value
+		_remaining_stamina = stamina_sec
 @export var inverted_controls: bool
 @export var pace_sec: float = 1.0:
 	set(value):
 		pace_sec = value
 		_on_pace_sec_changed()
 
-var stop_moving: bool:
+var can_move: bool = true:
 	set(value):
-		stop_moving = value
+		can_move = value
 		_elapsed_time_sec = 0.0
 
-var _remaining_stamina: float
 var _curr_dir: Vector2i = INITIAL_DIR
 var _next_dir: Vector2i = _curr_dir
 var _elapsed_time_sec: float
 var _growth_pending: bool
 var _is_dead: bool
+var _remaining_stamina: float:
+	set(value):
+		_remaining_stamina = value
+		if not has_infinite_stamina():
+			stamina_changed.emit(_remaining_stamina / stamina_sec)
 
 @onready var _is_ready: bool = true
 @onready var _head := $Head as AnimatedSprite2D
@@ -49,7 +57,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if _is_dead or stop_moving or Engine.is_editor_hint():
+	if _is_dead or not can_move or Engine.is_editor_hint():
 		return
 	
 	if _update_stamina(delta):
@@ -78,8 +86,12 @@ func revive() -> void:
 	_reset()
 
 
+func has_infinite_stamina() -> bool:
+	return stamina_sec <= 0.0
+
+
 func _update_stamina(delta: float) -> bool:
-	if stamina_sec > 0:
+	if not has_infinite_stamina():
 		_remaining_stamina -= delta
 		if _remaining_stamina <= 0:
 			_die(DeathCause.FATIGUE)
