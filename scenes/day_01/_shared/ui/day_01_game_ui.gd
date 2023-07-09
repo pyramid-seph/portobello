@@ -6,7 +6,6 @@ signal game_over_finished
 signal level_beaten_finished
 signal time_out_finished
 
-@onready var _is_ready := true
 @onready var _lives_counter := $LivesCounter/Label as Label
 @onready var _treats_counter := $TreatsCounter/Label as Label
 @onready var _stamina_bar := %ProgressBar as TextureProgressBar

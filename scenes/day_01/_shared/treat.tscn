@@ -8,7 +8,6 @@ size = Vector2(8, 8)
 [node name="Treat" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
-monitoring = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_oqoru")

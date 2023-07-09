@@ -237,6 +237,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			_eat(area)
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	if not _is_dead:
 		_die(DeathCause.CRASH)
