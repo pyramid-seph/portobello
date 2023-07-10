@@ -6,6 +6,7 @@ const Day01Ui = preload("res://scenes/day_01/_shared/ui/day_01_game_ui.gd")
 const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
 const Treat = preload("res://scenes/day_01/_shared/treat.tscn")
 const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
+const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
 
 enum Level {
 	STORY_MODE_LEVEL_01,
@@ -49,8 +50,9 @@ var _curr_lvl_settings: Day01LevelSettings
 @onready var _player := $World/Day01Player as Player
 @onready var _ui := $Interface/Day01GameUi as Day01Ui
 @onready var _timer := $Timer as Timer
-@onready var _lvl_info := $LevelInfo as LevelInfo
+@onready var _lvl_info := $Systems/LevelInfo as LevelInfo
 @onready var _world := $World as Node2D
+@onready var _treat_placement_system := $Systems/TreatPlacementSystem as TreatPlacementSystem
 
 
 func _ready() -> void:
@@ -68,12 +70,7 @@ func _set_up_room() -> void:
 
 
 func _place_treat() -> void:
-	var treat = Treat.instantiate()
-	_world.add_child(treat)
-	# TODO randomize position
-	# TODO Check for collisions 
-	# TODO Retry if collides with something
-	treat.position = Vector2i(160, 148)
+	_treat_placement_system.spawn_treat_random()
 
 
 func _set_up_level() -> void:
@@ -87,8 +84,8 @@ func _set_up_level() -> void:
 	_ui.set_is_stamina_bar_visible(_curr_lvl_settings.is_time_limited())
 	_ui.update_treats_counter(_curr_lvl_settings.treats_limit)
 	
-	_set_up_room()
 	_reset_level()
+	_set_up_room()
 	_place_treat()
 
 
@@ -99,11 +96,11 @@ func _reset_level() -> void:
 	_player.pace_sec = _curr_lvl_settings.get_pace(_treats_ate)
 	_player.stamina_sec = _curr_lvl_settings.time_limit_sec
 	_player.inverted_controls = _curr_lvl_settings.inverted_controls
+	_player.revive(true)
 
 
 func _start_level() -> void:
 	_player.can_move = false
-	_player.revive(true)
 	# TODO if not first level, play cutscene.
 	var game_mode = _lvl_info.get_game_mode(_level)
 	var lvl_index = _lvl_info.get_lvl_index(_level)
@@ -176,7 +173,6 @@ func _on_player_died(cause: Player.DeathCause) -> void:
 		_on_level_failed()
 	else:
 		_reset_level()
-		_player.revive()
 
 
 func _on_player_ate() -> void:

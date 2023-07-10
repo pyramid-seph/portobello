@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqn328nqhcfq7"]
+[gd_scene load_steps=25 format=3 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
+[ext_resource type="Script" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
 [ext_resource type="Texture2D" uid="uid://l6m7rv51mula" path="res://art/day_1/_day_01_ui_guide.png" id="2_e3b2r"]
 [ext_resource type="Script" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
@@ -8,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/day_01_tile_atlas.png" id="3_71sjy"]
 [ext_resource type="PackedScene" uid="uid://bi48jeuci3exe" path="res://scenes/day_01/player/day_01_player.tscn" id="6_kn384"]
 [ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_game_ui.tscn" id="6_s8541"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3nst"]
+size = Vector2(8, 8)
 
 [sub_resource type="Resource" id="Resource_gjy1r"]
 script = ExtResource("2_fmqcn")
@@ -199,7 +203,39 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 [node name="Day01Game" type="Node"]
 script = ExtResource("1_745ra")
 
-[node name="LevelInfo" type="Node" parent="."]
+[node name="Systems" type="Node" parent="."]
+
+[node name="TreatPlacementSystem" type="Node" parent="Systems" node_paths=PackedStringArray("_tile_map", "_world")]
+script = ExtResource("2_72va4")
+_tile_map = NodePath("../../World/TileMap")
+_world = NodePath("../../World")
+_player_node_path = NodePath("../../World/Day01Player")
+_max_tries = 5
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Systems/TreatPlacementSystem"]
+visible = false
+enabled = false
+shape = SubResource("RectangleShape2D_r3nst")
+target_position = Vector2(0, 0)
+collision_mask = 34
+collide_with_areas = true
+
+[node name="TopLeft" type="Marker2D" parent="Systems/TreatPlacementSystem"]
+position = Vector2(36, 84)
+gizmo_extents = 4.0
+metadata/_edit_lock_ = true
+
+[node name="TopRight" type="Marker2D" parent="Systems/TreatPlacementSystem"]
+position = Vector2(204, 84)
+gizmo_extents = 4.0
+metadata/_edit_lock_ = true
+
+[node name="BottomLeft" type="Marker2D" parent="Systems/TreatPlacementSystem"]
+position = Vector2(36, 228)
+gizmo_extents = 4.0
+metadata/_edit_lock_ = true
+
+[node name="LevelInfo" type="Node" parent="Systems"]
 script = ExtResource("2_tq1t3")
 _lvl_settings_story_01 = SubResource("Resource_gjy1r")
 _lvl_settings_story_02 = SubResource("Resource_tbt28")

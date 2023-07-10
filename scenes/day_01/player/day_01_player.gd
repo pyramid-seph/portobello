@@ -90,6 +90,14 @@ func has_infinite_stamina() -> bool:
 	return stamina_sec <= 0.0
 
 
+func get_head_global_postion() -> Vector2:
+	return _head.global_position
+
+
+func get_first_trunk_part_global_postion() -> Vector2:
+	return _first_trunk_part.global_position
+
+
 func _update_stamina(delta: float) -> bool:
 	if not has_infinite_stamina():
 		_remaining_stamina -= delta
