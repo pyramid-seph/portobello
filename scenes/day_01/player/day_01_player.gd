@@ -98,6 +98,10 @@ func get_first_trunk_part_global_postion() -> Vector2:
 	return _first_trunk_part.global_position
 
 
+func get_tail_global_postion() -> Vector2:
+	return _tail.global_position
+
+
 func _update_stamina(delta: float) -> bool:
 	if not has_infinite_stamina():
 		_remaining_stamina -= delta

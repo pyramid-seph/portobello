@@ -207,7 +207,7 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
 [node name="Day01Game" type="Node"]
 script = ExtResource("1_745ra")
-_level = 10
+_level = 8
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

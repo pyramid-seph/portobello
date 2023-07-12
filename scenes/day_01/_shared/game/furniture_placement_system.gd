@@ -70,6 +70,7 @@ func place_furniture_none() -> void:
 
 
 func place_furniture_default() -> void:
+	# We assume that player's head is at (9, 9) and tail is at (7, 9).
 	var l_table_temp := Rect2i(LARGE_TABLE_TILE_POS, _tile_size_large_table)
 	var l_couch_temp := Rect2i(Vector2i(2, 2), _tile_size_large_couch)
 	var s_couch_right_temp := Rect2i(Vector2i(1, 8), _tile_size_small_couch)
@@ -85,8 +86,17 @@ func place_furniture_default() -> void:
 
 
 func place_furniture_random() -> void:
-	var tries: int = 0
+	var head_rect := Rect2i(
+		_global_to_map(_player.get_head_global_postion()) - _origin_tile_pos,
+		 Vector2i.ONE
+	)
 	
+	var tail_rect := Rect2i(
+		_global_to_map(_player.get_tail_global_postion()) - _origin_tile_pos,
+		 Vector2i.ONE
+	)
+	
+	var tries: int = 0
 	var l_table_temp := Rect2i(Vector2i.ZERO, _tile_size_large_table)
 	var l_couch_temp := Rect2i(Vector2i.ZERO, _tile_size_large_couch)
 	var s_couch_right_temp := Rect2i(Vector2i.ZERO, _tile_size_small_couch)
@@ -102,8 +112,9 @@ func place_furniture_random() -> void:
 	while tries <= _max_tries:
 		s_couch_left_temp.position = _sc_cool()
 		if s_couch_left_temp.intersects(l_table_temp) or \
-				s_couch_left_temp.intersects(l_couch_temp):
-				# TODO check if player is overlapped tooo!
+				s_couch_left_temp.intersects(l_couch_temp) or \
+				s_couch_left_temp.intersects(head_rect) or \
+				s_couch_left_temp.intersects(tail_rect):
 			tries += 1
 		else:
 			break
@@ -113,8 +124,9 @@ func place_furniture_random() -> void:
 		s_couch_right_temp.position = _sc_cool()
 		if s_couch_right_temp.intersects(l_table_temp) or \
 				s_couch_right_temp.intersects(l_couch_temp) or \
-				s_couch_right_temp.intersects(s_couch_left_temp):
-				# TODO check if player is overlapped tooo!
+				s_couch_right_temp.intersects(s_couch_left_temp) or \
+				s_couch_right_temp.intersects(head_rect) or \
+				s_couch_right_temp.intersects(tail_rect):
 			tries += 1
 		else:
 			break
@@ -125,8 +137,9 @@ func place_furniture_random() -> void:
 		if s_table_00_temp.intersects(l_table_temp) or \
 				s_table_00_temp.intersects(l_couch_temp) or \
 				s_table_00_temp.intersects(s_couch_left_temp) or \
-				s_table_00_temp.intersects(s_couch_right_temp):
-				# TODO check if player is overlapped tooo!
+				s_table_00_temp.intersects(s_couch_right_temp) or \
+				s_table_00_temp.intersects(head_rect) or \
+				s_table_00_temp.intersects(tail_rect):
 			tries += 1
 		else:
 			break
@@ -138,8 +151,9 @@ func place_furniture_random() -> void:
 				s_table_01_temp.intersects(l_couch_temp) or \
 				s_table_01_temp.intersects(s_couch_left_temp) or \
 				s_table_01_temp.intersects(s_couch_right_temp) or \
-				s_table_01_temp.intersects(s_table_00_temp):
-				# TODO check if player is overlapped tooo!
+				s_table_01_temp.intersects(s_table_00_temp) or \
+				s_table_01_temp.intersects(head_rect) or \
+				s_table_01_temp.intersects(tail_rect):
 			tries += 1
 		else:
 			break
@@ -236,6 +250,10 @@ func _use_fallback_placement() -> void:
 	_small_couch_facing_right.call_deferred("set_position", _map_to_furniture_pos(s_couch_right_temp.position))
 	_small_table_00.call_deferred("set_position", _map_to_furniture_pos(s_table_00_temp.position))
 	_small_table_01.call_deferred("set_position", _map_to_furniture_pos(s_table_01_temp.position))
+
+
+func _global_to_map(pos: Vector2) -> Vector2i:
+	return _local_to_map(_tile_map.to_local(pos))
 
 
 func _local_to_map(pos: Vector2) -> Vector2i:
