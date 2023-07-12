@@ -5,6 +5,7 @@ const Treat = preload("res://scenes/day_01/_shared/treat.tscn")
 const Player = preload("res://scenes/day_01/player/day_01_player.gd")
 
 const LARGE_TABLE_TILE_POS: Vector2i = Vector2i(12, 13)
+const OUT_OF_SCREEN_POS: Vector2 = Vector2(-100, 100)
 
 @export var _tile_map: TileMap
 @export var _player_node_path: NodePath
@@ -47,6 +48,25 @@ var _origin_tile_pos: Vector2i
 
 func _ready() -> void:
 	_origin_tile_pos = _local_to_map(_origin.position)
+
+
+func place_furniture(obstacle_course_type: Day01LevelSettings.ObstacleCourseType) -> void:
+	match obstacle_course_type:
+		Day01LevelSettings.ObstacleCourseType.NONE:
+			place_furniture_none()
+		Day01LevelSettings.ObstacleCourseType.RANDOM:
+			place_furniture_random()
+		Day01LevelSettings.ObstacleCourseType.DEFAULT:
+			place_furniture_default()
+
+
+func place_furniture_none() -> void:
+	_large_table.call_deferred("set_position", OUT_OF_SCREEN_POS)
+	_large_couch.call_deferred("set_position", OUT_OF_SCREEN_POS)
+	_small_couch_facing_left.call_deferred("set_position", OUT_OF_SCREEN_POS)
+	_small_couch_facing_right.call_deferred("set_position", OUT_OF_SCREEN_POS)
+	_small_table_00.call_deferred("set_position", OUT_OF_SCREEN_POS)
+	_small_table_01.call_deferred("set_position", OUT_OF_SCREEN_POS)
 
 
 func place_furniture_default() -> void:

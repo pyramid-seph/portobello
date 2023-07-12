@@ -67,10 +67,8 @@ func set_shared_data(data: Dictionary = {}) -> void:
 
 
 func _set_up_room() -> void:
-	if not _curr_lvl_settings:
-		return
-	# TODO Support default placement
-	_furniture_placement_system.place_furniture_random()
+	if _curr_lvl_settings:
+		_furniture_placement_system.place_furniture(_curr_lvl_settings.obstacle_course_type)
 
 
 func _place_treat() -> void:

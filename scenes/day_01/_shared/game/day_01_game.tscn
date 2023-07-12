@@ -207,7 +207,6 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
 [node name="Day01Game" type="Node"]
 script = ExtResource("1_745ra")
-_level = 8
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -346,30 +345,30 @@ position = Vector2(100, 148)
 metadata/_edit_lock_ = true
 
 [node name="LargeCouch" parent="World/TileMap" instance=ExtResource("9_8h8mx")]
-position = Vector2(40, 88)
+position = Vector2(-177, 65)
 metadata/_edit_lock_ = true
 
 [node name="SmallCouchFacingLeft" parent="World/TileMap" instance=ExtResource("10_jkjik")]
-position = Vector2(128, 80)
+position = Vector2(-89, 57)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" parent="World/TileMap/SmallCouchFacingLeft" index="0"]
 flip_h = true
 
 [node name="SmallCouchFacingRight" parent="World/TileMap" instance=ExtResource("10_jkjik")]
-position = Vector2(32, 136)
+position = Vector2(-185, 113)
 metadata/_edit_lock_ = true
 
 [node name="SmallTable00" parent="World/TileMap" instance=ExtResource("11_t3pbc")]
-position = Vector2(88, 104)
+position = Vector2(-129, 81)
 metadata/_edit_lock_ = true
 
 [node name="SmallTable01" parent="World/TileMap" instance=ExtResource("11_t3pbc")]
-position = Vector2(176, 72)
+position = Vector2(-41, 49)
 metadata/_edit_lock_ = true
 
 [node name="LargeTable" parent="World/TileMap" instance=ExtResource("12_w5pkf")]
-position = Vector2(120, 176)
+position = Vector2(-97, 153)
 metadata/_edit_lock_ = true
 
 [connection signal="calculated" from="World/Interface/ResultsScreen" to="." method="_on_results_screen_calculated"]
