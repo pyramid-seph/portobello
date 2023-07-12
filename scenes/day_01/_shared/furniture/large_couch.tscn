@@ -13,6 +13,10 @@ collision_mask = 0
 texture = ExtResource("1_e68ry")
 centered = false
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Sprite2D"]
+position = Vector2(16, 28)
+scale = Vector2(1.6, 2.8)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 28)
 shape = SubResource("RectangleShape2D_r1ysu")

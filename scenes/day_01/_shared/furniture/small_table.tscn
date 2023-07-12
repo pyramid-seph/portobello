@@ -16,3 +16,7 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, 16)
 shape = SubResource("RectangleShape2D_a4spr")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(20, 16)
+scale = Vector2(1.2, 0.8)

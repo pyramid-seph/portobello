@@ -221,7 +221,7 @@ func _use_fallback_placement() -> void:
 		s_couch_right_temp.position = Vector2i(1, 1)
 		s_couch_left_temp.position = Vector2i(13, 6)
 		s_table_00_temp.position = Vector2i(2, 14)
-		s_table_01_temp.position = Vector2i(17, 2)
+		s_table_01_temp.position = Vector2i(17, 4)
 	else:
 		l_table_temp.position = LARGE_TABLE_TILE_POS
 		l_couch_temp.position = Vector2i(2, 7)
