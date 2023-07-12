@@ -39,7 +39,7 @@ func _randomize_placement() -> Vector2:
 		tile_pos.x = randi_range(_top_left_tile_pos.x, _top_right_tile_pos.x)
 		tile_pos.y = randi_range(_top_left_tile_pos.y, _bottom_left_tile_pos.y)
 		
-		if _collides_with_walls(tile_pos) or _collides_with_player_head(tile_pos):
+		if _collides_with_furniture(tile_pos) or _collides_with_player_head(tile_pos):
 			tries += 1
 			continue
 		else:
@@ -49,13 +49,17 @@ func _randomize_placement() -> Vector2:
 	return _tile_map.to_global(_map_to_local(tile_pos))
 
 
-func _collides_with_walls(tile_pos: Vector2i) -> bool:
+func _collides_with_furniture(tile_pos: Vector2i) -> bool:
 	return _tile_map.get_cell_tile_data(0, tile_pos) != null
 
 
 func _collides_with_player_head(tile_pos: Vector2i) -> bool:
 	var local_head_pos := _tile_map.to_local(_player.get_head_global_postion())
 	return _local_to_map(local_head_pos) == tile_pos
+
+
+func _global_to_map(pos: Vector2) -> Vector2i:
+	return _local_to_map(_tile_map.to_local(pos))
 
 
 func _local_to_map(pos: Vector2) -> Vector2i:
