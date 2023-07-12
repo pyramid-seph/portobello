@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://do7bac55vb7tv"]
+
+[ext_resource type="Texture2D" uid="uid://brp6rnorilg2k" path="res://art/day_1/day_01_furniture_placeholder_table_large .png" id="1_p2xmy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmjqb"]
+size = Vector2(72, 40)
+
+[node name="LargeTable" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p2xmy")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 20)
+shape = SubResource("RectangleShape2D_nmjqb")

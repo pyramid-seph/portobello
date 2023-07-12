@@ -7,6 +7,7 @@ const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
 const Treat = preload("res://scenes/day_01/_shared/treat.tscn")
 const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
 const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
+const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")
 
 enum Level {
 	STORY_MODE_LEVEL_01,
@@ -46,13 +47,14 @@ var _treats_ate: int:
 var _curr_lvl_settings: Day01LevelSettings
 
 @onready var _is_ready: bool = true
-@onready var _results_screen := $Interface/ResultsScreen as ResultsScreen
-@onready var _player := $World/Day01Player as Player
-@onready var _ui := $Interface/Day01GameUi as Day01Ui
+@onready var _results_screen := $World/Interface/ResultsScreen as ResultsScreen
+@onready var _player := $World/TileMap/Day01Player as Player
+@onready var _ui := $World/Interface/Day01GameUi as Day01Ui
 @onready var _timer := $Timer as Timer
 @onready var _lvl_info := $Systems/LevelInfo as LevelInfo
 @onready var _world := $World as Node2D
 @onready var _treat_placement_system := $Systems/TreatPlacementSystem as TreatPlacementSystem
+@onready var _furniture_placement_system := $Systems/FurniturePlacementSystem as FurniturePlacementSystem
 
 
 func _ready() -> void:
@@ -67,6 +69,8 @@ func set_shared_data(data: Dictionary = {}) -> void:
 func _set_up_room() -> void:
 	if not _curr_lvl_settings:
 		return
+	# TODO Support default placement
+	_furniture_placement_system.place_furniture_random()
 
 
 func _place_treat() -> void:

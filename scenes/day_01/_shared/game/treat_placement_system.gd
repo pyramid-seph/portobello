@@ -33,7 +33,7 @@ func spawn_treat_random() -> void:
 
 
 func _randomize_placement() -> Vector2:
-	var tries: int
+	var tries: int = 0
 	var tile_pos: Vector2
 	while tries <= _max_tries:
 		tile_pos.x = randi_range(_top_left_tile_pos.x, _top_right_tile_pos.x)
@@ -47,11 +47,6 @@ func _randomize_placement() -> Vector2:
 	if tries >= _max_tries:
 		tile_pos = _get_first_trunc_part_tile_pos()
 	return _tile_map.to_global(_map_to_local(tile_pos))
-
-
-func _snap_to_tile_map_grid(tile_pos: Vector2i) -> Vector2:
-	_tile_map.get_cell_atlas_coords(0, tile_pos)
-	return Vector2.ZERO
 
 
 func _collides_with_walls(tile_pos: Vector2i) -> bool:

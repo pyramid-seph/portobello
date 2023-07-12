@@ -74,7 +74,7 @@ func is_last_level(level: Day01Game.Level) -> bool:
 func get_next_level(level: Day01Game.Level) -> Day01Game.Level:
 	var idx = STORY_MODE_LEVELS.find(level)
 	if idx == -1 or idx == STORY_MODE_LEVELS.size() - 1:
-		return -1
+		return -1 # TODO Cannot return -1: no enum member has matching value
 	return STORY_MODE_LEVELS[idx + 1]
 
 
