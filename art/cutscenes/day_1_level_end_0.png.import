@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bas5srb0fec1"
-path="res://.godot/imported/day_0_level_end_0.png-fdd9f42674b80a11d4f0875568e5aeca.ctex"
+path="res://.godot/imported/day_1_level_end_0.png-e5e9f8f6f5139dd8081ce3e7ab567ecd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_0_level_end_0.png"
-dest_files=["res://.godot/imported/day_0_level_end_0.png-fdd9f42674b80a11d4f0875568e5aeca.ctex"]
+source_file="res://art/cutscenes/day_1_level_end_0.png"
+dest_files=["res://.godot/imported/day_1_level_end_0.png-e5e9f8f6f5139dd8081ce3e7ab567ecd.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

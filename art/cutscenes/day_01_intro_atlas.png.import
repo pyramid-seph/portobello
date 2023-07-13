@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oqbmdpyrnu0l"
-path="res://.godot/imported/day_0_level_start_0.png-78c3bc3d1c389e30b6c8c7d25e14ecfe.ctex"
+uid="uid://cwradacmjyue8"
+path="res://.godot/imported/day_01_intro_atlas.png-0d92e6ed968e1f7a66e5bb43838c4922.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_0_level_start_0.png"
-dest_files=["res://.godot/imported/day_0_level_start_0.png-78c3bc3d1c389e30b6c8c7d25e14ecfe.ctex"]
+source_file="res://art/cutscenes/day_01_intro_atlas.png"
+dest_files=["res://.godot/imported/day_01_intro_atlas.png-0d92e6ed968e1f7a66e5bb43838c4922.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

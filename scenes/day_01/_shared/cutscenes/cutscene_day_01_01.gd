@@ -1,14 +1,32 @@
 extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
+@onready var _background := $Background
+@onready var _panel_00 := $Panel00
+@onready var _panel_01 := $Panel01
+@onready var _timer := $Timer as Timer
 
-# Override
+
 func _play() -> void:
+	_background.visible = true
+	_panel_00.visible = true
+	_timer.start(2.0)
+	await _timer.timeout
+	_panel_00.visible = false
+	_panel_01.visible = true
+	_timer.start(1.6)
+	await _timer.timeout
+	_panel_00.visible = false
+	_panel_01.visible = false
+	_timer.start(1.2)
+	await _timer.timeout
 	finish()
 
 
-# Override
 func _clean_up() -> void:
-	pass
+	_timer.stop()
+	_background.visible = false
+	_panel_00.visible = false
+	_panel_01.visible = true
 
 
 func _on_finished() -> void:

@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dty2ckmni8m1l"
-path="res://.godot/imported/day_0_intro_0.png-cf65664f3249a182f8812e81657c8376.ctex"
+uid="uid://cbqbvcjylljmf"
+path="res://.godot/imported/day_1_level_start_3_dizzy_mode.png-285d9649d4d93632b92af00c5cb8ce68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_0_intro_0.png"
-dest_files=["res://.godot/imported/day_0_intro_0.png-cf65664f3249a182f8812e81657c8376.ctex"]
+source_file="res://art/cutscenes/day_1_level_start_3_dizzy_mode.png"
+dest_files=["res://.godot/imported/day_1_level_start_3_dizzy_mode.png-285d9649d4d93632b92af00c5cb8ce68.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
