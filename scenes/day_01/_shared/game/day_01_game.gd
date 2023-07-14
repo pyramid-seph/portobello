@@ -122,11 +122,6 @@ func _go_to_title_screen() -> void:
 	Game.start(Game.Minigame.TITLE_SCREEN)
 
 
-func _update_high_score() -> void:
-	if _lvl_info.is_score_attack_mode_level(_level):
-		_lvl_info.set_high_score(_level, _score)
-
-
 func _on_level_changed() -> void:
 	if _is_ready:
 		_set_up_level()
@@ -150,9 +145,9 @@ func _on_remaining_lives_changed() -> void:
 
 
 func _on_level_failed() -> void:
-	_ui.show_game_over()
+	var new_high_score_achieved = _lvl_info.set_high_score(_level, _score)
+	_ui.show_game_over(new_high_score_achieved)
 	await _ui.game_over_finished
-	_update_high_score()
 	_go_to_title_screen()
 
 

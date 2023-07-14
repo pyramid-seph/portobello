@@ -129,10 +129,6 @@ preview_labels = false
 [node name="GameOver" parent="." instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
-offset_left = 71.0
-offset_top = 139.0
-offset_right = -71.0
-offset_bottom = -139.0
 theme = ExtResource("7_ak67o")
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
 theme_override_fonts/font = ExtResource("8_lotg1")
