@@ -8,6 +8,7 @@ signal time_out_finished
 
 @onready var _lives_counter := $LivesCounter/Label as Label
 @onready var _treats_counter := $TreatsCounter/Label as Label
+@onready var _high_score_label := $HighScoreLabel as Label
 @onready var _stamina_bar := %ProgressBar as TextureProgressBar
 @onready var _stamina_bar_container = $StaminaBar
 @onready var _start_labels := $StartLabels
@@ -54,6 +55,14 @@ func update_lives_counter(value: int) -> void:
 
 func update_stamina_bar(value: float) -> void:
 	_stamina_bar.value = value * _stamina_bar.max_value
+
+
+func update_high_score(value: int) -> void:
+	if value < 0:
+		_high_score_label.visible = false
+	else:
+		_high_score_label.visible = true
+		_high_score_label.text = "Hi %s" % value
 
 
 func set_is_stamina_bar_visible(value: bool) -> void:

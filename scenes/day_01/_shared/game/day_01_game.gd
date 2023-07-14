@@ -34,16 +34,20 @@ const REVIVAL_DELAY_SEC: float = 3.0
 		_on_level_changed()
 
 var _score: int
-var _high_score: int
+var _high_score: int:
+	set(value):
+		_high_score = value
+		if _is_ready:
+			_ui.update_high_score(_high_score)
 var _remaining_lives: int:
 	set(value):
 		_remaining_lives = value
 		if _is_ready:
 			_ui.update_lives_counter(_remaining_lives)
-var _treats_ate: int:
+var _treats_eaten: int:
 	set(value):
-		_treats_ate = value
-		_on_treats_ate_changed()
+		_treats_eaten = value
+		_on_treats_eaten_changed()
 var _curr_lvl_settings: Day01LevelSettings
 
 @onready var _is_ready: bool = true
@@ -79,10 +83,12 @@ func _place_treat() -> void:
 func _set_up_level() -> void:
 	_curr_lvl_settings = _lvl_info.get_settings(_level)
 	
-	if _lvl_info.get_game_mode(_level) == Game.Mode.STORY:
+	if _lvl_info.is_story_mode_level(_level):
 		_remaining_lives = MAX_LIVES_STORY
 	else:
 		_remaining_lives = MAX_LIVES_SCORE_ATTACK
+	
+	_high_score = _lvl_info.get_high_score(_level)
 	
 	_ui.set_is_stamina_bar_visible(_curr_lvl_settings.is_time_limited())
 	_ui.update_treats_counter(_curr_lvl_settings.treats_limit)
@@ -95,8 +101,8 @@ func _set_up_level() -> void:
 func _reset_level() -> void:
 	if not _curr_lvl_settings:
 		return
-	_treats_ate = 0
-	_player.pace_sec = _curr_lvl_settings.get_pace(_treats_ate)
+	_treats_eaten = 0
+	_player.pace_sec = _curr_lvl_settings.get_pace(_treats_eaten)
 	_player.stamina_sec = _curr_lvl_settings.time_limit_sec
 	_player.inverted_controls = _curr_lvl_settings.inverted_controls
 	_player.revive(true)
@@ -116,20 +122,25 @@ func _go_to_title_screen() -> void:
 	Game.start(Game.Minigame.TITLE_SCREEN)
 
 
+func _update_high_score() -> void:
+	if _lvl_info.is_score_attack_mode_level(_level):
+		_lvl_info.set_high_score(_level, _score)
+
+
 func _on_level_changed() -> void:
 	if _is_ready:
 		_set_up_level()
 		_start_level()
 
 
-func _on_treats_ate_changed() -> void:
+func _on_treats_eaten_changed() -> void:
 	if not _is_ready:
 		return
 	var count: int
 	if _curr_lvl_settings.limits_treats():
-		count = maxi(0, _curr_lvl_settings.treats_limit - _treats_ate)
+		count = maxi(0, _curr_lvl_settings.treats_limit - _treats_eaten)
 	else:
-		count = _treats_ate
+		count = _treats_eaten
 	_ui.update_treats_counter(count)
 
 
@@ -141,6 +152,7 @@ func _on_remaining_lives_changed() -> void:
 func _on_level_failed() -> void:
 	_ui.show_game_over()
 	await _ui.game_over_finished
+	_update_high_score()
 	_go_to_title_screen()
 
 
@@ -150,7 +162,7 @@ func _on_level_beaten() -> void:
 	await _ui.level_beaten_finished
 	
 	var next_lvl = _lvl_info.get_next_level(_level)
-	if next_lvl == -1:
+	if next_lvl != _level:
 		_results_screen.start(
 				_lvl_info.get_game_mode(_level),
 				true, 
@@ -159,7 +171,7 @@ func _on_level_beaten() -> void:
 				_high_score
 		)
 	else:
-		if _lvl_info.get_game_mode(_level) == Game.Mode.STORY:
+		if _lvl_info.is_story_mode_level(_level):
 			var settings = _lvl_info.get_settings(next_lvl)
 			_cutscene.inverted_controls = settings.inverted_controls
 			_cutscene.play()
@@ -189,19 +201,21 @@ func _on_player_ate() -> void:
 		return
 	
 	_score += 1
-	_treats_ate += 1
+	_treats_eaten += 1
 	
-	# TODO Maybe move this to _on_treats_ate_changed
+	# TODO Maybe move this to _on_treats_eaten_changed?
 	if _curr_lvl_settings.limits_treats() and \
-			_treats_ate >= _curr_lvl_settings.treats_limit:
+			_treats_eaten >= _curr_lvl_settings.treats_limit:
 		_on_level_beaten()
 	else:
 		_place_treat()
-		_player.pace_sec = _curr_lvl_settings.get_pace(_treats_ate)
+		_player.pace_sec = _curr_lvl_settings.get_pace(_treats_eaten)
 
 
 func _on_results_screen_calculated(new_high_score, stars) -> void:
-	pass
+	if _lvl_info.is_story_mode_level(_level) and _lvl_info.is_last_level(_level):
+		_lvl_info.set_stars(stars)
+		_lvl_info.set_story_mode_beaten()
 
 
 func _on_results_screen_finished(total_score, extra_lives, stars) -> void:

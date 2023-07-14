@@ -12,6 +12,14 @@ const STORY_MODE_LEVELS: Array[Day01Game.Level] = [
 	Day01Game.Level.STORY_MODE_LEVEL_08,
 ]
 
+@export_category("Save Data")
+@export var _save_data_name_high_score_1a: String
+@export var _save_data_name_high_score_1b: String
+@export var _save_data_name_high_score_1c: String
+@export var _save_data_name_high_score_1d: String
+@export var _save_data_name_high_score_story_mode: String
+@export var _save_data_name_story_mode_stars: String
+
 @export_category("Settings Story Mode")
 @export var _lvl_settings_story_01: Day01LevelSettings
 @export var _lvl_settings_story_02: Day01LevelSettings
@@ -29,8 +37,16 @@ const STORY_MODE_LEVELS: Array[Day01Game.Level] = [
 @export var _lvl_settings_score_attack_1d: Day01LevelSettings
 
 
+func is_story_mode_level(level: Day01Game.Level) -> bool:
+	return STORY_MODE_LEVELS.has(level)
+
+
+func is_score_attack_mode_level(level: Day01Game.Level) -> bool:
+	return not is_story_mode_level(level)
+
+
 func get_game_mode(level: Day01Game.Level) -> Game.Mode:
-	if STORY_MODE_LEVELS.has(level):
+	if is_story_mode_level(level):
 		return Game.Mode.STORY
 	else:
 		return Game.Mode.SCORE_ATTACK
@@ -71,12 +87,72 @@ func is_last_level(level: Day01Game.Level) -> bool:
 			not STORY_MODE_LEVELS.has(level)
 
 
-func get_next_level(level: Day01Game.Level) -> Day01Game.Level:
-	var idx = STORY_MODE_LEVELS.find(level)
+## Returns the next level. If it returns curr_level,
+## then there is no next level.
+func get_next_level(curr_level: Day01Game.Level) -> Day01Game.Level:
+	var idx = STORY_MODE_LEVELS.find(curr_level)
 	if idx == -1 or idx == STORY_MODE_LEVELS.size() - 1:
-		return -1 # TODO Cannot return -1: no enum member has matching value
+		return curr_level
 	return STORY_MODE_LEVELS[idx + 1]
 
 
 func get_lvl_index(level: Day01Game.Level) -> int:
 	return maxi(STORY_MODE_LEVELS.find(level), 0)
+
+
+func get_high_score(level: Day01Game.Level) -> int:
+	match level:
+		Day01Game.Level.SCORE_ATTACK_1A:
+			return SaveDataManager.save_data.high_scores.buff_one_a
+		Day01Game.Level.SCORE_ATTACK_1B:
+			return SaveDataManager.save_data.high_scores.buff_one_b
+		Day01Game.Level.SCORE_ATTACK_1C:
+			return SaveDataManager.save_data.high_scores.buff_one_c
+		Day01Game.Level.SCORE_ATTACK_1D:
+			return SaveDataManager.save_data.high_scores.buff_one_d
+		_:
+			return -1
+
+
+func set_high_score(level: Day01Game.Level, score: int, force: bool = false) -> bool:
+	var changed: bool = false
+	if force or score > get_high_score(level):
+		match level:
+			Day01Game.Level.SCORE_ATTACK_1A:
+				changed = true
+				SaveDataManager.save_data.high_scores.buff_one_a = score
+			Day01Game.Level.SCORE_ATTACK_1B:
+				changed = true
+				SaveDataManager.save_data.high_scores.buff_one_b = score
+			Day01Game.Level.SCORE_ATTACK_1C:
+				changed = true
+				SaveDataManager.save_data.high_scores.buff_one_c = score
+			Day01Game.Level.SCORE_ATTACK_1D:
+				changed = true
+				SaveDataManager.save_data.high_scores.buff_one_d = score
+	
+	if changed:
+		SaveDataManager.save()
+	return changed
+
+
+func set_stars(stars: int, force: bool = false) -> bool:
+	var changed: bool = false
+	if force or stars > SaveDataManager.save_data.stars.day_one:
+		changed = true
+		SaveDataManager.save_data.stars.day_one = stars
+	
+	if changed:
+		SaveDataManager.save()
+	return changed
+
+
+func set_story_mode_beaten(force: bool = false) -> bool:
+	var changed: bool = false
+	if force or SaveDataManager.save_data.latest_day_completed < 1:
+		changed = true
+		SaveDataManager.save_data.latest_day_completed = 1
+	
+	if changed:
+		SaveDataManager.save()
+	return changed
