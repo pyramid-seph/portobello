@@ -157,7 +157,7 @@ func _on_level_beaten() -> void:
 	await _ui.level_beaten_finished
 	
 	var next_lvl = _lvl_info.get_next_level(_level)
-	if next_lvl != _level:
+	if next_lvl == _level:
 		_results_screen.start(
 				_lvl_info.get_game_mode(_level),
 				true, 
