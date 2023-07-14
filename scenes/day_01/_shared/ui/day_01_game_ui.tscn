@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnfahjhvwxeo2"]
+[gd_scene load_steps=14 format=3 uid="uid://cnfahjhvwxeo2"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/ui/day_01_game_ui.gd" id="1_vfhqe"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="2_dhqsk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="7_ak67o"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="7_t8tk8"]
 [ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="8_lotg1"]
+[ext_resource type="PackedScene" uid="uid://cjldxfd1a76li" path="res://scenes/_shared/dialogue.tscn" id="11_l1dor"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4x7ob"]
 
@@ -161,6 +162,15 @@ text = "¡Tiempo agotado!"
 horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 3.0
+
+[node name="Dialogue" parent="." instance=ExtResource("11_l1dor")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = 0.0
+grow_vertical = 0
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_t8w1h")]
 process_mode = 3

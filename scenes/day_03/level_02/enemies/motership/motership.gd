@@ -37,7 +37,7 @@ var _hp: int = 1:
 @onready var _explosions_container := $ExplosionsContainer as Node2D
 @onready var _start_position := $Inside/StartPosition
 @onready var _abduction_ray := $AbductionRay
-@onready var _dialogue := $Dialogue as Dialogue
+@onready var _dialogue := $Control/Dialogue as Dialogue
 @onready var _life_bar := %LifeBar as TextureProgressBar
 
 

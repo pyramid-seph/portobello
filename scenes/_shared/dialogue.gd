@@ -1,12 +1,12 @@
 class_name Dialogue
-extends Node
+extends PanelContainer
 
 signal started
 signal finished
 
-@export var _dialogue: Array[DialogueLine]:
+@export var dialogue: Array[DialogueLine]:
 	set(value):
-		_dialogue = value
+		dialogue = value
 		if _is_ready:
 			stop()
 @export var _autostart: bool
@@ -15,8 +15,7 @@ var _is_playing: bool
 
 @onready var _is_ready: bool = true
 @onready var _timer := $Timer as Timer
-@onready var _label := $DialogueBox/Label as Label
-@onready var _box := $DialogueBox
+@onready var _label := $Label as Label
 
 
 func _ready() -> void:
@@ -33,8 +32,8 @@ func start() -> void:
 	stop()
 	_is_playing = true
 	started.emit()
-	_box.visible = true
-	for line in _dialogue:
+	visible = true
+	for line in dialogue:
 		if line.delay_sec > 0:
 			_timer.start(line.delay_sec)
 			await _timer.timeout
@@ -56,5 +55,5 @@ func stop() -> void:
 
 
 func _reset_ui() -> void:
-	_box.visible = false
+	visible = false
 	_label.text = ""

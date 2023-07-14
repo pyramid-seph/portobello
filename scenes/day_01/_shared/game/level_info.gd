@@ -12,14 +12,6 @@ const STORY_MODE_LEVELS: Array[Day01Game.Level] = [
 	Day01Game.Level.STORY_MODE_LEVEL_08,
 ]
 
-@export_category("Save Data")
-@export var _save_data_name_high_score_1a: String
-@export var _save_data_name_high_score_1b: String
-@export var _save_data_name_high_score_1c: String
-@export var _save_data_name_high_score_1d: String
-@export var _save_data_name_high_score_story_mode: String
-@export var _save_data_name_story_mode_stars: String
-
 @export_category("Settings Story Mode")
 @export var _lvl_settings_story_01: Day01LevelSettings
 @export var _lvl_settings_story_02: Day01LevelSettings

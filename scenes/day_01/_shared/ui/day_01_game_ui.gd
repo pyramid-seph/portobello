@@ -15,6 +15,7 @@ signal time_out_finished
 @onready var _game_over := $GameOver
 @onready var _piece_of_cake := $PieceOfCake
 @onready var _time_out := $TimeOut
+@onready var _dialogue := $Dialogue as Dialogue
 
 
 func show_level_start(mode: Game.Mode, index: int) -> void:
@@ -70,6 +71,15 @@ func update_high_score(value: int) -> void:
 
 func set_is_stamina_bar_visible(value: bool) -> void:
 	_stamina_bar_container.visible = value
+
+
+func play_dialogue(dialogue: Array[DialogueLine]) -> void:
+	_dialogue.dialogue = dialogue
+	_dialogue.start()
+
+
+func stop_dilogue() -> void:
+	_dialogue.stop()
 
 
 func _on_start_label_timed_label_finished() -> void:

@@ -77,21 +77,16 @@ line_spacing = 0.0
 font = ExtResource("1_fnaa8")
 font_size = 14
 
-[node name="Dialogue" type="Node"]
-script = ExtResource("3_px47p")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="DialogueBox" type="PanelContainer" parent="."]
+[node name="Dialogue" type="PanelContainer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 26.0
+offset_bottom = 16.0
 grow_horizontal = 2
 theme = SubResource("Theme_ectj8")
 theme_override_styles/panel = SubResource("StyleBoxTexture_4ixbj")
+script = ExtResource("3_px47p")
 
-[node name="Label" type="Label" parent="DialogueBox"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet"
 label_settings = SubResource("LabelSettings_ki671")
@@ -99,3 +94,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

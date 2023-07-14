@@ -115,7 +115,13 @@ func _start_level() -> void:
 	var lvl_index = _lvl_info.get_lvl_index(_level)
 	_ui.show_level_start(game_mode, lvl_index)
 	await _ui.start_level_finished
+	_play_dialogue()
 	_player.can_move = true
+
+
+func _play_dialogue() -> void:
+	if _curr_lvl_settings:
+		_ui.play_dialogue(_curr_lvl_settings.dialogue)
 
 
 func _go_to_title_screen() -> void:
@@ -155,6 +161,7 @@ func _on_level_beaten() -> void:
 	_player.can_move = false
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
+	_ui.stop_dilogue()
 	
 	var next_lvl = _lvl_info.get_next_level(_level)
 	if next_lvl == _level:
@@ -188,6 +195,7 @@ func _on_player_died(cause: Player.DeathCause) -> void:
 		_on_level_failed()
 	else:
 		_reset_level()
+		_play_dialogue()
 
 
 func _on_player_ate() -> void:

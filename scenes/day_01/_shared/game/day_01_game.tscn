@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cqn328nqhcfq7"]
+[gd_scene load_steps=76 format=3 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/level_info.gd" id="2_tq1t3"]
 [ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/day_01_tile_atlas.png" id="3_71sjy"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/furniture_placement_system.gd" id="3_fkre0"]
+[ext_resource type="Script" path="res://resources/dialogue_line.gd" id="3_i3orw"]
 [ext_resource type="PackedScene" uid="uid://bi48jeuci3exe" path="res://scenes/day_01/player/day_01_player.tscn" id="6_kn384"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_tile_map_helper.gd" id="6_mkoph"]
 [ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_game_ui.tscn" id="6_s8541"]
@@ -17,27 +18,105 @@
 [ext_resource type="PackedScene" uid="uid://do7bac55vb7tv" path="res://scenes/day_01/_shared/furniture/large_table.tscn" id="12_w5pkf"]
 [ext_resource type="PackedScene" uid="uid://dpc2fbvwdk03l" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_between_levels.tscn" id="16_sc4vk"]
 
+[sub_resource type="Resource" id="Resource_o8rmx"]
+script = ExtResource("3_i3orw")
+text = "¿Bueno?"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_ijthu"]
+script = ExtResource("3_i3orw")
+text = "¡No, aquí no vive Nacho!"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_braj8"]
+script = ExtResource("3_i3orw")
+text = "De nada."
+delay_sec = 0.0
+duration_sec = 10.0
+
 [sub_resource type="Resource" id="Resource_gjy1r"]
 script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.25
 }
-time_limit_sec = 75.0
+time_limit_sec = 30.0
 treats_limit = 1
 obstacle_course_type = 1
 inverted_controls = false
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_o8rmx"), SubResource("Resource_ijthu"), SubResource("Resource_braj8")])
+
+[sub_resource type="Resource" id="Resource_4fp23"]
+script = ExtResource("3_i3orw")
+text = "¿Bueno?"
+delay_sec = 0.0
+duration_sec = 5.0
+
+[sub_resource type="Resource" id="Resource_la1ve"]
+script = ExtResource("3_i3orw")
+text = "¡Amor!"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_16fw5"]
+script = ExtResource("3_i3orw")
+text = "Ya me siento solita."
+delay_sec = 10.0
+duration_sec = 1.0
+
+[sub_resource type="Resource" id="Resource_xg1id"]
+script = ExtResource("3_i3orw")
+text = "Yo también te extraño."
+delay_sec = 10.0
+duration_sec = 1.0
+
+[sub_resource type="Resource" id="Resource_gibyu"]
+script = ExtResource("3_i3orw")
+text = "Te amo. Chao."
+delay_sec = 10.0
+duration_sec = 1.0
 
 [sub_resource type="Resource" id="Resource_tbt28"]
 script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.2
 }
-time_limit_sec = 9.0
+time_limit_sec = 45.0
 treats_limit = 1
 obstacle_course_type = 2
 inverted_controls = false
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_4fp23"), SubResource("Resource_la1ve"), SubResource("Resource_16fw5"), SubResource("Resource_xg1id"), SubResource("Resource_gibyu")])
+
+[sub_resource type="Resource" id="Resource_sj755"]
+script = ExtResource("3_i3orw")
+text = "¿Bueno?"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_uayyl"]
+script = ExtResource("3_i3orw")
+text = "¿Hola?"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_r6uwb"]
+script = ExtResource("3_i3orw")
+text = "¡¿Hay alguien ahí?!"
+delay_sec = 0.0
+duration_sec = 20.0
+
+[sub_resource type="Resource" id="Resource_v1m0x"]
+script = ExtResource("3_i3orw")
+text = "(cuelga) ..."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_yi0yk"]
+script = ExtResource("3_i3orw")
+text = "¿Ha sido una broma?"
+delay_sec = 0.0
+duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_wx64e"]
 script = ExtResource("2_fmqcn")
@@ -48,7 +127,55 @@ time_limit_sec = 9.0
 treats_limit = 15
 obstacle_course_type = 2
 inverted_controls = false
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_sj755"), SubResource("Resource_uayyl"), SubResource("Resource_r6uwb"), SubResource("Resource_v1m0x"), SubResource("Resource_yi0yk")])
+
+[sub_resource type="Resource" id="Resource_daivp"]
+script = ExtResource("3_i3orw")
+text = "¡Bomboncito!"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_hg1h1"]
+script = ExtResource("3_i3orw")
+text = "Yo te amo más."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_s6vvx"]
+script = ExtResource("3_i3orw")
+text = "Te amo más más infinito."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_0wyqe"]
+script = ExtResource("3_i3orw")
+text = "No, cuelga tú."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_yga0x"]
+script = ExtResource("3_i3orw")
+text = "No, anda, tú."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_b6jhg"]
+script = ExtResource("3_i3orw")
+text = "Cuelga tú."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_nsick"]
+script = ExtResource("3_i3orw")
+text = "Espera, tengo una llamada"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_36lrq"]
+script = ExtResource("3_i3orw")
+text = "en la otra línea."
+delay_sec = 0.0
+duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2q7hw"]
 script = ExtResource("2_fmqcn")
@@ -59,7 +186,31 @@ time_limit_sec = 10.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = false
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_daivp"), SubResource("Resource_hg1h1"), SubResource("Resource_s6vvx"), SubResource("Resource_0wyqe"), SubResource("Resource_yga0x"), SubResource("Resource_b6jhg"), SubResource("Resource_nsick"), SubResource("Resource_36lrq")])
+
+[sub_resource type="Resource" id="Resource_s3q5j"]
+script = ExtResource("3_i3orw")
+text = "¿Bueno? No, gracias."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_dbr5i"]
+script = ExtResource("3_i3orw")
+text = "No, no necesito un seguro."
+delay_sec = 0.0
+duration_sec = 20.0
+
+[sub_resource type="Resource" id="Resource_8chjt"]
+script = ExtResource("3_i3orw")
+text = "No me hace falta."
+delay_sec = 0.0
+duration_sec = 25.0
+
+[sub_resource type="Resource" id="Resource_1jgoh"]
+script = ExtResource("3_i3orw")
+text = "Gracias."
+delay_sec = 0.0
+duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_ewe2o"]
 script = ExtResource("2_fmqcn")
@@ -70,7 +221,67 @@ time_limit_sec = 6.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = false
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_s3q5j"), SubResource("Resource_dbr5i"), SubResource("Resource_8chjt"), SubResource("Resource_1jgoh")])
+
+[sub_resource type="Resource" id="Resource_kb7o2"]
+script = ExtResource("3_i3orw")
+text = "¿Bueno?"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_8jflc"]
+script = ExtResource("3_i3orw")
+text = "¡Mi vida!. Lástima que"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_w14d4"]
+script = ExtResource("3_i3orw")
+text = "te hayas ido al congreso"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_dso5d"]
+script = ExtResource("3_i3orw")
+text = "internacional de chefs. Al"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_8ckjv"]
+script = ExtResource("3_i3orw")
+text = "menos me regalaste a Bucho"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_enpfy"]
+script = ExtResource("3_i3orw")
+text = "para que me haga compañía"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_0rxl2"]
+script = ExtResource("3_i3orw")
+text = "Sí, así le puse,"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_opn8q"]
+script = ExtResource("3_i3orw")
+text = "como es glotón."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_4iutd"]
+script = ExtResource("3_i3orw")
+text = "Te quiero mucho mucho."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_tl7p4"]
+script = ExtResource("3_i3orw")
+text = "Bueno, mi cielo, ¡suerte!"
+delay_sec = 0.0
+duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_roknf"]
 script = ExtResource("2_fmqcn")
@@ -81,7 +292,37 @@ time_limit_sec = 20.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = true
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_kb7o2"), SubResource("Resource_8jflc"), SubResource("Resource_w14d4"), SubResource("Resource_dso5d"), SubResource("Resource_8ckjv"), SubResource("Resource_enpfy"), SubResource("Resource_0rxl2"), SubResource("Resource_opn8q"), SubResource("Resource_4iutd"), SubResource("Resource_tl7p4")])
+
+[sub_resource type="Resource" id="Resource_jg5xd"]
+script = ExtResource("3_i3orw")
+text = "¿Bueno? Sí, ya fui"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_35vhu"]
+script = ExtResource("3_i3orw")
+text = "a visitarlo. No te"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_gxgo7"]
+script = ExtResource("3_i3orw")
+text = "preocupes, mami. Le dejé"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_ddbf7"]
+script = ExtResource("3_i3orw")
+text = "unas lindas flores."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_8ofdh"]
+script = ExtResource("3_i3orw")
+text = "Te quiero. Cuídate."
+delay_sec = 0.0
+duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_re2ea"]
 script = ExtResource("2_fmqcn")
@@ -92,7 +333,25 @@ time_limit_sec = 5.625
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = true
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_jg5xd"), SubResource("Resource_35vhu"), SubResource("Resource_gxgo7"), SubResource("Resource_ddbf7"), SubResource("Resource_8ofdh")])
+
+[sub_resource type="Resource" id="Resource_n0awb"]
+script = ExtResource("3_i3orw")
+text = "¡Amorcito!"
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_pv6bm"]
+script = ExtResource("3_i3orw")
+text = "Traeme lo que quieras."
+delay_sec = 0.0
+duration_sec = 10.0
+
+[sub_resource type="Resource" id="Resource_g67s6"]
+script = ExtResource("3_i3orw")
+text = "Me llamas. ¡Bye!"
+delay_sec = 0.0
+duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2cvf3"]
 script = ExtResource("2_fmqcn")
@@ -103,7 +362,7 @@ time_limit_sec = 3.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = true
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_n0awb"), SubResource("Resource_pv6bm"), SubResource("Resource_g67s6")])
 
 [sub_resource type="Resource" id="Resource_giumw"]
 script = ExtResource("2_fmqcn")
@@ -118,7 +377,7 @@ time_limit_sec = 0.0
 treats_limit = 0
 obstacle_course_type = 2
 inverted_controls = false
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_fb7o2"]
 script = ExtResource("2_fmqcn")
@@ -133,7 +392,7 @@ time_limit_sec = 0.0
 treats_limit = 0
 obstacle_course_type = 2
 inverted_controls = true
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_uuev1"]
 script = ExtResource("2_fmqcn")
@@ -148,7 +407,7 @@ time_limit_sec = 0.0
 treats_limit = 0
 obstacle_course_type = 0
 inverted_controls = false
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_nvdo7"]
 script = ExtResource("2_fmqcn")
@@ -163,7 +422,7 @@ time_limit_sec = 0.0
 treats_limit = 0
 obstacle_course_type = 0
 inverted_controls = true
-dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
+dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3nst"]
 size = Vector2(8, 8)
