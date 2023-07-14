@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cqn328nqhcfq7"]
+[gd_scene load_steps=32 format=3 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
@@ -15,14 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://3474g83ryj02" path="res://scenes/day_01/_shared/furniture/small_couch.tscn" id="10_jkjik"]
 [ext_resource type="PackedScene" uid="uid://ck0x8gugcvdde" path="res://scenes/day_01/_shared/furniture/small_table.tscn" id="11_t3pbc"]
 [ext_resource type="PackedScene" uid="uid://do7bac55vb7tv" path="res://scenes/day_01/_shared/furniture/large_table.tscn" id="12_w5pkf"]
+[ext_resource type="PackedScene" uid="uid://dpc2fbvwdk03l" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_between_levels.tscn" id="16_sc4vk"]
 
 [sub_resource type="Resource" id="Resource_gjy1r"]
 script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.25
 }
-time_limit_sec = 7.5
-treats_limit = 5
+time_limit_sec = 75.0
+treats_limit = 1
 obstacle_course_type = 1
 inverted_controls = false
 dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
@@ -33,7 +34,7 @@ pace_thresholds = {
 0: 0.2
 }
 time_limit_sec = 9.0
-treats_limit = 10
+treats_limit = 1
 obstacle_course_type = 2
 inverted_controls = false
 dialogue = Array[Resource("res://resources/dialogue_line.gd")]([])
@@ -208,7 +209,6 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
 [node name="Day01Game" type="Node"]
 script = ExtResource("1_745ra")
-_level = 8
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -301,7 +301,6 @@ color = Color(0, 0, 0, 1)
 [node name="Interface" type="Node" parent="World"]
 
 [node name="Day01GameUi" parent="World/Interface" instance=ExtResource("6_s8541")]
-visible = false
 
 [node name="ResultsScreen" parent="World/Interface" instance=ExtResource("2_28578")]
 visible = false
@@ -368,10 +367,8 @@ metadata/_edit_lock_ = true
 position = Vector2(-97, 153)
 metadata/_edit_lock_ = true
 
-[node name="TopLeft" type="Marker2D" parent="."]
-position = Vector2(28, 76)
-gizmo_extents = 4.0
-metadata/_edit_lock_ = true
+[node name="Day01BetweenLevelsCutscene" parent="World" instance=ExtResource("16_sc4vk")]
+inverted_controls = false
 
 [connection signal="calculated" from="World/Interface/ResultsScreen" to="." method="_on_results_screen_calculated"]
 [connection signal="finished" from="World/Interface/ResultsScreen" to="." method="_on_results_screen_finished"]

@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn1il3isfkrpo"
-path="res://.godot/imported/day_2_intro_1.png-e2c2e07822b3427e53fd7f1d4b8d88b1.ctex"
+uid="uid://bjydcm17c2c2"
+path="res://.godot/imported/burp_guide.png-f4ca98633ad9ea66e162ee50d70b417a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_2_intro_1.png"
-dest_files=["res://.godot/imported/day_2_intro_1.png-e2c2e07822b3427e53fd7f1d4b8d88b1.ctex"]
+source_file="res://art/burp_guide.png"
+dest_files=["res://.godot/imported/burp_guide.png-f4ca98633ad9ea66e162ee50d70b417a.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

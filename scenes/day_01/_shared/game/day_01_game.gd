@@ -55,6 +55,7 @@ var _curr_lvl_settings: Day01LevelSettings
 @onready var _world := $World as Node2D
 @onready var _treat_placement_system := $Systems/TreatPlacementSystem as TreatPlacementSystem
 @onready var _furniture_placement_system := $Systems/FurniturePlacementSystem as FurniturePlacementSystem
+@onready var _cutscene := $World/Day01BetweenLevelsCutscene
 
 
 func _ready() -> void:
@@ -158,6 +159,11 @@ func _on_level_beaten() -> void:
 				_high_score
 		)
 	else:
+		if _lvl_info.get_game_mode(_level) == Game.Mode.STORY:
+			var settings = _lvl_info.get_settings(next_lvl)
+			_cutscene.inverted_controls = settings.inverted_controls
+			_cutscene.play()
+			await _cutscene.finished
 		_level = next_lvl
 
 

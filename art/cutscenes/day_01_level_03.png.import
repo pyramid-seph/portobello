@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oqbmdpyrnu0l"
-path="res://.godot/imported/day_01_level_start_0.png-b7d3848810693e168cc8dee2b6e719ec.ctex"
+uid="uid://cbqbvcjylljmf"
+path="res://.godot/imported/day_01_level_03.png-fa9323438153a6322fd6f5eff2b66948.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_01_level_start_0.png"
-dest_files=["res://.godot/imported/day_01_level_start_0.png-b7d3848810693e168cc8dee2b6e719ec.ctex"]
+source_file="res://art/cutscenes/day_01_level_03.png"
+dest_files=["res://.godot/imported/day_01_level_03.png-fa9323438153a6322fd6f5eff2b66948.ctex"]
 
 [params]
 
