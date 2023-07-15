@@ -9,6 +9,8 @@ const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
 const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
 const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")
 
+const NULL_LIVES = -1
+
 enum Level {
 	STORY_MODE_LEVEL_01,
 	STORY_MODE_LEVEL_02,
@@ -39,7 +41,7 @@ var _high_score: int:
 		_high_score = value
 		if _is_ready:
 			_ui.update_high_score(_high_score)
-var _remaining_lives: int:
+var _remaining_lives: int = NULL_LIVES:
 	set(value):
 		_remaining_lives = value
 		if _is_ready:
@@ -83,11 +85,12 @@ func _place_treat() -> void:
 func _set_up_level() -> void:
 	_curr_lvl_settings = _lvl_info.get_settings(_level)
 	
-	if _lvl_info.is_story_mode_level(_level):
-		_remaining_lives = MAX_LIVES_STORY
-	else:
-		_remaining_lives = MAX_LIVES_SCORE_ATTACK
-	
+	if _remaining_lives == NULL_LIVES:
+		if _lvl_info.is_story_mode_level(_level):
+			_remaining_lives = MAX_LIVES_STORY
+		else:
+			_remaining_lives = MAX_LIVES_SCORE_ATTACK
+		
 	_high_score = _lvl_info.get_high_score(_level)
 	
 	_ui.set_is_stamina_bar_visible(_curr_lvl_settings.is_time_limited())
@@ -95,7 +98,9 @@ func _set_up_level() -> void:
 	
 	_reset_level()
 	_set_up_room()
+	await get_tree().physics_frame
 	_place_treat()
+	
 
 
 func _reset_level() -> void:
@@ -130,7 +135,7 @@ func _go_to_title_screen() -> void:
 
 func _on_level_changed() -> void:
 	if _is_ready:
-		_set_up_level()
+		await _set_up_level()
 		_start_level()
 
 

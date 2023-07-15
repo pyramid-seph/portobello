@@ -16,6 +16,7 @@ signal time_out_finished
 @onready var _piece_of_cake := $PieceOfCake
 @onready var _time_out := $TimeOut
 @onready var _dialogue := $Dialogue as Dialogue
+@onready var _black_screen := $BlackScreen
 
 
 func show_level_start(mode: Game.Mode, index: int) -> void:
@@ -47,6 +48,10 @@ func show_time_out() -> void:
 	_time_out.start()
 	await _time_out.finished
 	time_out_finished.emit()
+
+
+func show_black_screen(value: bool) -> void:
+	_black_screen.visible = value
 
 
 func update_treats_counter(value: int) -> void:

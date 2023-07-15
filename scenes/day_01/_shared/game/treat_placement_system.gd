@@ -26,6 +26,11 @@ func _ready() -> void:
 	_bottom_left_tile_pos = _local_to_map(_bottom_left.position)
 
 
+## Places a treat at a random position inside the house.
+## This uses physics to check whether a candidate
+## position collides with something. Make sure
+## to await until the next frame when it makes
+## sense (per example, after placing the furniture)
 func spawn_treat_random() -> void:
 	var treat = Treat.instantiate()
 	treat.global_position = _randomize_placement()
@@ -50,10 +55,23 @@ func _randomize_placement() -> Vector2:
 
 
 func _collides_with_furniture(tile_pos: Vector2i) -> bool:
-	return _tile_map.get_cell_tile_data(0, tile_pos) != null
+	_collision_detector.global_position = _map_to_global(tile_pos)
+	_collision_detector.force_update_transform()
+	_collision_detector.target_position = Vector2.ZERO
+	_collision_detector.force_shapecast_update()
+	if OS.is_debug_build():
+		if _collision_detector.is_colliding():
+			var area = _collision_detector.get_collider(0)
+			print("Collides with: %s. Retrying treat placement." % area.name)
+		else:
+			print("No collision detected")
+	return _collision_detector.is_colliding()
 
 
 func _collides_with_player_head(tile_pos: Vector2i) -> bool:
+	# We could have just relied on the shapcast, but this way 
+	# (I think) we can avoid awaiting for a process frame
+	# when a treat placement is attempted after the player eats a treat.
 	var local_head_pos := _tile_map.to_local(_player.get_head_global_postion())
 	return _local_to_map(local_head_pos) == tile_pos
 
@@ -68,6 +86,10 @@ func _local_to_map(pos: Vector2) -> Vector2i:
 
 func _map_to_local(pos: Vector2i) -> Vector2:
 	return _tile_map.map_to_local(pos)
+
+
+func _map_to_global(pos: Vector2i) -> Vector2:
+	return _tile_map.to_global(_map_to_local(pos))
 
 
 func _get_first_trunc_part_tile_pos() -> Vector2i:
