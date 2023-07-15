@@ -94,6 +94,7 @@ custom_minimum_size = Vector2(50, 6)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+step = 4.0
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 1

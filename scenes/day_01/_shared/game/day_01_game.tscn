@@ -42,7 +42,7 @@ pace_thresholds = {
 0: 0.25
 }
 time_limit_sec = 30.0
-treats_limit = 1
+treats_limit = 5
 obstacle_course_type = 1
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_o8rmx"), SubResource("Resource_ijthu"), SubResource("Resource_braj8")])
@@ -83,7 +83,7 @@ pace_thresholds = {
 0: 0.2
 }
 time_limit_sec = 45.0
-treats_limit = 1
+treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_4fp23"), SubResource("Resource_la1ve"), SubResource("Resource_16fw5"), SubResource("Resource_xg1id"), SubResource("Resource_gibyu")])
@@ -123,7 +123,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.15
 }
-time_limit_sec = 9.0
+time_limit_sec = 60.0
 treats_limit = 15
 obstacle_course_type = 2
 inverted_controls = false
@@ -182,7 +182,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.125
 }
-time_limit_sec = 10.0
+time_limit_sec = 80.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = false
@@ -217,7 +217,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.1
 }
-time_limit_sec = 6.0
+time_limit_sec = 60.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = false
@@ -288,7 +288,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.2
 }
-time_limit_sec = 20.0
+time_limit_sec = 100.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = true
@@ -329,7 +329,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.125
 }
-time_limit_sec = 5.625
+time_limit_sec = 45.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = true
@@ -358,7 +358,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.1
 }
-time_limit_sec = 3.0
+time_limit_sec = 30.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = true
