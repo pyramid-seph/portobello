@@ -9,9 +9,9 @@ const Player = preload("res://scenes/day_01/player/day_01_player.gd")
 @export var _player_node_path: NodePath
 @export var _max_tries: int
 
-var _top_left_tile_pos: Vector2i
-var _top_right_tile_pos: Vector2i
-var _bottom_left_tile_pos: Vector2i
+var _top_left_map_pos: Vector2i
+var _top_right_map_pos: Vector2i
+var _bottom_left_map_pos: Vector2i
 
 @onready var _top_left := $TopLeft as Marker2D
 @onready var _top_right := $TopRight as Marker2D
@@ -21,9 +21,9 @@ var _bottom_left_tile_pos: Vector2i
 
 
 func _ready() -> void:
-	_top_left_tile_pos = _local_to_map(_top_left.position)
-	_top_right_tile_pos = _local_to_map(_top_right.position)
-	_bottom_left_tile_pos = _local_to_map(_bottom_left.position)
+	_top_left_map_pos = _global_to_map(_top_left.global_position)
+	_top_right_map_pos = _global_to_map(_top_right.global_position)
+	_bottom_left_map_pos = _global_to_map(_bottom_left.global_position)
 
 
 ## Places a treat at a random position inside the house.
@@ -39,41 +39,58 @@ func spawn_treat_random() -> void:
 
 func _randomize_placement() -> Vector2:
 	var tries: int = 0
-	var tile_pos: Vector2
-	while tries <= _max_tries:
-		tile_pos.x = randi_range(_top_left_tile_pos.x, _top_right_tile_pos.x)
-		tile_pos.y = randi_range(_top_left_tile_pos.y, _bottom_left_tile_pos.y)
+	var map_pos: Vector2
+	print("\n")
+	while tries < _max_tries:
+		map_pos.x = randi_range(_top_left_map_pos.x, _top_right_map_pos.x)
+		map_pos.y = randi_range(_top_left_map_pos.y, _bottom_left_map_pos.y)
 		
-		if _collides_with_furniture(tile_pos) or _collides_with_player_head(tile_pos):
+		if _collides_with_furniture(map_pos) or \
+				_collides_with_player_head(map_pos) or \
+				_collides_with_start_position(map_pos):
 			tries += 1
 			continue
 		else:
 			break
-	if tries >= _max_tries:
-		tile_pos = _get_first_trunc_part_tile_pos()
-	return _tile_map.to_global(_map_to_local(tile_pos))
+	if tries > _max_tries:
+		print("Exceeded retries. Placing at the neck pos.")
+		map_pos = _get_first_trunc_part_map_pos()
+	return _map_to_global(map_pos)
 
 
-func _collides_with_furniture(tile_pos: Vector2i) -> bool:
-	_collision_detector.global_position = _map_to_global(tile_pos)
-	_collision_detector.force_update_transform()
+func _collides_with_furniture(map_pos: Vector2i) -> bool:
+	_collision_detector.global_position = _map_to_global(map_pos)
 	_collision_detector.target_position = Vector2.ZERO
+	_collision_detector.force_update_transform()
 	_collision_detector.force_shapecast_update()
 	if OS.is_debug_build():
 		if _collision_detector.is_colliding():
 			var area = _collision_detector.get_collider(0)
-			print("Collides with: %s. Retrying treat placement." % area.name)
+			print("Collides with: %s: %s -> %s." % [area.name, map_pos, _collision_detector.global_position])
 		else:
-			print("No collision detected")
+			print("No collision with furniture detected: %s -> %s." % [map_pos, _collision_detector.global_position])
 	return _collision_detector.is_colliding()
 
 
-func _collides_with_player_head(tile_pos: Vector2i) -> bool:
-	# We could have just relied on the shapcast, but this way 
+func _collides_with_player_head(map_pos: Vector2i) -> bool:
+	if OS.is_debug_build():
+		if  map_pos == _global_to_map(_player.get_head_global_postion()):
+			print("Collides with the head. :(")
+		else:
+			print("Does NOT collide with the head.")
+	# We could have just relied on the shapecast, but this way 
 	# (I think) we can avoid awaiting for a process frame
 	# when a treat placement is attempted after the player eats a treat.
-	var local_head_pos := _tile_map.to_local(_player.get_head_global_postion())
-	return _local_to_map(local_head_pos) == tile_pos
+	return map_pos == _global_to_map(_player.get_head_global_postion())
+
+
+func _collides_with_start_position(map_pos: Vector2i) -> bool:
+	if OS.is_debug_build():
+		if map_pos == _global_to_map(_player.get_global_start_position()):
+			print("collides with start pos.")
+		else:
+			print("Does NOT collide with start pos.")
+	return map_pos == _global_to_map(_player.get_global_start_position())
 
 
 func _global_to_map(pos: Vector2) -> Vector2i:
@@ -92,8 +109,5 @@ func _map_to_global(pos: Vector2i) -> Vector2:
 	return _tile_map.to_global(_map_to_local(pos))
 
 
-func _get_first_trunc_part_tile_pos() -> Vector2i:
-	var first_trunk_part_global_pos = _player.get_first_trunk_part_global_postion()
-	var first_trunk_part_tile_map_local_pos = \
-			_tile_map.to_local(first_trunk_part_global_pos)
-	return _local_to_map(first_trunk_part_tile_map_local_pos)
+func _get_first_trunc_part_map_pos() -> Vector2i:
+	return _global_to_map(_player.get_first_trunk_part_global_postion())

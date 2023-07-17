@@ -90,6 +90,10 @@ func has_infinite_stamina() -> bool:
 	return stamina_sec <= 0.0
 
 
+func get_global_start_position() -> Vector2:
+	return global_position
+
+
 func get_head_global_postion() -> Vector2:
 	return _head.global_position
 

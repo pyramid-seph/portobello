@@ -58,7 +58,6 @@ var _curr_lvl_settings: Day01LevelSettings
 @onready var _ui := $World/Interface/Day01GameUi as Day01Ui
 @onready var _timer := $Timer as Timer
 @onready var _lvl_info := $Systems/LevelInfo as LevelInfo
-@onready var _world := $World as Node2D
 @onready var _treat_placement_system := $Systems/TreatPlacementSystem as TreatPlacementSystem
 @onready var _furniture_placement_system := $Systems/FurniturePlacementSystem as FurniturePlacementSystem
 @onready var _cutscene := $World/Day01BetweenLevelsCutscene
@@ -99,8 +98,15 @@ func _set_up_level() -> void:
 	_reset_level()
 	_set_up_room()
 	await get_tree().physics_frame
+	# this gives a little more chance to
+	# have updates furniture's colliders
+	# before trying to place a treat.
+	_timer.start(0.5)
+	await _timer.timeout
 	_place_treat()
-	
+	await get_tree().physics_frame
+	_ui.show_black_screen(false)
+	await get_tree().process_frame
 
 
 func _reset_level() -> void:
@@ -114,8 +120,6 @@ func _reset_level() -> void:
 
 
 func _start_level() -> void:
-	_player.can_move = false
-	# TODO if not first level, play cutscene.
 	var game_mode = _lvl_info.get_game_mode(_level)
 	var lvl_index = _lvl_info.get_lvl_index(_level)
 	_ui.show_level_start(game_mode, lvl_index)
@@ -135,8 +139,11 @@ func _go_to_title_screen() -> void:
 
 func _on_level_changed() -> void:
 	if _is_ready:
+		_player.can_move = false
+		_ui.show_black_screen(true)
+		await get_tree().process_frame
 		await _set_up_level()
-		_start_level()
+		await _start_level()
 
 
 func _on_treats_eaten_changed() -> void:
@@ -167,6 +174,7 @@ func _on_level_beaten() -> void:
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
 	_ui.stop_dilogue()
+	_ui.show_black_screen(true)
 	
 	var next_lvl = _lvl_info.get_next_level(_level)
 	if next_lvl == _level:
@@ -220,15 +228,15 @@ func _on_player_ate() -> void:
 		_player.pace_sec = _curr_lvl_settings.get_pace(_treats_eaten)
 
 
-func _on_results_screen_calculated(new_high_score, stars) -> void:
+func _on_results_screen_calculated(_new_high_score: int, stars: int) -> void:
 	if _lvl_info.is_story_mode_level(_level) and _lvl_info.is_last_level(_level):
 		_lvl_info.set_stars(stars)
 		_lvl_info.set_story_mode_beaten()
 
 
-func _on_results_screen_finished(total_score, extra_lives, stars) -> void:
+func _on_results_screen_finished(_total_score: int, _extra_lives: int, _stars: int) -> void:
 	_go_to_title_screen()
 
 
-func _on_player_stamina_changed(stamina) -> void:
+func _on_player_stamina_changed(stamina: float) -> void:
 	_ui.update_stamina_bar(stamina)
