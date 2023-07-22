@@ -1,16 +1,6 @@
 class_name Day01Game
 extends Node
 
-const Player = preload("res://scenes/day_01/player/day_01_player.gd")
-const Day01Ui = preload("res://scenes/day_01/_shared/ui/day_01_game_ui.gd")
-const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
-const Treat = preload("res://scenes/day_01/_shared/treat.tscn")
-const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
-const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
-const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")
-
-const NULL_LIVES = -1
-
 enum Level {
 	STORY_MODE_LEVEL_01,
 	STORY_MODE_LEVEL_02,
@@ -25,6 +15,14 @@ enum Level {
 	SCORE_ATTACK_1C,
 	SCORE_ATTACK_1D,
 }
+
+const Player = preload("res://scenes/day_01/player/day_01_player.gd")
+const Day01Ui = preload("res://scenes/day_01/_shared/ui/day_01_game_ui.gd")
+const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
+const Treat = preload("res://scenes/day_01/_shared/treat.tscn")
+const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
+const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
+const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")
 
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 1
@@ -41,15 +39,10 @@ var _high_score: int:
 		_high_score = value
 		if _is_ready:
 			_ui.update_high_score(_high_score)
-var _remaining_lives: int = NULL_LIVES:
+var _remaining_lives: int:
 	set(value):
 		_remaining_lives = value
-		if _is_ready:
-			_ui.update_lives_counter(
-					_remaining_lives, 
-					_immediate_lives_counter_update
-			)
-			_immediate_lives_counter_update = false
+		_on_remaining_lives_changed()
 var _treats_eaten: int:
 	set(value):
 		_treats_eaten = value
@@ -70,12 +63,20 @@ var _immediate_lives_counter_update: bool = true
 
 
 func _ready() -> void:
+	_set_initial_lives()
 	_on_level_changed()
 
 
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_level = data.level
+
+
+func _set_initial_lives() -> void:
+	if _lvl_info.is_story_mode_level(_level):
+		_remaining_lives = MAX_LIVES_STORY
+	else:
+		_remaining_lives = MAX_LIVES_SCORE_ATTACK
 
 
 func _set_up_room() -> void:
@@ -89,13 +90,6 @@ func _place_treat() -> void:
 
 func _set_up_level() -> void:
 	_curr_lvl_settings = _lvl_info.get_settings(_level)
-	
-	if _remaining_lives == NULL_LIVES:
-		if _lvl_info.is_story_mode_level(_level):
-			_remaining_lives = MAX_LIVES_STORY
-		else:
-			_remaining_lives = MAX_LIVES_SCORE_ATTACK
-		
 	_high_score = _lvl_info.get_high_score(_level)
 	
 	_ui.set_is_stamina_bar_visible(_curr_lvl_settings.is_time_limited())
@@ -104,9 +98,13 @@ func _set_up_level() -> void:
 	_reset_level()
 	_set_up_room()
 	await get_tree().physics_frame
-	# this gives a little more chance to
-	# have updates furniture's colliders
+	# It seems that waiting for the next
+	# physhics frame is not enough to
+	# have updated furniture's colliders.
+	# Let's give it more than time for this to happen
 	# before trying to place a treat.
+	# It works, but I'm not sure if this is
+	# the right way, though.
 	_timer.start(0.5)
 	await _timer.timeout
 	_place_treat()
@@ -165,6 +163,8 @@ func _on_treats_eaten_changed() -> void:
 func _on_remaining_lives_changed() -> void:
 	if not _is_ready:
 		return
+	_ui.update_lives_counter(_remaining_lives, _immediate_lives_counter_update)
+	_immediate_lives_counter_update = false
 
 
 func _on_level_failed() -> void:
