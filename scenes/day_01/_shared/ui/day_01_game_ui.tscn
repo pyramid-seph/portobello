@@ -94,7 +94,7 @@ custom_minimum_size = Vector2(50, 6)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-step = 4.0
+step = 3.0
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 1
@@ -103,7 +103,7 @@ stretch_margin_right = 1
 stretch_margin_bottom = 1
 texture_under = SubResource("CanvasTexture_4x7ob")
 texture_progress = SubResource("CanvasTexture_77l20")
-tint_under = Color(0, 0, 0, 1)
+tint_under = Color(0.180392, 0.180392, 0.180392, 1)
 tint_progress = Color(0.729412, 0.431373, 0.431373, 1)
 
 [node name="HighScoreLabel" type="Label" parent="."]

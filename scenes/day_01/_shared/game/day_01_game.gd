@@ -37,8 +37,7 @@ var _score: int
 var _high_score: int:
 	set(value):
 		_high_score = value
-		if _is_ready:
-			_ui.update_high_score(_high_score)
+		_on_high_score_changed()
 var _remaining_lives: int:
 	set(value):
 		_remaining_lives = value
@@ -59,7 +58,7 @@ var _immediate_lives_counter_update: bool = true
 @onready var _treat_placement_system := $Systems/TreatPlacementSystem as TreatPlacementSystem
 @onready var _furniture_placement_system := $Systems/FurniturePlacementSystem as FurniturePlacementSystem
 @onready var _cutscene := $World/Day01BetweenLevelsCutscene
-@onready var _max_time_limit: float = _lvl_info.get_max_time_limit_story_mode()
+@onready var _max_time_limit: float = _get_max_time_limit()
 
 
 func _ready() -> void:
@@ -70,6 +69,14 @@ func _ready() -> void:
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_level = data.level
+
+
+func _get_max_time_limit() -> float:
+	var max_time_limit: float = 0.0
+	for item in Level.values():
+		var level_settings: Day01LevelSettings = _lvl_info.get_settings(item)
+		max_time_limit = maxf(max_time_limit, level_settings.time_limit_sec)
+	return max_time_limit
 
 
 func _set_initial_lives() -> void:
@@ -160,6 +167,11 @@ func _on_treats_eaten_changed() -> void:
 	_ui.update_treats_counter(count)
 
 
+func _on_high_score_changed() -> void:
+	if _is_ready:
+		_ui.update_high_score(_high_score)
+
+
 func _on_remaining_lives_changed() -> void:
 	if not _is_ready:
 		return
@@ -243,5 +255,5 @@ func _on_results_screen_finished(_total_score: int, _extra_lives: int, _stars: i
 	_go_to_title_screen()
 
 
-func _on_player_stamina_changed(remaining_stamina: float, total_stamina: float) -> void:
-	_ui.update_stamina_bar_2(remaining_stamina, _max_time_limit)
+func _on_player_stamina_changed(remaining_stamina: float) -> void:
+	_ui.update_stamina_bar(remaining_stamina, _max_time_limit)

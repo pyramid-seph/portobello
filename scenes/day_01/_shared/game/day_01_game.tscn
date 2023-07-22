@@ -288,7 +288,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.2
 }
-time_limit_sec = 100.0
+time_limit_sec = 102.0
 treats_limit = 10
 obstacle_course_type = 2
 inverted_controls = true

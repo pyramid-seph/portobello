@@ -75,13 +75,9 @@ func update_lives_counter(value: int, immediate: bool = false) -> void:
 		).set_delay(LIVES_COUNTER_UPDATE_DELAY)
 
 
-func update_stamina_bar(value: float) -> void:
-	_stamina_bar.value = value * _stamina_bar.max_value
-
-
-func update_stamina_bar_2(value: float, max_value: float) -> void:
+func update_stamina_bar(value: float, max_value: float) -> void:
+	_stamina_bar.value = Utils.round_up(value, _stamina_bar.step)
 	_stamina_bar.max_value = max_value
-	_stamina_bar.value = value
 
 
 func update_high_score(value: int) -> void:

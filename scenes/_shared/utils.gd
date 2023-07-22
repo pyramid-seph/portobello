@@ -5,6 +5,16 @@ extends RefCounted
 const FRAME_TIME: float = 0.08
 
 
+static func round_up(value: float, multiple: float) -> int:
+	var valuei: int = maxi(0, ceili(value))
+	var stepi: int = int(multiple)
+	var n: int = valuei
+	var remainder: int = n % stepi
+	if remainder > 0:
+		n = n + stepi - remainder
+	return n
+
+
 static func rand_item(arr: Array) -> Node:
 	return arr.pick_random() if arr else null
 
