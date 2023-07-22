@@ -19,7 +19,7 @@ var _lives_counter_tween: Tween
 @onready var _game_over := $GameOver
 @onready var _piece_of_cake := $PieceOfCake
 @onready var _time_out := $TimeOut
-@onready var _dialogue := $Dialogue as Dialogue
+@onready var _dialogue_box := $DialogueBox as DialogueBox
 @onready var _black_screen := $BlackScreen
 
 
@@ -93,12 +93,12 @@ func set_is_stamina_bar_visible(value: bool) -> void:
 
 
 func play_dialogue(dialogue: Array[DialogueLine]) -> void:
-	_dialogue.dialogue = dialogue
-	_dialogue.start()
+	_dialogue_box.dialogue = dialogue
+	_dialogue_box.start()
 
 
 func stop_dilogue() -> void:
-	_dialogue.stop()
+	_dialogue_box.stop()
 
 
 func _set_lives_counter(value: int) -> void:

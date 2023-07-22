@@ -1,4 +1,4 @@
-class_name Dialogue
+class_name DialogueBox
 extends PanelContainer
 
 signal started
@@ -45,11 +45,11 @@ func start() -> void:
 	_reset_ui()
 	_is_playing = false
 	finished.emit()
-	
 
 
 func stop() -> void:
 	_timer.stop()
+	Utils.safe_disconnect_all(_timer.timeout)
 	_reset_ui()
 	_is_playing = false
 

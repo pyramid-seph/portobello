@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="1_fnaa8"]
 [ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/Courier_Prime/CourierPrime-Regular.ttf" id="2_0pjpj"]
-[ext_resource type="Script" path="res://scenes/_shared/dialogue.gd" id="3_px47p"]
+[ext_resource type="Script" path="res://scenes/_shared/dialogue_box.gd" id="3_kwica"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ora2p"]
 bg_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -77,14 +77,14 @@ line_spacing = 0.0
 font = ExtResource("1_fnaa8")
 font_size = 14
 
-[node name="Dialogue" type="PanelContainer"]
+[node name="DialogueBox" type="PanelContainer"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 16.0
 grow_horizontal = 2
 theme = SubResource("Theme_ectj8")
 theme_override_styles/panel = SubResource("StyleBoxTexture_4ixbj")
-script = ExtResource("3_px47p")
+script = ExtResource("3_kwica")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
