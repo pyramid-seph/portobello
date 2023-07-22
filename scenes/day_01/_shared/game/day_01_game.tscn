@@ -62,20 +62,20 @@ duration_sec = 10.0
 [sub_resource type="Resource" id="Resource_16fw5"]
 script = ExtResource("3_i3orw")
 text = "Ya me siento solita."
-delay_sec = 10.0
-duration_sec = 1.0
+delay_sec = 0.0
+duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_xg1id"]
 script = ExtResource("3_i3orw")
 text = "Yo también te extraño."
-delay_sec = 10.0
-duration_sec = 1.0
+delay_sec = 0.0
+duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gibyu"]
 script = ExtResource("3_i3orw")
 text = "Te amo. Chao."
-delay_sec = 10.0
-duration_sec = 1.0
+delay_sec = 0.0
+duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_tbt28"]
 script = ExtResource("2_fmqcn")
@@ -231,7 +231,7 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_8jflc"]
 script = ExtResource("3_i3orw")
-text = "¡Mi vida!. Lástima que"
+text = "¡Mi vida! Lástima que"
 delay_sec = 0.0
 duration_sec = 10.0
 
@@ -261,13 +261,13 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_0rxl2"]
 script = ExtResource("3_i3orw")
-text = "Sí, así le puse,"
+text = "Sí, así le puse"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_opn8q"]
 script = ExtResource("3_i3orw")
-text = "como es glotón."
+text = "porque es glotón."
 delay_sec = 0.0
 duration_sec = 10.0
 
