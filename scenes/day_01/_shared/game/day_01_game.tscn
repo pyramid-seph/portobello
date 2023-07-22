@@ -559,20 +559,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Interface" type="Node" parent="World"]
-
-[node name="Day01GameUi" parent="World/Interface" instance=ExtResource("6_s8541")]
-
-[node name="ResultsScreen" parent="World/Interface" instance=ExtResource("2_28578")]
-visible = false
-_skip_level_results_screen = true
-_skip_minigame_results_screen = true
-_stars_threshold_one = 2
-_stars_threshold_two = 4
-_stars_threshold_three = 6
-_stars_threshold_four = 8
-_stars_threshold_five = 9
-
 [node name="Guide" type="Sprite2D" parent="World"]
 visible = false
 texture = ExtResource("2_e3b2r")
@@ -630,12 +616,29 @@ metadata/_edit_lock_ = true
 position = Vector2(-97, 153)
 metadata/_edit_lock_ = true
 
-[node name="Day01BetweenLevelsCutscene" parent="World" instance=ExtResource("16_sc4vk")]
+[node name="Interface" type="Node" parent="."]
 
-[connection signal="calculated" from="World/Interface/ResultsScreen" to="." method="_on_results_screen_calculated"]
-[connection signal="finished" from="World/Interface/ResultsScreen" to="." method="_on_results_screen_finished"]
+[node name="Day01GameUi" parent="Interface" instance=ExtResource("6_s8541")]
+unique_name_in_owner = true
+
+[node name="ResultsScreen" parent="Interface" instance=ExtResource("2_28578")]
+unique_name_in_owner = true
+visible = false
+_skip_level_results_screen = true
+_skip_minigame_results_screen = true
+_stars_threshold_one = 2
+_stars_threshold_two = 4
+_stars_threshold_three = 6
+_stars_threshold_four = 8
+_stars_threshold_five = 9
+
+[node name="Day01BetweenLevelsCutscene" parent="." instance=ExtResource("16_sc4vk")]
+unique_name_in_owner = true
+
 [connection signal="ate" from="World/TileMap/Day01Player" to="." method="_on_player_ate"]
 [connection signal="died" from="World/TileMap/Day01Player" to="." method="_on_player_died"]
 [connection signal="stamina_changed" from="World/TileMap/Day01Player" to="." method="_on_player_stamina_changed"]
+[connection signal="calculated" from="Interface/ResultsScreen" to="." method="_on_results_screen_calculated"]
+[connection signal="finished" from="Interface/ResultsScreen" to="." method="_on_results_screen_finished"]
 
 [editable path="World/TileMap/SmallCouchFacingLeft"]

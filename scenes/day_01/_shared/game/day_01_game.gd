@@ -50,14 +50,14 @@ var _curr_lvl_settings: Day01LevelSettings
 var _immediate_lives_counter_update: bool = true
 
 @onready var _is_ready: bool = true
-@onready var _results_screen := $World/Interface/ResultsScreen as ResultsScreen
+@onready var _results_screen := %ResultsScreen as ResultsScreen
 @onready var _player := $World/TileMap/Day01Player as Player
-@onready var _ui := $World/Interface/Day01GameUi as Day01Ui
+@onready var _ui := %Day01GameUi as Day01Ui
 @onready var _timer := $Timer as Timer
 @onready var _lvl_info := $Systems/LevelInfo as LevelInfo
 @onready var _treat_placement_system := $Systems/TreatPlacementSystem as TreatPlacementSystem
 @onready var _furniture_placement_system := $Systems/FurniturePlacementSystem as FurniturePlacementSystem
-@onready var _cutscene := $World/Day01BetweenLevelsCutscene
+@onready var _cutscene := %Day01BetweenLevelsCutscene
 @onready var _max_time_limit: float = _get_max_time_limit()
 
 
