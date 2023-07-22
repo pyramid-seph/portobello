@@ -3,7 +3,7 @@ extends Marker2D
 
 signal ate
 signal died(death_cause: DeathCause)
-signal stamina_changed(value: float)
+signal stamina_changed(remaining_stamina: float, total_stamina: float)
 
 enum DeathCause {
 	FATIGUE,
@@ -40,7 +40,7 @@ var _remaining_stamina: float:
 	set(value):
 		_remaining_stamina = value
 		if not has_infinite_stamina():
-			stamina_changed.emit(_remaining_stamina / stamina_sec)
+			stamina_changed.emit(_remaining_stamina, stamina_sec)
 
 @onready var _is_ready: bool = true
 @onready var _head := $Head as AnimatedSprite2D

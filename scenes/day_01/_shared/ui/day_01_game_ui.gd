@@ -6,6 +6,10 @@ signal game_over_finished
 signal level_beaten_finished
 signal time_out_finished
 
+const LIVES_COUNTER_UPDATE_DELAY: float = 1.5
+
+var _lives_counter_tween: Tween
+
 @onready var _lives_counter := $LivesCounter/Label as Label
 @onready var _treats_counter := $TreatsCounter/Label as Label
 @onready var _high_score_label := $HighScoreLabel as Label
@@ -58,12 +62,26 @@ func update_treats_counter(value: int) -> void:
 	_treats_counter.text = str(value)
 
 
-func update_lives_counter(value: int) -> void:
-	_lives_counter.text = str(value)
+func update_lives_counter(value: int, immediate: bool = false) -> void:
+	if _lives_counter_tween:
+		_lives_counter_tween.kill()
+		
+	if immediate:
+		_set_lives_counter(value)
+	else:
+		_lives_counter_tween = create_tween()
+		_lives_counter_tween.tween_callback(func():
+			_set_lives_counter(value)
+		).set_delay(LIVES_COUNTER_UPDATE_DELAY)
 
 
 func update_stamina_bar(value: float) -> void:
 	_stamina_bar.value = value * _stamina_bar.max_value
+
+
+func update_stamina_bar_2(value: float, max_value: float) -> void:
+	_stamina_bar.max_value = max_value
+	_stamina_bar.value = value
 
 
 func update_high_score(value: int) -> void:
@@ -85,6 +103,10 @@ func play_dialogue(dialogue: Array[DialogueLine]) -> void:
 
 func stop_dilogue() -> void:
 	_dialogue.stop()
+
+
+func _set_lives_counter(value: int) -> void:
+	_lives_counter.text = str(value)
 
 
 func _on_start_label_timed_label_finished() -> void:

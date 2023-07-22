@@ -45,12 +45,17 @@ var _remaining_lives: int = NULL_LIVES:
 	set(value):
 		_remaining_lives = value
 		if _is_ready:
-			_ui.update_lives_counter(_remaining_lives)
+			_ui.update_lives_counter(
+					_remaining_lives, 
+					_immediate_lives_counter_update
+			)
+			_immediate_lives_counter_update = false
 var _treats_eaten: int:
 	set(value):
 		_treats_eaten = value
 		_on_treats_eaten_changed()
 var _curr_lvl_settings: Day01LevelSettings
+var _immediate_lives_counter_update: bool = true
 
 @onready var _is_ready: bool = true
 @onready var _results_screen := $World/Interface/ResultsScreen as ResultsScreen
@@ -61,6 +66,7 @@ var _curr_lvl_settings: Day01LevelSettings
 @onready var _treat_placement_system := $Systems/TreatPlacementSystem as TreatPlacementSystem
 @onready var _furniture_placement_system := $Systems/FurniturePlacementSystem as FurniturePlacementSystem
 @onready var _cutscene := $World/Day01BetweenLevelsCutscene
+@onready var _max_time_limit: float = _lvl_info.get_max_time_limit_story_mode()
 
 
 func _ready() -> void:
@@ -141,7 +147,6 @@ func _on_level_changed() -> void:
 	if _is_ready:
 		_player.can_move = false
 		_ui.show_black_screen(true)
-		await get_tree().process_frame
 		await _set_up_level()
 		await _start_level()
 
@@ -238,5 +243,5 @@ func _on_results_screen_finished(_total_score: int, _extra_lives: int, _stars: i
 	_go_to_title_screen()
 
 
-func _on_player_stamina_changed(stamina: float) -> void:
-	_ui.update_stamina_bar(stamina)
+func _on_player_stamina_changed(remaining_stamina: float, total_stamina: float) -> void:
+	_ui.update_stamina_bar_2(remaining_stamina, _max_time_limit)

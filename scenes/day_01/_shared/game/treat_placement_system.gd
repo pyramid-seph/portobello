@@ -52,7 +52,7 @@ func _randomize_placement() -> Vector2:
 			continue
 		else:
 			break
-	if tries > _max_tries:
+	if tries >= _max_tries:
 		print("Exceeded retries. Placing at the neck pos.")
 		map_pos = _get_first_trunc_part_map_pos()
 	return _map_to_global(map_pos)

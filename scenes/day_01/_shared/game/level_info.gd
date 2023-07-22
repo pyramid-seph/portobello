@@ -44,6 +44,15 @@ func get_game_mode(level: Day01Game.Level) -> Game.Mode:
 		return Game.Mode.SCORE_ATTACK
 
 
+func get_max_time_limit_story_mode() -> float:
+	# Get the max time of ALL levels, story mode or not?
+	var max_time_limit: float = 0.0
+	for item in STORY_MODE_LEVELS:
+		var level_settings: Day01LevelSettings = get_settings(item)
+		max_time_limit = maxf(max_time_limit, level_settings.time_limit_sec)
+	return max_time_limit
+
+
 func get_settings(level: Day01Game.Level) -> Day01LevelSettings:
 	match level:
 		Day01Game.Level.STORY_MODE_LEVEL_01:
