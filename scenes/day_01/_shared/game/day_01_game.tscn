@@ -425,7 +425,7 @@ inverted_controls = true
 dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3nst"]
-size = Vector2(8, 8)
+size = Vector2(6, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a6blw"]
 texture = ExtResource("3_71sjy")

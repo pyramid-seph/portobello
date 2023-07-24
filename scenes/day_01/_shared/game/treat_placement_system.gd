@@ -59,8 +59,8 @@ func _randomize_placement() -> Vector2:
 
 
 func _collides_with_furniture(map_pos: Vector2i) -> bool:
-	_collision_detector.global_position = _map_to_global(map_pos)
 	_collision_detector.target_position = Vector2.ZERO
+	_collision_detector.global_position = _map_to_global(map_pos)
 	_collision_detector.force_update_transform()
 	_collision_detector.force_shapecast_update()
 	if OS.is_debug_build():

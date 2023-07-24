@@ -115,9 +115,7 @@ func _set_up_level() -> void:
 	_timer.start(0.5)
 	await _timer.timeout
 	_place_treat()
-	await get_tree().physics_frame
 	_ui.show_black_screen(false)
-	await get_tree().process_frame
 
 
 func _reset_level() -> void:
