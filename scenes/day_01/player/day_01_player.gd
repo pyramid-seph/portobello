@@ -56,6 +56,12 @@ func _ready() -> void:
 	_reset()
 
 
+#func _process(delta: float) -> void:
+#	if _is_dead or not can_move or Engine.is_editor_hint():
+#		return
+#	_update_stamina(delta)
+
+
 func _physics_process(delta: float) -> void:
 	if _is_dead or not can_move or Engine.is_editor_hint():
 		return
@@ -153,6 +159,35 @@ func _reset() -> void:
 
 
 func _update_next_direction() -> void:
+	var input_dir := Input.get_vector(
+		"move_left",
+		"move_right",
+		"move_up",
+		"move_down"
+	)
+	
+	var pressed: Array[Vector2i] = []
+	if input_dir.x > 0:
+		pressed.append(Vector2i.LEFT if inverted_controls else Vector2i.RIGHT)
+	if input_dir.x < 0:
+		pressed.append(Vector2i.RIGHT if inverted_controls else Vector2i.LEFT)
+	if input_dir.y > 0:
+		pressed.append(Vector2i.UP if inverted_controls else Vector2i.DOWN)
+	if input_dir.y < 0:
+		pressed.append(Vector2i.DOWN if inverted_controls else Vector2i.UP)
+
+	for item in pressed:
+		if item == _curr_dir:
+			_next_dir = _curr_dir
+			continue
+		if item + _curr_dir == Vector2i.ZERO:
+			_next_dir = _curr_dir
+		else:
+			_next_dir = item
+			break
+
+
+func _update_next_direction_og() -> void:
 	var candidate: Vector2i = _next_dir
 	if Input.is_action_pressed("move_right"):
 		candidate = Vector2i.LEFT if inverted_controls else Vector2i.RIGHT
