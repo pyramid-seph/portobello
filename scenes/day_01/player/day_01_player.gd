@@ -233,6 +233,7 @@ func _on_died(cause: DeathCause) -> void:
 	if cause == DeathCause.CRASH:
 		dead_head_pos = _first_trunk_part.position
 		_first_trunk_part.visible = false
+		Utils.vibrate_joy()
 	else:
 		dead_head_pos = _head.position
 	_dead_head.position = dead_head_pos

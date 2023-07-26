@@ -27,6 +27,7 @@ const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furni
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 1
 const REVIVAL_DELAY_SEC: float = 3.0
+const TREAT_PLACEMENT_DELAY_SEC: float = 1.0
 
 @export var _level: Day01Game.Level:
 	set(value):
@@ -112,7 +113,7 @@ func _set_up_level() -> void:
 	# before trying to place a treat.
 	# It works, but I'm not sure if this is
 	# the right way, though.
-	_timer.start(0.5)
+	_timer.start(TREAT_PLACEMENT_DELAY_SEC)
 	await _timer.timeout
 	_place_treat()
 	_ui.show_black_screen(false)
@@ -191,7 +192,7 @@ func _on_level_beaten() -> void:
 	_ui.stop_dilogue()
 	_ui.show_black_screen(true)
 	
-	var next_lvl = _lvl_info.get_next_level(_level)
+	var next_lvl := _lvl_info.get_next_level(_level)
 	if next_lvl == _level:
 		_results_screen.start(
 				_lvl_info.get_game_mode(_level),
@@ -202,7 +203,7 @@ func _on_level_beaten() -> void:
 		)
 	else:
 		if _lvl_info.is_story_mode_level(_level):
-			var settings = _lvl_info.get_settings(next_lvl)
+			var settings := _lvl_info.get_settings(next_lvl)
 			_cutscene.inverted_controls = settings.inverted_controls
 			_cutscene.play()
 			await _cutscene.finished

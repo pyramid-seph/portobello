@@ -1,9 +1,8 @@
-[gd_scene load_steps=76 format=3 uid="uid://cqn328nqhcfq7"]
+[gd_scene load_steps=75 format=3 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
-[ext_resource type="Texture2D" uid="uid://l6m7rv51mula" path="res://art/day_1/_day_01_ui_guide.png" id="2_e3b2r"]
 [ext_resource type="Script" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/level_info.gd" id="2_tq1t3"]
 [ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/day_01_tile_atlas.png" id="3_71sjy"]
@@ -558,11 +557,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="Guide" type="Sprite2D" parent="World"]
-visible = false
-texture = ExtResource("2_e3b2r")
-centered = false
 
 [node name="TileMap" type="TileMap" parent="World"]
 tile_set = SubResource("TileSet_cwysm")
