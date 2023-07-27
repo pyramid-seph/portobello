@@ -161,7 +161,7 @@ theme_override_font_sizes/font_size = 18
 text = "¡Tiempo agotado!"
 horizontal_alignment = 1
 vertical_alignment = 1
-_duration_sec = 3.0
+_duration_sec = 2.0
 
 [node name="DialogueBox" parent="." instance=ExtResource("11_l1dor")]
 layout_mode = 1

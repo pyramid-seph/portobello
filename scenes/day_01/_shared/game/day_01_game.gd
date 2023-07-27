@@ -26,7 +26,7 @@ const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furni
 
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 1
-const REVIVAL_DELAY_SEC: float = 3.0
+const REVIVAL_DELAY_SEC: float = 2.0
 const TREAT_PLACEMENT_DELAY_SEC: float = 1.0
 
 @export var _level: Day01Game.Level:
@@ -214,7 +214,7 @@ func _on_player_died(cause: Player.DeathCause) -> void:
 	_remaining_lives -= 1
 	
 	if cause == Player.DeathCause.FATIGUE:
-		_ui.show_time_out()
+		_ui.show_time_up()
 		await _ui.time_out_finished
 	else:
 		_timer.start(REVIVAL_DELAY_SEC)

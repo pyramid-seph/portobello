@@ -48,7 +48,7 @@ func show_level_beaten() -> void:
 	level_beaten_finished.emit()
 
 
-func show_time_out() -> void:
+func show_time_up() -> void:
 	_time_out.start()
 	await _time_out.finished
 	time_out_finished.emit()
