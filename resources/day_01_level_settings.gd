@@ -15,6 +15,7 @@ enum ObstacleCourseType {
 		_pace_thresholds_changed()
 @export var time_limit_sec: float
 @export var treats_limit: int
+@export var change_treat_pos_on_player_death: bool
 @export var obstacle_course_type: ObstacleCourseType
 @export var inverted_controls: bool
 @export var dialogue: Array[DialogueLine]

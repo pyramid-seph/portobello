@@ -42,6 +42,7 @@ pace_thresholds = {
 }
 time_limit_sec = 30.0
 treats_limit = 5
+change_treat_pos_on_player_death = false
 obstacle_course_type = 1
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_o8rmx"), SubResource("Resource_ijthu"), SubResource("Resource_braj8")])
@@ -83,6 +84,7 @@ pace_thresholds = {
 }
 time_limit_sec = 45.0
 treats_limit = 10
+change_treat_pos_on_player_death = false
 obstacle_course_type = 2
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_4fp23"), SubResource("Resource_la1ve"), SubResource("Resource_16fw5"), SubResource("Resource_xg1id"), SubResource("Resource_gibyu")])
@@ -124,6 +126,7 @@ pace_thresholds = {
 }
 time_limit_sec = 60.0
 treats_limit = 15
+change_treat_pos_on_player_death = false
 obstacle_course_type = 2
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_sj755"), SubResource("Resource_uayyl"), SubResource("Resource_r6uwb"), SubResource("Resource_v1m0x"), SubResource("Resource_yi0yk")])
@@ -183,6 +186,7 @@ pace_thresholds = {
 }
 time_limit_sec = 80.0
 treats_limit = 10
+change_treat_pos_on_player_death = true
 obstacle_course_type = 2
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_daivp"), SubResource("Resource_hg1h1"), SubResource("Resource_s6vvx"), SubResource("Resource_0wyqe"), SubResource("Resource_yga0x"), SubResource("Resource_b6jhg"), SubResource("Resource_nsick"), SubResource("Resource_36lrq")])
@@ -218,6 +222,7 @@ pace_thresholds = {
 }
 time_limit_sec = 60.0
 treats_limit = 10
+change_treat_pos_on_player_death = true
 obstacle_course_type = 2
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_s3q5j"), SubResource("Resource_dbr5i"), SubResource("Resource_8chjt"), SubResource("Resource_1jgoh")])
@@ -289,6 +294,7 @@ pace_thresholds = {
 }
 time_limit_sec = 102.0
 treats_limit = 10
+change_treat_pos_on_player_death = false
 obstacle_course_type = 2
 inverted_controls = true
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_kb7o2"), SubResource("Resource_8jflc"), SubResource("Resource_w14d4"), SubResource("Resource_dso5d"), SubResource("Resource_8ckjv"), SubResource("Resource_enpfy"), SubResource("Resource_0rxl2"), SubResource("Resource_opn8q"), SubResource("Resource_4iutd"), SubResource("Resource_tl7p4")])
@@ -330,6 +336,7 @@ pace_thresholds = {
 }
 time_limit_sec = 45.0
 treats_limit = 10
+change_treat_pos_on_player_death = true
 obstacle_course_type = 2
 inverted_controls = true
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_jg5xd"), SubResource("Resource_35vhu"), SubResource("Resource_gxgo7"), SubResource("Resource_ddbf7"), SubResource("Resource_8ofdh")])
@@ -359,6 +366,7 @@ pace_thresholds = {
 }
 time_limit_sec = 30.0
 treats_limit = 10
+change_treat_pos_on_player_death = true
 obstacle_course_type = 2
 inverted_controls = true
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_n0awb"), SubResource("Resource_pv6bm"), SubResource("Resource_g67s6")])
@@ -374,6 +382,7 @@ pace_thresholds = {
 }
 time_limit_sec = 0.0
 treats_limit = 0
+change_treat_pos_on_player_death = false
 obstacle_course_type = 2
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([])
@@ -389,6 +398,7 @@ pace_thresholds = {
 }
 time_limit_sec = 0.0
 treats_limit = 0
+change_treat_pos_on_player_death = false
 obstacle_course_type = 2
 inverted_controls = true
 dialogue = Array[ExtResource("3_i3orw")]([])
@@ -404,6 +414,7 @@ pace_thresholds = {
 }
 time_limit_sec = 0.0
 treats_limit = 0
+change_treat_pos_on_player_death = false
 obstacle_course_type = 0
 inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([])
@@ -419,6 +430,7 @@ pace_thresholds = {
 }
 time_limit_sec = 0.0
 treats_limit = 0
+change_treat_pos_on_player_death = false
 obstacle_course_type = 0
 inverted_controls = true
 dialogue = Array[ExtResource("3_i3orw")]([])

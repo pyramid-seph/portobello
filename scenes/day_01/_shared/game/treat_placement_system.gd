@@ -12,13 +12,13 @@ const Player = preload("res://scenes/day_01/player/day_01_player.gd")
 var _top_left_map_pos: Vector2i
 var _top_right_map_pos: Vector2i
 var _bottom_left_map_pos: Vector2i
+var _treat_weak_ref: WeakRef
 
 @onready var _top_left := $TopLeft as Marker2D
 @onready var _top_right := $TopRight as Marker2D
 @onready var _bottom_left := $BottomLeft as Marker2D
 @onready var _collision_detector := $ShapeCast2D as ShapeCast2D
 @onready var _player := get_node(_player_node_path) as Player
-
 
 func _ready() -> void:
 	_top_left_map_pos = _global_to_map(_top_left.global_position)
@@ -32,9 +32,18 @@ func _ready() -> void:
 ## to await until the next frame when it makes
 ## sense (per example, after placing the furniture)
 func spawn_treat_random() -> void:
-	var treat = Treat.instantiate()
+	_free_curr_treat()
+	var treat := Treat.instantiate()
 	treat.global_position = _randomize_placement()
 	_world.call_deferred("add_child", treat)
+	_treat_weak_ref = weakref(treat)
+
+
+func _free_curr_treat() -> void:
+	if _treat_weak_ref:
+		var ref = _treat_weak_ref.get_ref() as Node
+		if ref:
+			ref.queue_free()
 
 
 func _randomize_placement() -> Vector2:

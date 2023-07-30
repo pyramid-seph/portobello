@@ -224,6 +224,8 @@ func _on_player_died(cause: Player.DeathCause) -> void:
 		_on_level_failed()
 	else:
 		_reset_level()
+		if _curr_lvl_settings.change_treat_pos_on_player_death:
+			_place_treat()
 		_play_dialogue()
 
 
