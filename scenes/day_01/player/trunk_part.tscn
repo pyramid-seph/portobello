@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://befjr0d5ldojt" path="res://art/day_1/day_01_player_body.png" id="1_q8dsu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxe2i"]
-size = Vector2(4, 4)
+size = Vector2(6, 6)
 
 [node name="TrunkPart000" type="Sprite2D"]
 texture = ExtResource("1_q8dsu")
