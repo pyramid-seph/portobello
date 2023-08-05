@@ -500,12 +500,12 @@ _lvl_settings_score_attack_1b = SubResource("Resource_fb7o2")
 _lvl_settings_score_attack_1c = SubResource("Resource_uuev1")
 _lvl_settings_score_attack_1d = SubResource("Resource_nvdo7")
 
-[node name="TreatPlacementSystem" type="Node" parent="Systems" node_paths=PackedStringArray("_tile_map", "_world")]
+[node name="TreatPlacementSystem" type="Node" parent="Systems" node_paths=PackedStringArray("_world")]
 script = ExtResource("2_72va4")
-_tile_map = NodePath("../../World/TileMap")
 _world = NodePath("../../World")
 _player_node_path = NodePath("../../World/TileMap/Day01Player")
 _max_tries = 5
+_tile_map_helper_path = NodePath("../Day01TileMapHelper")
 _debug_enable_log = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Systems/TreatPlacementSystem"]

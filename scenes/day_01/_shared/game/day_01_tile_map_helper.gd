@@ -1,5 +1,6 @@
 extends Node
-
+### Note: "grid" methods use not centered cells: the origin of cell is the top-left
+### corner instead of the center as is the case with tile map cells.
 
 const Player = preload("res://scenes/day_01/player/day_01_player.gd")
 
@@ -32,12 +33,6 @@ var _tile_offset: Vector2 # Depends on _tile_size.
 @export var _tile_size_small_couch: Vector2i
 @export var _tile_size_small_table: Vector2i
 
-# Tile map position is (0, 0). Because of this,
-# unlike the original code, the top left wall piece
-# (which is the origin position for this algorythm)
-# is not in (0, 0) and, thus, we need to calculate
-# its tile pos on _ready(). 
-var _origin_tile_pos: Vector2i
 var _all_furniture: Array[Area2D]:
 	get:
 		if _all_furniture.is_empty():
@@ -52,10 +47,12 @@ var _all_furniture: Array[Area2D]:
 		return _all_furniture
 
 @onready var _player := get_node(_player_node_path) as Player
-
-
-func _ready() -> void:
-	_origin_tile_pos = global_to_map(_origin.global_position)
+# Tile map position is (0, 0). Because of this,
+# unlike the original code, the top left wall piece
+# (which is the origin position for this algorythm)
+# is not in (0, 0) and, thus, we need to calculate
+# its tile pos on _ready(). 
+@onready var _origin_tile_pos: Vector2i = global_to_map(_origin.global_position)
 
 
 func place_furniture_outside() -> void:
@@ -171,16 +168,20 @@ func global_to_map(pos: Vector2) -> Vector2i:
 	return local_to_map(_tile_map.to_local(pos))
 
 
-func global_to_grid(pos: Vector2) -> Vector2i:
-	return global_to_map(pos) - _origin_tile_pos
-
-
 func local_to_map(pos: Vector2) -> Vector2i:
 	return _tile_map.local_to_map(pos)
 
 
 func map_to_local(pos: Vector2i) -> Vector2:
 	return _tile_map.map_to_local(pos)
+
+
+func map_to_global(pos: Vector2i) -> Vector2:
+	return _tile_map.to_global(map_to_local(pos))
+
+
+func global_to_grid(pos: Vector2) -> Vector2i:
+	return global_to_map(pos) - _origin_tile_pos
 
 
 func map_to_local_grid_pos(pos: Vector2i) -> Vector2:
