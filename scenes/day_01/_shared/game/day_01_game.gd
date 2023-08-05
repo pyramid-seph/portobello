@@ -135,7 +135,7 @@ func _start_level() -> void:
 	_ui.show_level_start(game_mode, lvl_index)
 	await _ui.start_level_finished
 	_play_dialogue()
-	_player.can_move = true
+	_player.is_allowed_to_move = true
 
 
 func _play_dialogue() -> void:
@@ -149,7 +149,7 @@ func _go_to_title_screen() -> void:
 
 func _on_level_changed() -> void:
 	if _is_ready:
-		_player.can_move = false
+		_player.is_allowed_to_move = false
 		_ui.show_black_screen(true)
 		await _set_up_level()
 		await _start_level()
@@ -186,7 +186,7 @@ func _on_level_failed() -> void:
 
 
 func _on_level_beaten() -> void:
-	_player.can_move = false
+	_player.is_allowed_to_move = false
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
 	_ui.stop_dilogue()

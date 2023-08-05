@@ -1,4 +1,3 @@
-@tool
 extends Marker2D
 
 signal ate
@@ -21,73 +20,67 @@ const DEBUG_POS := Vector2(120, 150)
 		stamina_sec = value
 		_remaining_stamina = stamina_sec
 @export var inverted_controls: bool
-@export var pace_sec: float = 1.0:
-	set(value):
-		pace_sec = value
-		_on_pace_sec_changed()
+@export var pace_sec: float = 1.0
 
-var can_move: bool = true:
+var is_allowed_to_move := true:
 	set(value):
-		can_move = value
+		is_allowed_to_move = value
 		_elapsed_time_sec = 0.0
 
+var _curr_frame: int
 var _curr_dir: Vector2i = INITIAL_DIR
 var _next_dir: Vector2i = _curr_dir
 var _elapsed_time_sec: float
 var _growth_pending: bool
 var _is_dead: bool
+var _is_awaiting_first_movement := true
 var _remaining_stamina: float:
 	set(value):
 		_remaining_stamina = value
-		if not has_infinite_stamina():
+		if _can_get_tired():
 			stamina_changed.emit(_remaining_stamina)
 
-@onready var _is_ready: bool = true
 @onready var _head := $Head as AnimatedSprite2D
 @onready var _trunk := $Trunk
 @onready var _first_trunk_part := $Trunk/TrunkPart000 as Node2D
 @onready var _tail := $Tail as AnimatedSprite2D
 @onready var _dead_head := $DeadHead
-@onready var _pixels_per_step: int = int(_trunk.get_child(0).get_rect().size.x)
+@onready var _pixels_per_step := int(_first_trunk_part.get_rect().size.x)
 
 
 func _ready() -> void:
-	_on_pace_sec_changed()
 	_reset()
 
 
 func _physics_process(delta: float) -> void:
-	if _is_dead or not can_move or Engine.is_editor_hint():
+	_elapsed_time_sec += delta
+	var tick: bool = _elapsed_time_sec >= pace_sec
+	if tick:
+		_elapsed_time_sec = 0.0
+	
+	if tick and not _is_dead:
+		_animate()
+	
+	if _is_dead or not is_allowed_to_move:
 		return
 	
 	if _update_stamina(delta):
 		return
 	
-	_update_next_direction()
+	var is_first_movement_done := _update_next_direction()
 	
-	_elapsed_time_sec += delta
-	if _elapsed_time_sec >= pace_sec:
-		_elapsed_time_sec = 0.0
+	if tick or is_first_movement_done:
 		_move()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if not OS.is_debug_build():
-		return
-	if event.is_action_pressed("fire") and not _is_dead:
-		_growth_pending = true
-	elif event.is_action_pressed("debug_revive") and _is_dead:
-		revive()
+		_elapsed_time_sec = 0.0
+	
+	if is_first_movement_done:
+		_animate()
 
 
 func revive(force: bool = false) -> void:
 	if not _is_dead and not force:
 		return
 	_reset()
-
-
-func has_infinite_stamina() -> bool:
-	return stamina_sec <= 0.0
 
 
 func get_global_start_position() -> Vector2:
@@ -106,8 +99,19 @@ func get_tail_global_postion() -> Vector2:
 	return _tail.global_position
 
 
+func _animate() -> void:
+	_curr_frame += 1
+	var anim_frame = _curr_frame % 2
+	_head.frame = anim_frame
+	_tail.frame = anim_frame
+
+
+func _can_get_tired() -> bool:
+	return stamina_sec > 0.0
+
+
 func _update_stamina(delta: float) -> bool:
-	if not has_infinite_stamina():
+	if _can_get_tired() and not _is_awaiting_first_movement:
 		_remaining_stamina -= delta
 		if _remaining_stamina <= 0:
 			_die(DeathCause.FATIGUE)
@@ -134,25 +138,23 @@ func _reset_body() -> void:
 	_head.visible = true
 	_dead_head.visible = false
 	_first_trunk_part.visible = true
-	if Engine.is_editor_hint():
-		_tail.stop()
-		_head.stop()
-	else:
-		_tail.play("default")
-		_head.play("default")
 
 
 func _reset() -> void:
+	_is_awaiting_first_movement = true
 	_elapsed_time_sec = 0.0
 	_curr_dir = INITIAL_DIR
 	_next_dir = _curr_dir
 	_growth_pending = false
 	_is_dead = false
 	_remaining_stamina = stamina_sec
+	_curr_frame = 0
+	_head.frame = 0
+	_tail.frame = 0
 	_reset_body()
 
 
-func _update_next_direction() -> void:
+func _update_next_direction() -> bool:
 	var pressed := Vector2i.ZERO
 	if Input.is_action_pressed("move_right"):
 		pressed += Vector2i.LEFT if inverted_controls else Vector2i.RIGHT
@@ -163,18 +165,29 @@ func _update_next_direction() -> void:
 	if Input.is_action_pressed("move_up"):
 		pressed += Vector2i.DOWN if inverted_controls else Vector2i.UP
 	
+	var direction_changed: bool = false
 	if pressed.x != 0 and pressed.x + _curr_dir.x != 0 and pressed.x != _curr_dir.x:
 		_next_dir = Vector2i(pressed.x, 0)
+		direction_changed = true
 	elif pressed.y != 0 and pressed.y + _curr_dir.y != 0 and pressed.y != _curr_dir.y:
 		_next_dir = Vector2i(0, pressed.y)
+		direction_changed = true
+	
+	var old_is_awaiting_first_movement_val := _is_awaiting_first_movement
+	if _is_awaiting_first_movement:
+		_is_awaiting_first_movement = !(direction_changed or pressed == INITIAL_DIR)
+	return old_is_awaiting_first_movement_val != _is_awaiting_first_movement
 
 
 func _move() -> void:
 	_curr_dir = _next_dir
 
+	if _is_awaiting_first_movement:
+		return
+
 	var last_trunk_part = Utils.last_child(_trunk)
 	
-	var new_trunk_part
+	var new_trunk_part: Node2D
 	if _growth_pending:
 		new_trunk_part = TrunkPart.instantiate()
 		_growth_pending = false
@@ -216,15 +229,6 @@ func _die(cause: DeathCause) -> void:
 		died.emit(cause)
 
 
-func _on_pace_sec_changed() -> void:
-	if not _is_ready or Engine.is_editor_hint():
-		return
-	
-	var animation_speed = 0 if is_zero_approx(pace_sec) else int(1 / pace_sec)
-	_head.sprite_frames.set_animation_speed("default", animation_speed)
-	_tail.sprite_frames.set_animation_speed("default", animation_speed)
-
-
 func _on_died(cause: DeathCause) -> void:
 	_dead_head.visible = true
 	_head.visible = false
@@ -238,9 +242,6 @@ func _on_died(cause: DeathCause) -> void:
 		dead_head_pos = _head.position
 	_dead_head.position = dead_head_pos
 	_dead_head.rotation = _head.rotation
-	
-	_tail.stop()
-	_head.stop()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
