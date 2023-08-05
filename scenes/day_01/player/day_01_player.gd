@@ -22,10 +22,7 @@ const DEBUG_POS := Vector2(120, 150)
 @export var inverted_controls: bool
 @export var pace_sec: float = 1.0
 
-var is_allowed_to_move := true:
-	set(value):
-		is_allowed_to_move = value
-		_elapsed_time_sec = 0.0
+var is_allowed_to_move := true
 
 var _curr_frame: int
 var _curr_dir: Vector2i = INITIAL_DIR

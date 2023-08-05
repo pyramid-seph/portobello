@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="6_t8w1h"]
 [ext_resource type="PackedScene" uid="uid://c4nnvy7hmhkml" path="res://scenes/_shared/ui/timed_label.tscn" id="7_4gefh"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="7_ak67o"]
-[ext_resource type="PackedScene" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="7_t8tk8"]
+[ext_resource type="PackedScene" uid="uid://dxxd4wyd36xa6" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="7_t8tk8"]
 [ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="8_lotg1"]
 [ext_resource type="PackedScene" uid="uid://cjldxfd1a76li" path="res://scenes/_shared/dialogue_box.tscn" id="11_l1dor"]
 
