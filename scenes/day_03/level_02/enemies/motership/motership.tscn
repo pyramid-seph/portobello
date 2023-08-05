@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="17_s7cdp"]
 [ext_resource type="PackedScene" uid="uid://dvq3mnqmcgelf" path="res://scenes/_shared/clean_up_zone.tscn" id="18_f0wfx"]
 [ext_resource type="PackedScene" uid="uid://ciph4tyjsvddo" path="res://scenes/day_03/level_02/enemies/motership/pair_of_mini_balls.tscn" id="19_67e7r"]
-[ext_resource type="PackedScene" uid="uid://cjldxfd1a76li" path="res://scenes/_shared/dialogue.tscn" id="20_jn5ls"]
+[ext_resource type="PackedScene" uid="uid://cjldxfd1a76li" path="res://scenes/_shared/dialogue_box.tscn" id="20_jn5ls"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/abduction_ray.gd" id="21_41s2u"]
 [ext_resource type="Script" path="res://resources/dialogue_line.gd" id="21_kwipx"]
 
@@ -32,13 +32,13 @@ size = Vector2(128, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uueik"]
 size = Vector2(144, 20)
 
-[sub_resource type="Resource" id="Resource_12ni2"]
+[sub_resource type="Resource" id="Resource_rc14a"]
 script = ExtResource("21_kwipx")
 text = "No permitiremos que acabes"
 delay_sec = 0.0
 duration_sec = 2.0
 
-[sub_resource type="Resource" id="Resource_dptue"]
+[sub_resource type="Resource" id="Resource_oa3fb"]
 script = ExtResource("21_kwipx")
 text = "con nuestro alimento"
 delay_sec = 0.0
@@ -417,8 +417,12 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Dialogue" parent="." instance=ExtResource("20_jn5ls")]
-_dialogue = Array[ExtResource("21_kwipx")]([SubResource("Resource_12ni2"), SubResource("Resource_dptue")])
+[node name="Control" type="Node" parent="."]
+
+[node name="DialogueBox" parent="Control" instance=ExtResource("20_jn5ls")]
+offset_left = -0.5
+offset_right = 0.5
+dialogue = Array[ExtResource("21_kwipx")]([SubResource("Resource_rc14a"), SubResource("Resource_oa3fb")])
 
 [connection signal="visibility_changed" from="Inside/AlienHologram" to="Inside/AlienHologram" method="_on_visibility_changed"]
 [connection signal="timeout" from="BlockSpawnerWeapon/Timer" to="BlockSpawnerWeapon" method="_on_timer_timeout"]

@@ -21,14 +21,19 @@ const STARS_LAST_INTERVAL_SEC: float = 1.4
 const RESULTS_LABELS_COLOR: Color = Color.WHITE
 const COMPLETE_LABELS_COLOR: Color = Color("F13030")
 const MINIGAME_COMPLETE_TEXT: String = "¡Reto completado!"
+const STARS_RESULT_NONE_TEXT = "¡Qué mal!"
 const STARS_RESULT_ONE_TEXT: String = "¡Yawn!"
 const STARS_RESULT_TWO_TEXT: String = "¡No está mal!"
 const STARS_RESULT_THREE_TEXT: String = "¡Bien!"
 const STARS_RESULT_FOUR_TEXT: String = "¡Muy bien!"
 const STARS_RESULT_FIVE_TEXT: String = "¡Prrrrrrfecto!"
 
+@export var _skip_level_results_screen: bool
+@export var _skip_minigame_results_screen: bool
+
 @export_group("Stars", "_stars")
 @export var _stars_evaluation_mode: StarsEvaluationMode
+@export var _stars_threshold_one: int
 @export var _stars_threshold_two: int
 @export var _stars_threshold_three: int
 @export var _stars_threshold_four: int
@@ -98,7 +103,7 @@ func _calculate_stars(lives: int, score: int) -> int:
 
 
 func _calculate_stars_by(value: int) -> int:
-	var stars = 1
+	var stars: int = 0
 	if value >= _stars_threshold_five:
 		stars = 5
 	elif value >= _stars_threshold_four:
@@ -107,6 +112,8 @@ func _calculate_stars_by(value: int) -> int:
 		stars = 3
 	elif value >= _stars_threshold_two:
 		stars = 2
+	elif value >= _stars_threshold_one:
+		stars = 1
 	return stars
 
 
@@ -123,7 +130,7 @@ func _get_stars_result_text(stars: int) -> String:
 		5:
 			return STARS_RESULT_FIVE_TEXT
 		_:
-			return ""
+			return STARS_RESULT_NONE_TEXT
 
 
 func _change_results_labels_color(color: Color) -> void:
@@ -201,7 +208,7 @@ func _tween_minigame_results() -> void:
 
 
 func _tween_stars_results() -> void:
-	if _stars <= 0:
+	if _stars < 0:
 		return
 	
 	_tween.tween_callback(func():
@@ -210,11 +217,17 @@ func _tween_stars_results() -> void:
 		_stars_label.text = ""
 	)
 	_tween.tween_interval(STARS_DELAY_SEC)
-	for i in _stars:
+	if _stars < 1:
 		_tween.tween_callback(func():
-			_stars_label.text += "*" if i == 0 else " *"
+			_stars_label.text = "¡Cero!"
 		)
 		_tween.tween_interval(STARS_DURATION_SEC)
+	else:
+		for i in _stars:
+			_tween.tween_callback(func():
+				_stars_label.text += "*" if i == 0 else " *"
+			)
+			_tween.tween_interval(STARS_DURATION_SEC)
 	_tween.tween_callback(func():
 		_evaluation_label.visible = true
 	)
@@ -225,14 +238,17 @@ func _tween_stars_results() -> void:
 
 
 func _present_results() -> Signal:
+	visible = true
 	_setup_label_texts()
 	
 	if _tween:
 		_tween.kill()
 	_tween = create_tween()
 	_tween.tween_callback(func(): _background_color_rect.visible = true)
-	_tween_level_results()
-	_tween_minigame_results()
+	if not _skip_level_results_screen:
+		_tween_level_results()
+	if not _skip_minigame_results_screen:
+		_tween_minigame_results()
 	_tween_stars_results()
 	_tween.tween_callback(func(): _background_color_rect.visible = false)
 	return _tween.finished

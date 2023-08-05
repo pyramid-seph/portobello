@@ -43,7 +43,7 @@ func start(minigame: Minigame) -> void:
 	var path = _get_start_path(minigame)
 	var minigame_start_level = _get_minigame_start_level(minigame)
 	var shared_data = {}
-	if minigame_start_level != -1:
+	if minigame_start_level > -1:
 		shared_data["level"] = minigame_start_level
 	SceneChanger.change_to_scene(path, shared_data)
 
@@ -56,6 +56,11 @@ func _get_start_path(minigame: Minigame) -> String:
 			return "res://scenes/day_02/_shared/cutscenes/cutscene_day_02_01.tscn"
 		Minigame.STORY_DAY_03:
 			return "res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.tscn"
+		Minigame.SCORE_ATTACK_1A, \
+		Minigame.SCORE_ATTACK_1B, \
+		Minigame.SCORE_ATTACK_1C, \
+		Minigame.SCORE_ATTACK_1D:
+			return "res://scenes/day_01/_shared/game/day_01_game.tscn"
 		Minigame.SCORE_ATTACK_3A, \
 		Minigame.SCORE_ATTACK_3B:
 			return "res://scenes/day_03/_shared/game/day_03_game.tscn"
@@ -65,6 +70,16 @@ func _get_start_path(minigame: Minigame) -> String:
 
 func _get_minigame_start_level(minigame: Minigame) -> int:
 	match minigame:
+		Minigame.STORY_DAY_01:
+			return Day01Game.Level.STORY_MODE_LEVEL_01
+		Minigame.SCORE_ATTACK_1A:
+			return Day01Game.Level.SCORE_ATTACK_1A
+		Minigame.SCORE_ATTACK_1B:
+			return Day01Game.Level.SCORE_ATTACK_1B
+		Minigame.SCORE_ATTACK_1C:
+			return Day01Game.Level.SCORE_ATTACK_1C
+		Minigame.SCORE_ATTACK_1D:
+			return Day01Game.Level.SCORE_ATTACK_1D
 		Minigame.STORY_DAY_03:
 			return Day03Game.Level.STORY_MODE_DAY_01
 		Minigame.SCORE_ATTACK_3A:

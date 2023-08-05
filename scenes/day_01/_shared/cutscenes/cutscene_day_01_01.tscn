@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqd3waxa863r3"]
+
+[ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_noa3u"]
+[ext_resource type="Script" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_01.gd" id="2_effvj"]
+[ext_resource type="Texture2D" uid="uid://bpcksnp3lmau1" path="res://art/cutscenes/day_01_intro_00.png" id="3_tc33n"]
+[ext_resource type="Texture2D" uid="uid://drbma24q1mvtn" path="res://art/cutscenes/day_01_intro_01.png" id="4_1osry"]
+
+[node name="CutsceneDay0101" instance=ExtResource("1_noa3u")]
+script = ExtResource("2_effvj")
+_autostart = true
+
+[node name="Background" type="CanvasLayer" parent="." index="0"]
+layer = -1
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Background" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Background" index="1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Día 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel00" type="Sprite2D" parent="." index="1"]
+visible = false
+texture = ExtResource("3_tc33n")
+offset = Vector2(120, 150)
+
+[node name="Panel01" type="Sprite2D" parent="." index="2"]
+visible = false
+texture = ExtResource("4_1osry")
+offset = Vector2(120, 150)
+
+[node name="Timer" type="Timer" parent="." index="3"]
+one_shot = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]

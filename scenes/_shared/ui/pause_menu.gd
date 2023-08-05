@@ -2,7 +2,6 @@ extends Control
 
 @export var show_auto_fire: bool = false
 
-@onready var _pause_label = %PauseLabel as Label
 @onready var _give_up_button = %GiveUpButton as Button
 @onready var _pause_dialog = $PauseDialog
 @onready var _confirm_exit_dialog = $ConfirmExitLevelDialog

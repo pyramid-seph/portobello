@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dxxd4wyd36xa6"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/two_line_timed_label.gd" id="1_oudw7"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="2_7wa0l"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="2_7wa0l"]
 
 [node name="TwoLineTimedLabel" type="Control"]
 layout_mode = 3
