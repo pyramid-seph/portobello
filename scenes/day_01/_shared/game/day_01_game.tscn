@@ -506,6 +506,7 @@ _tile_map = NodePath("../../World/TileMap")
 _world = NodePath("../../World")
 _player_node_path = NodePath("../../World/TileMap/Day01Player")
 _max_tries = 5
+_debug_enable_log = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Systems/TreatPlacementSystem"]
 visible = false
