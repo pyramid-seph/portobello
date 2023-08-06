@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://c48hbuyvs82xn"]
+
+[ext_resource type="Script" path="res://scenes/day_02/_shared/game/day_02_game.gd" id="1_fhvpp"]
+
+[node name="Day02Game" type="Node"]
+script = ExtResource("1_fhvpp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DAY 02 GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
