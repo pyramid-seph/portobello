@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlke7l4qiso57"
-path="res://.godot/imported/tiles_maze.png-bd0b3ab0de8f35dabdff503f824c2dee.ctex"
+uid="uid://c0ucesno6okvn"
+path="res://.godot/imported/day_02_player_1.png-f9f0baa619e83b069b96597b22e3679e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_2/tiles_maze.png"
-dest_files=["res://.godot/imported/tiles_maze.png-bd0b3ab0de8f35dabdff503f824c2dee.ctex"]
+source_file="res://art/day_2/day_02_player_1.png"
+dest_files=["res://.godot/imported/day_02_player_1.png-f9f0baa619e83b069b96597b22e3679e.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -42,7 +42,7 @@ var _immediate_lives_counter_update: bool = true
 
 func _ready() -> void:
 	_set_initial_lives()
-	_on_score_changed()	
+	_on_score_changed()
 	_on_level_changed()
 
 

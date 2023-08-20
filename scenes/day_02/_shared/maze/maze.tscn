@@ -1,0 +1,150 @@
+[gd_scene load_steps=20 format=3 uid="uid://cfcfhqs6pqgcm"]
+
+[ext_resource type="Texture2D" uid="uid://j3ged81fnnl6" path="res://art/day_2/atlas_tiles_maze.png" id="1_744ve"]
+[ext_resource type="Texture2D" uid="uid://bwdibri83ew7" path="res://art/day_2/day_02_player_0.png" id="2_1mny5"]
+[ext_resource type="Script" path="res://scenes/day_02/_shared/maze/maze.gd" id="2_hjgam"]
+[ext_resource type="Script" path="res://scenes/day_02/_shared/maze/day_02_player.gd" id="3_88x24"]
+[ext_resource type="Texture2D" uid="uid://c0ucesno6okvn" path="res://art/day_2/day_02_player_1.png" id="3_qs63k"]
+[ext_resource type="Texture2D" uid="uid://bq13ghd8wb778" path="res://art/day_2/day_02_player_2.png" id="4_qeabv"]
+[ext_resource type="Texture2D" uid="uid://0aebmnupevda" path="res://art/day_2/day_02_player_3.png" id="5_1ceam"]
+[ext_resource type="Texture2D" uid="uid://m8p8r7u77be3" path="res://art/day_2/day_02_player_dead_0.png" id="6_j84ia"]
+[ext_resource type="Texture2D" uid="uid://beeb5wj7c116" path="res://art/day_2/day_02_player_dead_1.png" id="7_4o34j"]
+[ext_resource type="Texture2D" uid="uid://cy7nmbs6m7fnw" path="res://art/day_2/day_02_player_dead_2.png" id="8_ho12r"]
+[ext_resource type="Texture2D" uid="uid://dhagu41okbryf" path="res://art/day_2/day_02_player_dead_3.png" id="9_crnub"]
+[ext_resource type="Texture2D" uid="uid://dk2ygbgaaf335" path="res://art/day_2/day_02_player_dead_4.png" id="10_pkfrd"]
+[ext_resource type="Texture2D" uid="uid://ksol15gs7fuf" path="res://art/day_2/day_02_player_dead_5.png" id="11_bxufx"]
+[ext_resource type="Texture2D" uid="uid://bwlc0ekoyuk5w" path="res://art/day_2/day_02_player_dead_6.png" id="12_wh8r8"]
+[ext_resource type="Texture2D" uid="uid://cplnfpknckkpc" path="res://art/day_2/day_02_player_dead_7.png" id="13_b0upb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onvd7"]
+texture = ExtResource("1_744ve")
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_h = true
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_v = true
+1:0/0 = 0
+1:1/next_alternative_id = 2
+1:1/0 = 0
+1:1/1 = 1
+1:1/1/flip_v = true
+2:1/next_alternative_id = 2
+2:1/0 = 0
+2:1/1 = 1
+2:1/1/flip_h = true
+2:0/0 = 0
+2:2/0 = 0
+1:2/next_alternative_id = 2
+1:2/0 = 0
+1:2/1 = 1
+1:2/1/flip_v = true
+0:2/0 = 0
+0:1/next_alternative_id = 2
+0:1/0 = 0
+0:1/1 = 1
+0:1/1/flip_h = true
+4:0/next_alternative_id = 2
+4:0/0 = 0
+4:0/1 = 1
+4:0/1/flip_v = true
+4:1/next_alternative_id = 2
+4:1/0 = 0
+4:1/1 = 1
+4:1/1/flip_h = true
+4:2/next_alternative_id = 4
+4:2/0 = 0
+4:2/1 = 1
+4:2/1/flip_h = true
+4:2/2 = 2
+4:2/2/flip_h = true
+4:2/2/flip_v = true
+4:2/3 = 3
+4:2/3/flip_v = true
+
+[sub_resource type="TileSet" id="TileSet_tiqs2"]
+sources/0 = SubResource("TileSetAtlasSource_onvd7")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdrqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1mny5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qs63k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qeabv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1ceam")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.5
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("6_j84ia")
+}, {
+"duration": 3.0,
+"texture": ExtResource("7_4o34j")
+}, {
+"duration": 3.0,
+"texture": ExtResource("8_ho12r")
+}, {
+"duration": 3.0,
+"texture": ExtResource("9_crnub")
+}, {
+"duration": 3.0,
+"texture": ExtResource("10_pkfrd")
+}, {
+"duration": 3.0,
+"texture": ExtResource("11_bxufx")
+}, {
+"duration": 3.0,
+"texture": ExtResource("12_wh8r8")
+}, {
+"duration": 4.0,
+"texture": ExtResource("13_b0upb")
+}],
+"loop": true,
+"name": &"dying",
+"speed": 12.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nx3y3"]
+size = Vector2(14, 14)
+
+[node name="Maze" type="TileMap"]
+tile_set = SubResource("TileSet_tiqs2")
+format = 2
+layer_0/tile_data = PackedInt32Array(1, 65536, 65537, 3, 0, 0, 7, 0, 65536, 9, 65536, 65537, 131076, 131072, 2, 131077, 131072, 2, 131078, 131072, 2, 262145, 0, 196608, 262146, 0, 131072, 327682, 0, 65536, 327681, 262144, 1, 393217, 0, 2, 458753, 0, 2, 524289, 65536, 65537, 262148, 0, 196608, 262149, 65536, 65538, 262150, 0, 131072, 327684, 0, 0, 327686, 0, 65536, 458759, 131072, 65537, 458755, 131072, 1, 458756, 131072, 2, 458757, 131072, 2, 458758, 131072, 2, 262152, 0, 196608, 262153, 0, 131072, 327688, 0, 0, 393225, 0, 2, 458761, 0, 2, 524297, 65536, 65537, 589827, 0, 196608, 589830, 0, 196608, 589831, 0, 131072, 589828, 0, 131072, 4, 262144, 0, 5, 262144, 0, 6, 262144, 0, 327685, 262144, 0, 131072, 131072, 2, 131073, 131072, 65537, 131075, 131072, 1, 131082, 131072, 2, 131081, 131072, 1, 131079, 131072, 65537, 327689, 262144, 65537, 65535, 0, 1, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 458751, 0, 1, 524287, 0, 1, 589823, 0, 1, 655359, 0, 1, 11, 0, 65537, 65547, 0, 65537, 131083, 0, 65537, 196619, 0, 65537, 262155, 0, 65537, 327691, 0, 65537, 393227, 0, 65537, 458763, 0, 65537, 524299, 0, 65537, 589835, 0, 65537, -65536, 262144, 0, -65535, 262144, 0, -65534, 262144, 0, -65533, 262144, 0, -65532, 262144, 0, -65531, 262144, 0, -65530, 262144, 0, -65529, 262144, 0, -65528, 262144, 0, -65527, 262144, 0, -65526, 262144, 0, 655360, 262144, 65536, 655361, 262144, 65536, 655362, 262144, 65536, 655363, 262144, 65536, 655364, 262144, 65536, 655365, 262144, 65536, 655366, 262144, 65536, 655367, 262144, 65536, 655368, 262144, 65536, 655369, 262144, 65536, 655370, 262144, 65536, -1, 262144, 2, -65525, 262144, 65538, 655371, 262144, 131074, 720895, 262144, 196610)
+script = ExtResource("2_hjgam")
+
+[node name="PlayerStartPos" type="Marker2D" parent="."]
+position = Vector2(88, 104)
+
+[node name="PlayerRespawnPos" type="Marker2D" parent="."]
+position = Vector2(88, 72)
+
+[node name="Day02Player" type="Area2D" parent="."]
+script = ExtResource("3_88x24")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Day02Player"]
+sprite_frames = SubResource("SpriteFrames_tdrqc")
+animation = &"dying"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Day02Player"]
+shape = SubResource("RectangleShape2D_nx3y3")
+
+[node name="Timer" type="Timer" parent="Day02Player"]
+one_shot = true
+
+[node name="PlayerStartPos" type="Marker2D" parent="Day02Player/Timer"]
+position = Vector2(88, 104)

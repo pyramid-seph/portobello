@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c48hbuyvs82xn"]
+[gd_scene load_steps=6 format=3 uid="uid://c48hbuyvs82xn"]
 
 [ext_resource type="Script" path="res://scenes/day_02/_shared/game/day_02_game.gd" id="1_fhvpp"]
 [ext_resource type="Texture2D" uid="uid://bjq56s0mc7n6p" path="res://art/day_2/guide_pacman.png" id="2_c6pj4"]
+[ext_resource type="PackedScene" uid="uid://cfcfhqs6pqgcm" path="res://scenes/day_02/_shared/maze/maze.tscn" id="3_ny21v"]
 [ext_resource type="PackedScene" uid="uid://bkurq57vlqf73" path="res://scenes/day_02/_shared/ui/day_02_ui.tscn" id="3_ooiqs"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="4_c3g4n"]
 
@@ -24,9 +25,13 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Guide" type="Sprite2D" parent="World"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.458824)
 texture = ExtResource("2_c6pj4")
 centered = false
+
+[node name="Maze" parent="World" instance=ExtResource("3_ny21v")]
+position = Vector2(32, 72)
 
 [node name="Interface" type="Node" parent="."]
 
