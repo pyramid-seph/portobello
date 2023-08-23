@@ -138,7 +138,6 @@ script = ExtResource("3_88x24")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Day02Player"]
 sprite_frames = SubResource("SpriteFrames_tdrqc")
-autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Day02Player"]
 shape = SubResource("RectangleShape2D_nx3y3")
