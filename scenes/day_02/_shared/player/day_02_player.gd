@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var candidate_works := _candidate_curr != Vector2i.ZERO and _maze.get_cell_source_id(0, _map_pos() + _candidate_curr) == -1
-	var curr_works = _maze.get_cell_source_id(0, _map_pos() + _curr_dir) == -1
+	var curr_works = _maze.is_empty_tile(_map_pos() + _curr_dir)
 	if candidate_works:
 		_curr_dir = _candidate_curr
 	elif not candidate_works and not curr_works:

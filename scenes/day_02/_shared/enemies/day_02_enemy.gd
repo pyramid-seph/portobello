@@ -1,0 +1,92 @@
+extends Area2D
+
+
+enum State {
+	CAGED,
+	CHASING,
+	DEAD,
+}
+
+@export var speed: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
+@export var _initial_dir: Vector2i = Vector2i.RIGHT
+
+var _target_local_pos: Vector2
+
+@onready var _maze := get_parent() as TileMap
+@onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _curr_dir: Vector2i = _initial_dir # TODO Correct itself if _curr_dir is invalid
+
+
+func teleport(map_pos: Vector2i) -> void:
+	position = _maze.map_to_local(map_pos)
+	var candidate_map_pos = map_pos + _curr_dir
+	if _maze.is_empty_tile(candidate_map_pos):
+		_target_local_pos = _maze.map_to_local(candidate_map_pos)
+	else:
+		_target_local_pos = map_pos # TODO maybe select a valid target so it can keep moving?
+
+
+func _physics_process(delta: float) -> void:
+	_move(delta)
+
+
+func _move(delta: float) -> void:
+	if is_zero_approx(speed):
+		return
+	if _curr_dir == Vector2i.ZERO:
+		_pick_next_movement()
+		return
+	
+	var distance: float = speed * delta
+	var new_pos: Vector2 = _move_towards_target(distance)
+	var arrived_to_target: bool = new_pos == _target_local_pos
+	var remaining_distance := 0.0
+	if arrived_to_target:
+		_pick_next_movement()
+		remaining_distance = distance - position.distance_to(new_pos)
+	position = new_pos
+
+
+func _move_towards_target(distance: float) -> Vector2:
+	var new_pos: Vector2 = position
+	match _curr_dir:
+		Vector2i.LEFT:
+			new_pos.x = maxf(new_pos.x - distance, _target_local_pos.x)
+		Vector2i.RIGHT:
+			new_pos.x = minf(new_pos.x + distance, _target_local_pos.x)
+		Vector2i.UP:
+			new_pos.y = maxf(new_pos.y - distance, _target_local_pos.y)
+		Vector2i.DOWN:
+			new_pos.y = minf(new_pos.y + distance, _target_local_pos.y)
+	return new_pos
+
+
+func _pick_next_movement() -> void:
+	var candidates: Array[Vector2i] = _maze.get_surrounding_empty_cells(_map_pos())
+	if candidates.is_empty():
+		_curr_dir = Vector2i.ZERO
+		_target_local_pos = _map_pos()
+		return
+	
+	var curr_map_pos = _map_pos()
+	var candidates_partition: Array = Utils.partition(candidates, func(candidate):
+		var curr_dir_candidate: Vector2i = candidate - curr_map_pos
+		return Vector2(_curr_dir).dot(curr_dir_candidate) == 0
+	)
+	var perpendicular_candidates: Array = candidates_partition[0]
+	var parallel_candidates: Array = candidates_partition[1]
+	var is_at_crossroad := !perpendicular_candidates.is_empty()
+	
+	var new_target_map_pos: Vector2i = Vector2i.ZERO
+	if is_at_crossroad:
+		new_target_map_pos = candidates.pick_random()
+	elif parallel_candidates.size() == 1:
+		new_target_map_pos = parallel_candidates[0]
+	else:
+		new_target_map_pos = curr_map_pos + _curr_dir
+	_curr_dir = new_target_map_pos - _map_pos()
+	_target_local_pos = _maze.map_to_local(new_target_map_pos)
+
+
+func _map_pos() -> Vector2i:
+	return _maze.local_to_map(position)
