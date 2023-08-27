@@ -1,7 +1,7 @@
 extends Area2D
 
 
-enum State {
+enum MazeEnemyState {
 	CAGED,
 	CHASING,
 	DEAD,
@@ -11,6 +11,7 @@ enum State {
 @export var _initial_dir: Vector2i = Vector2i.RIGHT
 
 var _target_local_pos: Vector2
+var _state: MazeEnemyState = MazeEnemyState.CHASING
 
 @onready var _maze := get_parent() as TileMap
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -31,23 +32,20 @@ func _physics_process(delta: float) -> void:
 
 
 func _move(delta: float) -> void:
-	if is_zero_approx(speed):
-		return
 	if _curr_dir == Vector2i.ZERO:
 		_pick_next_movement()
 		return
 	
-	var distance: float = speed * delta
-	var new_pos: Vector2 = _move_towards_target(distance)
-	var arrived_to_target: bool = new_pos == _target_local_pos
-	var remaining_distance := 0.0
-	if arrived_to_target:
-		_pick_next_movement()
-		remaining_distance = distance - position.distance_to(new_pos)
-	position = new_pos
+	var remaining_distance: float = speed * delta
+	while remaining_distance > 0 and not is_zero_approx(remaining_distance):
+		var old_pos: Vector2 = position
+		_move_towards_target(remaining_distance)
+		remaining_distance -= old_pos.distance_to(position)
+		var arrived_to_target: bool = position == _target_local_pos
+		if arrived_to_target:
+			_pick_next_movement()
 
-
-func _move_towards_target(distance: float) -> Vector2:
+func _move_towards_target(distance: float) -> void:
 	var new_pos: Vector2 = position
 	match _curr_dir:
 		Vector2i.LEFT:
@@ -58,7 +56,7 @@ func _move_towards_target(distance: float) -> Vector2:
 			new_pos.y = maxf(new_pos.y - distance, _target_local_pos.y)
 		Vector2i.DOWN:
 			new_pos.y = minf(new_pos.y + distance, _target_local_pos.y)
-	return new_pos
+	position = new_pos
 
 
 func _pick_next_movement() -> void:
