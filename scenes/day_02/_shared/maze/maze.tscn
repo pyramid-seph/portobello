@@ -213,3 +213,8 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Day02Enemy"]
 shape = SubResource("RectangleShape2D_okcck")
+
+[node name="ScareTimer" type="Timer" parent="Day02Enemy"]
+one_shot = true
+
+[connection signal="timeout" from="Day02Enemy/ScareTimer" to="Day02Enemy" method="_on_scare_timer_timeout"]

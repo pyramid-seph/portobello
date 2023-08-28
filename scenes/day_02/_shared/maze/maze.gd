@@ -11,6 +11,8 @@ const TILE_SIZE: int = 16
 func _ready() -> void:
 	_player.position = _player_start_marker.position
 	$Day02Enemy.teleport(local_to_map(_player_respawn_marker.position))
+	await get_tree().create_timer(3.0, false).timeout
+	$Day02Enemy.scare()
 
 
 func is_ready() -> bool:

@@ -7,15 +7,21 @@ enum MazeEnemyState {
 	DEAD,
 }
 
+const SCARE_DURATION_SEC: float = 6.4
+
 @export var speed: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
 
 var _curr_dir: Vector2i
 var _target_local_pos: Vector2
-var _state: MazeEnemyState = MazeEnemyState.CHASING
+var _state: MazeEnemyState = MazeEnemyState.CHASING:
+	set(value):
+		_state = value
+		_on_state_set()
 
 @onready var _is_ready := true
 @onready var _maze := get_parent() as TileMap
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _scare_timer: Timer = $ScareTimer
 
 
 func _ready() -> void:
@@ -23,9 +29,16 @@ func _ready() -> void:
 		queue_free()
 		print("Maze enemies must be direct children of mazes. queue_free() was called on this enemy.")
 		return
-	
+	_on_state_set()
 	await _maze.ready
 	_pick_next_movement()
+
+
+func _physics_process(delta: float) -> void:
+	if _is_dead():
+		return
+	
+	_move(delta)
 
 
 func teleport(map_pos: Vector2i) -> void:
@@ -33,8 +46,18 @@ func teleport(map_pos: Vector2i) -> void:
 	_pick_next_movement()
 
 
-func _physics_process(delta: float) -> void:
-	_move(delta)
+func scare() -> void:
+	if not _is_dead():
+		_state = MazeEnemyState.SCARED
+		_scare_timer.start(SCARE_DURATION_SEC)
+
+
+func _is_dead() -> bool:
+	return _state == MazeEnemyState.DEAD
+
+
+func _is_scared() -> bool:
+	return _state == MazeEnemyState.SCARED
 
 
 func _move(delta: float) -> void:
@@ -94,3 +117,24 @@ func _pick_next_movement() -> void:
 
 func _map_pos() -> Vector2i:
 	return _maze.local_to_map(position)
+
+
+func _update_animation() -> void:
+	var new_animation: String = "default"
+	match _state:
+		MazeEnemyState.DEAD:
+			new_animation = "dead"
+		MazeEnemyState.SCARED:
+			new_animation = "scared"
+	if _animated_sprite.animation != new_animation:
+		_animated_sprite.play(new_animation)
+
+
+func _on_state_set() -> void:
+	if not _is_ready:
+		return
+	_update_animation()
+
+
+func _on_scare_timer_timeout() -> void:
+	_state = MazeEnemyState.CHASING
