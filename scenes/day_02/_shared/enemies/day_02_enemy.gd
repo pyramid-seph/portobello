@@ -2,29 +2,35 @@ extends Area2D
 
 
 enum MazeEnemyState {
-	CAGED,
 	CHASING,
+	SCARED,
 	DEAD,
 }
 
 @export var speed: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
-@export var _initial_dir: Vector2i = Vector2i.RIGHT
 
+var _curr_dir: Vector2i
 var _target_local_pos: Vector2
 var _state: MazeEnemyState = MazeEnemyState.CHASING
 
+@onready var _is_ready := true
 @onready var _maze := get_parent() as TileMap
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _curr_dir: Vector2i = _initial_dir # TODO Correct itself if _curr_dir is invalid
+
+
+func _ready() -> void:
+	if not _maze:
+		queue_free()
+		print("Maze enemies must be direct children of mazes. queue_free() was called on this enemy.")
+		return
+	
+	await _maze.ready
+	_pick_next_movement()
 
 
 func teleport(map_pos: Vector2i) -> void:
 	position = _maze.map_to_local(map_pos)
-	var candidate_map_pos = map_pos + _curr_dir
-	if _maze.is_empty_tile(candidate_map_pos):
-		_target_local_pos = _maze.map_to_local(candidate_map_pos)
-	else:
-		_target_local_pos = map_pos # TODO maybe select a valid target so it can keep moving?
+	_pick_next_movement()
 
 
 func _physics_process(delta: float) -> void:
@@ -32,18 +38,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _move(delta: float) -> void:
-	if _curr_dir == Vector2i.ZERO:
-		_pick_next_movement()
-		return
-	
 	var remaining_distance: float = speed * delta
 	while remaining_distance > 0 and not is_zero_approx(remaining_distance):
+		if _curr_dir == Vector2i.ZERO:
+			break
+		
 		var old_pos: Vector2 = position
 		_move_towards_target(remaining_distance)
 		remaining_distance -= old_pos.distance_to(position)
 		var arrived_to_target: bool = position == _target_local_pos
 		if arrived_to_target:
 			_pick_next_movement()
+
 
 func _move_towards_target(distance: float) -> void:
 	var new_pos: Vector2 = position
@@ -88,3 +94,11 @@ func _pick_next_movement() -> void:
 
 func _map_pos() -> Vector2i:
 	return _maze.local_to_map(position)
+
+
+func _ensure_valid_curr_id() -> void:
+	if not _is_ready:
+		return
+	var candidate_map_pos = _map_pos() + _curr_dir
+	if not _maze.is_empty_tile(candidate_map_pos):
+		_pick_next_movement()
