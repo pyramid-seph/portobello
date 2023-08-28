@@ -94,11 +94,3 @@ func _pick_next_movement() -> void:
 
 func _map_pos() -> Vector2i:
 	return _maze.local_to_map(position)
-
-
-func _ensure_valid_curr_id() -> void:
-	if not _is_ready:
-		return
-	var candidate_map_pos = _map_pos() + _curr_dir
-	if not _maze.is_empty_tile(candidate_map_pos):
-		_pick_next_movement()
