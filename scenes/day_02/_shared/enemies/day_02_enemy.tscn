@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://djle3i2ou6cx1"]
 
 [ext_resource type="Script" path="res://scenes/day_02/_shared/enemies/day_02_enemy.gd" id="1_h5v7e"]
-[ext_resource type="Texture2D" uid="uid://coul13cr0fb2a" path="res://art/day_2/enemy_ghost_blue_0.png" id="2_s1u7t"]
-[ext_resource type="Texture2D" uid="uid://bqy1eiauwg23p" path="res://art/day_2/enemy_ghost_blue_1.png" id="3_rfqlj"]
+[ext_resource type="Texture2D" uid="uid://cyorhj0i20rdm" path="res://art/day_2/enemy_ghost_red_0.png" id="2_8rakd"]
+[ext_resource type="Texture2D" uid="uid://iw1ie7574y0g" path="res://art/day_2/enemy_ghost_red_1.png" id="3_8px7h"]
 [ext_resource type="Texture2D" uid="uid://b1u66eqv0q3tj" path="res://art/day_2/enemy_ghost_death_0.png" id="4_xgk6b"]
 [ext_resource type="Texture2D" uid="uid://bfivhb7qofb8t" path="res://art/day_2/enemy_ghost_death_1.png" id="5_13q7a"]
 [ext_resource type="Texture2D" uid="uid://bxter8aud43he" path="res://art/day_2/enemy_ghost_death_2.png" id="6_3tr2r"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dgdt6vq5opmg3" path="res://art/day_2/enemy_ghost_scared_1.png" id="9_5qyyw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fhw8j"]
+resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 3.0,
@@ -31,10 +32,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_s1u7t")
+"texture": ExtResource("2_8rakd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_rfqlj")
+"texture": ExtResource("3_8px7h")
 }],
 "loop": true,
 "name": &"default",
@@ -42,7 +43,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_s1u7t")
+"texture": ExtResource("2_8rakd")
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_5qyyw")
@@ -68,12 +69,12 @@ size = Vector2(14, 14)
 
 [node name="Day02Enemy" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_h5v7e")
+_texture_0 = ExtResource("2_8rakd")
+_texture_1 = ExtResource("3_8px7h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fhw8j")
-animation = &"not_so_scared"
 autoplay = "default"
-frame_progress = 0.647855
 
 [node name="ScareTimer" type="Timer" parent="."]
 one_shot = true

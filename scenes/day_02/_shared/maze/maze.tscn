@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfcfhqs6pqgcm"]
+[gd_scene load_steps=11 format=3 uid="uid://cfcfhqs6pqgcm"]
 
 [ext_resource type="Texture2D" uid="uid://j3ged81fnnl6" path="res://art/day_2/atlas_tiles_maze.png" id="1_744ve"]
 [ext_resource type="Script" path="res://scenes/day_02/_shared/maze/maze.gd" id="2_hjgam"]
 [ext_resource type="PackedScene" uid="uid://d0x0fhmsb17ts" path="res://scenes/day_02/_shared/player/day_02_player.tscn" id="3_ac50a"]
+[ext_resource type="Texture2D" uid="uid://coul13cr0fb2a" path="res://art/day_2/enemy_ghost_blue_0.png" id="5_08ki7"]
+[ext_resource type="Texture2D" uid="uid://bqy1eiauwg23p" path="res://art/day_2/enemy_ghost_blue_1.png" id="6_w82sn"]
+[ext_resource type="Texture2D" uid="uid://eeuatuh87lj5" path="res://art/day_2/enemy_ghost_yellow_0.png" id="7_uvffd"]
+[ext_resource type="Texture2D" uid="uid://d3rmc66fdmxxx" path="res://art/day_2/enemy_ghost_yellow_1.png" id="8_k30f1"]
 [ext_resource type="PackedScene" uid="uid://djle3i2ou6cx1" path="res://scenes/day_02/_shared/enemies/day_02_enemy.tscn" id="17_jfr4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onvd7"]
@@ -71,5 +75,15 @@ position = Vector2(88, 72)
 
 [node name="Day02Player" parent="." instance=ExtResource("3_ac50a")]
 
-[node name="Day02Enemy" parent="." instance=ExtResource("17_jfr4l")]
+[node name="YellowGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 24)
+_texture_0 = ExtResource("7_uvffd")
+_texture_1 = ExtResource("8_k30f1")
+
+[node name="BlueGhost" parent="." instance=ExtResource("17_jfr4l")]
+position = Vector2(-24, 40)
+_texture_0 = ExtResource("5_08ki7")
+_texture_1 = ExtResource("6_w82sn")
+
+[node name="RedGhost" parent="." instance=ExtResource("17_jfr4l")]
+position = Vector2(-24, 56)

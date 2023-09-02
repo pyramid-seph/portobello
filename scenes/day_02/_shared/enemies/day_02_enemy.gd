@@ -1,7 +1,10 @@
+@tool
 extends Node2D
 
 signal chomped
 signal dead(who: Node2D)
+
+const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
 enum MazeEnemyState {
 	CHASING,
@@ -14,6 +17,14 @@ const SCARE_DURATION_SEC: float = 6.4
 const NOT_SO_SCARED_DELAY_SEC: float = 4.0
 
 @export var speed: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
+@export var _texture_0: Texture2D:
+	set(value):
+		_texture_0 = value
+		_on_textures_set()
+@export var _texture_1: Texture2D:
+	set(value):
+		_texture_1 = value
+		_on_textures_set()
 
 var _curr_dir: Vector2i
 var _target_local_pos: Vector2
@@ -23,25 +34,29 @@ var _state: MazeEnemyState = MazeEnemyState.CHASING:
 		_on_state_set()
 
 @onready var _is_ready := true
-@onready var _maze := get_parent() as TileMap
+@onready var _maze := get_parent() as Maze
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _scare_timer: Timer = $ScareTimer
 @onready var _not_so_scared_delay_timer: Timer = $NotSoScaredDelayTimer
 
 
 func _ready() -> void:
-	if not _maze:
+	if not Engine.is_editor_hint() and not _maze:
 		queue_free()
 		print("Maze enemies must be direct children of mazes. queue_free() was called on this enemy.")
 		return
-	_on_state_set()
-	await _maze.ready
-	_pick_next_movement()
+	_on_textures_set()
+	if not Engine.is_editor_hint():
+		_on_state_set()
+		await _maze.ready
+		_pick_next_movement()
 
 
 func _physics_process(delta: float) -> void:
-	if not is_dead():
-		_move(delta) # TODO implement halt for when level is beaten. Maybe a set_physics_process is enough
+	if Engine.is_editor_hint() or is_dead():
+		return
+	
+	_move(delta)
 
 
 func teleport(map_pos: Vector2i) -> void:
@@ -50,7 +65,7 @@ func teleport(map_pos: Vector2i) -> void:
 
 
 func revive(map_pos: Vector2i) -> void:
-	if is_dead(): # TODO delay revival here or on maze?
+	if is_dead():
 		visible = true
 		_state = MazeEnemyState.CHASING
 		teleport(map_pos)
@@ -150,6 +165,14 @@ func _die() -> void:
 		_not_so_scared_delay_timer.stop()
 		_state = MazeEnemyState.DEAD
 		chomped.emit()
+
+
+func _on_textures_set() -> void:
+	if _is_ready:
+		var sprite_frames := _animated_sprite.sprite_frames
+		sprite_frames.set_frame("default", 0, _texture_0)
+		sprite_frames.set_frame("default", 1, _texture_1)
+		sprite_frames.set_frame("not_so_scared", 0, _texture_0)
 
 
 func _on_state_set() -> void:
