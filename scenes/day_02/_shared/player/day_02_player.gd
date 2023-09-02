@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 const SPEED: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
 const INPUT_TOLERANCE: float = 0.4

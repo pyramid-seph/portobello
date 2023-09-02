@@ -1,13 +1,17 @@
-extends Area2D
+extends Node2D
 
+signal chomped
+signal dead(who: Node2D)
 
 enum MazeEnemyState {
 	CHASING,
 	SCARED,
+	NOT_SO_SCARED,
 	DEAD,
 }
 
 const SCARE_DURATION_SEC: float = 6.4
+const NOT_SO_SCARED_DELAY_SEC: float = 4.0
 
 @export var speed: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
 
@@ -22,6 +26,7 @@ var _state: MazeEnemyState = MazeEnemyState.CHASING:
 @onready var _maze := get_parent() as TileMap
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _scare_timer: Timer = $ScareTimer
+@onready var _not_so_scared_delay_timer: Timer = $NotSoScaredDelayTimer
 
 
 func _ready() -> void:
@@ -35,10 +40,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if _is_dead():
-		return
-	
-	_move(delta)
+	if not is_dead():
+		_move(delta) # TODO implement halt for when level is beaten. Maybe a set_physics_process is enough
 
 
 func teleport(map_pos: Vector2i) -> void:
@@ -46,18 +49,27 @@ func teleport(map_pos: Vector2i) -> void:
 	_pick_next_movement()
 
 
+func revive(map_pos: Vector2i) -> void:
+	if is_dead(): # TODO delay revival here or on maze?
+		visible = true
+		_state = MazeEnemyState.CHASING
+		teleport(map_pos)
+
+
 func scare() -> void:
-	if not _is_dead():
+	if not is_dead():
 		_state = MazeEnemyState.SCARED
 		_scare_timer.start(SCARE_DURATION_SEC)
+		_not_so_scared_delay_timer.start(NOT_SO_SCARED_DELAY_SEC)
 
 
-func _is_dead() -> bool:
+func is_dead() -> bool:
 	return _state == MazeEnemyState.DEAD
 
 
 func _is_scared() -> bool:
-	return _state == MazeEnemyState.SCARED
+	return _state == MazeEnemyState.SCARED or \
+			_state == MazeEnemyState.NOT_SO_SCARED
 
 
 func _move(delta: float) -> void:
@@ -126,8 +138,18 @@ func _update_animation() -> void:
 			new_animation = "dead"
 		MazeEnemyState.SCARED:
 			new_animation = "scared"
+		MazeEnemyState.NOT_SO_SCARED:
+			new_animation = "not_so_scared"
 	if _animated_sprite.animation != new_animation:
 		_animated_sprite.play(new_animation)
+
+
+func _die() -> void:
+	if not is_dead() and _is_scared():
+		_scare_timer.stop()
+		_not_so_scared_delay_timer.stop()
+		_state = MazeEnemyState.DEAD
+		chomped.emit()
 
 
 func _on_state_set() -> void:
@@ -136,5 +158,24 @@ func _on_state_set() -> void:
 	_update_animation()
 
 
+func _on_not_so_scared_delay_timer_timeout() -> void:
+	if not is_dead():
+		_state = MazeEnemyState.NOT_SO_SCARED
+
+
 func _on_scare_timer_timeout() -> void:
-	_state = MazeEnemyState.CHASING
+	if not is_dead():
+		_state = MazeEnemyState.CHASING
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if _animated_sprite.animation == "dead":
+		visible = false
+		dead.emit(self)
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if _is_scared():
+		_die()
+	else:
+		pass # TODO Kill the player

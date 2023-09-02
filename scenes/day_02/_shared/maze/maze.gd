@@ -1,5 +1,6 @@
 extends TileMap
 
+
 const TILE_SIZE: int = 16
 
 @onready var _is_ready := true
@@ -13,6 +14,8 @@ func _ready() -> void:
 	$Day02Enemy.teleport(local_to_map(_player_respawn_marker.position))
 	await get_tree().create_timer(3.0, false).timeout
 	$Day02Enemy.scare()
+	$Day02Enemy.chomped.connect(_on_enemy_chomped)
+	$Day02Enemy.dead.connect(_on_enemy_dead)
 
 
 func is_ready() -> bool:
@@ -27,4 +30,14 @@ func get_surrounding_empty_cells(map_pos: Vector2i) -> Array[Vector2i]:
 	var surrounding_cells = get_surrounding_cells(map_pos)
 	return surrounding_cells.filter(func(item):
 		return is_empty_tile(item)
+	)
+
+
+func _on_enemy_chomped() -> void:
+	print("TODO: Inform game so it can update the score")
+
+
+func _on_enemy_dead(killed: Node2D) -> void:
+	get_tree().create_timer(3.0, false).timeout.connect(func():
+		killed.revive(local_to_map(_player_respawn_marker.position))
 	)

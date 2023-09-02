@@ -131,6 +131,8 @@ skip_cutscene={
 2d_physics/layer_3="pickups"
 2d_physics/layer_4="player_bullets"
 2d_physics/layer_5="enemy_bullets"
+2d_physics/layer_6="player"
+2d_physics/layer_7="enemy"
 
 [physics]
 

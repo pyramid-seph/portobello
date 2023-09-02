@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://djle3i2ou6cx1"]
+
+[ext_resource type="Script" path="res://scenes/day_02/_shared/enemies/day_02_enemy.gd" id="1_h5v7e"]
+[ext_resource type="Texture2D" uid="uid://coul13cr0fb2a" path="res://art/day_2/enemy_ghost_blue_0.png" id="2_s1u7t"]
+[ext_resource type="Texture2D" uid="uid://bqy1eiauwg23p" path="res://art/day_2/enemy_ghost_blue_1.png" id="3_rfqlj"]
+[ext_resource type="Texture2D" uid="uid://b1u66eqv0q3tj" path="res://art/day_2/enemy_ghost_death_0.png" id="4_xgk6b"]
+[ext_resource type="Texture2D" uid="uid://bfivhb7qofb8t" path="res://art/day_2/enemy_ghost_death_1.png" id="5_13q7a"]
+[ext_resource type="Texture2D" uid="uid://bxter8aud43he" path="res://art/day_2/enemy_ghost_death_2.png" id="6_3tr2r"]
+[ext_resource type="Texture2D" uid="uid://duifmyulq6xfu" path="res://art/day_2/enemy_ghost_death_3.png" id="7_kfeht"]
+[ext_resource type="Texture2D" uid="uid://coxg241sfu63c" path="res://art/day_2/enemy_ghost_scared_0.png" id="8_005ag"]
+[ext_resource type="Texture2D" uid="uid://dgdt6vq5opmg3" path="res://art/day_2/enemy_ghost_scared_1.png" id="9_5qyyw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fhw8j"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("4_xgk6b")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_13q7a")
+}, {
+"duration": 3.0,
+"texture": ExtResource("6_3tr2r")
+}, {
+"duration": 3.0,
+"texture": ExtResource("7_kfeht")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 12.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1u7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rfqlj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1u7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qyyw")
+}],
+"loop": true,
+"name": &"not_so_scared",
+"speed": 12.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_005ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qyyw")
+}],
+"loop": true,
+"name": &"scared",
+"speed": 12.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxvp0"]
+size = Vector2(14, 14)
+
+[node name="Day02Enemy" type="Node2D" groups=["enemies"]]
+script = ExtResource("1_h5v7e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fhw8j")
+animation = &"not_so_scared"
+autoplay = "default"
+frame_progress = 0.647855
+
+[node name="ScareTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NotSoScaredDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-7, -7, 14, 14)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dxvp0")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="ScareTimer" to="." method="_on_scare_timer_timeout"]
+[connection signal="timeout" from="NotSoScaredDelayTimer" to="." method="_on_not_so_scared_delay_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
