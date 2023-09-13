@@ -62,9 +62,11 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _exit_game_btn = %ExitGameBtn
 @onready var _confirm_exit_dialog = $ConfirmExitDialog
 @onready var _progress_menu = %ProgressMenu
+@onready var _settings_menu = %SettingsMenu
 @onready var _main_menu = %MainMenu
 @onready var _game_title = %GameTitle
 @onready var _show_scores_button := %ShowScoresBtn
+@onready var _show_options_btn := %ShowOptionsBtn
 
 
 func _ready() -> void:
@@ -86,6 +88,10 @@ func _set_score_attack_options() -> void:
 	_score_attack_game_selector.options.append_array(SCORE_ATTACK_MODE_OPTIONS)
 
 
+func _set_stars_count() -> void:
+	_game_title.stars_count = SaveDataManager.save_data.stars.average()
+
+
 func _enable_title_screen(value: bool) -> void:
 	_title_screen.visible = value
 	if not value:
@@ -93,6 +99,7 @@ func _enable_title_screen(value: bool) -> void:
 	else:
 		_set_day_options()
 		_set_score_attack_options()
+		_set_stars_count()
 		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 		_story_mode_game_selector.call_deferred("grab_focus")
 
@@ -113,7 +120,8 @@ func _on_show_scores_btn_pressed() -> void:
 
 
 func _on_show_options_btn_pressed() -> void:
-	pass # Replace with function body.
+	_main_menu.visible = false
+	_settings_menu.visible = true
 
 
 func _on_exit_game_btn_pressed() -> void:
@@ -132,3 +140,16 @@ func _on_progress_menu_closed() -> void:
 	_main_menu.visible = true
 	_game_title.visible = true
 	_show_scores_button.call_deferred("grab_focus")
+
+
+func _on_settings_menu_delete_data_canceled() -> void:
+	pass # Replace with function body.
+
+
+func _on_settings_menu_delete_data_selected() -> void:
+	pass # Replace with function body.
+
+
+func _on_settings_menu_closed() -> void:
+	_main_menu.visible = true
+	_show_options_btn.call_deferred("grab_focus")
