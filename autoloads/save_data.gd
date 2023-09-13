@@ -15,8 +15,8 @@ var is_autofire_enabled: bool = true:
 		var old_is_autofire_enabled = is_autofire_enabled
 		is_autofire_enabled = value
 		is_autofire_enabled_changed.emit(old_is_autofire_enabled, is_autofire_enabled)
-var stars: Stars = Stars.new()
-var high_scores: HighScores = HighScores.new()
+var stars := Stars.new() as Stars
+var high_scores := HighScores.new() as HighScores
 
 func to_dictionary() -> Dictionary:
 	return {

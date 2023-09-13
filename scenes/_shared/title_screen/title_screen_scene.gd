@@ -61,6 +61,10 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _score_attack_game_selector := %ScoreAttackGameSelector
 @onready var _exit_game_btn = %ExitGameBtn
 @onready var _confirm_exit_dialog = $ConfirmExitDialog
+@onready var _progress_menu = %ProgressMenu
+@onready var _main_menu = %MainMenu
+@onready var _game_title = %GameTitle
+@onready var _show_scores_button := %ShowScoresBtn
 
 
 func _ready() -> void:
@@ -103,7 +107,9 @@ func _on_minigame_selected(value) -> void:
 
 
 func _on_show_scores_btn_pressed() -> void:
-	pass # Replace with function body.
+	_main_menu.visible = false
+	_game_title.visible = false
+	_progress_menu.visible = true
 
 
 func _on_show_options_btn_pressed() -> void:
@@ -120,3 +126,9 @@ func _on_confirm_exit_dialog_negative_btn_pressed() -> void:
 
 func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_progress_menu_closed() -> void:
+	_main_menu.visible = true
+	_game_title.visible = true
+	_show_scores_button.call_deferred("grab_focus")
