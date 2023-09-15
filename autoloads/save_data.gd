@@ -79,3 +79,9 @@ class Stars extends RefCounted:
 	var day_one: int
 	var day_two: int
 	var day_three: int
+	
+	
+	func average() -> int:
+		var total_stars: int = day_one + day_two + day_three
+		var average_stars: float = total_stars / 3.0
+		return floori(average_stars)

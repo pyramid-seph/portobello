@@ -109,6 +109,9 @@ func _on_current_option_idx_set() -> void:
 		return
 	
 	_label.text = selector_text
+	if selector_text != null and not selector_text.is_empty():
+		_label.text += " "
+	
 	if current_option_idx == SELECTED_NONE:
 		return
 	
@@ -117,7 +120,7 @@ func _on_current_option_idx_set() -> void:
 		return
 	
 	if loop_options or current_option_idx > 0:
-		_label.text += " < "
+		_label.text += "< "
 	_label.text += _get_label_for_option(current_option_idx)
 	if loop_options or current_option_idx < options.size() - 1:
 		_label.text += " >"
