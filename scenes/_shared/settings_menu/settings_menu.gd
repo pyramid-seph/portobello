@@ -2,8 +2,8 @@ extends Control
 
 
 signal closed
-signal delete_data_selected
-signal delete_data_canceled
+signal dangerous_option_focused
+signal dangerous_option_unfocused
 
 const IDX_YES: int = 0
 const IDX_NO: int = 1
@@ -62,7 +62,6 @@ func _on_visibility_changed() -> void:
 
 func _on_erase_data_btn_pressed() -> void:
 	_confirm_erase_data_dialog.visible = true
-	delete_data_selected.emit()
 
 
 func _on_confirm_erase_data_dialog_positive_btn_pressed() -> void:
@@ -73,11 +72,19 @@ func _on_confirm_erase_data_dialog_positive_btn_pressed() -> void:
 
 func _on_confirm_erase_data_dialog_negative_btn_pressed() -> void:
 	_erase_data_btn.call_deferred("grab_focus")
-	delete_data_canceled.emit()
 
 
 func _on_erased_data_dialog_positive_btn_pressed() -> void:
 	_erase_data_btn.call_deferred("grab_focus")
+
+
+func _on_erase_data_btn_focus_entered() -> void:
+	dangerous_option_focused.emit()
+
+
+func _on_erase_data_btn_focus_exited() -> void:
+	if not _confirm_erase_data_dialog.visible:
+		dangerous_option_unfocused.emit()
 
 
 func _on_go_back_btn_pressed() -> void:

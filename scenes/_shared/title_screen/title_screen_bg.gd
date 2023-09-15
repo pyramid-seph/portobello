@@ -25,7 +25,7 @@ var _offset_local: float = 0.0
 
 
 func _ready() -> void:
-	_bg_layer.motion_mirroring = Vector2(_base_window_size.x, 0)
+	_bg_layer.motion_mirroring = Vector2(_base_window_size.x, 0.0)
 	_generate__bg_layer()
 	_on_game_color_changed()
 	_on_bg_sprites_changed()
@@ -33,7 +33,7 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	_offset_local += delta * scroll_speed
-	scroll_offset = Vector2(_offset_local, 0)
+	scroll_offset = Vector2(_offset_local, 0.0)
 
 
 func _on_game_color_changed() -> void:
@@ -47,9 +47,8 @@ func _on_bg_sprites_changed() -> void:
 	
 	for i in _bg_layer.get_children():
 		var sprite := i as Sprite2D
-		if sprite == null:
-			continue
-		sprite.texture = game_texture
+		if sprite != null:
+			sprite.texture = game_texture
 
 
 func _spawn_bg_sprite(col, row) -> void:

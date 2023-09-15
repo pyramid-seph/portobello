@@ -1,20 +1,34 @@
 [remap]
 
-importer="texture_atlas"
-type="Texture2D"
+importer="texture"
+type="CompressedTexture2D"
 uid="uid://d1kkrkxqmg3kx"
-path="res://.godot/imported/menu_bg_scores.png-760b3df09d3d1c5434ae9019f5433686.res"
-group_file="res://art/menu_screen/title_screen_atlas.png"
-valid=true
+path="res://.godot/imported/menu_bg_scores.png-760b3df09d3d1c5434ae9019f5433686.ctex"
+metadata={
+"vram_texture": false
+}
+
 [deps]
 
-
 source_file="res://art/menu_screen/menu_bg_scores.png"
-dest_files=["res://.godot/imported/menu_bg_scores.png-760b3df09d3d1c5434ae9019f5433686.res"]
+dest_files=["res://.godot/imported/menu_bg_scores.png-760b3df09d3d1c5434ae9019f5433686.ctex"]
 
 [params]
 
-atlas_file="res://art/menu_screen/title_screen_atlas.png"
-import_mode=0
-crop_to_region=true
-trim_alpha_border_from_region=true
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

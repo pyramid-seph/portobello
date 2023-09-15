@@ -1,52 +1,80 @@
 extends Node
 
+const MenuBgDay01Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_01.png")
+const MenuBgDay02Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_02.png")
+const MenuBgDay03Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_03.png")
+const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_scores.png")
+const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
+const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
+
+const BG_COLOR_DANGER := Color("b40404")
+const BG_COLOR_SCORES := Color("83857a")
+const BG_COLOR_SETTINGS := Color("2ec939")
+const BG_COLOR_EXIT := Color("355f9d")
+
 const STORY_MODE_OPTIONS := [
 	{
 		"label": "1",
 		"value": Game.Minigame.STORY_DAY_01,
+		"texture": MenuBgDay01Texture,
+		"color": Color("7CE194"),
 	},
 	{
 		"label": "2",
 		"value": Game.Minigame.STORY_DAY_02,
+		"texture": MenuBgDay02Texture,
+		"color": Color("E76F6F"),
 	},
 	{
 		"label": "3",
 		"value": Game.Minigame.STORY_DAY_03,
-	},
-	{
-		"label": "EX",
-		"value": Game.Minigame.STORY_EXTRA,
-	},
+		"texture": MenuBgDay03Texture,
+		"color": Color("E98BEA"),
+	}
 ]
 
 const SCORE_ATTACK_MODE_OPTIONS := [
 	{
 		"label": "Día 1A",
 		"value": Game.Minigame.SCORE_ATTACK_1A,
+		"texture": MenuBgDay01Texture,
+		"color": Color("7CE194"),
 	},
 	{
 		"label": "Día 1B",
 		"value": Game.Minigame.SCORE_ATTACK_1B,
+		"texture": MenuBgDay01Texture,
+		"color": Color("7CE194"),
 	},
 	{
 		"label": "Día 1C",
 		"value": Game.Minigame.SCORE_ATTACK_1C,
+		"texture": MenuBgDay01Texture,
+		"color": Color("7CE194"),
 	},
 	{
 		"label": "Día 1D",
 		"value": Game.Minigame.SCORE_ATTACK_1D,
+		"texture": MenuBgDay01Texture,
+		"color": Color("7CE194"),
 	},
 	{
 		"label": "Día 2",
 		"value": Game.Minigame.SCORE_ATTACK_2,
+		"texture": MenuBgDay02Texture,
+		"color": Color("E76F6F"),
 	},
 	{
 		"label": "Día 3A",
 		"value": Game.Minigame.SCORE_ATTACK_3A,
+		"texture": MenuBgDay03Texture,
+		"color": Color("E98BEA"),
 	},
 	{
 		"label": "Día 3B",
 		"value": Game.Minigame.SCORE_ATTACK_3B,
+		"texture": MenuBgDay03Texture,
+		"color": Color("E98BEA"),
 	},
 ]
 
@@ -55,10 +83,11 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 	get:
 		return _debug_is_cold_boot and OS.is_debug_build()
 
-@onready var _title_screen = $TitleScreen
+@onready var _is_ready := true
+@onready var _title_screen := $TitleScreen
 @onready var _logos_roll := $LogosRoll
-@onready var _story_mode_game_selector := %StoryModeGameSelector
-@onready var _score_attack_game_selector := %ScoreAttackGameSelector
+@onready var _story_mode_game_selector := %StoryModeGameSelector as HSelector
+@onready var _score_attack_game_selector := %ScoreAttackGameSelector as HSelector
 @onready var _exit_game_btn = %ExitGameBtn
 @onready var _confirm_exit_dialog = $ConfirmExitDialog
 @onready var _progress_menu = %ProgressMenu
@@ -67,6 +96,7 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _game_title = %GameTitle
 @onready var _show_scores_button := %ShowScoresBtn
 @onready var _show_options_btn := %ShowOptionsBtn
+@onready var _title_screen_bg := %TitleScreenBg
 
 
 func _ready() -> void:
@@ -104,13 +134,63 @@ func _enable_title_screen(value: bool) -> void:
 		_story_mode_game_selector.call_deferred("grab_focus")
 
 
+func _on_minigame_selection_changed(value) -> void:
+	if _is_ready:
+		_title_screen_bg.game_texture = value.texture
+		_title_screen_bg.game_color = value.color
+
+
 func _on_logos_roll_rolled() -> void:
 	_logos_roll.visible = false
 	_enable_title_screen(true)
 
 
+func _on_show_scores_btn_focus_entered() -> void:
+	_title_screen_bg.game_texture = MenuBgScoresTexture
+	_title_screen_bg.game_color = BG_COLOR_SCORES
+
+
+func _on_show_options_btn_focus_entered() -> void:
+	_title_screen_bg.game_texture = MenuBgSettingsTexture
+	_title_screen_bg.game_color = BG_COLOR_SETTINGS
+
+func _on_exit_game_btn_focus_entered() -> void:
+	_title_screen_bg.game_texture = MenuBgExitTexture
+	_title_screen_bg.game_color = BG_COLOR_EXIT
+
+
+func _on_settings_menu_dangerous_option_focused() -> void:
+	_title_screen_bg.game_color = BG_COLOR_DANGER
+
+
+func _on_settings_menu_dangerous_option_unfocused() -> void:
+	_title_screen_bg.game_color = BG_COLOR_SETTINGS
+
+
 func _on_minigame_selected(value) -> void:
 	Game.start(value)
+
+
+func _on_story_mode_option_index_changed(index: int) -> void:
+	if index != HSelector.SELECTED_NONE:
+		_on_minigame_selection_changed(STORY_MODE_OPTIONS[index])
+
+
+func _on_story_mode_game_selector_focus_entered() -> void:
+	var index: int = _story_mode_game_selector.current_option_idx
+	if index != HSelector.SELECTED_NONE:
+		_on_minigame_selection_changed(STORY_MODE_OPTIONS[index])
+
+
+func _on_score_attack_option_index_changed(index: int) -> void:
+	if index != HSelector.SELECTED_NONE:
+		_on_minigame_selection_changed(SCORE_ATTACK_MODE_OPTIONS[index])
+
+
+func _on_score_attack_game_selector_focus_entered() -> void:
+	var index: int = _score_attack_game_selector.current_option_idx
+	if index != HSelector.SELECTED_NONE:
+		_on_minigame_selection_changed(SCORE_ATTACK_MODE_OPTIONS[index])
 
 
 func _on_show_scores_btn_pressed() -> void:
