@@ -21,13 +21,13 @@ font = ExtResource("7_2qrv5")
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf2py"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wbsk"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6j81"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eioq3"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -54,6 +54,7 @@ texture = ExtResource("1_oesus")
 centered = false
 
 [node name="TitleScreenBg" type="ParallaxBackground" parent="TitleScreen"]
+unique_name_in_owner = true
 script = ExtResource("2_prsyc")
 scroll_speed = 10.0
 game_texture = ExtResource("3_of2ca")
@@ -136,7 +137,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_kf2py")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5wbsk")
 selector_text = "Menú del día"
 options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -146,7 +147,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_g6j81")
+theme_override_styles/panel = SubResource("StyleBoxFlat_eioq3")
 selector_text = "Buffet"
 options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -230,15 +231,22 @@ texture = ExtResource("6_0gi6x")
 [node name="Timer" type="Timer" parent="LogosRoll"]
 one_shot = true
 
+[connection signal="current_option_index_changed" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_option_index_changed"]
+[connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_game_selector_focus_entered"]
 [connection signal="selected" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_minigame_selected"]
+[connection signal="current_option_index_changed" from="TitleScreen/MainMenu/VBoxContainer/ScoreAttackGameSelector" to="." method="_on_score_attack_option_index_changed"]
+[connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/ScoreAttackGameSelector" to="." method="_on_score_attack_game_selector_focus_entered"]
 [connection signal="selected" from="TitleScreen/MainMenu/VBoxContainer/ScoreAttackGameSelector" to="." method="_on_minigame_selected"]
+[connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/ShowScoresBtn" to="." method="_on_show_scores_btn_focus_entered"]
 [connection signal="pressed" from="TitleScreen/MainMenu/VBoxContainer/ShowScoresBtn" to="." method="_on_show_scores_btn_pressed"]
+[connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/ShowOptionsBtn" to="." method="_on_show_options_btn_focus_entered"]
 [connection signal="pressed" from="TitleScreen/MainMenu/VBoxContainer/ShowOptionsBtn" to="." method="_on_show_options_btn_pressed"]
+[connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/ExitGameBtn" to="." method="_on_exit_game_btn_focus_entered"]
 [connection signal="pressed" from="TitleScreen/MainMenu/VBoxContainer/ExitGameBtn" to="." method="_on_exit_game_btn_pressed"]
 [connection signal="closed" from="TitleScreen/ProgressMenu" to="." method="_on_progress_menu_closed"]
 [connection signal="closed" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_closed"]
-[connection signal="delete_data_canceled" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_delete_data_canceled"]
-[connection signal="delete_data_selected" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_delete_data_selected"]
+[connection signal="dangerous_option_focused" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_dangerous_option_focused"]
+[connection signal="dangerous_option_unfocused" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_dangerous_option_unfocused"]
 [connection signal="negative_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_positive_btn_pressed"]
 [connection signal="rolled" from="LogosRoll" to="." method="_on_logos_roll_rolled"]
