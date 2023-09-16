@@ -101,12 +101,12 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _logos_roll := $LogosRoll
 @onready var _story_mode_game_selector := %StoryModeGameSelector as HSelector
 @onready var _score_attack_game_selector := %ScoreAttackGameSelector as HSelector
-@onready var _exit_game_btn = %ExitGameBtn
-@onready var _confirm_exit_dialog = $ConfirmExitDialog
-@onready var _progress_menu = %ProgressMenu
-@onready var _settings_menu = %SettingsMenu
-@onready var _main_menu = %MainMenu
-@onready var _game_title = %GameTitle
+@onready var _exit_game_btn := %ExitGameBtn
+@onready var _confirm_exit_dialog := $ConfirmExitDialog
+@onready var _progress_menu := %ProgressMenu
+@onready var _settings_menu := %SettingsMenu
+@onready var _main_menu := %MainMenu
+@onready var _game_title := %GameTitle
 @onready var _show_scores_button := %ShowScoresBtn
 @onready var _show_options_btn := %ShowOptionsBtn
 @onready var _title_screen_bg := %TitleScreenBg
@@ -143,23 +143,21 @@ func _get_enabled_score_attack_games() -> Array:
 
 func _set_day_options() -> void:
 	var enabled_options := _get_enabled_story_mode_games()
-	_story_mode_game_selector.options.clear()
-	_story_mode_game_selector.options.append_array(enabled_options)
+	_story_mode_game_selector.options = enabled_options
 
 
 func _set_score_attack_options() -> void:
 	var enabled_options := _get_enabled_score_attack_games()
-	_score_attack_game_selector.options.clear()
-	_score_attack_game_selector.options.append_array(enabled_options)
+	_score_attack_game_selector.options = enabled_options
 
 
 func _set_stars_count() -> void:
 	_game_title.stars_count = SaveDataManager.save_data.stars.average()
 
 
-func _enable_title_screen(value: bool) -> void:
-	_title_screen.visible = value
-	if not value:
+func _enable_title_screen(show_screen: bool) -> void:
+	_title_screen.visible = show_screen
+	if not show_screen:
 		_title_screen.process_mode = Node.PROCESS_MODE_DISABLED 
 	else:
 		_set_day_options()

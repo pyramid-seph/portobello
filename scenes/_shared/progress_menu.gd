@@ -5,7 +5,7 @@ signal closed
 
 const SECTION_STARS: int = 0
 const SECTION_HIGH_SCORES: int = 1
-const STARS_STRINGS: Array[String] = ["", "*", "**", "***", "****", "*****"]
+const STARS_STRINGS: Array[String] = ["---", "*", "**", "***", "****", "*****"]
 const UNKNOWN_MINI_GAME: String = "?????"
 const UNKNOWN_VALUE: String = "---"
 

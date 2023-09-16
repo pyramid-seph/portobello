@@ -131,9 +131,8 @@ func _on_selector_text_set() -> void:
 
 
 func _on_options_set() -> void:
-	if not _is_ready:
-		return
-	current_option_idx = SELECTED_NONE if options.is_empty() else 0
+	if _is_ready:
+		current_option_idx = SELECTED_NONE if options.is_empty() else 0
 
 
 func _on_loop_options_set() -> void:
