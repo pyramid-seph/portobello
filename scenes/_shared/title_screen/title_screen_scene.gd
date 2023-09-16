@@ -18,18 +18,21 @@ const STORY_MODE_OPTIONS := [
 		"value": Game.Minigame.STORY_DAY_01,
 		"texture": MenuBgDay01Texture,
 		"color": Color("7CE194"),
+		"min_story_mode_progress": 0,
 	},
 	{
 		"label": "2",
 		"value": Game.Minigame.STORY_DAY_02,
 		"texture": MenuBgDay02Texture,
 		"color": Color("E76F6F"),
+		"min_story_mode_progress": 1,
 	},
 	{
 		"label": "3",
 		"value": Game.Minigame.STORY_DAY_03,
 		"texture": MenuBgDay03Texture,
 		"color": Color("E98BEA"),
+		"min_story_mode_progress": 2,
 	}
 ]
 
@@ -39,49 +42,59 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 		"value": Game.Minigame.SCORE_ATTACK_1A,
 		"texture": MenuBgDay01Texture,
 		"color": Color("7CE194"),
+		"min_story_mode_progress": 0,
 	},
 	{
 		"label": "Día 1B",
 		"value": Game.Minigame.SCORE_ATTACK_1B,
 		"texture": MenuBgDay01Texture,
 		"color": Color("7CE194"),
+		"min_story_mode_progress": 0,
 	},
 	{
 		"label": "Día 1C",
 		"value": Game.Minigame.SCORE_ATTACK_1C,
 		"texture": MenuBgDay01Texture,
 		"color": Color("7CE194"),
+		"min_story_mode_progress": 1,
 	},
 	{
 		"label": "Día 1D",
 		"value": Game.Minigame.SCORE_ATTACK_1D,
 		"texture": MenuBgDay01Texture,
 		"color": Color("7CE194"),
+		"min_story_mode_progress": 1,
 	},
 	{
 		"label": "Día 2",
 		"value": Game.Minigame.SCORE_ATTACK_2,
 		"texture": MenuBgDay02Texture,
 		"color": Color("E76F6F"),
+		"min_story_mode_progress": 2,
 	},
 	{
 		"label": "Día 3A",
 		"value": Game.Minigame.SCORE_ATTACK_3A,
 		"texture": MenuBgDay03Texture,
 		"color": Color("E98BEA"),
+		"min_story_mode_progress": 3,
 	},
 	{
 		"label": "Día 3B",
 		"value": Game.Minigame.SCORE_ATTACK_3B,
 		"texture": MenuBgDay03Texture,
 		"color": Color("E98BEA"),
+		"min_story_mode_progress": 3,
 	},
 ]
 
 @export_group("Debug", "_debug")
-@export var _debug_is_cold_boot: bool = false:
+@export var _debug_is_cold_boot: bool:
 	get:
 		return _debug_is_cold_boot and OS.is_debug_build()
+@export var _debug_skip_game_filter: bool:
+	get:
+		return _debug_skip_game_filter and OS.is_debug_build()
 
 @onready var _is_ready := true
 @onready var _title_screen := $TitleScreen
@@ -108,14 +121,36 @@ func _ready() -> void:
 		_enable_title_screen(true)
 
 
+func _get_enabled_story_mode_games() -> Array:
+	if _debug_skip_game_filter:
+		return STORY_MODE_OPTIONS
+	
+	var saved_data := SaveDataManager.save_data as SaveData
+	return STORY_MODE_OPTIONS.filter(func(option):
+		return option.min_story_mode_progress <= saved_data.latest_day_completed
+	)
+
+
+func _get_enabled_score_attack_games() -> Array:
+	if _debug_skip_game_filter:
+		return SCORE_ATTACK_MODE_OPTIONS
+	
+	var saved_data := SaveDataManager.save_data as SaveData
+	return SCORE_ATTACK_MODE_OPTIONS.filter(func(option):
+		return option.min_story_mode_progress <= saved_data.latest_day_completed
+	)
+
+
 func _set_day_options() -> void:
+	var enabled_options := _get_enabled_story_mode_games()
 	_story_mode_game_selector.options.clear()
-	_story_mode_game_selector.options.append_array(STORY_MODE_OPTIONS)
+	_story_mode_game_selector.options.append_array(enabled_options)
 
 
 func _set_score_attack_options() -> void:
+	var enabled_options := _get_enabled_score_attack_games()
 	_score_attack_game_selector.options.clear()
-	_score_attack_game_selector.options.append_array(SCORE_ATTACK_MODE_OPTIONS)
+	_score_attack_game_selector.options.append_array(enabled_options)
 
 
 func _set_stars_count() -> void:
@@ -153,6 +188,7 @@ func _on_show_scores_btn_focus_entered() -> void:
 func _on_show_options_btn_focus_entered() -> void:
 	_title_screen_bg.game_texture = MenuBgSettingsTexture
 	_title_screen_bg.game_color = BG_COLOR_SETTINGS
+
 
 func _on_exit_game_btn_focus_entered() -> void:
 	_title_screen_bg.game_texture = MenuBgExitTexture
@@ -220,14 +256,6 @@ func _on_progress_menu_closed() -> void:
 	_main_menu.visible = true
 	_game_title.visible = true
 	_show_scores_button.call_deferred("grab_focus")
-
-
-func _on_settings_menu_delete_data_canceled() -> void:
-	pass # Replace with function body.
-
-
-func _on_settings_menu_delete_data_selected() -> void:
-	pass # Replace with function body.
 
 
 func _on_settings_menu_closed() -> void:

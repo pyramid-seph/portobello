@@ -116,7 +116,7 @@ func _on_current_option_idx_set() -> void:
 		return
 	
 	if options.size() == 1:
-		_label.text += _get_label_for_option(0)
+		_label.text += "- %s -" % _get_label_for_option(0)
 		return
 	
 	if loop_options or current_option_idx > 0:
