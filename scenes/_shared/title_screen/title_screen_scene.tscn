@@ -20,13 +20,13 @@ font = ExtResource("7_2qrv5")
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfow4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgr2x"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_att6f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vnl5"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -129,9 +129,9 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_kfow4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vgr2x")
 selector_text = "Menú del día"
-options = ["1", "2"]
+_options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="ScoreAttackGameSelector" parent="TitleScreen/MainMenu/VBoxContainer" instance=ExtResource("9_d05si")]
@@ -139,9 +139,9 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_att6f")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0vnl5")
 selector_text = "Buffet"
-options = ["Día 1A", "Día 1B"]
+_options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="ShowScoresBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]

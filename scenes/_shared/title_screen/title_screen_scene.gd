@@ -7,6 +7,9 @@ const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_sc
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
 
+const BG_COLOR_DAY_1_LIKE_GAME := Color("7CE194")
+const BG_COLOR_DAY_2_LIKE_GAME := Color("E76F6F")
+const BG_COLOR_DAY_3_LIKE_GAME := Color("E98BEA")
 const BG_COLOR_DANGER := Color("b40404")
 const BG_COLOR_SCORES := Color("83857a")
 const BG_COLOR_SETTINGS := Color("2ec939")
@@ -17,21 +20,21 @@ const STORY_MODE_OPTIONS := [
 		"label": "1",
 		"value": Game.Minigame.STORY_DAY_01,
 		"texture": MenuBgDay01Texture,
-		"color": Color("7CE194"),
+		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 0,
 	},
 	{
 		"label": "2",
 		"value": Game.Minigame.STORY_DAY_02,
 		"texture": MenuBgDay02Texture,
-		"color": Color("E76F6F"),
+		"color":BG_COLOR_DAY_2_LIKE_GAME,
 		"min_story_mode_progress": 1,
 	},
 	{
 		"label": "3",
 		"value": Game.Minigame.STORY_DAY_03,
 		"texture": MenuBgDay03Texture,
-		"color": Color("E98BEA"),
+		"color": BG_COLOR_DAY_3_LIKE_GAME,
 		"min_story_mode_progress": 2,
 	}
 ]
@@ -41,49 +44,49 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 		"label": "Día 1A",
 		"value": Game.Minigame.SCORE_ATTACK_1A,
 		"texture": MenuBgDay01Texture,
-		"color": Color("7CE194"),
+		"color":BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 0,
 	},
 	{
 		"label": "Día 1B",
 		"value": Game.Minigame.SCORE_ATTACK_1B,
 		"texture": MenuBgDay01Texture,
-		"color": Color("7CE194"),
+		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 0,
 	},
 	{
 		"label": "Día 1C",
 		"value": Game.Minigame.SCORE_ATTACK_1C,
 		"texture": MenuBgDay01Texture,
-		"color": Color("7CE194"),
+		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 1,
 	},
 	{
 		"label": "Día 1D",
 		"value": Game.Minigame.SCORE_ATTACK_1D,
 		"texture": MenuBgDay01Texture,
-		"color": Color("7CE194"),
+		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 1,
 	},
 	{
 		"label": "Día 2",
 		"value": Game.Minigame.SCORE_ATTACK_2,
 		"texture": MenuBgDay02Texture,
-		"color": Color("E76F6F"),
+		"color": BG_COLOR_DAY_2_LIKE_GAME,
 		"min_story_mode_progress": 2,
 	},
 	{
 		"label": "Día 3A",
 		"value": Game.Minigame.SCORE_ATTACK_3A,
 		"texture": MenuBgDay03Texture,
-		"color": Color("E98BEA"),
+		"color": BG_COLOR_DAY_3_LIKE_GAME,
 		"min_story_mode_progress": 3,
 	},
 	{
 		"label": "Día 3B",
 		"value": Game.Minigame.SCORE_ATTACK_3B,
 		"texture": MenuBgDay03Texture,
-		"color": Color("E98BEA"),
+		"color": BG_COLOR_DAY_3_LIKE_GAME,
 		"min_story_mode_progress": 3,
 	},
 ]
@@ -142,13 +145,13 @@ func _get_enabled_score_attack_games() -> Array:
 
 
 func _set_day_options() -> void:
-	var enabled_options := _get_enabled_story_mode_games()
-	_story_mode_game_selector.options = enabled_options
+	var enabled_options: Array = _get_enabled_story_mode_games()
+	_story_mode_game_selector.set_options(enabled_options)
 
 
 func _set_score_attack_options() -> void:
-	var enabled_options := _get_enabled_score_attack_games()
-	_score_attack_game_selector.options = enabled_options
+	var enabled_options: Array = _get_enabled_score_attack_games()
+	_score_attack_game_selector.set_options(enabled_options)
 
 
 func _set_stars_count() -> void:

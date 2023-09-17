@@ -11,10 +11,11 @@ const SELECTED_NONE: int = -1
 	set(value):
 		selector_text = value
 		_on_selector_text_set()
-@export var options: Array:
+@export var _options: Array:
 	set(value):
-		options = value
+		_options = value
 		_on_options_set()
+
 @export var focus_color: Color = Color.MAGENTA:
 	set(value):
 		focus_color = value
@@ -27,7 +28,7 @@ const SELECTED_NONE: int = -1
 var current_option_idx: int = SELECTED_NONE:
 	set(value):
 		var old_value = current_option_idx
-		current_option_idx = clampi(value, SELECTED_NONE, options.size() - 1)
+		current_option_idx = clampi(value, SELECTED_NONE, _options.size() - 1)
 		_on_current_option_idx_set()
 		if not Engine.is_editor_hint() and old_value != current_option_idx:
 			current_option_index_changed.emit(current_option_idx)
@@ -58,26 +59,30 @@ func _gui_input(event: InputEvent) -> void:
 		accept_event()
 
 
+func set_options(arr: Array) -> void:
+	_options = arr
+
+
 func _previous_option() -> void:
-	if options.is_empty():
+	if _options.is_empty():
 		current_option_idx = SELECTED_NONE
 		return
 	
 	if loop_options:
-		current_option_idx = wrapi(current_option_idx - 1, 0, options.size())
+		current_option_idx = wrapi(current_option_idx - 1, 0, _options.size())
 	else:
 		current_option_idx = maxi(current_option_idx - 1, 0)
 
 
 func _next_option() -> void:
-	if options.is_empty():
+	if _options.is_empty():
 		current_option_idx = SELECTED_NONE
 		return
 	
 	if loop_options:
-		current_option_idx = wrapi(current_option_idx + 1, 0, options.size())
+		current_option_idx = wrapi(current_option_idx + 1, 0, _options.size())
 	else:
-		current_option_idx = mini(options.size() - 1, current_option_idx + 1)
+		current_option_idx = mini(_options.size() - 1, current_option_idx + 1)
 
 
 func _update_bg_color() -> void:
@@ -89,7 +94,7 @@ func _update_bg_color() -> void:
 
 
 func _get_label_for_option(idx: int) -> String:
-	var option = options[idx]
+	var option = _options[idx]
 	if typeof(option) == TYPE_DICTIONARY:
 		return option.label
 	else:
@@ -97,7 +102,7 @@ func _get_label_for_option(idx: int) -> String:
 
 
 func _get_value_for_option(idx: int):
-	var option = options[idx]
+	var option = _options[idx]
 	if typeof(option) == TYPE_DICTIONARY:
 		return option.value
 	else:
@@ -115,14 +120,14 @@ func _on_current_option_idx_set() -> void:
 	if current_option_idx == SELECTED_NONE:
 		return
 	
-	if options.size() == 1:
+	if _options.size() == 1:
 		_label.text += "- %s -" % _get_label_for_option(0)
 		return
 	
 	if loop_options or current_option_idx > 0:
 		_label.text += "< "
 	_label.text += _get_label_for_option(current_option_idx)
-	if loop_options or current_option_idx < options.size() - 1:
+	if loop_options or current_option_idx < _options.size() - 1:
 		_label.text += " >"
 
 
@@ -132,7 +137,7 @@ func _on_selector_text_set() -> void:
 
 func _on_options_set() -> void:
 	if _is_ready:
-		current_option_idx = SELECTED_NONE if options.is_empty() else 0
+		current_option_idx = SELECTED_NONE if _options.is_empty() else 0
 
 
 func _on_loop_options_set() -> void:
