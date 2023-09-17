@@ -75,7 +75,8 @@ func _on_confirm_erase_data_dialog_negative_btn_pressed() -> void:
 
 
 func _on_erased_data_dialog_positive_btn_pressed() -> void:
-	_erase_data_btn.call_deferred("grab_focus")
+	Game.is_cold_boot = true
+	Game.start(Game.Minigame.TITLE_SCREEN, true)
 
 
 func _on_erase_data_btn_focus_entered() -> void:
