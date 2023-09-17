@@ -5,7 +5,7 @@ signal closed
 
 const SECTION_STARS: int = 0
 const SECTION_HIGH_SCORES: int = 1
-const STARS_STRINGS: Array[String] = ["", "*", "**", "***", "****", "*****"]
+const STARS_STRINGS: Array[String] = ["---", "*", "**", "***", "****", "*****"]
 const UNKNOWN_MINI_GAME: String = "?????"
 const UNKNOWN_VALUE: String = "---"
 
@@ -39,12 +39,9 @@ func _get_stars_string(count: int) -> String:
 
 func _show_stars() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
-	if save_data.latest_day_completed > 0:
-		_label_0.text_1 = "Día 1"
-		_label_0.text_2 = _get_stars_string(save_data.stars.day_one)
-	else:
-		_label_0.text_1 = UNKNOWN_MINI_GAME
-		_label_0.text_2 = UNKNOWN_VALUE
+
+	_label_0.text_1 = "Día 1"
+	_label_0.text_2 = _get_stars_string(save_data.stars.day_one)
 	
 	if save_data.latest_day_completed > 1:
 		_label_1.text_1 = "Día 2"
@@ -77,20 +74,17 @@ func _show_stars() -> void:
 func _show_high_scores() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
 	
+	_label_0.text_1 = "Buffet 1A"
+	_label_0.text_2 = str(save_data.high_scores.buff_one_a)
+	_label_1.text_1 = "Buffet 1B"
+	_label_1.text_2 = str(save_data.high_scores.buff_one_b)
+	
 	if save_data.latest_day_completed > 0:
-		_label_0.text_1 = "Buffet 1A"
-		_label_0.text_2 = str(save_data.high_scores.buff_one_a)
-		_label_1.text_1 = "Buffet 1B"
-		_label_1.text_2 = str(save_data.high_scores.buff_one_b)
 		_label_2.text_1 = "Buffet 1C"
 		_label_2.text_2 = str(save_data.high_scores.buff_one_c)
 		_label_3.text_1 = "Buffet 1D"
 		_label_3.text_2 = str(save_data.high_scores.buff_one_d)
 	else:
-		_label_0.text_1 = UNKNOWN_MINI_GAME
-		_label_0.text_2 = UNKNOWN_VALUE
-		_label_1.text_1 = UNKNOWN_MINI_GAME
-		_label_1.text_2 = UNKNOWN_VALUE
 		_label_2.text_1 = UNKNOWN_MINI_GAME
 		_label_2.text_2 = UNKNOWN_VALUE
 		_label_3.text_1 = UNKNOWN_MINI_GAME

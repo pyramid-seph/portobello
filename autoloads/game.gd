@@ -36,8 +36,8 @@ func _ready() -> void:
 	SceneChanger.change_finished.connect(_on_scene_change_finished)
 
 
-func start(minigame: Minigame) -> void:
-	if _current_minigame == minigame:
+func start(minigame: Minigame, allow_restart := false) -> void:
+	if _current_minigame == minigame and not allow_restart:
 		return
 	_current_minigame = minigame
 	var path = _get_start_path(minigame)
