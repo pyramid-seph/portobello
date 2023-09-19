@@ -8,7 +8,7 @@ signal consumed_or_exited_screen
 @export var randomize_starting_frame: bool
 
 @onready var _is_ready: bool = true
-@onready var _animated_sprite = $AnimatedSprite2D as AnimatedSprite2D
+@onready var _animated_sprite := $AnimatedSprite2D as AnimatedSprite2D
 
 
 func _ready() -> void:

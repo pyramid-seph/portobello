@@ -2,7 +2,7 @@
 extends Node2D
 
 signal chomped
-signal dead(who: Node2D)
+signal dead
 
 const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
@@ -71,11 +71,18 @@ func revive(map_pos: Vector2i) -> void:
 		teleport(map_pos)
 
 
-func scare() -> void:
+func get_scared() -> void:
 	if not is_dead():
 		_state = MazeEnemyState.SCARED
 		_scare_timer.start(SCARE_DURATION_SEC)
 		_not_so_scared_delay_timer.start(NOT_SO_SCARED_DELAY_SEC)
+
+
+func halt() -> void: # or on_maze_completed?, loose_will_to_fight_or_something
+	# TODO Keep playing the current animation,
+	#  stop ALL timers
+	#  and turn off all other systems (movement, collision, etc).
+	pass
 
 
 func is_dead() -> bool:
@@ -194,11 +201,11 @@ func _on_scare_timer_timeout() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if _animated_sprite.animation == "dead":
 		visible = false
-		dead.emit(self)
+		dead.emit()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if _is_scared():
 		_die()
-	else:
-		pass # TODO Kill the player
+	elif area.has_method("die"):
+		area.die()

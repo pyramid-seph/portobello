@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1y33m"]
 size = Vector2(8, 8)
 
-[node name="Treat" type="Area2D"]
+[node name="Treat" type="Area2D" groups=["treats"]]
 z_index = -2
 collision_layer = 4
 collision_mask = 0
@@ -15,3 +15,6 @@ texture = ExtResource("1_oqoru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1y33m")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-4, -4, 8, 8)

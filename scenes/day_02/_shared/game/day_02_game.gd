@@ -44,7 +44,9 @@ func _ready() -> void:
 	_set_initial_lives()
 	_on_score_changed()
 	_on_level_changed()
-
+	$World/Maze.completed.connect(func():
+		print("MAZE COMPLETED!")
+	)
 
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dljto68cjmstv"]
+
+[ext_resource type="PackedScene" path="res://scenes/_shared/item.tscn" id="1_wd323"]
+[ext_resource type="Texture2D" uid="uid://dot5760mounkj" path="res://art/day_2/cat_food_normal.png" id="2_cvqyr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfx2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cvqyr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l31l"]
+size = Vector2(4, 4)
+
+[node name="Treat" instance=ExtResource("1_wd323")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_qfx2g")
+centered = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_0l31l")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+rect = Rect2(-2, -2, 4, 4)

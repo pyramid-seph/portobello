@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj4dighv45bx7"]
+
+[ext_resource type="Texture2D" uid="uid://4wq4kjwsblmt" path="res://art/day_2/cat_food_super.png" id="1_3o35s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc5tm"]
+size = Vector2(10, 10)
+
+[node name="SuperTreat" type="Area2D" groups=["super_treats"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3o35s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bc5tm")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

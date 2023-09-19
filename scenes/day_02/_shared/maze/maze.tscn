@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfcfhqs6pqgcm"]
+[gd_scene load_steps=13 format=3 uid="uid://cfcfhqs6pqgcm"]
 
 [ext_resource type="Texture2D" uid="uid://j3ged81fnnl6" path="res://art/day_2/atlas_tiles_maze.png" id="1_744ve"]
 [ext_resource type="Script" path="res://scenes/day_02/_shared/maze/maze.gd" id="2_hjgam"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bqy1eiauwg23p" path="res://art/day_2/enemy_ghost_blue_1.png" id="6_w82sn"]
 [ext_resource type="Texture2D" uid="uid://eeuatuh87lj5" path="res://art/day_2/enemy_ghost_yellow_0.png" id="7_uvffd"]
 [ext_resource type="Texture2D" uid="uid://d3rmc66fdmxxx" path="res://art/day_2/enemy_ghost_yellow_1.png" id="8_k30f1"]
+[ext_resource type="PackedScene" uid="uid://yhr74i70c14h" path="res://scenes/day_01/_shared/treat.tscn" id="9_t6rh5"]
+[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/game/super_treat.tscn" id="10_deddq"]
 [ext_resource type="PackedScene" uid="uid://djle3i2ou6cx1" path="res://scenes/day_02/_shared/enemies/day_02_enemy.tscn" id="17_jfr4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onvd7"]
@@ -67,6 +69,15 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1, 65536, 65537, 3, 0, 0, 7, 0, 65536, 9, 65536, 65537, 131076, 131072, 2, 131077, 131072, 2, 131078, 131072, 2, 262145, 0, 196608, 262146, 0, 131072, 327682, 0, 65536, 327681, 262144, 1, 393217, 0, 2, 458753, 0, 2, 524289, 65536, 65537, 262148, 0, 196608, 262149, 65536, 65538, 262150, 0, 131072, 327684, 0, 0, 327686, 0, 65536, 458759, 131072, 65537, 458755, 131072, 1, 458756, 131072, 2, 458757, 131072, 2, 458758, 131072, 2, 262152, 0, 196608, 262153, 0, 131072, 327688, 0, 0, 393225, 0, 2, 458761, 0, 2, 524297, 65536, 65537, 589827, 0, 196608, 589830, 0, 196608, 589831, 0, 131072, 589828, 0, 131072, 4, 262144, 0, 5, 262144, 0, 6, 262144, 0, 327685, 262144, 0, 131072, 131072, 2, 131073, 131072, 65537, 131075, 131072, 1, 131082, 131072, 2, 131081, 131072, 1, 131079, 131072, 65537, 327689, 262144, 65537, 65535, 0, 1, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 458751, 0, 1, 524287, 0, 1, 589823, 0, 1, 655359, 0, 1, 11, 0, 65537, 65547, 0, 65537, 131083, 0, 65537, 196619, 0, 65537, 262155, 0, 65537, 327691, 0, 65537, 393227, 0, 65537, 458763, 0, 65537, 524299, 0, 65537, 589835, 0, 65537, -65536, 262144, 0, -65535, 262144, 0, -65534, 262144, 0, -65533, 262144, 0, -65532, 262144, 0, -65531, 262144, 0, -65530, 262144, 0, -65529, 262144, 0, -65528, 262144, 0, -65527, 262144, 0, -65526, 262144, 0, 655360, 262144, 65536, 655361, 262144, 65536, 655362, 262144, 65536, 655363, 262144, 65536, 655364, 262144, 65536, 655365, 262144, 65536, 655366, 262144, 65536, 655367, 262144, 65536, 655368, 262144, 65536, 655369, 262144, 65536, 655370, 262144, 65536, -1, 262144, 2, -65525, 262144, 65538, 655371, 262144, 131074, 720895, 262144, 196610)
 script = ExtResource("2_hjgam")
 
+[node name="BlueGhostRespawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RedGhostRespawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="YellowGhostRespawnTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="PlayerStartPos" type="Marker2D" parent="."]
 position = Vector2(88, 104)
 
@@ -87,3 +98,27 @@ _texture_1 = ExtResource("6_w82sn")
 
 [node name="RedGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 56)
+
+[node name="Food" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Treat" parent="Food" instance=ExtResource("9_t6rh5")]
+position = Vector2(104, 104)
+
+[node name="SuperTreat" parent="Food" instance=ExtResource("10_deddq")]
+position = Vector2(120, 104)
+
+[node name="SuperTreat2" parent="Food" instance=ExtResource("10_deddq")]
+position = Vector2(72, 104)
+
+[connection signal="timeout" from="BlueGhostRespawnTimer" to="." method="_on_blue_ghost_respawn_timer_timeout"]
+[connection signal="timeout" from="RedGhostRespawnTimer" to="." method="_on_red_ghost_respawn_timer_timeout"]
+[connection signal="timeout" from="YellowGhostRespawnTimer" to="." method="_on_yellow_ghost_respawn_timer_timeout"]
+[connection signal="ate_regular_treat" from="Day02Player" to="." method="_on_day_02_player_ate_regular_treat"]
+[connection signal="ate_super_treat" from="Day02Player" to="." method="_on_day_02_player_ate_super_treat"]
+[connection signal="chomped" from="YellowGhost" to="." method="_on_enemy_chomped"]
+[connection signal="dead" from="YellowGhost" to="." method="_on_yellow_ghost_dead"]
+[connection signal="chomped" from="BlueGhost" to="." method="_on_enemy_chomped"]
+[connection signal="dead" from="BlueGhost" to="." method="_on_blue_ghost_dead"]
+[connection signal="chomped" from="RedGhost" to="." method="_on_enemy_chomped"]
+[connection signal="dead" from="RedGhost" to="." method="_on_red_ghost_dead"]
