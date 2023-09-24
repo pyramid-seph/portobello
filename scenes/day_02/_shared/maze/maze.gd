@@ -10,13 +10,13 @@ const GHOST_RESPAWN_DELAY_SECONDS: float = 3.0
 const PLYER_RESPAWN_DELAY_SECONDS: float = 3.0
 
 @onready var _is_ready := true
-@onready var _player_start_marker: Marker2D = $PlayerStartPos
-@onready var _player_respawn_marker: Marker2D = $PlayerRespawnPos
+@onready var _player_start_marker = $PlayerStartPos as Marker2D
+@onready var _respawn_marker = $RespawnPos as Marker2D
 @onready var _player := $Day02Player as Day02Player
 @onready var _blue_ghost := $BlueGhost as Day02Enemy
 @onready var _red_ghost := $RedGhost as Day02Enemy
 @onready var _yellow_ghost := $YellowGhost as Day02Enemy
-@onready var _food_node := $Food
+@onready var _food_node := $Food as Node
 @onready var _blue_ghost_respawn_timer := $BlueGhostRespawnTimer as Timer
 @onready var _red_ghost_respawn_timer := $RedGhostRespawnTimer as Timer
 @onready var _yellow_ghost_respawn_timer := $YellowGhostRespawnTimer as Timer
@@ -44,7 +44,7 @@ func _place_player() -> void:
 
 
 func _place_ghosts(ghost: Day02Enemy) -> void:
-	ghost.teleport(local_to_map(_player_respawn_marker.position))
+	ghost.teleport(local_to_map(_respawn_marker.position))
 
 
 func _place_all_ghosts() -> void:
@@ -59,10 +59,15 @@ func _stop_ghost_respawn() -> void:
 	_yellow_ghost_respawn_timer.stop()
 
 
-func _stop_all_ghosts_processing() -> void:
-	_blue_ghost.process_mode = Node.PROCESS_MODE_DISABLED
-	_red_ghost.process_mode = Node.PROCESS_MODE_DISABLED
-	_yellow_ghost.process_mode = Node.PROCESS_MODE_DISABLED
+func _halt_all_ghosts() -> void:
+	_blue_ghost.halt()
+	_red_ghost.halt()
+	_yellow_ghost.halt()
+
+
+func _halt_player() -> void:
+	pass # TODO
+	
 
 
 func _scare_all_ghosts() -> void:
@@ -86,12 +91,13 @@ func _is_maze_completed() -> bool:
 func _check_maze_completion() -> void:
 	if _is_maze_completed():
 		_stop_ghost_respawn()
-		# TODO Keep playing the actor animations, but disable all other systems (including collision)
+		_halt_all_ghosts()
+		_halt_player()
 		completed.emit()
 
 
 func _revive_ghost(dead_ghost: Node2D) -> void:
-	dead_ghost.revive(local_to_map(_player_respawn_marker.position))
+	dead_ghost.revive(local_to_map(_respawn_marker.position))
 
 
 func _start_ghost_respawn_timer(timer: Timer) -> void:

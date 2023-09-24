@@ -16,3 +16,5 @@ texture = ExtResource("1_3o35s")
 shape = SubResource("RectangleShape2D_bc5tm")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.5, 0.5)

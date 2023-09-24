@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfcfhqs6pqgcm"]
+[gd_scene load_steps=11 format=3 uid="uid://cfcfhqs6pqgcm"]
 
 [ext_resource type="Texture2D" uid="uid://j3ged81fnnl6" path="res://art/day_2/atlas_tiles_maze.png" id="1_744ve"]
 [ext_resource type="Script" path="res://scenes/day_02/_shared/maze/maze.gd" id="2_hjgam"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bqy1eiauwg23p" path="res://art/day_2/enemy_ghost_blue_1.png" id="6_w82sn"]
 [ext_resource type="Texture2D" uid="uid://eeuatuh87lj5" path="res://art/day_2/enemy_ghost_yellow_0.png" id="7_uvffd"]
 [ext_resource type="Texture2D" uid="uid://d3rmc66fdmxxx" path="res://art/day_2/enemy_ghost_yellow_1.png" id="8_k30f1"]
-[ext_resource type="PackedScene" uid="uid://yhr74i70c14h" path="res://scenes/day_01/_shared/treat.tscn" id="9_t6rh5"]
-[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/game/super_treat.tscn" id="10_deddq"]
 [ext_resource type="PackedScene" uid="uid://djle3i2ou6cx1" path="res://scenes/day_02/_shared/enemies/day_02_enemy.tscn" id="17_jfr4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onvd7"]
@@ -46,10 +44,15 @@ texture = ExtResource("1_744ve")
 4:0/0 = 0
 4:0/1 = 1
 4:0/1/flip_v = true
-4:1/next_alternative_id = 2
+4:1/next_alternative_id = 4
 4:1/0 = 0
 4:1/1 = 1
 4:1/1/flip_h = true
+4:1/2 = 2
+4:1/2/flip_v = true
+4:1/3 = 3
+4:1/3/flip_h = true
+4:1/3/flip_v = true
 4:2/next_alternative_id = 4
 4:2/0 = 0
 4:2/1 = 1
@@ -59,6 +62,13 @@ texture = ExtResource("1_744ve")
 4:2/2/flip_v = true
 4:2/3 = 3
 4:2/3/flip_v = true
+5:0/next_alternative_id = 6
+5:0/0 = 0
+5:0/1 = 1
+5:0/1/flip_h = true
+5:1/0 = 0
+5:2/0 = 0
+6:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_tiqs2"]
 sources/0 = SubResource("TileSetAtlasSource_onvd7")
@@ -81,35 +91,30 @@ one_shot = true
 [node name="PlayerStartPos" type="Marker2D" parent="."]
 position = Vector2(88, 104)
 
-[node name="PlayerRespawnPos" type="Marker2D" parent="."]
+[node name="RespawnPos" type="Marker2D" parent="."]
 position = Vector2(88, 72)
 
 [node name="Day02Player" parent="." instance=ExtResource("3_ac50a")]
+metadata/_edit_lock_ = true
 
 [node name="YellowGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 24)
 _texture_0 = ExtResource("7_uvffd")
 _texture_1 = ExtResource("8_k30f1")
+metadata/_edit_lock_ = true
 
 [node name="BlueGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 40)
 _texture_0 = ExtResource("5_08ki7")
 _texture_1 = ExtResource("6_w82sn")
+metadata/_edit_lock_ = true
 
 [node name="RedGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 56)
+metadata/_edit_lock_ = true
 
 [node name="Food" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
-
-[node name="Treat" parent="Food" instance=ExtResource("9_t6rh5")]
-position = Vector2(104, 104)
-
-[node name="SuperTreat" parent="Food" instance=ExtResource("10_deddq")]
-position = Vector2(120, 104)
-
-[node name="SuperTreat2" parent="Food" instance=ExtResource("10_deddq")]
-position = Vector2(72, 104)
 
 [connection signal="timeout" from="BlueGhostRespawnTimer" to="." method="_on_blue_ghost_respawn_timer_timeout"]
 [connection signal="timeout" from="RedGhostRespawnTimer" to="." method="_on_red_ghost_respawn_timer_timeout"]

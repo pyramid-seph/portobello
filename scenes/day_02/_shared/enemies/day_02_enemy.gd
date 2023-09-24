@@ -26,6 +26,7 @@ const NOT_SO_SCARED_DELAY_SEC: float = 4.0
 		_texture_1 = value
 		_on_textures_set()
 
+var _is_halt: bool
 var _curr_dir: Vector2i
 var _target_local_pos: Vector2
 var _state: MazeEnemyState = MazeEnemyState.CHASING:
@@ -79,10 +80,9 @@ func get_scared() -> void:
 
 
 func halt() -> void: # or on_maze_completed?, loose_will_to_fight_or_something
-	# TODO Keep playing the current animation,
-	#  stop ALL timers
-	#  and turn off all other systems (movement, collision, etc).
-	pass
+	_is_halt = true
+	_scare_timer.stop()
+	_not_so_scared_delay_timer.stop()
 
 
 func is_dead() -> bool:
@@ -95,6 +95,8 @@ func _is_scared() -> bool:
 
 
 func _move(delta: float) -> void:
+	if _is_halt:
+		return
 	var remaining_distance: float = speed * delta
 	while remaining_distance > 0 and not is_zero_approx(remaining_distance):
 		if _curr_dir == Vector2i.ZERO:
@@ -205,6 +207,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if _is_halt:
+		return
+	
 	if _is_scared():
 		_die()
 	elif area.has_method("die"):

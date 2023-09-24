@@ -7,10 +7,11 @@ enum Level {
 	STORY_MODE_LEVEL_03,
 	SCORE_ATTACK_MODE_LEVEL_01,
 	SCORE_ATTACK_MODE_LEVEL_02,
-	SCORE_ATTACK_MODE_LEVEL_03
+	SCORE_ATTACK_MODE_LEVEL_03,
 }
 
 const Day02Ui = preload("res://scenes/day_02/_shared/ui/day_02_ui.gd")
+const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 3
@@ -21,6 +22,12 @@ const REVIVAL_DELAY_SEC: float = 2.0
 		_level = value
 		_on_level_changed()
 
+@onready var _maze_a := $World/Mazes/MazeA as Maze
+@onready var _maze_b := $World/Mazes/MazeB as Maze
+@onready var _maze_c := $World/Mazes/MazeC as Maze
+
+var _curr_maze: Maze
+var _levels_beaten: int
 var _score: int:
 	set(value):
 		_score = value
@@ -35,7 +42,7 @@ var _remaining_lives: int:
 		_on_remaining_lives_changed()
 var _immediate_lives_counter_update: bool = true
 
-@onready var _is_ready: bool = true
+@onready var _is_ready := true
 @onready var _timer := $Timer as Timer
 @onready var _ui := %Day02Ui as Day02Ui
 
@@ -44,9 +51,9 @@ func _ready() -> void:
 	_set_initial_lives()
 	_on_score_changed()
 	_on_level_changed()
-	$World/Maze.completed.connect(func():
-		print("MAZE COMPLETED!")
-	)
+	_curr_maze = _maze_a
+	_curr_maze.completed.connect(_on_level_beaten)
+
 
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
@@ -63,7 +70,10 @@ func _reset_level() -> void:
 
 
 func _start_level() -> void:
-	pass
+	var game_mode: Game.Mode = _get_game_mode(_level)
+	_ui.show_level_start(game_mode, _levels_beaten)
+	await _ui.start_level_finished
+#	_player.is_allowed_to_move = true
 
 
 func _set_initial_lives() -> void:
@@ -74,11 +84,25 @@ func _go_to_title_screen() -> void:
 	Game.start(Game.Minigame.TITLE_SCREEN)
 
 
+func _get_maze(level: Level) -> void:
+	pass
+
+
+func _get_game_mode(level: Level) -> Game.Mode:
+	match level:
+		Level.STORY_MODE_LEVEL_01, \
+		Level.STORY_MODE_LEVEL_02, \
+		Level.STORY_MODE_LEVEL_03:
+			return Game.Mode.STORY
+		_:
+			return Game.Mode.SCORE_ATTACK
+
+
 func _on_level_changed() -> void:
 	if _is_ready:
 		_ui.show_black_screen(true)
-		await _set_up_level()
-		await _start_level()
+		_set_up_level()
+		_start_level()
 
 
 func _on_score_changed() -> void:
