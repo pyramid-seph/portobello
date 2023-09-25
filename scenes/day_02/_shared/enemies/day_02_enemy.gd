@@ -74,7 +74,7 @@ func reset(map_pos: Vector2i) -> void:
 	visible = true
 	_scare_timer.stop()
 	_not_so_scared_delay_timer.stop()
-	# Reset dead animation timer
+	# Reset dead animation timer (whenever we add it)
 	_state = MazeEnemyState.CHASING
 	is_halt = true
 	teleport(map_pos)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn1il3isfkrpo"
-path="res://.godot/imported/day_02_outro_1.png-d3f0c0b7f63e666aa1c4233b41bd1fc4.ctex"
+uid="uid://dv8lrqnviwpjl"
+path="res://.godot/imported/day_02_intro_00.png-dec596ff25e4737af4bf52783040e8c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_02_outro_1.png"
-dest_files=["res://.godot/imported/day_02_outro_1.png-d3f0c0b7f63e666aa1c4233b41bd1fc4.ctex"]
+source_file="res://art/cutscenes/day_02_intro_00.png"
+dest_files=["res://.godot/imported/day_02_intro_00.png-dec596ff25e4737af4bf52783040e8c7.ctex"]
 
 [params]
 

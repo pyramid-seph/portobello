@@ -21,6 +21,9 @@ const LEVEL_CHANGE_DELAY_SEC: float = 1.0
 
 @export var _initial_level: Day02Game.Level
 
+# treat = 10
+# super treat = 20
+# ghost = 200
 var _score: int:
 	set(value):
 		_score = value
@@ -183,5 +186,6 @@ func _on_results_screen_calculated(new_high_score, stars) -> void:
 
 
 func _on_results_screen_finished(total_score, extra_lives, stars) -> void:
-	# TODO Show cutscene instead
-	_go_to_title_screen()
+	SceneChanger.change_to_scene(
+		"res://scenes/day_02/_shared/cutscenes/cutscene_day_02_02.tscn"
+	)
