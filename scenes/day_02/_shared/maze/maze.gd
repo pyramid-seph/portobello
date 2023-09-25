@@ -8,10 +8,10 @@ const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd
 
 const GHOST_RESPAWN_DELAY_SECONDS: float = 3.0
 const PLAYER_RESPAWN_DELAY_SECONDS: float = 3.0
-const BLUE_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5
+const RED_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5
 const YELLOW_GHOST_MOVEMENT_DELAY_SECONDS: float = 1.0
 
-var _is_reset := true
+var _is_reset: bool
 
 @onready var _is_ready := true
 @onready var _player_init_pos_marker = $PlayerInitPosMarker as Marker2D
@@ -24,6 +24,8 @@ var _is_reset := true
 @onready var _blue_ghost_respawn_timer := $BlueGhostRespawnTimer as Timer
 @onready var _red_ghost_respawn_timer := $RedGhostRespawnTimer as Timer
 @onready var _yellow_ghost_respawn_timer := $YellowGhostRespawnTimer as Timer
+@onready var _red_ghost_first_spawn_timer := $RedGhostFirstSpawnTimer as Timer
+@onready var _yellow_ghost_first_spawn_timer := $YellowGhostFirstSpawnTimer as Timer
 
 
 func _ready() -> void:
@@ -33,6 +35,8 @@ func _ready() -> void:
 
 
 func reset() -> void:
+	_stop_pending_ghost_respawn()
+	_stop_pending_ghost_first_spawn()
 	_reset_player()
 	_reset_all_ghosts()
 	_reset_food()
@@ -42,9 +46,10 @@ func reset() -> void:
 
 func start() -> void:
 	if _is_reset:
-		_revive_ghost(_red_ghost)
-		_blue_ghost_respawn_timer.start(BLUE_GHOST_MOVEMENT_DELAY_SECONDS)
-		_yellow_ghost_respawn_timer.start(YELLOW_GHOST_MOVEMENT_DELAY_SECONDS)
+		_blue_ghost.is_halt = false
+		_red_ghost_first_spawn_timer.start(RED_GHOST_MOVEMENT_DELAY_SECONDS)
+		_yellow_ghost_first_spawn_timer.start(YELLOW_GHOST_MOVEMENT_DELAY_SECONDS)
+		_is_reset = false
 
 
 func is_empty_tile(map_pos: Vector2i) -> bool:
@@ -77,7 +82,12 @@ func _reset_all_ghosts() -> void:
 	_reset_ghost(_yellow_ghost)
 
 
-func _stop_ghost_respawn() -> void:
+func _stop_pending_ghost_first_spawn() -> void:
+	_red_ghost_first_spawn_timer.stop()
+	_yellow_ghost_first_spawn_timer
+
+
+func _stop_pending_ghost_respawn() -> void:
 	_blue_ghost_respawn_timer.stop()
 	_red_ghost_respawn_timer.stop()
 	_yellow_ghost_respawn_timer.stop()
@@ -113,7 +123,8 @@ func _is_maze_completed() -> bool:
 
 func _check_maze_completion() -> void:
 	if _is_maze_completed():
-		_stop_ghost_respawn()
+		_stop_pending_ghost_first_spawn()
+		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
 		_halt_player()
 		completed.emit()
@@ -150,6 +161,14 @@ func _on_red_ghost_respawn_timer_timeout() -> void:
 
 func _on_yellow_ghost_respawn_timer_timeout() -> void:
 	_revive_ghost(_yellow_ghost)
+
+
+func _on_red_ghost_first_spawn_timer_timeout() -> void:
+	_red_ghost.is_halt = false
+
+
+func _on_yellow_ghost_first_spawn_timer_timeout() -> void:
+	_yellow_ghost.is_halt = false
 
 
 func _on_enemy_chomped() -> void:
