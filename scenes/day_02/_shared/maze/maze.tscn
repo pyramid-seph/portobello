@@ -88,10 +88,10 @@ one_shot = true
 [node name="YellowGhostRespawnTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="PlayerStartPos" type="Marker2D" parent="."]
-position = Vector2(88, 104)
+[node name="PlayerInitPosMarker" type="Marker2D" parent="."]
+position = Vector2(88, 136)
 
-[node name="RespawnPos" type="Marker2D" parent="."]
+[node name="RespawnPosMarker" type="Marker2D" parent="."]
 position = Vector2(88, 72)
 
 [node name="Day02Player" parent="." instance=ExtResource("3_ac50a")]
@@ -116,6 +116,7 @@ metadata/_edit_lock_ = true
 [node name="Food" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="timeout" from="BlueGhostRespawnTimer" to="." method="_on_blue_ghost_respawn_timer_timeout"]
 [connection signal="timeout" from="RedGhostRespawnTimer" to="." method="_on_red_ghost_respawn_timer_timeout"]
 [connection signal="timeout" from="YellowGhostRespawnTimer" to="." method="_on_yellow_ghost_respawn_timer_timeout"]

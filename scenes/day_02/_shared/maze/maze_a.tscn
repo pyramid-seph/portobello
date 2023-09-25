@@ -6,13 +6,6 @@
 
 [node name="MazeA" instance=ExtResource("1_vjga0")]
 
-[node name="PlayerStartPos" parent="." index="3"]
-position = Vector2(88, 136)
-metadata/_edit_lock_ = true
-
-[node name="RespawnPos" parent="." index="4"]
-metadata/_edit_lock_ = true
-
 [node name="SuperTreat" parent="Food" index="0" instance=ExtResource("2_ttpk2")]
 position = Vector2(168, 8)
 metadata/_edit_lock_ = true

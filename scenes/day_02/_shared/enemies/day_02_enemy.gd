@@ -26,7 +26,10 @@ const NOT_SO_SCARED_DELAY_SEC: float = 4.0
 		_texture_1 = value
 		_on_textures_set()
 
-var _is_halt: bool
+var is_halt: bool = true:
+	set(value):
+		is_halt = value
+		_on_is_halt_set()
 var _curr_dir: Vector2i
 var _target_local_pos: Vector2
 var _state: MazeEnemyState = MazeEnemyState.CHASING:
@@ -37,11 +40,13 @@ var _state: MazeEnemyState = MazeEnemyState.CHASING:
 @onready var _is_ready := true
 @onready var _maze := get_parent() as Maze
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _scare_timer: Timer = $ScareTimer
-@onready var _not_so_scared_delay_timer: Timer = $NotSoScaredDelayTimer
+@onready var _scare_timer := $ScareTimer as Timer
+@onready var _not_so_scared_delay_timer := $NotSoScaredDelayTimer as Timer
 
 
 func _ready() -> void:
+	_on_is_halt_set()
+	
 	if not Engine.is_editor_hint() and not _maze:
 		queue_free()
 		print("Maze enemies must be direct children of mazes. queue_free() was called on this enemy.")
@@ -65,11 +70,14 @@ func teleport(map_pos: Vector2i) -> void:
 	_pick_next_movement()
 
 
-func revive(map_pos: Vector2i) -> void:
-	if is_dead():
-		visible = true
-		_state = MazeEnemyState.CHASING
-		teleport(map_pos)
+func reset(map_pos: Vector2i) -> void:
+	visible = true
+	_scare_timer.stop()
+	_not_so_scared_delay_timer.stop()
+	# Reset dead animation timer
+	_state = MazeEnemyState.CHASING
+	is_halt = true
+	teleport(map_pos)
 
 
 func get_scared() -> void:
@@ -77,12 +85,6 @@ func get_scared() -> void:
 		_state = MazeEnemyState.SCARED
 		_scare_timer.start(SCARE_DURATION_SEC)
 		_not_so_scared_delay_timer.start(NOT_SO_SCARED_DELAY_SEC)
-
-
-func halt() -> void: # or on_maze_completed?, loose_will_to_fight_or_something
-	_is_halt = true
-	_scare_timer.stop()
-	_not_so_scared_delay_timer.stop()
 
 
 func is_dead() -> bool:
@@ -95,7 +97,7 @@ func _is_scared() -> bool:
 
 
 func _move(delta: float) -> void:
-	if _is_halt:
+	if is_halt:
 		return
 	var remaining_distance: float = speed * delta
 	while remaining_distance > 0 and not is_zero_approx(remaining_distance):
@@ -176,6 +178,14 @@ func _die() -> void:
 		chomped.emit()
 
 
+func _on_is_halt_set() -> void:
+	if not _is_ready:
+		return
+	if is_halt:
+		_scare_timer.stop()
+		_not_so_scared_delay_timer.stop()
+
+
 func _on_textures_set() -> void:
 	if _is_ready:
 		var sprite_frames := _animated_sprite.sprite_frames
@@ -207,7 +217,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if _is_halt:
+	if is_halt:
 		return
 	
 	if _is_scared():

@@ -8,6 +8,7 @@ const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 const SPEED: float = 8# 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
 const INPUT_TOLERANCE: float = 0.4
 
+var is_movement_allowed := false
 var _curr_dir: Vector2i
 var _candidate_dir: Vector2i
 
@@ -56,11 +57,22 @@ func teleport(map_pos: Vector2i) -> void:
 	#_pick_next_movement_2()
 
 
+func reset(map_pos: Vector2i) -> void:
+	_timer.stop()
+	teleport(map_pos)
+	is_movement_allowed = true
+#	is_movement_allowed = false
+	# TODO Reset dead state, set animatiomn to the default one.
+
+
 func is_dead() -> bool:
 	return false
 
 
 func _move(delta: float) -> void:
+	if not is_movement_allowed:
+		return
+	
 #	if _curr_dir == Vector2i.ZERO:
 #		_pick_next_movement_2()
 #	_pick_next_movement_2()
