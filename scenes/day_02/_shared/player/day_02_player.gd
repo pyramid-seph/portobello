@@ -2,6 +2,7 @@ extends Node2D
 
 signal ate_regular_treat
 signal ate_super_treat
+signal died
 
 const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 

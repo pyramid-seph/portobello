@@ -18,12 +18,12 @@ const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 3
 const REVIVAL_DELAY_SEC: float = 2.0
 const LEVEL_CHANGE_DELAY_SEC: float = 1.0
+const POINTS_TREAT: int = 10
+const POINTS_SUPER_TREAT: int = 20
+const POINTS_GHOST: int = 200
 
 @export var _initial_level: Day02Game.Level
 
-# treat = 10
-# super treat = 20
-# ghost = 200
 var _score: int:
 	set(value):
 		_score = value
@@ -168,7 +168,19 @@ func _on_maze_completed() -> void:
 		_level += 1
 
 
-func _on_player_died() -> void:
+func _on_maze_ghost_eaten() -> void:
+	_score += POINTS_GHOST
+
+
+func _on_maze_super_treat_eaten() -> void:
+	_score += POINTS_SUPER_TREAT
+
+
+func _on_maze_treat_eaten() -> void:
+	_score += POINTS_TREAT
+
+
+func _on_maze_player_died() -> void:
 	_remaining_lives -= 1
 	_timer.start(REVIVAL_DELAY_SEC)
 	await _timer.timeout

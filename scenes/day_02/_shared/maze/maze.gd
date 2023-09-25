@@ -2,6 +2,10 @@ extends TileMap
 
 
 signal completed
+signal ghost_eaten
+signal treat_eaten
+signal super_treat_eaten
+signal player_died
 
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
 const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd")
@@ -172,14 +176,20 @@ func _on_yellow_ghost_first_spawn_timer_timeout() -> void:
 
 
 func _on_enemy_chomped() -> void:
-	print("TODO: Inform game so it can update the score")
+	ghost_eaten.emit()
+
+
+func _on_day_02_player_died() -> void:
+	player_died.emit()
 
 
 func _on_day_02_player_ate_regular_treat() -> void:
+	treat_eaten.emit()
 	_check_maze_completion()
 
 
 func _on_day_02_player_ate_super_treat() -> void:
+	super_treat_eaten.emit()
 	_check_maze_completion()
 	_scare_all_ghosts()
 
