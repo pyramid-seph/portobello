@@ -61,6 +61,8 @@ func _get_start_path(minigame: Minigame) -> String:
 		Minigame.SCORE_ATTACK_1C, \
 		Minigame.SCORE_ATTACK_1D:
 			return "res://scenes/day_01/_shared/game/day_01_game.tscn"
+		Minigame.SCORE_ATTACK_2:
+			return "res://scenes/day_02/_shared/game/day_02_game.tscn"
 		Minigame.SCORE_ATTACK_3A, \
 		Minigame.SCORE_ATTACK_3B:
 			return "res://scenes/day_03/_shared/game/day_03_game.tscn"
@@ -80,6 +82,8 @@ func _get_minigame_start_level(minigame: Minigame) -> int:
 			return Day01Game.Level.SCORE_ATTACK_1C
 		Minigame.SCORE_ATTACK_1D:
 			return Day01Game.Level.SCORE_ATTACK_1D
+		Minigame.SCORE_ATTACK_2:
+			return Day02Game.Level.SCORE_ATTACK_MODE_LEVEL_01
 		Minigame.STORY_DAY_03:
 			return Day03Game.Level.STORY_MODE_DAY_01
 		Minigame.SCORE_ATTACK_3A:

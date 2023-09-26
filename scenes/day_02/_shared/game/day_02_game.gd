@@ -28,10 +28,6 @@ var _score: int:
 	set(value):
 		_score = value
 		_on_score_changed()
-var _high_score: int:
-	set(value):
-		_high_score = value
-		_on_high_score_changed()
 var _remaining_lives: int:
 	set(value):
 		_remaining_lives = value
@@ -53,6 +49,7 @@ var _immediate_lives_counter_update: bool = true
 
 
 func _ready() -> void:
+	_setup_high_score_ui()
 	_set_initial_lives()
 	_on_score_changed()
 	_on_level_set()
@@ -61,6 +58,15 @@ func _ready() -> void:
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_initial_level = data.level
+
+
+func _get_high_score() -> int:
+	var high_scores := SaveDataManager.save_data.high_scores
+	return high_scores.day_two if _is_game_story_mode() else high_scores.buff_two
+
+
+func _setup_high_score_ui() -> void:
+	_ui.update_high_score(_get_high_score())
 
 
 func _set_up_level() -> void:
@@ -120,6 +126,10 @@ func _get_game_mode() -> Game.Mode:
 			return Game.Mode.SCORE_ATTACK
 
 
+func _is_game_story_mode() -> bool:
+	return _get_game_mode() == Game.Mode.STORY
+
+
 func _on_level_set() -> void:
 	if _is_ready:
 		_ui.show_black_screen(true)
@@ -132,11 +142,6 @@ func _on_score_changed() -> void:
 		_ui.update_score(_score)
 
 
-func _on_high_score_changed() -> void:
-	if _is_ready:
-		_ui.update_high_score(_high_score)
-
-
 func _on_remaining_lives_changed() -> void:
 	if not _is_ready:
 		return
@@ -144,9 +149,25 @@ func _on_remaining_lives_changed() -> void:
 	_immediate_lives_counter_update = false
 
 
+func _save_high_score() -> bool:
+	var changed := false
+	var high_scores := SaveDataManager.save_data.high_scores
+	if _is_game_story_mode():
+		if _score > high_scores.day_two:
+			high_scores.day_two = _score
+			changed = true
+	else:
+		if _score > high_scores.buff_two:
+			high_scores.buff_two = _score
+			changed = true
+	if changed:
+		SaveDataManager.save()
+	return changed
+
+
 func _on_level_failed() -> void:
-	# Set high score
-	_ui.show_game_over(false)
+	var new_high_score_achieved: bool = _save_high_score()
+	_ui.show_game_over(new_high_score_achieved)
 	await _ui.game_over_finished
 	_go_to_title_screen()
 
@@ -155,14 +176,14 @@ func _on_maze_completed() -> void:
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
 	_ui.show_black_screen(true)
-	if _get_game_mode() == Game.Mode.STORY and _level >= _mazes.size() - 1:
+	if _is_game_story_mode() and _level >= _mazes.size() - 1:
 		_get_current_maze().visible = false
 		_results_screen.start(
 				_get_game_mode(),
 				true, 
 				_remaining_lives, 
 				_score, 
-				_high_score
+				_get_high_score()
 		)
 	else:
 		_level += 1
@@ -191,10 +212,13 @@ func _on_maze_player_died() -> void:
 		pass # Revive player
 
 
-func _on_results_screen_calculated(new_high_score, stars) -> void:
-	# TODO if on story mode, save stars, minigame beaten and story mode highscore
-	#  else do nothing
-	pass
+func _on_results_screen_calculated(_new_high_score, stars) -> void:
+	_save_high_score()
+	var save_data := SaveDataManager.save_data as SaveData
+	save_data.stars.day_two = maxi(save_data.stars.day_two, stars)
+	if save_data.latest_day_completed < 2:
+		save_data.latest_day_completed = 2
+	SaveDataManager.save()
 
 
 func _on_results_screen_finished(total_score, extra_lives, stars) -> void:
