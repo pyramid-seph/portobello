@@ -15,6 +15,7 @@ enum MazeEnemyState {
 
 const SCARE_DURATION_SEC: float = 6.4
 const NOT_SO_SCARED_DELAY_SEC: float = 4.0
+const DYING_DURATION_SEC: float = 1.0
 
 @export var speed: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
 @export var _texture_0: Texture2D:
@@ -42,6 +43,7 @@ var _state: MazeEnemyState = MazeEnemyState.CHASING:
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _scare_timer := $ScareTimer as Timer
 @onready var _not_so_scared_delay_timer := $NotSoScaredDelayTimer as Timer
+@onready var _dying_timer := $DyingTimer as Timer
 
 
 func _ready() -> void:
@@ -74,6 +76,7 @@ func reset(map_pos: Vector2i) -> void:
 	visible = true
 	_scare_timer.stop()
 	_not_so_scared_delay_timer.stop()
+	_dying_timer.stop()
 	# Reset dead animation timer (whenever we add it)
 	_state = MazeEnemyState.CHASING
 	is_halt = true
@@ -174,16 +177,16 @@ func _die() -> void:
 	if not is_dead() and _is_scared():
 		_scare_timer.stop()
 		_not_so_scared_delay_timer.stop()
+		_dying_timer.start(DYING_DURATION_SEC)
 		_state = MazeEnemyState.DEAD
 		chomped.emit()
 
 
 func _on_is_halt_set() -> void:
-	if not _is_ready:
-		return
-	if is_halt:
+	if _is_ready and is_halt:
 		_scare_timer.stop()
 		_not_so_scared_delay_timer.stop()
+		_dying_timer.stop()
 
 
 func _on_textures_set() -> void:
@@ -210,10 +213,9 @@ func _on_scare_timer_timeout() -> void:
 		_state = MazeEnemyState.CHASING
 
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if _animated_sprite.animation == "dead":
-		visible = false
-		dead.emit()
+func _on_dying_timer_timeout() -> void:
+	visible = false
+	dead.emit()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
