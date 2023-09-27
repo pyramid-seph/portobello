@@ -5,6 +5,7 @@ signal completed
 signal ghost_eaten
 signal treat_eaten
 signal super_treat_eaten
+signal player_dying
 signal player_died
 
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
@@ -17,7 +18,6 @@ const YELLOW_GHOST_MOVEMENT_DELAY_SECONDS: float = 1.0
 
 var _is_reset: bool
 
-@onready var _is_ready := true
 @onready var _player_init_pos_marker = $PlayerInitPosMarker as Marker2D
 @onready var _respawn_pos_marker = $RespawnPosMarker as Marker2D
 @onready var _player := $Day02Player as Day02Player
@@ -50,10 +50,24 @@ func reset() -> void:
 
 func start() -> void:
 	if _is_reset:
+		_player.is_movement_allowed = true
 		_blue_ghost.is_halt = false
 		_red_ghost_first_spawn_timer.start(RED_GHOST_MOVEMENT_DELAY_SECONDS)
 		_yellow_ghost_first_spawn_timer.start(YELLOW_GHOST_MOVEMENT_DELAY_SECONDS)
 		_is_reset = false
+
+
+func failed() -> void:
+	# TODO Check if player is dead? or the maze state is start?
+	_stop_pending_ghost_first_spawn()
+	_stop_pending_ghost_respawn()
+	_halt_all_ghosts()
+	_player.is_movement_allowed = false
+
+
+func revive_player() -> void:
+	# TODO Revive only when this maze is in state started and no enemy is respawning
+	_player.revive(local_to_map(_respawn_pos_marker.position))
 
 
 func is_empty_tile(map_pos: Vector2i) -> bool:
@@ -88,7 +102,7 @@ func _reset_all_ghosts() -> void:
 
 func _stop_pending_ghost_first_spawn() -> void:
 	_red_ghost_first_spawn_timer.stop()
-	_yellow_ghost_first_spawn_timer
+	_yellow_ghost_first_spawn_timer.stop()
 
 
 func _stop_pending_ghost_respawn() -> void:
@@ -177,6 +191,10 @@ func _on_yellow_ghost_first_spawn_timer_timeout() -> void:
 
 func _on_enemy_chomped() -> void:
 	ghost_eaten.emit()
+
+
+func _on_day_02_player_dying() -> void:
+	player_dying.emit()
 
 
 func _on_day_02_player_died() -> void:

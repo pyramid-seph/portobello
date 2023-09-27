@@ -161,6 +161,7 @@ func _map_pos() -> Vector2i:
 
 
 func _update_animation() -> void:
+	# TODO Maybe start timers here?
 	var new_animation: String = "default"
 	match _state:
 		MazeEnemyState.DEAD:
@@ -222,7 +223,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if is_halt:
 		return
 	
+	var area_owner := area.get_parent()
 	if _is_scared():
 		_die()
-	elif area.has_method("die"):
-		area.die()
+	elif area_owner and area_owner.has_method("die"):
+		area_owner.die()

@@ -2,21 +2,37 @@ extends Node2D
 
 signal ate_regular_treat
 signal ate_super_treat
+signal dying
 signal died
+
+enum Day02PlayerState {
+	ALIVE,
+	DYING,
+	DEAD,
+}
 
 const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
-const SPEED: float = 8# 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
+const SPEED: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
 const INPUT_TOLERANCE: float = 0.4
+
+@export_group("Debug", "_debug")
+@export var _debug_is_invincible: bool:
+	get:
+		return _debug_is_invincible and OS.is_debug_build()
+
 
 var is_movement_allowed := false
 var _curr_dir: Vector2i
 var _candidate_dir: Vector2i
+var _state: Day02PlayerState:
+	set(value):
+		_state = value
+		_on_state_set()
 
 @onready var _is_ready := true
 @onready var _target_local_pos: Vector2 = position
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _timer := $Timer as Timer
 @onready var _maze := get_parent() as Maze
 
 
@@ -48,7 +64,7 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not is_dead():
+	if not _is_dead():
 		_move(delta)
 
 
@@ -58,16 +74,30 @@ func teleport(map_pos: Vector2i) -> void:
 	#_pick_next_movement_2()
 
 
-func reset(map_pos: Vector2i) -> void:
-	_timer.stop()
-	teleport(map_pos)
+func revive(map_pos: Vector2i) -> void:
+	reset(map_pos)
 	is_movement_allowed = true
-#	is_movement_allowed = false
-	# TODO Reset dead state, set animatiomn to the default one.
 
 
-func is_dead() -> bool:
-	return false
+func reset(map_pos: Vector2i) -> void:
+	teleport(map_pos)
+	_animated_sprite.rotation_degrees = 0.0
+	_animated_sprite.flip_h = false
+	_animated_sprite.flip_v = false
+	_curr_dir = Vector2i.ZERO
+	is_movement_allowed = false
+	_state = Day02PlayerState.ALIVE
+	visible = true
+
+
+func _is_dead() -> bool:
+	return _state == Day02PlayerState.DYING or _state == Day02PlayerState.DYING
+
+
+func die() -> void:
+	if not _is_dead() and not _debug_is_invincible:
+		_state = Day02PlayerState.DYING
+		dying.emit()
 
 
 func _move(delta: float) -> void:
@@ -123,7 +153,6 @@ func _pick_next_movement_3() -> void:
 		_curr_dir = _candidate_dir
 	else:
 		_pick_next_movement_2()
-		
 
 
 func _pick_next_movement_2() -> void:
@@ -193,6 +222,15 @@ func _map_pos() -> Vector2i:
 	return _maze.local_to_map(position)
 
 
+func _on_state_set() -> void:
+	if not _is_ready:
+		return
+	
+	var new_animation := "dying" if _is_dead() else "default"
+	if _animated_sprite.animation != new_animation:
+		_animated_sprite.play(new_animation)
+
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("treats"):
 		print("chomped a treat")
@@ -202,3 +240,16 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		print("chomped a super treat")
 		area.visible = false
 		ate_super_treat.emit()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if _animated_sprite.animation == "dying":
+		visible = false
+		died.emit()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		process_mode = Node.PROCESS_MODE_DISABLED

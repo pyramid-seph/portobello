@@ -87,7 +87,10 @@ func _start_level() -> void:
 
 
 func _set_initial_lives() -> void:
-	_remaining_lives = MAX_LIVES_STORY # TODO
+	if _is_game_story_mode():
+		_remaining_lives = MAX_LIVES_STORY
+	else:
+		_remaining_lives = MAX_LIVES_SCORE_ATTACK
 
 
 func _go_to_title_screen() -> void:
@@ -201,6 +204,11 @@ func _on_maze_treat_eaten() -> void:
 	_score += POINTS_TREAT
 
 
+func _on_maze_player_dying() -> void:
+	if _remaining_lives == 1:
+		_get_current_maze().failed()
+
+
 func _on_maze_player_died() -> void:
 	_remaining_lives -= 1
 	_timer.start(REVIVAL_DELAY_SEC)
@@ -209,7 +217,7 @@ func _on_maze_player_died() -> void:
 	if _remaining_lives <= 0:
 		_on_level_failed()
 	else:
-		pass # Revive player
+		_get_current_maze().revive_player()
 
 
 func _on_results_screen_calculated(_new_high_score, stars) -> void:
@@ -221,7 +229,7 @@ func _on_results_screen_calculated(_new_high_score, stars) -> void:
 	SaveDataManager.save()
 
 
-func _on_results_screen_finished(total_score, extra_lives, stars) -> void:
+func _on_results_screen_finished(_total_score, _extra_lives, _stars) -> void:
 	SceneChanger.change_to_scene(
 		"res://scenes/day_02/_shared/cutscenes/cutscene_day_02_02.tscn"
 	)
