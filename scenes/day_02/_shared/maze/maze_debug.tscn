@@ -13,3 +13,7 @@ metadata/_edit_lock_ = true
 [node name="SuperTreat" parent="Food" index="1" instance=ExtResource("3_thjuo")]
 position = Vector2(104, 136)
 metadata/_edit_lock_ = true
+
+[node name="SuperTreat2" parent="Food" index="2" instance=ExtResource("3_thjuo")]
+position = Vector2(88, 56)
+metadata/_edit_lock_ = true

@@ -22,7 +22,7 @@ const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd
 const GHOST_RESPAWN_DELAY_SECONDS: float = 3.0
 const RED_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5
 const YELLOW_GHOST_MOVEMENT_DELAY_SECONDS: float = 1.0
-const PLAYER_REVIVAL_DELAY_SECONDS: float = 0.1
+const RESPAWN_RETRY_DELAY_SECONDS: float = 0.1
 
 var _state: MazeState
 
@@ -106,15 +106,31 @@ func _is_respawn_point_safe_for_the_player() -> bool:
 	return not [blue_ghost_rect, red_ghost_rect, yellow_ghost_rect].any(
 		func(item: Rect2): return item.intersects(spawn_point_rect)
 	)
-	# TODO Do the same, but for ghosts?
+
+func _is_player_at_respawn_point() -> bool:
+	var tile_size: Vector2i = tile_set.tile_size
+	var respawn_point : Vector2i = _respawn_point_map_pos()
+	var cells: Array[Vector2i] = get_surrounding_empty_cells(respawn_point)
+	cells.append(respawn_point)
+	var rects := cells.map(func(item: Vector2i): 
+		return Rect2i(item, Vector2i.ONE)
+	)
+	var player_rect := Rect2i(_player_map_pos(), Vector2i.ONE) 
+	return rects.any(func(item: Rect2i): 
+		return item.intersects(player_rect)
+	)
 
 
 func _respawn_point_map_pos() -> Vector2i:
 	return local_to_map(_respawn_pos_marker.position)
 
 
+func _player_map_pos() -> Vector2i:
+	return local_to_map(_player.position)
+
+
 func _delay_player_revival() -> void:
-	_player_revival_delay_timer.start(PLAYER_REVIVAL_DELAY_SECONDS)
+	_player_revival_delay_timer.start(RESPAWN_RETRY_DELAY_SECONDS)
 
 
 func _reset_player() -> void:
@@ -207,15 +223,24 @@ func _on_yellow_ghost_dead() -> void:
 
 
 func _on_blue_ghost_respawn_timer_timeout() -> void:
-	_revive_ghost(_blue_ghost)
+	if _is_player_at_respawn_point():
+		_blue_ghost_respawn_timer.start(RESPAWN_RETRY_DELAY_SECONDS)
+	else:
+		_revive_ghost(_blue_ghost)
 
 
 func _on_red_ghost_respawn_timer_timeout() -> void:
-	_revive_ghost(_red_ghost)
+	if _is_player_at_respawn_point():
+		_red_ghost_respawn_timer.start(RESPAWN_RETRY_DELAY_SECONDS)
+	else:
+		_revive_ghost(_red_ghost)
 
 
 func _on_yellow_ghost_respawn_timer_timeout() -> void:
-	_revive_ghost(_yellow_ghost)
+	if _is_player_at_respawn_point():
+		_yellow_ghost_respawn_timer.start(RESPAWN_RETRY_DELAY_SECONDS)
+	else:
+		_revive_ghost(_yellow_ghost)
 
 
 func _on_red_ghost_first_spawn_timer_timeout() -> void:
