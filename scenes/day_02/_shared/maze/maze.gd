@@ -20,9 +20,9 @@ const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd"
 const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd")
 
 const GHOST_RESPAWN_DELAY_SECONDS: float = 3.0
-const PLAYER_RESPAWN_DELAY_SECONDS: float = 3.0
 const RED_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5
 const YELLOW_GHOST_MOVEMENT_DELAY_SECONDS: float = 1.0
+const PLAYER_REVIVAL_DELAY_SECONDS: float = 0.1
 
 var _state: MazeState
 
@@ -38,6 +38,7 @@ var _state: MazeState
 @onready var _yellow_ghost_respawn_timer := $YellowGhostRespawnTimer as Timer
 @onready var _red_ghost_first_spawn_timer := $RedGhostFirstSpawnTimer as Timer
 @onready var _yellow_ghost_first_spawn_timer := $YellowGhostFirstSpawnTimer as Timer
+@onready var _player_revival_delay_timer := $PlayerRevivalDelayTimer as Timer
 
 
 func _ready() -> void:
@@ -47,6 +48,7 @@ func _ready() -> void:
 
 
 func reset() -> void:
+	_stop_pending_player_revival()
 	_stop_pending_ghost_respawn()
 	_stop_pending_ghost_first_spawn()
 	_reset_player()
@@ -67,6 +69,7 @@ func start() -> void:
 
 func failed() -> void:
 	if _state == MazeState.STARTED:
+		_stop_pending_player_revival()
 		_stop_pending_ghost_first_spawn()
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
@@ -76,8 +79,11 @@ func failed() -> void:
 
 func revive_player() -> void:
 	if _state == MazeState.STARTED:
-		# TODO Revive only when this maze is in state started and no enemy is respawning
-		_player.revive(local_to_map(_respawn_pos_marker.position))
+		_stop_pending_player_revival()
+		if _is_respawn_point_safe_for_the_player():
+			_player.revive(_respawn_point_map_pos())
+		else:
+			_delay_player_revival()
 
 
 func is_empty_tile(map_pos: Vector2i) -> bool:
@@ -91,12 +97,32 @@ func get_surrounding_empty_cells(map_pos: Vector2i) -> Array[Vector2i]:
 	)
 
 
+func _is_respawn_point_safe_for_the_player() -> bool:
+	var tile_size: Vector2i = tile_set.tile_size
+	var spawn_point_rect := Rect2(_respawn_pos_marker.position, tile_size)
+	var blue_ghost_rect := Rect2(_blue_ghost.position, tile_size)
+	var red_ghost_rect := Rect2(_red_ghost.position, tile_size)
+	var yellow_ghost_rect := Rect2(_yellow_ghost.position, tile_size)
+	return not [blue_ghost_rect, red_ghost_rect, yellow_ghost_rect].any(
+		func(item: Rect2): return item.intersects(spawn_point_rect)
+	)
+	# TODO Do the same, but for ghosts?
+
+
+func _respawn_point_map_pos() -> Vector2i:
+	return local_to_map(_respawn_pos_marker.position)
+
+
+func _delay_player_revival() -> void:
+	_player_revival_delay_timer.start(PLAYER_REVIVAL_DELAY_SECONDS)
+
+
 func _reset_player() -> void:
 	_player.reset(local_to_map(_player_init_pos_marker.position))
 
 
 func _reset_ghost(ghost: Day02Enemy) -> void:
-	ghost.reset(local_to_map(_respawn_pos_marker.position))
+	ghost.reset(_respawn_point_map_pos())
 
 
 func _reset_food() -> void:
@@ -108,6 +134,10 @@ func _reset_all_ghosts() -> void:
 	_reset_ghost(_blue_ghost)
 	_reset_ghost(_red_ghost)
 	_reset_ghost(_yellow_ghost)
+
+
+func _stop_pending_player_revival() -> void:
+	_player_revival_delay_timer.stop()
 
 
 func _stop_pending_ghost_first_spawn() -> void:
@@ -194,6 +224,10 @@ func _on_red_ghost_first_spawn_timer_timeout() -> void:
 
 func _on_yellow_ghost_first_spawn_timer_timeout() -> void:
 	_yellow_ghost.is_halt = false
+
+
+func _on_player_revival_delay_timer_timeout() -> void:
+	revive_player()
 
 
 func _on_enemy_chomped() -> void:

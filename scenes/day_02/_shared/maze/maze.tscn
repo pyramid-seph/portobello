@@ -94,6 +94,9 @@ one_shot = true
 [node name="YellowGhostFirstSpawnTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PlayerRevivalDelayTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="PlayerInitPosMarker" type="Marker2D" parent="."]
 position = Vector2(88, 136)
 
@@ -128,6 +131,7 @@ metadata/_edit_lock_ = true
 [connection signal="timeout" from="YellowGhostRespawnTimer" to="." method="_on_yellow_ghost_respawn_timer_timeout"]
 [connection signal="timeout" from="RedGhostFirstSpawnTimer" to="." method="_on_red_ghost_first_spawn_timer_timeout"]
 [connection signal="timeout" from="YellowGhostFirstSpawnTimer" to="." method="_on_yellow_ghost_first_spawn_timer_timeout"]
+[connection signal="timeout" from="PlayerRevivalDelayTimer" to="." method="_on_player_revival_delay_timer_timeout"]
 [connection signal="ate_regular_treat" from="Day02Player" to="." method="_on_day_02_player_ate_regular_treat"]
 [connection signal="ate_super_treat" from="Day02Player" to="." method="_on_day_02_player_ate_super_treat"]
 [connection signal="died" from="Day02Player" to="." method="_on_day_02_player_died"]

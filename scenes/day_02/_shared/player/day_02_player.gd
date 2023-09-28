@@ -75,8 +75,9 @@ func teleport(map_pos: Vector2i) -> void:
 
 
 func revive(map_pos: Vector2i) -> void:
-	reset(map_pos)
-	is_movement_allowed = true
+	if _is_dead():
+		reset(map_pos)
+		is_movement_allowed = true
 
 
 func reset(map_pos: Vector2i) -> void:
