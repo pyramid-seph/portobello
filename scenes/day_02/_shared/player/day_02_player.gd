@@ -98,6 +98,7 @@ func _is_dead() -> bool:
 func die() -> void:
 	if not _is_dead() and not _debug_is_invincible:
 		_state = Day02PlayerState.DYING
+		Utils.vibrate_joy()
 		dying.emit()
 
 
