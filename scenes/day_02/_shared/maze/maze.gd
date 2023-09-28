@@ -8,6 +8,14 @@ signal super_treat_eaten
 signal player_dying
 signal player_died
 
+enum MazeState {
+	LOL,
+	RESET,
+	STARTED,
+	FAILED,
+	COMPLETED,
+}
+
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
 const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd")
 
@@ -16,7 +24,7 @@ const PLAYER_RESPAWN_DELAY_SECONDS: float = 3.0
 const RED_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5
 const YELLOW_GHOST_MOVEMENT_DELAY_SECONDS: float = 1.0
 
-var _is_reset: bool
+var _state: MazeState
 
 @onready var _player_init_pos_marker = $PlayerInitPosMarker as Marker2D
 @onready var _respawn_pos_marker = $RespawnPosMarker as Marker2D
@@ -45,29 +53,31 @@ func reset() -> void:
 	_reset_all_ghosts()
 	_reset_food()
 	visible = true
-	_is_reset = true
+	_state = MazeState.RESET
 
 
 func start() -> void:
-	if _is_reset:
+	if _state == MazeState.RESET:
 		_player.is_movement_allowed = true
 		_blue_ghost.is_halt = false
 		_red_ghost_first_spawn_timer.start(RED_GHOST_MOVEMENT_DELAY_SECONDS)
 		_yellow_ghost_first_spawn_timer.start(YELLOW_GHOST_MOVEMENT_DELAY_SECONDS)
-		_is_reset = false
+		_state = MazeState.STARTED
 
 
 func failed() -> void:
-	# TODO Check if player is dead? or the maze state is start?
-	_stop_pending_ghost_first_spawn()
-	_stop_pending_ghost_respawn()
-	_halt_all_ghosts()
-	_player.is_movement_allowed = false
+	if _state == MazeState.STARTED:
+		_stop_pending_ghost_first_spawn()
+		_stop_pending_ghost_respawn()
+		_halt_all_ghosts()
+		_player.is_movement_allowed = false
+		_state == MazeState.FAILED
 
 
 func revive_player() -> void:
-	# TODO Revive only when this maze is in state started and no enemy is respawning
-	_player.revive(local_to_map(_respawn_pos_marker.position))
+	if _state == MazeState.STARTED:
+		# TODO Revive only when this maze is in state started and no enemy is respawning
+		_player.revive(local_to_map(_respawn_pos_marker.position))
 
 
 func is_empty_tile(map_pos: Vector2i) -> bool:
@@ -133,18 +143,15 @@ func _count_food() -> int:
 	)
 
 
-func _is_maze_completed() -> bool:
-	var remaining_food: int = _count_food()
-	print("remaining_food: ", remaining_food)
-	return remaining_food <= 0
-
-
 func _check_maze_completion() -> void:
-	if _is_maze_completed():
+	var remaining_food: int = _count_food()
+	var is_maze_completed: bool = remaining_food <= 0
+	if is_maze_completed:
 		_stop_pending_ghost_first_spawn()
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
 		_halt_player()
+		_state = MazeState.COMPLETED
 		completed.emit()
 
 
