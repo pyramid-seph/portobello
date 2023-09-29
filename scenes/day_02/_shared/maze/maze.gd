@@ -74,7 +74,7 @@ func failed() -> void:
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
 		_player.is_movement_allowed = false
-		_state == MazeState.FAILED
+		_state = MazeState.FAILED
 
 
 func revive_player() -> void:
@@ -107,8 +107,7 @@ func _is_respawn_point_safe_for_the_player() -> bool:
 		func(item: Rect2): return item.intersects(spawn_point_rect)
 	)
 
-func _is_player_at_respawn_point() -> bool:
-	var tile_size: Vector2i = tile_set.tile_size
+func _is_player_near_respawn_point() -> bool:
 	var respawn_point : Vector2i = _respawn_point_map_pos()
 	var cells: Array[Vector2i] = get_surrounding_empty_cells(respawn_point)
 	cells.append(respawn_point)
@@ -223,21 +222,21 @@ func _on_yellow_ghost_dead() -> void:
 
 
 func _on_blue_ghost_respawn_timer_timeout() -> void:
-	if _is_player_at_respawn_point():
+	if _is_player_near_respawn_point():
 		_blue_ghost_respawn_timer.start(RESPAWN_RETRY_DELAY_SECONDS)
 	else:
 		_revive_ghost(_blue_ghost)
 
 
 func _on_red_ghost_respawn_timer_timeout() -> void:
-	if _is_player_at_respawn_point():
+	if _is_player_near_respawn_point():
 		_red_ghost_respawn_timer.start(RESPAWN_RETRY_DELAY_SECONDS)
 	else:
 		_revive_ghost(_red_ghost)
 
 
 func _on_yellow_ghost_respawn_timer_timeout() -> void:
-	if _is_player_at_respawn_point():
+	if _is_player_near_respawn_point():
 		_yellow_ghost_respawn_timer.start(RESPAWN_RETRY_DELAY_SECONDS)
 	else:
 		_revive_ghost(_yellow_ghost)

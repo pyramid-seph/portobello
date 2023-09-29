@@ -164,7 +164,6 @@ func _map_pos() -> Vector2i:
 
 
 func _update_animation() -> void:
-	# TODO Maybe start timers here?
 	var new_animation: String = "default"
 	match _state:
 		MazeEnemyState.DEAD:
