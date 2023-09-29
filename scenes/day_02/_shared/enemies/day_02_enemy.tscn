@@ -71,6 +71,8 @@ size = Vector2(14, 14)
 script = ExtResource("1_h5v7e")
 _texture_0 = ExtResource("2_8rakd")
 _texture_1 = ExtResource("3_8px7h")
+_z_index_default = -1
+_z_index_dead = -3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fhw8j")

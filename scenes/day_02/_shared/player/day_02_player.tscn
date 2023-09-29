@@ -67,6 +67,7 @@ animations = [{
 size = Vector2(12, 10)
 
 [node name="Day02Player" type="Node2D" groups=["players"]]
+z_index = -2
 position = Vector2(-24, -8)
 script = ExtResource("1_18evh")
 

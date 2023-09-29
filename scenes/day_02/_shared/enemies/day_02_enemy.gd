@@ -26,6 +26,9 @@ const DYING_DURATION_SEC: float = 1.0
 	set(value):
 		_texture_1 = value
 		_on_textures_set()
+@export var _z_index_default: int
+@export var _z_index_dead: int
+
 
 var is_halt: bool = true:
 	set(value):
@@ -201,6 +204,7 @@ func _on_textures_set() -> void:
 func _on_state_set() -> void:
 	if not _is_ready:
 		return
+	z_index = _z_index_dead if _state == MazeEnemyState.DEAD else _z_index_default
 	_update_animation()
 
 
