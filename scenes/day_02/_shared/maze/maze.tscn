@@ -108,18 +108,21 @@ metadata/_edit_lock_ = true
 
 [node name="YellowGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 24)
+speed = 50.0
 _texture_0 = ExtResource("7_uvffd")
 _texture_1 = ExtResource("8_k30f1")
 metadata/_edit_lock_ = true
 
 [node name="BlueGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 40)
+speed = 50.0
 _texture_0 = ExtResource("5_08ki7")
 _texture_1 = ExtResource("6_w82sn")
 metadata/_edit_lock_ = true
 
 [node name="RedGhost" parent="." instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 56)
+speed = 50.0
 metadata/_edit_lock_ = true
 
 [node name="Food" type="Node2D" parent="."]

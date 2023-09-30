@@ -21,6 +21,8 @@ const LEVEL_CHANGE_DELAY_SEC: float = 1.0
 const POINTS_TREAT: int = 10
 const POINTS_SUPER_TREAT: int = 20
 const POINTS_GHOST: int = 200
+const FAST_ENEMY_SPEED: float = 40.0
+const SLOW_ENEMY_SPEED: float = 13.375
 
 @export var _initial_level: Day02Game.Level
 
@@ -73,8 +75,21 @@ func _set_up_level() -> void:
 		maze.visible = false
 	_timer.start(LEVEL_CHANGE_DELAY_SEC)
 	await _timer.timeout
-	_get_current_maze().reset()
-	_get_current_maze().visible = true
+	var current_maze = _get_current_maze()
+	current_maze.reset()
+	
+	if _level > 0:
+		current_maze.blue_ghost_speed = FAST_ENEMY_SPEED
+	else:
+		current_maze.blue_ghost_speed = SLOW_ENEMY_SPEED
+	if _level > 1:
+		current_maze.red_ghost_speed = FAST_ENEMY_SPEED
+		current_maze.yellow_ghost_speed = FAST_ENEMY_SPEED
+	else:
+		current_maze.red_ghost_speed = SLOW_ENEMY_SPEED
+		current_maze.yellow_ghost_speed = SLOW_ENEMY_SPEED
+	
+	current_maze.visible = true
 	_ui.show_black_screen(false)
 
 

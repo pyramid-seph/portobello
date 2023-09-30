@@ -69,6 +69,7 @@ size = Vector2(14, 14)
 
 [node name="Day02Enemy" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_h5v7e")
+speed = 50.0
 _texture_0 = ExtResource("2_8rakd")
 _texture_1 = ExtResource("3_8px7h")
 _z_index_default = -1
