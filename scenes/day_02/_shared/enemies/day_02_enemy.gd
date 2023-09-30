@@ -101,19 +101,20 @@ func _is_scared() -> bool:
 			_state == MazeEnemyState.NOT_SO_SCARED
 
 
-func _move(delta: float) -> void:
-	if is_halt:
+func _move(delta_time: float) -> void:
+	if is_halt or _curr_dir == Vector2i.ZERO:
 		return
-	var remaining_distance: float = speed * delta
-	while remaining_distance > 0 and not is_zero_approx(remaining_distance):
-		if _curr_dir == Vector2i.ZERO:
-			break
-		
-		var old_pos: Vector2 = position
-		_move_towards_target(remaining_distance)
-		remaining_distance -= old_pos.distance_to(position)
-		var arrived_to_target: bool = position == _target_local_pos
-		if arrived_to_target:
+	
+	var delta_distance: float = speed * delta_time
+	var remaining_distance: float = position.distance_to(_target_local_pos)
+	var iterations := 1
+	if delta_distance > remaining_distance:
+		iterations = ceili(delta_distance / remaining_distance)
+	for i in range(iterations):
+		_move_towards_target(delta_distance)
+		delta_distance = maxf(delta_distance - remaining_distance, 0.0)
+		remaining_distance = position.distance_squared_to(_target_local_pos)
+		if is_zero_approx(remaining_distance):
 			_pick_next_movement()
 
 
@@ -128,6 +129,10 @@ func _move_towards_target(distance: float) -> void:
 			new_pos.y = maxf(new_pos.y - distance, _target_local_pos.y)
 		Vector2i.DOWN:
 			new_pos.y = minf(new_pos.y + distance, _target_local_pos.y)
+	if is_equal_approx(new_pos.x, _target_local_pos.x):
+		new_pos.x = _target_local_pos.x
+	if is_equal_approx(new_pos.y, _target_local_pos.y):
+		new_pos.y = _target_local_pos.y
 	position = new_pos
 
 
