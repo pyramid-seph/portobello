@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="8_ljf85"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/score.gd" id="9_6c4c2"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/hi_score.gd" id="10_udkuv"]
-[ext_resource type="PackedScene" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="11_rm35m"]
+[ext_resource type="PackedScene" uid="uid://dxxd4wyd36xa6" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="11_rm35m"]
 [ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="12_d0fyw"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/game_over.gd" id="13_jr0d7"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/piece_of_cake_label.gd" id="14_ewrt7"]
@@ -21,9 +21,6 @@
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
-face_index = null
-embolden = null
-transform = null
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -36,9 +33,6 @@ subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
 fallbacks = Array[Font]([SubResource("1")])
-face_index = null
-embolden = null
-transform = null
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0

@@ -100,6 +100,7 @@ theme_override_font_sizes/font_size = 18
 text = "¡Pan comido!"
 horizontal_alignment = 1
 vertical_alignment = 1
+_duration_sec = 2.0
 
 [node name="BlackScreen" type="ColorRect" parent="."]
 visible = false

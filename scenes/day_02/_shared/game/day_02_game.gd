@@ -16,7 +16,7 @@ const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 3
-const REVIVAL_DELAY_SEC: float = 2.0
+const REVIVAL_DELAY_SEC: float = 0.5
 const LEVEL_CHANGE_DELAY_SEC: float = 1.0
 const POINTS_TREAT: int = 10
 const POINTS_SUPER_TREAT: int = 20
@@ -32,7 +32,6 @@ var _remaining_lives: int:
 	set(value):
 		_remaining_lives = value
 		_on_remaining_lives_changed()
-var _immediate_lives_counter_update: bool = true
 
 @onready var _is_ready := true
 @onready var _timer := $Timer as Timer
@@ -146,10 +145,8 @@ func _on_score_changed() -> void:
 
 
 func _on_remaining_lives_changed() -> void:
-	if not _is_ready:
-		return
-	_ui.update_lives_counter(_remaining_lives, _immediate_lives_counter_update)
-	_immediate_lives_counter_update = false
+	if _is_ready:
+		_ui.update_lives_counter(_remaining_lives, true)
 
 
 func _save_high_score() -> bool:

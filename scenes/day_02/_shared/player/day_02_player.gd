@@ -13,7 +13,7 @@ enum Day02PlayerState {
 
 const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
-const SPEED: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
+const SPEED: float = 40
 const INPUT_TOLERANCE: float = 0.4
 
 @export_group("Debug", "_debug")
@@ -38,7 +38,8 @@ var _state: Day02PlayerState:
 
 func _ready() -> void:
 	if not _maze:
-		print("Player must be a children of a maze.")
+		queue_free()
+		print("Player must be a direct children of a maze. queue_free() was called on the player.")
 		return
 
 
@@ -235,11 +236,9 @@ func _on_state_set() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("treats"):
-		print("chomped a treat")
 		area.visible = false
 		ate_regular_treat.emit()
 	if area.is_in_group("super_treats"):
-		print("chomped a super treat")
 		area.visible = false
 		ate_super_treat.emit()
 

@@ -14,8 +14,10 @@ enum MazeEnemyState {
 }
 
 const SCARE_DURATION_SEC: float = 6.4
-const NOT_SO_SCARED_DELAY_SEC: float = 4.0
+const NOT_SO_SCARED_DELAY_SEC: float = 4.4
 const DYING_DURATION_SEC: float = 1.0
+const FAST_SPEED: float = 40
+const SLOW_SPEED: float = 13.375
 
 @export var speed: float = 50.0 # 4 pixels every 0.08 seconds (OG game -> 1 frame = 0.08s)
 @export var _texture_0: Texture2D:
@@ -80,7 +82,6 @@ func reset(map_pos: Vector2i) -> void:
 	_scare_timer.stop()
 	_not_so_scared_delay_timer.stop()
 	_dying_timer.stop()
-	# Reset dead animation timer (whenever we add it)
 	_state = MazeEnemyState.CHASING
 	is_halt = true
 	teleport(map_pos)
