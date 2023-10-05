@@ -628,6 +628,9 @@ metadata/_edit_lock_ = true
 [node name="Day01GameUi" parent="Interface" instance=ExtResource("6_s8541")]
 unique_name_in_owner = true
 
+[node name="Day01BetweenLevelsCutscene" parent="Interface" instance=ExtResource("16_sc4vk")]
+unique_name_in_owner = true
+
 [node name="ResultsScreen" parent="Interface" instance=ExtResource("2_28578")]
 unique_name_in_owner = true
 visible = false
@@ -638,9 +641,6 @@ _stars_threshold_two = 4
 _stars_threshold_three = 6
 _stars_threshold_four = 8
 _stars_threshold_five = 9
-
-[node name="Day01BetweenLevelsCutscene" parent="." instance=ExtResource("16_sc4vk")]
-unique_name_in_owner = true
 
 [connection signal="ate" from="World/TileMap/Day01Player" to="." method="_on_player_ate"]
 [connection signal="died" from="World/TileMap/Day01Player" to="." method="_on_player_died"]

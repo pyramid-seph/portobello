@@ -1,5 +1,6 @@
 extends Control
 
+
 @export var show_auto_fire: bool = false
 
 @onready var _give_up_button = %GiveUpButton as Button
@@ -18,6 +19,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		get_viewport().set_input_as_handled()
 		if not _scene_tree.paused and Game.is_pause_disabled:
 			return
 		_scene_tree.paused = not _scene_tree.paused
@@ -42,8 +44,9 @@ func _show_menu(make_visible: bool) -> void:
 
 
 func _populate_settings() -> void:
-	_autofire_checkbox.set_pressed_no_signal(SaveDataManager.save_data.is_autofire_enabled)
-	_vibrate_checkbox.set_pressed_no_signal(SaveDataManager.save_data.is_vibration_enabled)
+	var save_data := SaveDataManager.save_data as SaveData
+	_autofire_checkbox.set_pressed_no_signal(save_data.is_autofire_enabled)
+	_vibrate_checkbox.set_pressed_no_signal(save_data.is_vibration_enabled)
 
 
 func _on_day_3_ui_pause_state_changed(is_paused: bool) -> void:

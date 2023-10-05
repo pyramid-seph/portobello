@@ -1,4 +1,4 @@
-extends "res://scenes/_shared/cutscenes/cutscene.gd"
+extends "res://scenes/_shared/cutscenes/cutscene_2.gd"
 
 const ANIM_DEFAULT: String = "Default"
 const ANIM_DIZZY: String = "Dizzy"
@@ -6,12 +6,12 @@ const ANIM_DIZZY: String = "Dizzy"
 @export var inverted_controls: bool
 
 @onready var _animator := $AnimationPlayer as AnimationPlayer
-@onready var _canvas_layer := $CanvasLayer
+@onready var _color_rect := $ColorRect
 
 
 func _ready() -> void:
 	super()
-	_canvas_layer.visible = false
+	_color_rect.visible = false
 
 
 func _play() -> void:
@@ -22,7 +22,7 @@ func _play() -> void:
 func _clean_up() -> void:
 	if _animator.is_playing():
 		_animator.stop()
-	_canvas_layer.visible = false
+	_color_rect.visible = false
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
