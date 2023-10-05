@@ -1,13 +1,16 @@
 extends Control
 
 
+const IDX_YES = 0
+const IDX_NO = 1
+
 @export var show_auto_fire: bool = false
 
 @onready var _give_up_button = %GiveUpButton as Button
 @onready var _pause_dialog = $PauseDialog
 @onready var _confirm_exit_dialog = $ConfirmExitLevelDialog
-@onready var _autofire_checkbox := %AutofireCheckButton as CheckButton
-@onready var _vibrate_checkbox := %VibrateCheckButton as CheckButton
+@onready var _autofire_selector := %AutofireSelector as HSelector
+@onready var _vibrate_selector := %VibrateSelector as HSelector
 @onready var _scene_tree := get_tree()
 
 
@@ -34,33 +37,37 @@ func _show_menu(make_visible: bool) -> void:
 	if visible:
 		_confirm_exit_dialog.visible = false
 		_pause_dialog.visible = true
-		_autofire_checkbox.visible = show_auto_fire
-		_populate_settings()
-		_vibrate_checkbox.call_deferred("grab_focus")
+		_autofire_selector.visible = show_auto_fire
+		_load_data()
+		_vibrate_selector.call_deferred("grab_focus")
 		# Hack? This resets its size to the height of its content.
 		_pause_dialog.size.y = 0
 	else:
-		SaveDataManager.save()
+		_save_data()
 
 
-func _populate_settings() -> void:
+func _get_option_idx(is_feature_enabled: bool) -> int:
+	return IDX_YES if is_feature_enabled else IDX_NO
+
+
+func _is_feature_enabled(selector) -> bool:
+	return selector.current_option_idx == IDX_YES
+
+
+func _load_data() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
-	_autofire_checkbox.set_pressed_no_signal(save_data.is_autofire_enabled)
-	_vibrate_checkbox.set_pressed_no_signal(save_data.is_vibration_enabled)
+	var is_autofire_enabled: bool = save_data.is_autofire_enabled
+	var is_vibration_enabled: bool = save_data.is_vibration_enabled
+	_autofire_selector.current_option_idx = _get_option_idx(is_autofire_enabled)
+	_vibrate_selector.current_option_idx = _get_option_idx(is_vibration_enabled)
 
 
-func _on_day_3_ui_pause_state_changed(is_paused: bool) -> void:
-	_show_menu(is_paused)
-
-
-func _on_vibrate_check_button_toggled(button_pressed: bool) -> void:
-	SaveDataManager.save_data.is_vibration_enabled = button_pressed
-	if button_pressed:
-		Utils.vibrate_joy()
-
-
-func _on_autofire_check_button_toggled(button_pressed: bool) -> void:
-	SaveDataManager.save_data.is_autofire_enabled = button_pressed
+func _save_data() -> void:
+	var is_autofire_enabled: bool = _is_feature_enabled(_autofire_selector)
+	var is_vibration_enabled: bool = _is_feature_enabled(_vibrate_selector)
+	SaveDataManager.save_data.is_autofire_enabled = is_autofire_enabled
+	SaveDataManager.save_data.is_vibration_enabled = is_vibration_enabled
+	SaveDataManager.save()
 
 
 func _on_give_up_button_pressed() -> void:
@@ -75,6 +82,6 @@ func _on_confirm_exit_level_dialog_negative_btn_pressed() -> void:
 
 
 func _on_confirm_exit_level_dialog_positive_btn_pressed() -> void:
-	SaveDataManager.save()
+	_save_data()
 	_scene_tree.paused = false
 	Game.start(Game.Minigame.TITLE_SCREEN)
