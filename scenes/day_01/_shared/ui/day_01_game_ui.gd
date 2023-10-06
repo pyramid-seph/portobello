@@ -21,6 +21,7 @@ var _lives_counter_tween: Tween
 @onready var _time_out := $TimeOut
 @onready var _dialogue_box := $DialogueBox as DialogueBox
 @onready var _black_screen := $BlackScreen
+@onready var _pause_menu := $PauseMenu
 
 
 func show_level_start(mode: Game.Mode, index: int) -> void:
@@ -99,6 +100,10 @@ func play_dialogue(dialogue: Array[DialogueLine]) -> void:
 
 func stop_dilogue() -> void:
 	_dialogue_box.stop()
+
+
+func set_pause_menu_enabled(enabled: bool) -> void:
+	_pause_menu.enabled = enabled
 
 
 func _set_lives_counter(value: int) -> void:

@@ -21,7 +21,6 @@ enum Minigame {
 	CREDITS,
 }
 
-var is_pause_disabled: bool
 var is_cold_boot: bool = true
 
 var _current_minigame: Minigame = Minigame.TITLE_SCREEN
@@ -29,11 +28,6 @@ var _current_minigame: Minigame = Minigame.TITLE_SCREEN
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-
-func _ready() -> void:
-	SceneChanger.change_started.connect(_on_scene_change_started)
-	SceneChanger.change_finished.connect(_on_scene_change_finished)
 
 
 func start(minigame: Minigame, allow_restart := false) -> void:
@@ -88,11 +82,3 @@ func _get_minigame_start_level(minigame: Minigame) -> int:
 			return Day03Game.Level.SCORE_ATTACK_3B
 		_:
 			return -1
-
-
-func _on_scene_change_started() -> void:
-	is_pause_disabled = true
-
-
-func _on_scene_change_finished() -> void:
-	is_pause_disabled = false
