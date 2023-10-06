@@ -16,7 +16,7 @@ enum LevelState {
 	SHOWING_RESULTS,
 }
 
-const DAY_INDEX = 2
+const DAY: int = 3
 const START_DURATION: float = 1.6
 const GAME_OVER_DURATION: float = 3.2
 const PROP_NAME_STORY_SAVE_DATA_HIGH_SCORE: String = "high_scores:day_three"
@@ -208,7 +208,7 @@ func _on_results_screen_calculated(new_high_score: int, stars: int) -> void:
 			 stars
 		)
 		var curr_progress = SaveDataManager.save_data.latest_day_completed
-		SaveDataManager.save_data.latest_day_completed = maxi(curr_progress, DAY_INDEX)
+		SaveDataManager.save_data.latest_day_completed = maxi(curr_progress, DAY)
 	elif _game_mode == Game.Mode.SCORE_ATTACK:
 		SaveDataManager.save_data.set_indexed(
 			_get_score_attack_high_score_prop_name(),
