@@ -20,6 +20,7 @@ signal main_course_presented
 @onready var _hi_score_label := $HiScore
 @onready var _bars := $BarsMargin/Bars
 @onready var _black_screen := $BlackScreen
+@onready var _pause_menu := $PauseMenu
 
 
 func _ready() -> void:
@@ -61,6 +62,10 @@ func start_game_presentation(mode: Game.Mode, index: int) -> void:
 		line_1 = "Buffet"
 	_start_labels.text_1 = line_1
 	_start_labels.start()
+
+
+func set_pause_menu_enabled(enabled: bool) -> void:
+	_pause_menu.enabled = enabled
 
 
 func _on_player_data_score_updated() -> void:
