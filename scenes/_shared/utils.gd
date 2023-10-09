@@ -104,3 +104,11 @@ static func last(arr: Array):
 
 static func last_child(node: Node):
 	return null if node == null else last(node.get_children())
+
+
+static func is_running_on_web() -> bool:
+	return OS.get_name() == "Web"
+
+
+static func get_game_version() -> String:
+	return "v%s" % ProjectSettings.get_setting("application/config/version")
