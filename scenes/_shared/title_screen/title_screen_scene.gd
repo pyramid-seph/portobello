@@ -113,9 +113,12 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _show_scores_button := %ShowScoresBtn
 @onready var _show_options_btn := %ShowOptionsBtn
 @onready var _title_screen_bg := %TitleScreenBg
+@onready var _version_label := $TitleScreen/VersionLabel as Label
 
 
 func _ready() -> void:
+	_version_label.text = Utils.get_game_version()
+	_update_version_label_visibility()
 	_exit_game_btn.visible = !Utils.is_running_on_web()
 	
 	if Game.is_cold_boot or _debug_is_cold_boot:
@@ -124,6 +127,10 @@ func _ready() -> void:
 		_logos_roll.start()
 	else:
 		_enable_title_screen(true)
+
+
+func _update_version_label_visibility() -> void:
+	_version_label.visible = !_progress_menu.visible
 
 
 func _get_enabled_story_mode_games() -> Array:
@@ -264,3 +271,7 @@ func _on_progress_menu_closed() -> void:
 func _on_settings_menu_closed() -> void:
 	_main_menu.visible = true
 	_show_options_btn.call_deferred("grab_focus")
+
+
+func _on_progress_menu_visibility_changed() -> void:
+	_update_version_label_visibility()
