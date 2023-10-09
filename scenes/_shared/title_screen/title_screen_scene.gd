@@ -116,6 +116,8 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 
 
 func _ready() -> void:
+	_exit_game_btn.visible = !Utils.is_running_on_web()
+	
 	if Game.is_cold_boot or _debug_is_cold_boot:
 		Game.is_cold_boot = false
 		_enable_title_screen(false)

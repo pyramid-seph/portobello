@@ -104,3 +104,7 @@ static func last(arr: Array):
 
 static func last_child(node: Node):
 	return null if node == null else last(node.get_children())
+
+
+static func is_running_on_web() -> bool:
+	return OS.get_name() == "Web"
