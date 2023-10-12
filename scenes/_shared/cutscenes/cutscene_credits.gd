@@ -1,4 +1,4 @@
-extends "res://scenes/_shared/cutscenes/cutscene.gd"
+extends "res://scenes/_shared/cutscenes/cutscene_2.gd"
 
 
 @onready var _pre_credits_scene := $PreCreditsScene

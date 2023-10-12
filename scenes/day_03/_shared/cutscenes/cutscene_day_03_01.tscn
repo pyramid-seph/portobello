@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgqrapqihdd85"]
+[gd_scene load_steps=5 format=3 uid="uid://cgqrapqihdd85"]
 
 [ext_resource type="Texture2D" uid="uid://copb6xp56jikc" path="res://art/cutscenes/day_3_intro_0.png" id="1_2g317"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.gd" id="1_i8prj"]
-[ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_v6jj7"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_sbdps"]
 [ext_resource type="FontFile" uid="uid://cbcekcs46mddk" path="res://art/fonts/azeret_mono/AzeretMono-Italic-VariableFont_wght.ttf" id="4_sjxl4"]
 
-[node name="CutsceneDay0301" instance=ExtResource("1_v6jj7")]
+[node name="CutsceneDay0301" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_i8prj")
 _autostart = true
 
-[node name="Control" type="Node" parent="." index="0"]
-
-[node name="ColorRect" type="ColorRect" parent="Control" index="0"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,16 +24,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="DayLabel" type="Label" parent="Control" index="1"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.5
-offset_top = -11.5
-offset_right = 26.5
-offset_bottom = 11.5
+[node name="DayLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_sbdps")
@@ -39,7 +38,7 @@ text = "Día 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
 z_index = 1
 position = Vector2(120, 152)
 texture = ExtResource("1_2g317")
