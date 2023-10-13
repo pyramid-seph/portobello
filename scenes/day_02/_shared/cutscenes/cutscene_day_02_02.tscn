@@ -1,20 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw16n0jtxmc6c"]
+[gd_scene load_steps=5 format=3 uid="uid://cw16n0jtxmc6c"]
 
-[ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_8wd51"]
 [ext_resource type="Script" path="res://scenes/day_02/_shared/cutscenes/cutscene_day_02_02.gd" id="2_goiei"]
 [ext_resource type="Texture2D" uid="uid://jxt7qyck7yjd" path="res://art/cutscenes/day_02_outro_00.png" id="3_suly8"]
 [ext_resource type="Texture2D" uid="uid://bhe5yh2q53r6h" path="res://art/cutscenes/day_02_outro_01.png" id="4_ro7q7"]
 [ext_resource type="Texture2D" uid="uid://cq2fmhn5t3a2t" path="res://art/cutscenes/day_02_outro_02.png" id="5_bldve"]
 
-[node name="CutsceneDay0202" instance=ExtResource("1_8wd51")]
+[node name="CutsceneDay0202" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_goiei")
 _autostart = true
 
-[node name="Background" type="CanvasLayer" parent="." index="0"]
-layer = -1
-visible = false
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="Background" index="0"]
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,22 +28,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Panel00" type="Sprite2D" parent="." index="1"]
+[node name="Panel00" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(120, 150)
 texture = ExtResource("3_suly8")
 
-[node name="Panel01" type="Sprite2D" parent="." index="2"]
+[node name="Panel01" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(120, 150)
 texture = ExtResource("4_ro7q7")
 
-[node name="Panel02" type="Sprite2D" parent="." index="3"]
+[node name="Panel02" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(120, 150)
 texture = ExtResource("5_bldve")
-
-[node name="Timer" type="Timer" parent="." index="4"]
-one_shot = true
 
 [connection signal="finished" from="." to="." method="_on_finished"]
