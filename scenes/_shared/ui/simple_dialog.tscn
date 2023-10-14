@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="1_pt1vt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlpij"]
-bg_color = Color(1, 1, 1, 0)
+bg_color = Color(0, 0, 0, 0.784314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85es1"]
 content_margin_left = 8.0
