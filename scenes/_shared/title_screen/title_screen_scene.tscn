@@ -25,13 +25,13 @@ line_spacing = 0.0
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48nto"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xx1b"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pe1sx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntqwi"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -152,7 +152,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_48nto")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xx1b")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -162,7 +162,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_pe1sx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ntqwi")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -172,7 +172,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ScoreAttackGameSelector")
 focus_neighbor_bottom = NodePath("../ShowOptionsBtn")
-button_mask = 0
+mouse_filter = 2
 text = "High Scores"
 alignment = 0
 
@@ -181,6 +181,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowScoresBtn")
 focus_neighbor_bottom = NodePath("../ExitGameBtn")
+mouse_filter = 2
 button_mask = 0
 text = "Opciones"
 alignment = 0
@@ -190,6 +191,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowOptionsBtn")
 focus_neighbor_bottom = NodePath("../StoryModeGameSelector")
+mouse_filter = 2
 button_mask = 0
 text = "Salir"
 alignment = 0
