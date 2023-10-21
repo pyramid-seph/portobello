@@ -9,7 +9,6 @@ signal player_dying
 signal player_died
 
 enum MazeState {
-	LOL,
 	RESET,
 	STARTED,
 	FAILED,
@@ -112,6 +111,10 @@ func get_surrounding_empty_cells(map_pos: Vector2i) -> Array[Vector2i]:
 	return surrounding_cells.filter(func(item):
 		return is_empty_tile(item)
 	)
+
+
+func global_to_map(global_pos: Vector2) -> Vector2i:
+	return local_to_map(to_local(global_pos))
 
 
 func _is_respawn_point_safe_for_the_player() -> bool:

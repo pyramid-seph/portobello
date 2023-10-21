@@ -1,6 +1,7 @@
 @tool
 extends Node2D
 
+
 signal chomped
 signal dead
 
@@ -29,7 +30,6 @@ const DYING_DURATION_SEC: float = 1.0
 @export var _z_index_default: int
 @export var _z_index_dead: int
 
-
 var is_halt: bool = true:
 	set(value):
 		is_halt = value
@@ -51,16 +51,12 @@ var _state: MazeEnemyState = MazeEnemyState.CHASING:
 
 func _ready() -> void:
 	_on_is_halt_set()
-	
-	if not Engine.is_editor_hint() and not _maze:
-		queue_free()
-		print("Maze enemies must be direct children of mazes. queue_free() was called on this enemy.")
-		return
 	_on_textures_set()
 	if not Engine.is_editor_hint():
 		_on_state_set()
-		await _maze.ready
-		_pick_next_movement()
+		if _maze:
+			await _maze.ready
+			_pick_next_movement()
 
 
 func _physics_process(delta: float) -> void:
@@ -71,8 +67,9 @@ func _physics_process(delta: float) -> void:
 
 
 func teleport(map_pos: Vector2i) -> void:
-	position = _maze.map_to_local(map_pos)
-	_pick_next_movement()
+	if _maze:
+		position = _maze.map_to_local(map_pos)
+		_pick_next_movement()
 
 
 func reset(map_pos: Vector2i) -> void:
@@ -102,41 +99,31 @@ func _is_scared() -> bool:
 
 
 func _move(delta_time: float) -> void:
-	if is_halt or _curr_dir == Vector2i.ZERO:
+	if not _maze or is_halt or _curr_dir == Vector2i.ZERO:
 		return
 	
-	var delta_distance: float = speed * delta_time
-	var remaining_distance: float = position.distance_to(_target_local_pos)
-	var iterations := 1
-	if delta_distance > remaining_distance:
-		iterations = ceili(delta_distance / remaining_distance)
+	var distance_budget: float = speed * delta_time
+	var distance_to_target: float = position.distance_to(_target_local_pos)
+	if is_zero_approx(distance_to_target): # TODO
+		position = _target_local_pos
+		_pick_next_movement()
+		return
+	
+	var iterations: int = 1
+	if distance_budget > distance_to_target:
+		iterations = ceili(distance_budget / distance_to_target)
 	for i in range(iterations):
-		_move_towards_target(delta_distance)
-		delta_distance = maxf(delta_distance - remaining_distance, 0.0)
-		remaining_distance = position.distance_squared_to(_target_local_pos)
-		if is_zero_approx(remaining_distance):
+		position = position.move_toward(_target_local_pos, distance_budget)
+		distance_budget = maxf(distance_budget - distance_to_target, 0.0)
+		distance_to_target = position.distance_to(_target_local_pos)
+		if is_zero_approx(distance_to_target):
 			_pick_next_movement()
 
 
-func _move_towards_target(distance: float) -> void:
-	var new_pos: Vector2 = position
-	match _curr_dir:
-		Vector2i.LEFT:
-			new_pos.x = maxf(new_pos.x - distance, _target_local_pos.x)
-		Vector2i.RIGHT:
-			new_pos.x = minf(new_pos.x + distance, _target_local_pos.x)
-		Vector2i.UP:
-			new_pos.y = maxf(new_pos.y - distance, _target_local_pos.y)
-		Vector2i.DOWN:
-			new_pos.y = minf(new_pos.y + distance, _target_local_pos.y)
-	if is_equal_approx(new_pos.x, _target_local_pos.x):
-		new_pos.x = _target_local_pos.x
-	if is_equal_approx(new_pos.y, _target_local_pos.y):
-		new_pos.y = _target_local_pos.y
-	position = new_pos
-
-
 func _pick_next_movement() -> void:
+	if not _maze:
+		return
+	
 	var candidates: Array[Vector2i] = _maze.get_surrounding_empty_cells(_map_pos())
 	if candidates.is_empty():
 		_curr_dir = Vector2i.ZERO

@@ -1,5 +1,6 @@
 extends Node2D
 
+
 signal ate_regular_treat
 signal ate_super_treat
 signal dying
@@ -13,7 +14,7 @@ enum Day02PlayerState {
 
 const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
-const SPEED: float = 40
+const SPEED: float = 40.0
 const INPUT_TOLERANCE: float = 0.4
 
 @export_group("Debug", "_debug")
@@ -21,47 +22,32 @@ const INPUT_TOLERANCE: float = 0.4
 	get:
 		return _debug_is_invincible and OS.is_debug_build()
 
-
+var _candidate_dir: Vector2i
 var is_movement_allowed := false
 var _curr_dir: Vector2i
-var _candidate_dir: Vector2i
 var _state: Day02PlayerState:
 	set(value):
 		_state = value
 		_on_state_set()
+var _next_valid_dirs: Array[Vector2i]
+var _origin_local_pos: Vector2
 
 @onready var _is_ready := true
-@onready var _target_local_pos: Vector2 = position
+@onready var _target_local_pos: Vector2 = position:
+	set(value):
+		_origin_local_pos = _target_local_pos
+		_target_local_pos = value
+		_on_target_local_pos_set()
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _maze := get_parent() as Maze
 
 
 func _ready() -> void:
+	_on_visibility_changed()
 	if not _maze:
 		queue_free()
 		print("Player must be a direct children of a maze. queue_free() was called on the player.")
 		return
-
-
-func _draw() -> void:
-	var rect := Vector2i(_target_local_pos - position + Vector2(-8,-8))
-	draw_rect(Rect2(rect, Vector2(16,16)), Color(Color.YELLOW, 0.4))
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_left"):
-		_candidate_dir = Vector2i.LEFT
-	elif event.is_action_pressed("move_up"):
-		_candidate_dir = Vector2i.UP
-	elif event.is_action_pressed("move_down"):
-		_candidate_dir = Vector2i.DOWN
-	elif event.is_action_pressed("move_right"):
-		_candidate_dir = Vector2i.RIGHT
-	_pick_next_movement_3()
-
-
-func _process(_delta: float) -> void:
-	queue_redraw()
 
 
 func _physics_process(delta: float) -> void:
@@ -69,16 +55,30 @@ func _physics_process(delta: float) -> void:
 		_move(delta)
 
 
+func _process(_delta: float) -> void:
+	_read_input()
+	$Node/Sprite2D2.global_position = _maze.to_global(_target_local_pos)
+	$Node/Sprite2D.global_position = _maze.to_global(_origin_local_pos)
+	$Node/Sprite2D.rotation_degrees = _animated_sprite.rotation_degrees
+	$Node/Sprite2D.flip_h = _animated_sprite.flip_h
+	$Node/Sprite2D.flip_v = _animated_sprite.flip_v
+	queue_redraw()
+
+
+func _draw() -> void:
+	draw_line(Vector2.ZERO, _candidate_dir * 16, Color.RED, 2)
+	draw_line(Vector2(-2, 8), Vector2(2, 8), Color.MEDIUM_SEA_GREEN, 2)
+	draw_line(Vector2(-2, -8), Vector2(2, -8), Color.MEDIUM_SEA_GREEN, 2)
+	draw_line(Vector2(-8, -2), Vector2(-8, 2), Color.MEDIUM_SEA_GREEN, 2)
+	draw_line(Vector2(8, -2), Vector2(8, 2), Color.MEDIUM_SEA_GREEN, 2)
+
+
 func teleport(map_pos: Vector2i) -> void:
+	_curr_dir = Vector2i.ZERO
+	_candidate_dir = Vector2i.ZERO
 	position = _maze.map_to_local(map_pos)
 	_target_local_pos = position
-	#_pick_next_movement_2()
-
-
-func revive(map_pos: Vector2i) -> void:
-	if _is_dead():
-		reset(map_pos)
-		is_movement_allowed = true
+	_calculate_next_target()
 
 
 func reset(map_pos: Vector2i) -> void:
@@ -86,14 +86,15 @@ func reset(map_pos: Vector2i) -> void:
 	_animated_sprite.rotation_degrees = 0.0
 	_animated_sprite.flip_h = false
 	_animated_sprite.flip_v = false
-	_curr_dir = Vector2i.ZERO
 	is_movement_allowed = false
 	_state = Day02PlayerState.ALIVE
 	visible = true
 
 
-func _is_dead() -> bool:
-	return _state == Day02PlayerState.DYING or _state == Day02PlayerState.DYING
+func revive(map_pos: Vector2i) -> void:
+	if _is_dead():
+		reset(map_pos)
+		is_movement_allowed = true
 
 
 func die() -> void:
@@ -103,102 +104,81 @@ func die() -> void:
 		dying.emit()
 
 
-func _move(delta: float) -> void:
-	if not is_movement_allowed:
+func _is_dead() -> bool:
+	return _state == Day02PlayerState.DYING or _state == Day02PlayerState.DYING
+
+
+func _calculate_next_target() -> void:
+	var target_map_pos: Vector2i = _maze.local_to_map(_target_local_pos)
+	var next_target_map_pos: Vector2i = target_map_pos + _curr_dir
+	if not _maze.is_empty_tile(next_target_map_pos):
+		next_target_map_pos = target_map_pos
+	_target_local_pos = _maze.map_to_local(next_target_map_pos)
+
+
+func _read_input() -> void:
+	if _is_dead() or not is_movement_allowed:
+		_candidate_dir = Vector2i.ZERO
 		return
 	
-#	if _curr_dir == Vector2i.ZERO:
-#		_pick_next_movement_2()
-#	_pick_next_movement_2()
-
-	var remaining_distance: float = SPEED * delta
-	while remaining_distance > 0 and not is_zero_approx(remaining_distance):
-		if _curr_dir == Vector2i.ZERO:
-			break
-		
-		var old_pos: Vector2 = position
-		_move_towards_target(remaining_distance)
-		remaining_distance -= old_pos.distance_to(position)
-		var arrived_to_target: bool = position == _target_local_pos
-		if arrived_to_target:
-			break
-#		if arrived_to_target:
-#			_pick_next_movement_2()
-	_update_sprite_direction()
-	_candidate_dir = Vector2.ZERO
-	$Label.text = str(_map_pos())
-
-
-func _move_towards_target(distance: float) -> void:
-	var new_pos: Vector2 = position
-	match _curr_dir:
-		Vector2i.LEFT:
-			new_pos.x = maxf(new_pos.x - distance, _target_local_pos.x)
-		Vector2i.RIGHT:
-			new_pos.x = minf(new_pos.x + distance, _target_local_pos.x)
-		Vector2i.UP:
-			new_pos.y = maxf(new_pos.y - distance, _target_local_pos.y)
-		Vector2i.DOWN:
-			new_pos.y = minf(new_pos.y + distance, _target_local_pos.y)
-	position = new_pos
-
-
-func _pick_next_movement_3() -> void:
-	if _candidate_dir == Vector2i.ZERO and _curr_dir == Vector2i.ZERO:
-		return
-	
-	var arrived_to_destination := position != _target_local_pos
-	if arrived_to_destination and _candidate_dir + _curr_dir == Vector2i.ZERO:
-		if _map_pos() == _maze.local_to_map(_target_local_pos):
-			_target_local_pos = _maze.map_to_local(_map_pos() + _candidate_dir)
-		else:
-			_target_local_pos = _maze.map_to_local(_map_pos())
-		_curr_dir = _candidate_dir
-	else:
-		_pick_next_movement_2()
-
-
-func _pick_next_movement_2() -> void:
-	if _candidate_dir == Vector2i.ZERO and _curr_dir == Vector2i.ZERO:
-		return
-
-	var curr_map_pos := _map_pos()
-	var candidate_works := _candidate_dir != Vector2i.ZERO and \
-			_maze.is_empty_tile(curr_map_pos + _candidate_dir)
-	var curr_works = _maze.is_empty_tile(curr_map_pos + _curr_dir)
-	if candidate_works:
-		_curr_dir = _candidate_dir
-	elif not candidate_works and not curr_works:
-		_curr_dir = Vector2i.ZERO
-	var new_target_map_pos := curr_map_pos + _curr_dir
-	_target_local_pos = _maze.map_to_local(new_target_map_pos)
-
-
-func _pick_next_movement() -> void:
-	var candidates: Array[Vector2i] = _maze.get_surrounding_empty_cells(_map_pos())
-	if candidates.is_empty():
-		_curr_dir = Vector2i.ZERO
-		_target_local_pos = _map_pos()
-		return
-	
-	var curr_map_pos = _map_pos()
-	var candidates_partition: Array = Utils.partition(candidates, func(candidate):
-		var curr_dir_candidate: Vector2i = candidate - curr_map_pos
-		return Vector2(_curr_dir).dot(curr_dir_candidate) == 0
+	var input_vector := Input.get_vector(
+			"move_left",
+			"move_right",
+			"move_up",
+			"move_down"
 	)
-	var perpendicular_candidates: Array = candidates_partition[0]
-	var parallel_candidates: Array = candidates_partition[1]
-	var is_at_crossroad := !perpendicular_candidates.is_empty()
+	var direction := Vector2i.ZERO
+	if input_vector != Vector2.ZERO:
+		if input_vector.abs().max_axis_index() == Vector2i.AXIS_X:
+			direction.x = 1 if input_vector.x > 0 else -1
+			direction.y = 0
+		else:
+			direction.x = 0
+			direction.y = 1 if input_vector.y > 0 else -1
+	_candidate_dir = direction
+
+
+func _move(delta_time: float) -> void:
+	if not _maze or not is_movement_allowed:
+		_candidate_dir = Vector2.ZERO
+		return
 	
-	var new_target_map_pos: Vector2i = Vector2i.ZERO
-	if is_at_crossroad:
-		new_target_map_pos = candidates.pick_random()
-	elif parallel_candidates.size() == 1:
-		new_target_map_pos = parallel_candidates[0]
-	else:
-		new_target_map_pos = curr_map_pos + _curr_dir
-	_curr_dir = new_target_map_pos - _map_pos()
-	_target_local_pos = _maze.map_to_local(new_target_map_pos)
+	if _curr_dir == Vector2i.ZERO or position == _target_local_pos:
+		if _candidate_dir in _next_valid_dirs:
+			_curr_dir = _candidate_dir
+			_calculate_next_target()
+		else:
+			_curr_dir = Vector2i.ZERO
+			_candidate_dir = Vector2.ZERO
+			return
+	elif _curr_dir + _candidate_dir == Vector2i.ZERO:
+		_curr_dir = _candidate_dir
+		_target_local_pos = _origin_local_pos
+	
+	var distance_budget: float = SPEED * delta_time
+	# It is safe to assume that tile_size.x == tile_size.y
+	#  because I'm using square tiles.
+	var tile_size: float = _maze.tile_set.tile_size.x
+	var max_iterations: int = ceili(distance_budget / tile_size)
+	var distance_to_target: float = position.distance_to(_target_local_pos)
+	if distance_to_target < distance_budget:
+		max_iterations += 1
+	
+	for i in range(max_iterations):
+		position = position.move_toward(_target_local_pos, distance_budget)
+		distance_budget = maxf(distance_budget - distance_to_target, 0.0)
+		distance_to_target = position.distance_to(_target_local_pos)
+		if position == _target_local_pos:
+			if _candidate_dir in _next_valid_dirs:
+				_curr_dir = _candidate_dir
+				_candidate_dir = Vector2i.ZERO
+			_calculate_next_target()
+			if position == _target_local_pos:
+				_curr_dir = Vector2i.ZERO
+				break
+	
+	_candidate_dir = Vector2i.ZERO
+	_update_sprite_direction()
 
 
 func _update_sprite_direction() -> void:
@@ -221,10 +201,6 @@ func _update_sprite_direction() -> void:
 			_animated_sprite.flip_v = false
 
 
-func _map_pos() -> Vector2i:
-	return _maze.local_to_map(position)
-
-
 func _on_state_set() -> void:
 	if not _is_ready:
 		return
@@ -232,6 +208,18 @@ func _on_state_set() -> void:
 	var new_animation := "dying" if _is_dead() else "default"
 	if _animated_sprite.animation != new_animation:
 		_animated_sprite.play(new_animation)
+
+
+func _on_target_local_pos_set() -> void:
+	_next_valid_dirs.clear()
+	if not _is_ready:
+		return
+	
+	var target_map_pos: Vector2i = _maze.local_to_map(_target_local_pos)
+	var surrounding_empty_cells: Array[Vector2i] = \
+			_maze.get_surrounding_empty_cells(target_map_pos)
+	for empty_cell_map_pos in surrounding_empty_cells:
+		_next_valid_dirs.append(empty_cell_map_pos - target_map_pos)
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

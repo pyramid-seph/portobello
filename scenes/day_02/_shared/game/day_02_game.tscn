@@ -28,7 +28,6 @@ position = Vector2(32, 72)
 metadata/_edit_lock_ = true
 
 [node name="MazeA" parent="World/Mazes" instance=ExtResource("2_8msno")]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="MazeB" parent="World/Mazes" instance=ExtResource("2_8msno")]
