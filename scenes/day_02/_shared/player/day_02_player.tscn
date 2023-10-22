@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0x0fhmsb17ts"]
+[gd_scene load_steps=18 format=3 uid="uid://d0x0fhmsb17ts"]
 
 [ext_resource type="Script" path="res://scenes/day_02/_shared/player/day_02_player.gd" id="1_18evh"]
 [ext_resource type="Texture2D" uid="uid://bwdibri83ew7" path="res://art/day_2/day_02_player_0.png" id="2_v6tjh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ksol15gs7fuf" path="res://art/day_2/day_02_player_dead_5.png" id="11_hvjuf"]
 [ext_resource type="Texture2D" uid="uid://bwlc0ekoyuk5w" path="res://art/day_2/day_02_player_dead_6.png" id="12_x8xgp"]
 [ext_resource type="Texture2D" uid="uid://cplnfpknckkpc" path="res://art/day_2/day_02_player_dead_7.png" id="13_i46ro"]
+[ext_resource type="Script" path="res://scenes/day_02/_shared/player/day_02_player_movement_debug.gd" id="14_2r3w2"]
 [ext_resource type="Texture2D" uid="uid://4wq4kjwsblmt" path="res://art/day_2/cat_food_super.png" id="14_nxlt4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tdrqc"]
@@ -65,13 +66,38 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgo7d"]
-size = Vector2(12, 10)
+size = Vector2(8, 8)
 
 [node name="Day02Player" type="Node2D" groups=["players"]]
 z_index = -2
 position = Vector2(-24, -8)
 script = ExtResource("1_18evh")
-_debug_is_invincible = true
+_debug_show_move_lines = true
+
+[node name="Day02PlayerMovementDebug" type="Node2D" parent="."]
+script = ExtResource("14_2r3w2")
+
+[node name="Node" type="Node" parent="Day02PlayerMovementDebug"]
+
+[node name="OriginSprite" type="Sprite2D" parent="Day02PlayerMovementDebug/Node"]
+self_modulate = Color(1, 1, 1, 0.486275)
+position = Vector2(-24, -8)
+texture = ExtResource("2_v6tjh")
+
+[node name="TargetSprite2" type="Sprite2D" parent="Day02PlayerMovementDebug/Node"]
+self_modulate = Color(1, 1, 1, 0.623529)
+texture = ExtResource("14_nxlt4")
+
+[node name="DirDurationLabel" type="Label" parent="Day02PlayerMovementDebug"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -14.0
+offset_right = 14.0
+offset_bottom = 23.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tdrqc")
@@ -83,19 +109,7 @@ collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_hgo7d")
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Node"]
-self_modulate = Color(1, 1, 1, 0.486275)
-position = Vector2(-24, -8)
-texture = ExtResource("2_v6tjh")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Node"]
-self_modulate = Color(1, 1, 1, 0.623529)
-texture = ExtResource("14_nxlt4")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

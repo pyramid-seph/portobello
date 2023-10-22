@@ -15,21 +15,35 @@ enum Day02PlayerState {
 const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
 const SPEED: float = 40.0
-const INPUT_TOLERANCE: float = 0.4
+const MAX_DIR_PRESSED_SEC: float = 0.15
+const CORNERING_ZONE_SQRD_LENGHT: float = pow(4.0, 2.0)
 
 @export_group("Debug", "_debug")
 @export var _debug_is_invincible: bool:
 	get:
 		return _debug_is_invincible and OS.is_debug_build()
+@export var _debug_show_move_lines: bool:
+	get:
+		return _debug_show_move_lines and OS.is_debug_build()
+@export var _debug_show_target_and_origin: bool:
+	get:
+		return _debug_show_target_and_origin and OS.is_debug_build()
+@export var _debug_show_dir_duration: bool:
+	get:
+		return _debug_show_dir_duration and OS.is_debug_build()
 
-var _candidate_dir: Vector2i
 var is_movement_allowed := false
+
+var _last_dir_input: Vector2i
+var _dir_pressed_sec: float
+var _candidate_dir: Vector2i
 var _curr_dir: Vector2i
 var _state: Day02PlayerState:
 	set(value):
 		_state = value
 		_on_state_set()
 var _next_valid_dirs: Array[Vector2i]
+var _origin_valid_dirs: Array[Vector2i]
 var _origin_local_pos: Vector2
 
 @onready var _is_ready := true
@@ -45,9 +59,8 @@ var _origin_local_pos: Vector2
 func _ready() -> void:
 	_on_visibility_changed()
 	if not _maze:
-		queue_free()
 		print("Player must be a direct children of a maze. queue_free() was called on the player.")
-		return
+		queue_free()
 
 
 func _physics_process(delta: float) -> void:
@@ -55,27 +68,15 @@ func _physics_process(delta: float) -> void:
 		_move(delta)
 
 
-func _process(_delta: float) -> void:
-	_read_input()
-	$Node/Sprite2D2.global_position = _maze.to_global(_target_local_pos)
-	$Node/Sprite2D.global_position = _maze.to_global(_origin_local_pos)
-	$Node/Sprite2D.rotation_degrees = _animated_sprite.rotation_degrees
-	$Node/Sprite2D.flip_h = _animated_sprite.flip_h
-	$Node/Sprite2D.flip_v = _animated_sprite.flip_v
-	queue_redraw()
-
-
-func _draw() -> void:
-	draw_line(Vector2.ZERO, _candidate_dir * 16, Color.RED, 2)
-	draw_line(Vector2(-2, 8), Vector2(2, 8), Color.MEDIUM_SEA_GREEN, 2)
-	draw_line(Vector2(-2, -8), Vector2(2, -8), Color.MEDIUM_SEA_GREEN, 2)
-	draw_line(Vector2(-8, -2), Vector2(-8, 2), Color.MEDIUM_SEA_GREEN, 2)
-	draw_line(Vector2(8, -2), Vector2(8, 2), Color.MEDIUM_SEA_GREEN, 2)
+func _process(delta: float) -> void:
+	_read_input(delta)
 
 
 func teleport(map_pos: Vector2i) -> void:
 	_curr_dir = Vector2i.ZERO
 	_candidate_dir = Vector2i.ZERO
+	_last_dir_input = Vector2i.ZERO
+	_dir_pressed_sec = 0
 	position = _maze.map_to_local(map_pos)
 	_target_local_pos = position
 	_calculate_next_target()
@@ -116,9 +117,22 @@ func _calculate_next_target() -> void:
 	_target_local_pos = _maze.map_to_local(next_target_map_pos)
 
 
-func _read_input() -> void:
+func _track_input_pressed(direction_pressed: Vector2i,  delta: float) -> void:
+	if direction_pressed == Vector2i.ZERO:
+		_last_dir_input = Vector2i.ZERO
+		_dir_pressed_sec = 0
+	elif _last_dir_input == direction_pressed:
+		_dir_pressed_sec = minf(_dir_pressed_sec + delta, MAX_DIR_PRESSED_SEC)
+	else:
+		_last_dir_input = direction_pressed
+		_dir_pressed_sec = 0
+
+
+func _read_input(delta: float) -> void:
 	if _is_dead() or not is_movement_allowed:
 		_candidate_dir = Vector2i.ZERO
+		_last_dir_input = Vector2i.ZERO
+		_dir_pressed_sec = 0
 		return
 	
 	var input_vector := Input.get_vector(
@@ -136,38 +150,62 @@ func _read_input() -> void:
 			direction.x = 0
 			direction.y = 1 if input_vector.y > 0 else -1
 	_candidate_dir = direction
+	_track_input_pressed(direction, delta)
+
+
+func _take_the_corner_if_possible() -> void:
+	if _dir_pressed_sec >= MAX_DIR_PRESSED_SEC: 
+		return
+	
+	var dist_sqrd_to_target: float = position.distance_squared_to(_target_local_pos)
+	var dist_sqrd_to_origin: float = position.distance_squared_to(_origin_local_pos)
+	var is_in_cornering_zone: bool = position != _target_local_pos and \
+		(dist_sqrd_to_origin <= CORNERING_ZONE_SQRD_LENGHT or \
+		dist_sqrd_to_target <= CORNERING_ZONE_SQRD_LENGHT)
+	if is_in_cornering_zone:
+		var candidate_dir_is_perpendicular: bool = \
+			_curr_dir != Vector2i.ZERO and \
+			is_zero_approx(Vector2(_curr_dir).dot(_candidate_dir))
+		if candidate_dir_is_perpendicular:
+			var is_closer_to_origin: bool = dist_sqrd_to_origin < dist_sqrd_to_target
+			var corner_to_origin: bool = is_closer_to_origin and \
+				_candidate_dir in _origin_valid_dirs
+			var corner_to_target: bool = not is_closer_to_origin and \
+				_candidate_dir in _next_valid_dirs
+			if corner_to_origin:
+				_target_local_pos = _origin_local_pos
+			if corner_to_origin or corner_to_target:
+				position = _target_local_pos
+				_curr_dir = _candidate_dir
+				_calculate_next_target()
+		_candidate_dir = Vector2i.ZERO
 
 
 func _move(delta_time: float) -> void:
 	if not _maze or not is_movement_allowed:
 		_candidate_dir = Vector2.ZERO
 		return
-	
-	if _curr_dir == Vector2i.ZERO or position == _target_local_pos:
+	elif _curr_dir == Vector2i.ZERO:
 		if _candidate_dir in _next_valid_dirs:
 			_curr_dir = _candidate_dir
+			_candidate_dir = Vector2i.ZERO
 			_calculate_next_target()
 		else:
 			_curr_dir = Vector2i.ZERO
-			_candidate_dir = Vector2.ZERO
+			_candidate_dir = Vector2i.ZERO
 			return
 	elif _curr_dir + _candidate_dir == Vector2i.ZERO:
 		_curr_dir = _candidate_dir
 		_target_local_pos = _origin_local_pos
+		_candidate_dir = Vector2i.ZERO
 	
 	var distance_budget: float = SPEED * delta_time
-	# It is safe to assume that tile_size.x == tile_size.y
-	#  because I'm using square tiles.
-	var tile_size: float = _maze.tile_set.tile_size.x
-	var max_iterations: int = ceili(distance_budget / tile_size)
-	var distance_to_target: float = position.distance_to(_target_local_pos)
-	if distance_to_target < distance_budget:
-		max_iterations += 1
-	
-	for i in range(max_iterations):
+	while not is_zero_approx(distance_budget):
+		_take_the_corner_if_possible()
+		var old_pos: Vector2 = position
 		position = position.move_toward(_target_local_pos, distance_budget)
-		distance_budget = maxf(distance_budget - distance_to_target, 0.0)
-		distance_to_target = position.distance_to(_target_local_pos)
+		var distance_moved: float = old_pos.distance_to(position)
+		distance_budget = maxf(distance_budget - distance_moved, 0.0)
 		if position == _target_local_pos:
 			if _candidate_dir in _next_valid_dirs:
 				_curr_dir = _candidate_dir
@@ -175,6 +213,7 @@ func _move(delta_time: float) -> void:
 			_calculate_next_target()
 			if position == _target_local_pos:
 				_curr_dir = Vector2i.ZERO
+				_candidate_dir = Vector2i.ZERO
 				break
 	
 	_candidate_dir = Vector2i.ZERO
@@ -212,6 +251,8 @@ func _on_state_set() -> void:
 
 func _on_target_local_pos_set() -> void:
 	_next_valid_dirs.clear()
+	_origin_valid_dirs.clear()
+	
 	if not _is_ready:
 		return
 	
@@ -220,6 +261,10 @@ func _on_target_local_pos_set() -> void:
 			_maze.get_surrounding_empty_cells(target_map_pos)
 	for empty_cell_map_pos in surrounding_empty_cells:
 		_next_valid_dirs.append(empty_cell_map_pos - target_map_pos)
+	var origin_map_pos: Vector2i = _maze.local_to_map(_origin_local_pos)
+	surrounding_empty_cells = _maze.get_surrounding_empty_cells(origin_map_pos)
+	for empty_cell_map_pos in surrounding_empty_cells:
+		_origin_valid_dirs.append(empty_cell_map_pos - origin_map_pos)
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
