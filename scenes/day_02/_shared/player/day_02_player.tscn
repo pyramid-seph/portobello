@@ -79,11 +79,13 @@ script = ExtResource("14_2r3w2")
 [node name="Node" type="Node" parent="Day02PlayerMovementDebug"]
 
 [node name="OriginSprite" type="Sprite2D" parent="Day02PlayerMovementDebug/Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.486275)
 position = Vector2(-24, -8)
 texture = ExtResource("2_v6tjh")
 
 [node name="TargetSprite2" type="Sprite2D" parent="Day02PlayerMovementDebug/Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.623529)
 texture = ExtResource("14_nxlt4")
 

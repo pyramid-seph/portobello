@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c48hbuyvs82xn"]
+[gd_scene load_steps=7 format=3 uid="uid://c48hbuyvs82xn"]
 
 [ext_resource type="Script" path="res://scenes/day_02/_shared/game/day_02_game.gd" id="1_fhvpp"]
-[ext_resource type="PackedScene" uid="uid://i63cxcxo7d8g" path="res://scenes/day_02/_shared/maze/maze_debug.tscn" id="2_8msno"]
+[ext_resource type="PackedScene" uid="uid://na2o7hvtlo1g" path="res://scenes/day_02/_shared/maze/maze_a.tscn" id="2_sjvfb"]
 [ext_resource type="PackedScene" uid="uid://bkurq57vlqf73" path="res://scenes/day_02/_shared/ui/day_02_ui.tscn" id="3_ooiqs"]
+[ext_resource type="PackedScene" uid="uid://b641o7baidxlf" path="res://scenes/day_02/_shared/maze/maze_b.tscn" id="4_17doy"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="4_c3g4n"]
+[ext_resource type="PackedScene" uid="uid://bx2t7rdotenvm" path="res://scenes/day_02/_shared/maze/maze_c.tscn" id="5_si3wl"]
 
 [node name="Day02Game" type="Node"]
 script = ExtResource("1_fhvpp")
@@ -27,14 +29,15 @@ color = Color(0, 0, 0, 1)
 position = Vector2(32, 72)
 metadata/_edit_lock_ = true
 
-[node name="MazeA" parent="World/Mazes" instance=ExtResource("2_8msno")]
-metadata/_edit_lock_ = true
-
-[node name="MazeB" parent="World/Mazes" instance=ExtResource("2_8msno")]
+[node name="MazeA" parent="World/Mazes" instance=ExtResource("2_sjvfb")]
 visible = false
 metadata/_edit_lock_ = true
 
-[node name="MazeC" parent="World/Mazes" instance=ExtResource("2_8msno")]
+[node name="MazeB" parent="World/Mazes" instance=ExtResource("4_17doy")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="MazeC" parent="World/Mazes" instance=ExtResource("5_si3wl")]
 visible = false
 metadata/_edit_lock_ = true
 
