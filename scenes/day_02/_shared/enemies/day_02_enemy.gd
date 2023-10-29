@@ -213,5 +213,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	var area_owner := area.get_parent()
 	if _is_scared():
 		_die()
-	elif area_owner and area_owner.has_method("die"):
+	elif not is_dead() and area_owner and area_owner.has_method("die"):
 		area_owner.die()
