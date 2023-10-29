@@ -89,7 +89,7 @@ func failed() -> void:
 		_stop_pending_ghost_first_spawn()
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
-		_player.is_movement_allowed = false
+		_halt_player()
 		_state = MazeState.FAILED
 
 
@@ -193,7 +193,7 @@ func _halt_all_ghosts() -> void:
 
 
 func _halt_player() -> void:
-	pass # TODO
+	_player.is_movement_allowed = false
 
 
 func _scare_all_ghosts() -> void:
