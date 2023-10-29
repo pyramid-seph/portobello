@@ -72,7 +72,6 @@ size = Vector2(8, 8)
 z_index = -2
 position = Vector2(-24, -8)
 script = ExtResource("1_18evh")
-_debug_show_move_lines = true
 
 [node name="Day02PlayerMovementDebug" type="Node2D" parent="."]
 script = ExtResource("14_2r3w2")
