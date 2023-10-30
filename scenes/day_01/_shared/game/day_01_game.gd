@@ -151,8 +151,10 @@ func _on_level_changed() -> void:
 	if _is_ready:
 		_player.is_allowed_to_move = false
 		_ui.show_black_screen(true)
+		_ui.set_pause_menu_enabled(false)
 		await _set_up_level()
 		await _start_level()
+		_ui.set_pause_menu_enabled(true)
 
 
 func _on_treats_eaten_changed() -> void:
@@ -180,6 +182,7 @@ func _on_remaining_lives_changed() -> void:
 
 func _on_level_failed() -> void:
 	var new_high_score_achieved = _lvl_info.set_high_score(_level, _score)
+	_ui.set_pause_menu_enabled(false)
 	_ui.show_game_over(new_high_score_achieved)
 	await _ui.game_over_finished
 	_go_to_title_screen()
@@ -187,6 +190,7 @@ func _on_level_failed() -> void:
 
 func _on_level_beaten() -> void:
 	_player.is_allowed_to_move = false
+	_ui.set_pause_menu_enabled(false)
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
 	_ui.stop_dilogue()
@@ -202,6 +206,7 @@ func _on_level_beaten() -> void:
 				_high_score
 		)
 	else:
+		_ui.set_pause_menu_enabled(true)
 		if _lvl_info.is_story_mode_level(_level):
 			var settings := _lvl_info.get_settings(next_lvl)
 			_cutscene.inverted_controls = settings.inverted_controls

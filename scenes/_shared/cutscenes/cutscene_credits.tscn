@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=20 format=3 uid="uid://ct51hooycinfb"]
 
-[ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_tw43y"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/end_credits.gd" id="2_l4t77"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/pre_credits_scene.gd" id="3_dru3q"]
@@ -117,15 +116,20 @@ _data = {
 "default": SubResource("Animation_gik3p")
 }
 
-[node name="CutsceneCredits" instance=ExtResource("1_tw43y")]
+[node name="CutsceneCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_eca4p")
 _autostart = true
 
-[node name="Timer" type="Timer" parent="." index="0"]
+[node name="Timer" type="Timer" parent="."]
 
-[node name="Node" type="Node" parent="." index="1"]
-
-[node name="BgColor" type="ColorRect" parent="Node" index="0"]
+[node name="BgColor" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -133,24 +137,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PreCreditsScene" type="Node" parent="." index="2"]
+[node name="PreCreditsScene" type="Node" parent="."]
 script = ExtResource("3_dru3q")
 
-[node name="PreCreditsSprite" type="Sprite2D" parent="PreCreditsScene" index="0"]
+[node name="PreCreditsSprite" type="Sprite2D" parent="PreCreditsScene"]
 visible = false
 position = Vector2(120, 151)
 texture = ExtResource("3_m4aea")
 
-[node name="Timer" type="Timer" parent="PreCreditsScene" index="1"]
+[node name="Timer" type="Timer" parent="PreCreditsScene"]
 wait_time = 2.0
 one_shot = true
 
-[node name="EndCredits" type="Node" parent="." index="3"]
+[node name="EndCredits" type="Node" parent="."]
 script = ExtResource("2_l4t77")
 _original_credits = ExtResource("3_fi3qg")
 _port_credits = ExtResource("4_t8b2n")
 
-[node name="UiComponents" type="Control" parent="EndCredits" index="0"]
+[node name="UiComponents" type="Control" parent="EndCredits"]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -159,7 +163,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EndCredits/UiComponents" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="EndCredits/UiComponents"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -170,7 +174,7 @@ offset_right = 26.5
 offset_bottom = 190.0
 grow_horizontal = 2
 
-[node name="JobLabel" type="Label" parent="EndCredits/UiComponents/VBoxContainer" index="0"]
+[node name="JobLabel" type="Label" parent="EndCredits/UiComponents/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.431373, 0.431373, 0.431373, 1)
@@ -179,7 +183,7 @@ text = "Job"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NamesLabel" type="Label" parent="EndCredits/UiComponents/VBoxContainer" index="1"]
+[node name="NamesLabel" type="Label" parent="EndCredits/UiComponents/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -190,174 +194,174 @@ Name 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SeaSparklesParallaxBackground" type="ParallaxBackground" parent="EndCredits" index="1"]
+[node name="SeaSparklesParallaxBackground" type="ParallaxBackground" parent="EndCredits"]
 layer = 0
 visible = false
 script = ExtResource("5_5olc8")
 scroll_speed = 25.0
 
-[node name="SeaColor" type="ColorRect" parent="EndCredits/SeaSparklesParallaxBackground" index="0"]
+[node name="SeaColor" type="ColorRect" parent="EndCredits/SeaSparklesParallaxBackground"]
 offset_top = 283.0
 offset_right = 240.0
 offset_bottom = 303.0
 color = Color(0.180392, 0.180392, 0.74902, 1)
 metadata/_edit_lock_ = true
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="EndCredits/SeaSparklesParallaxBackground" index="1"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(0, 273)
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="0"]
+[node name="SeaSparkles" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles2" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="1"]
+[node name="SeaSparkles2" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(10, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles3" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="2"]
+[node name="SeaSparkles3" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(20, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles4" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="3"]
+[node name="SeaSparkles4" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(30, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles5" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="4"]
+[node name="SeaSparkles5" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(40, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles6" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="5"]
+[node name="SeaSparkles6" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(50, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles7" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="6"]
+[node name="SeaSparkles7" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(60, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles8" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="7"]
+[node name="SeaSparkles8" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(70, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles9" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="8"]
+[node name="SeaSparkles9" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(80, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles10" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="9"]
+[node name="SeaSparkles10" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(90, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles11" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="10"]
+[node name="SeaSparkles11" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(100, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles12" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="11"]
+[node name="SeaSparkles12" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(110, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles13" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="12"]
+[node name="SeaSparkles13" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(120, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles14" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="13"]
+[node name="SeaSparkles14" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(130, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles15" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="14"]
+[node name="SeaSparkles15" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(140, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles16" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="15"]
+[node name="SeaSparkles16" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(150, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles17" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="16"]
+[node name="SeaSparkles17" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(160, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles18" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="17"]
+[node name="SeaSparkles18" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(170, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles19" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="18"]
+[node name="SeaSparkles19" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(180, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles20" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="19"]
+[node name="SeaSparkles20" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(190, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles21" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="20"]
+[node name="SeaSparkles21" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(200, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles22" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="21"]
+[node name="SeaSparkles22" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(210, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles23" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="22"]
+[node name="SeaSparkles23" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(220, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles24" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer" index="23"]
+[node name="SeaSparkles24" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
 position = Vector2(230, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="MoonSprite" type="Sprite2D" parent="EndCredits" index="2"]
+[node name="MoonSprite" type="Sprite2D" parent="EndCredits"]
 visible = false
 z_index = 1
 position = Vector2(15, 15)
 texture = ExtResource("5_kv0di")
 metadata/_edit_lock_ = true
 
-[node name="FlyingCreditsBucho" type="AnimatedSprite2D" parent="EndCredits" index="3"]
+[node name="FlyingCreditsBucho" type="AnimatedSprite2D" parent="EndCredits"]
 visible = false
 z_index = 1
 position = Vector2(200, 253)
@@ -367,23 +371,23 @@ frame = 1
 frame_progress = 0.954037
 script = ExtResource("10_07ai5")
 
-[node name="Timer" type="Timer" parent="EndCredits" index="4"]
+[node name="Timer" type="Timer" parent="EndCredits"]
 one_shot = true
 
-[node name="PostCreditsScene" type="Node" parent="." index="4"]
+[node name="PostCreditsScene" type="Node" parent="."]
 script = ExtResource("13_qgbjn")
 
-[node name="BuchoFace" type="Sprite2D" parent="PostCreditsScene" index="0"]
+[node name="BuchoFace" type="Sprite2D" parent="PostCreditsScene"]
 visible = false
 position = Vector2(120, 151)
 texture = ExtResource("13_tg2lj")
 
-[node name="BuchoMouth" type="Sprite2D" parent="PostCreditsScene/BuchoFace" index="0"]
+[node name="BuchoMouth" type="Sprite2D" parent="PostCreditsScene/BuchoFace"]
 visible = false
 position = Vector2(-1, 21)
 texture = ExtResource("14_wtijq")
 
-[node name="FinalDialogue" type="Label" parent="PostCreditsScene/BuchoFace" index="1"]
+[node name="FinalDialogue" type="Label" parent="PostCreditsScene/BuchoFace"]
 custom_minimum_size = Vector2(86, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -400,7 +404,7 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PostCreditsScene/BuchoFace" index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PostCreditsScene/BuchoFace"]
 autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_gyh0w")

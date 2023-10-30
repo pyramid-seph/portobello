@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpc2fbvwdk03l"]
+[gd_scene load_steps=10 format=3 uid="uid://dpc2fbvwdk03l"]
 
-[ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_ffcu7"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_between_levels.gd" id="2_lfnil"]
 [ext_resource type="Texture2D" uid="uid://bas5srb0fec1" path="res://art/cutscenes/day_01_level_00.png" id="3_cl58a"]
 [ext_resource type="Texture2D" uid="uid://cc5o6hpah25jm" path="res://art/cutscenes/day_01_level_01.png" id="4_4e7iw"]
@@ -13,7 +12,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/BurpPanel:visible")
+tracks/0/path = NodePath("ColorRect/BurpPanel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/path = NodePath("ColorRect/RatPanel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,50 +36,50 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/RatPanel:visible")
+tracks/2/path = NodePath("ColorRect/RatPanel:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/RatPanel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 3, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-64, 105), Vector2(88, 105), Vector2(61, 105)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/PhonePanel:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/PhonePanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 3, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/DizzyPanel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/DizzyPanel:visible")
+tracks/5/path = NodePath("ColorRect:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, false]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_st4f0"]
@@ -89,7 +88,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/BurpPanel:visible")
+tracks/0/path = NodePath("ColorRect/BurpPanel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/path = NodePath("ColorRect/RatPanel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -113,31 +112,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/RatPanel:visible")
+tracks/2/path = NodePath("ColorRect/RatPanel:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/RatPanel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 3, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-64, 105), Vector2(88, 105), Vector2(61, 105)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/PhonePanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/PhonePanel:visible")
+tracks/4/path = NodePath("ColorRect/DizzyPanel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -149,14 +148,14 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/DizzyPanel:visible")
+tracks/5/path = NodePath("ColorRect:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_22q4m"]
@@ -164,7 +163,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/BurpPanel:visible")
+tracks/0/path = NodePath("ColorRect/BurpPanel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -176,7 +175,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/path = NodePath("ColorRect/RatPanel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -188,31 +187,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/RatPanel:visible")
+tracks/2/path = NodePath("ColorRect/RatPanel:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(-64, 105)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/RatPanel:position")
+tracks/3/path = NodePath("ColorRect/PhonePanel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-64, 105)]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/PhonePanel:visible")
+tracks/4/path = NodePath("ColorRect/DizzyPanel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -224,7 +223,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/DizzyPanel:visible")
+tracks/5/path = NodePath("ColorRect:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -241,20 +240,23 @@ _data = {
 "RESET": SubResource("Animation_22q4m")
 }
 
-[node name="Day01BetweenLevelsCutscene" instance=ExtResource("1_ffcu7")]
+[node name="Day01BetweenLevelsCutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_lfnil")
-inverted_controls = false
-_autostart = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uwof8")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+[node name="ColorRect" type="ColorRect" parent="."]
 visible = false
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -262,25 +264,25 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="RatPanel" type="Sprite2D" parent="CanvasLayer" index="1"]
+[node name="RatPanel" type="Sprite2D" parent="ColorRect"]
 visible = false
 position = Vector2(-64, 105)
 texture = ExtResource("4_4e7iw")
 centered = false
 
-[node name="BurpPanel" type="Sprite2D" parent="CanvasLayer" index="2"]
+[node name="BurpPanel" type="Sprite2D" parent="ColorRect"]
 visible = false
 position = Vector2(56, 98)
 texture = ExtResource("3_cl58a")
 centered = false
 
-[node name="PhonePanel" type="Sprite2D" parent="CanvasLayer" index="3"]
+[node name="PhonePanel" type="Sprite2D" parent="ColorRect"]
 visible = false
 position = Vector2(86, 148)
 texture = ExtResource("5_3ymp4")
 centered = false
 
-[node name="DizzyPanel" type="Sprite2D" parent="CanvasLayer" index="4"]
+[node name="DizzyPanel" type="Sprite2D" parent="ColorRect"]
 visible = false
 position = Vector2(86, 128)
 texture = ExtResource("6_t15ny")

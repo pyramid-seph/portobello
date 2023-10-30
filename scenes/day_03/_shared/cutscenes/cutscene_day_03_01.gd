@@ -5,8 +5,8 @@ const _DURATION_SEC_DAY_TITLE: float = 1.2
 
 var _tween: Tween
 
-@onready var _day_label = $Control/DayLabel
-@onready var _image_sprite = $Sprite2D
+@onready var _day_label := $ColorRect/DayLabel
+@onready var _image_sprite := $ColorRect/Sprite2D
 
 
 func _play() -> void:

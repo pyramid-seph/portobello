@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene.gd" id="1_kh4gp"]
 
-[node name="Cutscene" type="Node2D"]
+[node name="Cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_kh4gp")
-_autostart = null

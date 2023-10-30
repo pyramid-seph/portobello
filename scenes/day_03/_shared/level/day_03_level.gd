@@ -107,10 +107,12 @@ func _start_level() -> void:
 	_player.is_input_enabled = false
 	_player.is_losing_stamina = false
 	_level_state = LevelState.STARTING
+	_day_3_ui.set_pause_menu_enabled(false)
 	_day_3_ui.start_game_presentation(_game_mode, _level_index)
 	_timer.start(START_DURATION)
 	_level_state = LevelState.PLAYING
 	await _timer.timeout
+	_day_3_ui.set_pause_menu_enabled(true)
 
 
 func _start_wave_phase() -> void:
@@ -143,6 +145,7 @@ func _game_over() -> void:
 	_wave_manager.cancel_wave()
 	_stamina_spawner.disable()
 	_power_up_spawner.disable()
+	_day_3_ui.set_pause_menu_enabled(false)
 	_timer.start(GAME_OVER_DURATION)
 	await _timer.timeout
 	failed.emit()
@@ -182,6 +185,7 @@ func _on_boss_fight_completed() -> void:
 	_power_up_spawner.disable()
 	_player.is_losing_stamina = false
 	_level_state = LevelState.LEVEL_COMPLETE
+	_day_3_ui.set_pause_menu_enabled(false)
 	_timer.start(_results_screen_delay_sec)
 	await _timer.timeout
 	_world.set_process(PROCESS_MODE_DISABLED)

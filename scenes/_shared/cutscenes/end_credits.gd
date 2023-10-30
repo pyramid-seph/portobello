@@ -23,8 +23,7 @@ func play() -> void:
 	_parallax_bg.process_mode = Node.PROCESS_MODE_INHERIT
 	await _roll(_original_credits)
 	await _roll(_port_credits)
-	_job_label.text = "GameCL"
-	_names_label.text = "\n¡Gracias por jugar!"
+	_names_label.text = "¡Gracias por jugar!"
 	_timer.start(4.0)
 	await _timer.timeout
 	_job_label.text = ""

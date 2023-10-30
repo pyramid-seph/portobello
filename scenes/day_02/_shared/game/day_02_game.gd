@@ -150,8 +150,10 @@ func _is_game_story_mode() -> bool:
 func _on_level_set() -> void:
 	if _is_ready:
 		_ui.show_black_screen(true)
-		_set_up_level()
-		_start_level()
+		_ui.set_pause_menu_enabled(false)
+		await _set_up_level()
+		await _start_level()
+		_ui.set_pause_menu_enabled(true)
 
 
 func _on_score_changed() -> void:
@@ -182,12 +184,14 @@ func _save_high_score() -> bool:
 
 func _on_level_failed() -> void:
 	var new_high_score_achieved: bool = _save_high_score()
+	_ui.set_pause_menu_enabled(false)
 	_ui.show_game_over(new_high_score_achieved)
 	await _ui.game_over_finished
 	_go_to_title_screen()
 
 
 func _on_maze_completed() -> void:
+	_ui.set_pause_menu_enabled(false)
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
 	_ui.show_black_screen(true)
@@ -201,6 +205,7 @@ func _on_maze_completed() -> void:
 				_get_high_score()
 		)
 	else:
+		_ui.set_pause_menu_enabled(true)
 		_level += 1
 
 

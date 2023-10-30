@@ -7,7 +7,7 @@
 script = ExtResource("1_x4py4")
 duration_sec = 4.0
 job = "- Bucho Busca Comida -"
-names = Array[String](["The Portobello Edition"])
+names = Array[String](["Edición Hongo Portobello"])
 
 [sub_resource type="Resource" id="Resource_mi53c"]
 script = ExtResource("1_x4py4")
