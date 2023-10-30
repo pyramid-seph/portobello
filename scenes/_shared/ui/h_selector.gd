@@ -3,6 +3,7 @@ class_name HSelector
 extends PanelContainer
 
 signal selected(value)
+signal current_option_index_changed(value: int)
 
 const SELECTED_NONE: int = -1
 
@@ -10,10 +11,11 @@ const SELECTED_NONE: int = -1
 	set(value):
 		selector_text = value
 		_on_selector_text_set()
-@export var options: Array:
+@export var _options: Array:
 	set(value):
-		options = value
+		_options = value
 		_on_options_set()
+
 @export var focus_color: Color = Color.MAGENTA:
 	set(value):
 		focus_color = value
@@ -23,10 +25,13 @@ const SELECTED_NONE: int = -1
 		loop_options = value
 		_on_loop_options_set()
 
-var _current_option_idx: int = SELECTED_NONE:
+var current_option_idx: int = SELECTED_NONE:
 	set(value):
-		_current_option_idx = maxi(value, SELECTED_NONE)
+		var old_value = current_option_idx
+		current_option_idx = clampi(value, SELECTED_NONE, _options.size() - 1)
 		_on_current_option_idx_set()
+		if not Engine.is_editor_hint() and old_value != current_option_idx:
+			current_option_index_changed.emit(current_option_idx)
 
 @onready var _is_ready: bool = true
 @onready var _label := $Label as Label
@@ -40,12 +45,11 @@ func _ready() -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
-	if not has_focus() or Engine.is_editor_hint():
+	if Engine.is_editor_hint():
 		return
 	
-	if event.is_action_pressed("ui_accept"):
-		if _current_option_idx > SELECTED_NONE:
-			selected.emit(_get_value_for_option(_current_option_idx))
+	if event.is_action_pressed("ui_accept") and current_option_idx > SELECTED_NONE:
+		selected.emit(_get_value_for_option(current_option_idx))
 		accept_event()
 	if event.is_action_pressed("ui_left"):
 		_previous_option()
@@ -55,26 +59,30 @@ func _gui_input(event: InputEvent) -> void:
 		accept_event()
 
 
+func set_options(arr: Array) -> void:
+	_options = arr
+
+
 func _previous_option() -> void:
-	if options.is_empty():
-		_current_option_idx = SELECTED_NONE
+	if _options.is_empty():
+		current_option_idx = SELECTED_NONE
 		return
 	
 	if loop_options:
-		_current_option_idx = wrapi(_current_option_idx - 1, 0, options.size())
+		current_option_idx = wrapi(current_option_idx - 1, 0, _options.size())
 	else:
-		_current_option_idx = maxi(_current_option_idx - 1, 0)
+		current_option_idx = maxi(current_option_idx - 1, 0)
 
 
 func _next_option() -> void:
-	if options.is_empty():
-		_current_option_idx = SELECTED_NONE
+	if _options.is_empty():
+		current_option_idx = SELECTED_NONE
 		return
 	
 	if loop_options:
-		_current_option_idx = wrapi(_current_option_idx + 1, 0, options.size())
+		current_option_idx = wrapi(current_option_idx + 1, 0, _options.size())
 	else:
-		_current_option_idx = mini(options.size() - 1, _current_option_idx + 1)
+		current_option_idx = mini(_options.size() - 1, current_option_idx + 1)
 
 
 func _update_bg_color() -> void:
@@ -86,7 +94,7 @@ func _update_bg_color() -> void:
 
 
 func _get_label_for_option(idx: int) -> String:
-	var option = options[idx]
+	var option = _options[idx]
 	if typeof(option) == TYPE_DICTIONARY:
 		return option.label
 	else:
@@ -94,7 +102,7 @@ func _get_label_for_option(idx: int) -> String:
 
 
 func _get_value_for_option(idx: int):
-	var option = options[idx]
+	var option = _options[idx]
 	if typeof(option) == TYPE_DICTIONARY:
 		return option.value
 	else:
@@ -106,17 +114,20 @@ func _on_current_option_idx_set() -> void:
 		return
 	
 	_label.text = selector_text
-	if _current_option_idx == SELECTED_NONE:
+	if selector_text != null and not selector_text.is_empty():
+		_label.text += " "
+	
+	if current_option_idx == SELECTED_NONE:
 		return
 	
-	if options.size() == 1:
-		_label.text += _get_label_for_option(0)
+	if _options.size() == 1:
+		_label.text += "- %s -" % _get_label_for_option(0)
 		return
 	
-	if loop_options or _current_option_idx > 0:
-		_label.text += " < "
-	_label.text += _get_label_for_option(_current_option_idx)
-	if loop_options or _current_option_idx < options.size() - 1:
+	if loop_options or current_option_idx > 0:
+		_label.text += "< "
+	_label.text += _get_label_for_option(current_option_idx)
+	if loop_options or current_option_idx < _options.size() - 1:
 		_label.text += " >"
 
 
@@ -125,9 +136,8 @@ func _on_selector_text_set() -> void:
 
 
 func _on_options_set() -> void:
-	if not _is_ready:
-		return
-	_current_option_idx = SELECTED_NONE if options.is_empty() else 0
+	if _is_ready:
+		current_option_idx = SELECTED_NONE if _options.is_empty() else 0
 
 
 func _on_loop_options_set() -> void:

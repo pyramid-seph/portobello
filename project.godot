@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Bucho Portobello"
+config/name="Bucho Busca Comida: Edición Hongo Portobello"
 run/main_scene="res://scenes/_shared/title_screen/title_screen_scene.tscn"
 config/features=PackedStringArray("4.1")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://art/_shared/ui_counter_lives.png"
+config/version="1.0.0"
 
 [autoload]
 
@@ -37,8 +38,6 @@ window/handheld/orientation=1
 [editor]
 
 movie_writer/movie_file="C:/Users/Pablo/Desktop/movie.avi"
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
 
 [editor_plugins]
 

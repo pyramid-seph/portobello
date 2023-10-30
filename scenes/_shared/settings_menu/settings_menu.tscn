@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddt6mk30fvhmd"]
+
+[ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="1_5ep86"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_wud83"]
+[ext_resource type="Script" path="res://scenes/_shared/settings_menu/settings_menu.gd" id="2_acgwn"]
+[ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="4_swkte"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c38gx"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4bm6"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wud83")
+script = ExtResource("2_acgwn")
+
+[node name="SettingsMenuPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 131.0
+offset_right = -2.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_wud83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenuPanel"]
+layout_mode = 2
+
+[node name="VibrationSelector" parent="SettingsMenuPanel/VBoxContainer" instance=ExtResource("1_5ep86")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../GoBackBtn")
+focus_neighbor_bottom = NodePath("../AutofireSelector")
+theme_override_styles/panel = SubResource("StyleBoxFlat_c38gx")
+selector_text = "Vibrar"
+_options = ["Sí", "No"]
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+loop_options = false
+
+[node name="AutofireSelector" parent="SettingsMenuPanel/VBoxContainer" instance=ExtResource("1_5ep86")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../VibrationSelector")
+focus_neighbor_bottom = NodePath("../EraseDataBtn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4bm6")
+selector_text = "Auto Fuego"
+_options = ["Sí", "No"]
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+loop_options = false
+
+[node name="EraseDataBtn" type="Button" parent="SettingsMenuPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../AutofireSelector")
+focus_neighbor_bottom = NodePath("../GoBackBtn")
+mouse_filter = 2
+button_mask = 0
+text = "Borrar datos"
+alignment = 0
+
+[node name="GoBackBtn" type="Button" parent="SettingsMenuPanel/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../EraseDataBtn")
+focus_neighbor_bottom = NodePath("../VibrationSelector")
+mouse_filter = 2
+button_mask = 0
+text = "Regresar"
+alignment = 0
+
+[node name="ConfirmEraseDataDialog" parent="." instance=ExtResource("4_swkte")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+body_text = "¿Borrar todos 
+los datos?"
+positive_btn_text = "Sí"
+
+[node name="ErasedDataDialog" parent="." instance=ExtResource("4_swkte")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+body_text = "Datos borrados"
+negative_btn_text = ""
+positive_btn_text = "Aceptar"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="focus_entered" from="SettingsMenuPanel/VBoxContainer/EraseDataBtn" to="." method="_on_erase_data_btn_focus_entered"]
+[connection signal="focus_exited" from="SettingsMenuPanel/VBoxContainer/EraseDataBtn" to="." method="_on_erase_data_btn_focus_exited"]
+[connection signal="pressed" from="SettingsMenuPanel/VBoxContainer/EraseDataBtn" to="." method="_on_erase_data_btn_pressed"]
+[connection signal="pressed" from="SettingsMenuPanel/VBoxContainer/GoBackBtn" to="." method="_on_go_back_btn_pressed"]
+[connection signal="negative_btn_pressed" from="ConfirmEraseDataDialog" to="." method="_on_confirm_erase_data_dialog_negative_btn_pressed"]
+[connection signal="positive_btn_pressed" from="ConfirmEraseDataDialog" to="." method="_on_confirm_erase_data_dialog_positive_btn_pressed"]
+[connection signal="positive_btn_pressed" from="ErasedDataDialog" to="." method="_on_erased_data_dialog_positive_btn_pressed"]

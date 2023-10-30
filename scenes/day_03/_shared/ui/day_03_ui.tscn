@@ -217,11 +217,6 @@ text = "¡Peligro!"
 [node name="Timer" type="Timer" parent="BossAlert"]
 one_shot = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("16_bv7rf")]
-process_mode = 3
-visible = false
-layout_mode = 1
-
 [node name="BlackScreen" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -231,6 +226,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("16_bv7rf")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
 [connection signal="hi_score_changed" from="." to="HiScore" method="_on_day_3_ui_hi_score_changed"]
 [connection signal="level_state_changed" from="." to="GameOver" method="_on_day_3_ui_level_state_changed"]

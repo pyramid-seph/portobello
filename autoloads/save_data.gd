@@ -15,8 +15,8 @@ var is_autofire_enabled: bool = true:
 		var old_is_autofire_enabled = is_autofire_enabled
 		is_autofire_enabled = value
 		is_autofire_enabled_changed.emit(old_is_autofire_enabled, is_autofire_enabled)
-var stars: Stars = Stars.new()
-var high_scores: HighScores = HighScores.new()
+var stars := Stars.new() as Stars
+var high_scores := HighScores.new() as HighScores
 
 func to_dictionary() -> Dictionary:
 	return {
@@ -79,3 +79,9 @@ class Stars extends RefCounted:
 	var day_one: int
 	var day_two: int
 	var day_three: int
+	
+	
+	func average() -> int:
+		var total_stars: int = day_one + day_two + day_three
+		var average_stars: float = total_stars / 3.0
+		return floori(average_stars)

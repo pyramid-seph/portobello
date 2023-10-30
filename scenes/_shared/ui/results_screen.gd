@@ -83,14 +83,15 @@ func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, hi
 	var new_high_score = maxi(_curr_high_score, _total_score)
 	calculated.emit(new_high_score, _stars)
 	
-	await _present_results()
+	await _show_results()
 	finished.emit(_total_score, _extra_lives, _stars)
 
 
 func _calculate_extra_lives(lives: int, score: int) -> int:
 	var extra_lives: int = 0
 	if _game_mode == Game.Mode.STORY and not _is_last_level:
-		extra_lives = mini(score / 1_000, MAX_LIVES - lives)
+		var candidate_lives: int = floori(score / 1_000.0)
+		extra_lives = mini(candidate_lives, MAX_LIVES - lives)
 	return extra_lives
 
 
@@ -209,7 +210,7 @@ func _tween_minigame_results() -> void:
 
 
 func _tween_stars_results() -> void:
-	if _stars < 0:
+	if _game_mode != Game.Mode.STORY or not _is_last_level:
 		return
 	
 	_tween.tween_callback(func():
@@ -238,7 +239,7 @@ func _tween_stars_results() -> void:
 	)
 
 
-func _present_results() -> Signal:
+func _show_results() -> Signal:
 	visible = true
 	_setup_label_texts()
 	

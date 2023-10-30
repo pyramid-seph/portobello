@@ -36,8 +36,8 @@ func _ready() -> void:
 	SceneChanger.change_finished.connect(_on_scene_change_finished)
 
 
-func start(minigame: Minigame) -> void:
-	if _current_minigame == minigame:
+func start(minigame: Minigame, allow_restart := false) -> void:
+	if _current_minigame == minigame and not allow_restart:
 		return
 	_current_minigame = minigame
 	var path = _get_start_path(minigame)
@@ -66,6 +66,8 @@ func _get_start_path(minigame: Minigame) -> String:
 		Minigame.SCORE_ATTACK_3A, \
 		Minigame.SCORE_ATTACK_3B:
 			return "res://scenes/day_03/_shared/game/day_03_game.tscn"
+		Minigame.CREDITS:
+			return "res://scenes/_shared/cutscenes/cutscene_credits.tscn"
 		_:
 			return "res://scenes/_shared/title_screen/title_screen_scene.tscn"
 
