@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=18 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -20,13 +20,18 @@ font = ExtResource("7_2qrv5")
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02qpd"]
+[sub_resource type="LabelSettings" id="LabelSettings_gc0j8"]
+line_spacing = 0.0
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xx1b"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbj7a"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntqwi"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -34,7 +39,6 @@ bg_color = Color(1, 1, 1, 0)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
-_debug_skip_game_filter = true
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -92,7 +96,7 @@ text = "***"
 horizontal_alignment = 1
 clip_text = true
 
-[node name="VersionLabel" type="Label" parent="TitleScreen/GameTitle"]
+[node name="SubtitleLabel" type="Label" parent="TitleScreen/GameTitle"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -107,6 +111,24 @@ grow_vertical = 0
 text = "Edición Hongo Portobello"
 label_settings = SubResource("LabelSettings_yrhl8")
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -16.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v1.0.0"
+label_settings = SubResource("LabelSettings_gc0j8")
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="MainMenu" type="PanelContainer" parent="TitleScreen"]
@@ -130,7 +152,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_02qpd")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xx1b")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -140,7 +162,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_qbj7a")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ntqwi")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -150,7 +172,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ScoreAttackGameSelector")
 focus_neighbor_bottom = NodePath("../ShowOptionsBtn")
-button_mask = 0
+mouse_filter = 2
 text = "High Scores"
 alignment = 0
 
@@ -159,6 +181,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowScoresBtn")
 focus_neighbor_bottom = NodePath("../ExitGameBtn")
+mouse_filter = 2
 button_mask = 0
 text = "Opciones"
 alignment = 0
@@ -168,6 +191,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowOptionsBtn")
 focus_neighbor_bottom = NodePath("../StoryModeGameSelector")
+mouse_filter = 2
 button_mask = 0
 text = "Salir"
 alignment = 0
@@ -237,6 +261,7 @@ one_shot = true
 [connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/ExitGameBtn" to="." method="_on_exit_game_btn_focus_entered"]
 [connection signal="pressed" from="TitleScreen/MainMenu/VBoxContainer/ExitGameBtn" to="." method="_on_exit_game_btn_pressed"]
 [connection signal="closed" from="TitleScreen/ProgressMenu" to="." method="_on_progress_menu_closed"]
+[connection signal="visibility_changed" from="TitleScreen/ProgressMenu" to="." method="_on_progress_menu_visibility_changed"]
 [connection signal="closed" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_closed"]
 [connection signal="dangerous_option_focused" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_dangerous_option_focused"]
 [connection signal="dangerous_option_unfocused" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_dangerous_option_unfocused"]

@@ -37,6 +37,17 @@ static func count(arr: Array, callable: Callable) -> int:
 	return total
 
 
+static func partition(arr: Array, callable: Callable) -> Array:
+	var group_a := []
+	var group_b := []
+	for item in arr:
+		if callable.call(item):
+			group_a.append(item)
+		else:
+			group_b.append(item)
+	return [group_a, group_b]
+
+
 static func children_in_group(node: Node, group: String) -> Array[Node]:
 	return node.get_children().filter(
 		func(child: Node): 
@@ -104,3 +115,11 @@ static func last(arr: Array):
 
 static func last_child(node: Node):
 	return null if node == null else last(node.get_children())
+
+
+static func is_running_on_web() -> bool:
+	return OS.get_name() == "Web"
+
+
+static func get_game_version() -> String:
+	return "v%s" % ProjectSettings.get_setting("application/config/version")

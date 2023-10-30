@@ -5,13 +5,13 @@
 [ext_resource type="Script" path="res://scenes/_shared/settings_menu/settings_menu.gd" id="2_acgwn"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="4_swkte"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pigal"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c38gx"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gepfo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4bm6"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -49,7 +49,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../GoBackBtn")
 focus_neighbor_bottom = NodePath("../AutofireSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_pigal")
+theme_override_styles/panel = SubResource("StyleBoxFlat_c38gx")
 selector_text = "Vibrar"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -60,7 +60,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../VibrationSelector")
 focus_neighbor_bottom = NodePath("../EraseDataBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_gepfo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4bm6")
 selector_text = "Auto Fuego"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -71,6 +71,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../AutofireSelector")
 focus_neighbor_bottom = NodePath("../GoBackBtn")
+mouse_filter = 2
 button_mask = 0
 text = "Borrar datos"
 alignment = 0
@@ -79,6 +80,7 @@ alignment = 0
 layout_mode = 2
 focus_neighbor_top = NodePath("../EraseDataBtn")
 focus_neighbor_bottom = NodePath("../VibrationSelector")
+mouse_filter = 2
 button_mask = 0
 text = "Regresar"
 alignment = 0

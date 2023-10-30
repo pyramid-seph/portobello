@@ -7,7 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://deqo7rbmjjsvj" path="res://resources/instances/odd_high_score_item.tres" id="5_yate7"]
 [ext_resource type="StyleBox" uid="uid://c2d5slbtpw4ix" path="res://resources/instances/even_high_score_item.tres" id="6_736vx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p50ug"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14gnp"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -20,7 +20,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_mode = 2
 theme = ExtResource("1_g671f")
 script = ExtResource("2_e35o3")
 
@@ -31,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_mode = 2
+mouse_filter = 0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -39,12 +38,9 @@ theme_override_constants/margin_bottom = 20
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
-focus_mode = 2
-mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
-focus_mode = 2
 theme_override_constants/separation = 0
 
 [node name="RecordTypeSelector" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_s01o1")]
@@ -52,8 +48,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../MarginContainer/GoBackBtn")
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_p50ug")
+theme_override_styles/panel = SubResource("StyleBoxFlat_14gnp")
 selector_text = ""
 _options = ["Estrellas", "High Scores"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -150,12 +145,14 @@ color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 0
 theme_override_constants/margin_top = 4
 
 [node name="GoBackBtn" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_neighbor_top = NodePath("../../RecordTypeSelector")
+mouse_filter = 2
 button_mask = 0
 text = "Regresar"
 alignment = 2

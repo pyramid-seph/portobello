@@ -130,8 +130,8 @@ func _reset_level() -> void:
 
 
 func _start_level() -> void:
-	var game_mode = _lvl_info.get_game_mode(_level)
-	var lvl_index = _lvl_info.get_lvl_index(_level)
+	var game_mode: Game.Mode = _lvl_info.get_game_mode(_level)
+	var lvl_index: int = _lvl_info.get_lvl_index(_level)
 	_ui.show_level_start(game_mode, lvl_index)
 	await _ui.start_level_finished
 	_play_dialogue()

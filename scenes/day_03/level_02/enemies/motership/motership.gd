@@ -32,13 +32,13 @@ var _hp: int = 1:
 @onready var _laser_balls_weapon := $LaserBallsWeapon
 @onready var _alien_hologram := $Inside/AlienHologram
 @onready var _flash := %Flash
-@onready var _is_ready: bool = true
 @onready var _inside := $Inside as Node2D
 @onready var _explosions_container := $ExplosionsContainer as Node2D
 @onready var _start_position := $Inside/StartPosition
 @onready var _abduction_ray := $AbductionRay
 @onready var _dialogue_box := $Control/DialogueBox as DialogueBox
 @onready var _life_bar := %LifeBar as TextureProgressBar
+@onready var _is_ready := true
 
 
 func _ready() -> void:
@@ -79,6 +79,7 @@ func _move_player_inside() -> void:
 	player.move_offset_bottom = -32
 	player.move_offset_right = -52
 	player.move_offset_top = 143
+	player.revived.connect(_on_player_revived)
 
 
 func _update_hp_bar() -> void:
@@ -191,3 +192,7 @@ func _on_hurtbox_hurt(_hitbox: Hitbox) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.owner and area.owner.is_in_group("player_bullets"):
 		_spawn_explosion(area.owner.global_position, true, _inside)
+
+
+func _on_player_revived() -> void:
+	player.global_position = _start_position.global_position
