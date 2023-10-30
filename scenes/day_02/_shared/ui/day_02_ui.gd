@@ -16,6 +16,7 @@ var _lives_counter_tween: Tween
 @onready var _game_over := $GameOver
 @onready var _piece_of_cake := $PieceOfCake
 @onready var _black_screen := $BlackScreen
+@onready var _pause_menu := $PauseMenu
 
 
 func show_level_start(mode: Game.Mode, index: int) -> void:
@@ -70,6 +71,10 @@ func update_high_score(value: int) -> void:
 	else:
 		_high_score_label.visible = true
 		_high_score_label.text = "Hi %s" % value
+
+
+func set_pause_menu_enabled(enabled: bool) -> void:
+	_pause_menu.enabled = enabled
 
 
 func _set_lives_counter(value: int) -> void:
