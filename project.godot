@@ -130,6 +130,8 @@ skip_cutscene={
 2d_physics/layer_3="pickups"
 2d_physics/layer_4="player_bullets"
 2d_physics/layer_5="enemy_bullets"
+2d_physics/layer_6="player"
+2d_physics/layer_7="enemy"
 
 [physics]
 
@@ -139,6 +141,7 @@ common/enable_pause_aware_picking=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true

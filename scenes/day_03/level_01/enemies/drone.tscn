@@ -24,7 +24,7 @@ speed = 87.5
 score_points_gun = 10
 score_points_mega_gun = 5
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_ncslv")
 
 [node name="Gun" parent="." index="3" instance=ExtResource("2_v5sji")]

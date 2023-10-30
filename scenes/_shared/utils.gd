@@ -37,6 +37,17 @@ static func count(arr: Array, callable: Callable) -> int:
 	return total
 
 
+static func partition(arr: Array, callable: Callable) -> Array:
+	var group_a := []
+	var group_b := []
+	for item in arr:
+		if callable.call(item):
+			group_a.append(item)
+		else:
+			group_b.append(item)
+	return [group_a, group_b]
+
+
 static func children_in_group(node: Node, group: String) -> Array[Node]:
 	return node.get_children().filter(
 		func(child: Node): 

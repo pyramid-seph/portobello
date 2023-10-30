@@ -24,6 +24,7 @@ func _play() -> void:
 
 func _clean_up() -> void:
 	_timer.stop()
+	Utils.safe_disconnect_all(_timer.timeout)
 	_background.visible = false
 	_panel_00.visible = false
 	_panel_01.visible = true

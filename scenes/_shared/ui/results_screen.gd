@@ -74,9 +74,10 @@ func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, hi
 	_game_mode = game_mode
 	_is_last_level = is_last_level
 	
-	_bonus = BONUS_MULTIPLIER * lives
+	_bonus = 0 if _skip_level_results_screen else BONUS_MULTIPLIER * lives
 	_total_score = score + _bonus
-	_extra_lives = _calculate_extra_lives(_lives, _total_score)
+	_extra_lives = 0 if _skip_level_results_screen else \
+			_calculate_extra_lives(_lives, _total_score)
 	_stars = _calculate_stars(_lives, _total_score)
 	
 	var new_high_score = maxi(_curr_high_score, _total_score)

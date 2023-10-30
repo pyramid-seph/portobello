@@ -18,7 +18,7 @@ enum LevelState {
 
 const DAY: int = 3
 const START_DURATION: float = 1.6
-const GAME_OVER_DURATION: float = 3.2
+const GAME_OVER_DURATION: float = 3.0
 const PROP_NAME_STORY_SAVE_DATA_HIGH_SCORE: String = "high_scores:day_three"
 const PROP_NAME_STORY_SAVE_DATA_STARS: String = "stars:day_three"
 
