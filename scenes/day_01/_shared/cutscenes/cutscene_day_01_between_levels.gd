@@ -1,4 +1,4 @@
-extends "res://scenes/_shared/cutscenes/cutscene_2.gd"
+extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
 const ANIM_DEFAULT: String = "Default"
 const ANIM_DIZZY: String = "Dizzy"

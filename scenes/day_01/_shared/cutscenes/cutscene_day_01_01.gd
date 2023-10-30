@@ -1,4 +1,4 @@
-extends "res://scenes/_shared/cutscenes/cutscene_2.gd"
+extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
 @onready var _background := $Background
 @onready var _panel_00 := $Panel00
