@@ -71,14 +71,19 @@ static func vibrate_joy(
 	weak_magnitude: float = 0.25,
 	strong_magnitude: float = 0.25,
 	duration: float = 0.25,
+	force: bool = false,
 ) -> void:
-	if SaveDataManager.save_data.is_vibration_enabled:
+	if force or SaveDataManager.save_data.is_vibration_enabled:
 		Input.start_joy_vibration(
 			device, 
 			weak_magnitude, 
 			strong_magnitude, 
 			duration
 		)
+
+
+static func vibrate_joy_demo() -> void:
+	vibrate_joy(0, 0.25, 0.25, 0.25, true)
 
 
 static func change_label_color(label: Label, color: Color) -> void:

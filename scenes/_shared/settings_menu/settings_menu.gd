@@ -92,3 +92,8 @@ func _on_go_back_btn_pressed() -> void:
 	visible = false
 	_save_data()
 	closed.emit()
+
+
+func _on_vibration_selector_current_option_index_changed(value: int) -> void:
+	if value == IDX_YES:
+		Utils.vibrate_joy_demo()
