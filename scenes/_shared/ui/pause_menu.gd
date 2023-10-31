@@ -79,8 +79,13 @@ func _save_data() -> void:
 
 func _on_enabled_set() -> void:
 	if _is_ready and not enabled:
-		_scene_tree.paused = false # Just in case
+		_scene_tree.paused = false # Just to be super sure.
 		_show_menu(false)
+
+
+func _on_vibration_selector_current_option_index_changed(value: int) -> void:
+		if value == IDX_YES:
+			Utils.vibrate_joy_demo()
 
 
 func _on_give_up_button_pressed() -> void:

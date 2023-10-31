@@ -27,11 +27,8 @@ const SELECTED_NONE: int = -1
 
 var current_option_idx: int = SELECTED_NONE:
 	set(value):
-		var old_value = current_option_idx
 		current_option_idx = clampi(value, SELECTED_NONE, _options.size() - 1)
 		_on_current_option_idx_set()
-		if not Engine.is_editor_hint() and old_value != current_option_idx:
-			current_option_index_changed.emit(current_option_idx)
 
 @onready var _is_ready: bool = true
 @onready var _label := $Label as Label
@@ -63,26 +60,33 @@ func set_options(arr: Array) -> void:
 	_options = arr
 
 
+func _emit_current_option_index_changed() -> void:
+	if not Engine.is_editor_hint():
+		current_option_index_changed.emit(current_option_idx)
+
+
 func _previous_option() -> void:
+	var old_current_option_idx: int = current_option_idx
 	if _options.is_empty():
 		current_option_idx = SELECTED_NONE
-		return
-	
-	if loop_options:
+	elif loop_options:
 		current_option_idx = wrapi(current_option_idx - 1, 0, _options.size())
 	else:
 		current_option_idx = maxi(current_option_idx - 1, 0)
+	if old_current_option_idx != current_option_idx:
+		_emit_current_option_index_changed()
 
 
 func _next_option() -> void:
+	var old_current_option_idx: int = current_option_idx
 	if _options.is_empty():
 		current_option_idx = SELECTED_NONE
-		return
-	
-	if loop_options:
+	elif loop_options:
 		current_option_idx = wrapi(current_option_idx + 1, 0, _options.size())
 	else:
 		current_option_idx = mini(_options.size() - 1, current_option_idx + 1)
+	if old_current_option_idx != current_option_idx:
+		_emit_current_option_index_changed()
 
 
 func _update_bg_color() -> void:

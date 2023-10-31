@@ -10,13 +10,13 @@
 bg_color = Color(0, 0, 0, 0.784314)
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee3il"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehvgo"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjpsf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jykj"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -56,7 +56,7 @@ uppercase = true
 [node name="VibrationSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ee3il")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ehvgo")
 selector_text = "Vibrar"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -65,7 +65,7 @@ loop_options = false
 [node name="AutofireSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mjpsf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jykj")
 selector_text = "Autofuego"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -87,6 +87,7 @@ body_text = "Perderás tu progreso.
 positive_btn_text = "Sí"
 hide_shadow = true
 
+[connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
 [connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
 [connection signal="negative_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_positive_btn_pressed"]
