@@ -20,13 +20,6 @@ script = ExtResource("3_hgugf")
 
 [node name="DroneShootManager" parent="Systems" index="3" instance=ExtResource("4_alffp")]
 
-[node name="ResultsScreen" parent="Interface" index="1"]
-_stars_evaluation_mode = 1
-_stars_threshold_two = 9000
-_stars_threshold_three = 12000
-_stars_threshold_four = 12500
-_stars_threshold_five = 15000
-
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_all_waves_completed"]
 [connection signal="wave_completed" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_wave_completed"]
 [connection signal="wave_started" from="Systems/WaveManager" to="Systems/DroneShootManager" method="_on_wave_manager_wave_started"]
