@@ -48,6 +48,11 @@ process_mode = 1
 [node name="Day03Ui" parent="Interface" instance=ExtResource("13_f3m4q")]
 
 [node name="ResultsScreen" parent="Interface" instance=ExtResource("12_f7tyd")]
+_stars_evaluation_mode = 1
+_stars_threshold_two = 9000
+_stars_threshold_three = 12000
+_stars_threshold_four = 12500
+_stars_threshold_five = 15000
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
