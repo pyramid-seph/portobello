@@ -24,33 +24,31 @@ func _ready() -> void:
 	_on_enabled_set()
 	if get_parent() == _scene_tree.root:
 		visible = false
-		_show_menu(true)
+		_pause_game(true)
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		get_viewport().set_input_as_handled()
-		if not _scene_tree.paused and not enabled:
-			return
-		_scene_tree.paused = not _scene_tree.paused
-		_show_menu(_scene_tree.paused)
+		_pause_game(!_scene_tree.paused)
 
 
-func _show_menu(make_visible: bool) -> void:
-	if make_visible == visible:
+func _pause_game(pause: bool) -> void:
+	if pause == _scene_tree.paused or not enabled:
 		return
 	
-	visible = make_visible
-	if visible:
+	_scene_tree.paused = pause
+	visible = pause
+	if pause:
 		_confirm_exit_dialog.visible = false
 		_pause_dialog.visible = true
 		_autofire_selector.visible = show_auto_fire
-		_load_data()
+		_load_settings()
 		_vibration_selector.call_deferred("grab_focus")
 		# Hack? This resets its size to the height of its content.
 		_pause_dialog.size.y = 0
 	else:
-		_save_data()
+		_save_settings()
 
 
 func _get_option_idx(is_feature_enabled: bool) -> int:
@@ -61,7 +59,7 @@ func _is_feature_enabled(selector) -> bool:
 	return selector.current_option_idx == IDX_YES
 
 
-func _load_data() -> void:
+func _load_settings() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
 	var is_autofire_enabled: bool = save_data.is_autofire_enabled
 	var is_vibration_enabled: bool = save_data.is_vibration_enabled
@@ -69,7 +67,7 @@ func _load_data() -> void:
 	_vibration_selector.current_option_idx = _get_option_idx(is_vibration_enabled)
 
 
-func _save_data() -> void:
+func _save_settings() -> void:
 	var is_autofire_enabled: bool = _is_feature_enabled(_autofire_selector)
 	var is_vibration_enabled: bool = _is_feature_enabled(_vibration_selector)
 	SaveDataManager.save_data.is_autofire_enabled = is_autofire_enabled
@@ -79,18 +77,21 @@ func _save_data() -> void:
 
 func _on_enabled_set() -> void:
 	if _is_ready and not enabled:
-		_scene_tree.paused = false # Just to be super sure.
-		_show_menu(false)
+		_pause_game(false)
 
 
 func _on_vibration_selector_current_option_index_changed(value: int) -> void:
-		if value == IDX_YES:
-			Utils.vibrate_joy_demo()
+	if value == IDX_YES:
+		Utils.vibrate_joy_demo()
 
 
 func _on_give_up_button_pressed() -> void:
 	_pause_dialog.visible = false
 	_confirm_exit_dialog.visible = true
+
+
+func _on_continue_button_pressed() -> void:
+	_pause_game(false)
 
 
 func _on_confirm_exit_level_dialog_negative_btn_pressed() -> void:
@@ -100,6 +101,6 @@ func _on_confirm_exit_level_dialog_negative_btn_pressed() -> void:
 
 
 func _on_confirm_exit_level_dialog_positive_btn_pressed() -> void:
-	_save_data()
+	_save_settings()
 	_scene_tree.paused = false
 	Game.start(Game.Minigame.TITLE_SCREEN)
