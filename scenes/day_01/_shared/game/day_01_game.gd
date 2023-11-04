@@ -130,6 +130,7 @@ func _reset_level() -> void:
 
 
 func _start_level() -> void:
+	_ui.show_inverted_controls_alert(_curr_lvl_settings.inverted_controls)
 	var game_mode: Game.Mode = _lvl_info.get_game_mode(_level)
 	var lvl_index: int = _lvl_info.get_lvl_index(_level)
 	_ui.show_level_start(game_mode, lvl_index)
