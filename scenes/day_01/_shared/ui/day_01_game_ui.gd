@@ -9,11 +9,12 @@ signal time_out_finished
 const LIVES_COUNTER_UPDATE_DELAY: float = 1.5
 
 var _lives_counter_tween: Tween
+var _inverted_controls_sign_tween: Tween
 
-@onready var _lives_counter := $LivesCounter/Label as Label
-@onready var _treats_counter := $TreatsCounter/Label as Label
-@onready var _high_score_label := $HighScoreLabel as Label
-@onready var _stamina_bar := %ProgressBar as TextureProgressBar
+@onready var _lives_counter: Label = $LivesCounter/Label
+@onready var _treats_counter: Label = $TreatsCounter/Label
+@onready var _high_score_label: Label = $HighScoreLabel
+@onready var _stamina_bar: TextureProgressBar = %ProgressBar
 @onready var _stamina_bar_container = $StaminaBar
 @onready var _start_labels := $StartLabels
 @onready var _game_over := $GameOver
@@ -22,6 +23,7 @@ var _lives_counter_tween: Tween
 @onready var _dialogue_box := $DialogueBox as DialogueBox
 @onready var _black_screen := $BlackScreen
 @onready var _pause_menu := $PauseMenu
+@onready var _inverted_controls_sign := $InvertedControlsSign
 
 
 func show_level_start(mode: Game.Mode, index: int) -> void:
@@ -53,6 +55,22 @@ func show_time_up() -> void:
 	_time_out.start()
 	await _time_out.finished
 	time_out_finished.emit()
+
+
+func show_inverted_controls_alert(are_inverted_controls: bool) -> void:
+	if _inverted_controls_sign_tween:
+		_inverted_controls_sign_tween.kill()
+	
+	_inverted_controls_sign.visible = false
+	if are_inverted_controls:
+		_inverted_controls_sign_tween = create_tween()
+		_inverted_controls_sign_tween.set_loops(5)
+		_inverted_controls_sign_tween.tween_interval(0.25)
+		_inverted_controls_sign_tween.tween_callback(func():
+			_inverted_controls_sign.visible = !_inverted_controls_sign.visible
+		)
+	else:
+		_inverted_controls_sign_tween = null
 
 
 func show_black_screen(value: bool) -> void:
