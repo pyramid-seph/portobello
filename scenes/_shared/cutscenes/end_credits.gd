@@ -21,8 +21,12 @@ func play() -> void:
 	_parallax_bg.visible = true
 	_ui.visible = true
 	_parallax_bg.process_mode = Node.PROCESS_MODE_INHERIT
-	await _roll(_original_credits)
 	await _roll(_port_credits)
+	_timer.start(2.0)
+	await _timer.timeout
+	await _roll(_original_credits)
+	_timer.start(3.0)
+	await _timer.timeout
 	_names_label.text = "¡Gracias por jugar!"
 	_timer.start(4.0)
 	await _timer.timeout
