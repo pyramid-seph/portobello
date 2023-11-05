@@ -28,7 +28,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and enabled:
 		get_viewport().set_input_as_handled()
 		_pause_game(!_scene_tree.paused)
 

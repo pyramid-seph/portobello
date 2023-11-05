@@ -207,7 +207,6 @@ func _on_level_beaten() -> void:
 				_high_score
 		)
 	else:
-		_ui.set_pause_menu_enabled(true)
 		if _lvl_info.is_story_mode_level(_level):
 			var settings := _lvl_info.get_settings(next_lvl)
 			_cutscene.inverted_controls = settings.inverted_controls
