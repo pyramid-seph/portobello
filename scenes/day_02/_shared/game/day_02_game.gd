@@ -241,8 +241,8 @@ func _on_results_screen_calculated(_new_high_score, stars) -> void:
 	_save_high_score()
 	var save_data := SaveDataManager.save_data as SaveData
 	save_data.stars.day_two = maxi(save_data.stars.day_two, stars)
-	if save_data.latest_day_completed < 2:
-		save_data.latest_day_completed = 2
+	var curr_progress = SaveDataManager.save_data.latest_day_completed
+	save_data.latest_day_completed = maxi(curr_progress, 2)
 	SaveDataManager.save()
 
 

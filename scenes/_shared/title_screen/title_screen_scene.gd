@@ -3,6 +3,7 @@ extends Node
 const MenuBgDay01Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_01.png")
 const MenuBgDay02Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_02.png")
 const MenuBgDay03Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_03.png")
+const MenuBgDayExTexture: Texture2D = preload("res://art/menu_screen/menu_bg_day_ex.png")
 const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_scores.png")
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
@@ -10,6 +11,7 @@ const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit
 const BG_COLOR_DAY_1_LIKE_GAME := Color("7CE194")
 const BG_COLOR_DAY_2_LIKE_GAME := Color("E76F6F")
 const BG_COLOR_DAY_3_LIKE_GAME := Color("E98BEA")
+const BG_COLOR_DAY_EX_LIKE_GAME := Color("A7BD3A")
 const BG_COLOR_DANGER := Color("b40404")
 const BG_COLOR_SCORES := Color("83857a")
 const BG_COLOR_SETTINGS := Color("2ec939")
@@ -36,6 +38,13 @@ const STORY_MODE_OPTIONS := [
 		"texture": MenuBgDay03Texture,
 		"color": BG_COLOR_DAY_3_LIKE_GAME,
 		"min_story_mode_progress": 2,
+	},
+	{
+		"label": "EX",
+		"value": Game.Minigame.STORY_DAY_EX,
+		"texture": MenuBgDayExTexture,
+		"color": BG_COLOR_DAY_EX_LIKE_GAME,
+		"min_story_mode_progress": 3,
 	}
 ]
 
@@ -106,6 +115,7 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _score_attack_game_selector := %ScoreAttackGameSelector as HSelector
 @onready var _exit_game_btn := %ExitGameBtn
 @onready var _confirm_exit_dialog := $ConfirmExitDialog
+@onready var _unlocks_dialog := $UnlocksDialog
 @onready var _progress_menu := %ProgressMenu
 @onready var _settings_menu := %SettingsMenu
 @onready var _main_menu := %MainMenu
@@ -177,12 +187,32 @@ func _enable_title_screen(show_screen: bool) -> void:
 		_set_stars_count()
 		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 		_story_mode_game_selector.call_deferred("grab_focus")
+		_notify_unlocks()
 
 
 func _on_minigame_selection_changed(value) -> void:
 	if _is_ready:
 		_title_screen_bg.game_texture = value.texture
 		_title_screen_bg.game_color = value.color
+
+
+func _notify_unlocks() -> void:
+	var save_data := SaveDataManager.save_data as SaveData
+	if save_data.latest_unlocked_day_notified >= save_data.latest_day_completed:
+		return
+	
+	save_data.latest_unlocked_day_notified = save_data.latest_day_completed
+	SaveDataManager.save()
+	
+	var story_progress: int = save_data.latest_day_completed
+	var body: String
+	if save_data.latest_day_completed >= 3:
+		body = "Ya puedes jugar:\n\nBuffets del día %s\n " % story_progress
+	else:
+		body = "Ya puedes jugar:\n\nMenú del día %s\nBuffets del día %s\n " % \
+				[story_progress + 1, story_progress]
+	_unlocks_dialog.body_text = body
+	_unlocks_dialog.visible = true
 
 
 func _on_logos_roll_rolled() -> void:
@@ -214,7 +244,11 @@ func _on_settings_menu_dangerous_option_unfocused() -> void:
 
 
 func _on_minigame_selected(value) -> void:
-	Game.start(value)
+	if value == Game.Minigame.STORY_DAY_EX:
+		_unlocks_dialog.body_text = " \n¡Próximamente!\n "
+		_unlocks_dialog.visible = true
+	else:
+		Game.start(value)
 
 
 func _on_story_mode_option_index_changed(index: int) -> void:
@@ -260,6 +294,10 @@ func _on_confirm_exit_dialog_negative_btn_pressed() -> void:
 
 func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_unlocks_dialog_positive_btn_pressed() -> void:
+	_story_mode_game_selector.call_deferred("grab_focus")
 
 
 func _on_progress_menu_closed() -> void:

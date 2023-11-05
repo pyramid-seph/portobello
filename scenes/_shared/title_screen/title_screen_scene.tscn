@@ -25,13 +25,13 @@ line_spacing = 0.0
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjgpj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dx6fu"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsou2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ywd"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -39,7 +39,6 @@ bg_color = Color(1, 1, 1, 0)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
-_debug_skip_game_filter = true
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -153,7 +152,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_yjgpj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dx6fu")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -163,7 +162,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_vsou2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1ywd")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -206,6 +205,17 @@ layout_mode = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="UnlocksDialog" parent="." instance=ExtResource("10_dgmig")]
+visible = false
+body_text = "Ya puedes jugar:
+
+Menú del día 2
+Buffets del día 1
+
+"
+negative_btn_text = ""
+positive_btn_text = "OK"
 
 [node name="ConfirmExitDialog" parent="." instance=ExtResource("10_dgmig")]
 visible = false
@@ -266,6 +276,7 @@ one_shot = true
 [connection signal="closed" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_closed"]
 [connection signal="dangerous_option_focused" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_dangerous_option_focused"]
 [connection signal="dangerous_option_unfocused" from="TitleScreen/SettingsMenu" to="." method="_on_settings_menu_dangerous_option_unfocused"]
+[connection signal="positive_btn_pressed" from="UnlocksDialog" to="." method="_on_unlocks_dialog_positive_btn_pressed"]
 [connection signal="negative_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_positive_btn_pressed"]
 [connection signal="rolled" from="LogosRoll" to="." method="_on_logos_roll_rolled"]

@@ -9,6 +9,7 @@ const VERSION: int = 1
 var version: int = VERSION
 # First day is 1. "The lost chapter" does not count.
 var latest_day_completed: int
+var latest_unlocked_day_notified: int
 var is_vibration_enabled: bool = true
 var is_autofire_enabled: bool = true:
 	set(value):
@@ -22,6 +23,7 @@ func to_dictionary() -> Dictionary:
 	return {
 		"version": VERSION,
 		"latest_day_completed": latest_day_completed,
+		"latest_unlocked_day_notified": latest_unlocked_day_notified,
 		"is_vibration_enabled": is_vibration_enabled,
 		"is_autofire_enabled": is_autofire_enabled,
 		"stars": {
@@ -46,6 +48,7 @@ static func from_json(json: Dictionary) -> SaveData:
 	var save_data = SaveData.new()
 	save_data.version = json.version
 	save_data.latest_day_completed = json.latest_day_completed
+	save_data.latest_unlocked_day_notified = json.latest_unlocked_day_notified
 	save_data.is_autofire_enabled = json.is_autofire_enabled
 	save_data.is_vibration_enabled = json.is_vibration_enabled
 	save_data.stars.day_one = json.stars.day_one
