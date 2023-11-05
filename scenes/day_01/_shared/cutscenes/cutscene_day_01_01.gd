@@ -23,11 +23,16 @@ func _play() -> void:
 
 
 func _clean_up() -> void:
-	_timer.stop()
-	Utils.safe_disconnect_all(_timer.timeout)
+	# Awaiting for a signal to be fired creates one shot connections.
+	# Do not disconnect one shot callables if the timer is stopped
+	# or else an "attempt to disconnect a nonexistent connection"
+	# error will be raised.
+	if not _timer.is_stopped():
+		_timer.stop()
+		Utils.safe_disconnect_all(_timer.timeout)
 	_background.visible = false
 	_panel_00.visible = false
-	_panel_01.visible = true
+	_panel_01.visible = false
 
 
 func _on_finished() -> void:

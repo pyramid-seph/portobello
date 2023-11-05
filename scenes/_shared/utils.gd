@@ -95,7 +95,7 @@ static func change_label_color(label: Label, color: Color) -> void:
 
 static func safe_disconnect_all(sg: Signal) -> void:
 	for conn in sg.get_connections():
-		safe_disconnect(conn["signal"], conn.callable)
+		safe_disconnect(conn.signal, conn.callable)
 
 
 static func safe_disconnect(sg: Signal, callable: Callable) -> void:
@@ -103,7 +103,11 @@ static func safe_disconnect(sg: Signal, callable: Callable) -> void:
 		sg.disconnect(callable)
 
 
-static func safe_reparent(node: Node, new_parent: Node, keep_global_transform: bool = true) -> void:
+static func safe_reparent(
+	node: Node,
+	new_parent: Node,
+	keep_global_transform: bool = true
+) -> void:
 	assert(node != null, "node cannot be null")
 	assert(new_parent != null, "new_parent cannot be null")
 	if node.get_parent() == new_parent:
