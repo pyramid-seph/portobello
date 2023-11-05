@@ -19,7 +19,7 @@ names = Array[String](["Pyramid Seph"])
 script = ExtResource("1_x4py4")
 duration_sec = 4.0
 job = "Comodín"
-names = Array[String](["Arasan"])
+names = Array[String](["Ara-san"])
 
 [resource]
 script = ExtResource("2_7insv")
