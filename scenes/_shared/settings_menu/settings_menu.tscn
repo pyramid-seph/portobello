@@ -5,13 +5,13 @@
 [ext_resource type="Script" path="res://scenes/_shared/settings_menu/settings_menu.gd" id="2_acgwn"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="4_swkte"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fitpg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cosay"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds8vh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqevd"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -49,7 +49,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../GoBackBtn")
 focus_neighbor_bottom = NodePath("../AutofireSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_fitpg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cosay")
 selector_text = "Vibrar"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -60,7 +60,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../VibrationSelector")
 focus_neighbor_bottom = NodePath("../EraseDataBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_ds8vh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vqevd")
 selector_text = "Auto Fuego"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
