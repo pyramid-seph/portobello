@@ -23,6 +23,7 @@ func prepare() -> void:
 	_player.position = _start_marker.position
 	_ui.change_bars_visibility(false)
 	_ui.change_score_visibility(false)
+	_ui.change_lives_visibility(false)
 
 
 func start() -> void:
@@ -53,6 +54,7 @@ func _play_boss_introduction() -> void:
 	await _timer.timeout
 	_ui.start_main_course_presentation(3.2)
 	await _ui.main_course_presented
+	_ui.change_lives_visibility(true)
 	_start_boss_fight()
 
 
