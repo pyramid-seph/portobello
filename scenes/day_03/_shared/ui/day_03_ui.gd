@@ -21,6 +21,7 @@ signal main_course_presented
 @onready var _bars := $BarsMargin/Bars
 @onready var _black_screen := $BlackScreen
 @onready var _pause_menu := $PauseMenu
+@onready var _lives_counter := $LivesCounter
 
 
 func _ready() -> void:
@@ -48,6 +49,10 @@ func change_bars_visibility(value: bool) -> void:
 func change_score_visibility(value: bool) -> void:
 	_score_label.visible = value
 	_hi_score_label.visible = value
+
+
+func change_lives_visibility(value: bool) -> void:
+	_lives_counter.visible = value
 
 
 func change_black_screen_visibility(value: bool) -> void:
