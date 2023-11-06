@@ -66,6 +66,10 @@ static func rand_child_in_group(node: Node, group: String) -> Node:
 	return rand_item(candidates)
 
 
+static func can_run_js() -> bool:
+	return OS.has_feature("web")
+
+
 static func vibrate_joy(
 	device: int = 0, 
 	weak_magnitude: float = 0.25,
@@ -148,7 +152,7 @@ static func _vibrate_joy_web_workaround(
 	strong_magnitude: float = 0.25,
 	duration: float = 0.25,
 ) -> void:
-	if not OS.has_feature("web"):
+	if not can_run_js():
 		return
 	
 	# This workaround uses an experimental API.
