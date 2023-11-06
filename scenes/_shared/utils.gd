@@ -74,12 +74,20 @@ static func vibrate_joy(
 	force: bool = false,
 ) -> void:
 	if force or SaveDataManager.save_data.is_vibration_enabled:
-		Input.start_joy_vibration(
-			device, 
-			weak_magnitude, 
-			strong_magnitude, 
-			duration
-		)
+		if is_running_on_web():
+			_vibrate_joy_web_workaround(
+				device,
+				weak_magnitude,
+				strong_magnitude,
+				duration
+			)
+		else:
+			Input.start_joy_vibration(
+				device, 
+				weak_magnitude, 
+				strong_magnitude, 
+				duration
+			)
 
 
 static func vibrate_joy_demo() -> void:
@@ -132,3 +140,34 @@ static func is_running_on_web() -> bool:
 
 static func get_game_version() -> String:
 	return "v%s" % ProjectSettings.get_setting("application/config/version")
+
+
+static func _vibrate_joy_web_workaround(
+	device: int = 0, 
+	weak_magnitude: float = 0.25,
+	strong_magnitude: float = 0.25,
+	duration: float = 0.25,
+) -> void:
+	if not OS.has_feature("web"):
+		return
+	
+	# This workaround uses an experimental API.
+	# It does not work on every web browser.
+	# More info:
+	# https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/vibrationActuator
+	# Related issues:
+	# https://github.com/godotengine/godot/issues/14634
+	JavaScriptBridge.eval("""
+		const gamepads = navigator.getGamepads();
+		if (gamepads.length > 0) {
+			const gamepad = gamepads[%s];
+			if (gamepad.vibrationActuator) {
+				gamepad.vibrationActuator.playEffect("dual-rumble", {
+					startDelay: 0,
+					duration: %s,
+					weakMagnitude: %s,
+					strongMagnitude: %s,
+				});
+			}
+		}
+	""" % [device, duration * 1000.0, weak_magnitude, strong_magnitude])
