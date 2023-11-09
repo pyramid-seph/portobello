@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d3eorbmbvko6w"
-path="res://.godot/imported/CourierPrime-Bold.ttf-530a426c5d32e567d5e6176be0eec9e2.fontdata"
+path="res://.godot/imported/courier_prime_bold.ttf-fb79dafdf88742fc11cdd8209bf7bb3b.fontdata"
 
 [deps]
 
-source_file="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf"
-dest_files=["res://.godot/imported/CourierPrime-Bold.ttf-530a426c5d32e567d5e6176be0eec9e2.fontdata"]
+source_file="res://art/fonts/courier_prime/courier_prime_bold.ttf"
+dest_files=["res://.godot/imported/courier_prime_bold.ttf-fb79dafdf88742fc11cdd8209bf7bb3b.fontdata"]
 
 [params]
 

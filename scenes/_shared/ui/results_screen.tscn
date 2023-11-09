@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://xl5bc10rc15p"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/results_screen.gd" id="1_gc208"]
-[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="2_3udlg"]
+[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/courier_prime/courier_prime_bold_italic.ttf" id="2_3udlg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nngq"]
 bg_color = Color(1, 1, 1, 1)

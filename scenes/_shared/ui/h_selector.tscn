@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_vafp5"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="3_nks1b"]
+[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/courier_prime_bold.ttf" id="3_nks1b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4g7i"]
 resource_local_to_scene = true
