@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mb31sl60x0a"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/systems/power_up_spawner.gd" id="1"]
-[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="2"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="2"]
 
 [node name="PowerUpSpawner" type="Node2D"]
 process_mode = 1

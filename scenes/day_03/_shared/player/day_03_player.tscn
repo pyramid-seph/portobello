@@ -1,16 +1,16 @@
 [gd_scene load_steps=19 format=3 uid="uid://dgusui2goqk5w"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/player/player.gd" id="1_o3ipy"]
-[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="2_jf564"]
-[ext_resource type="PackedScene" uid="uid://cdi2dku78c2an" path="res://scenes/day_03/_shared/objects/fall.tscn" id="3_y57w7"]
-[ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="4_myd3x"]
-[ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/_atlas_day_3_shield.png" id="5_73oqx"]
-[ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/player_0.png" id="6_aq72p"]
-[ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/player_1.png" id="7_r1arf"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="8_s2mvn"]
-[ext_resource type="PackedScene" uid="uid://da2fw2fh22lgh" path="res://scenes/day_03/_shared/objects/player_bullet.tscn" id="9_8x2q1"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/player/mega_gun.gd" id="10_vakmx"]
-[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="12_6i17m"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/player/day_03_player.gd" id="1_mps85"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="2_g6ucs"]
+[ext_resource type="PackedScene" uid="uid://cdi2dku78c2an" path="res://scenes/day_03/_shared/objects/fall.tscn" id="3_nbxsb"]
+[ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="4_xc36q"]
+[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="5_84f5h"]
+[ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/_atlas_day_3_shield.png" id="6_equse"]
+[ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/player_0.png" id="7_ggeht"]
+[ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/player_1.png" id="8_vmafx"]
+[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="9_fgecs"]
+[ext_resource type="PackedScene" uid="uid://da2fw2fh22lgh" path="res://scenes/day_03/_shared/objects/player_bullet.tscn" id="10_2vf6h"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/player/mega_gun.gd" id="11_vuy7j"]
 
 [sub_resource type="RectangleShape2D" id="8"]
 size = Vector2(8, 16)
@@ -105,32 +105,32 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("5_73oqx")
+atlas = ExtResource("6_equse")
 region = Rect2(0, 0, 60, 20)
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_aq72p")
+"texture": ExtResource("7_ggeht")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_r1arf")
+"texture": ExtResource("8_vmafx")
 }],
 "loop": true,
 "name": &"default",
 "speed": 12.5
 }]
 
-[node name="Player" type="Node2D" groups=["players"]]
+[node name="Day03Player" type="Node2D" groups=["players"]]
 z_index = -90
-script = ExtResource("1_o3ipy")
-_player_data = ExtResource("2_jf564")
+script = ExtResource("1_mps85")
+_player_data = ExtResource("2_g6ucs")
 _time_between_revivals_sec = 1.2
 _stamina_depleted_per_tick = 4
 _speed = 62.5
-Fall = ExtResource("3_y57w7")
-Explosion = ExtResource("4_myd3x")
+Fall = ExtResource("3_nbxsb")
+Explosion = ExtResource("4_xc36q")
 move_offset_left = -4
 move_offset_top = 2
 move_offset_right = 4
@@ -145,7 +145,7 @@ shape = SubResource("8")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(8, 8)
-script = ExtResource("12_6i17m")
+script = ExtResource("5_84f5h")
 killer_groups = Array[String](["enemies", "enemy_bullets"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -178,14 +178,14 @@ autostart = true
 process_mode = 1
 one_shot = true
 
-[node name="Gun" parent="." instance=ExtResource("8_s2mvn")]
+[node name="Gun" parent="." instance=ExtResource("9_fgecs")]
 position = Vector2(8, -2)
-Bullet = ExtResource("9_8x2q1")
+Bullet = ExtResource("10_2vf6h")
 bullet_speed = 125.0
 cooldown = 0.16
 
 [node name="MegaGun" type="Node" parent="."]
-script = ExtResource("10_vakmx")
+script = ExtResource("11_vuy7j")
 
 [connection signal="died" from="." to="." method="_on_died"]
 [connection signal="area_entered" from="Pickupbox" to="." method="_on_pickup_area_area_entered"]
