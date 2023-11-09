@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/alien_hologram.gd" id="6_fhdi3"]
 [ext_resource type="PackedScene" uid="uid://csyep514u36ex" path="res://scenes/day_03/level_02/enemies/block.tscn" id="6_svbuj"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/heat_seeker_weapon.gd" id="7_gjhag"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="7_rkunh"]
+[ext_resource type="PackedScene" uid="uid://becs5x7xd6s18" path="res://scenes/day_03/_shared/objects/gun.tscn" id="7_rkunh"]
 [ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="8_coaat"]
 [ext_resource type="Texture2D" uid="uid://dcmolxxqilyi3" path="res://art/day_3/dotted_line.png" id="9_441i0"]
 [ext_resource type="PackedScene" uid="uid://spq6o43sfcc1" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.tscn" id="10_oilhl"]

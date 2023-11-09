@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j3ged81fnnl6"
-path="res://.godot/imported/atlas_tiles_maze.png-4a5aeb597da3b1b096911d7d54cd0c01.ctex"
+uid="uid://svuol4ejk04q"
+path="res://.godot/imported/_atlas_day_01_level.png-26af17d0a87f1f6ab47a9f8c900dbfcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_2/atlas_tiles_maze.png"
-dest_files=["res://.godot/imported/atlas_tiles_maze.png-4a5aeb597da3b1b096911d7d54cd0c01.ctex"]
+source_file="res://art/cutscenes/_atlas_day_01_level.png"
+dest_files=["res://.godot/imported/_atlas_day_01_level.png-26af17d0a87f1f6ab47a9f8c900dbfcc.ctex"]
 
 [params]
 

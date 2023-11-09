@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cnfahjhvwxeo2"]
 
-[ext_resource type="Script" path="res://scenes/day_01/_shared/ui/day_01_game_ui.gd" id="1_vfhqe"]
+[ext_resource type="Script" path="res://scenes/day_01/_shared/ui/day_01_ui.gd" id="1_vfhqe"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="2_dhqsk"]
 [ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="3_88su3"]
 [ext_resource type="Texture2D" uid="uid://085ky11hend8" path="res://art/_shared/ui_counter_cat_food.png" id="4_4e12d"]
@@ -16,7 +16,7 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_77l20"]
 
-[node name="Day01GameUi" type="Control"]
+[node name="Day01Ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

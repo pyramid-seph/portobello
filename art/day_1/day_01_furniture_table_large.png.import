@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://ct14rp3rcmj27"
 path="res://.godot/imported/day_01_furniture_table_large.png-44f7eef5a0146717218393ce2562bed8.res"
-group_file="res://art/day_1/day_01_object_atlas.png"
+group_file="res://art/day_1/_atlas_day_01_object.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/day_01_furniture_table_large.png-44f7eef5a014
 
 [params]
 
-atlas_file="res://art/day_1/day_01_object_atlas.png"
+atlas_file="res://art/day_1/_atlas_day_01_object.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true

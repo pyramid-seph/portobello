@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqydgt3uf4tdl"
-path="res://.godot/imported/day_02_outro_atlas.png-4f906a240b6c88b5c82e832558c74dfd.ctex"
+uid="uid://bfpk34opwn8nh"
+path="res://.godot/imported/_atlas_ending.png-3893eac2a19945ea10b904c5e8e14792.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cutscenes/day_02_outro_atlas.png"
-dest_files=["res://.godot/imported/day_02_outro_atlas.png-4f906a240b6c88b5c82e832558c74dfd.ctex"]
+source_file="res://art/cutscenes/ending/_atlas_ending.png"
+dest_files=["res://.godot/imported/_atlas_ending.png-3893eac2a19945ea10b904c5e8e14792.ctex"]
 
 [params]
 

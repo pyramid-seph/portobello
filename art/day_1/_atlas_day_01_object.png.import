@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpjxr28rrgvac"
-path="res://.godot/imported/ui_shared_atlas.png-786c1f75c8043f307c222c6de54bd473.ctex"
+uid="uid://4rvqxk74nlc3"
+path="res://.godot/imported/_atlas_day_01_object.png-8617df326e03d816d1b07185a474e19d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/_shared/ui_shared_atlas.png"
-dest_files=["res://.godot/imported/ui_shared_atlas.png-786c1f75c8043f307c222c6de54bd473.ctex"]
+source_file="res://art/day_1/_atlas_day_01_object.png"
+dest_files=["res://.godot/imported/_atlas_day_01_object.png-8617df326e03d816d1b07185a474e19d.ctex"]
 
 [params]
 

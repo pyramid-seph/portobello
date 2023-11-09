@@ -17,9 +17,8 @@ enum Level {
 }
 
 const Player = preload("res://scenes/day_01/player/day_01_player.gd")
-const Day01Ui = preload("res://scenes/day_01/_shared/ui/day_01_game_ui.gd")
+const Day01Ui = preload("res://scenes/day_01/_shared/ui/day_01_ui.gd")
 const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
-const Treat = preload("res://scenes/day_01/_shared/treat.tscn")
 const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
 const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
 const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")

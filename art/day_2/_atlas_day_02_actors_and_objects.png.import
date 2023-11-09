@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbec6j42vjcve"
-path="res://.godot/imported/atlas_menu_bg.png-2a8735abacf5583061fbac6c483fa535.ctex"
+uid="uid://dn1yu7oknnvgr"
+path="res://.godot/imported/_atlas_day_02_actors_and_objects.png-3fae7fab5032d06afd64b53b41250c5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/menu_screen/atlas_menu_bg.png"
-dest_files=["res://.godot/imported/atlas_menu_bg.png-2a8735abacf5583061fbac6c483fa535.ctex"]
+source_file="res://art/day_2/_atlas_day_02_actors_and_objects.png"
+dest_files=["res://.godot/imported/_atlas_day_02_actors_and_objects.png-3fae7fab5032d06afd64b53b41250c5c.ctex"]
 
 [params]
 

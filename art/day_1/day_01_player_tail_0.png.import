@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://krqky7l8cubk"
 path="res://.godot/imported/day_01_player_tail_0.png-48a7558494ec68965629bb17e5c6aaed.res"
-group_file="res://art/day_1/day_01_object_atlas.png"
+group_file="res://art/day_1/_atlas_day_01_object.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/day_01_player_tail_0.png-48a7558494ec68965629
 
 [params]
 
-atlas_file="res://art/day_1/day_01_object_atlas.png"
+atlas_file="res://art/day_1/_atlas_day_01_object.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true

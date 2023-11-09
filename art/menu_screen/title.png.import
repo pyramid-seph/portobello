@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://ydnoqkd04fkt"
 path="res://.godot/imported/title.png-4e18aee531143a35b603c18d3f688832.res"
-group_file="res://art/menu_screen/atlas_menu_bg.png"
+group_file="res://art/menu_screen/_atlas_menu_bg.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/title.png-4e18aee531143a35b603c18d3f688832.re
 
 [params]
 
-atlas_file="res://art/menu_screen/atlas_menu_bg.png"
+atlas_file="res://art/menu_screen/_atlas_menu_bg.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true

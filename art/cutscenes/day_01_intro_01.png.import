@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://drbma24q1mvtn"
 path="res://.godot/imported/day_01_intro_01.png-44e0205291e6f28aef2946a6ec517ac0.res"
-group_file="res://art/cutscenes/day_01_intro_atlas.png"
+group_file="res://art/cutscenes/_atlas_day_01_intro.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/day_01_intro_01.png-44e0205291e6f28aef2946a6e
 
 [params]
 
-atlas_file="res://art/cutscenes/day_01_intro_atlas.png"
+atlas_file="res://art/cutscenes/_atlas_day_01_intro.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true

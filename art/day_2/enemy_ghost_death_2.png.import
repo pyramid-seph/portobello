@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://bxter8aud43he"
 path="res://.godot/imported/enemy_ghost_death_2.png-fa3df7f6f54614fbbbd25942392b7c24.res"
-group_file="res://art/day_2/atlas_actors_and_objects.png"
+group_file="res://art/day_2/_atlas_day_02_actors_and_objects.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/enemy_ghost_death_2.png-fa3df7f6f54614fbbbd25
 
 [params]
 
-atlas_file="res://art/day_2/atlas_actors_and_objects.png"
+atlas_file="res://art/day_2/_atlas_day_02_actors_and_objects.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true
