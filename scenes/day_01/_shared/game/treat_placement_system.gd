@@ -1,7 +1,7 @@
 extends Node
 
 
-const Treat = preload("res://scenes/day_01/_shared/treat.tscn")
+const Treat = preload("res://scenes/day_01/_shared/items/treat.tscn")
 const Player = preload("res://scenes/day_01/player/day_01_player.gd")
 const TileMapHelper = preload("res://scenes/day_01/_shared/game/day_01_tile_map_helper.gd")
 

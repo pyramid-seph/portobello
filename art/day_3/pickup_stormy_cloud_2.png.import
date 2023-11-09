@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://o6sppwsbu2is"
 path="res://.godot/imported/pickup_stormy_cloud_2.png-00731042f8fa58694b2defffa64557e3.res"
-group_file="res://art/day_3/_atlas_day_3.png"
+group_file="res://art/day_3/_atlas_day_03.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/pickup_stormy_cloud_2.png-00731042f8fa58694b2
 
 [params]
 
-atlas_file="res://art/day_3/_atlas_day_3.png"
+atlas_file="res://art/day_3/_atlas_day_03.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_423fj"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/day_03_ui.gd" id="2_3x677"]
-[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/Player01Day03Data.tres" id="3_r64uk"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="3_eukm3"]
 [ext_resource type="PackedScene" uid="uid://dtlk1u7ur0rxv" path="res://scenes/_shared/ui/stamina_bar.tscn" id="4_6vio6"]
 [ext_resource type="PackedScene" uid="uid://cwqvrgqp2kstp" path="res://scenes/day_03/_shared/ui/power_up_bar.tscn" id="5_fmyon"]
 [ext_resource type="PackedScene" path="res://scenes/_shared/ui/lives_counter.tscn" id="6_2h8mh"]
@@ -55,7 +55,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_423fj")
 script = ExtResource("2_3x677")
-player_data = ExtResource("3_r64uk")
+player_data = ExtResource("3_eukm3")
 
 [node name="BarsMargin" type="MarginContainer" parent="."]
 layout_mode = 0

@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
 [ext_resource type="Script" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/level_info.gd" id="2_tq1t3"]
-[ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/day_01_tile_atlas.png" id="3_71sjy"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/furniture_placement_system.gd" id="3_fkre0"]
 [ext_resource type="Script" path="res://resources/dialogue_line.gd" id="3_i3orw"]
 [ext_resource type="PackedScene" uid="uid://bi48jeuci3exe" path="res://scenes/day_01/player/day_01_player.tscn" id="6_kn384"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_tile_map_helper.gd" id="6_mkoph"]
-[ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_game_ui.tscn" id="6_s8541"]
+[ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_ui.tscn" id="6_s8541"]
+[ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/_atlas_day_01_tile.png" id="8_lwdxb"]
 [ext_resource type="PackedScene" uid="uid://n4padnmrc2c0" path="res://scenes/day_01/_shared/furniture/large_couch.tscn" id="9_8h8mx"]
 [ext_resource type="PackedScene" uid="uid://3474g83ryj02" path="res://scenes/day_01/_shared/furniture/small_couch.tscn" id="10_jkjik"]
 [ext_resource type="PackedScene" uid="uid://ck0x8gugcvdde" path="res://scenes/day_01/_shared/furniture/small_table.tscn" id="11_t3pbc"]
@@ -439,7 +439,7 @@ dialogue = Array[ExtResource("3_i3orw")]([])
 size = Vector2(6, 6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a6blw"]
-texture = ExtResource("3_71sjy")
+texture = ExtResource("8_lwdxb")
 margins = Vector2i(4, 4)
 separation = Vector2i(8, 8)
 texture_region_size = Vector2i(8, 8)
@@ -479,6 +479,7 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
 [node name="Day01Game" type="Node"]
 script = ExtResource("1_745ra")
+_level = null
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
