@@ -129,7 +129,9 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 func _ready() -> void:
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
-	_exit_game_btn.visible = !Utils.is_running_on_web()
+#	_exit_game_btn.visible = !Utils.is_running_on_web()
+	# Maybe take the dimensions of the buton and move the menu upward pn that many pixels?
+	_exit_game_btn.visible = false
 	
 	if Game.is_cold_boot or _debug_is_cold_boot:
 		Game.is_cold_boot = false
