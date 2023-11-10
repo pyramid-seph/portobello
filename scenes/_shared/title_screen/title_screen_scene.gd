@@ -119,6 +119,7 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _progress_menu := %ProgressMenu
 @onready var _settings_menu := %SettingsMenu
 @onready var _main_menu := %MainMenu
+@onready var _main_menu_box := %MainMenu/VBoxContainer
 @onready var _game_title := %GameTitle
 @onready var _show_scores_button := %ShowScoresBtn
 @onready var _show_options_btn := %ShowOptionsBtn
@@ -129,8 +130,20 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 func _ready() -> void:
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
-	_exit_game_btn.visible = !Utils.is_running_on_web()
-	
+	_remove_exit_btn_on_web()
+	_start()
+
+
+func _remove_exit_btn_on_web() -> void:
+	if Utils.is_running_on_web():
+		var main_menu_box_separation: float = \
+				_main_menu_box.get_theme_constant("separation")
+		_main_menu.offset_bottom -= \
+				_exit_game_btn.size.y + main_menu_box_separation
+		_exit_game_btn.visible = false
+
+
+func _start() -> void:
 	if Game.is_cold_boot or _debug_is_cold_boot:
 		Game.is_cold_boot = false
 		_enable_title_screen(false)
@@ -180,7 +193,7 @@ func _set_stars_count() -> void:
 func _enable_title_screen(show_screen: bool) -> void:
 	_title_screen.visible = show_screen
 	if not show_screen:
-		_title_screen.process_mode = Node.PROCESS_MODE_DISABLED 
+		_title_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
 		_set_day_options()
 		_set_score_attack_options()
