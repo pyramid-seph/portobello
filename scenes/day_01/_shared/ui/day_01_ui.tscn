@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/ui/day_01_ui.gd" id="1_vfhqe"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="2_dhqsk"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/courier_prime_bold.ttf" id="3_88su3"]
 [ext_resource type="Texture2D" uid="uid://085ky11hend8" path="res://art/_shared/ui_counter_cat_food.png" id="4_4e12d"]
 [ext_resource type="Texture2D" uid="uid://b1ldw26sv5ng" path="res://art/_shared/ui_counter_time.png" id="5_tkprg"]
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="6_t8w1h"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="6_y3laa"]
 [ext_resource type="PackedScene" uid="uid://c4nnvy7hmhkml" path="res://scenes/_shared/ui/timed_label.tscn" id="7_4gefh"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="7_ak67o"]
 [ext_resource type="PackedScene" uid="uid://dxxd4wyd36xa6" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="7_t8tk8"]
-[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/courier_prime/courier_prime_bold_italic.ttf" id="8_lotg1"]
+[ext_resource type="LabelSettings" uid="uid://d0l6pt7mpwbu8" path="res://scenes/day_01/_shared/ui/label_settings_floating_text.tres" id="9_a83fs"]
 [ext_resource type="PackedScene" uid="uid://cjldxfd1a76li" path="res://scenes/_shared/dialogue_box.tscn" id="11_l1dor"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4x7ob"]
@@ -23,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_ak67o")
 script = ExtResource("1_vfhqe")
 
 [node name="LivesCounter" type="HBoxContainer" parent="."]
@@ -30,9 +31,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -24.0
-offset_top = -2.0
-offset_bottom = 20.0
+offset_left = -27.0
+offset_top = -1.0
+offset_right = -3.0
+offset_bottom = 21.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 
@@ -45,18 +47,17 @@ stretch_mode = 4
 
 [node name="Label" type="Label" parent="LivesCounter"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_88su3")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "9"
-vertical_alignment = 2
+vertical_alignment = 1
 max_lines_visible = 1
 
 [node name="TreatsCounter" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 1.0
-offset_top = -4.0
-offset_right = 34.0
-offset_bottom = 22.0
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 37.0
+offset_bottom = 23.0
 
 [node name="Icon" type="TextureRect" parent="TreatsCounter"]
 layout_mode = 2
@@ -67,6 +68,7 @@ stretch_mode = 4
 
 [node name="Label" type="Label" parent="TreatsCounter"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "99"
 vertical_alignment = 1
 max_lines_visible = 1
@@ -106,16 +108,17 @@ tint_under = Color(0.180392, 0.180392, 0.180392, 1)
 tint_progress = Color(0.729412, 0.431373, 0.431373, 1)
 
 [node name="InvertedControlsSign" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -60.0
+offset_left = -63.0
 offset_top = 2.0
-offset_right = -25.0
+offset_right = -28.0
 offset_bottom = 17.0
 grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_y3laa")
 theme_override_font_sizes/font_size = 8
 text = "Mareado"
 vertical_alignment = 1
@@ -145,24 +148,17 @@ preview_labels = false
 [node name="GameOver" parent="." instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
-theme = ExtResource("7_ak67o")
-theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-theme_override_fonts/font = ExtResource("8_lotg1")
-theme_override_font_sizes/font_size = 18
-text = "Game over"
+text = "¡Perdiste!"
+label_settings = ExtResource("9_a83fs")
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
 _duration_sec = 3.0
 
 [node name="PieceOfCake" parent="." instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
-theme = ExtResource("7_ak67o")
-theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-theme_override_fonts/font = ExtResource("8_lotg1")
-theme_override_font_sizes/font_size = 18
 text = "¡Pan comido!"
+label_settings = ExtResource("9_a83fs")
 horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 2.0
@@ -170,11 +166,9 @@ _duration_sec = 2.0
 [node name="TimeOut" parent="." instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
-theme = ExtResource("7_ak67o")
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-theme_override_fonts/font = ExtResource("8_lotg1")
-theme_override_font_sizes/font_size = 18
 text = "¡Tiempo agotado!"
+label_settings = ExtResource("9_a83fs")
 horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 2.0

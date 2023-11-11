@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene load_steps=8 format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
-[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="3_4jtb8"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="4_u35yd"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="5_tyfqu"]
 
@@ -10,13 +9,13 @@
 bg_color = Color(0, 0, 0, 0.784314)
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bllu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0grp"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qstq6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81gh7"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -46,8 +45,7 @@ theme_override_constants/separation = 0
 [node name="PauseLabel" type="Label" parent="PauseDialog/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4jtb8")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "Pausa"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -56,7 +54,7 @@ uppercase = true
 [node name="VibrationSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3bllu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_i0grp")
 selector_text = "Vibrar"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -65,7 +63,7 @@ loop_options = false
 [node name="AutofireSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qstq6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_81gh7")
 selector_text = "Autofuego"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
