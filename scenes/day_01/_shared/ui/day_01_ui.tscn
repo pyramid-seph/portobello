@@ -32,9 +32,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -27.0
-offset_top = -1.0
 offset_right = -3.0
-offset_bottom = 21.0
+offset_bottom = 22.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 
@@ -55,9 +54,8 @@ max_lines_visible = 1
 [node name="TreatsCounter" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 3.0
-offset_top = -3.0
 offset_right = 37.0
-offset_bottom = 23.0
+offset_bottom = 22.0
 
 [node name="Icon" type="TextureRect" parent="TreatsCounter"]
 layout_mode = 2
@@ -79,9 +77,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -28.0
-offset_top = 5.0
+offset_top = 6.0
 offset_right = 33.0
-offset_bottom = 15.0
+offset_bottom = 16.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 1
@@ -112,10 +110,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -63.0
-offset_top = 2.0
+offset_left = -64.0
+offset_top = 3.0
 offset_right = -28.0
-offset_bottom = 17.0
+offset_bottom = 18.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_y3laa")

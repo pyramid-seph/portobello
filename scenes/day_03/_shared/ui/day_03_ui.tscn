@@ -1,47 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfidgn8t0dudh"]
+[gd_scene load_steps=17 format=3 uid="uid://bfidgn8t0dudh"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_423fj"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/day_03_ui.gd" id="2_3x677"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="3_eukm3"]
 [ext_resource type="PackedScene" uid="uid://dtlk1u7ur0rxv" path="res://scenes/_shared/ui/stamina_bar.tscn" id="4_6vio6"]
 [ext_resource type="PackedScene" uid="uid://cwqvrgqp2kstp" path="res://scenes/day_03/_shared/ui/power_up_bar.tscn" id="5_fmyon"]
-[ext_resource type="PackedScene" path="res://scenes/_shared/ui/lives_counter.tscn" id="6_2h8mh"]
+[ext_resource type="PackedScene" uid="uid://bxb3w05xdg8w2" path="res://scenes/_shared/ui/lives_counter.tscn" id="6_2h8mh"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/lives_counter.gd" id="7_gyakt"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="8_ljf85"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/score.gd" id="9_6c4c2"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="9_rsd5w"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/hi_score.gd" id="10_udkuv"]
 [ext_resource type="PackedScene" uid="uid://dxxd4wyd36xa6" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="11_rm35m"]
-[ext_resource type="FontFile" uid="uid://lfmnhv4dh4tm" path="res://art/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf" id="12_d0fyw"]
+[ext_resource type="LabelSettings" uid="uid://d0l6pt7mpwbu8" path="res://scenes/day_01/_shared/ui/label_settings_floating_text.tres" id="12_0tu0h"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/game_over.gd" id="13_jr0d7"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/piece_of_cake_label.gd" id="14_ewrt7"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/ui/boss_alert.gd" id="15_d5aqp"]
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="16_bv7rf"]
-
-[sub_resource type="FontFile" id="1"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="2"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-fallbacks = Array[Font]([SubResource("1")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="Theme" id="3"]
-default_font = SubResource("2")
 
 [node name="Day03Ui" type="Control"]
 process_mode = 1
@@ -80,13 +54,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -22.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -27.0
+offset_top = -21.0
+offset_right = -3.0
+offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-theme = SubResource("3")
 script = ExtResource("7_gyakt")
 
 [node name="Score" type="Label" parent="."]
@@ -94,12 +67,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 14.0
+offset_left = -53.0
+offset_right = -3.0
+offset_bottom = 22.0
 grow_horizontal = 0
 theme = ExtResource("1_423fj")
-theme_override_fonts/font = ExtResource("8_ljf85")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "10000"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -114,10 +87,11 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 14.0
 grow_horizontal = 2
-theme = ExtResource("1_423fj")
-theme_override_fonts/font = ExtResource("8_ljf85")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_rsd5w")
+theme_override_font_sizes/font_size = 8
 text = "Hi 100"
+horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_udkuv")
 
@@ -150,14 +124,10 @@ offset_right = -78.0
 offset_bottom = -146.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_423fj")
-theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-theme_override_fonts/font = ExtResource("12_d0fyw")
-theme_override_font_sizes/font_size = 18
-text = "Game over"
+text = "¡Qué indigestión!"
+label_settings = ExtResource("12_0tu0h")
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
 script = ExtResource("13_jr0d7")
 
 [node name="PiecoOfCakeLabel" type="Label" parent="."]
@@ -174,11 +144,8 @@ offset_right = 65.0
 offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_423fj")
-theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-theme_override_fonts/font = ExtResource("12_d0fyw")
-theme_override_font_sizes/font_size = 18
 text = "¡Pan comido!"
+label_settings = ExtResource("12_0tu0h")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("14_ewrt7")
@@ -209,9 +176,6 @@ offset_right = 31.5
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_423fj")
-theme_override_fonts/font = ExtResource("8_ljf85")
-theme_override_font_sizes/font_size = 16
 text = "¡Peligro!"
 
 [node name="Timer" type="Timer" parent="BossAlert"]
