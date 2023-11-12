@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bxb3w05xdg8w2"]
 
-[ext_resource type="PackedScene" uid="uid://drt2fo403br8e" path="res://scenes/_shared/ui/counter.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://drt2fo403br8e" path="res://scenes/_shared/ui/Counter.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="3"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/CourierPrime-Bold.ttf" id="3_76y7s"]
 
 [node name="LivesCounter" instance=ExtResource("1")]
 size_flags_horizontal = 0
@@ -13,7 +12,6 @@ size_flags_vertical = 4
 texture = ExtResource("3")
 
 [node name="Label" parent="." index="1"]
-theme_override_fonts/font = ExtResource("3_76y7s")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "9"
-vertical_alignment = 2
+vertical_alignment = 1

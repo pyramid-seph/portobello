@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://boe7wya5y54mq"]
+[gd_scene load_steps=5 format=3 uid="uid://boe7wya5y54mq"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_760co"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/simple_dialog.gd" id="1_o20yj"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="1_pt1vt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlpij"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -43,7 +42,6 @@ theme_override_constants/separation = 0
 [node name="BodyLabel" type="Label" parent="DialogContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_pt1vt")
 text = "Body"
 horizontal_alignment = 1
 
@@ -63,7 +61,6 @@ focus_previous = NodePath("../PositiveBtn")
 mouse_filter = 2
 button_mask = 0
 text = "No"
-flat = true
 
 [node name="PositiveBtn" type="Button" parent="DialogContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -78,7 +75,6 @@ focus_previous = NodePath("../NegativeBtn")
 mouse_filter = 2
 button_mask = 0
 text = "Yes"
-flat = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="DialogContainer/VBoxContainer/HBoxContainer/NegativeBtn" to="." method="_on_negative_btn_pressed"]

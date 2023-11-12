@@ -49,7 +49,7 @@ names = Array[String](["Roger Alonso Noh Canché", "Nelson Solís Montero", "Jes
 script = ExtResource("1_p318k")
 duration_sec = 4.0
 job = "Pruebas"
-names = Array[String](["José Francisco Morales Breck"])
+names = Array[String](["José Fco. Morales Breck"])
 
 [sub_resource type="Resource" id="Resource_lxsxo"]
 script = ExtResource("1_p318k")

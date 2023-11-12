@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://y72soc2heqau"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://y72soc2heqau"]
 
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/courier_prime_bold.ttf" id="1_5gwpy"]
-[ext_resource type="FontFile" uid="uid://cpudh4mekidtu" path="res://art/fonts/courier_prime/courier_prime_regular.ttf" id="1_kwidn"]
+[ext_resource type="FontVariation" uid="uid://dnj31kao4udtg" path="res://art/fonts/peaberry_font_v2_0/peaberry_base_variation_theme.tres" id="1_d6pxx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ora2p"]
 bg_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -40,14 +39,12 @@ corner_detail = 4
 anti_aliasing = false
 
 [resource]
-default_font = ExtResource("1_kwidn")
+default_font = ExtResource("1_d6pxx")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/font_sizes/font_size = 14
-Button/fonts/font = ExtResource("1_5gwpy")
 Button/styles/focus = SubResource("StyleBoxFlat_ora2p")
 Button/styles/hover = SubResource("StyleBoxEmpty_rnbta")
 Button/styles/normal = SubResource("StyleBoxEmpty_6tfuv")
@@ -57,10 +54,7 @@ CheckButton/colors/font_focus_color = Color(0, 0, 0, 1)
 CheckButton/colors/font_hover_color = Color(0, 0, 0, 1)
 CheckButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 CheckButton/colors/font_pressed_color = Color(0, 0, 0, 1)
-CheckButton/font_sizes/font_size = 14
-CheckButton/fonts/font = ExtResource("1_5gwpy")
 CheckButton/styles/hover = SubResource("StyleBoxEmpty_pdnhn")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_erwfr")
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 16
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_p7tcb")

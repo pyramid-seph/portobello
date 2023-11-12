@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxxd4wyd36xa6"]
+[gd_scene load_steps=2 format=3 uid="uid://dxxd4wyd36xa6"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/two_line_timed_label.gd" id="1_oudw7"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/courier_prime_bold.ttf" id="2_7wa0l"]
 
 [node name="TwoLineTimedLabel" type="Control"]
 layout_mode = 3
@@ -32,9 +31,8 @@ theme_override_constants/separation = 0
 [node name="Label" type="Label" parent="Labels"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("2_7wa0l")
-theme_override_font_sizes/font_size = 18
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
 text = "Hi"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -42,8 +40,8 @@ vertical_alignment = 1
 [node name="Label2" type="Label" parent="Labels"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_fonts/font = ExtResource("2_7wa0l")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
 text = "World!"
 horizontal_alignment = 1
 vertical_alignment = 1

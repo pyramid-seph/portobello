@@ -1,19 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://8k034qvxjmd8"]
+[gd_scene load_steps=8 format=3 uid="uid://8k034qvxjmd8"]
 
 [ext_resource type="Script" path="res://autoloads/scene_changer.gd" id="1_wichc"]
 [ext_resource type="Script" path="res://autoloads/threaded_loader.gd" id="2_ux1p7"]
 [ext_resource type="Texture2D" uid="uid://wwx4ny446mjr" path="res://art/_shared/ui_loading_0.png" id="2_w05wq"]
 [ext_resource type="Texture2D" uid="uid://bc6i3vg67kqhg" path="res://art/_shared/ui_loading_1.png" id="3_ebxdm"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_rwund"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/Courier_Prime/CourierPrime-Bold.ttf" id="4_u8mqu"]
 [ext_resource type="PackedScene" uid="uid://brik70kwkl220" path="res://scenes/_shared/ui/animated_texture_rect.tscn" id="5_qq1kj"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="8_o1hk3"]
 
 [node name="SceneChanger" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_wichc")
-_min_duration_sec = 0.32
-_loading_animation_delay_sec = 0.64
+_min_duration_sec = 0.84
+_loading_animation_delay_sec = 0.16
 
 [node name="ThreadedLoader" type="Node" parent="."]
 script = ExtResource("2_ux1p7")
@@ -46,13 +45,13 @@ theme = ExtResource("3_rwund")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("4_u8mqu")
-theme_override_font_sizes/font_size = 16
 text = "Cargando"
 vertical_alignment = 1
 
 [node name="AnimatedTextureRect" parent="LodingAnimContainer" instance=ExtResource("5_qq1kj")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("2_w05wq")
 stretch_mode = 2
 frames = Array[Texture2D]([ExtResource("2_w05wq"), ExtResource("3_ebxdm")])

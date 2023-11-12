@@ -2,26 +2,26 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://drt3dixe857g2"
-path="res://.godot/imported/courier_prime_italic.ttf-0dc04a120456ce84d83847d41bf6a275.fontdata"
+uid="uid://cwc2c33qocoqn"
+path="res://.godot/imported/peaberry_base.woff2-6c8708743deff351c88f4c35ef06d0fd.fontdata"
 
 [deps]
 
-source_file="res://art/fonts/courier_prime/courier_prime_italic.ttf"
-dest_files=["res://.godot/imported/courier_prime_italic.ttf-0dc04a120456ce84d83847d41bf6a275.fontdata"]
+source_file="res://art/fonts/peaberry_font_v2_0/peaberry_base.woff2"
+dest_files=["res://.godot/imported/peaberry_base.woff2-6c8708743deff351c88f4c35ef06d0fd.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-hinting=1
-subpixel_positioning=1
+hinting=0
+subpixel_positioning=0
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

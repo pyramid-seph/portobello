@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://drjxqg6njqe0h"]
+[gd_scene load_steps=4 format=3 uid="uid://drjxqg6njqe0h"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_vafp5"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
-[ext_resource type="FontFile" uid="uid://d3eorbmbvko6w" path="res://art/fonts/courier_prime/courier_prime_bold.ttf" id="3_nks1b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4g7i"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
 
 [node name="HSelector" type="PanelContainer"]
 offset_right = 159.0
@@ -18,14 +18,11 @@ theme = ExtResource("1_vafp5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_m4g7i")
 script = ExtResource("2_psdub")
 selector_text = "Example"
-options = Array[String](["Lorem", "Ipsum"])
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("3_nks1b")
-theme_override_font_sizes/font_size = 14
-text = "Example < Lorem >"
+text = "Example "
 vertical_alignment = 1
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

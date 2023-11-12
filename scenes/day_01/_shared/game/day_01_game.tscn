@@ -349,7 +349,7 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_pv6bm"]
 script = ExtResource("3_i3orw")
-text = "Traeme lo que quieras."
+text = "Tráeme lo que quieras."
 delay_sec = 0.0
 duration_sec = 10.0
 
@@ -479,7 +479,6 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
 [node name="Day01Game" type="Node"]
 script = ExtResource("1_745ra")
-_level = null
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

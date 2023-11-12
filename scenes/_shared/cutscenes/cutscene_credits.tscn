@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=21 format=3 uid="uid://ct51hooycinfb"]
 
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/end_credits.gd" id="2_l4t77"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/pre_credits_scene.gd" id="3_dru3q"]
@@ -123,6 +124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1lrlh")
 script = ExtResource("2_eca4p")
 _autostart = true
 
@@ -162,6 +164,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1lrlh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndCredits/UiComponents"]
 layout_mode = 1
@@ -178,7 +181,6 @@ grow_horizontal = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.431373, 0.431373, 0.431373, 1)
-theme_override_font_sizes/font_size = 16
 text = "Job"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -187,7 +189,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Name 1
 Name 2
 Name 3"
@@ -400,7 +402,8 @@ offset_right = -2.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 16
+theme = ExtResource("1_1lrlh")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 

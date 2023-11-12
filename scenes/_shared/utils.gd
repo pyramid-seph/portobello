@@ -99,10 +99,15 @@ static func vibrate_joy_demo() -> void:
 
 
 static func change_label_color(label: Label, color: Color) -> void:
-	if not label:
-		return
-	label.remove_theme_color_override("font_color")
-	label.add_theme_color_override("font_color", color)
+	if label:
+		label.remove_theme_color_override("font_color")
+		label.add_theme_color_override("font_color", color)
+
+
+static func change_label_outline_color(label: Label, color: Color) -> void:
+	if label:
+		label.remove_theme_color_override("font_outline_color")
+		label.add_theme_color_override("font_outline_color", color)
 
 
 static func safe_disconnect_all(sg: Signal) -> void:

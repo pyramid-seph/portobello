@@ -3,5 +3,4 @@
 [sub_resource type="Sky" id="1"]
 
 [resource]
-background_mode = 2
 sky = SubResource("1")
