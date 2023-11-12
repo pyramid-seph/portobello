@@ -26,7 +26,7 @@ const STARS_RESULT_ONE_TEXT: String = "¡Yawn!"
 const STARS_RESULT_TWO_TEXT: String = "¡No está mal!"
 const STARS_RESULT_THREE_TEXT: String = "¡Bien!"
 const STARS_RESULT_FOUR_TEXT: String = "¡Muy bien!"
-const STARS_RESULT_FIVE_TEXT: String = "¡Prrrrrrfecto!"
+const STARS_RESULT_FIVE_TEXT: String = "¡Prrrrrrfecta!"
 
 @export var _skip_level_results_screen: bool
 @export var _skip_minigame_results_screen: bool
