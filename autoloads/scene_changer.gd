@@ -49,7 +49,7 @@ func change_to_scene(path: String, shared_data: Dictionary = {}) -> void:
 		$/root.add_child(scene)
 	else:
 		# An error while loading an scene will be considered fatal.
-		# We'll just explain the player the situation and
+		# I'll just explain the player the situation and
 		# give them a way to exit the game.
 		change_error.emit()
 
