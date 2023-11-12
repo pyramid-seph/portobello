@@ -102,6 +102,8 @@ static func change_label_color(label: Label, color: Color) -> void:
 	if not label:
 		return
 	label.remove_theme_color_override("font_color")
+	if label.label_settings:
+		label.label_settings.font_color = color
 	label.add_theme_color_override("font_color", color)
 
 

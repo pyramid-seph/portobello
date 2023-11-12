@@ -176,7 +176,10 @@ offset_right = 31.5
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 text = "¡Peligro!"
+vertical_alignment = 1
+uppercase = true
 
 [node name="Timer" type="Timer" parent="BossAlert"]
 one_shot = true
