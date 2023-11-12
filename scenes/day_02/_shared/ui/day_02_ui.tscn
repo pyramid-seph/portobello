@@ -85,7 +85,8 @@ preview_labels = false
 [node name="GameOver" parent="." instance=ExtResource("5_2mhka")]
 visible = false
 layout_mode = 1
-text = "¡Perdiste!"
+text = "¡Qué indigestión!
+¡Nuevo récord!"
 label_settings = ExtResource("6_fvamt")
 horizontal_alignment = 1
 vertical_alignment = 1

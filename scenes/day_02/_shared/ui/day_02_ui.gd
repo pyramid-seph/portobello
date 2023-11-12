@@ -32,7 +32,7 @@ func show_level_start(mode: Game.Mode, index: int) -> void:
 func show_game_over(new_high_score: bool) -> void:
 	_game_over.text = "¡Qué indigestión!"
 	if new_high_score:
-		_game_over.text += "\n¡Nuevo récord!"
+		_game_over.text += "\n\n¡Nuevo récord!"
 	_game_over.start()
 	await _game_over.finished
 	game_over_finished.emit()
