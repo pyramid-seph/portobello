@@ -143,6 +143,7 @@ text_1 = "Buffet"
 text_2 = "¡Buen provecho!"
 font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
 font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
+font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
 duration_sec = 1.6
 label_2_visible_delay_sec = 0.8
 preview_labels = false

@@ -14,13 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 [ext_resource type="PackedScene" uid="uid://ddt6mk30fvhmd" path="res://scenes/_shared/settings_menu/settings_menu.tscn" id="11_5qu15"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxrw7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdwv0"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irfrx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11o0g"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -147,7 +147,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_cxrw7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hdwv0")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -157,7 +157,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_irfrx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_11o0g")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
