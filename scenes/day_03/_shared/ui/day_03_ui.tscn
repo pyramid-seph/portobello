@@ -109,8 +109,8 @@ label_2_visible_delay_sec = 0.8
 layout_mode = 1
 text_1 = "Plato fuerte"
 text_2 = "¡Buen provecho!"
-font_color_normal = Color(0, 0, 0, 1)
-font_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
+font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
+font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
 preview_labels = false
 
 [node name="GameOver" type="Label" parent="."]
