@@ -11,6 +11,7 @@
 [node name="SceneChanger" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_wichc")
+_min_duration_sec = 0.84
 _loading_animation_delay_sec = 0.16
 
 [node name="ThreadedLoader" type="Node" parent="."]
