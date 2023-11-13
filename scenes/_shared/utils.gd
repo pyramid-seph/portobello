@@ -170,7 +170,7 @@ static func _vibrate_joy_web_workaround(
 		const gamepads = navigator.getGamepads();
 		if (gamepads.length > 0) {
 			const gamepad = gamepads[%s];
-			if (gamepad.vibrationActuator) {
+			if (gamepad && gamepad.vibrationActuator) {
 				gamepad.vibrationActuator.playEffect("dual-rumble", {
 					startDelay: 0,
 					duration: %s,
