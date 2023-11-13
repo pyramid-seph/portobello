@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://scenes/_debug/debug_spawner.gd" id="1"]
-
-[node name="DebugSpawner" type="Node"]
-script = ExtResource("1")
