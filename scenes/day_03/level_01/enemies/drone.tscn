@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_x1vje"]
 [ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="2_3nu01"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="2_v5sji"]
+[ext_resource type="PackedScene" uid="uid://becs5x7xd6s18" path="res://scenes/day_03/_shared/objects/gun.tscn" id="2_v5sji"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/drone.gd" id="2_w21ul"]
 [ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="3_puev8"]
 
