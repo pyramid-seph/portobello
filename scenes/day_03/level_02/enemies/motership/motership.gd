@@ -83,7 +83,8 @@ func _move_player_inside() -> void:
 
 
 func _update_hp_bar() -> void:
-	_life_bar.value = (_hp * _life_bar.max_value) / _initial_hp
+	var value: float = (_hp * _life_bar.max_value) / _initial_hp
+	_life_bar.value = Utils.round_up(value, _life_bar.step)
 
 
 func _on_player_set() -> void:
