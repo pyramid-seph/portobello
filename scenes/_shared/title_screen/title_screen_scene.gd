@@ -190,6 +190,11 @@ func _set_stars_count() -> void:
 	_game_title.stars_count = SaveDataManager.save_data.stars.average()
 
 
+func _set_title_type() -> void:
+	var save_data := SaveDataManager.save_data as SaveData
+	_game_title.set_story_mode_progress(save_data.latest_day_completed)
+
+
 func _enable_title_screen(show_screen: bool) -> void:
 	_title_screen.visible = show_screen
 	if not show_screen:
@@ -198,6 +203,7 @@ func _enable_title_screen(show_screen: bool) -> void:
 		_set_day_options()
 		_set_score_attack_options()
 		_set_stars_count()
+		_set_title_type()
 		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 		_story_mode_game_selector.call_deferred("grab_focus")
 		_notify_unlocks()
