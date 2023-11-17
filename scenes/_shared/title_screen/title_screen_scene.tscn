@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=17 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0q3xvjq2e100" path="res://art/menu_screen/menu_bg_day_01.png" id="3_of2ca"]
 [ext_resource type="Texture2D" uid="uid://i37nr0nsawys" path="res://art/menu_screen/splash.png" id="6_0gi6x"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/logos_roll.gd" id="6_t81ja"]
+[ext_resource type="Texture2D" uid="uid://c1875bbj1nslk" path="res://art/menu_screen/title_bloody.png" id="7_gbsgd"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_omuyb"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/game_title.gd" id="7_pvylf"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
@@ -14,13 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 [ext_resource type="PackedScene" uid="uid://ddt6mk30fvhmd" path="res://scenes/_shared/settings_menu/settings_menu.tscn" id="11_5qu15"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iogm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iu1mw"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lf0lg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpbau"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -69,6 +70,8 @@ offset_right = 63.0
 offset_bottom = 40.0
 texture = ExtResource("3_oe3xx")
 script = ExtResource("7_pvylf")
+normal_title = ExtResource("3_oe3xx")
+bloody_title = ExtResource("7_gbsgd")
 metadata/_edit_lock_ = true
 
 [node name="StarsLabel" type="Label" parent="TitleScreen/GameTitle"]
@@ -147,7 +150,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_3iogm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_iu1mw")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -157,7 +160,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_lf0lg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mpbau")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
