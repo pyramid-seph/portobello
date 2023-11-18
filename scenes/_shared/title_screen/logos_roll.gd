@@ -2,16 +2,20 @@ extends Control
 
 signal rolled
 
-
-@export var _logos_roll_duration_sec: float = 1.0
-
 @onready var _timer := $Timer as Timer
+@onready var game_cl_logo: ColorRect = $GameCLLogo
+@onready var controller_support_info: ColorRect = $ControllerSupportInfo
 
 
 func start() -> void:
 	visible = true
-	_timer.start(_logos_roll_duration_sec)
-
-
-func _on_timer_timeout() -> void:
+	game_cl_logo.visible = true
+	_timer.start(2.0)
+	await _timer.timeout
+	game_cl_logo.visible = false
+	controller_support_info.visible = true
+	_timer.start(4.0)
+	await  _timer.timeout
+	controller_support_info.visible = false
+	visible = false
 	rolled.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=19 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -14,14 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://ckjfj1kxcsge6" path="res://scenes/_shared/progress_menu.tscn" id="10_33qhf"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 [ext_resource type="PackedScene" uid="uid://ddt6mk30fvhmd" path="res://scenes/_shared/settings_menu/settings_menu.tscn" id="11_5qu15"]
+[ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
+[ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tth5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jj4k"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xgdw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2eapt"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -69,6 +71,7 @@ offset_top = 40.0
 offset_right = 63.0
 offset_bottom = 40.0
 texture = ExtResource("3_oe3xx")
+stretch_mode = 3
 script = ExtResource("7_pvylf")
 normal_title = ExtResource("3_oe3xx")
 bloody_title = ExtResource("7_gbsgd")
@@ -150,7 +153,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_5tth5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jj4k")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -160,7 +163,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_0xgdw")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2eapt")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -230,10 +233,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_j83cx")
 script = ExtResource("6_t81ja")
-_logos_roll_duration_sec = 2.0
 
-[node name="ColorRect" type="ColorRect" parent="LogosRoll"]
+[node name="Timer" type="Timer" parent="LogosRoll"]
+one_shot = true
+
+[node name="GameCLLogo" type="ColorRect" parent="LogosRoll"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,7 +248,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="LogosRoll"]
+[node name="TextureRect" type="TextureRect" parent="LogosRoll/GameCLLogo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -255,9 +262,60 @@ offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_0gi6x")
+stretch_mode = 3
 
-[node name="Timer" type="Timer" parent="LogosRoll"]
-one_shot = true
+[node name="ControllerSupportInfo" type="ColorRect" parent="LogosRoll"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="LogosRoll/ControllerSupportInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LogosRoll/ControllerSupportInfo/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LogosRoll/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_omuyb")
+theme_override_font_sizes/font_size = 8
+text = "Puedes jugar con un control"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="LogosRoll/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("15_ootbr")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="LogosRoll/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_omuyb")
+theme_override_font_sizes/font_size = 8
+text = "o con el teclado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="LogosRoll/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("15_nefsx")
+stretch_mode = 2
 
 [connection signal="current_option_index_changed" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_option_index_changed"]
 [connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_game_selector_focus_entered"]
@@ -280,4 +338,3 @@ one_shot = true
 [connection signal="negative_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_positive_btn_pressed"]
 [connection signal="rolled" from="LogosRoll" to="." method="_on_logos_roll_rolled"]
-[connection signal="timeout" from="LogosRoll/Timer" to="LogosRoll" method="_on_timer_timeout"]
