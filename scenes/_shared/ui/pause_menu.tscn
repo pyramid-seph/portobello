@@ -9,13 +9,13 @@
 bg_color = Color(0, 0, 0, 0.784314)
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0grp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71v0q"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81gh7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpx1d"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -34,6 +34,7 @@ script = ExtResource("1")
 show_auto_fire = true
 
 [node name="PauseDialog" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(143, 114)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -54,7 +55,7 @@ uppercase = true
 [node name="VibrationSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i0grp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_71v0q")
 selector_text = "Vibrar"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -63,7 +64,7 @@ loop_options = false
 [node name="AutofireSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_81gh7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jpx1d")
 selector_text = "Autofuego"
 _options = ["Sí", "No"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
