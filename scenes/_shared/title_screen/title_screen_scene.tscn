@@ -17,13 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jj4k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgqg0"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2eapt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwwxl"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -31,6 +31,7 @@ bg_color = Color(1, 1, 1, 0)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
+_debug_skip_game_filter = true
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -153,7 +154,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_2jj4k")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dgqg0")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -163,7 +164,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_2eapt")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jwwxl")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)

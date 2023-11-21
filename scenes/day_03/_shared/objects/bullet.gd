@@ -20,7 +20,7 @@ func _ready() -> void:
 		queue_free()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
 

@@ -8,6 +8,7 @@ script = ExtResource("1_q5hex")
 
 [node name="CooldownTimer" type="Timer" parent="."]
 process_mode = 1
+process_callback = 0
 one_shot = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
