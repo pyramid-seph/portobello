@@ -1,13 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://drjxqg6njqe0h"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_vafp5"]
+[ext_resource type="StyleBox" uid="uid://dvn8b501xre75" path="res://resources/instances/h_selector_panel_style.tres" id="2_1hlqb"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4g7i"]
-resource_local_to_scene = true
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(1, 1, 1, 0)
 
 [node name="HSelector" type="PanelContainer"]
 offset_right = 159.0
@@ -15,7 +10,7 @@ offset_bottom = 16.0
 focus_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_vafp5")
-theme_override_styles/panel = SubResource("StyleBoxFlat_m4g7i")
+theme_override_styles/panel = ExtResource("2_1hlqb")
 script = ExtResource("2_psdub")
 selector_text = "Example"
 
