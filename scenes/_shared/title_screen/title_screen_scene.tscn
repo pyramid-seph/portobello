@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=20 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -14,16 +14,17 @@
 [ext_resource type="PackedScene" uid="uid://ckjfj1kxcsge6" path="res://scenes/_shared/progress_menu.tscn" id="10_33qhf"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 [ext_resource type="PackedScene" uid="uid://ddt6mk30fvhmd" path="res://scenes/_shared/settings_menu/settings_menu.tscn" id="11_5qu15"]
+[ext_resource type="Texture2D" uid="uid://bggbygu4g7uir" path="res://art/menu_screen/dark_heart.png" id="15_a0if4"]
 [ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hkfi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucn4m"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1elh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pyfr"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -153,7 +154,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_8hkfi")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ucn4m")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -163,7 +164,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_y1elh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pyfr")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -263,6 +264,42 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_0gi6x")
 stretch_mode = 3
+
+[node name="MyLogo" type="ColorRect" parent="LogosRoll"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LogosRoll/MyLogo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -43.0
+offset_right = 76.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="LogosRoll/MyLogo/VBoxContainer"]
+layout_mode = 2
+text = "A
+Pyramid Seph 
+pixelated thingie"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ControllerSupportInfo" type="ColorRect" parent="LogosRoll"]
 visible = false
