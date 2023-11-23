@@ -197,6 +197,7 @@ func _set_title_type() -> void:
 
 func _enable_title_screen(show_screen: bool) -> void:
 	_title_screen.visible = show_screen
+	_title_screen_bg.visible = show_screen
 	if not show_screen:
 		_title_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
