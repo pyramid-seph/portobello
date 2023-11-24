@@ -227,9 +227,9 @@ func _notify_unlocks() -> void:
 	var story_progress: int = save_data.latest_day_completed
 	var body: String
 	if save_data.latest_day_completed >= 3:
-		body = "Ya puedes jugar:\n\nBuffets del día %s\n " % story_progress
+		body = "Ya puedes comer:\n\nBuffets del día %s\n " % story_progress
 	else:
-		body = "Ya puedes jugar:\n\nMenú del día %s\nBuffets del día %s\n " % \
+		body = "Ya puedes comer:\n\nMenú del día %s\nBuffets del día %s\n " % \
 				[story_progress + 1, story_progress]
 	_unlocks_dialog.body_text = body
 	_unlocks_dialog.visible = true

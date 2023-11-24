@@ -18,13 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucn4m"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brrq0"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pyfr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbia7"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -154,7 +154,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_ucn4m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_brrq0")
 selector_text = "Menú del día"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -164,7 +164,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_6pyfr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hbia7")
 selector_text = "Buffet"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
@@ -287,11 +287,7 @@ offset_right = 76.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_a0if4")
-stretch_mode = 3
+theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="LogosRoll/MyLogo/VBoxContainer"]
 layout_mode = 2
@@ -300,6 +296,69 @@ Pyramid Seph
 pixelated thingie"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LogosRoll/MyLogo/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect7" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect8" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect9" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect10" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TextureRect11" type="TextureRect" parent="LogosRoll/MyLogo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
 
 [node name="ControllerSupportInfo" type="ColorRect" parent="LogosRoll"]
 visible = false

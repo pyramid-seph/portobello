@@ -9,11 +9,15 @@ signal rolled
 
 
 func start() -> void:
+	_timer.start(1.0)
+	await _timer.timeout
 	visible = true
 	_game_cl_logo.visible = true
 	_timer.start(3.0)
 	await _timer.timeout
 	_game_cl_logo.visible = false
+	_timer.start(1.0)
+	await _timer.timeout
 	_my_logo.visible = true
 	_timer.start(3.0)
 	await _timer.timeout
