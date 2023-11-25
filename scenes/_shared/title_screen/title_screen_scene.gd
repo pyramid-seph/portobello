@@ -265,7 +265,7 @@ func _on_settings_menu_dangerous_option_unfocused() -> void:
 
 func _on_minigame_selected(value) -> void:
 	if value == Game.Minigame.STORY_DAY_EX:
-		_unlocks_dialog.body_text = " \n¡Próximamente!\n "
+		_unlocks_dialog.body_text = " \n¡Próximamente!\n¡No comas ansias!\n "
 		_unlocks_dialog.visible = true
 	else:
 		Game.start(value)
