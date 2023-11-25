@@ -183,12 +183,8 @@ func _process_movement(delta: float) -> void:
 	if not is_input_enabled:
 		return
 	
-	var velocity = _speed * Input.get_vector(
-		"move_left",
-		"move_right",
-		"move_up",
-		"move_down"
-	)
+	var direction: Vector2 = _get_movement_input()
+	var velocity = _speed * direction
 	_move(velocity, delta)
 
 
@@ -219,6 +215,20 @@ func _process_fire() -> void:
 	if _mega_gun.shoot():
 		reset_power_up()
 		mega_gun_shot.emit()
+
+
+func _get_movement_input() -> Vector2:
+	# The original game does NOT normalize movement. 
+	var input_vector := Vector2.ZERO
+	if Input.is_action_pressed("move_right"):
+		input_vector.x += 1
+	if Input.is_action_pressed("move_left"):
+		input_vector.x -= 1
+	if Input.is_action_pressed("move_down"):
+		input_vector.y += 1
+	if Input.is_action_pressed("move_up"):
+		input_vector.y -= 1
+	return input_vector
 
 
 func _move(velocity: Vector2, delta: float) -> void:
