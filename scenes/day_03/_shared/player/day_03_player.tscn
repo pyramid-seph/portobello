@@ -182,7 +182,7 @@ one_shot = true
 position = Vector2(8, -2)
 Bullet = ExtResource("10_2vf6h")
 bullet_speed = 125.0
-cooldown = 0.16
+cooldown = 0.1
 
 [node name="MegaGun" type="Node" parent="."]
 script = ExtResource("11_vuy7j")
