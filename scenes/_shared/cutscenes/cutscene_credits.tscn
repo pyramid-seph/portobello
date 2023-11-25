@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=22 format=3 uid="uid://ct51hooycinfb"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/pre_credits_scene.gd" id="3_dru3q"]
 [ext_resource type="Resource" uid="uid://bpca423ydapsn" path="res://resources/instances/rolling_credits_og_data.tres" id="3_fi3qg"]
 [ext_resource type="Texture2D" uid="uid://h3iwfl4hn1b1" path="res://art/cutscenes/ending/ending_0.png" id="3_m4aea"]
+[ext_resource type="Texture2D" uid="uid://dt82ohryt68b2" path="res://art/cutscenes/ending/ending_1.png" id="4_m1vlt"]
 [ext_resource type="Resource" uid="uid://kmr1uhgtp68d" path="res://resources/instances/rolling_credits_port_data.tres" id="4_t8b2n"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/sea_sparkles_parallax_bg.gd" id="5_5olc8"]
 [ext_resource type="Texture2D" uid="uid://cmfcg56p1ywdu" path="res://art/cutscenes/ending/ending_credits_moon.png" id="5_kv0di"]
@@ -142,10 +143,15 @@ color = Color(0, 0, 0, 1)
 [node name="PreCreditsScene" type="Node" parent="."]
 script = ExtResource("3_dru3q")
 
-[node name="PreCreditsSprite" type="Sprite2D" parent="PreCreditsScene"]
+[node name="PreCreditsSprite00" type="Sprite2D" parent="PreCreditsScene"]
 visible = false
 position = Vector2(120, 151)
 texture = ExtResource("3_m4aea")
+
+[node name="PreCreditsSprite01" type="Sprite2D" parent="PreCreditsScene"]
+visible = false
+position = Vector2(120, 151)
+texture = ExtResource("4_m1vlt")
 
 [node name="Timer" type="Timer" parent="PreCreditsScene"]
 wait_time = 2.0
@@ -414,6 +420,5 @@ libraries = {
 }
 
 [connection signal="finished" from="." to="." method="_on_finished"]
-[connection signal="timeout" from="PreCreditsScene/Timer" to="PreCreditsScene" method="_on_timer_timeout"]
 [connection signal="visibility_changed" from="EndCredits/FlyingCreditsBucho" to="EndCredits/FlyingCreditsBucho" method="_on_visibility_changed"]
 [connection signal="animation_finished" from="PostCreditsScene/BuchoFace/AnimationPlayer" to="PostCreditsScene" method="_on_animation_player_animation_finished"]

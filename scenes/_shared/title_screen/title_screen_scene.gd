@@ -197,6 +197,7 @@ func _set_title_type() -> void:
 
 func _enable_title_screen(show_screen: bool) -> void:
 	_title_screen.visible = show_screen
+	_title_screen_bg.visible = show_screen
 	if not show_screen:
 		_title_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
@@ -226,9 +227,9 @@ func _notify_unlocks() -> void:
 	var story_progress: int = save_data.latest_day_completed
 	var body: String
 	if save_data.latest_day_completed >= 3:
-		body = "Ya puedes jugar:\n\nBuffets del día %s\n " % story_progress
+		body = "Ya puedes comer:\n\nBuffets del día %s\n " % story_progress
 	else:
-		body = "Ya puedes jugar:\n\nMenú del día %s\nBuffets del día %s\n " % \
+		body = "Ya puedes comer:\n\nMenú del día %s\nBuffets del día %s\n " % \
 				[story_progress + 1, story_progress]
 	_unlocks_dialog.body_text = body
 	_unlocks_dialog.visible = true
@@ -264,7 +265,7 @@ func _on_settings_menu_dangerous_option_unfocused() -> void:
 
 func _on_minigame_selected(value) -> void:
 	if value == Game.Minigame.STORY_DAY_EX:
-		_unlocks_dialog.body_text = " \n¡Próximamente!\n "
+		_unlocks_dialog.body_text = " \n¡Próximamente!\n¡No comas ansias!\n "
 		_unlocks_dialog.visible = true
 	else:
 		Game.start(value)

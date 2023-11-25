@@ -269,7 +269,6 @@ position = Vector2(8, 287)
 _color_one = Color(0, 0, 1, 1)
 _color_two = Color(0, 1, 0, 1)
 _color_three = Color(1, 0, 0, 1)
-_time_between_colors_sec = 0.2
 metadata/_edit_lock_ = true
 
 [node name="LeftMotershipBallMini" parent="PairOfMiniBallsLeft" index="0"]
@@ -284,7 +283,6 @@ position = Vector2(108, 288)
 _color_one = Color(0, 1, 0, 1)
 _color_two = Color(1, 0, 0, 1)
 _color_three = Color(0, 0, 1, 1)
-_time_between_colors_sec = 0.2
 metadata/_edit_lock_ = true
 
 [node name="LeftMotershipBallMini" parent="PairOfMiniBallsCenter" index="0"]
@@ -299,7 +297,6 @@ position = Vector2(209, 287)
 _color_one = Color(1, 0, 0, 1)
 _color_two = Color(0, 0, 1, 1)
 _color_three = Color(0, 1, 0, 1)
-_time_between_colors_sec = 0.2
 metadata/_edit_lock_ = true
 
 [node name="LeftMotershipBallMini" parent="PairOfMiniBallsRight" index="0"]
