@@ -40,7 +40,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.25
 }
-time_limit_sec = 30.0
+time_limit_sec = 40.0
 treats_limit = 5
 change_treat_pos_on_player_death = false
 obstacle_course_type = 1
@@ -364,7 +364,7 @@ script = ExtResource("2_fmqcn")
 pace_thresholds = {
 0: 0.1
 }
-time_limit_sec = 30.0
+time_limit_sec = 40.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
 obstacle_course_type = 2
