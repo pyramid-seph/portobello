@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://i63cxcxo7d8g"]
 
 [ext_resource type="PackedScene" uid="uid://cfcfhqs6pqgcm" path="res://scenes/day_02/_shared/maze/maze.tscn" id="1_q3i88"]
-[ext_resource type="PackedScene" uid="uid://yhr74i70c14h" path="res://scenes/day_01/_shared/treat.tscn" id="2_fw7gg"]
-[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/game/super_treat.tscn" id="3_thjuo"]
+[ext_resource type="PackedScene" uid="uid://yhr74i70c14h" path="res://scenes/day_01/_shared/items/treat.tscn" id="2_fw7gg"]
+[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/items/super_treat.tscn" id="3_thjuo"]
 
 [node name="MazeDebug" instance=ExtResource("1_q3i88")]
 

@@ -42,7 +42,7 @@ var _remaining_lives: int:
 @onready var _maze_a := $World/Mazes/MazeA as Maze
 @onready var _maze_b := $World/Mazes/MazeB as Maze
 @onready var _maze_c := $World/Mazes/MazeC as Maze
-@onready var _mazes: Array = [_maze_a, _maze_b, _maze_c]
+@onready var _mazes: Array[Maze] = [_maze_a, _maze_b, _maze_c]
 @onready var _level: int = _get_initial_level_index():
 	set(value):
 		_level = value
@@ -72,7 +72,7 @@ func _setup_high_score_ui() -> void:
 
 func _set_up_level() -> void:
 	for maze in _mazes:
-		maze.visible = false
+		await maze.quit()
 	_timer.start(LEVEL_CHANGE_DELAY_SEC)
 	await _timer.timeout
 	var current_maze = _get_current_maze()
@@ -89,7 +89,6 @@ func _set_up_level() -> void:
 		current_maze.red_ghost_speed = SLOW_ENEMY_SPEED
 		current_maze.yellow_ghost_speed = SLOW_ENEMY_SPEED
 	
-	current_maze.visible = true
 	_ui.show_black_screen(false)
 
 
@@ -196,7 +195,7 @@ func _on_maze_completed() -> void:
 	await _ui.level_beaten_finished
 	_ui.show_black_screen(true)
 	if _is_game_story_mode() and _level >= _mazes.size() - 1:
-		_get_current_maze().visible = false
+		await _get_current_maze().quit()
 		_results_screen.start(
 				_get_game_mode(),
 				true, 

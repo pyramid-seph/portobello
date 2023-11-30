@@ -89,9 +89,6 @@ one_shot = true
 [node name="DyingTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-7, -7, 14, 14)
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 32
