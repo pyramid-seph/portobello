@@ -13,6 +13,7 @@ enum MazeState {
 	STARTED,
 	FAILED,
 	COMPLETED,
+	QUITTED,
 }
 
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
@@ -41,6 +42,7 @@ var _state: MazeState
 @onready var _is_ready := true
 @onready var _player_init_pos_marker = $PlayerInitPosMarker as Marker2D
 @onready var _respawn_pos_marker = $RespawnPosMarker as Marker2D
+@onready var _player_out_of_maze: Marker2D = $PlayerOutOfMazeMarker
 @onready var _player := $Day02Player as Day02Player
 @onready var _food_node := $Food as Node
 @onready var _blue_ghost := $BlueGhost as Day02Enemy
@@ -63,6 +65,17 @@ func _ready() -> void:
 		start()
 
 
+func quit() -> void:
+	_state = MazeState.QUITTED
+	visible = false
+	_player.teleport(local_to_map(_player_out_of_maze.position))
+	# Awaiting for a physics frame so the enemies can receive an area_exit signal.
+	# This fixes a bug which makes the player invincible and unable to eat ghosts.
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	process_mode = Node.PROCESS_MODE_DISABLED
+
+
 func reset() -> void:
 	_stop_pending_player_revival()
 	_stop_pending_ghost_respawn()
@@ -71,6 +84,7 @@ func reset() -> void:
 	_reset_all_ghosts()
 	_reset_food()
 	visible = true
+	process_mode = Node.PROCESS_MODE_INHERIT
 	_state = MazeState.RESET
 
 
@@ -126,6 +140,7 @@ func _is_respawn_point_safe_for_the_player() -> bool:
 	return not [blue_ghost_rect, red_ghost_rect, yellow_ghost_rect].any(
 		func(item: Rect2): return item.intersects(spawn_point_rect)
 	)
+
 
 func _is_player_near_respawn_point() -> bool:
 	var respawn_point : Vector2i = _respawn_point_map_pos()
@@ -310,10 +325,3 @@ func _on_day_02_player_ate_super_treat() -> void:
 	super_treat_eaten.emit()
 	_check_maze_completion()
 	_scare_all_ghosts()
-
-
-func _on_visibility_changed() -> void:
-	if visible:
-		process_mode = Node.PROCESS_MODE_INHERIT
-	else:
-		process_mode = Node.PROCESS_MODE_DISABLED

@@ -131,8 +131,9 @@ func _on_visibility_changed() -> void:
 		return
 	
 	if visible:
-		process_mode = Node.PROCESS_MODE_ALWAYS
-		_record_type_selector.current_option_idx = 0
+		process_mode = Node.PROCESS_MODE_INHERIT
+		_record_type_selector.current_option_idx = SECTION_STARS
+		_on_record_type_label_current_option_index_changed(SECTION_STARS)
 		_record_type_selector.call_deferred("grab_focus")
 	else:
 		process_mode = Node.PROCESS_MODE_DISABLED

@@ -7,7 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://deqo7rbmjjsvj" path="res://resources/instances/odd_high_score_item.tres" id="5_yate7"]
 [ext_resource type="StyleBox" uid="uid://c2d5slbtpw4ix" path="res://resources/instances/even_high_score_item.tres" id="6_736vx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqmpe"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qykqa"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -48,7 +48,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../MarginContainer/GoBackBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_yqmpe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qykqa")
 selector_text = ""
 _options = ["Estrellas", "Récords"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
