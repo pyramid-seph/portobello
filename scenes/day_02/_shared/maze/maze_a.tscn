@@ -1,16 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://na2o7hvtlo1g"]
 
 [ext_resource type="PackedScene" uid="uid://cfcfhqs6pqgcm" path="res://scenes/day_02/_shared/maze/maze.tscn" id="1_vjga0"]
-[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/game/super_treat.tscn" id="2_ttpk2"]
-[ext_resource type="PackedScene" uid="uid://yhr74i70c14h" path="res://scenes/day_01/_shared/treat.tscn" id="3_ty3hn"]
+[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/items/super_treat.tscn" id="2_ttpk2"]
+[ext_resource type="PackedScene" uid="uid://yhr74i70c14h" path="res://scenes/day_01/_shared/items/treat.tscn" id="3_ty3hn"]
 
 [node name="MazeA" instance=ExtResource("1_vjga0")]
-
-[node name="PlayerInitPosMarker" parent="." index="6"]
-metadata/_edit_lock_ = true
-
-[node name="RespawnPosMarker" parent="." index="7"]
-metadata/_edit_lock_ = true
 
 [node name="SuperTreat" parent="Food" index="0" instance=ExtResource("2_ttpk2")]
 position = Vector2(168, 8)
