@@ -33,7 +33,7 @@ func start() -> void:
 	_is_playing = true
 	started.emit()
 	visible = true
-	for line in dialogue:
+	for line: DialogueLine in dialogue:
 		if line.delay_sec > 0:
 			_timer.start(line.delay_sec)
 			await _timer.timeout

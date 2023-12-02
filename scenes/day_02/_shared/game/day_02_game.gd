@@ -71,7 +71,7 @@ func _setup_high_score_ui() -> void:
 
 
 func _set_up_level() -> void:
-	for maze in _mazes:
+	for maze: Maze in _mazes:
 		await maze.quit()
 	_timer.start(LEVEL_CHANGE_DELAY_SEC)
 	await _timer.timeout

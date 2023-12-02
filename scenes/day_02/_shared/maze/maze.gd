@@ -176,7 +176,7 @@ func _reset_ghost(ghost: Day02Enemy) -> void:
 
 
 func _reset_food() -> void:
-	for item in _food_node.get_children():
+	for item: Node2D in _food_node.get_children():
 		item.visible = true
 
 

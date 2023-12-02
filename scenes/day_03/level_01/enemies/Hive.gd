@@ -15,8 +15,7 @@ var world:
 	set(value):
 		world = value
 		if not _is_ready: return
-		for child in Utils.children_in_group(body, "hive_drones"):
-			var drone = child as HiveDrone
+		for drone: HiveDrone in Utils.children_in_group(body, "hive_drones"):
 			drone.world = value
 
 var _horizontal_direction: float = 1
@@ -37,8 +36,7 @@ var _hive_drones: Array[HiveDrone] = []
 
 
 func _ready() -> void:
-	for child in Utils.children_in_group(body, "hive_drones"):
-		var drone = child as HiveDrone
+	for drone: HiveDrone in Utils.children_in_group(body, "hive_drones"):
 		drone.world = world
 		_hive_drones.append(drone)
 		drone.died.connect(_on_drone_dead)

@@ -66,7 +66,7 @@ func _tween_motership_intro() -> Signal:
 
 
 func _tween_player_abduction() -> void:
-	for i in 10:
+	for i: int in 10:
 		_player_abduction_timer.start(Utils.FRAME_TIME)
 		await _player_abduction_timer.timeout
 		if i % 2 == 0:
@@ -74,7 +74,7 @@ func _tween_player_abduction() -> void:
 		else:
 			_player.position.y += -4 * i
 	
-	for i in 10:
+	for i: int in 10:
 		_player_abduction_timer.start(Utils.FRAME_TIME)
 		await _player_abduction_timer.timeout
 		_player.position.y += -30 * i

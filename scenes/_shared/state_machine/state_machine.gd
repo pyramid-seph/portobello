@@ -10,7 +10,7 @@ extends Node
 
 func _ready() -> void:
 	await get_parent().ready
-	for child in get_children():
+	for child: State in get_children():
 		child.state_machine = self
 	_state.enter()
 

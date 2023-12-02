@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 func _draw() -> void:
 	if not _player or not _player._debug_show_move_lines:
 		return
-	for dir in _player._next_valid_dirs:
+	for dir: Vector2i in _player._next_valid_dirs:
 		var z: Vector2i = _player._target_local_pos - _player.position
 		draw_line(z, z + dir * 20, Color.CADET_BLUE, 4)
 	var cornering_zone_length: float = sqrt(_player.CORNERING_ZONE_SQRD_LENGHT)

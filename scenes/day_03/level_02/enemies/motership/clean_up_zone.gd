@@ -12,8 +12,8 @@ func _is_node_in_group(node: Node, group: String) -> bool:
 	return node.is_in_group(group)
 
 
-func _clen_up_group(node: Node) -> void:
-	for group in groups:
+func _clean_up_group(node: Node) -> void:
+	for group: String in groups:
 		if _is_node_in_group(node, group):
 			node.queue_free()
 
@@ -25,9 +25,9 @@ func _clean_up(area: Area2D) -> void:
 		else:
 			area.queue_free()
 	elif area.owner:
-		_clen_up_group(area.owner)
+		_clean_up_group(area.owner)
 	else:
-		_clen_up_group(area)
+		_clean_up_group(area)
 
 func _on_area_entered(area: Area2D) -> void:
 	if clean_up_behavior != CleanUpBehavior.ON_ENTER:

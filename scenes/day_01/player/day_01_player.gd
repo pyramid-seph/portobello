@@ -121,7 +121,7 @@ func _is_root_parent() -> bool:
 
 
 func _reset_body() -> void:
-	for trunk_part in _trunk.get_children():
+	for trunk_part: Node2D in _trunk.get_children():
 		if trunk_part != _first_trunk_part:
 			trunk_part.queue_free()
 	_head.global_position = DEBUG_POS if _is_root_parent() else global_position
@@ -195,7 +195,7 @@ func _move() -> void:
 	else:
 		_tail.position = last_trunk_part.position
 	
-	for i in range(_trunk.get_child_count() - 1, 0, -1):
+	for i: int in range(_trunk.get_child_count() - 1, 0, -1):
 		var trunk_part = _trunk.get_child(i)
 		var front_trunk_part = _trunk.get_child(i - 1)
 		trunk_part.position = front_trunk_part.position

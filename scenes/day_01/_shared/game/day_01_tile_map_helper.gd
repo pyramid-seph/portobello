@@ -56,7 +56,7 @@ var _all_furniture: Array[Area2D]:
 
 
 func place_furniture_outside() -> void:
-	for furniture in _all_furniture:
+	for furniture: Area2D in _all_furniture:
 		furniture.call_deferred("set_position", OUT_OF_SCREEN_POS)
 
 
