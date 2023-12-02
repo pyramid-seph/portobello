@@ -78,7 +78,7 @@ func _on_cooldown_timer_timeout() -> void:
 		return
 	
 	var shot: bool = false
-	for ufo in candidates:
+	for ufo: Ufo in candidates:
 		if not ufo.is_dead() and _fire(ufo):
 			_start_cooldown()
 			shot = true

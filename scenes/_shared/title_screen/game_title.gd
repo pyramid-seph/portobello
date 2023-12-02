@@ -27,6 +27,6 @@ func _on_stars_count_changed() -> void:
 		return
 	
 	var stars_text: String = ""
-	for i in stars_count:
+	for i: int in stars_count:
 		stars_text += "*"
 	_stars_label.text = stars_text

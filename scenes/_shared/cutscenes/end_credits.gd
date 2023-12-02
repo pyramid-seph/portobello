@@ -52,7 +52,7 @@ func stop() -> void:
 
 
 func _roll(creditsRes: RollingCredits) -> void:
-	for credit in creditsRes.list:
+	for credit: Credit in creditsRes.list:
 		_job_label.text = credit.job
 		_names_label.text = "\n".join(credit.names)
 		_timer.start(credit.duration_sec)

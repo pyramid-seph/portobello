@@ -126,7 +126,7 @@ func _on_hp_changed() -> void:
 
 func _remove_hazards() -> void:
 	var bullets = Utils.children_in_group(_inside, "enemy_bullets")
-	for bullet in bullets:
+	for bullet: Node2D in bullets:
 		_spawn_explosion(bullet.global_position)
 	Utils.queue_free_group(_inside, "bullets")
 	get_tree().call_group("enemies", "explode")
@@ -146,7 +146,7 @@ func _animate_explosions() -> void:
 	var tween_explosion = create_tween()
 	tween_explosion.set_loops()
 	tween_explosion.tween_callback(func():
-		for i in 10:
+		for i: int in 10:
 			var random_x = randi() % int(viewport_rect_size.x)
 			var random_y = randi() % int(viewport_rect_size.y)
 			var random_pos = Vector2i(random_x, random_y)

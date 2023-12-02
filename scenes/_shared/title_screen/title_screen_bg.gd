@@ -45,10 +45,8 @@ func _on_bg_sprites_changed() -> void:
 	if not _is_ready:
 		return
 	
-	for i in _bg_layer.get_children():
-		var sprite := i as Sprite2D
-		if sprite != null:
-			sprite.texture = game_texture
+	for sprite: Sprite2D in _bg_layer.get_children():
+		sprite.texture = game_texture
 
 
 func _spawn_bg_sprite(col, row) -> void:
@@ -71,7 +69,7 @@ func _generate__bg_layer() -> void:
 	var vcell_count = ceili(_base_window_size.y / _cell_size.y)
 	var cell_count = hcell_count * vcell_count
 	var row = -1
-	for i in range(cell_count):
+	for i: int in range(cell_count):
 		var col = i % hcell_count
 		if col == 0:
 			row += 1

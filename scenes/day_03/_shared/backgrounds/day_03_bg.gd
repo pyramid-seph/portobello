@@ -55,7 +55,7 @@ func _generate_bg_layer() -> void:
 	var cell_count = hcell_count * vcell_count
 	
 	var row = -1
-	for i in range(cell_count):
+	for i: int in range(cell_count):
 		var col = i % hcell_count
 		if col == 0:
 			row += 1

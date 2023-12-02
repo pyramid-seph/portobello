@@ -76,7 +76,7 @@ func _start_cooldown() -> void:
 
 
 func _shoot_burst() -> void:
-	for i in _bullets_per_burst:
+	for i: int in _bullets_per_burst:
 		if not is_active:
 			break
 		_gun.shoot(Vector2.DOWN)

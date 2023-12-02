@@ -96,12 +96,12 @@ func _fire_charged_cannon(cannon: Node) -> void:
 
 func _on_timer_timeout() -> void:
 	_randomize_cannons_charge()
-	for cannon in _pattern:
+	for cannon: LaserBallsCannon in _pattern:
 		cannon.charge()
 
 
 func _on_laser_balls_cannon_target_detected(_target: Node2D) -> void:
-	for cannon in _pattern:
+	for cannon: LaserBallsCannon in _pattern:
 		cannon.fire()
 
 

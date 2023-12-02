@@ -3,22 +3,22 @@ extends LevelWaves
 
 const INITIAL_Y = "initial_y"
 
-const Ufo = preload("res://scenes/day_03/level_02/enemies/ufo.tscn")
-const Block = preload("res://scenes/day_03/level_02/enemies/block.tscn")
+const UfoScene = preload("res://scenes/day_03/level_02/enemies/ufo.tscn")
+const BlockScene = preload("res://scenes/day_03/level_02/enemies/block.tscn")
 
 
 func _create_waves() -> Array[Wave]:
 	return [
-		Wave.new(10, 0.3, 0.24, _calculate_pattern_00, Ufo),
-		Wave.new(10, 0.3, 0.24, _calculate_pattern_01, Ufo),
-		Wave.new(10, 0.3, 0.24, _calculate_pattern_02, Ufo),
-		Wave.new(10, 0.3, 0.24, _calculate_pattern_03, Ufo),
-		Wave.new(60, 0.40, 0.40, _calculate_pattern_04, Ufo),
-		Wave.new(10, 1.60, 1.60, _calculate_pattern_05, Ufo),
-		Wave.new(20, 0.24, 0.24, _calculate_pattern_06, Ufo),
-		Wave.new(20, 1.60, 1.60, _calculate_pattern_07, Ufo),
-		Wave.new(20, 1.60, 1.60, _calculate_pattern_08, Block),
-		Wave.new(30, 0.80, 0.80, _calculate_pattern_09, Block),
+		Wave.new(10, 0.3, 0.24, _calculate_pattern_00, UfoScene),
+		Wave.new(10, 0.3, 0.24, _calculate_pattern_01, UfoScene),
+		Wave.new(10, 0.3, 0.24, _calculate_pattern_02, UfoScene),
+		Wave.new(10, 0.3, 0.24, _calculate_pattern_03, UfoScene),
+		Wave.new(60, 0.40, 0.40, _calculate_pattern_04, UfoScene),
+		Wave.new(10, 1.60, 1.60, _calculate_pattern_05, UfoScene),
+		Wave.new(20, 0.24, 0.24, _calculate_pattern_06, UfoScene),
+		Wave.new(20, 1.60, 1.60, _calculate_pattern_07, UfoScene),
+		Wave.new(20, 1.60, 1.60, _calculate_pattern_08, BlockScene),
+		Wave.new(30, 0.80, 0.80, _calculate_pattern_09, BlockScene),
 	]
 
 

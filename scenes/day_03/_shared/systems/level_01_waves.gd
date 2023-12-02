@@ -1,21 +1,21 @@
 extends LevelWaves
 
 
-const Drone = preload("res://scenes/day_03/level_01/enemies/drone.tscn")
+const DroneScene = preload("res://scenes/day_03/level_01/enemies/drone.tscn")
 
 
 func _create_waves() -> Array[Wave]:
 	return [
-		Wave.new(50, 0.4, 0.4, _calculate_pattern_00, Drone),
-		Wave.new(50, 0.8, 0.4, _calculate_pattern_01, Drone),
-		Wave.new(25, 0.8, 0.4, _calculate_pattern_02, Drone),
-		Wave.new(35, 1.2, 0.4, _calculate_pattern_03, Drone),
-		Wave.new(40, 0.8, 2.4, _calculate_pattern_04, Drone),
-		Wave.new(20, 1.2, 0.4, _calculate_pattern_05, Drone),
-		Wave.new(20, 1.2, 0.4, _calculate_pattern_06, Drone),
-		Wave.new(30, 1.2, 0.4, _calculate_pattern_07, Drone),
-		Wave.new(10, 1.2, 0.4, _calculate_pattern_08, Drone),
-		Wave.new(20, 1.2, 0.4, _calculate_pattern_09, Drone),
+		Wave.new(50, 0.4, 0.4, _calculate_pattern_00, DroneScene),
+		Wave.new(50, 0.8, 0.4, _calculate_pattern_01, DroneScene),
+		Wave.new(25, 0.8, 0.4, _calculate_pattern_02, DroneScene),
+		Wave.new(35, 1.2, 0.4, _calculate_pattern_03, DroneScene),
+		Wave.new(40, 0.8, 2.4, _calculate_pattern_04, DroneScene),
+		Wave.new(20, 1.2, 0.4, _calculate_pattern_05, DroneScene),
+		Wave.new(20, 1.2, 0.4, _calculate_pattern_06, DroneScene),
+		Wave.new(30, 1.2, 0.4, _calculate_pattern_07, DroneScene),
+		Wave.new(10, 1.2, 0.4, _calculate_pattern_08, DroneScene),
+		Wave.new(20, 1.2, 0.4, _calculate_pattern_09, DroneScene),
 	]
 
 

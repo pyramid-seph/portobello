@@ -57,7 +57,7 @@ static func children_in_group(node: Node, group: String) -> Array[Node]:
 
 static func queue_free_group(node: Node, group: String) -> void:
 	var items = children_in_group(node, group)
-	for item in items:
+	for item: Node in items:
 		item.queue_free()
 
 

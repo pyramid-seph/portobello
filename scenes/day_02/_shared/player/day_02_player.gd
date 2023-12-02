@@ -259,11 +259,11 @@ func _on_target_local_pos_set() -> void:
 	var target_map_pos: Vector2i = _maze.local_to_map(_target_local_pos)
 	var surrounding_empty_cells: Array[Vector2i] = \
 			_maze.get_surrounding_empty_cells(target_map_pos)
-	for empty_cell_map_pos in surrounding_empty_cells:
+	for empty_cell_map_pos: Vector2i in surrounding_empty_cells:
 		_next_valid_dirs.append(empty_cell_map_pos - target_map_pos)
 	var origin_map_pos: Vector2i = _maze.local_to_map(_origin_local_pos)
 	surrounding_empty_cells = _maze.get_surrounding_empty_cells(origin_map_pos)
-	for empty_cell_map_pos in surrounding_empty_cells:
+	for empty_cell_map_pos: Vector2i in surrounding_empty_cells:
 		_origin_valid_dirs.append(empty_cell_map_pos - origin_map_pos)
 
 
