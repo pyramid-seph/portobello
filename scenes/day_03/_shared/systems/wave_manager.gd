@@ -32,7 +32,7 @@ func start(world: Node2D, player: Day03Player) -> void:
 		return
 	
 	var wave_index = -1
-	for wave in _waves_descriptor.get_waves():
+	for wave: Wave  in _waves_descriptor.get_waves():
 		var wave_enemy_index = 0
 		var wave_memo = {}
 		_spawned_enemies_count = 0
