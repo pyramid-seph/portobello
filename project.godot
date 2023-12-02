@@ -34,6 +34,7 @@ window/size/extend_to_title=true
 window/size/window_width_override=720
 window/size/window_height_override=909
 window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 window/handheld/orientation=1
 
 [editor]
