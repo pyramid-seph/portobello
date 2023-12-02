@@ -51,7 +51,7 @@ func _ready() -> void:
 	_ensure_correct_pos_x()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var curr_pos = _get_parent_positon()
 	match (pattern):
 		Pattern.ZIG_ZAG_DOWN, Pattern.ZIG_ZAG_DOWN_RANDOM_HORIZONTAL:

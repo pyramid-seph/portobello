@@ -23,6 +23,7 @@ SaveDataManager="*res://autoloads/save_data_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 SceneChanger="*res://autoloads/scene_changer.tscn"
 Game="*res://autoloads/game.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
@@ -41,7 +42,7 @@ movie_writer/movie_file="C:/Users/Pablo/Desktop/movie.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 
 [gdnative]
 

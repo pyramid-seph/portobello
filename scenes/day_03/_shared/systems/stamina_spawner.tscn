@@ -9,6 +9,7 @@ script = ExtResource("2")
 player_data = ExtResource("1")
 
 [node name="Cooldown" type="Timer" parent="."]
+process_callback = 0
 one_shot = true
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

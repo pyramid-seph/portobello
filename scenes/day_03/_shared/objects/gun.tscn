@@ -6,4 +6,5 @@
 script = ExtResource("1_ch3va")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+process_callback = 0
 one_shot = true

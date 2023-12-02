@@ -55,9 +55,11 @@ position = Vector2(60, 32)
 metadata/_edit_lock_ = true
 
 [node name="MovementTimer" type="Timer" parent="."]
+process_callback = 0
 one_shot = true
 
 [node name="GunTimer" type="Timer" parent="."]
+process_callback = 0
 one_shot = true
 
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

@@ -70,7 +70,7 @@ func _ready() -> void:
 		start_timed_invincibility()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_process_movement(delta)
 	_process_fire()
 

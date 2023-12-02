@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://mwi2r5cdmh24"]
 
 [ext_resource type="Script" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.gd" id="1_h0j1c"]
 
@@ -8,6 +8,7 @@ script = ExtResource("1_h0j1c")
 cooldown_sec = 0.24
 
 [node name="CooldownTimer" type="Timer" parent="."]
+process_callback = 0
 one_shot = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
