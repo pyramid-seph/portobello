@@ -23,7 +23,6 @@ SaveDataManager="*res://autoloads/save_data_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 SceneChanger="*res://autoloads/scene_changer.tscn"
 Game="*res://autoloads/game.gd"
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
@@ -36,14 +35,6 @@ window/size/window_height_override=909
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/handheld/orientation=1
-
-[editor]
-
-movie_writer/movie_file="C:/Users/Pablo/Desktop/movie.avi"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 
 [gdnative]
 
