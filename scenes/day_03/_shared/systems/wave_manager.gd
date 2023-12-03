@@ -15,7 +15,6 @@ var _is_stopped: bool = true
 var _world: Node2D
 var _player: Day03Player
 var _wave_index: int = -1
-var _wave_enemy_index: int
 var _wave_memo: Dictionary = {}
 
 @onready var _screen_size: Vector2 = get_viewport_rect().size
@@ -68,8 +67,7 @@ func _get_current_wave() -> Wave:
 func _start_next_wave() -> void:
 	if _is_stopped:
 		return
-	
-	_wave_enemy_index = 0
+
 	_wave_memo.clear()
 	_spawned_enemies_count = 0
 	_enemies_on_screen = 0
@@ -77,7 +75,7 @@ func _start_next_wave() -> void:
 	var wave: Wave = _get_current_wave()
 	_spawn_delay_timer.start(wave.time_between_spawns)
 	wave_started.emit(_wave_index)
-	print("Wave started: ", _wave_index)
+	print(">>> Wave started: ", _wave_index)
 
 
 func _pre_start_checks_passed(world: Node2D, player: Day03Player) -> bool:
@@ -99,8 +97,9 @@ func _pre_start_checks_passed(world: Node2D, player: Day03Player) -> bool:
 func _spawn_enemy() -> void:
 	var wave: Wave = _get_current_wave()
 	var enemy = wave.Enemy.instantiate()
+	
 	var movement = wave.calculate_pattern.call(
-		_wave_enemy_index,
+		_spawned_enemies_count,
 		_player.global_position,
 		_screen_size,
 		_wave_memo
@@ -112,13 +111,11 @@ func _spawn_enemy() -> void:
 	
 	_enemies_on_screen += 1
 	_spawned_enemies_count += 1
-	_wave_enemy_index += 1
 
 
 func _on_enemy_tree_exited() -> void:
-	if _is_stopped:
-		return
-	_enemies_on_screen = maxi(_enemies_on_screen - 1, 0)
+	if not _is_stopped:
+		_enemies_on_screen = maxi(_enemies_on_screen - 1, 0)
 
 
 func _on_wave_finished_check_timer_timeout() -> void:
@@ -146,7 +143,6 @@ func _on_spawn_delay_timer_timeout() -> void:
 		return
 	
 	_spawn_enemy()
-	
 	_spawn_delay_timer.start(wave.time_between_spawns)
 
 
@@ -154,13 +150,13 @@ func _on_wave_delay_timer_timeout() -> void:
 	if _is_stopped:
 		return
 	
-	print("_spawned_enemies_count: ", _spawned_enemies_count)
+	print("Spawns: ", _spawned_enemies_count)
+	print("<<< Wave completed: ", _wave_index)
 	
 	if _wave_index >= _waves_descriptor.get_waves().size() - 1:
 		stop()
 		print("All waves completed")
 		all_waves_completed.emit()
 	else:
-		print("Wave completed: ", _wave_index)
 		wave_completed.emit(_wave_index)
 		_start_next_wave()
