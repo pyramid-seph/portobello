@@ -227,6 +227,13 @@ func _on_maze_player_dying() -> void:
 
 func _on_maze_player_died() -> void:
 	_remaining_lives -= 1
+	# FIXME The code below is also executed when the player dies at the
+	# same time they complete the maze. In that situation, when they have 0 lives,
+	# it is expected for this code to run. However, when the have more than
+	# 0 lives left, only the remaining_lives var should be updated.
+	# Nothing serious happen if this is not fixed since, with the current
+	# value of REVIVAL_DELAY_SEC, the current maze is still the completed one, 
+	# not the next. If REVIVAL_DELAY_SEC changes, this code could cause malfunctions.
 	_timer.start(REVIVAL_DELAY_SEC)
 	await _timer.timeout
 	
