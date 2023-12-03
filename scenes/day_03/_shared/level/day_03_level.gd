@@ -176,7 +176,12 @@ func _on_day_3_ui_boss_alert_finished() -> void:
 
 
 func _on_wave_manager_all_waves_completed() -> void:
-	if not _player.is_dead():
+	if _player.lives == 0:
+		return
+	
+	if _player.is_dead():
+		_player.revived.connect(_start_boss_phase, CONNECT_ONE_SHOT)
+	else:
 		_start_boss_phase()
 
 
