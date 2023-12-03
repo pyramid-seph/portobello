@@ -5,7 +5,10 @@ extends Area2D
 signal hurt(hitbox: Hitbox)
 
 @export var killer_groups: Array[String]
-@export var invincible: bool
+@export var invincible: bool:
+	set(value):
+		invincible = value
+		_on_invincible_set()
 
 
 func _init() -> void:
@@ -14,8 +17,20 @@ func _init() -> void:
 	area_entered.connect(_on_area_entered)
 
 
+func _ready() -> void:
+	_on_invincible_set()
+
+
+func _on_invincible_set() -> void:
+	# This ensures that this node receives an area_entered signal
+	# when the player loses their invincibility after
+	# being inside an enemy/bullet hitbox
+	# during their invincibility period.
+	monitoring = !invincible
+
+
 func _on_area_entered(hitbox: Hitbox) -> void:
-	if invincible or hitbox == null or hitbox.owner == owner:
+	if hitbox == null or hitbox.owner == owner:
 		return
 	
 	var killer = hitbox.owner
