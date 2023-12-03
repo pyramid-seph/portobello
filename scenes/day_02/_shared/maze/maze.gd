@@ -224,6 +224,9 @@ func _count_food() -> int:
 
 
 func _check_maze_completion() -> void:
+	if _state == MazeState.FAILED:
+		return
+	
 	var remaining_food: int = _count_food()
 	var is_maze_completed: bool = remaining_food <= 0
 	if is_maze_completed:
