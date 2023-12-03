@@ -186,6 +186,9 @@ func _on_wave_manager_all_waves_completed() -> void:
 
 
 func _on_boss_fight_completed() -> void:
+	if _player.lives == 0:
+		return
+	
 	_stamina_spawner.disable()
 	_power_up_spawner.disable()
 	_player.is_losing_stamina = false
