@@ -142,7 +142,7 @@ func _get_score_attack_high_score_prop_name() -> String:
 
 func _game_over() -> void:
 	_level_state = LevelState.GAME_OVER
-	_wave_manager.cancel_wave()
+	_wave_manager.stop()
 	_stamina_spawner.disable()
 	_power_up_spawner.disable()
 	_day_3_ui.set_pause_menu_enabled(false)
