@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=21 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bggbygu4g7uir" path="res://art/menu_screen/dark_heart.png" id="15_a0if4"]
 [ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
+[ext_resource type="Texture2D" uid="uid://druain36dsm0w" path="res://art/menu_screen/godot_icon_monochrome_light.png" id="16_k07gw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v21ph"]
 resource_local_to_scene = true
@@ -360,6 +361,62 @@ layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
+
+[node name="GodotCredit" type="ColorRect" parent="LogosRoll"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LogosRoll/GodotCredit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LogosRoll/GodotCredit/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="LogosRoll/GodotCredit/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Powered by"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="LogosRoll/GodotCredit/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("16_k07gw")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="LogosRoll/GodotCredit/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Godot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="LogosRoll/GodotCredit"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("7_omuyb")
+theme_override_font_sizes/font_size = 8
+text = "Original Godot logo by  Andrea Calabró 
+under  CC-BY-4.0 license"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ControllerSupportInfo" type="ColorRect" parent="LogosRoll"]
 visible = false

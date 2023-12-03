@@ -4,6 +4,7 @@ signal rolled
 
 @onready var _timer := $Timer as Timer
 @onready var _game_cl_logo: ColorRect = $GameCLLogo
+@onready var _godot_credit: ColorRect = $GodotCredit
 @onready var _my_logo: ColorRect = $MyLogo
 @onready var _controller_support_info: ColorRect = $ControllerSupportInfo
 
@@ -13,15 +14,21 @@ func start() -> void:
 	await _timer.timeout
 	visible = true
 	_game_cl_logo.visible = true
-	_timer.start(3.0)
+	_timer.start(2.0)
 	await _timer.timeout
 	_game_cl_logo.visible = false
 	_timer.start(1.0)
 	await _timer.timeout
 	_my_logo.visible = true
-	_timer.start(3.0)
+	_timer.start(2.0)
 	await _timer.timeout
 	_my_logo.visible = false
+	_timer.start(1.0)
+	await _timer.timeout
+	_godot_credit.visible = true
+	_timer.start(2.0)
+	await _timer.timeout
+	_godot_credit.visible = false
 	_timer.start(1.0)
 	await _timer.timeout
 	_controller_support_info.visible = true
