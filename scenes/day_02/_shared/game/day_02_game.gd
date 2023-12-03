@@ -181,7 +181,7 @@ func _save_high_score() -> bool:
 	return changed
 
 
-func _on_level_failed() -> void:
+func _game_over() -> void:
 	var new_high_score_achieved: bool = _save_high_score()
 	_ui.set_pause_menu_enabled(false)
 	_ui.show_game_over(new_high_score_achieved)
@@ -231,7 +231,7 @@ func _on_maze_player_died() -> void:
 	await _timer.timeout
 	
 	if _remaining_lives <= 0:
-		_on_level_failed()
+		_game_over()
 	else:
 		_get_current_maze().revive_player()
 
