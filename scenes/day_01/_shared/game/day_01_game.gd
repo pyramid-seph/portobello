@@ -104,17 +104,13 @@ func _set_up_level() -> void:
 	
 	_reset_level()
 	_set_up_room()
+	# Wait a physics frame so funiture's position is updated on the physics system.
 	await get_tree().physics_frame
-	# It seems that waiting for the next
-	# physhics frame is not enough to
-	# have updated furniture's colliders.
-	# Let's give it more than time for this to happen
-	# before trying to place a treat.
-	# It works, but I'm not sure if this is
-	# the right way, though.
+	await get_tree().physics_frame
+	_place_treat()
+	
 	_timer.start(TREAT_PLACEMENT_DELAY_SEC)
 	await _timer.timeout
-	_place_treat()
 	_ui.show_black_screen(false)
 
 
@@ -241,7 +237,6 @@ func _on_player_ate() -> void:
 	_score += 1
 	_treats_eaten += 1
 	
-	# TODO Maybe move this to _on_treats_eaten_changed?
 	if _curr_lvl_settings.limits_treats() and \
 			_treats_eaten >= _curr_lvl_settings.treats_limit:
 		_on_level_beaten()

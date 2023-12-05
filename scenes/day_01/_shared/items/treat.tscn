@@ -14,6 +14,3 @@ texture = ExtResource("1_kp725")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1y33m")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-4, -4, 8, 8)

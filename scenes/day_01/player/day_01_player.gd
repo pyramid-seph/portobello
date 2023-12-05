@@ -75,9 +75,8 @@ func _physics_process(delta: float) -> void:
 
 
 func revive(force: bool = false) -> void:
-	if not _is_dead and not force:
-		return
-	_reset()
+	if _is_dead or force:
+		_reset()
 
 
 func get_global_start_position() -> Vector2:
