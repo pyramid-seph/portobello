@@ -78,6 +78,8 @@ func _get_minigame_start_level(minigame: Minigame) -> int:
 			return Day01Game.Level.SCORE_ATTACK_1C
 		Minigame.SCORE_ATTACK_1D:
 			return Day01Game.Level.SCORE_ATTACK_1D
+		Minigame.STORY_DAY_02:
+			return Day02Game.Level.STORY_MODE_LEVEL_01
 		Minigame.SCORE_ATTACK_2:
 			return Day02Game.Level.SCORE_ATTACK_MODE_LEVEL_01
 		Minigame.STORY_DAY_03:
