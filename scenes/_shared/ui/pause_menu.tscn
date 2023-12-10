@@ -34,7 +34,7 @@ script = ExtResource("1")
 show_auto_fire = true
 
 [node name="PauseDialog" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(143, 114)
+custom_minimum_size = Vector2(144, 114)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
