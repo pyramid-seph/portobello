@@ -47,6 +47,7 @@ var _state: MazeEnemyState = MazeEnemyState.CHASING:
 @onready var _scare_timer := $ScareTimer as Timer
 @onready var _not_so_scared_delay_timer := $NotSoScaredDelayTimer as Timer
 @onready var _dying_timer := $DyingTimer as Timer
+@onready var _area_2d: Area2D = $Area2D
 
 
 func _ready() -> void:
@@ -73,6 +74,7 @@ func teleport(map_pos: Vector2i) -> void:
 
 
 func reset(map_pos: Vector2i) -> void:
+	_area_2d.set_deferred("monitoring", true)
 	visible = true
 	_scare_timer.stop()
 	_not_so_scared_delay_timer.stop()
@@ -162,6 +164,7 @@ func _update_animation() -> void:
 
 func _die() -> void:
 	if not is_dead() and _is_scared():
+		_area_2d.set_deferred("monitoring", false)
 		_scare_timer.stop()
 		_not_so_scared_delay_timer.stop()
 		_dying_timer.start(DYING_DURATION_SEC)
