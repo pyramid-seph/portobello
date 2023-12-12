@@ -26,11 +26,11 @@ func _on_invincible_set() -> void:
 	# when the player loses their invincibility after
 	# being inside an enemy/bullet hitbox
 	# during their invincibility period.
-	monitoring = !invincible
+	set_deferred("monitoring", !invincible)
 
 
 func _on_area_entered(hitbox: Hitbox) -> void:
-	if hitbox == null or hitbox.owner == owner:
+	if invincible or hitbox == null or hitbox.owner == owner:
 		return
 	
 	var killer = hitbox.owner
