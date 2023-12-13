@@ -414,10 +414,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PostCreditsScene/BuchoFace"]
-autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_gyh0w")
 }
+autoplay = "RESET"
 
 [connection signal="finished" from="." to="." method="_on_finished"]
 [connection signal="visibility_changed" from="EndCredits/FlyingCreditsBucho" to="EndCredits/FlyingCreditsBucho" method="_on_visibility_changed"]
