@@ -109,7 +109,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("7_omuyb")
 theme_override_font_sizes/font_size = 8
-text = "Edición Hongo Portobello"
+text = "GAME_SUBTITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -157,7 +157,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
 theme_override_styles/panel = SubResource("StyleBoxFlat_v21ph")
-selector_text = "Menú del día"
+selector_text = "MENU_MAIN_SELECT_STORY_MODE"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
@@ -167,7 +167,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_37lb0")
-selector_text = "Buffet"
+selector_text = "MENU_MAIN_SELECT_SCORE_ATTACK_MODE"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
@@ -177,7 +177,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../ScoreAttackGameSelector")
 focus_neighbor_bottom = NodePath("../ShowOptionsBtn")
 mouse_filter = 2
-text = "Récords"
+text = "MENU_MAIN_PROGRESS"
 alignment = 0
 
 [node name="ShowOptionsBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]
@@ -187,7 +187,7 @@ focus_neighbor_top = NodePath("../ShowScoresBtn")
 focus_neighbor_bottom = NodePath("../ExitGameBtn")
 mouse_filter = 2
 button_mask = 0
-text = "Opciones"
+text = "MENU_MAIN_SETTINGS"
 alignment = 0
 
 [node name="ExitGameBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]
@@ -197,7 +197,7 @@ focus_neighbor_top = NodePath("../ShowOptionsBtn")
 focus_neighbor_bottom = NodePath("../StoryModeGameSelector")
 mouse_filter = 2
 button_mask = 0
-text = "Salir"
+text = "MENU_MAIN_QUIT"
 alignment = 0
 
 [node name="ProgressMenu" parent="TitleScreen" instance=ExtResource("10_33qhf")]
@@ -221,12 +221,13 @@ Buffets del día 1
 
 "
 negative_btn_text = ""
-positive_btn_text = "OK"
+positive_btn_text = "COMMON_OPTIONS_OK"
 
 [node name="ConfirmExitDialog" parent="." instance=ExtResource("10_dgmig")]
 visible = false
-body_text = "¿Salir del juego?"
-positive_btn_text = "Sí"
+body_text = "CONFIRM_QUIT"
+negative_btn_text = "COMMON_OPTIONS_NO"
+positive_btn_text = "COMMON_OPTIONS_YES"
 
 [node name="LogosRoll" type="Control" parent="."]
 visible = false
@@ -446,7 +447,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_omuyb")
 theme_override_font_sizes/font_size = 8
-text = "Puedes jugar con un control"
+text = "INFO_GAMEPAD_SUPPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -461,7 +462,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_omuyb")
 theme_override_font_sizes/font_size = 8
-text = "o con el teclado"
+text = "INFO_KEYBOARD_SUPPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
 

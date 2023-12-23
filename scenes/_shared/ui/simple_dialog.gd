@@ -55,7 +55,7 @@ func _on_negative_btn_text_set() -> void:
 
 func _on_body_text_set() -> void:
 	if _is_ready:
-		_body_label.text = body_text
+		_body_label.text = tr(body_text)
 
 
 func _on_hide_shadow_set() -> void:

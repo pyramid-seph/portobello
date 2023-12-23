@@ -100,9 +100,9 @@ func _update_bg_color() -> void:
 func _get_label_for_option(idx: int) -> String:
 	var option = _options[idx]
 	if typeof(option) == TYPE_DICTIONARY:
-		return option.label
+		return tr(option.label)
 	else:
-		return option
+		return tr(option)
 
 
 func _get_value_for_option(idx: int):
@@ -117,7 +117,7 @@ func _on_current_option_idx_set() -> void:
 	if not _is_ready:
 		return
 	
-	_label.text = selector_text
+	_label.text = tr(selector_text)
 	if selector_text != null and not selector_text.is_empty():
 		_label.text += " "
 	

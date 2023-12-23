@@ -50,8 +50,8 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../GoBackBtn")
 focus_neighbor_bottom = NodePath("../AutofireSelector")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pavtr")
-selector_text = "Vibrar"
-_options = ["Sí", "No"]
+selector_text = "MENU_SETTINGS_VIBRATE"
+_options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
 
@@ -61,8 +61,8 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../VibrationSelector")
 focus_neighbor_bottom = NodePath("../EraseDataBtn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pw7gm")
-selector_text = "Auto Fuego"
-_options = ["Sí", "No"]
+selector_text = "MENU_SETTINGS_AUTO_FIRE"
+_options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
 
@@ -73,7 +73,7 @@ focus_neighbor_top = NodePath("../AutofireSelector")
 focus_neighbor_bottom = NodePath("../GoBackBtn")
 mouse_filter = 2
 button_mask = 0
-text = "Borrar datos"
+text = "MENU_SETTINGS_DELETE_DATA"
 alignment = 0
 
 [node name="GoBackBtn" type="Button" parent="SettingsMenuPanel/VBoxContainer"]
@@ -82,24 +82,24 @@ focus_neighbor_top = NodePath("../EraseDataBtn")
 focus_neighbor_bottom = NodePath("../VibrationSelector")
 mouse_filter = 2
 button_mask = 0
-text = "Regresar"
+text = "MENU_SETTINGS_QUIT"
 alignment = 0
 
 [node name="ConfirmEraseDataDialog" parent="." instance=ExtResource("4_swkte")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-body_text = "¿Borrar todos 
-los datos?"
-positive_btn_text = "Sí"
+body_text = "CONFIRM_DELETE_DATA"
+negative_btn_text = "COMMON_OPTIONS_NO"
+positive_btn_text = "COMMON_OPTIONS_YES"
 
 [node name="ErasedDataDialog" parent="." instance=ExtResource("4_swkte")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-body_text = "Datos borrados"
+body_text = "DATA_DELETED"
 negative_btn_text = ""
-positive_btn_text = "Aceptar"
+positive_btn_text = "COMMON_OPTIONS_OK"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="current_option_index_changed" from="SettingsMenuPanel/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
