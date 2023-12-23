@@ -54,13 +54,16 @@ MENU_PAUSE_AUTO_FIRE,Auto fire,Auto fuego
 MENU_PAUSE_QUIT_MINIGAME,Give up,Rendirse
 MENU_PAUSE_UNPAUSE,Continue,Continuar
 CONFIRM_GIVE_UP,Progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
-LEVEL_START_LINE_0,Dish {level_order},Plato {level_order}
+LEVEL_START_LINE_0_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_START_LINE_0_SCORE_ATTACK,Buffet,Buffet
 LEVEL_START_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_SUCCESS,Piece of cake!,¡Pan comido!
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
+LEVEL_TIME_UP,Time up!,¡Tiempo agotado!
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
 LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+LEVEL_DAY_01_DIZZY,Dizzy,Mareado
 RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!,¡Reto devorado!
 RESULTS_SCREEN_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 RESULTS_SCREEN_EVALUATION,Your grade is,Tu calificación es

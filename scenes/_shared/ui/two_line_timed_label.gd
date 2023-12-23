@@ -109,12 +109,12 @@ func start(override_duration_sec: float = -1) -> void:
 
 func _set_label_1_text() -> void:
 	if _label_1:
-		_label_1.text = text_1
+		_label_1.text = tr(text_1)
 
 
 func _set_label_2_text() -> void:
 	if _label_2:
-		_label_2.text = text_2
+		_label_2.text = tr(text_2)
 
 
 func _change_labels_visible(value: bool) -> void:
