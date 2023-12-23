@@ -61,6 +61,15 @@ LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
 LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!,¡Reto devorado!
+RESULTS_SCREEN_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+RESULTS_SCREEN_EVALUATION,Your grade is,Tu calificación es
+RESULTS_SCREEN_EVALUATION_0,Awful!,¡Qué mal!
+RESULTS_SCREEN_EVALUATION_1,Yawn!,¡Yawn!
+RESULTS_SCREEN_EVALUATION_2,Not bad!,¡No está mal!
+RESULTS_SCREEN_EVALUATION_3,Good!,¡Bien!
+RESULTS_SCREEN_EVALUATION_4,Great!,¡Muy bien!
+RESULTS_SCREEN_EVALUATION_5,Prrrrrrfect!,¡Prrrrrrfecta!
 CREDITS_GAME_TITLE,- Bucho Busca Comida -,- Bucho Busca Comida -
 CREDITS_PORT_STAFF,The Portobello Mushroom Edition,Edición Hongo Portobello
 CREDITS_PORTED_BY,Ported by,Conversión
