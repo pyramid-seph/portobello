@@ -75,7 +75,7 @@ uppercase = true
 [node name="StartLabels" parent="." instance=ExtResource("2_3k77v")]
 layout_mode = 1
 text_1 = "Buffet"
-text_2 = "¡Buen provecho!"
+text_2 = "LEVEL_START_LINE_1"
 font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
 font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
 font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
@@ -96,7 +96,7 @@ _duration_sec = 3.0
 [node name="PieceOfCake" parent="." instance=ExtResource("5_2mhka")]
 visible = false
 layout_mode = 1
-text = "¡Pan comido!"
+text = "LEVEL_SUCCESS"
 label_settings = ExtResource("6_fvamt")
 horizontal_alignment = 1
 vertical_alignment = 1

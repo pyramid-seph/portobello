@@ -53,9 +53,10 @@ MENU_PAUSE_VIBRATE,Vibration,Vibrar
 MENU_PAUSE_AUTO_FIRE,Auto fire,Auto fuego
 MENU_PAUSE_QUIT_MINIGAME,Give up,Rendirse
 MENU_PAUSE_UNPAUSE,Continue,Continuar
-CONFIRM_GIVE_UP,Progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
+CONFIRM_GIVE_UP,All progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
 LEVEL_START_LINE_0_STORY_MODE,Dish {level_pos},Plato {level_pos}
 LEVEL_START_LINE_0_SCORE_ATTACK,Buffet,Buffet
+LEVEL_START_LINE_0_SCORE_ATTACK_WITH_POS,Buffet {level_pos},Buffet {level_pos}
 LEVEL_START_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_SUCCESS,Piece of cake!,¡Pan comido!
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
