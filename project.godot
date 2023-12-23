@@ -102,6 +102,10 @@ skip_cutscene={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/bucho_portobello_localization.en.translation", "res://localization/bucho_portobello_localization.es.translation")
+
 [layer_names]
 
 2d_physics/layer_1="hurtboxes"

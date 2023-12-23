@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cv1w6l24sxkxc"
+
+[deps]
+
+files=["res://localization/bucho_portobello_localization.en.translation", "res://localization/bucho_portobello_localization.es.translation"]
+
+source_file="res://localization/bucho_portobello_localization.csv"
+dest_files=["res://localization/bucho_portobello_localization.en.translation", "res://localization/bucho_portobello_localization.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

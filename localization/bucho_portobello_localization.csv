@@ -1,0 +1,121 @@
+keys,en,es
+COMMON_OPTIONS_YES,Yes,Sí
+COMMON_OPTIONS_NO,No,No
+COMMON_OPTIONS_OK,OK,OK
+INFO_GAMEPAD_SUPPORT,Supports gamepad,Puedes jugar con un control
+INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
+GAME_TITLE,Bucho Busca Comida,Bucho Busca Comida
+GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
+MENU_MAIN_SELECT_STORY_MODE,Menú del día,Menú del día
+MENU_MAIN_SELECT_SCORE_ATTACK_MODE,Buffet,Buffet
+MENU_MAIN_PROGRESS,High Scores,Récords
+MENU_MAIN_SETTINGS,Settings,Opciones
+MENU_MAIN_QUIT,Quit,Salir
+CONFIRM_QUIT,Quit game?,¿Salir del juego?
+MENU_PROGRESS_STARS,Stars,Estrellas
+MENU_PROGRESS_HIGH_SCORES,High Scores,Récords
+MENU_PROGRESS_QUIT,Back,Regresar
+MENU_SETTINGS_VIBRATE,Vibration,Vibrar
+MENU_SETTINGS_AUTO_FIRE,Auto fire,Auto fuego
+MENU_SETTINGS_LANGUAGE,Language,Idioma
+MENU_SETTINGS_DELETE_DATA,Delete data,Borrar datos
+MENU_SETTINGS_QUIT,Back,Regresar
+MENU_MAIN_SELECT_STORY_MODE_DAY_EX,\nComing soon!\n\n¡No comas ansias!\n ,\n¡Muy pronto!\n\n¡No comas ansias!\n 
+CONFIRM_DELETE_DATA,Delete all data?,¿Borrar todos\nlos datos?
+DATA_DELETED,Data deleted,Datos borrados
+MENU_PROGRESS_STARS_0,Day 1,Day 1
+MENU_PROGRESS_STARS_1,Day 2,Day 2
+MENU_PROGRESS_STARS_2,Day 3,Day 3
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_0,Buffet 1A,Buffet 1A
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_1,Buffet 1B,Buffet 1B
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_2,Buffet 1C,Buffet 1C
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_3,Buffet 1D,Buffet 1D
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_4,Buffet 2,Buffet 2
+MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_02,Day 2,Día 2
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_5,Buffet 3A,Buffet 3A
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_6,Buffet 3B,Buffet 3B
+MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_03,Day 3,Día 3
+MINIGAME_NAME_STORY_MODE_0,1,1
+MINIGAME_NAME_STORY_MODE_1,2,2
+MINIGAME_NAME_STORY_MODE_2,3,3
+MINIGAME_NAME_STORY_MODE_3,EX,EX
+MINIGAME_NAME_SCORE_ATTACK_0,Day 1A,Día 1A
+MINIGAME_NAME_SCORE_ATTACK_1,Day 1B,Día 1B
+MINIGAME_NAME_SCORE_ATTACK_2,Day 1C,Día 1C
+MINIGAME_NAME_SCORE_ATTACK_3,Day 1D,Día 1D
+MINIGAME_NAME_SCORE_ATTACK_4,Day 2,Día 2
+MINIGAME_NAME_SCORE_ATTACK_5,Day 3A,Día 3A
+MINIGAME_NAME_SCORE_ATTACK_6,Day 3B,Día 3B
+INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
+INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nBuffets of day {unlocked_story_mode_minigame}\n ,Ya puedes comer:\n\nBuffets del día {unlocked_story_mode_minigame}\n 
+MENU_PAUSE_TITLE,Pause,Pausa
+MENU_PAUSE_VIBRATE,Vibration,Vibrar
+MENU_PAUSE_AUTO_FIRE,Auto fire,Auto fuego
+MENU_PAUSE_QUIT_MINIGAME,Give up,Rendirse
+MENU_PAUSE_UNPAUSE,Continue,Continuar
+CONFIRM_GIVE_UP,Progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
+LEVEL_START_LINE_0,Dish {level_order},Plato {level_order}
+LEVEL_START_LINE_1,Bon appétit!,¡Buen provecho!
+LEVEL_SUCCESS,Piece of cake!,¡Pan comido!
+LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
+LEVEL_BOSS_LINE_0,Main course,Plato fuerte
+LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
+LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+CREDITS_GAME_TITLE,- Bucho Busca Comida -,- Bucho Busca Comida -
+CREDITS_PORT_STAFF,The Portobello Mushroom Edition,Edición Hongo Portobello
+CREDITS_PORTED_BY,Ported by,Conversión
+CREDITS_FONTS,Fonts,Fuentes
+CREDITS_ORIGINAL_STAFF,Original Staff,Staff Original
+CREDITS_ORIGINAL_IDEA,Original idea,Idea Original
+CREDITS_SCRIPT,Script,Guión
+CREDITS_CHARACTER_DESIGN,Character design,Diseño de personajes
+CREDITS_SPRITES,Sprites,Sprites
+CREDITS_PROGRAMMING,Programming,Programación
+CREDITS_TESTERS,Testing,Pruebas
+CREDITS_WILDCARD,Wildcard,Comodín
+CREDITS_THANKS_FOR_PLAYING,Thanks for playing!,¡Gracias por jugar!
+DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
+DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
+DIALOGUE_DAY_01_LEVEL_01_LINE_00,"Hi!, this is...",¿Bueno?
+DIALOGUE_DAY_01_LEVEL_01_LINE_01,"¡No, aquí no vive Nacho!","""¡No, aquí no vive Nacho!"""
+DIALOGUE_DAY_01_LEVEL_01_LINE_02,Don't worry! It's OK.,"""De nada."""
+DIALOGUE_DAY_01_LEVEL_02_LINE_00,¿Bueno?,¿Bueno?
+DIALOGUE_DAY_01_LEVEL_02_LINE_01,¡Amor!,¡Amor!
+DIALOGUE_DAY_01_LEVEL_02_LINE_02,Ya me siento solita.,Ya me siento solita.
+DIALOGUE_DAY_01_LEVEL_02_LINE_03,Yo también te extraño.,Yo también te extraño.
+DIALOGUE_DAY_01_LEVEL_02_LINE_04,Te amo. Chao.,Te amo. Chao.
+DIALOGUE_DAY_01_LEVEL_03_LINE_00,¿Bueno?,¿Bueno?
+DIALOGUE_DAY_01_LEVEL_03_LINE_01,¿Hola?,¿Hola?
+DIALOGUE_DAY_01_LEVEL_03_LINE_02,¡¿Hay alguien ahí?!,¡¿Hay alguien ahí?!
+DIALOGUE_DAY_01_LEVEL_03_LINE_03,(cuelga) ...,(cuelga) ...
+DIALOGUE_DAY_01_LEVEL_03_LINE_04,¿Ha sido una broma?,¿Ha sido una broma?
+DIALOGUE_DAY_01_LEVEL_04_LINE_00,¡Bomboncito!,¡Bomboncito!
+DIALOGUE_DAY_01_LEVEL_04_LINE_01,Yo te amo más.,Yo te amo más.
+DIALOGUE_DAY_01_LEVEL_04_LINE_02,Te amo más más infinito.,Te amo más más infinito.
+DIALOGUE_DAY_01_LEVEL_04_LINE_03,"No, cuelga tú.","No, cuelga tú."
+DIALOGUE_DAY_01_LEVEL_04_LINE_04,"No, anda, tú.","No, anda, tú."
+DIALOGUE_DAY_01_LEVEL_04_LINE_05,Cuelga tú.,Cuelga tú.
+DIALOGUE_DAY_01_LEVEL_04_LINE_06,"Espera, tengo una llamada","Espera, tengo una llamada"
+DIALOGUE_DAY_01_LEVEL_04_LINE_07,en la otra línea.,en la otra línea.
+DIALOGUE_DAY_01_LEVEL_05_LINE_00,"¿Bueno? No, gracias.","¿Bueno? No, gracias."
+DIALOGUE_DAY_01_LEVEL_05_LINE_01,"No, no necesito un seguro.","No, no necesito un seguro."
+DIALOGUE_DAY_01_LEVEL_05_LINE_02,No me hace falta.,No me hace falta.
+DIALOGUE_DAY_01_LEVEL_05_LINE_03,Gracias.,Gracias.
+DIALOGUE_DAY_01_LEVEL_06_LINE_00,¿Bueno?,¿Bueno?
+DIALOGUE_DAY_01_LEVEL_06_LINE_01,¡Mi vida! Lástima que,¡Mi vida! Lástima que
+DIALOGUE_DAY_01_LEVEL_06_LINE_02,te hayas ido al congreso,te hayas ido al congreso
+DIALOGUE_DAY_01_LEVEL_06_LINE_03,internacional de chefs. Al,internacional de chefs. Al
+DIALOGUE_DAY_01_LEVEL_06_LINE_04,menos me regalaste a Bucho,menos me regalaste a Bucho
+DIALOGUE_DAY_01_LEVEL_06_LINE_05,para que me haga compañía,para que me haga compañía
+DIALOGUE_DAY_01_LEVEL_06_LINE_06,"Sí, así le puse","Sí, así le puse"
+DIALOGUE_DAY_01_LEVEL_06_LINE_07,porque es glotón.,porque es glotón.
+DIALOGUE_DAY_01_LEVEL_06_LINE_08,Te quiero mucho mucho.,Te quiero mucho mucho.
+DIALOGUE_DAY_01_LEVEL_06_LINE_09,"Bueno, mi cielo, ¡suerte!","Bueno, mi cielo, ¡suerte!"
+DIALOGUE_DAY_01_LEVEL_07_LINE_00,"¿Bueno? Sí, ya fui","¿Bueno? Sí, ya fui"
+DIALOGUE_DAY_01_LEVEL_07_LINE_01,a visitarlo. No te,a visitarlo. No te
+DIALOGUE_DAY_01_LEVEL_07_LINE_02,"preocupes, mami. Le dejé","preocupes, mami. Le dejé"
+DIALOGUE_DAY_01_LEVEL_07_LINE_03,unas lindas flores.,unas lindas flores.
+DIALOGUE_DAY_01_LEVEL_07_LINE_04,Te quiero. Cuídate.,Te quiero. Cuídate.
+DIALOGUE_DAY_01_LEVEL_08_LINE_00,¡Amorcito!,¡Amorcito!
+DIALOGUE_DAY_01_LEVEL_08_LINE_01,Tráeme lo que quieras.,Tráeme lo que quieras.
+DIALOGUE_DAY_01_LEVEL_08_LINE_02,Me llamas. ¡Bye!,Me llamas. ¡Bye!
