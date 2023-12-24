@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Bucho Busca Comida: Edición Hongo Portobello"
+config/name="Bucho Busca Comida: The Portobello Mushroom Edition"
+config/name_localized={
+"es": "Bucho Busca Comida: Edición Hongo Portobello"
+}
 config/version="1.0.0"
 run/main_scene="res://scenes/_shared/title_screen/title_screen_scene.tscn"
 config/features=PackedStringArray("4.2")
