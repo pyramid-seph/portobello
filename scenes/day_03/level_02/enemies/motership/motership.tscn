@@ -34,13 +34,13 @@ size = Vector2(144, 20)
 
 [sub_resource type="Resource" id="Resource_rc14a"]
 script = ExtResource("21_kwipx")
-text = "No permitiremos que acabes"
+text = "DIALOGUE_DAY_03_MOTERSHIP_01"
 delay_sec = 0.0
 duration_sec = 2.0
 
 [sub_resource type="Resource" id="Resource_oa3fb"]
 script = ExtResource("21_kwipx")
-text = "con nuestro alimento"
+text = "DIALOGUE_DAY_03_MOTERSHIP_02"
 delay_sec = 0.0
 duration_sec = 2.0
 

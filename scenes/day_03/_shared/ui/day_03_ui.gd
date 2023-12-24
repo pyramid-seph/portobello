@@ -62,9 +62,11 @@ func change_black_screen_visibility(value: bool) -> void:
 func start_game_presentation(mode: Game.Mode, index: int) -> void:
 	var line_1: String
 	if mode == Game.Mode.STORY:
-		line_1 = "Plato %s" % (index + 1)
+		line_1 = tr("LEVEL_START_LINE_0_STORY_MODE").format(
+				{ level_pos = (index + 1) }
+		)
 	else:
-		line_1 = "Buffet"
+		line_1 = "LEVEL_START_LINE_0_SCORE_ATTACK"
 	_start_labels.text_1 = line_1
 	_start_labels.start()
 
