@@ -108,8 +108,8 @@ CREDITS_BUCHO_TALKS_2,Se - quel,Se - cue - la
 DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
 DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
 DIALOGUE_DAY_01_LEVEL_01_LINE_00,"Hi!, this is...",¿Bueno?
-DIALOGUE_DAY_01_LEVEL_01_LINE_01,"¡No, aquí no vive Nacho!","""¡No, aquí no vive Nacho!"""
-DIALOGUE_DAY_01_LEVEL_01_LINE_02,Don't worry! It's OK.,"""De nada."""
+DIALOGUE_DAY_01_LEVEL_01_LINE_01,"¡No, aquí no vive Nacho!","¡No, aquí no vive Nacho!"
+DIALOGUE_DAY_01_LEVEL_01_LINE_02,Don't worry! It's OK.,De nada.
 DIALOGUE_DAY_01_LEVEL_02_LINE_00,¿Bueno?,¿Bueno?
 DIALOGUE_DAY_01_LEVEL_02_LINE_01,¡Amor!,¡Amor!
 DIALOGUE_DAY_01_LEVEL_02_LINE_02,Ya me siento solita.,Ya me siento solita.
