@@ -83,7 +83,7 @@ CUTSCENE_DAY_TITLE_02,Day 2,Día 2
 CUTSCENE_DAY_TITLE_03,Day 3,Día 3
 CUTSCENE_DAY_TITLE_04,Day EX,Día EX
 CREDITS_GAME_TITLE,- Bucho Busca Comida -,- Bucho Busca Comida -
-CREDITS_PORT_STAFF,The Portobello Mushroom Edition,Edición Hongo Portobello
+CREDITS_PORT_STAFF,The Portobello Mushroom\nEdition,Edición Hongo Portobello
 CREDITS_PORTED_BY,Ported by,Conversión
 CREDITS_FONTS,Fonts,Fuentes
 CREDITS_ORIGINAL_STAFF,Original Staff,Staff Original
@@ -95,6 +95,9 @@ CREDITS_PROGRAMMING,Programming,Programación
 CREDITS_TESTERS,Testing,Pruebas
 CREDITS_WILDCARD,Wildcard,Comodín
 CREDITS_THANKS_FOR_PLAYING,Thanks for playing!,¡Gracias por jugar!
+CREDITS_BUCHO_TALKS_0,Se...,Se -
+CREDITS_BUCHO_TALKS_1,Se -,Se - cue
+CREDITS_BUCHO_TALKS_2,Se - quel,Se - cue - la
 DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
 DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
 DIALOGUE_DAY_01_LEVEL_01_LINE_00,"Hi!, this is...",¿Bueno?

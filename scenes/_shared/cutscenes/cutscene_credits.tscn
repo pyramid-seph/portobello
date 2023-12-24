@@ -109,7 +109,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 4, 6, 8),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": ["", "Se", "Se - cue -", "Se - cue - la"]
+"values": ["", "CREDITS_BUCHO_TALKS_0", "CREDITS_BUCHO_TALKS_1", "CREDITS_BUCHO_TALKS_2"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gyh0w"]
