@@ -67,15 +67,21 @@ LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 LEVEL_DAY_01_DIZZY,Dizzy,Mareado
 LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
-RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!,¡Reto devorado!
+RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!\n ,¡Reto devorado!\n 
 RESULTS_SCREEN_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 RESULTS_SCREEN_EVALUATION,Your grade is,Tu calificación es
-RESULTS_SCREEN_EVALUATION_0,Awful!,¡Qué mal!
+RESULTS_SCREEN_EVALUATION_RESULT_ZERO,Zero!,¡Cero!
+RESULTS_SCREEN_EVALUATION_0,Too bad!,¡Qué mal!
 RESULTS_SCREEN_EVALUATION_1,Yawn!,¡Yawn!
 RESULTS_SCREEN_EVALUATION_2,Not bad!,¡No está mal!
 RESULTS_SCREEN_EVALUATION_3,Good!,¡Bien!
 RESULTS_SCREEN_EVALUATION_4,Great!,¡Muy bien!
 RESULTS_SCREEN_EVALUATION_5,Prrrrrrfect!,¡Prrrrrrfecta!
+RESULTS_SCREEN_CURR_SCORE,Score = {score},Puntaje = {score}
+RESULTS_SCREEN_BONUS,Bonus = {lives} x 1000 = {bonus},Bono = {lives} x 1000 = {bonus}
+RESULTS_SCREEN_TOTAL_SCORE,Total = {total_score},Total = {total_score}
+RESULTS_SCREEN_EXTRA_LIVES_SINGULAR,{lives} extra life!,¡{lives} vida extra!
+RESULTS_SCREEN_EXTRA_LIVES_PLURAL,{lives} extra lives!,¡{lives} vidas extra!
 LOADING_SCREEN_LOADING,Loading,Cargando
 LOADING_SCREEN_ERROR,Error loading level,Error al cargar recurso
 CUTSCENE_DAY_TITLE_01,Day 1,Día 1
