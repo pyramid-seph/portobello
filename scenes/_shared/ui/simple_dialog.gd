@@ -43,19 +43,19 @@ func _hide() -> void:
 
 func _on_positive_btn_text_set() -> void:
 	if _is_ready:
-		_positive_btn.text = tr(positive_btn_text)
+		_positive_btn.text = positive_btn_text
 
 
 func _on_negative_btn_text_set() -> void:
 	if _is_ready:
-		_negative_btn.text = tr(negative_btn_text)
+		_negative_btn.text = negative_btn_text
 		_negative_btn.visible = not negative_btn_text.is_empty()
 		_grab_focus()
 
 
 func _on_body_text_set() -> void:
 	if _is_ready:
-		_body_label.text = tr(body_text)
+		_body_label.text = body_text
 
 
 func _on_hide_shadow_set() -> void:

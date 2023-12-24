@@ -37,7 +37,7 @@ func start() -> void:
 		if line.delay_sec > 0:
 			_timer.start(line.delay_sec)
 			await _timer.timeout
-		_label.text = tr(line.text)
+		_label.text = line.text
 		if line.duration_sec > 0:
 			_timer.start(line.duration_sec)
 			await _timer.timeout

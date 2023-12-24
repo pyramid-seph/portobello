@@ -7,7 +7,7 @@ INFO_GAMEPAD_SUPPORT,Supports gamepad,Puedes jugar con un control
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
 GAME_TITLE,Bucho Busca Comida,Bucho Busca Comida
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
-MENU_MAIN_SELECT_STORY_MODE,Menú del día,Menú del día
+MENU_MAIN_SELECT_STORY_MODE,Menu of the day,Menú del día
 MENU_MAIN_SELECT_SCORE_ATTACK_MODE,Buffet,Buffet
 MENU_MAIN_PROGRESS,High Scores,Récords
 MENU_MAIN_SETTINGS,Settings,Opciones
@@ -19,14 +19,16 @@ MENU_PROGRESS_QUIT,Back,Regresar
 MENU_SETTINGS_VIBRATE,Vibration,Vibrar
 MENU_SETTINGS_AUTO_FIRE,Auto fire,Auto fuego
 MENU_SETTINGS_LANGUAGE,Language,Idioma
+MENU_SETTINGS_LANGUAGE_OPTION_EN,English,Inglés
+MENU_SETTINGS_LANGUAGE_OPTION_ES,Spanish,Español
 MENU_SETTINGS_DELETE_DATA,Delete data,Borrar datos
 MENU_SETTINGS_QUIT,Back,Regresar
 MENU_MAIN_SELECT_STORY_MODE_DAY_EX,\nComing soon!\n\n¡No comas ansias!\n ,\n¡Muy pronto!\n\n¡No comas ansias!\n 
 CONFIRM_DELETE_DATA,Delete all data?,¿Borrar todos\nlos datos?
 DATA_DELETED,Data deleted,Datos borrados
-MENU_PROGRESS_STARS_0,Day 1,Day 1
-MENU_PROGRESS_STARS_1,Day 2,Day 2
-MENU_PROGRESS_STARS_2,Day 3,Day 3
+MENU_PROGRESS_STARS_0,Day 1,Día 1
+MENU_PROGRESS_STARS_1,Day 2,Día 2
+MENU_PROGRESS_STARS_2,Day 3,Día 3
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_0,Buffet 1A,Buffet 1A
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_1,Buffet 1B,Buffet 1B
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_2,Buffet 1C,Buffet 1C
@@ -47,7 +49,7 @@ MINIGAME_NAME_SCORE_ATTACK_3,Day 1D,Día 1D
 MINIGAME_NAME_SCORE_ATTACK_4,Day 2,Día 2
 MINIGAME_NAME_SCORE_ATTACK_5,Day 3A,Día 3A
 MINIGAME_NAME_SCORE_ATTACK_6,Day 3B,Día 3B
-INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
+INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenu of the day {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
 INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nBuffets of day {unlocked_story_mode_minigame}\n ,Ya puedes comer:\n\nBuffets del día {unlocked_story_mode_minigame}\n 
 MENU_PAUSE_TITLE,Pause,Pausa
 MENU_PAUSE_VIBRATE,Vibration,Vibrar

@@ -3,7 +3,7 @@ class_name HSelector
 extends PanelContainer
 
 signal selected(value)
-signal current_option_index_changed(value: int)
+signal current_option_index_changed(index: int)
 
 const SELECTED_NONE: int = -1
 
@@ -54,6 +54,11 @@ func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_right"):
 		_next_option()
 		accept_event()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED:
+		_on_current_option_idx_set()
 
 
 func set_options(arr: Array) -> void:

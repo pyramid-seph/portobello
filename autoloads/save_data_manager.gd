@@ -74,6 +74,7 @@ func _load() -> void:
 	
 	var json_string := file.get_as_text()
 	var data = JSON.parse_string(json_string)
+	SaveDataMigration.new().migrate(data)
 	if data:
 		save_data = SaveData.from_json(data)
 	else: # Got an error while parsing the json.

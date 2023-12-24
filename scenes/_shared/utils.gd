@@ -28,6 +28,17 @@ static func first_or_null(arr: Array, callable: Callable):
 	return null
 
 
+## Returns first index of the element that satisfy the given predicate,
+##  or -1 if no element satisfy it.
+static func index_of(arr: Array, predicate: Callable) -> int:
+	if arr == null or arr.is_empty():
+		return -1
+	for index in range(0, arr.size()):
+		if predicate.call(arr[index]):
+			return index
+	return -1
+
+
 static func count(arr: Array, callable: Callable) -> int:
 	var total = 0
 	if arr:
@@ -180,3 +191,8 @@ static func _vibrate_joy_web_workaround(
 			}
 		}
 	""" % [device, duration * 1000.0, weak_magnitude, strong_magnitude])
+
+
+static func get_default_language() -> String:
+	var system_lang: String = OS.get_locale_language()
+	return system_lang if system_lang in ["en", "es"] else "en"
