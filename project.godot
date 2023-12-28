@@ -107,6 +107,9 @@ skip_cutscene={
 
 [internationalization]
 
+locale/translation_remaps={
+"res://art/cutscenes/ending/ending_1_text_en.png": PackedStringArray("res://art/cutscenes/ending/ending_1_text_es.png:es")
+}
 locale/translations=PackedStringArray("res://localization/bucho_portobello_localization.en.translation", "res://localization/bucho_portobello_localization.es.translation")
 
 [layer_names]
