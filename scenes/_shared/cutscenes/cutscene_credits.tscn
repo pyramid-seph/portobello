@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=23 format=3 uid="uid://ct51hooycinfb"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
@@ -13,18 +13,20 @@
 [ext_resource type="Texture2D" uid="uid://b0cyvobvfrbid" path="res://art/cutscenes/ending/ending_1_text_en.png" id="6_ejc4k"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/flying_credits_bucho.gd" id="10_07ai5"]
 [ext_resource type="Texture2D" uid="uid://cue7pestmbrcu" path="res://art/cutscenes/ending/ending_credits_sea_shine_0.png" id="10_yjovn"]
+[ext_resource type="Texture2D" uid="uid://g4iith1xpt1" path="res://art/cutscenes/ending/ending_credits_bucho_0.png" id="13_gwfa2"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/post_credits_scene.gd" id="13_qgbjn"]
 [ext_resource type="Texture2D" uid="uid://bg5pf3f7vadyl" path="res://art/cutscenes/ending/ending_post_credits.png" id="13_tg2lj"]
+[ext_resource type="Texture2D" uid="uid://cgxdaj67ey6yj" path="res://art/cutscenes/ending/ending_credits_bucho_1.png" id="14_1thfa"]
 [ext_resource type="Texture2D" uid="uid://c4dymrfuhbcl3" path="res://art/cutscenes/ending/ending_post_credits_bucho_mouth.png" id="14_wtijq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w1dyf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("13_gwfa2")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("14_1thfa")
 }],
 "loop": true,
 "name": &"default",
