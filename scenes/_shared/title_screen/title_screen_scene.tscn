@@ -294,9 +294,7 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="LogosRoll/MyLogo/VBoxContainer"]
 layout_mode = 2
-text = "A
-Pyramid Seph 
-pixelated thingie"
+text = "LOGOS_ROLL_ME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -386,7 +384,7 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="LogosRoll/GodotCredit/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Powered by"
+text = "LOGOS_ROLL_GODOT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -414,8 +412,7 @@ grow_vertical = 0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("7_omuyb")
 theme_override_font_sizes/font_size = 8
-text = "Original Godot logo by  Andrea Calabró 
-under  CC-BY-4.0 license"
+text = "LOGOS_ROLL_GODOT_LOGO_CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
