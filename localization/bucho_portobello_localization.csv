@@ -100,14 +100,14 @@ MENU_MAIN_PROGRESS,High Scores,Récords
 MENU_MAIN_QUIT,Quit,Salir
 MENU_MAIN_SELECT_SCORE_ATTACK_MODE,Buffet,Buffet
 MENU_MAIN_SELECT_STORY_MODE,Menu of the day,Menú del día
-MENU_MAIN_SELECT_STORY_MODE_DAY_EX,\nComing soon!\n\n¡No comas ansias!\n ,\n¡Muy pronto!\n\n¡No comas ansias!\n 
+MENU_MAIN_SELECT_STORY_MODE_DAY_EX,\nComing soon!\n\nSavour the moment!\n ,\n¡Muy pronto!\n\n¡No comas ansias!\n 
 MENU_MAIN_SETTINGS,Settings,Opciones
 MENU_PAUSE_AUTO_FIRE,Auto fire,Auto fuego
 MENU_PAUSE_QUIT_MINIGAME,Give up,Rendirse
 MENU_PAUSE_TITLE,Pause,Pausa
 MENU_PAUSE_UNPAUSE,Continue,Continuar
 MENU_PAUSE_VIBRATE,Vibration,Vibrar
-MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_0,Buffet 1A, 
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_0,Buffet 1A,Buffet 1A
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_1,Buffet 1B,Buffet 1B
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_2,Buffet 1C,Buffet 1C
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_3,Buffet 1D,Buffet 1D
