@@ -2,14 +2,20 @@ class_name SaveDataMigration
 extends RefCounted
 
 
-func migrate(json: Dictionary) -> void:
+func migrate(json: Dictionary) -> bool:
+	var migrated: bool = false
 	while json.version < SaveData.VERSION:
-		match json.version:
+		# Match doesn't seem to recognize json.version as an int, therefore
+		# I'm using an aux var to help it take the correct code path.
+		var json_version: int = json.version
+		match json_version:
 			1:
 				_migrate_to_v2(json)
+				migrated = true
 			_:
-				print("Cannot migrate to an unknown version")
+				print("Can't migrate to unknown save data version: ", json.version)
 				break
+	return migrated
 
 
 func _migrate_to_v2(json: Dictionary) -> void:

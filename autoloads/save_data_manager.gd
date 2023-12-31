@@ -34,7 +34,7 @@ func reset_save_data() -> void:
 func save() -> void:
 	saving_started.emit()
 	
-	var file = FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)
+	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)
 	if not file:
 		saving_finished.emit()
 		_on_file_open_error()
@@ -59,23 +59,25 @@ func _ensure_file_exist() -> void:
 
 
 func _on_file_open_error() -> void:
-	var error = FileAccess.get_open_error()
-	var errorMsg = tr("LOAD_SAVE_DATA_ERROR").format({ error_message = error })
+	var error := FileAccess.get_open_error()
+	var errorMsg := tr("LOAD_SAVE_DATA_ERROR").format({ error_message = error })
 	error_while_saving.emit(errorMsg)
 
 
 func _load() -> void:
 	_ensure_file_exist()
 	
-	var file = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
+	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 	if not file:
 		_on_file_open_error()
 		return
 	
-	var json_string := file.get_as_text()
+	var json_string: String = file.get_as_text()
 	var data = JSON.parse_string(json_string)
-	SaveDataMigration.new().migrate(data)
 	if data:
+		var migrated = SaveDataMigration.new().migrate(data)
 		save_data = SaveData.from_json(data)
+		if migrated:
+			save()
 	else: # Got an error while parsing the json.
 		reset_save_data()

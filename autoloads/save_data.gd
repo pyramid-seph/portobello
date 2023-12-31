@@ -10,15 +10,15 @@ var version: int = VERSION
 # First day is 1. "The lost chapter" does not count.
 var latest_day_completed: int
 var latest_unlocked_day_notified: int
-var is_vibration_enabled: bool = true
-var is_autofire_enabled: bool = true:
+var is_vibration_enabled := true
+var is_autofire_enabled := true:
 	set(value):
 		var old_is_autofire_enabled = is_autofire_enabled
 		is_autofire_enabled = value
 		is_autofire_enabled_changed.emit(old_is_autofire_enabled, is_autofire_enabled)
 var language: String = Utils.get_default_language()
-var stars := Stars.new() as Stars
-var high_scores := HighScores.new() as HighScores
+var stars := Stars.new()
+var high_scores := HighScores.new()
 
 func to_dictionary() -> Dictionary:
 	return {
