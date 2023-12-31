@@ -34,7 +34,7 @@ script = ExtResource("1")
 show_auto_fire = true
 
 [node name="PauseDialog" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(144, 114)
+custom_minimum_size = Vector2(150, 114)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -47,7 +47,7 @@ theme_override_constants/separation = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Pausa"
+text = "MENU_PAUSE_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -56,8 +56,8 @@ uppercase = true
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_71v0q")
-selector_text = "Vibrar"
-_options = ["Sí", "No"]
+selector_text = "MENU_PAUSE_VIBRATE"
+_options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
 
@@ -65,8 +65,8 @@ loop_options = false
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpx1d")
-selector_text = "Autofuego"
-_options = ["Sí", "No"]
+selector_text = "MENU_PAUSE_AUTO_FIRE"
+_options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
 
@@ -74,7 +74,7 @@ loop_options = false
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-text = "Rendirse"
+text = "MENU_PAUSE_QUIT_MINIGAME"
 flat = true
 alignment = 0
 
@@ -82,16 +82,16 @@ alignment = 0
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-text = "Continuar"
+text = "MENU_PAUSE_UNPAUSE"
 flat = true
 alignment = 0
 
 [node name="ConfirmExitLevelDialog" parent="." instance=ExtResource("5_tyfqu")]
 visible = false
 layout_mode = 2
-body_text = "Perderás tu progreso.
-¿Rendirse?"
-positive_btn_text = "Sí"
+body_text = "CONFIRM_GIVE_UP"
+negative_btn_text = "COMMON_OPTIONS_NO"
+positive_btn_text = "COMMON_OPTIONS_YES"
 hide_shadow = true
 
 [connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]

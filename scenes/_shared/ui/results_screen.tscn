@@ -109,8 +109,7 @@ theme_override_constants/separation = -4
 [node name="LevelCompleteLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-text = "¡Reto devorado!
- "
+text = "RESULTS_SCREEN_MINIGAME_COMPLETED"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -118,7 +117,7 @@ vertical_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-text = "¡Nuevo récord!"
+text = "RESULTS_SCREEN_NEW_HIGH_SCORE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -135,7 +134,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_si1kx")
 [node name="Label" type="Label" parent="ColorRect/StarsContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Tu calificación es"
+text = "RESULTS_SCREEN_EVALUATION"
 label_settings = SubResource("LabelSettings_gbpxl")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -160,7 +159,7 @@ theme_override_constants/margin_bottom = 84
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-text = "¡Prrrrrrrfecto!"
+text = "¡Prrrrrrrfecta!"
 label_settings = SubResource("LabelSettings_1iyfp")
 horizontal_alignment = 1
 vertical_alignment = 1

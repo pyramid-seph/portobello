@@ -29,17 +29,20 @@ var _inverted_controls_sign_tween: Tween
 func show_level_start(mode: Game.Mode, index: int) -> void:
 	var line_1: String
 	if mode == Game.Mode.STORY:
-		line_1 = "Plato %s" % (index + 1)
+		line_1 = tr("LEVEL_START_LINE_0_STORY_MODE").format(
+				{ level_pos = (index + 1) }
+		)
 	else:
-		line_1 = "Buffet"
+		line_1 = "LEVEL_START_LINE_0_SCORE_ATTACK"
 	_start_labels.text_1 = line_1
 	_start_labels.start()
 
 
 func show_game_over(new_high_score: bool) -> void:
-	_game_over.text = "¡Qué indigestión!"
+	_game_over.text = tr("LEVEL_GAME_OVER")
 	if new_high_score:
-		_game_over.text += "\n\n¡Nuevo récord!"
+		_game_over.text += "\n\n"
+		_game_over.text += tr("LEVEL_NEW_HIGH_SCORE")
 	_game_over.start()
 	await _game_over.finished
 	game_over_finished.emit()

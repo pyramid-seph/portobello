@@ -1,0 +1,157 @@
+keys,en,es
+COMMON_OPTIONS_EXIT,Quit game,Salir
+COMMON_OPTIONS_NO,No,No
+COMMON_OPTIONS_OK,OK,OK
+COMMON_OPTIONS_YES,Yes,Sí
+CONFIRM_DELETE_DATA,Delete all data?,¿Borrar todos\nlos datos?
+CONFIRM_GIVE_UP,All progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
+CONFIRM_QUIT,Quit game?,¿Salir del juego?
+CREDITS_BUCHO_TALKS_0,Se...,Se -
+CREDITS_BUCHO_TALKS_1,Se -,Se - cue
+CREDITS_BUCHO_TALKS_2,Se - quel,Se - cue - la
+CREDITS_CHARACTER_DESIGN,Character design,Diseño de personajes
+CREDITS_FONTS,Fonts,Fuentes
+CREDITS_GAME_TITLE,- Bucho Busca Comida -,- Bucho Busca Comida -
+CREDITS_ORIGINAL_IDEA,Original idea,Idea Original
+CREDITS_ORIGINAL_STAFF,Original Staff,Staff Original
+CREDITS_PORT_STAFF,The Portobello Mushroom\nEdition,Edición Hongo Portobello
+CREDITS_PORTED_BY,Ported by,Conversión
+CREDITS_PROGRAMMING,Programming,Programación
+CREDITS_SCRIPT,Script,Guión
+CREDITS_SPRITES,Sprites,Sprites
+CREDITS_TESTERS,Testing,Pruebas
+CREDITS_THANKS_FOR_PLAYING,Thanks for playing!,¡Gracias por jugar!
+CREDITS_WILDCARD,Cackling goddess,Comodín
+CUTSCENE_DAY_TITLE_01,Day 1,Día 1
+CUTSCENE_DAY_TITLE_02,Day 2,Día 2
+CUTSCENE_DAY_TITLE_03,Day 3,Día 3
+CUTSCENE_DAY_TITLE_04,Day EX,Día EX
+DATA_DELETED,Data deleted,Datos borrados
+DIALOGUE_DAY_01_LEVEL_01_LINE_00,"Hi! No, I don't know",¿Bueno?
+DIALOGUE_DAY_01_LEVEL_01_LINE_01,any nigerian prince...,"¡No, aquí no vive Nacho!"
+DIALOGUE_DAY_01_LEVEL_01_LINE_02,(hangs up) ...,De nada.
+DIALOGUE_DAY_01_LEVEL_02_LINE_00,"Hi!, this is...",¿Bueno?
+DIALOGUE_DAY_01_LEVEL_02_LINE_01,Baby! I'm already,¡Amor!
+DIALOGUE_DAY_01_LEVEL_02_LINE_02,feeling lonely.,Ya me siento solita.
+DIALOGUE_DAY_01_LEVEL_02_LINE_03,I miss you too.,Yo también te extraño.
+DIALOGUE_DAY_01_LEVEL_02_LINE_04,Love you. Bye!,Te amo. Chao.
+DIALOGUE_DAY_01_LEVEL_03_LINE_00,Hello.,¿Bueno?
+DIALOGUE_DAY_01_LEVEL_03_LINE_01,Hello?,¿Hola?
+DIALOGUE_DAY_01_LEVEL_03_LINE_02,Is anybody there?!,¡¿Hay alguien ahí?!
+DIALOGUE_DAY_01_LEVEL_03_LINE_03,(hangs up) ...,(cuelga) ...
+DIALOGUE_DAY_01_LEVEL_03_LINE_04,Was that a joke?,¿Ha sido una broma?
+DIALOGUE_DAY_01_LEVEL_04_LINE_00,Sweet pie!,¡Bomboncito!
+DIALOGUE_DAY_01_LEVEL_04_LINE_01,I love you more.,Yo te amo más.
+DIALOGUE_DAY_01_LEVEL_04_LINE_02,"No, I love you more!",Te amo más más infinito.
+DIALOGUE_DAY_01_LEVEL_04_LINE_03,"No, you hang up!","No, cuelga tú."
+DIALOGUE_DAY_01_LEVEL_04_LINE_04,No... you!,"No, anda, tú."
+DIALOGUE_DAY_01_LEVEL_04_LINE_05,Hang on a sec.,Cuelga tú.
+DIALOGUE_DAY_01_LEVEL_04_LINE_06,I got a call,"Espera, tengo una llamada"
+DIALOGUE_DAY_01_LEVEL_04_LINE_07,on the other line,en la otra línea.
+DIALOGUE_DAY_01_LEVEL_05_LINE_00,"Hello? No, thanks.","¿Bueno? No, gracias."
+DIALOGUE_DAY_01_LEVEL_05_LINE_01,"No, I don't need insurance.","No, no necesito un seguro."
+DIALOGUE_DAY_01_LEVEL_05_LINE_02,"Sorry, but... I just don't.",No me hace falta.
+DIALOGUE_DAY_01_LEVEL_05_LINE_03,Thank you.,Gracias.
+DIALOGUE_DAY_01_LEVEL_06_LINE_00,Cheesecake?,¿Bueno?
+DIALOGUE_DAY_01_LEVEL_06_LINE_01,It's a shame you are,¡Mi vida! Lástima que
+DIALOGUE_DAY_01_LEVEL_06_LINE_02,on that chef's congress,te hayas ido al congreso
+DIALOGUE_DAY_01_LEVEL_06_LINE_03,Luckily you gift me this,internacional de chefs. Al
+DIALOGUE_DAY_01_LEVEL_06_LINE_04,little kitty cat to keep me,menos me regalaste a Bucho
+DIALOGUE_DAY_01_LEVEL_06_LINE_05,company. I think I'll,para que me haga compañía
+DIALOGUE_DAY_01_LEVEL_06_LINE_06,call him... Bucho. That's,"Sí, así le puse"
+DIALOGUE_DAY_01_LEVEL_06_LINE_07,spanish for stomach...,porque es glotón.
+DIALOGUE_DAY_01_LEVEL_06_LINE_08,sort of...,Te quiero mucho mucho.
+DIALOGUE_DAY_01_LEVEL_06_LINE_09,"Good luck, cupcake!","Bueno, mi cielo, ¡suerte!"
+DIALOGUE_DAY_01_LEVEL_07_LINE_00,"Hello? Mami! Yes,","¿Bueno? ¡Má! Sí, ya fui"
+DIALOGUE_DAY_01_LEVEL_07_LINE_01,I visited abue's grave,al cementerio a ver a
+DIALOGUE_DAY_01_LEVEL_07_LINE_02,and left him some flowers.,abue. Le dejé unas lindas
+DIALOGUE_DAY_01_LEVEL_07_LINE_03,It's gonna be OK.,flores. Todo estará bien.
+DIALOGUE_DAY_01_LEVEL_07_LINE_04,Love you. Bye!,Te quiero. Cuídate.
+DIALOGUE_DAY_01_LEVEL_08_LINE_00,Shortcake! Oh... You don't,¡Amorcito!
+DIALOGUE_DAY_01_LEVEL_08_LINE_01,have to buy me anything.,Tráeme lo que quieras.
+DIALOGUE_DAY_01_LEVEL_08_LINE_02,Call me later! Bye!,Me llamas. ¡Bye!
+DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
+DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
+GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
+GAME_TITLE,Bucho Busca Comida,Pyramid Seph
+INFO_GAMEPAD_SUPPORT,Supports gamepad,Puedes jugar con un control
+INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
+INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenu of the day {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
+INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nBuffets of day {unlocked_story_mode_minigame}\n ,Ya puedes comer:\n\nBuffets del día {unlocked_story_mode_minigame}\n 
+LEVEL_BOSS_LINE_0,Main course,Plato fuerte
+LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
+LEVEL_DAY_01_DIZZY,Dizzy,Mareado
+LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
+LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
+LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+LEVEL_START_LINE_0_SCORE_ATTACK,Buffet,Buffet
+LEVEL_START_LINE_0_SCORE_ATTACK_WITH_POS,Buffet {level_pos},Buffet {level_pos}
+LEVEL_START_LINE_0_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_START_LINE_1,Bon appétit!,¡Buen provecho!
+LEVEL_SUCCESS,Piece of cake!,¡Pan comido!
+LEVEL_TIME_UP,Time up!,¡Tiempo agotado!
+LOAD_SAVE_DATA_ERROR,Error while accesing save data: {error_message},Error al cargar datos: {error_message}
+LOADING_SCREEN_ERROR,Error loading level,Error al cargar recurso
+LOADING_SCREEN_LOADING,Loading,Cargando
+LOGOS_ROLL_GODOT,Powered by,Hecho con
+LOGOS_ROLL_GODOT_LOGO_CREDITS,Original Godot logo by Andrea Calabró\nunder CC-BY-4.0 license,Logo original de Godot por Andrea Calabró\nbajo la licencia CC-BY-4.0
+LOGOS_ROLL_ME,A\nPyramid Seph\npixelated thingie,Algo\npixelado\nde Pyramid Seph
+MENU_MAIN_PROGRESS,High Scores,Récords
+MENU_MAIN_QUIT,Quit,Salir
+MENU_MAIN_SELECT_SCORE_ATTACK_MODE,Buffet,Buffet
+MENU_MAIN_SELECT_STORY_MODE,Menu of the day,Menú del día
+MENU_MAIN_SELECT_STORY_MODE_DAY_EX,This one needs\njust a little more time\nin the oven!,\n¡Muy pronto!\n\n¡No comas ansias!\n 
+MENU_MAIN_SETTINGS,Settings,Opciones
+MENU_PAUSE_AUTO_FIRE,Auto fire,Auto fuego
+MENU_PAUSE_QUIT_MINIGAME,Give up,Rendirse
+MENU_PAUSE_TITLE,Pause,Pausa
+MENU_PAUSE_UNPAUSE,Continue,Continuar
+MENU_PAUSE_VIBRATE,Vibration,Vibrar
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_0,Buffet 1A,Buffet 1A
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_1,Buffet 1B,Buffet 1B
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_2,Buffet 1C,Buffet 1C
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_3,Buffet 1D,Buffet 1D
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_4,Buffet 2,Buffet 2
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_5,Buffet 3A,Buffet 3A
+MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_6,Buffet 3B,Buffet 3B
+MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_02,Day 2,Día 2
+MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_03,Day 3,Día 3
+MENU_PROGRESS_HIGH_SCORES,High Scores,Récords
+MENU_PROGRESS_QUIT,Back,Regresar
+MENU_PROGRESS_STARS,Stars,Estrellas
+MENU_PROGRESS_STARS_0,Day 1,Día 1
+MENU_PROGRESS_STARS_1,Day 2,Día 2
+MENU_PROGRESS_STARS_2,Day 3,Día 3
+MENU_SETTINGS_AUTO_FIRE,Auto fire,Auto fuego
+MENU_SETTINGS_DELETE_DATA,Delete data,Borrar datos
+MENU_SETTINGS_LANGUAGE,Language,Idioma
+MENU_SETTINGS_LANGUAGE_OPTION_EN,English,Inglés
+MENU_SETTINGS_LANGUAGE_OPTION_ES,Spanish,Español
+MENU_SETTINGS_QUIT,Back,Regresar
+MENU_SETTINGS_VIBRATE,Vibration,Vibrar
+MINIGAME_NAME_SCORE_ATTACK_0,Day 1A,Día 1A
+MINIGAME_NAME_SCORE_ATTACK_1,Day 1B,Día 1B
+MINIGAME_NAME_SCORE_ATTACK_2,Day 1C,Día 1C
+MINIGAME_NAME_SCORE_ATTACK_3,Day 1D,Día 1D
+MINIGAME_NAME_SCORE_ATTACK_4,Day 2,Día 2
+MINIGAME_NAME_SCORE_ATTACK_5,Day 3A,Día 3A
+MINIGAME_NAME_SCORE_ATTACK_6,Day 3B,Día 3B
+MINIGAME_NAME_STORY_MODE_0,1,1
+MINIGAME_NAME_STORY_MODE_1,2,2
+MINIGAME_NAME_STORY_MODE_2,3,3
+MINIGAME_NAME_STORY_MODE_3,EX,EX
+RESULTS_SCREEN_BONUS,Bonus = {lives} x 1000 = {bonus},Bono = {lives} x 1000 = {bonus}
+RESULTS_SCREEN_CURR_SCORE,Score = {score},Puntaje = {score}
+RESULTS_SCREEN_EVALUATION,Your grade is,Tu calificación es
+RESULTS_SCREEN_EVALUATION_0,Too bad!,¡Qué mal!
+RESULTS_SCREEN_EVALUATION_1,Yawn!,¡Yawn!
+RESULTS_SCREEN_EVALUATION_2,Not bad!,¡No está mal!
+RESULTS_SCREEN_EVALUATION_3,Good!,¡Bien!
+RESULTS_SCREEN_EVALUATION_4,Great!,¡Muy bien!
+RESULTS_SCREEN_EVALUATION_5,Prrrrrrfect!,¡Prrrrrrfecta!
+RESULTS_SCREEN_EVALUATION_RESULT_ZERO,Zero!,¡Cero!
+RESULTS_SCREEN_EXTRA_LIVES_PLURAL,{lives} extra lives!,¡{lives} vidas extra!
+RESULTS_SCREEN_EXTRA_LIVES_SINGULAR,{lives} extra life!,¡{lives} vida extra!
+RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!\n ,¡Reto devorado!\n 
+RESULTS_SCREEN_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+RESULTS_SCREEN_TOTAL_SCORE,Total = {total_score},Total = {total_score}

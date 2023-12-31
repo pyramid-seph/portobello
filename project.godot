@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Bucho Busca Comida: Edición Hongo Portobello"
+config/name="Bucho Busca Comida: The Portobello Mushroom Edition"
+config/name_localized={
+"es": "Bucho Busca Comida: Edición Hongo Portobello"
+}
 config/version="1.0.0"
 run/main_scene="res://scenes/_shared/title_screen/title_screen_scene.tscn"
 config/features=PackedStringArray("4.2")
@@ -133,6 +136,15 @@ skip_cutscene={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194308,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translation_remaps={
+"res://art/cutscenes/day_01_level_01_text_en.png": PackedStringArray("res://art/cutscenes/day_01_level_01_text_es.png:es"),
+"res://art/cutscenes/day_03_intro_0_text_en.png": PackedStringArray("res://art/cutscenes/day_03_intro_0_text_es.png:es"),
+"res://art/cutscenes/ending/ending_1_text_en.png": PackedStringArray("res://art/cutscenes/ending/ending_1_text_es.png:es")
+}
+locale/translations=PackedStringArray("res://localization/bucho_portobello_localization.en.translation", "res://localization/bucho_portobello_localization.es.translation")
 
 [layer_names]
 

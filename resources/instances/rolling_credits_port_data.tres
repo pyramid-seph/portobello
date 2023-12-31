@@ -6,31 +6,31 @@
 [sub_resource type="Resource" id="Resource_7vbap"]
 script = ExtResource("1_x4py4")
 duration_sec = 4.0
-job = "- Bucho Busca Comida -"
-names = Array[String](["Edición Hongo Portobello"])
+job = "CREDITS_GAME_TITLE"
+names = Array[String](["CREDITS_PORT_STAFF"])
 
 [sub_resource type="Resource" id="Resource_mi53c"]
 script = ExtResource("1_x4py4")
 duration_sec = 4.0
-job = "Conversión"
+job = "CREDITS_PORTED_BY"
 names = Array[String](["Pyramid Seph"])
 
 [sub_resource type="Resource" id="Resource_f5jj5"]
 script = ExtResource("1_x4py4")
 duration_sec = 4.0
-job = "Fuentes"
+job = "CREDITS_FONTS"
 names = Array[String](["<Peaberry v2.0>", "Emily Huo", "emuhuo.itch.io"])
 
 [sub_resource type="Resource" id="Resource_66b4l"]
 script = ExtResource("1_x4py4")
 duration_sec = 4.0
-job = "Fuentes"
+job = "CREDITS_FONTS"
 names = Array[String](["<Kenney fonts>", "Kenney", "www.kenney.nl"])
 
 [sub_resource type="Resource" id="Resource_57w2e"]
 script = ExtResource("1_x4py4")
 duration_sec = 4.0
-job = "Comodín"
+job = "CREDITS_WILDCARD"
 names = Array[String](["Ara-san"])
 
 [resource]

@@ -6,55 +6,55 @@
 [sub_resource type="Resource" id="Resource_ravbf"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "- Bucho Busca Comida -"
-names = Array[String](["Staff Original"])
+job = "CREDITS_GAME_TITLE"
+names = Array[String](["CREDITS_ORIGINAL_STAFF"])
 
 [sub_resource type="Resource" id="Resource_28kcf"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Idea original"
+job = "CREDITS_ORIGINAL_IDEA"
 names = Array[String](["Pyramid Seph"])
 
 [sub_resource type="Resource" id="Resource_mavye"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Guión"
+job = "CREDITS_SCRIPT"
 names = Array[String](["Fabiola Alonso Carrizales", "Pyramid Seph"])
 
 [sub_resource type="Resource" id="Resource_hjc78"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Diseño de personajes"
+job = "CREDITS_CHARACTER_DESIGN"
 names = Array[String](["Fabiola Alonso Carrizales"])
 
 [sub_resource type="Resource" id="Resource_afi6i"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Sprites"
+job = "CREDITS_SPRITES"
 names = Array[String](["Fabiola Alonso Carrizales", "Pyramid Seph"])
 
 [sub_resource type="Resource" id="Resource_p3odf"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Programación"
+job = "CREDITS_PROGRAMMING"
 names = Array[String](["Gabriel Pech Ceh", "Pyramid Seph"])
 
 [sub_resource type="Resource" id="Resource_l0ovs"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Pruebas"
+job = "CREDITS_TESTERS"
 names = Array[String](["Roger Alonso Noh Canché", "Nelson Solís Montero", "Jesús Elías Díaz Martínez"])
 
 [sub_resource type="Resource" id="Resource_by40c"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Pruebas"
+job = "CREDITS_TESTERS"
 names = Array[String](["José Fco. Morales Breck"])
 
 [sub_resource type="Resource" id="Resource_lxsxo"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
-job = "Comodín"
+job = "CREDITS_WILDCARD"
 names = Array[String](["Ara-san"])
 
 [resource]

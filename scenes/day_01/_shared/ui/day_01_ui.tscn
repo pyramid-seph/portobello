@@ -118,7 +118,8 @@ grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_y3laa")
 theme_override_font_sizes/font_size = 8
-text = "Mareado"
+text = "LEVEL_DAY_01_DIZZY"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="HighScoreLabel" type="Label" parent="."]
@@ -140,7 +141,7 @@ uppercase = true
 [node name="StartLabels" parent="." instance=ExtResource("7_t8tk8")]
 layout_mode = 1
 text_1 = "Buffet"
-text_2 = "¡Buen provecho!"
+text_2 = "LEVEL_START_LINE_1"
 font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
 font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
 font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
@@ -162,7 +163,7 @@ _duration_sec = 3.0
 [node name="PieceOfCake" parent="." instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
-text = "¡Pan comido!"
+text = "LEVEL_SUCCESS"
 label_settings = ExtResource("9_a83fs")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -172,7 +173,7 @@ _duration_sec = 2.0
 visible = false
 layout_mode = 1
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
-text = "¡Tiempo agotado!"
+text = "LEVEL_TIME_UP"
 label_settings = ExtResource("9_a83fs")
 horizontal_alignment = 1
 vertical_alignment = 1
