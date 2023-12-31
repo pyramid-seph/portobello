@@ -10,8 +10,8 @@ eventually it was migrated to Godot 4.2.
 
 # Licenses
 
-1. All code is under the ????? license.
-2. All images (except for the Godot icon) are under the ????? license
-3. The original Godot logo was made by Andrea Calabró and is CC-BY-4.0 licensed.
-4. Kenney Fonts are made by Kenney and are under the Creative Commons Zero, CC0.
+1. All code outside the addons folder is under the Unlicense license unless indicated otherwise.
+2. All images (except for /art/menu_screen/godot_icon_monochrome_light.png) have all rights reserved by Pablo Enrique Morales Breck and Fabiola Alonso Carrizales.
+3. The original Godot logo was made by Andrea Calabró and is CC-BY-4.0 licensed. This image was modified in art/menu_screen/godot_icon_monochrome_light.png, which is also licensed under the CC-BY-4.0 license.
+4. Kenney Fonts are made by Kenney and are under the Creative Commons Zero, CC0 license.
 5. Peaberry Fonts v2.0 are made by Emily Huo and are under the Open Font License Version 1.1.
