@@ -106,7 +106,7 @@ func _show_high_scores() -> void:
 		_label_5.text_2 = str(save_data.high_scores.buff_three_a)
 		_label_6.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_6"
 		_label_6.text_2 = str(save_data.high_scores.buff_three_b)
-		_label_8.text_1 = "MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_02"
+		_label_8.text_1 = "MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_03"
 		_label_8.text_2 = str(save_data.high_scores.day_three)
 	else:
 		_label_5.text_1 = UNKNOWN_MINI_GAME
