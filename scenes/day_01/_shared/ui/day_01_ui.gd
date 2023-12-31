@@ -24,6 +24,7 @@ var _inverted_controls_sign_tween: Tween
 @onready var _black_screen := $BlackScreen
 @onready var _pause_menu := $PauseMenu
 @onready var _inverted_controls_sign := $InvertedControlsSign
+@onready var _level_name: Label = $LevelName
 
 
 func show_level_start(mode: Game.Mode, index: int) -> void:
@@ -125,6 +126,20 @@ func stop_dilogue() -> void:
 
 func set_pause_menu_enabled(enabled: bool) -> void:
 	_pause_menu.enabled = enabled
+
+
+func show_level_name(mode: Game.Mode, level_index: int) -> void:
+	if mode == Game.Mode.STORY:
+		_level_name.visible = true
+		_level_name.text = tr("LEVEL_DAY_01_LEVEL_NAME_STORY_MODE").format(
+				{ level_pos = (level_index + 1) }
+		)
+	else:
+		_level_name.visible = false
+
+
+func hide_level_name() -> void:
+	_level_name.visible = false
 
 
 func _set_lives_counter(value: int) -> void:
