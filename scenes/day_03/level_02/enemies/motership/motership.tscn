@@ -1,0 +1,450 @@
+[gd_scene load_steps=28 format=3 uid="uid://c0r23aw37b8uw"]
+
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/motership.gd" id="1_lyngl"]
+[ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_wk4gl"]
+[ext_resource type="Texture2D" uid="uid://d3876elyydfqw" path="res://art/day_3/mothership_bg.png" id="3_4nxgv"]
+[ext_resource type="Texture2D" uid="uid://b6batmime15u3" path="res://art/day_3/mothership_interior.png" id="3_5chgg"]
+[ext_resource type="Texture2D" uid="uid://cqradgo1f7v2y" path="res://art/day_3/object_alien.png" id="4_3xeh6"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/block_spawner_weapon.gd" id="5_yw3ju"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/alien_hologram.gd" id="6_fhdi3"]
+[ext_resource type="PackedScene" uid="uid://csyep514u36ex" path="res://scenes/day_03/level_02/enemies/block.tscn" id="6_svbuj"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/heat_seeker_weapon.gd" id="7_gjhag"]
+[ext_resource type="PackedScene" uid="uid://becs5x7xd6s18" path="res://scenes/day_03/_shared/objects/gun.tscn" id="7_rkunh"]
+[ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="8_coaat"]
+[ext_resource type="Texture2D" uid="uid://dcmolxxqilyi3" path="res://art/day_3/dotted_line.png" id="9_441i0"]
+[ext_resource type="PackedScene" uid="uid://spq6o43sfcc1" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.tscn" id="10_oilhl"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_weapon.gd" id="11_gqj8r"]
+[ext_resource type="Texture2D" uid="uid://b8pjqd3prajm1" path="res://art/day_3/enemy_duck_block_yellow.png" id="13_8ybbm"]
+[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="17_s7cdp"]
+[ext_resource type="PackedScene" uid="uid://dvq3mnqmcgelf" path="res://scenes/_shared/clean_up_zone.tscn" id="18_f0wfx"]
+[ext_resource type="PackedScene" uid="uid://ciph4tyjsvddo" path="res://scenes/day_03/level_02/enemies/motership/pair_of_mini_balls.tscn" id="19_67e7r"]
+[ext_resource type="PackedScene" uid="uid://cjldxfd1a76li" path="res://scenes/_shared/dialogue_box.tscn" id="20_jn5ls"]
+[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/abduction_ray.gd" id="21_41s2u"]
+[ext_resource type="Script" path="res://resources/dialogue_line.gd" id="21_kwipx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4w6f3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gddg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwyhk"]
+size = Vector2(128, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uueik"]
+size = Vector2(144, 20)
+
+[sub_resource type="Resource" id="Resource_rc14a"]
+script = ExtResource("21_kwipx")
+text = "No permitiremos que acabes"
+delay_sec = 0.0
+duration_sec = 2.0
+
+[sub_resource type="Resource" id="Resource_oa3fb"]
+script = ExtResource("21_kwipx")
+text = "con nuestro alimento"
+delay_sec = 0.0
+duration_sec = 2.0
+
+[node name="Motership" type="Node2D"]
+script = ExtResource("1_lyngl")
+_initial_hp = 500
+_activate_block_spawner_at_hp = 400
+_speed_up_block_spawner_at_hp = 200
+_activate_heat_seeker_at_hp = 150
+Explosion = ExtResource("2_wk4gl")
+
+[node name="Inside" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="Sprite2D" parent="Inside"]
+z_index = -500
+position = Vector2(56, 143)
+texture = ExtResource("3_5chgg")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="AlienHologram" type="Sprite2D" parent="Inside"]
+visible = false
+position = Vector2(112, 206)
+texture = ExtResource("4_3xeh6")
+centered = false
+script = ExtResource("6_fhdi3")
+_flicker_duration_sec = 0.08
+metadata/_edit_lock_ = true
+
+[node name="StartPosition" type="Marker2D" parent="Inside"]
+position = Vector2(112, 255)
+metadata/_edit_lock_ = true
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("3_4nxgv")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="LifeBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 56.0
+offset_top = 122.0
+offset_right = 184.0
+offset_bottom = 127.0
+size_flags_horizontal = 3
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = SubResource("CanvasTexture_4w6f3")
+texture_progress = SubResource("CanvasTexture_gddg1")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="BlockSpawnerWeapon" type="Node2D" parent="." node_paths=PackedStringArray("world")]
+position = Vector2(120, 142)
+script = ExtResource("5_yw3ju")
+world = NodePath("../Inside")
+_normal_cooldown = 1.2
+_sped_up_cooldown = 0.8
+Block = ExtResource("6_svbuj")
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="BlockSpawnerWeapon"]
+process_callback = 0
+one_shot = true
+
+[node name="HeatSeekerWeapon" type="Node2D" parent="." node_paths=PackedStringArray("world")]
+position = Vector2(120, 135)
+script = ExtResource("7_gjhag")
+world = NodePath("../Inside")
+_cooldown_sec = 3.2
+_laser_sight_duration_sec = 1.2
+_warning_duration_sec = 0.4
+_time_between_bullets_sec = 0.08
+_time_between_bursts_sec = 0.8
+_bullets_per_burst = 10
+metadata/_edit_lock_ = true
+
+[node name="Gun" parent="HeatSeekerWeapon" instance=ExtResource("7_rkunh")]
+z_index = -100
+z_as_relative = false
+Bullet = ExtResource("8_coaat")
+cooldown = 8.0
+ignore_cooldown = true
+
+[node name="LaserSight" type="Line2D" parent="HeatSeekerWeapon/Gun"]
+visible = false
+texture_repeat = 2
+points = PackedVector2Array(0, 8, 0, 136)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+
+[node name="LaserSightWarning" type="Line2D" parent="HeatSeekerWeapon/Gun"]
+visible = false
+points = PackedVector2Array(0, 8, 0, 136)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="HeatSeekerWeapon"]
+process_callback = 0
+one_shot = true
+
+[node name="LaserBallsWeapon" type="Node2D" parent="."]
+position = Vector2(28, 143)
+script = ExtResource("11_gqj8r")
+_cooldown = 1.6
+is_active = true
+metadata/_edit_lock_ = true
+
+[node name="LaserBallsCannon0" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+metadata/_edit_lock_ = true
+
+[node name="LaserBallsCannon1" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+position = Vector2(0, 32)
+metadata/_edit_lock_ = true
+
+[node name="LaserBallsCannon2" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+position = Vector2(0, 64)
+metadata/_edit_lock_ = true
+
+[node name="LaserBallsCannon3" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+position = Vector2(0, 96)
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="LaserBallsWeapon"]
+process_callback = 0
+one_shot = true
+
+[node name="Weakpoint" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock0" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(56, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock1" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(72, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock2" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(88, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock3" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(104, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock4" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(120, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock5" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(136, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock6" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(152, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WeakPointBlock7" type="Sprite2D" parent="Weakpoint"]
+z_index = -50
+position = Vector2(168, 127)
+texture = ExtResource("13_8ybbm")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Hurtbox" type="Area2D" parent="Weakpoint"]
+script = ExtResource("17_s7cdp")
+killer_groups = Array[String](["player_bullets"])
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weakpoint/Hurtbox"]
+position = Vector2(120, 135)
+shape = SubResource("RectangleShape2D_lwyhk")
+debug_color = Color(0, 1, 0, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="CleanUpZoneTop" parent="." instance=ExtResource("18_f0wfx")]
+position = Vector2(120, 117)
+collision_mask = 18
+groups = Array[String](["player_bullets"])
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CleanUpZoneTop" index="0"]
+shape = SubResource("RectangleShape2D_uueik")
+
+[node name="CleanUpZoneBottom" parent="." instance=ExtResource("18_f0wfx")]
+position = Vector2(120, 281)
+collision_mask = 18
+clean_up_behavior = 1
+groups = Array[String](["bullets", "enemies"])
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CleanUpZoneBottom" index="0"]
+shape = SubResource("RectangleShape2D_uueik")
+
+[node name="PairOfMiniBallsLeft" parent="." instance=ExtResource("19_67e7r")]
+position = Vector2(8, 287)
+_color_one = Color(0, 0, 1, 1)
+_color_two = Color(0, 1, 0, 1)
+_color_three = Color(1, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="LeftMotershipBallMini" parent="PairOfMiniBallsLeft" index="0"]
+color = Color(0, 0, 1, 1)
+
+[node name="RightMotershipBallMini" parent="PairOfMiniBallsLeft" index="1"]
+position = Vector2(8, 1)
+color = Color(0, 0, 1, 1)
+
+[node name="PairOfMiniBallsCenter" parent="." instance=ExtResource("19_67e7r")]
+position = Vector2(108, 288)
+_color_one = Color(0, 1, 0, 1)
+_color_two = Color(1, 0, 0, 1)
+_color_three = Color(0, 0, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="LeftMotershipBallMini" parent="PairOfMiniBallsCenter" index="0"]
+color = Color(0, 1, 0, 1)
+
+[node name="RightMotershipBallMini" parent="PairOfMiniBallsCenter" index="1"]
+position = Vector2(9, 0)
+color = Color(0, 1, 0, 1)
+
+[node name="PairOfMiniBallsRight" parent="." instance=ExtResource("19_67e7r")]
+position = Vector2(209, 287)
+_color_one = Color(1, 0, 0, 1)
+_color_two = Color(0, 0, 1, 1)
+_color_three = Color(0, 1, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="LeftMotershipBallMini" parent="PairOfMiniBallsRight" index="0"]
+position = Vector2(0, 1)
+color = Color(1, 0, 0, 1)
+
+[node name="RightMotershipBallMini" parent="PairOfMiniBallsRight" index="1"]
+position = Vector2(8, 0)
+color = Color(1, 0, 0, 1)
+
+[node name="ExplosionsContainer" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="FlashContainer" type="Node" parent="."]
+
+[node name="Flash" type="ColorRect" parent="FlashContainer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AbductionRay" type="Node2D" parent="."]
+z_as_relative = false
+position = Vector2(120, 311)
+script = ExtResource("21_41s2u")
+_color_duration = 0.08
+_ray_color_1 = Color(1, 1, 0, 0.501961)
+_ray_color_2 = Color(1, 1, 1, 0.501961)
+metadata/_edit_lock_ = true
+
+[node name="Ray" type="Line2D" parent="AbductionRay"]
+points = PackedVector2Array(0, 0, 0, 273)
+width = 64.0
+metadata/_edit_lock_ = true
+
+[node name="AbductionLines" type="Node2D" parent="AbductionRay"]
+metadata/_edit_lock_ = true
+
+[node name="Line" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line2" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 34)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line3" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 68)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line4" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 102)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line5" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 136)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line6" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 170)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line7" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 204)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Line8" type="Line2D" parent="AbductionRay/AbductionLines"]
+texture_repeat = 2
+position = Vector2(0, 238)
+points = PackedVector2Array(-32, 0, 32, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("9_441i0")
+texture_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Node" parent="."]
+
+[node name="DialogueBox" parent="Control" instance=ExtResource("20_jn5ls")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = 0.0
+grow_vertical = 0
+size_flags_vertical = 8
+dialogue = Array[ExtResource("21_kwipx")]([SubResource("Resource_rc14a"), SubResource("Resource_oa3fb")])
+
+[connection signal="visibility_changed" from="Inside/AlienHologram" to="Inside/AlienHologram" method="_on_visibility_changed"]
+[connection signal="timeout" from="BlockSpawnerWeapon/Timer" to="BlockSpawnerWeapon" method="_on_timer_timeout"]
+[connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon0" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon0" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
+[connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon1" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon1" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
+[connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon2" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon2" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
+[connection signal="discharged" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_discharged"]
+[connection signal="target_detected" from="LaserBallsWeapon/LaserBallsCannon3" to="LaserBallsWeapon" method="_on_laser_balls_cannon_target_detected"]
+[connection signal="timeout" from="LaserBallsWeapon/Timer" to="LaserBallsWeapon" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Weakpoint/Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="hurt" from="Weakpoint/Hurtbox" to="." method="_on_hurtbox_hurt"]
+
+[editable path="CleanUpZoneTop"]
+[editable path="CleanUpZoneBottom"]
+[editable path="PairOfMiniBallsLeft"]
+[editable path="PairOfMiniBallsCenter"]
+[editable path="PairOfMiniBallsRight"]

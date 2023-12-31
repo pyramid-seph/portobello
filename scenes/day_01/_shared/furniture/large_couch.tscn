@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://n4padnmrc2c0"]
+
+[ext_resource type="Texture2D" uid="uid://dvhsynwxpiopn" path="res://art/day_1/day_01_furniture_couch_large.png" id="1_vjafu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1ysu"]
+size = Vector2(32, 56)
+
+[node name="LargeCouch" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vjafu")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 28)
+shape = SubResource("RectangleShape2D_r1ysu")

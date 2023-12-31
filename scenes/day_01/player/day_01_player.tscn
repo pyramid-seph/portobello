@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bi48jeuci3exe"]
+
+[ext_resource type="Script" path="res://scenes/day_01/player/day_01_player.gd" id="1_ine60"]
+[ext_resource type="Texture2D" uid="uid://fqfbse76jpg1" path="res://art/day_1/day_01_player_head_0.png" id="2_42v48"]
+[ext_resource type="PackedScene" uid="uid://b8vng1vad0pht" path="res://scenes/day_01/player/trunk_part.tscn" id="2_g6xfj"]
+[ext_resource type="Texture2D" uid="uid://cnapc0s2jtyvf" path="res://art/day_1/day_01_player_head_1.png" id="3_2wbb7"]
+[ext_resource type="Texture2D" uid="uid://h4w3suwv2ba3" path="res://art/day_1/day_01_player_head_dead.png" id="4_3gafk"]
+[ext_resource type="Texture2D" uid="uid://krqky7l8cubk" path="res://art/day_1/day_01_player_tail_0.png" id="6_1bric"]
+[ext_resource type="Texture2D" uid="uid://dqiiavgmc5qkd" path="res://art/day_1/day_01_player_tail_1.png" id="7_3mg3b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyfm3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_42v48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2wbb7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wf65"]
+size = Vector2(6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gigx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1bric")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3mg3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sseac"]
+size = Vector2(6, 6)
+
+[node name="Day01Player" type="Marker2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_ine60")
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hyfm3")
+
+[node name="Area2D" type="Area2D" parent="Head"]
+collision_layer = 32
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
+shape = SubResource("RectangleShape2D_7wf65")
+
+[node name="Trunk" type="Marker2D" parent="."]
+
+[node name="TrunkPart000" parent="Trunk" instance=ExtResource("2_g6xfj")]
+position = Vector2(-8, 0)
+
+[node name="Tail" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, 0)
+sprite_frames = SubResource("SpriteFrames_gigx6")
+
+[node name="Area2D" type="Area2D" parent="Tail"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tail/Area2D"]
+shape = SubResource("RectangleShape2D_sseac")
+
+[node name="DeadHead" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_3gafk")
+
+[connection signal="area_entered" from="Head/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Head/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://8k034qvxjmd8"]
+
+[ext_resource type="Script" path="res://autoloads/scene_changer.gd" id="1_wichc"]
+[ext_resource type="Script" path="res://autoloads/threaded_loader.gd" id="2_ux1p7"]
+[ext_resource type="Texture2D" uid="uid://wwx4ny446mjr" path="res://art/_shared/ui_loading_0.png" id="2_w05wq"]
+[ext_resource type="Texture2D" uid="uid://bc6i3vg67kqhg" path="res://art/_shared/ui_loading_1.png" id="3_ebxdm"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_rwund"]
+[ext_resource type="PackedScene" uid="uid://brik70kwkl220" path="res://scenes/_shared/ui/animated_texture_rect.tscn" id="5_qq1kj"]
+[ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="8_o1hk3"]
+
+[node name="SceneChanger" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_wichc")
+_min_duration_sec = 0.84
+_loading_animation_delay_sec = 0.16
+
+[node name="ThreadedLoader" type="Node" parent="."]
+script = ExtResource("2_ux1p7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LodingAnimContainer" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 55.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_rwund")
+
+[node name="Label" type="Label" parent="LodingAnimContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+text = "Cargando"
+vertical_alignment = 1
+
+[node name="AnimatedTextureRect" parent="LodingAnimContainer" instance=ExtResource("5_qq1kj")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_w05wq")
+stretch_mode = 2
+frames = Array[Texture2D]([ExtResource("2_w05wq"), ExtResource("3_ebxdm")])
+frame_duration_sec = 0.12
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ErrorDialog" parent="." instance=ExtResource("8_o1hk3")]
+visible = false
+body_text = "Error al cargar recurso"
+negative_btn_text = ""
+positive_btn_text = "Salir"
+hide_shadow = true
+
+[connection signal="change_error" from="." to="." method="_on_change_error"]
+[connection signal="change_finished" from="." to="." method="_on_change_finished"]
+[connection signal="change_started" from="." to="." method="_on_change_started"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="positive_btn_pressed" from="ErrorDialog" to="." method="_on_simple_dialog_positive_btn_pressed"]

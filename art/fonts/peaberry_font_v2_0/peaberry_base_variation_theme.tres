@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dnj31kao4udtg"]
+
+[ext_resource type="FontFile" uid="uid://cwc2c33qocoqn" path="res://art/fonts/peaberry_font_v2_0/peaberry_base.woff2" id="1_jaef7"]
+
+[resource]
+base_font = ExtResource("1_jaef7")
+spacing_top = 3

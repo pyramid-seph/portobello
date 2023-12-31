@@ -1,0 +1,166 @@
+[gd_scene load_steps=8 format=3 uid="uid://xl5bc10rc15p"]
+
+[ext_resource type="Script" path="res://scenes/_shared/ui/results_screen.gd" id="1_gc208"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_q821b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nngq"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_si1kx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gbpxl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yo2pu"]
+line_spacing = 0.0
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_1iyfp"]
+
+[node name="ResultsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_q821b")
+script = ExtResource("1_gc208")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="ResultsContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -4
+
+[node name="ScoreLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+text = "Score = 42"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="LivesBonusLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+text = "Bono = 9 x 1000 = 9000"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TotalScoreLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+text = "Total = 9042"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ExtraLivesLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+text = "¡9 vidas extra!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LevelCompletedContainer" type="PanelContainer" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -35.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6nngq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/LevelCompletedContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -4
+
+[node name="LevelCompleteLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+text = "¡Reto devorado!
+ "
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="NewHighScoreLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
+text = "¡Nuevo récord!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarsContainer" type="PanelContainer" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_si1kx")
+
+[node name="Label" type="Label" parent="ColorRect/StarsContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Tu calificación es"
+label_settings = SubResource("LabelSettings_gbpxl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarsLabel" type="Label" parent="ColorRect/StarsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "* * * * *"
+label_settings = SubResource("LabelSettings_yo2pu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/StarsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/StarsContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 84
+
+[node name="EvaluationLabel" type="Label" parent="ColorRect/StarsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "¡Prrrrrrrfecto!"
+label_settings = SubResource("LabelSettings_1iyfp")
+horizontal_alignment = 1
+vertical_alignment = 1

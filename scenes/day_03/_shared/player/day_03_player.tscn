@@ -1,0 +1,193 @@
+[gd_scene load_steps=19 format=3 uid="uid://dgusui2goqk5w"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/player/day_03_player.gd" id="1_mps85"]
+[ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="2_g6ucs"]
+[ext_resource type="PackedScene" uid="uid://cdi2dku78c2an" path="res://scenes/day_03/_shared/objects/fall.tscn" id="3_nbxsb"]
+[ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="4_xc36q"]
+[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="5_84f5h"]
+[ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/_atlas_day_03_shield.png" id="6_equse"]
+[ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/day_03_player_0.png" id="7_ggeht"]
+[ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/day_03_player_1.png" id="8_vmafx"]
+[ext_resource type="PackedScene" uid="uid://becs5x7xd6s18" path="res://scenes/day_03/_shared/objects/gun.tscn" id="9_fgecs"]
+[ext_resource type="PackedScene" uid="uid://da2fw2fh22lgh" path="res://scenes/day_03/_shared/objects/player_bullet.tscn" id="10_2vf6h"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/player/mega_gun.gd" id="11_vuy7j"]
+
+[sub_resource type="RectangleShape2D" id="8"]
+size = Vector2(8, 16)
+
+[sub_resource type="RectangleShape2D" id="7"]
+size = Vector2(8, 16)
+
+[sub_resource type="Animation" id="11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShieldSprite:region_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShieldSprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(20, 0, 20, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:invincible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="10"]
+resource_name = "invincible"
+length = 1.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShieldSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShieldSprite:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 20, 20), Rect2(20, 0, 20, 20), Rect2(40, 0, 20, 20), Rect2(0, 0, 20, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:invincible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vkqq"]
+_data = {
+"RESET": SubResource("11"),
+"invincible": SubResource("10")
+}
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("6_equse")
+region = Rect2(0, 0, 60, 20)
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ggeht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vmafx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.5
+}]
+
+[node name="Day03Player" type="Node2D" groups=["players"]]
+z_index = -90
+script = ExtResource("1_mps85")
+_player_data = ExtResource("2_g6ucs")
+_time_between_revivals_sec = 1.2
+_stamina_depleted_per_tick = 4
+_speed = 62.5
+Fall = ExtResource("3_nbxsb")
+Explosion = ExtResource("4_xc36q")
+move_offset_left = -4
+move_offset_top = 2
+move_offset_right = 4
+
+[node name="Pickupbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickupbox"]
+position = Vector2(8, 8)
+shape = SubResource("8")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(8, 8)
+script = ExtResource("5_84f5h")
+killer_groups = Array[String](["enemies", "enemy_bullets"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("7")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8vkqq")
+}
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2, -2)
+texture = SubResource("9")
+centered = false
+region_enabled = true
+region_rect = Rect2(20, 0, 20, 20)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("1")
+autoplay = "default"
+centered = false
+
+[node name="StaminaDepletionTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="RevivalTimer" type="Timer" parent="."]
+process_mode = 1
+one_shot = true
+
+[node name="Gun" parent="." instance=ExtResource("9_fgecs")]
+position = Vector2(8, -2)
+Bullet = ExtResource("10_2vf6h")
+bullet_speed = 125.0
+cooldown = 0.1
+
+[node name="MegaGun" type="Node" parent="."]
+script = ExtResource("11_vuy7j")
+
+[connection signal="died" from="." to="." method="_on_died"]
+[connection signal="area_entered" from="Pickupbox" to="." method="_on_pickup_area_area_entered"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="timeout" from="StaminaDepletionTimer" to="." method="_on_stamina_depletion_timer_timeout"]

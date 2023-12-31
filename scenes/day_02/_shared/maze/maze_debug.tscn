@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://i63cxcxo7d8g"]
+
+[ext_resource type="PackedScene" uid="uid://cfcfhqs6pqgcm" path="res://scenes/day_02/_shared/maze/maze.tscn" id="1_q3i88"]
+[ext_resource type="PackedScene" uid="uid://cl2r8iypa5wym" path="res://scenes/day_02/_shared/items/treat.tscn" id="2_q3y5p"]
+[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/items/super_treat.tscn" id="3_thjuo"]
+
+[node name="MazeDebug" instance=ExtResource("1_q3i88")]
+
+[node name="Treat" parent="Food" index="0" instance=ExtResource("2_q3y5p")]
+position = Vector2(120, 136)
+
+[node name="SuperTreat" parent="Food" index="1" instance=ExtResource("3_thjuo")]
+position = Vector2(104, 136)
+metadata/_edit_lock_ = true
+
+[node name="SuperTreat2" parent="Food" index="2" instance=ExtResource("3_thjuo")]
+position = Vector2(88, 56)
+metadata/_edit_lock_ = true

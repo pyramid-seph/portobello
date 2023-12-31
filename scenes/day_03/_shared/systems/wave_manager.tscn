@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://clo8ecw1nr7f2"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/wave_manager.gd" id="1_hscuc"]
+
+[node name="WaveManager" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_hscuc")
+
+[node name="WaveFinishedCheckTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="WaveDelayTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="SpawnDelayTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="WaveFinishedCheckTimer" to="." method="_on_wave_finished_check_timer_timeout"]
+[connection signal="timeout" from="WaveDelayTimer" to="." method="_on_wave_delay_timer_timeout"]
+[connection signal="timeout" from="SpawnDelayTimer" to="." method="_on_spawn_delay_timer_timeout"]

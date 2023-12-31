@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://drjxqg6njqe0h"]
+
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_vafp5"]
+[ext_resource type="StyleBox" uid="uid://dvn8b501xre75" path="res://resources/instances/h_selector_panel_style.tres" id="2_1hlqb"]
+[ext_resource type="Script" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
+
+[node name="HSelector" type="PanelContainer"]
+offset_right = 159.0
+offset_bottom = 16.0
+focus_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_vafp5")
+theme_override_styles/panel = ExtResource("2_1hlqb")
+script = ExtResource("2_psdub")
+selector_text = "Example"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+text = "Example "
+vertical_alignment = 1
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

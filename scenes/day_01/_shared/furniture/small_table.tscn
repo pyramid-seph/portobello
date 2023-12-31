@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck0x8gugcvdde"]
+
+[ext_resource type="Texture2D" uid="uid://dg26o46ueb8eb" path="res://art/day_1/day_01_furniture_table_small.png" id="1_hew65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4spr"]
+size = Vector2(24, 16)
+
+[node name="SmallTable" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hew65")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 16)
+shape = SubResource("RectangleShape2D_a4spr")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjldxfd1a76li"]
+
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_fq1r4"]
+[ext_resource type="Script" path="res://scenes/_shared/dialogue_box.gd" id="3_kwica"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7matd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ixbj"]
+texture = SubResource("CanvasTexture_7matd")
+modulate_color = Color(0, 0, 0, 1)
+
+[node name="DialogueBox" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme = ExtResource("1_fq1r4")
+theme_override_styles/panel = SubResource("StyleBoxTexture_4ixbj")
+script = ExtResource("3_kwica")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Lorem ipsum dolor sit amet"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

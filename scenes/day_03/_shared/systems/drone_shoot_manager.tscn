@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://crhr2l33jctpy"]
+
+[ext_resource type="Script" path="res://scenes/day_03/level_01/systems/drone_shoot_manager.gd" id="1_q5hex"]
+
+[node name="DroneShootManager" type="Node"]
+process_mode = 1
+script = ExtResource("1_q5hex")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+process_mode = 1
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

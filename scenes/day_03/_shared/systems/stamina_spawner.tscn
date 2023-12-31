@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwr1ojj4316st"]
+
+[ext_resource type="Script" path="res://resources/day_03_player_data.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/stamina_spawner.gd" id="2"]
+
+[node name="StaminaSpawner" type="Node2D"]
+process_mode = 1
+script = ExtResource("2")
+player_data = ExtResource("1")
+
+[node name="Cooldown" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

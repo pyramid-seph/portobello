@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhty1re6kx2i2"]
+
+[ext_resource type="PackedScene" uid="uid://brj67hm7ypmn8" path="res://scenes/_shared/moving_item.tscn" id="1_srnir"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/items/stormy_cloud.gd" id="2_gle03"]
+[ext_resource type="Texture2D" uid="uid://82mnd81a4in1" path="res://art/day_3/pickup_stormy_cloud_0.png" id="3_ou3mi"]
+[ext_resource type="Texture2D" uid="uid://chywriq5d53pr" path="res://art/day_3/pickup_stormy_cloud_1.png" id="4_xlu78"]
+[ext_resource type="Texture2D" uid="uid://o6sppwsbu2is" path="res://art/day_3/pickup_stormy_cloud_2.png" id="5_cokah"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1usk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ou3mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ou3mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ou3mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xlu78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xlu78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xlu78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cokah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cokah")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkgna"]
+size = Vector2(14, 14)
+
+[node name="StormyCloud" instance=ExtResource("1_srnir")]
+z_index = -20
+script = ExtResource("2_gle03")
+speed = 75.0
+movement_pattern = 1
+score_points_pick_up = 50
+randomize_starting_frame = true
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_e1usk")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_tkgna")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+rect = Rect2(1, 1, 14, 14)

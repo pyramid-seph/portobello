@@ -1,0 +1,236 @@
+[gd_scene load_steps=4 format=3 uid="uid://b641o7baidxlf"]
+
+[ext_resource type="PackedScene" uid="uid://cfcfhqs6pqgcm" path="res://scenes/day_02/_shared/maze/maze.tscn" id="1_qxutk"]
+[ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/items/super_treat.tscn" id="3_b726x"]
+[ext_resource type="PackedScene" uid="uid://cl2r8iypa5wym" path="res://scenes/day_02/_shared/items/treat.tscn" id="3_uwcse"]
+
+[node name="MazeB" instance=ExtResource("1_qxutk")]
+layer_0/tile_data = PackedInt32Array(327682, 65536, 1, 327681, 65536, 1, 393217, 0, 2, 458753, 65536, 65537, 262148, 0, 0, 262149, 65536, 2, 262150, 0, 65536, 458756, 0, 0, 458757, 262144, 0, 458758, 0, 65536, 327688, 65536, 1, 393225, 0, 2, 458761, 65536, 65537, 589827, 262144, 65536, 589830, 0, 196608, 589831, 262144, 65536, 589828, 0, 131072, 131073, 0, 2, 131081, 0, 2, 327689, 65536, 1, 65535, 0, 1, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 458751, 0, 1, 524287, 0, 1, 589823, 0, 1, 655359, 0, 1, 11, 0, 65537, 65547, 0, 65537, 131083, 0, 65537, 196619, 0, 65537, 262155, 0, 65537, 327691, 0, 65537, 393227, 0, 65537, 458763, 0, 65537, 524299, 0, 65537, 589835, 0, 65537, -65536, 262144, 0, -65535, 262144, 0, -65534, 262144, 0, -65533, 262144, 0, -65532, 262144, 0, -65531, 262144, 0, -65530, 262144, 0, -65529, 262144, 0, -65528, 262144, 0, -65527, 262144, 0, -65526, 262144, 0, 655360, 262144, 65536, 655361, 262144, 65536, 655362, 262144, 65536, 655363, 262144, 65536, 655364, 262144, 65536, 655365, 262144, 65536, 655366, 262144, 65536, 655367, 262144, 65536, 655368, 262144, 65536, 655369, 262144, 65536, 655370, 262144, 65536, -1, 262144, 2, -65525, 262144, 65538, 655371, 262144, 131074, 720895, 262144, 196610, 65537, 327680, 0, 196609, 65536, 65537, 65538, 131072, 2, 65539, 131072, 2, 65540, 131072, 65537, 65542, 131072, 1, 65543, 131072, 2, 65544, 131072, 2, 65545, 327680, 65536, 196617, 65536, 65537, 196611, 131072, 1, 196615, 131072, 65537, 196612, 0, 196608, 196614, 0, 131072, 458752, 65536, 65537, 458754, 65536, 65537, 458760, 65536, 65537, 458762, 65536, 65537, 327680, 65536, 1, 327690, 65536, 1, 393216, 0, 2, 393218, 0, 2, 393224, 0, 2, 393226, 0, 2, 589825, 0, 196608, 393220, 0, 196608, 393222, 0, 131072, 589833, 0, 131072, 196613, 262144, 65536, 589826, 262144, 65536, 589832, 262144, 65536, 393221, 262144, 65536)
+
+[node name="SuperTreat" parent="Food" index="0" instance=ExtResource("3_b726x")]
+position = Vector2(168, 8)
+metadata/_edit_lock_ = true
+
+[node name="SuperTreat2" parent="Food" index="1" instance=ExtResource("3_b726x")]
+position = Vector2(8, 152)
+metadata/_edit_lock_ = true
+
+[node name="Treat" parent="Food" index="2" instance=ExtResource("3_uwcse")]
+position = Vector2(8, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat2" parent="Food" index="3" instance=ExtResource("3_uwcse")]
+position = Vector2(24, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat3" parent="Food" index="4" instance=ExtResource("3_uwcse")]
+position = Vector2(136, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat4" parent="Food" index="5" instance=ExtResource("3_uwcse")]
+position = Vector2(152, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat5" parent="Food" index="6" instance=ExtResource("3_uwcse")]
+position = Vector2(168, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat6" parent="Food" index="7" instance=ExtResource("3_uwcse")]
+position = Vector2(168, 56)
+metadata/_edit_lock_ = true
+
+[node name="Treat7" parent="Food" index="8" instance=ExtResource("3_uwcse")]
+position = Vector2(168, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat8" parent="Food" index="9" instance=ExtResource("3_uwcse")]
+position = Vector2(168, 24)
+metadata/_edit_lock_ = true
+
+[node name="Treat9" parent="Food" index="10" instance=ExtResource("3_uwcse")]
+position = Vector2(8, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat10" parent="Food" index="11" instance=ExtResource("3_uwcse")]
+position = Vector2(8, 56)
+metadata/_edit_lock_ = true
+
+[node name="Treat11" parent="Food" index="12" instance=ExtResource("3_uwcse")]
+position = Vector2(8, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat12" parent="Food" index="13" instance=ExtResource("3_uwcse")]
+position = Vector2(8, 24)
+metadata/_edit_lock_ = true
+
+[node name="Treat13" parent="Food" index="14" instance=ExtResource("3_uwcse")]
+position = Vector2(152, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat14" parent="Food" index="15" instance=ExtResource("3_uwcse")]
+position = Vector2(136, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat15" parent="Food" index="16" instance=ExtResource("3_uwcse")]
+position = Vector2(120, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat16" parent="Food" index="17" instance=ExtResource("3_uwcse")]
+position = Vector2(104, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat17" parent="Food" index="18" instance=ExtResource("3_uwcse")]
+position = Vector2(88, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat18" parent="Food" index="19" instance=ExtResource("3_uwcse")]
+position = Vector2(72, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat19" parent="Food" index="20" instance=ExtResource("3_uwcse")]
+position = Vector2(56, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat20" parent="Food" index="21" instance=ExtResource("3_uwcse")]
+position = Vector2(40, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat21" parent="Food" index="22" instance=ExtResource("3_uwcse")]
+position = Vector2(24, 8)
+metadata/_edit_lock_ = true
+
+[node name="Treat22" parent="Food" index="23" instance=ExtResource("3_uwcse")]
+position = Vector2(40, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat23" parent="Food" index="24" instance=ExtResource("3_uwcse")]
+position = Vector2(56, 88)
+metadata/_edit_lock_ = true
+
+[node name="Treat24" parent="Food" index="25" instance=ExtResource("3_uwcse")]
+position = Vector2(136, 56)
+metadata/_edit_lock_ = true
+
+[node name="Treat25" parent="Food" index="26" instance=ExtResource("3_uwcse")]
+position = Vector2(136, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat26" parent="Food" index="27" instance=ExtResource("3_uwcse")]
+position = Vector2(120, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat27" parent="Food" index="28" instance=ExtResource("3_uwcse")]
+position = Vector2(88, 24)
+metadata/_edit_lock_ = true
+
+[node name="Treat28" parent="Food" index="29" instance=ExtResource("3_uwcse")]
+position = Vector2(104, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat29" parent="Food" index="30" instance=ExtResource("3_uwcse")]
+position = Vector2(88, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat30" parent="Food" index="31" instance=ExtResource("3_uwcse")]
+position = Vector2(72, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat31" parent="Food" index="32" instance=ExtResource("3_uwcse")]
+position = Vector2(56, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat32" parent="Food" index="33" instance=ExtResource("3_uwcse")]
+position = Vector2(40, 40)
+metadata/_edit_lock_ = true
+
+[node name="Treat33" parent="Food" index="34" instance=ExtResource("3_uwcse")]
+position = Vector2(40, 56)
+metadata/_edit_lock_ = true
+
+[node name="Treat34" parent="Food" index="35" instance=ExtResource("3_uwcse")]
+position = Vector2(120, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat35" parent="Food" index="36" instance=ExtResource("3_uwcse")]
+position = Vector2(56, 72)
+metadata/_edit_lock_ = true
+
+[node name="Treat36" parent="Food" index="37" instance=ExtResource("3_uwcse")]
+position = Vector2(72, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat37" parent="Food" index="38" instance=ExtResource("3_uwcse")]
+position = Vector2(8, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat38" parent="Food" index="39" instance=ExtResource("3_uwcse")]
+position = Vector2(24, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat39" parent="Food" index="40" instance=ExtResource("3_uwcse")]
+position = Vector2(40, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat40" parent="Food" index="41" instance=ExtResource("3_uwcse")]
+position = Vector2(120, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat41" parent="Food" index="42" instance=ExtResource("3_uwcse")]
+position = Vector2(56, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat42" parent="Food" index="43" instance=ExtResource("3_uwcse")]
+position = Vector2(120, 120)
+metadata/_edit_lock_ = true
+
+[node name="Treat43" parent="Food" index="44" instance=ExtResource("3_uwcse")]
+position = Vector2(56, 120)
+metadata/_edit_lock_ = true
+
+[node name="Treat44" parent="Food" index="45" instance=ExtResource("3_uwcse")]
+position = Vector2(120, 104)
+metadata/_edit_lock_ = true
+
+[node name="Treat45" parent="Food" index="46" instance=ExtResource("3_uwcse")]
+position = Vector2(56, 104)
+metadata/_edit_lock_ = true
+
+[node name="Treat46" parent="Food" index="47" instance=ExtResource("3_uwcse")]
+position = Vector2(120, 88)
+metadata/_edit_lock_ = true
+
+[node name="Treat47" parent="Food" index="48" instance=ExtResource("3_uwcse")]
+position = Vector2(104, 88)
+metadata/_edit_lock_ = true
+
+[node name="Treat48" parent="Food" index="49" instance=ExtResource("3_uwcse")]
+position = Vector2(88, 88)
+metadata/_edit_lock_ = true
+
+[node name="Treat49" parent="Food" index="50" instance=ExtResource("3_uwcse")]
+position = Vector2(72, 88)
+metadata/_edit_lock_ = true
+
+[node name="Treat50" parent="Food" index="51" instance=ExtResource("3_uwcse")]
+position = Vector2(168, 152)
+metadata/_edit_lock_ = true
+
+[node name="Treat51" parent="Food" index="52" instance=ExtResource("3_uwcse")]
+position = Vector2(168, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat52" parent="Food" index="53" instance=ExtResource("3_uwcse")]
+position = Vector2(152, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat53" parent="Food" index="54" instance=ExtResource("3_uwcse")]
+position = Vector2(136, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat54" parent="Food" index="55" instance=ExtResource("3_uwcse")]
+position = Vector2(104, 136)
+metadata/_edit_lock_ = true
+
+[node name="Treat55" parent="Food" index="56" instance=ExtResource("3_uwcse")]
+position = Vector2(88, 152)
+metadata/_edit_lock_ = true

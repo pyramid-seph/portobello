@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceehojvd7nkaa"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/objects/bullet.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://vv7hfytqeqxd" path="res://art/day_3/bullet_enemy.png" id="2_nd03d"]
+[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="3_gow7k"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(4, 14)
+
+[node name="EnemyBullet" type="Node2D" groups=["bullets", "enemy_bullets"]]
+z_index = -70
+script = ExtResource("2")
+score_points_mega_gun = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nd03d")
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+script = ExtResource("3_gow7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
+shape = SubResource("1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-2, -8, 4, 16)
+
+[connection signal="hit" from="Sprite2D/Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

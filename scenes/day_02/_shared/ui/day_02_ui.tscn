@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkurq57vlqf73"]
+
+[ext_resource type="Script" path="res://scenes/day_02/_shared/ui/day_02_ui.gd" id="1_ccpfx"]
+[ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="1_x3rjv"]
+[ext_resource type="PackedScene" uid="uid://dxxd4wyd36xa6" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="2_3k77v"]
+[ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="2_ps6a3"]
+[ext_resource type="PackedScene" uid="uid://c4nnvy7hmhkml" path="res://scenes/_shared/ui/timed_label.tscn" id="5_2mhka"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="6_b66xj"]
+[ext_resource type="LabelSettings" uid="uid://d0l6pt7mpwbu8" path="res://scenes/day_01/_shared/ui/label_settings_floating_text.tres" id="6_fvamt"]
+
+[node name="Day02Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_b66xj")
+script = ExtResource("1_ccpfx")
+
+[node name="LivesCounter" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -21.0
+offset_right = -3.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+
+[node name="Icon" type="TextureRect" parent="LivesCounter"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ps6a3")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="LivesCounter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "9"
+vertical_alignment = 1
+max_lines_visible = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_right = -3.0
+offset_bottom = 22.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 3.0
+offset_right = 36.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Hi 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="StartLabels" parent="." instance=ExtResource("2_3k77v")]
+layout_mode = 1
+text_1 = "Buffet"
+text_2 = "¡Buen provecho!"
+font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
+font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
+font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
+duration_sec = 1.6
+label_2_visible_delay_sec = 0.8
+preview_labels = false
+
+[node name="GameOver" parent="." instance=ExtResource("5_2mhka")]
+visible = false
+layout_mode = 1
+text = "¡Qué indigestión!
+¡Nuevo récord!"
+label_settings = ExtResource("6_fvamt")
+horizontal_alignment = 1
+vertical_alignment = 1
+_duration_sec = 3.0
+
+[node name="PieceOfCake" parent="." instance=ExtResource("5_2mhka")]
+visible = false
+layout_mode = 1
+text = "¡Pan comido!"
+label_settings = ExtResource("6_fvamt")
+horizontal_alignment = 1
+vertical_alignment = 1
+_duration_sec = 2.0
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_x3rjv")]
+process_mode = 3
+visible = false
+layout_mode = 1
+show_auto_fire = false
+
+[connection signal="finished" from="StartLabels" to="." method="_on_start_label_timed_label_finished"]

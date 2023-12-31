@@ -1,0 +1,424 @@
+[gd_scene load_steps=22 format=3 uid="uid://ct51hooycinfb"]
+
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
+[ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
+[ext_resource type="Script" path="res://scenes/_shared/cutscenes/end_credits.gd" id="2_l4t77"]
+[ext_resource type="Script" path="res://scenes/_shared/cutscenes/pre_credits_scene.gd" id="3_dru3q"]
+[ext_resource type="Resource" uid="uid://bpca423ydapsn" path="res://resources/instances/rolling_credits_og_data.tres" id="3_fi3qg"]
+[ext_resource type="Texture2D" uid="uid://h3iwfl4hn1b1" path="res://art/cutscenes/ending/ending_0.png" id="3_m4aea"]
+[ext_resource type="Texture2D" uid="uid://dt82ohryt68b2" path="res://art/cutscenes/ending/ending_1.png" id="4_m1vlt"]
+[ext_resource type="Resource" uid="uid://kmr1uhgtp68d" path="res://resources/instances/rolling_credits_port_data.tres" id="4_t8b2n"]
+[ext_resource type="Script" path="res://scenes/_shared/cutscenes/sea_sparkles_parallax_bg.gd" id="5_5olc8"]
+[ext_resource type="Texture2D" uid="uid://cmfcg56p1ywdu" path="res://art/cutscenes/ending/ending_credits_moon.png" id="5_kv0di"]
+[ext_resource type="Texture2D" uid="uid://g4iith1xpt1" path="res://art/cutscenes/ending/ending_credits_bucho_0.png" id="6_c5ufe"]
+[ext_resource type="Texture2D" uid="uid://cgxdaj67ey6yj" path="res://art/cutscenes/ending/ending_credits_bucho_1.png" id="7_rchap"]
+[ext_resource type="Script" path="res://scenes/_shared/cutscenes/flying_credits_bucho.gd" id="10_07ai5"]
+[ext_resource type="Texture2D" uid="uid://cue7pestmbrcu" path="res://art/cutscenes/ending/ending_credits_sea_shine_0.png" id="10_yjovn"]
+[ext_resource type="Script" path="res://scenes/_shared/cutscenes/post_credits_scene.gd" id="13_qgbjn"]
+[ext_resource type="Texture2D" uid="uid://bg5pf3f7vadyl" path="res://art/cutscenes/ending/ending_post_credits.png" id="13_tg2lj"]
+[ext_resource type="Texture2D" uid="uid://c4dymrfuhbcl3" path="res://art/cutscenes/ending/ending_post_credits_bucho_mouth.png" id="14_wtijq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1dyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_c5ufe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rchap")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_j7m4o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BuchoMouth:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinalDialogue:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gik3p"]
+resource_name = "default"
+length = 12.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BuchoMouth:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 5, 6, 7, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FinalDialogue:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["", "Se", "Se - cue -", "Se - cue - la"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gyh0w"]
+_data = {
+"RESET": SubResource("Animation_j7m4o"),
+"default": SubResource("Animation_gik3p")
+}
+
+[node name="CutsceneCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1lrlh")
+script = ExtResource("2_eca4p")
+_autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BgColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PreCreditsScene" type="Node" parent="."]
+script = ExtResource("3_dru3q")
+
+[node name="PreCreditsSprite00" type="Sprite2D" parent="PreCreditsScene"]
+visible = false
+position = Vector2(120, 151)
+texture = ExtResource("3_m4aea")
+
+[node name="PreCreditsSprite01" type="Sprite2D" parent="PreCreditsScene"]
+visible = false
+position = Vector2(120, 151)
+texture = ExtResource("4_m1vlt")
+
+[node name="Timer" type="Timer" parent="PreCreditsScene"]
+wait_time = 2.0
+one_shot = true
+
+[node name="EndCredits" type="Node" parent="."]
+script = ExtResource("2_l4t77")
+_original_credits = ExtResource("3_fi3qg")
+_port_credits = ExtResource("4_t8b2n")
+
+[node name="UiComponents" type="Control" parent="EndCredits"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1lrlh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndCredits/UiComponents"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.5
+offset_top = 91.0
+offset_right = 26.5
+offset_bottom = 190.0
+grow_horizontal = 2
+
+[node name="JobLabel" type="Label" parent="EndCredits/UiComponents/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.431373, 0.431373, 0.431373, 1)
+text = "Job"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NamesLabel" type="Label" parent="EndCredits/UiComponents/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Name 1
+Name 2
+Name 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SeaSparklesParallaxBackground" type="ParallaxBackground" parent="EndCredits"]
+layer = 0
+visible = false
+script = ExtResource("5_5olc8")
+scroll_speed = 25.0
+
+[node name="SeaColor" type="ColorRect" parent="EndCredits/SeaSparklesParallaxBackground"]
+offset_top = 283.0
+offset_right = 240.0
+offset_bottom = 303.0
+color = Color(0.180392, 0.180392, 0.74902, 1)
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="EndCredits/SeaSparklesParallaxBackground"]
+position = Vector2(0, 273)
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles2" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(10, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles3" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(20, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles4" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(30, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles5" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(40, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles6" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(50, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles7" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(60, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles8" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(70, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles9" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(80, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles10" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(90, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles11" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(100, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles12" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(110, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles13" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(120, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles14" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(130, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles15" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(140, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles16" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(150, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles17" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(160, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles18" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(170, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles19" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(180, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles20" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(190, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles21" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(200, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles22" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(210, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles23" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(220, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SeaSparkles24" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+position = Vector2(230, 0)
+texture = ExtResource("10_yjovn")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="MoonSprite" type="Sprite2D" parent="EndCredits"]
+visible = false
+z_index = 1
+position = Vector2(15, 15)
+texture = ExtResource("5_kv0di")
+metadata/_edit_lock_ = true
+
+[node name="FlyingCreditsBucho" type="AnimatedSprite2D" parent="EndCredits"]
+visible = false
+z_index = 1
+position = Vector2(200, 253)
+sprite_frames = SubResource("SpriteFrames_w1dyf")
+autoplay = "default"
+frame = 1
+frame_progress = 0.954037
+script = ExtResource("10_07ai5")
+
+[node name="Timer" type="Timer" parent="EndCredits"]
+one_shot = true
+
+[node name="PostCreditsScene" type="Node" parent="."]
+script = ExtResource("13_qgbjn")
+
+[node name="BuchoFace" type="Sprite2D" parent="PostCreditsScene"]
+visible = false
+position = Vector2(120, 151)
+texture = ExtResource("13_tg2lj")
+
+[node name="BuchoMouth" type="Sprite2D" parent="PostCreditsScene/BuchoFace"]
+visible = false
+position = Vector2(-1, 21)
+texture = ExtResource("14_wtijq")
+
+[node name="FinalDialogue" type="Label" parent="PostCreditsScene/BuchoFace"]
+custom_minimum_size = Vector2(86, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -24.0
+offset_right = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_1lrlh")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PostCreditsScene/BuchoFace"]
+libraries = {
+"": SubResource("AnimationLibrary_gyh0w")
+}
+autoplay = "RESET"
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="visibility_changed" from="EndCredits/FlyingCreditsBucho" to="EndCredits/FlyingCreditsBucho" method="_on_visibility_changed"]
+[connection signal="animation_finished" from="PostCreditsScene/BuchoFace/AnimationPlayer" to="PostCreditsScene" method="_on_animation_player_animation_finished"]
