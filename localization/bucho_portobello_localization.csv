@@ -81,6 +81,9 @@ INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nBuffets of day {unlocked_story_mode_
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
 LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_DAY_01_DIZZY,Dizzy,Mareado
+LEVEL_DAY_01_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_DAY_02_LEVEL_NAME_SCORE_ATTACK,Buffet {level_pos},Buffet {level_pos}
 LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!

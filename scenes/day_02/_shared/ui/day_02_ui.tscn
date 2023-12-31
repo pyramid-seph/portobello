@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkurq57vlqf73"]
+[gd_scene load_steps=9 format=3 uid="uid://bkurq57vlqf73"]
 
 [ext_resource type="Script" path="res://scenes/day_02/_shared/ui/day_02_ui.gd" id="1_ccpfx"]
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="1_x3rjv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c4nnvy7hmhkml" path="res://scenes/_shared/ui/timed_label.tscn" id="5_2mhka"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="6_b66xj"]
 [ext_resource type="LabelSettings" uid="uid://d0l6pt7mpwbu8" path="res://scenes/day_01/_shared/ui/label_settings_floating_text.tres" id="6_fvamt"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_gy7mf"]
 
 [node name="Day02Ui" type="Control"]
 layout_mode = 3
@@ -101,6 +102,21 @@ label_settings = ExtResource("6_fvamt")
 horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 2.0
+
+[node name="LevelName" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 60.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_gy7mf")
+theme_override_font_sizes/font_size = 8
+text = "LEVEL_DAY_01_LEVEL_NAME_STORY_MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BlackScreen" type="ColorRect" parent="."]
 visible = false

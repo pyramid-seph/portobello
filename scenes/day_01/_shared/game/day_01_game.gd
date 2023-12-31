@@ -132,6 +132,7 @@ func _start_level() -> void:
 	await _ui.start_level_finished
 	_play_dialogue()
 	_player.is_allowed_to_move = true
+	_ui.show_level_name(game_mode, lvl_index)
 
 
 func _play_dialogue() -> void:
@@ -191,6 +192,7 @@ func _on_level_beaten() -> void:
 	await _ui.level_beaten_finished
 	_ui.stop_dilogue()
 	_ui.show_black_screen(true)
+	_ui.hide_level_name()
 	
 	var next_lvl := _lvl_info.get_next_level(_level)
 	if next_lvl == _level:
