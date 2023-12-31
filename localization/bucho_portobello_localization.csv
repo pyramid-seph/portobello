@@ -27,49 +27,49 @@ CUTSCENE_DAY_TITLE_02,Day 2,Día 2
 CUTSCENE_DAY_TITLE_03,Day 3,Día 3
 CUTSCENE_DAY_TITLE_04,Day EX,Día EX
 DATA_DELETED,Data deleted,Datos borrados
-DIALOGUE_DAY_01_LEVEL_01_LINE_00,"Hi!, this is...",¿Bueno?
-DIALOGUE_DAY_01_LEVEL_01_LINE_01,"¡No, aquí no vive Nacho!","¡No, aquí no vive Nacho!"
-DIALOGUE_DAY_01_LEVEL_01_LINE_02,Don't worry! It's OK.,De nada.
-DIALOGUE_DAY_01_LEVEL_02_LINE_00,¿Bueno?,¿Bueno?
-DIALOGUE_DAY_01_LEVEL_02_LINE_01,¡Amor!,¡Amor!
-DIALOGUE_DAY_01_LEVEL_02_LINE_02,Ya me siento solita.,Ya me siento solita.
-DIALOGUE_DAY_01_LEVEL_02_LINE_03,Yo también te extraño.,Yo también te extraño.
-DIALOGUE_DAY_01_LEVEL_02_LINE_04,Te amo. Chao.,Te amo. Chao.
-DIALOGUE_DAY_01_LEVEL_03_LINE_00,¿Bueno?,¿Bueno?
-DIALOGUE_DAY_01_LEVEL_03_LINE_01,¿Hola?,¿Hola?
-DIALOGUE_DAY_01_LEVEL_03_LINE_02,¡¿Hay alguien ahí?!,¡¿Hay alguien ahí?!
-DIALOGUE_DAY_01_LEVEL_03_LINE_03,(cuelga) ...,(cuelga) ...
-DIALOGUE_DAY_01_LEVEL_03_LINE_04,¿Ha sido una broma?,¿Ha sido una broma?
-DIALOGUE_DAY_01_LEVEL_04_LINE_00,¡Bomboncito!,¡Bomboncito!
-DIALOGUE_DAY_01_LEVEL_04_LINE_01,Yo te amo más.,Yo te amo más.
-DIALOGUE_DAY_01_LEVEL_04_LINE_02,Te amo más más infinito.,Te amo más más infinito.
-DIALOGUE_DAY_01_LEVEL_04_LINE_03,"No, cuelga tú.","No, cuelga tú."
-DIALOGUE_DAY_01_LEVEL_04_LINE_04,"No, anda, tú.","No, anda, tú."
-DIALOGUE_DAY_01_LEVEL_04_LINE_05,Cuelga tú.,Cuelga tú.
-DIALOGUE_DAY_01_LEVEL_04_LINE_06,"Espera, tengo una llamada","Espera, tengo una llamada"
-DIALOGUE_DAY_01_LEVEL_04_LINE_07,en la otra línea.,en la otra línea.
-DIALOGUE_DAY_01_LEVEL_05_LINE_00,"¿Bueno? No, gracias.","¿Bueno? No, gracias."
-DIALOGUE_DAY_01_LEVEL_05_LINE_01,"No, no necesito un seguro.","No, no necesito un seguro."
-DIALOGUE_DAY_01_LEVEL_05_LINE_02,No me hace falta.,No me hace falta.
-DIALOGUE_DAY_01_LEVEL_05_LINE_03,Gracias.,Gracias.
-DIALOGUE_DAY_01_LEVEL_06_LINE_00,¿Bueno?,¿Bueno?
-DIALOGUE_DAY_01_LEVEL_06_LINE_01,¡Mi vida! Lástima que,¡Mi vida! Lástima que
-DIALOGUE_DAY_01_LEVEL_06_LINE_02,te hayas ido al congreso,te hayas ido al congreso
-DIALOGUE_DAY_01_LEVEL_06_LINE_03,internacional de chefs. Al,internacional de chefs. Al
-DIALOGUE_DAY_01_LEVEL_06_LINE_04,menos me regalaste a Bucho,menos me regalaste a Bucho
-DIALOGUE_DAY_01_LEVEL_06_LINE_05,para que me haga compañía,para que me haga compañía
-DIALOGUE_DAY_01_LEVEL_06_LINE_06,"Sí, así le puse","Sí, así le puse"
-DIALOGUE_DAY_01_LEVEL_06_LINE_07,porque es glotón.,porque es glotón.
-DIALOGUE_DAY_01_LEVEL_06_LINE_08,Te quiero mucho mucho.,Te quiero mucho mucho.
-DIALOGUE_DAY_01_LEVEL_06_LINE_09,"Bueno, mi cielo, ¡suerte!","Bueno, mi cielo, ¡suerte!"
-DIALOGUE_DAY_01_LEVEL_07_LINE_00,"¿Bueno? Sí, ya fui","¿Bueno? Sí, ya fui"
-DIALOGUE_DAY_01_LEVEL_07_LINE_01,a visitarlo. No te,a visitarlo. No te
-DIALOGUE_DAY_01_LEVEL_07_LINE_02,"preocupes, mami. Le dejé","preocupes, mami. Le dejé"
-DIALOGUE_DAY_01_LEVEL_07_LINE_03,unas lindas flores.,unas lindas flores.
-DIALOGUE_DAY_01_LEVEL_07_LINE_04,Te quiero. Cuídate.,Te quiero. Cuídate.
-DIALOGUE_DAY_01_LEVEL_08_LINE_00,¡Amorcito!,¡Amorcito!
-DIALOGUE_DAY_01_LEVEL_08_LINE_01,Tráeme lo que quieras.,Tráeme lo que quieras.
-DIALOGUE_DAY_01_LEVEL_08_LINE_02,Me llamas. ¡Bye!,Me llamas. ¡Bye!
+DIALOGUE_DAY_01_LEVEL_01_LINE_00,"Hi! No, I don't know",¿Bueno?
+DIALOGUE_DAY_01_LEVEL_01_LINE_01,any nigerian prince...,"¡No, aquí no vive Nacho!"
+DIALOGUE_DAY_01_LEVEL_01_LINE_02,(hangs up) ...,De nada.
+DIALOGUE_DAY_01_LEVEL_02_LINE_00,"Hi!, this is...",¿Bueno?
+DIALOGUE_DAY_01_LEVEL_02_LINE_01,Baby! I'm already,¡Amor!
+DIALOGUE_DAY_01_LEVEL_02_LINE_02,feeling lonely.,Ya me siento solita.
+DIALOGUE_DAY_01_LEVEL_02_LINE_03,I miss you too.,Yo también te extraño.
+DIALOGUE_DAY_01_LEVEL_02_LINE_04,Love you. Bye!,Te amo. Chao.
+DIALOGUE_DAY_01_LEVEL_03_LINE_00,Hello.,¿Bueno?
+DIALOGUE_DAY_01_LEVEL_03_LINE_01,Hello?,¿Hola?
+DIALOGUE_DAY_01_LEVEL_03_LINE_02,Is anybody there?!,¡¿Hay alguien ahí?!
+DIALOGUE_DAY_01_LEVEL_03_LINE_03,(hangs up) ...,(cuelga) ...
+DIALOGUE_DAY_01_LEVEL_03_LINE_04,Was that a joke?,¿Ha sido una broma?
+DIALOGUE_DAY_01_LEVEL_04_LINE_00,Sweet pie!,¡Bomboncito!
+DIALOGUE_DAY_01_LEVEL_04_LINE_01,I love you more.,Yo te amo más.
+DIALOGUE_DAY_01_LEVEL_04_LINE_02,"No, I love you more!",Te amo más más infinito.
+DIALOGUE_DAY_01_LEVEL_04_LINE_03,"No, you hang up!","No, cuelga tú."
+DIALOGUE_DAY_01_LEVEL_04_LINE_04,No... you!,"No, anda, tú."
+DIALOGUE_DAY_01_LEVEL_04_LINE_05,Hang on a sec.,Cuelga tú.
+DIALOGUE_DAY_01_LEVEL_04_LINE_06,I got a call,"Espera, tengo una llamada"
+DIALOGUE_DAY_01_LEVEL_04_LINE_07,on the other line,en la otra línea.
+DIALOGUE_DAY_01_LEVEL_05_LINE_00,"Hello? No, thanks.","¿Bueno? No, gracias."
+DIALOGUE_DAY_01_LEVEL_05_LINE_01,"No, I don't need insurance.","No, no necesito un seguro."
+DIALOGUE_DAY_01_LEVEL_05_LINE_02,"Sorry, but... I just don't.",No me hace falta.
+DIALOGUE_DAY_01_LEVEL_05_LINE_03,Thank you.,Gracias.
+DIALOGUE_DAY_01_LEVEL_06_LINE_00,Cheesecake?,¿Bueno?
+DIALOGUE_DAY_01_LEVEL_06_LINE_01,It's a shame you are,¡Mi vida! Lástima que
+DIALOGUE_DAY_01_LEVEL_06_LINE_02,on that chef's congress,te hayas ido al congreso
+DIALOGUE_DAY_01_LEVEL_06_LINE_03,Luckily you gift me this,internacional de chefs. Al
+DIALOGUE_DAY_01_LEVEL_06_LINE_04,little kitty cat to keep me,menos me regalaste a Bucho
+DIALOGUE_DAY_01_LEVEL_06_LINE_05,company. I think I'll,para que me haga compañía
+DIALOGUE_DAY_01_LEVEL_06_LINE_06,call him... Bucho. That's,"Sí, así le puse"
+DIALOGUE_DAY_01_LEVEL_06_LINE_07,spanish for stomach...,porque es glotón.
+DIALOGUE_DAY_01_LEVEL_06_LINE_08,sort of...,Te quiero mucho mucho.
+DIALOGUE_DAY_01_LEVEL_06_LINE_09,"Good luck, cupcake!","Bueno, mi cielo, ¡suerte!"
+DIALOGUE_DAY_01_LEVEL_07_LINE_00,"Hello? Mami! Yes,","¿Bueno? ¡Má! Sí, ya fui"
+DIALOGUE_DAY_01_LEVEL_07_LINE_01,I visited abue's grave,al cementerio a ver a
+DIALOGUE_DAY_01_LEVEL_07_LINE_02,and left him some flowers.,abue. Le dejé unas lindas
+DIALOGUE_DAY_01_LEVEL_07_LINE_03,It's gonna be OK.,flores. Todo estará bien.
+DIALOGUE_DAY_01_LEVEL_07_LINE_04,Love you. Bye!,Te quiero. Cuídate.
+DIALOGUE_DAY_01_LEVEL_08_LINE_00,Shortcake! Oh... You don't,¡Amorcito!
+DIALOGUE_DAY_01_LEVEL_08_LINE_01,have to buy me anything.,Tráeme lo que quieras.
+DIALOGUE_DAY_01_LEVEL_08_LINE_02,Call me later! Bye!,Me llamas. ¡Bye!
 DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
 DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
