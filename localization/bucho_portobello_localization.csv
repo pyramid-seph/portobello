@@ -95,7 +95,7 @@ LOADING_SCREEN_ERROR,Error loading level,Error al cargar recurso
 LOADING_SCREEN_LOADING,Loading,Cargando
 LOGOS_ROLL_GODOT,Powered by,Hecho con
 LOGOS_ROLL_GODOT_LOGO_CREDITS,Original Godot logo by Andrea Calabró\nunder CC-BY-4.0 license,Logo original de Godot por Andrea Calabró\nbajo la licencia CC-BY-4.0
-LOGOS_ROLL_ME,A\nPyramid Seph\npixelated thingie,Algo\npixeleado\nde Pyramid Seph
+LOGOS_ROLL_ME,A\nPyramid Seph\npixelated thingie,Algo\npixelado\nde Pyramid Seph
 MENU_MAIN_PROGRESS,High Scores,Récords
 MENU_MAIN_QUIT,Quit,Salir
 MENU_MAIN_SELECT_SCORE_ATTACK_MODE,Buffet,Buffet
@@ -114,7 +114,7 @@ MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_3,Buffet 1D,Buffet 1D
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_4,Buffet 2,Buffet 2
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_5,Buffet 3A,Buffet 3A
 MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_6,Buffet 3B,Buffet 3B
-MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_02,Day LOL,Día 2
+MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_02,Day 2,Día 2
 MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_03,Day 3,Día 3
 MENU_PROGRESS_HIGH_SCORES,High Scores,Récords
 MENU_PROGRESS_QUIT,Back,Regresar
