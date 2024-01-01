@@ -26,6 +26,7 @@ SaveDataManager="*res://autoloads/save_data_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 SceneChanger="*res://autoloads/scene_changer.tscn"
 Game="*res://autoloads/game.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [display]
 
@@ -38,6 +39,10 @@ window/size/window_height_override=909
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
 
 [gdnative]
 
