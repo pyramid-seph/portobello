@@ -96,6 +96,7 @@ func _start_level() -> void:
 	var game_mode: Game.Mode = _get_game_mode()
 	_ui.show_level_start(game_mode, _level)
 	await _ui.start_level_finished
+	_ui.show_level_name(game_mode, _level)
 	_get_current_maze().start()
 
 
@@ -193,6 +194,7 @@ func _on_maze_completed() -> void:
 	_ui.set_pause_menu_enabled(false)
 	_ui.show_level_beaten()
 	await _ui.level_beaten_finished
+	_ui.hide_level_name()
 	_ui.show_black_screen(true)
 	if _is_game_story_mode() and _level >= _mazes.size() - 1:
 		await _get_current_maze().quit()

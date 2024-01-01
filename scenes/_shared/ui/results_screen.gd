@@ -20,13 +20,6 @@ const STARS_DURATION_SEC: float = 0.4
 const STARS_LAST_INTERVAL_SEC: float = 1.4
 const RESULTS_LABELS_COLOR: Color = Color.WHITE
 const COMPLETE_LABELS_COLOR: Color = Color("F13030")
-const MINIGAME_COMPLETE_TEXT: String = "¡Reto completado!"
-const STARS_RESULT_NONE_TEXT = "¡Qué mal!"
-const STARS_RESULT_ONE_TEXT: String = "¡Yawn!"
-const STARS_RESULT_TWO_TEXT: String = "¡No está mal!"
-const STARS_RESULT_THREE_TEXT: String = "¡Bien!"
-const STARS_RESULT_FOUR_TEXT: String = "¡Muy bien!"
-const STARS_RESULT_FIVE_TEXT: String = "¡Prrrrrrfecta!"
 
 @export var _skip_level_results_screen: bool
 @export var _skip_minigame_results_screen: bool
@@ -120,19 +113,10 @@ func _calculate_stars_by(value: int) -> int:
 
 
 func _get_stars_result_text(stars: int) -> String:
-	match stars:
-		1:
-			return STARS_RESULT_ONE_TEXT
-		2:
-			return STARS_RESULT_TWO_TEXT
-		3:
-			return STARS_RESULT_THREE_TEXT
-		4:
-			return STARS_RESULT_FOUR_TEXT
-		5:
-			return STARS_RESULT_FIVE_TEXT
-		_:
-			return STARS_RESULT_NONE_TEXT
+	if stars >= 0 and stars <= 5:
+		return "RESULTS_SCREEN_EVALUATION_%d" % stars
+	else:
+		return "RESULTS_SCREEN_EVALUATION_0"
 
 
 func _change_results_labels_color(color: Color) -> void:
@@ -146,16 +130,25 @@ func _build_extra_lives_text(extra_lives: int) -> String:
 	if extra_lives < 1:
 		return ""
 	
-	var lives_text = "vida"
+	var lives_text_tr: String
 	if extra_lives > 1:
-		lives_text += "s"
-	return "¡%s %s extra!" % [extra_lives, lives_text]
+		lives_text_tr = "RESULTS_SCREEN_EXTRA_LIVES_PLURAL"
+	else:
+		lives_text_tr = "RESULTS_SCREEN_EXTRA_LIVES_SINGULAR"
+	return tr(lives_text_tr).format({ lives = extra_lives })
 
 
 func _setup_label_texts() -> void:
-	_score_label.text = "Score = %s" % _score
-	_lives_bonus_label.text = "Bono = %s x 1000 = %s" % [_lives, _bonus]
-	_total_score_label.text = "Total = %s" % _total_score
+	_score_label.text = tr("RESULTS_SCREEN_CURR_SCORE").format({ 
+			score = _score 
+	})
+	_lives_bonus_label.text = tr("RESULTS_SCREEN_BONUS").format({
+			lives = _lives,
+			bonus = _bonus,
+	})
+	_total_score_label.text = tr("RESULTS_SCREEN_TOTAL_SCORE").format({
+			total_score = _total_score,
+	})
 	_extra_lives_label.text = _build_extra_lives_text(_extra_lives)
 	_evaluation_label.text = _get_stars_result_text(_stars)
 
@@ -221,7 +214,7 @@ func _tween_stars_results() -> void:
 	_tween.tween_interval(STARS_DELAY_SEC)
 	if _stars < 1:
 		_tween.tween_callback(func():
-			_stars_label.text = "¡Cero!"
+			_stars_label.text = "RESULTS_SCREEN_EVALUATION_RESULT_ZERO"
 		)
 		_tween.tween_interval(STARS_DURATION_SEC)
 	else:

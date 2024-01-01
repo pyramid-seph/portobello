@@ -99,7 +99,7 @@ script = ExtResource("10_udkuv")
 [node name="StartLabels" parent="." instance=ExtResource("11_rm35m")]
 layout_mode = 1
 text_1 = "Buffet"
-text_2 = "¡Buen provecho!"
+text_2 = "LEVEL_START_LINE_1"
 font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
 font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
 font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
@@ -108,8 +108,8 @@ label_2_visible_delay_sec = 0.8
 
 [node name="MainCourseLabels" parent="." instance=ExtResource("11_rm35m")]
 layout_mode = 1
-text_1 = "Plato fuerte"
-text_2 = "¡Buen provecho!"
+text_1 = "LEVEL_BOSS_LINE_0"
+text_2 = "LEVEL_BOSS_LINE_1"
 font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
 font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
 font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
@@ -127,7 +127,7 @@ offset_right = -78.0
 offset_bottom = -146.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "¡Qué indigestión!"
+text = "LEVEL_GAME_OVER"
 label_settings = ExtResource("12_0tu0h")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -147,7 +147,7 @@ offset_right = 65.0
 offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "¡Pan comido!"
+text = "LEVEL_SUCCESS"
 label_settings = ExtResource("12_0tu0h")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -180,7 +180,7 @@ offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "¡Peligro!"
+text = "LEVEL_DAY_03_DANGER"
 vertical_alignment = 1
 uppercase = true
 

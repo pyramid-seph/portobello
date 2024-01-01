@@ -19,28 +19,28 @@ const BG_COLOR_EXIT := Color("355f9d")
 
 const STORY_MODE_OPTIONS := [
 	{
-		"label": "1",
+		"label": "MINIGAME_NAME_STORY_MODE_0",
 		"value": Game.Minigame.STORY_DAY_01,
 		"texture": MenuBgDay01Texture,
 		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 0,
 	},
 	{
-		"label": "2",
+		"label": "MINIGAME_NAME_STORY_MODE_1",
 		"value": Game.Minigame.STORY_DAY_02,
 		"texture": MenuBgDay02Texture,
 		"color":BG_COLOR_DAY_2_LIKE_GAME,
 		"min_story_mode_progress": 1,
 	},
 	{
-		"label": "3",
+		"label": "MINIGAME_NAME_STORY_MODE_2",
 		"value": Game.Minigame.STORY_DAY_03,
 		"texture": MenuBgDay03Texture,
 		"color": BG_COLOR_DAY_3_LIKE_GAME,
 		"min_story_mode_progress": 2,
 	},
 	{
-		"label": "EX",
+		"label": "MINIGAME_NAME_STORY_MODE_3",
 		"value": Game.Minigame.STORY_DAY_EX,
 		"texture": MenuBgDayExTexture,
 		"color": BG_COLOR_DAY_EX_LIKE_GAME,
@@ -50,49 +50,49 @@ const STORY_MODE_OPTIONS := [
 
 const SCORE_ATTACK_MODE_OPTIONS := [
 	{
-		"label": "Día 1A",
+		"label": "MINIGAME_NAME_SCORE_ATTACK_0",
 		"value": Game.Minigame.SCORE_ATTACK_1A,
 		"texture": MenuBgDay01Texture,
 		"color":BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 0,
 	},
 	{
-		"label": "Día 1B",
+		"label": "MINIGAME_NAME_SCORE_ATTACK_1",
 		"value": Game.Minigame.SCORE_ATTACK_1B,
 		"texture": MenuBgDay01Texture,
 		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 0,
 	},
 	{
-		"label": "Día 1C",
+		"label": "MINIGAME_NAME_SCORE_ATTACK_2",
 		"value": Game.Minigame.SCORE_ATTACK_1C,
 		"texture": MenuBgDay01Texture,
 		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 1,
 	},
 	{
-		"label": "Día 1D",
+		"label": "MINIGAME_NAME_SCORE_ATTACK_3",
 		"value": Game.Minigame.SCORE_ATTACK_1D,
 		"texture": MenuBgDay01Texture,
 		"color": BG_COLOR_DAY_1_LIKE_GAME,
 		"min_story_mode_progress": 1,
 	},
 	{
-		"label": "Día 2",
+		"label": "MINIGAME_NAME_SCORE_ATTACK_4",
 		"value": Game.Minigame.SCORE_ATTACK_2,
 		"texture": MenuBgDay02Texture,
 		"color": BG_COLOR_DAY_2_LIKE_GAME,
 		"min_story_mode_progress": 2,
 	},
 	{
-		"label": "Día 3A",
+		"label": "MINIGAME_NAME_SCORE_ATTACK_5",
 		"value": Game.Minigame.SCORE_ATTACK_3A,
 		"texture": MenuBgDay03Texture,
 		"color": BG_COLOR_DAY_3_LIKE_GAME,
 		"min_story_mode_progress": 3,
 	},
 	{
-		"label": "Día 3B",
+		"label": "MINIGAME_NAME_SCORE_ATTACK_6",
 		"value": Game.Minigame.SCORE_ATTACK_3B,
 		"texture": MenuBgDay03Texture,
 		"color": BG_COLOR_DAY_3_LIKE_GAME,
@@ -227,10 +227,14 @@ func _notify_unlocks() -> void:
 	var story_progress: int = save_data.latest_day_completed
 	var body: String
 	if save_data.latest_day_completed >= 3:
-		body = "Ya puedes comer:\n\nBuffets del día %s\n " % story_progress
+		body = tr("INFO_MINIGAME_UNLOCK_EX").format({
+				unlocked_story_mode_minigame = story_progress
+			})
 	else:
-		body = "Ya puedes comer:\n\nMenú del día %s\nBuffets del día %s\n " % \
-				[story_progress + 1, story_progress]
+		body = tr("INFO_MINIGAME_UNLOCK").format({
+				unlocked_story_mode_minigame = (story_progress + 1), 
+				unlocked_score_attack_mode_minigame = story_progress
+			})
 	_unlocks_dialog.body_text = body
 	_unlocks_dialog.visible = true
 
@@ -265,7 +269,7 @@ func _on_settings_menu_dangerous_option_unfocused() -> void:
 
 func _on_minigame_selected(value) -> void:
 	if value == Game.Minigame.STORY_DAY_EX:
-		_unlocks_dialog.body_text = " \n¡Próximamente!\n¡No comas ansias!\n "
+		_unlocks_dialog.body_text = "MENU_MAIN_SELECT_STORY_MODE_DAY_EX"
 		_unlocks_dialog.visible = true
 	else:
 		Game.start(value)

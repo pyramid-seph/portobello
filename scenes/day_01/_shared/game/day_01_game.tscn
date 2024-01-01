@@ -19,19 +19,19 @@
 
 [sub_resource type="Resource" id="Resource_o8rmx"]
 script = ExtResource("3_i3orw")
-text = "¿Bueno?"
+text = "DIALOGUE_DAY_01_LEVEL_01_LINE_00"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_ijthu"]
 script = ExtResource("3_i3orw")
-text = "¡No, aquí no vive Nacho!"
+text = "DIALOGUE_DAY_01_LEVEL_01_LINE_01"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_braj8"]
 script = ExtResource("3_i3orw")
-text = "De nada."
+text = "DIALOGUE_DAY_01_LEVEL_01_LINE_02"
 delay_sec = 0.0
 duration_sec = 10.0
 
@@ -49,31 +49,31 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_o8rmx"), SubReso
 
 [sub_resource type="Resource" id="Resource_4fp23"]
 script = ExtResource("3_i3orw")
-text = "¿Bueno?"
+text = "DIALOGUE_DAY_01_LEVEL_02_LINE_00"
 delay_sec = 0.0
 duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_la1ve"]
 script = ExtResource("3_i3orw")
-text = "¡Amor!"
+text = "DIALOGUE_DAY_01_LEVEL_02_LINE_01"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_16fw5"]
 script = ExtResource("3_i3orw")
-text = "Ya me siento solita."
+text = "DIALOGUE_DAY_01_LEVEL_02_LINE_02"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_xg1id"]
 script = ExtResource("3_i3orw")
-text = "Yo también te extraño."
+text = "DIALOGUE_DAY_01_LEVEL_02_LINE_03"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gibyu"]
 script = ExtResource("3_i3orw")
-text = "Te amo. Chao."
+text = "DIALOGUE_DAY_01_LEVEL_02_LINE_04"
 delay_sec = 0.0
 duration_sec = 10.0
 
@@ -91,31 +91,31 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_4fp23"), SubReso
 
 [sub_resource type="Resource" id="Resource_sj755"]
 script = ExtResource("3_i3orw")
-text = "¿Bueno?"
+text = "DIALOGUE_DAY_01_LEVEL_03_LINE_00"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_uayyl"]
 script = ExtResource("3_i3orw")
-text = "¿Hola?"
+text = "DIALOGUE_DAY_01_LEVEL_03_LINE_01"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_r6uwb"]
 script = ExtResource("3_i3orw")
-text = "¡¿Hay alguien ahí?!"
+text = "DIALOGUE_DAY_01_LEVEL_03_LINE_02"
 delay_sec = 0.0
 duration_sec = 20.0
 
 [sub_resource type="Resource" id="Resource_v1m0x"]
 script = ExtResource("3_i3orw")
-text = "(cuelga) ..."
+text = "DIALOGUE_DAY_01_LEVEL_03_LINE_03"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_yi0yk"]
 script = ExtResource("3_i3orw")
-text = "¿Ha sido una broma?"
+text = "DIALOGUE_DAY_01_LEVEL_03_LINE_04"
 delay_sec = 0.0
 duration_sec = 10.0
 
@@ -133,49 +133,49 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_sj755"), SubReso
 
 [sub_resource type="Resource" id="Resource_daivp"]
 script = ExtResource("3_i3orw")
-text = "¡Bomboncito!"
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_00"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_hg1h1"]
 script = ExtResource("3_i3orw")
-text = "Yo te amo más."
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_01"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_s6vvx"]
 script = ExtResource("3_i3orw")
-text = "Te amo más más infinito."
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_02"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_0wyqe"]
 script = ExtResource("3_i3orw")
-text = "No, cuelga tú."
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_03"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_yga0x"]
 script = ExtResource("3_i3orw")
-text = "No, anda, tú."
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_04"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_b6jhg"]
 script = ExtResource("3_i3orw")
-text = "Cuelga tú."
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_05"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_nsick"]
 script = ExtResource("3_i3orw")
-text = "Espera, tengo una llamada"
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_06"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_36lrq"]
 script = ExtResource("3_i3orw")
-text = "en la otra línea."
+text = "DIALOGUE_DAY_01_LEVEL_04_LINE_07"
 delay_sec = 0.0
 duration_sec = 10.0
 
@@ -193,25 +193,25 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_daivp"), SubReso
 
 [sub_resource type="Resource" id="Resource_s3q5j"]
 script = ExtResource("3_i3orw")
-text = "¿Bueno? No, gracias."
+text = "DIALOGUE_DAY_01_LEVEL_05_LINE_00"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_dbr5i"]
 script = ExtResource("3_i3orw")
-text = "No, no necesito un seguro."
+text = "DIALOGUE_DAY_01_LEVEL_05_LINE_01"
 delay_sec = 0.0
 duration_sec = 20.0
 
 [sub_resource type="Resource" id="Resource_8chjt"]
 script = ExtResource("3_i3orw")
-text = "No me hace falta."
+text = "DIALOGUE_DAY_01_LEVEL_05_LINE_02"
 delay_sec = 0.0
 duration_sec = 25.0
 
 [sub_resource type="Resource" id="Resource_1jgoh"]
 script = ExtResource("3_i3orw")
-text = "Gracias."
+text = "DIALOGUE_DAY_01_LEVEL_05_LINE_03"
 delay_sec = 0.0
 duration_sec = 5.0
 
@@ -229,61 +229,61 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_s3q5j"), SubReso
 
 [sub_resource type="Resource" id="Resource_kb7o2"]
 script = ExtResource("3_i3orw")
-text = "¿Bueno?"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_00"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_8jflc"]
 script = ExtResource("3_i3orw")
-text = "¡Mi vida! Lástima que"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_01"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_w14d4"]
 script = ExtResource("3_i3orw")
-text = "te hayas ido al congreso"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_02"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_dso5d"]
 script = ExtResource("3_i3orw")
-text = "internacional de chefs. Al"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_03"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_8ckjv"]
 script = ExtResource("3_i3orw")
-text = "menos me regalaste a Bucho"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_04"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_enpfy"]
 script = ExtResource("3_i3orw")
-text = "para que me haga compañía"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_05"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_0rxl2"]
 script = ExtResource("3_i3orw")
-text = "Sí, así le puse"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_06"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_opn8q"]
 script = ExtResource("3_i3orw")
-text = "porque es glotón."
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_07"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_4iutd"]
 script = ExtResource("3_i3orw")
-text = "Te quiero mucho mucho."
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_08"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_tl7p4"]
 script = ExtResource("3_i3orw")
-text = "Bueno, mi cielo, ¡suerte!"
+text = "DIALOGUE_DAY_01_LEVEL_06_LINE_09"
 delay_sec = 0.0
 duration_sec = 10.0
 
@@ -301,31 +301,31 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_kb7o2"), SubReso
 
 [sub_resource type="Resource" id="Resource_jg5xd"]
 script = ExtResource("3_i3orw")
-text = "¿Bueno? Sí, ya fui"
+text = "DIALOGUE_DAY_01_LEVEL_07_LINE_00"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_35vhu"]
 script = ExtResource("3_i3orw")
-text = "a visitarlo. No te"
+text = "DIALOGUE_DAY_01_LEVEL_07_LINE_01"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gxgo7"]
 script = ExtResource("3_i3orw")
-text = "preocupes, mami. Le dejé"
+text = "DIALOGUE_DAY_01_LEVEL_07_LINE_02"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_ddbf7"]
 script = ExtResource("3_i3orw")
-text = "unas lindas flores."
+text = "DIALOGUE_DAY_01_LEVEL_07_LINE_03"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_8ofdh"]
 script = ExtResource("3_i3orw")
-text = "Te quiero. Cuídate."
+text = "DIALOGUE_DAY_01_LEVEL_07_LINE_04"
 delay_sec = 0.0
 duration_sec = 5.0
 
@@ -343,19 +343,19 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_jg5xd"), SubReso
 
 [sub_resource type="Resource" id="Resource_n0awb"]
 script = ExtResource("3_i3orw")
-text = "¡Amorcito!"
+text = "DIALOGUE_DAY_01_LEVEL_08_LINE_00"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_pv6bm"]
 script = ExtResource("3_i3orw")
-text = "Tráeme lo que quieras."
+text = "DIALOGUE_DAY_01_LEVEL_08_LINE_01"
 delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_g67s6"]
 script = ExtResource("3_i3orw")
-text = "Me llamas. ¡Bye!"
+text = "DIALOGUE_DAY_01_LEVEL_08_LINE_02"
 delay_sec = 0.0
 duration_sec = 10.0
 

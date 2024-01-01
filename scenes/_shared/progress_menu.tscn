@@ -37,6 +37,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(204, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
@@ -50,12 +51,12 @@ size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../MarginContainer/GoBackBtn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qykqa")
 selector_text = ""
-_options = ["Estrellas", "Récords"]
+_options = ["MENU_PROGRESS_STARS", "MENU_PROGRESS_HIGH_SCORES"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
 
 [node name="Label" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector" index="0"]
-text = "Estrellas >"
+text = "MENU_PROGRESS_STARS >"
 horizontal_alignment = 1
 
 [node name="EmptySpace" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
@@ -154,7 +155,7 @@ size_flags_horizontal = 8
 focus_neighbor_top = NodePath("../../RecordTypeSelector")
 mouse_filter = 2
 button_mask = 0
-text = "Regresar"
+text = "MENU_PROGRESS_QUIT"
 alignment = 2
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

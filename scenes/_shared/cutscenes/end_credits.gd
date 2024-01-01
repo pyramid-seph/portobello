@@ -27,7 +27,7 @@ func play() -> void:
 	await _roll(_original_credits)
 	_timer.start(3.0)
 	await _timer.timeout
-	_names_label.text = "¡Gracias por jugar!"
+	_names_label.text = "CREDITS_THANKS_FOR_PLAYING"
 	_timer.start(4.0)
 	await _timer.timeout
 	_job_label.text = ""

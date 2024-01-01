@@ -40,18 +40,18 @@ func _get_stars_string(count: int) -> String:
 func _show_stars() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
 
-	_label_0.text_1 = "Día 1"
+	_label_0.text_1 = "MENU_PROGRESS_STARS_0"
 	_label_0.text_2 = _get_stars_string(save_data.stars.day_one)
 	
 	if save_data.latest_day_completed > 1:
-		_label_1.text_1 = "Día 2"
+		_label_1.text_1 = "MENU_PROGRESS_STARS_1"
 		_label_1.text_2 = _get_stars_string(save_data.stars.day_two)
 	else:
 		_label_1.text_1 = UNKNOWN_MINI_GAME
 		_label_1.text_2 = UNKNOWN_VALUE
 	
 	if save_data.latest_day_completed > 2:
-		_label_2.text_1 = "Día 3"
+		_label_2.text_1 = "MENU_PROGRESS_STARS_2"
 		_label_2.text_2 = _get_stars_string(save_data.stars.day_three)
 	else:
 		_label_2.text_1 = UNKNOWN_MINI_GAME
@@ -74,15 +74,15 @@ func _show_stars() -> void:
 func _show_high_scores() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
 	
-	_label_0.text_1 = "Buffet 1A"
+	_label_0.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_0"
 	_label_0.text_2 = str(save_data.high_scores.buff_one_a)
-	_label_1.text_1 = "Buffet 1B"
+	_label_1.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_1"
 	_label_1.text_2 = str(save_data.high_scores.buff_one_b)
 	
 	if save_data.latest_day_completed > 0:
-		_label_2.text_1 = "Buffet 1C"
+		_label_2.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_2"
 		_label_2.text_2 = str(save_data.high_scores.buff_one_c)
-		_label_3.text_1 = "Buffet 1D"
+		_label_3.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_3"
 		_label_3.text_2 = str(save_data.high_scores.buff_one_d)
 	else:
 		_label_2.text_1 = UNKNOWN_MINI_GAME
@@ -91,9 +91,9 @@ func _show_high_scores() -> void:
 		_label_3.text_2 = UNKNOWN_VALUE
 	
 	if save_data.latest_day_completed > 1:
-		_label_4.text_1 = "Buffet 2"
+		_label_4.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_4"
 		_label_4.text_2 = str(save_data.high_scores.buff_two)
-		_label_7.text_1 = "Día 2"
+		_label_7.text_1 = "MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_02"
 		_label_7.text_2 = str(save_data.high_scores.day_two)
 	else:
 		_label_4.text_1 = UNKNOWN_MINI_GAME
@@ -102,11 +102,11 @@ func _show_high_scores() -> void:
 		_label_7.text_2 = UNKNOWN_VALUE
 	
 	if save_data.latest_day_completed > 2:
-		_label_5.text_1 = "Buffet 3A"
+		_label_5.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_5"
 		_label_5.text_2 = str(save_data.high_scores.buff_three_a)
-		_label_6.text_1 = "Buffet 3B"
+		_label_6.text_1 = "MENU_PROGRESS_HIGH_SCORE_SCORE_ATTACK_6"
 		_label_6.text_2 = str(save_data.high_scores.buff_three_b)
-		_label_8.text_1 = "Día 3"
+		_label_8.text_1 = "MENU_PROGRESS_HIGH_SCORE_STORY_MODE_DAY_03"
 		_label_8.text_2 = str(save_data.high_scores.day_three)
 	else:
 		_label_5.text_1 = UNKNOWN_MINI_GAME

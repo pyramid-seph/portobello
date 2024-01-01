@@ -30,6 +30,10 @@ func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
+func _ready() -> void:
+	TranslationServer.set_locale(SaveDataManager.save_data.language)
+
+
 func start(minigame: Minigame, allow_restart := false) -> void:
 	if _current_minigame == minigame and not allow_restart:
 		return

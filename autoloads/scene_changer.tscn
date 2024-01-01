@@ -45,7 +45,7 @@ theme = ExtResource("3_rwund")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
-text = "Cargando"
+text = "LOADING_SCREEN_LOADING"
 vertical_alignment = 1
 
 [node name="AnimatedTextureRect" parent="LodingAnimContainer" instance=ExtResource("5_qq1kj")]
@@ -62,9 +62,9 @@ one_shot = true
 
 [node name="ErrorDialog" parent="." instance=ExtResource("8_o1hk3")]
 visible = false
-body_text = "Error al cargar recurso"
+body_text = "LOADING_SCREEN_ERROR"
 negative_btn_text = ""
-positive_btn_text = "Salir"
+positive_btn_text = "COMMON_OPTIONS_EXIT"
 hide_shadow = true
 
 [connection signal="change_error" from="." to="." method="_on_change_error"]
