@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene load_steps=9 format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
+[ext_resource type="AudioStream" uid="uid://b7mjbu3tpuojm" path="res://audio/ui/pause.wav" id="3_runxt"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="4_u35yd"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="5_tyfqu"]
 
@@ -31,6 +32,7 @@ grow_vertical = 2
 theme = ExtResource("1_rpjji")
 theme_override_styles/panel = SubResource("StyleBoxFlat_hi4pj")
 script = ExtResource("1")
+pause_menu_shown_sound = ExtResource("3_runxt")
 show_auto_fire = true
 
 [node name="PauseDialog" type="PanelContainer" parent="."]

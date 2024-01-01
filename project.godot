@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://art/_shared/ui_counter_lives.png"
 
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
 [autoload]
 
 SaveDataManager="*res://autoloads/save_data_manager.gd"

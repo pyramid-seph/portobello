@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmfc5e84lpwkj"]
+[gd_scene load_steps=4 format=3 uid="uid://bmfc5e84lpwkj"]
 
-[ext_resource type="PackedScene" path="res://scenes/_shared/short_lived_sprite.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cefm2xd5073je" path="res://scenes/_shared/short_lived_sprite.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq53a6iqt04jk" path="res://art/day_3/object_explosion.png" id="2_vqewr"]
+[ext_resource type="AudioStream" uid="uid://n8yebd1qx6w7" path="res://audio/sfx/explosion.wav" id="3_oxvdo"]
 
 [node name="Explosion" instance=ExtResource("1")]
 z_index = -40
 texture = ExtResource("2_vqewr")
 centered = false
+sound_effect = ExtResource("3_oxvdo")
 
 [node name="Timer" parent="." index="0"]
 wait_time = 0.08

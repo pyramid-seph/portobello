@@ -4,6 +4,7 @@ extends Control
 const IDX_YES: int = 0
 const IDX_NO: int = 1
 
+@export var pause_menu_shown_sound: AudioStream
 @export var show_auto_fire: bool = false
 
 var enabled := true:
@@ -31,6 +32,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and enabled:
 		get_viewport().set_input_as_handled()
 		_pause_game(!_scene_tree.paused)
+		if _scene_tree.paused:
+			SoundManager.play_ui_sound(pause_menu_shown_sound)
 
 
 func _pause_game(pause: bool) -> void:
