@@ -15,15 +15,19 @@ const SELECTED_NONE: int = -1
 	set(value):
 		_options = value
 		_on_options_set()
-
 @export var focus_color: Color = Color.MAGENTA:
 	set(value):
 		focus_color = value
 		_on_focus_color_set()
+@export var options_selectable: bool
 @export var loop_options: bool = true:
 	set(value):
 		loop_options = value
 		_on_loop_options_set()
+@export var focus_sound: AudioStream
+@export var next_option_sound: AudioStream
+@export var selection_sound: AudioStream
+@export var cannot_go_next_option_sound: AudioStream
 
 var current_option_idx: int = SELECTED_NONE:
 	set(value):
@@ -45,7 +49,10 @@ func _gui_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if event.is_action_pressed("ui_accept") and current_option_idx > SELECTED_NONE:
+	if event.is_action_pressed("ui_accept") and\
+			current_option_idx > SELECTED_NONE and\
+			options_selectable:
+		_play_sound(selection_sound)
 		selected.emit(_get_value_for_option(current_option_idx))
 		accept_event()
 	if event.is_action_pressed("ui_left"):
@@ -65,6 +72,11 @@ func set_options(arr: Array) -> void:
 	_options = arr
 
 
+func _play_sound(sound: AudioStream) -> void:
+	if sound:
+		SoundManager.play_ui_sound(sound)
+
+
 func _emit_current_option_index_changed() -> void:
 	if not Engine.is_editor_hint():
 		current_option_index_changed.emit(current_option_idx)
@@ -79,7 +91,10 @@ func _previous_option() -> void:
 	else:
 		current_option_idx = maxi(current_option_idx - 1, 0)
 	if old_current_option_idx != current_option_idx:
+		_play_sound(focus_sound)
 		_emit_current_option_index_changed()
+	else:
+		_play_sound(cannot_go_next_option_sound)
 
 
 func _next_option() -> void:
@@ -91,7 +106,10 @@ func _next_option() -> void:
 	else:
 		current_option_idx = mini(_options.size() - 1, current_option_idx + 1)
 	if old_current_option_idx != current_option_idx:
+		_play_sound(focus_sound)
 		_emit_current_option_index_changed()
+	else:
+		_play_sound(cannot_go_next_option_sound)
 
 
 func _update_bg_color() -> void:

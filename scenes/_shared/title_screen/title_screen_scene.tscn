@@ -160,6 +160,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_v21ph")
 selector_text = "MENU_MAIN_SELECT_STORY_MODE"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+options_selectable = true
 
 [node name="ScoreAttackGameSelector" parent="TitleScreen/MainMenu/VBoxContainer" instance=ExtResource("9_d05si")]
 unique_name_in_owner = true
@@ -170,6 +171,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_37lb0")
 selector_text = "MENU_MAIN_SELECT_SCORE_ATTACK_MODE"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+options_selectable = true
 
 [node name="ShowScoresBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]
 unique_name_in_owner = true

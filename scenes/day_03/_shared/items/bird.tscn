@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://brj67hm7ypmn8" path="res://scenes/_shared/moving_item.tscn" id="1_htd8b"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/items/bird.gd" id="2_g1tn3"]
 [ext_resource type="Texture2D" uid="uid://pho1o16a8h25" path="res://art/day_3/pickup_bird_0.png" id="3_6ocvl"]
-[ext_resource type="AudioStream" uid="uid://bi2pxc30cp3cm" path="res://audio/sfx/pick_up.wav" id="3_e7gon"]
+[ext_resource type="AudioStream" uid="uid://bi2pxc30cp3cm" path="res://audio/sfx/pick_up_bird.wav" id="3_e7gon"]
 [ext_resource type="Texture2D" uid="uid://cmojv8tts3gle" path="res://art/day_3/pickup_bird_1.png" id="4_lrvqd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sugky"]
