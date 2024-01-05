@@ -7,6 +7,7 @@ const MenuBgDayExTexture: Texture2D = preload("res://art/menu_screen/menu_bg_day
 const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_scores.png")
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
+const BgmTestSound: AudioStream = preload("res://audio/bgm/fantasy_world_loop_ambience_spider_den_minimal_airy_dark_tunnel_cave_underground_graveyard_b.wav")
 
 const BG_COLOR_DAY_1_LIKE_GAME := Color("7CE194")
 const BG_COLOR_DAY_2_LIKE_GAME := Color("E76F6F")
@@ -128,6 +129,7 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 
 
 func _ready() -> void:
+	SoundManager.play_music(BgmTestSound)
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()

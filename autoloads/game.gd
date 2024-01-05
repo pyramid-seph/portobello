@@ -32,6 +32,12 @@ func _init() -> void:
 
 func _ready() -> void:
 	TranslationServer.set_locale(SaveDataManager.save_data.language)
+	var save_data := SaveDataManager.save_data as SaveData
+	if save_data.is_audio_enabled:
+		Utils.unmute()
+	else:
+		Utils.mute()
+	
 
 
 func start(minigame: Minigame, allow_restart := false) -> void:

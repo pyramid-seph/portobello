@@ -17,6 +17,7 @@ var enabled := true:
 @onready var _confirm_exit_dialog := $ConfirmExitLevelDialog
 @onready var _autofire_selector := %AutofireSelector as HSelector
 @onready var _vibration_selector := %VibrationSelector as HSelector
+@onready var _audio_selector := %AudioSelector as HSelector
 @onready var _scene_tree := get_tree() as SceneTree
 @onready var _is_ready := true
 
@@ -66,15 +67,19 @@ func _load_settings() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
 	var is_autofire_enabled: bool = save_data.is_autofire_enabled
 	var is_vibration_enabled: bool = save_data.is_vibration_enabled
+	var is_audio_enabled: bool = save_data.is_audio_enabled
 	_autofire_selector.current_option_idx = _get_option_idx(is_autofire_enabled)
 	_vibration_selector.current_option_idx = _get_option_idx(is_vibration_enabled)
+	_audio_selector.current_option_idx = _get_option_idx(is_audio_enabled)
 
 
 func _save_settings() -> void:
 	var is_autofire_enabled: bool = _is_feature_enabled(_autofire_selector)
 	var is_vibration_enabled: bool = _is_feature_enabled(_vibration_selector)
+	var is_audio_enabled: bool = _is_feature_enabled(_audio_selector)
 	SaveDataManager.save_data.is_autofire_enabled = is_autofire_enabled
 	SaveDataManager.save_data.is_vibration_enabled = is_vibration_enabled
+	SaveDataManager.save_data.is_audio_enabled = is_audio_enabled
 	SaveDataManager.save()
 
 
@@ -86,6 +91,13 @@ func _on_enabled_set() -> void:
 func _on_vibration_selector_current_option_index_changed(value: int) -> void:
 	if value == IDX_YES:
 		Utils.vibrate_joy_demo()
+
+
+func _on_audio_selector_current_option_index_changed(value: int) -> void:
+	if value == IDX_YES:
+		Utils.unmute()
+	else:
+		Utils.mute()
 
 
 func _on_give_up_button_pressed() -> void:

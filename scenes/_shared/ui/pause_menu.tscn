@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene load_steps=10 format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
@@ -11,6 +11,12 @@ bg_color = Color(0, 0, 0, 0.784314)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71v0q"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87d6c"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -63,6 +69,15 @@ _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
 
+[node name="AudioSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_87d6c")
+selector_text = "MENU_SETTINGS_AUDIO"
+_options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+loop_options = false
+
 [node name="AutofireSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
@@ -97,6 +112,7 @@ positive_btn_text = "COMMON_OPTIONS_YES"
 hide_shadow = true
 
 [connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
+[connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/AudioSelector" to="." method="_on_audio_selector_current_option_index_changed"]
 [connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
 [connection signal="pressed" from="PauseDialog/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="negative_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_negative_btn_pressed"]

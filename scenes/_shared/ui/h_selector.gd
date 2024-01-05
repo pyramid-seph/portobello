@@ -51,7 +51,7 @@ func _gui_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("ui_accept") and\
 			current_option_idx > SELECTED_NONE and\
-			options_selectable:
+			not selected.get_connections().is_empty():
 		_play_sound(selection_sound)
 		selected.emit(_get_value_for_option(current_option_idx))
 		accept_event()

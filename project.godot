@@ -29,8 +29,8 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 SaveDataManager="*res://autoloads/save_data_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 SceneChanger="*res://autoloads/scene_changer.tscn"
-Game="*res://autoloads/game.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+Game="*res://autoloads/game.gd"
 
 [display]
 

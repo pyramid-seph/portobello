@@ -196,3 +196,13 @@ static func _vibrate_joy_web_workaround(
 static func get_default_language() -> String:
 	var system_lang: String = OS.get_locale_language()
 	return system_lang if system_lang in ["en", "es"] else "en"
+
+
+static func mute() -> void:
+	SoundManager.set_music_volume(0.0)
+	SoundManager.set_sound_volume(0.0)
+
+
+static func unmute() -> void:
+	SoundManager.set_music_volume(1.0)
+	SoundManager.set_sound_volume(1.0)

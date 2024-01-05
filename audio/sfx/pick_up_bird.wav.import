@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/pick_up_bird.wav-5b045b70cf3da751941c8d92e9c1
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

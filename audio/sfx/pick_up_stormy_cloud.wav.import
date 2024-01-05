@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/pick_up_stormy_cloud.wav-fa4e4ebbbff9d432ca8f
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

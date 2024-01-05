@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/falling.wav-893ff89071cb4f8bc4664029399535bf.
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

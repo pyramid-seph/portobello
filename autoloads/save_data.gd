@@ -4,7 +4,7 @@ extends RefCounted
 signal is_autofire_enabled_changed(old_val, new_val)
 
 
-const VERSION: int = 2
+const VERSION: int = 3
 
 var version: int = VERSION
 # First day is 1. "The lost chapter" does not count.
@@ -17,6 +17,7 @@ var is_autofire_enabled := true:
 		is_autofire_enabled = value
 		is_autofire_enabled_changed.emit(old_is_autofire_enabled, is_autofire_enabled)
 var language: String = Utils.get_default_language()
+var is_audio_enabled: bool = true
 var stars := Stars.new()
 var high_scores := HighScores.new()
 
@@ -28,6 +29,7 @@ func to_dictionary() -> Dictionary:
 		"is_vibration_enabled": is_vibration_enabled,
 		"is_autofire_enabled": is_autofire_enabled,
 		"language": language,
+		"is_audio_enabled": is_audio_enabled,
 		"stars": {
 			"day_one": stars.day_one,
 			"day_two": stars.day_two,
@@ -66,6 +68,7 @@ static func from_json(json: Dictionary) -> SaveData:
 	save_data.high_scores.day_two = json.high_scores.day_two
 	save_data.high_scores.day_three = json.high_scores.day_three
 	save_data.language = json.language
+	save_data.is_audio_enabled = json.is_audio_enabled
 	return save_data
 
 

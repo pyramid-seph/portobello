@@ -21,6 +21,7 @@ const LANGUAGE_OPTIONS := [
 @onready var _is_ready := true
 @onready var _autofire_selector := %AutofireSelector
 @onready var _vibration_selector := %VibrationSelector
+@onready var _audio_selector: HSelector = %AudioSelector
 @onready var _erase_data_btn := %EraseDataBtn
 @onready var _confirm_erase_data_dialog := %ConfirmEraseDataDialog
 @onready var _erased_data_dialog := %ErasedDataDialog
@@ -60,18 +61,22 @@ func _load_data() -> void:
 	var save_data := SaveDataManager.save_data as SaveData
 	var is_autofire_enabled: bool = save_data.is_autofire_enabled
 	var is_vibration_enabled: bool = save_data.is_vibration_enabled
+	var is_audio_enabled: bool = save_data.is_audio_enabled
 	_autofire_selector.current_option_idx = _get_yes_no_option_idx(is_autofire_enabled)
 	_vibration_selector.current_option_idx = _get_yes_no_option_idx(is_vibration_enabled)
+	_audio_selector.current_option_idx = _get_yes_no_option_idx(is_audio_enabled)
 	_language_selector.current_option_idx = _get_language_option_idx()
 
 
 func _save_data() -> void:
 	var is_autofire_enabled: bool = _is_feature_enabled(_autofire_selector)
 	var is_vibration_enabled: bool = _is_feature_enabled(_vibration_selector)
+	var is_audio_enabled: bool = _is_feature_enabled(_audio_selector)
 	var selected_lang_index: int = _language_selector.current_option_idx
 	var selected_language: String = LANGUAGE_OPTIONS[selected_lang_index].value 
 	SaveDataManager.save_data.is_autofire_enabled = is_autofire_enabled
 	SaveDataManager.save_data.is_vibration_enabled = is_vibration_enabled
+	SaveDataManager.save_data.is_audio_enabled = is_audio_enabled
 	SaveDataManager.save_data.language = selected_language
 	SaveDataManager.save()
 
@@ -104,6 +109,7 @@ func _on_confirm_erase_data_dialog_negative_btn_pressed() -> void:
 
 func _on_erased_data_dialog_positive_btn_pressed() -> void:
 	_set_locale(SaveDataManager.save_data.language)
+	Utils.unmute()
 	Game.is_cold_boot = true
 	Game.start(Game.Minigame.TITLE_SCREEN, true)
 
@@ -126,6 +132,13 @@ func _on_go_back_btn_pressed() -> void:
 func _on_vibration_selector_current_option_index_changed(value: int) -> void:
 	if value == IDX_YES:
 		Utils.vibrate_joy_demo()
+
+
+func _on_audio_selector_current_option_index_changed(value: int) -> void:
+	if value == IDX_YES:
+		Utils.unmute()
+	else:
+		Utils.mute()
 
 
 func _on_language_selector_current_option_index_changed(index: int) -> void:
