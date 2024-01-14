@@ -102,12 +102,12 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 ]
 
 @export_group("Debug", "_debug")
-@export var _debug_is_cold_boot: bool:
+@export var _debug_ignore_game_progress: bool:
 	get:
-		return _debug_is_cold_boot and OS.is_debug_build()
-@export var _debug_skip_game_filter: bool:
+		return _debug_ignore_game_progress and OS.is_debug_build()
+@export var _debug_skip_logos_roll: bool:
 	get:
-		return _debug_skip_game_filter and OS.is_debug_build()
+		return _debug_skip_logos_roll and OS.is_debug_build()
 
 @onready var _is_ready := true
 @onready var _title_screen := $TitleScreen
@@ -129,7 +129,6 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 
 
 func _ready() -> void:
-	SoundManager.play_music(BgmTestSound)
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()
@@ -146,10 +145,13 @@ func _remove_exit_btn_on_web() -> void:
 
 
 func _start() -> void:
-	if Game.is_cold_boot or _debug_is_cold_boot:
+	if Game.is_cold_boot:
 		Game.is_cold_boot = false
 		_enable_title_screen(false)
-		_logos_roll.start()
+		if _debug_skip_logos_roll:
+			call_deferred("_enable_title_screen", true)
+		else:
+			_logos_roll.start()
 	else:
 		_enable_title_screen(true)
 
@@ -159,7 +161,7 @@ func _update_version_label_visibility() -> void:
 
 
 func _get_enabled_story_mode_games() -> Array:
-	if _debug_skip_game_filter:
+	if _debug_ignore_game_progress:
 		return STORY_MODE_OPTIONS
 	
 	var saved_data := SaveDataManager.save_data as SaveData
@@ -169,7 +171,7 @@ func _get_enabled_story_mode_games() -> Array:
 
 
 func _get_enabled_score_attack_games() -> Array:
-	if _debug_skip_game_filter:
+	if _debug_ignore_game_progress:
 		return SCORE_ATTACK_MODE_OPTIONS
 	
 	var saved_data := SaveDataManager.save_data as SaveData

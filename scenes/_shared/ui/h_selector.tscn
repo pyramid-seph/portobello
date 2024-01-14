@@ -3,9 +3,9 @@
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_vafp5"]
 [ext_resource type="StyleBox" uid="uid://dvn8b501xre75" path="res://resources/instances/h_selector_panel_style.tres" id="2_1hlqb"]
 [ext_resource type="Script" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
-[ext_resource type="AudioStream" uid="uid://dyt3rdtjacitn" path="res://audio/ui/focused.wav" id="4_7hotm"]
-[ext_resource type="AudioStream" uid="uid://cy4oo6qa36pqb" path="res://audio/ui/cannot_change.wav" id="5_605ui"]
-[ext_resource type="AudioStream" uid="uid://b8aj3or3hlqt8" path="res://audio/ui/select.wav" id="5_m8ma7"]
+[ext_resource type="AudioStream" uid="uid://dyt3rdtjacitn" path="res://audio/ui/ui_move.wav" id="4_7hotm"]
+[ext_resource type="AudioStream" uid="uid://cy4oo6qa36pqb" path="res://audio/ui/ui_pressed_disabled.wav" id="5_605ui"]
+[ext_resource type="AudioStream" uid="uid://b8aj3or3hlqt8" path="res://audio/ui/ui_pressed.wav" id="5_m8ma7"]
 
 [node name="HSelector" type="PanelContainer"]
 offset_right = 159.0

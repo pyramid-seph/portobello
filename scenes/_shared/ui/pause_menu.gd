@@ -30,7 +30,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") and enabled:
+	if event.is_action_pressed("pause") and \
+			enabled and \
+			not _confirm_exit_dialog.visible:
 		get_viewport().set_input_as_handled()
 		_pause_game(!_scene_tree.paused)
 		if _scene_tree.paused:
@@ -101,7 +103,6 @@ func _on_audio_selector_current_option_index_changed(value: int) -> void:
 
 
 func _on_give_up_button_pressed() -> void:
-	_pause_dialog.visible = false
 	_confirm_exit_dialog.visible = true
 
 

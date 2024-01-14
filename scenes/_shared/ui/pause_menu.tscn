@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene load_steps=11 format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
-[ext_resource type="AudioStream" uid="uid://b7mjbu3tpuojm" path="res://audio/ui/pause.wav" id="3_runxt"]
+[ext_resource type="AudioStream" uid="uid://b7mjbu3tpuojm" path="res://audio/ui/ui_pause.wav" id="3_runxt"]
+[ext_resource type="PackedScene" uid="uid://b15s1kucavas8" path="res://scenes/_shared/ui/ui_sounds_installer.tscn" id="4_4wajv"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="4_u35yd"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="5_tyfqu"]
 
@@ -41,6 +42,9 @@ script = ExtResource("1")
 pause_menu_shown_sound = ExtResource("3_runxt")
 show_auto_fire = true
 
+[node name="UiSoundsInstaller" parent="." node_paths=PackedStringArray("root_path") instance=ExtResource("4_4wajv")]
+root_path = NodePath("..")
+
 [node name="PauseDialog" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(150, 114)
 layout_mode = 2
@@ -63,6 +67,7 @@ uppercase = true
 [node name="VibrationSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../ContinueButton")
 theme_override_styles/panel = SubResource("StyleBoxFlat_71v0q")
 selector_text = "MENU_PAUSE_VIBRATE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
@@ -98,6 +103,7 @@ alignment = 0
 [node name="ContinueButton" type="Button" parent="PauseDialog/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../VibrationSelector")
 mouse_filter = 2
 text = "MENU_PAUSE_UNPAUSE"
 flat = true
@@ -109,7 +115,6 @@ layout_mode = 2
 body_text = "CONFIRM_GIVE_UP"
 negative_btn_text = "COMMON_OPTIONS_NO"
 positive_btn_text = "COMMON_OPTIONS_YES"
-hide_shadow = true
 
 [connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
 [connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/AudioSelector" to="." method="_on_audio_selector_current_option_index_changed"]

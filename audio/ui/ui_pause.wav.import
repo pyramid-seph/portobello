@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dyt3rdtjacitn"
-path="res://.godot/imported/focused.wav-f3be48708285d16d316964c21379f007.sample"
+uid="uid://b7mjbu3tpuojm"
+path="res://.godot/imported/ui_pause.wav-3c896daf14e66e76f37c926f4f990885.sample"
 
 [deps]
 
-source_file="res://audio/ui/focused.wav"
-dest_files=["res://.godot/imported/focused.wav-f3be48708285d16d316964c21379f007.sample"]
+source_file="res://audio/ui/ui_pause.wav"
+dest_files=["res://.godot/imported/ui_pause.wav-3c896daf14e66e76f37c926f4f990885.sample"]
 
 [params]
 
