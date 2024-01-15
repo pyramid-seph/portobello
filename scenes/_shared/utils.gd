@@ -199,10 +199,8 @@ static func get_default_language() -> String:
 
 
 static func mute() -> void:
-	SoundManager.set_music_volume(0.0)
-	SoundManager.set_sound_volume(0.0)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"Master"), true)
 
 
 static func unmute() -> void:
-	SoundManager.set_music_volume(1.0)
-	SoundManager.set_sound_volume(1.0)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"Master"), false)
