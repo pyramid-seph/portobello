@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://by5tgny246tjh"
-path="res://.godot/imported/pick_up_stormy_cloud.wav-fa4e4ebbbff9d432ca8f37d855c9695c.sample"
+path="res://.godot/imported/sfx_player_ate_stormy_cloud.wav-9ca6082f6a6326464dd8b60e34b6f3fe.sample"
 
 [deps]
 
-source_file="res://audio/sfx/pick_up_stormy_cloud.wav"
-dest_files=["res://.godot/imported/pick_up_stormy_cloud.wav-fa4e4ebbbff9d432ca8f37d855c9695c.sample"]
+source_file="res://audio/sfx/sfx_player_ate_stormy_cloud.wav"
+dest_files=["res://.godot/imported/sfx_player_ate_stormy_cloud.wav-9ca6082f6a6326464dd8b60e34b6f3fe.sample"]
 
 [params]
 

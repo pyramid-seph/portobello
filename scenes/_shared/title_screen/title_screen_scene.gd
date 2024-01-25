@@ -129,10 +129,15 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 
 
 func _ready() -> void:
+	SoundManager.play_music(preload("res://audio/bgm/fantasy_world_loop_ambience_spider_den_minimal_airy_dark_tunnel_cave_underground_graveyard_b.wav"))
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()
 	_start()
+
+
+func _exit_tree() -> void:
+	SoundManager.stop_music()
 
 
 func _remove_exit_btn_on_web() -> void:

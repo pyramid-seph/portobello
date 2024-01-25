@@ -4,7 +4,9 @@ extends Sprite2D
 
 
 func _ready() -> void:
-	if sound_effect:
+	var is_sfx_playing: bool = SoundUtils.is_sfx_started_playing(sound_effect)
+	print("is_sfx_started_playing: ", is_sfx_playing)
+	if sound_effect and not is_sfx_playing:
 		SoundManager.play_sound(sound_effect)
 
 

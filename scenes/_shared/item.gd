@@ -35,11 +35,11 @@ func pick_up(picker) -> void:
 func _on_pick_up(_picker) -> void:
 	pass
 
-
+const SoundEffects = preload("res://addons/sound_manager/sound_effects.gd")
 func _internal_on_pick_up(picker) -> void:
 	if picker.has_method("add_points_to_score"):
 		picker.add_points_to_score(score_points_pick_up)
-	if pick_up_sound:
+	if pick_up_sound and not SoundUtils.is_sfx_started_playing(pick_up_sound):
 		SoundManager.play_sound(pick_up_sound)
 	_on_pick_up(picker)
 

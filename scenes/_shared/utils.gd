@@ -196,11 +196,3 @@ static func _vibrate_joy_web_workaround(
 static func get_default_language() -> String:
 	var system_lang: String = OS.get_locale_language()
 	return system_lang if system_lang in ["en", "es"] else "en"
-
-
-static func mute() -> void:
-	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"Master"), true)
-
-
-static func unmute() -> void:
-	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"Master"), false)

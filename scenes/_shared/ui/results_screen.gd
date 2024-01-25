@@ -4,6 +4,15 @@ extends Control
 signal calculated(new_high_score: int, stars: int)
 signal finished(total_score: int, extra_lives: int, stars: int)
 
+const _results_screen_bgm: AudioStream = preload("res://audio/bgm/bgm_results_screen_theme.wav")
+const _score_calculation_sound: AudioStream = preload("res://audio/sfx/sfx_results_screen_total_score_calculation.wav")
+const _extra_lives_sound: AudioStream = preload("res://audio/sfx/sfx_results_screen_total_score_extra_lives.wav")
+const _stars_count_zero_sound: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_count_zero.wav")
+const _stars_count_sound: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_count.wav")
+const _stars_result_good_sound: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_result_good.wav")
+const _stars_result_best_sound: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_result_best.wav")
+const _stars_result_bad_sound: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_result_bad.wav")
+
 enum StarsEvaluationMode {
 	LIVES,
 	SCORE,
@@ -58,6 +67,10 @@ var _curr_high_score: int
 
 func _ready() -> void:
 	_ensure_reset_ui()
+
+
+func _exit_tree() -> void:
+	SoundManager.stop_music()
 
 
 func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, high_score: int) -> void:
@@ -170,15 +183,27 @@ func _tween_level_results() -> void:
 		_change_results_labels_color(Color.TRANSPARENT)
 	)
 	_tween.tween_interval(LEVEL_RESULTS_INITIAL_INTERVAL_SEC)
-	_tween.tween_callback(func(): Utils.change_label_color(_score_label, RESULTS_LABELS_COLOR))
+	_tween.tween_callback(func(): 
+		Utils.change_label_color(_score_label, RESULTS_LABELS_COLOR)
+		SoundManager.play_sound(_score_calculation_sound)
+	)
 	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
-	_tween.tween_callback(func(): Utils.change_label_color(_lives_bonus_label, RESULTS_LABELS_COLOR))
+	_tween.tween_callback(func(): 
+		Utils.change_label_color(_lives_bonus_label, RESULTS_LABELS_COLOR)
+		SoundManager.play_sound(_score_calculation_sound)
+	)
 	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
-	_tween.tween_callback(func(): Utils.change_label_color(_total_score_label, RESULTS_LABELS_COLOR))
+	_tween.tween_callback(func(): 
+		Utils.change_label_color(_total_score_label, RESULTS_LABELS_COLOR)
+		SoundManager.play_sound(_score_calculation_sound)
+	)
 	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
 	if _extra_lives > 0:
 		_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
-		_tween.tween_callback(func(): Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR))
+		_tween.tween_callback(func(): 
+			Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR)
+			SoundManager.play_sound(_extra_lives_sound)
+		)
 	_tween.tween_interval(LEVEL_RESULTS_LAST_INTERVAL_SEC)
 	_tween.tween_callback(func(): _results_container.visible = false)
 
@@ -215,16 +240,24 @@ func _tween_stars_results() -> void:
 	if _stars < 1:
 		_tween.tween_callback(func():
 			_stars_label.text = "RESULTS_SCREEN_EVALUATION_RESULT_ZERO"
+			SoundManager.play_sound(_stars_count_zero_sound)
 		)
 		_tween.tween_interval(STARS_DURATION_SEC)
 	else:
 		for i in _stars:
 			_tween.tween_callback(func():
 				_stars_label.text += "*" if i == 0 else " *"
+				SoundManager.play_sound(_stars_count_sound)
 			)
 			_tween.tween_interval(STARS_DURATION_SEC)
 	_tween.tween_callback(func():
 		_evaluation_label.visible = true
+		var stars_result_sound: AudioStream = _stars_result_good_sound
+		if _stars < 2:
+			stars_result_sound = _stars_result_bad_sound
+		elif _stars == 5:
+			stars_result_sound = _stars_result_best_sound
+		SoundManager.play_sound(stars_result_sound)
 	)
 	_tween.tween_interval(STARS_LAST_INTERVAL_SEC)
 	_tween.tween_callback(func():
@@ -233,6 +266,7 @@ func _tween_stars_results() -> void:
 
 
 func _show_results() -> Signal:
+	SoundManager.play_music(_results_screen_bgm)
 	visible = true
 	_setup_label_texts()
 	

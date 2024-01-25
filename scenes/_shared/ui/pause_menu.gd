@@ -97,9 +97,9 @@ func _on_vibration_selector_current_option_index_changed(value: int) -> void:
 
 func _on_audio_selector_current_option_index_changed(value: int) -> void:
 	if value == IDX_YES:
-		Utils.unmute()
+		SoundUtils.unmute()
 	else:
-		Utils.mute()
+		SoundUtils.mute()
 
 
 func _on_give_up_button_pressed() -> void:

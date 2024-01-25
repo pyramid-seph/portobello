@@ -109,7 +109,7 @@ func _on_confirm_erase_data_dialog_negative_btn_pressed() -> void:
 
 func _on_erased_data_dialog_positive_btn_pressed() -> void:
 	_set_locale(SaveDataManager.save_data.language)
-	Utils.unmute()
+	SoundUtils.unmute()
 	Game.is_cold_boot = true
 	Game.start(Game.Minigame.TITLE_SCREEN, true)
 
@@ -136,9 +136,9 @@ func _on_vibration_selector_current_option_index_changed(value: int) -> void:
 
 func _on_audio_selector_current_option_index_changed(value: int) -> void:
 	if value == IDX_YES:
-		Utils.unmute()
+		SoundUtils.unmute()
 	else:
-		Utils.mute()
+		SoundUtils.mute()
 
 
 func _on_language_selector_current_option_index_changed(index: int) -> void:
