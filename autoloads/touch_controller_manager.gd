@@ -3,9 +3,9 @@ extends Node
 const TouchScreenControllerScn = preload("res://scenes/_shared/touch_controller/touch_screen_controller.tscn")
 const TouchScreenController = preload("res://scenes/_shared/touch_controller/touch_screen_controller.gd")
 
-const _button_action_main_accept_texture = preload("res://art/_shared/button_action_main_accept.png")
-const _button_action_main_fire_texture = preload("res://art/_shared/button_action_main_fire.png")
-const _button_action_main_skip_texture = preload("res://art/_shared/button_action_main_skip.png")
+const _button_action_main_accept_texture = preload("res://art/_shared/touch_button_action_main_accept.png")
+const _button_action_main_fire_texture = preload("res://art/_shared/touch_button_action_main_fire.png")
+const _button_action_main_skip_texture = preload("res://art/_shared/touch_button_action_main_skip.png")
 
 enum Mode {
 	UI_MENU,

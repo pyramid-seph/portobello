@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvx3pdt7vngqd"
-path="res://.godot/imported/button_action_dir_left.png-a766a5bb41a6927b7360876c74bbd77c.ctex"
+uid="uid://gddww1bca2mt"
+path="res://.godot/imported/touch_button_action_main_fire.png-98a3e736aa5c38733974180e1f5a87b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/_shared/button_action_dir_left.png"
-dest_files=["res://.godot/imported/button_action_dir_left.png-a766a5bb41a6927b7360876c74bbd77c.ctex"]
+source_file="res://art/_shared/touch_button_action_main_fire.png"
+dest_files=["res://.godot/imported/touch_button_action_main_fire.png-98a3e736aa5c38733974180e1f5a87b1.ctex"]
 
 [params]
 

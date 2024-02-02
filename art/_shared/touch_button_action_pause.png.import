@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h31bnctfaxoc"
-path="res://.godot/imported/button_controller_normal.png-aa7ff8804c127646adc70a6027e54291.ctex"
+uid="uid://bm4ev3l8ruhy3"
+path="res://.godot/imported/touch_button_action_pause.png-fcd00ad6a9d6a356727389478771b753.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/_shared/button_controller_normal.png"
-dest_files=["res://.godot/imported/button_controller_normal.png-aa7ff8804c127646adc70a6027e54291.ctex"]
+source_file="res://art/_shared/touch_button_action_pause.png"
+dest_files=["res://.godot/imported/touch_button_action_pause.png-fcd00ad6a9d6a356727389478771b753.ctex"]
 
 [params]
 

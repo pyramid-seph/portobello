@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4f836m1ucb0j"
-path="res://.godot/imported/button_action_main_skip.png-4a3c47b29bb4ef025f27e936515d599b.ctex"
+uid="uid://bmdaiutjf4nyf"
+path="res://.godot/imported/touch_button_action_dir_right.png-a5d850a9121e49f1673c46de43f39c75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/_shared/button_action_main_skip.png"
-dest_files=["res://.godot/imported/button_action_main_skip.png-4a3c47b29bb4ef025f27e936515d599b.ctex"]
+source_file="res://art/_shared/touch_button_action_dir_right.png"
+dest_files=["res://.godot/imported/touch_button_action_dir_right.png-a5d850a9121e49f1673c46de43f39c75.ctex"]
 
 [params]
 
