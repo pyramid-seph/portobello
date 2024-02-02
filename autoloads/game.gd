@@ -1,5 +1,6 @@
 extends Node
 
+
 enum Mode { 
 	SCORE_ATTACK,
 	STORY,
@@ -22,7 +23,6 @@ enum Minigame {
 }
 
 var is_cold_boot: bool = true
-
 var _current_minigame: Minigame = Minigame.TITLE_SCREEN
 
 

@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://b1ldw26sv5ng"
 path="res://.godot/imported/ui_counter_time.png-eb731b5d09240171f6fcaa2ac1a2b017.res"
-group_file="res://art/_shared/_atlasui_shared.png"
+group_file="res://art/_shared/_atlas_ui_shared.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/ui_counter_time.png-eb731b5d09240171f6fcaa2ac
 
 [params]
 
-atlas_file="res://art/_shared/_atlasui_shared.png"
+atlas_file="res://art/_shared/_atlas_ui_shared.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true

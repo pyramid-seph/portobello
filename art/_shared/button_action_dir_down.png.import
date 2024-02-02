@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpjxr28rrgvac"
-path="res://.godot/imported/_atlasui_shared.png-b0549e70cf5e4c15115e3c8df74a2370.ctex"
+uid="uid://de36gidgd607d"
+path="res://.godot/imported/button_action_dir_down.png-316f6a7ecda836ddde73eb71529cf5ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/_shared/_atlasui_shared.png"
-dest_files=["res://.godot/imported/_atlasui_shared.png-b0549e70cf5e4c15115e3c8df74a2370.ctex"]
+source_file="res://art/_shared/button_action_dir_down.png"
+dest_files=["res://.godot/imported/button_action_dir_down.png-316f6a7ecda836ddde73eb71529cf5ad.ctex"]
 
 [params]
 
