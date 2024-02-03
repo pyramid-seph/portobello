@@ -7,7 +7,7 @@ const ANIM_DIZZY: String = "Dizzy"
 
 @onready var _animator := $AnimationPlayer as AnimationPlayer
 @onready var _color_rect := $ColorRect
-# TODO cutscene mode while playing
+
 
 func _ready() -> void:
 	super()
