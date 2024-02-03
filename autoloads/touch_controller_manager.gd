@@ -32,11 +32,15 @@ func _ready() -> void:
 		add_child(_touch_screen_controller)
 	
 		Input.joy_connection_changed.connect(_on_joy_connection_changed)
-		# Doesn't seem to be necessary to call 
+		# It doesn't seem to be necessary to call 
 		# _update_touch_controller_visibility here.
 		# _on_joy_connection_changed is called when the game starts (on desktop)
 		# or when the user presses a button or moves a stick for the first time
 		# after the game starts (on web).
+
+
+func is_touch_controller_active() -> bool:
+	return _touch_screen_controller and _touch_screen_controller.visible
 
 
 func _configure_controller_for_mode(new_mode: Mode) -> void:

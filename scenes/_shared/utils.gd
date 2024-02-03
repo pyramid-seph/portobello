@@ -89,7 +89,9 @@ static func vibrate_joy(
 	force: bool = false,
 ) -> void:
 	if force or SaveDataManager.save_data.is_vibration_enabled:
-		if is_running_on_web():
+		if TouchControllerManager.is_touch_controller_active():
+			Input.vibrate_handheld(int(duration * 1_000.0))
+		elif is_running_on_web():
 			_vibrate_joy_web_workaround(
 				device,
 				weak_magnitude,
@@ -172,7 +174,7 @@ static func _vibrate_joy_web_workaround(
 		return
 	
 	# This workaround uses an experimental API.
-	# It does not work on every web browser.
+	# It does not work on every web browser or device.
 	# More info:
 	# https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/vibrationActuator
 	# Related issues:
@@ -190,7 +192,7 @@ static func _vibrate_joy_web_workaround(
 				});
 			}
 		}
-	""" % [device, duration * 1000.0, weak_magnitude, strong_magnitude])
+	""" % [device, duration * 1_000.0, weak_magnitude, strong_magnitude])
 
 
 static func get_default_language() -> String:
