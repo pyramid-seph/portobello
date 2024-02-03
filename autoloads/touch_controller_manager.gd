@@ -32,7 +32,8 @@ func _ready() -> void:
 		add_child(_touch_screen_controller)
 	
 		Input.joy_connection_changed.connect(_on_joy_connection_changed)
-		# Doesn't seem to be necessary to call _update_touch_controller_visibility here.
+		# Doesn't seem to be necessary to call 
+		# _update_touch_controller_visibility here.
 		# _on_joy_connection_changed is called when the game starts (on desktop)
 		# or when the user presses a button or moves a stick for the first time
 		# after the game starts (on web).
@@ -85,13 +86,14 @@ func _configure_controller_for_mode(new_mode: Mode) -> void:
 			_touch_screen_controller.hide_pause_button = false
 
 
-func _is_any_joypad_connected() -> bool:
-	return not Input.get_connected_joypads().is_empty()
+func _is_player_1_joypad_connected() -> bool:
+	# Input events are mapped only to the device 0.
+	return 0 in Input.get_connected_joypads()
 
 
 func _update_touch_controller_visibility() -> void:
 	if _touch_screen_controller:
-		_touch_screen_controller.visible = not _is_any_joypad_connected()
+		_touch_screen_controller.visible = not _is_player_1_joypad_connected()
 
 
 func _on_mode_set() -> void:
