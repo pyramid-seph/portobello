@@ -128,6 +128,7 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 
 
 func _ready() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.UI_MENU
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()
