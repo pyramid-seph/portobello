@@ -74,8 +74,9 @@ DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
 DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
 GAME_TITLE,Bucho Busca Comida,Pyramid Seph
-INFO_GAMEPAD_SUPPORT,Supports gamepad,Puedes jugar con un control
+INFO_GAMEPAD_SUPPORT,"Supports gamepad,","Puedes jugar con un control,"
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
+INFO_TOUCHSCREEN_SUPPORT,"touchscreen,","pantalla táctil,"
 INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenu of the day {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
 INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nBuffets of day {unlocked_story_mode_minigame}\n ,Ya puedes comer:\n\nBuffets del día {unlocked_story_mode_minigame}\n 
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
@@ -125,6 +126,7 @@ MENU_PROGRESS_STARS,Stars,Estrellas
 MENU_PROGRESS_STARS_0,Day 1,Día 1
 MENU_PROGRESS_STARS_1,Day 2,Día 2
 MENU_PROGRESS_STARS_2,Day 3,Día 3
+MENU_SETTINGS_AUDIO,Audio,Audio
 MENU_SETTINGS_AUTO_FIRE,Auto fire,Auto fuego
 MENU_SETTINGS_DELETE_DATA,Delete data,Borrar datos
 MENU_SETTINGS_LANGUAGE,Language,Idioma
@@ -151,7 +153,7 @@ RESULTS_SCREEN_EVALUATION_1,Yawn!,¡Yawn!
 RESULTS_SCREEN_EVALUATION_2,Not bad!,¡No está mal!
 RESULTS_SCREEN_EVALUATION_3,Good!,¡Bien!
 RESULTS_SCREEN_EVALUATION_4,Great!,¡Muy bien!
-RESULTS_SCREEN_EVALUATION_5,Prrrrrrfect!,¡Prrrrrrfecta!
+RESULTS_SCREEN_EVALUATION_5,Purrrrrfect!,¡Prrrrrrfecta!
 RESULTS_SCREEN_EVALUATION_RESULT_ZERO,Zero!,¡Cero!
 RESULTS_SCREEN_EXTRA_LIVES_PLURAL,{lives} extra lives!,¡{lives} vidas extra!
 RESULTS_SCREEN_EXTRA_LIVES_SINGULAR,{lives} extra life!,¡{lives} vida extra!
