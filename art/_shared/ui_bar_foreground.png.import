@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://ds6a4ktnks5qu"
 path="res://.godot/imported/ui_bar_foreground.png-c5d3b0439121da53ba0fb2e65d47b821.res"
-group_file="res://art/_shared/_atlasui_shared.png"
+group_file="res://art/_shared/_atlas_ui_shared.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/ui_bar_foreground.png-c5d3b0439121da53ba0fb2e
 
 [params]
 
-atlas_file="res://art/_shared/_atlasui_shared.png"
+atlas_file="res://art/_shared/_atlas_ui_shared.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true

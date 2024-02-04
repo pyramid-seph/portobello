@@ -50,6 +50,7 @@ var _remaining_lives: int:
 
 
 func _ready() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_DPAD_ONLY
 	_setup_high_score_ui()
 	_set_initial_lives()
 	_on_score_changed()

@@ -18,6 +18,7 @@ var _initial_score: int
 
 
 func _ready() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY
 	_play_level()
 
 
