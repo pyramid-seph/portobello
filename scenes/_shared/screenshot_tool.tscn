@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cguw3kaiw6tcu"]
+
+[ext_resource type="Script" path="res://scenes/_shared/screenshot_tool.gd" id="1_r76co"]
+
+[node name="ScreenshotTool" type="Node"]
+script = ExtResource("1_r76co")

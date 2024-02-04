@@ -12,6 +12,8 @@ var enabled := true:
 		enabled = value
 		_on_enabled_set()
 
+var _old_touch_controller_mode: TouchControllerManager.Mode
+
 @onready var _give_up_button := %GiveUpButton as Button
 @onready var _pause_dialog := $PauseDialog
 @onready var _confirm_exit_dialog := $ConfirmExitLevelDialog
@@ -46,6 +48,8 @@ func _pause_game(pause: bool) -> void:
 	_scene_tree.paused = pause
 	visible = pause
 	if pause:
+		_old_touch_controller_mode = TouchControllerManager.mode
+		TouchControllerManager.mode = TouchControllerManager.Mode.UI_MENU
 		_confirm_exit_dialog.visible = false
 		_pause_dialog.visible = true
 		_autofire_selector.visible = show_auto_fire
@@ -54,6 +58,7 @@ func _pause_game(pause: bool) -> void:
 		# Hack? This resets its size to the height of its content.
 		_pause_dialog.size.y = 0
 	else:
+		TouchControllerManager.mode = _old_touch_controller_mode
 		_save_settings()
 
 

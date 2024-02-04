@@ -1,5 +1,8 @@
 extends Node
 
+const ScreenshotTool = preload("res://scenes/_shared/screenshot_tool.gd")
+const ScreenshotToolScn = preload("res://scenes/_shared/screenshot_tool.tscn")
+
 enum Mode { 
 	SCORE_ATTACK,
 	STORY,
@@ -32,6 +35,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	TranslationServer.set_locale(SaveDataManager.save_data.language)
+	
 	SoundManager.music_process_mode = Node.PROCESS_MODE_PAUSABLE
 	var save_data := SaveDataManager.save_data as SaveData
 	if save_data.is_audio_enabled:
@@ -39,6 +43,8 @@ func _ready() -> void:
 	else:
 		SoundUtils.mute()
 	
+	if OS.is_debug_build():
+		add_child(ScreenshotToolScn.instantiate())
 
 
 func start(minigame: Minigame, allow_restart := false) -> void:

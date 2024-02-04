@@ -62,6 +62,7 @@ var _immediate_lives_counter_update: bool = true
 
 
 func _ready() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_DPAD_ONLY
 	_set_initial_lives()
 	_on_level_changed()
 

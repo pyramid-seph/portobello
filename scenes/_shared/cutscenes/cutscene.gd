@@ -7,8 +7,10 @@ signal finished
 @export var _skip_sound = preload("res://audio/ui/ui_pressed.wav")
 @export var _autostart: bool
 
+var _old_touch_controller_mode: TouchControllerManager.Mode
 
 func _ready() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.CUTSCENE
 	if _autostart:
 		play()
 
@@ -25,6 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func play() -> void:
+	_old_touch_controller_mode = TouchControllerManager.mode
+	TouchControllerManager.mode = TouchControllerManager.Mode.CUTSCENE
 	_play()
 
 
@@ -43,5 +47,6 @@ func _clean_up() -> void:
 
 
 func _internal_stop() -> void:
+	TouchControllerManager.mode = _old_touch_controller_mode
 	_clean_up()
 	finished.emit()
