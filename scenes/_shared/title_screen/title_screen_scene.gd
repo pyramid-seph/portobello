@@ -269,11 +269,7 @@ func _on_settings_menu_dangerous_option_unfocused() -> void:
 
 
 func _on_minigame_selected(value) -> void:
-	if value == Game.Minigame.STORY_DAY_EX:
-		_unlocks_dialog.body_text = "MENU_MAIN_SELECT_STORY_MODE_DAY_EX"
-		_unlocks_dialog.visible = true
-	else:
-		Game.start(value)
+	Game.start(value)
 
 
 func _on_story_mode_option_index_changed(index: int) -> void:

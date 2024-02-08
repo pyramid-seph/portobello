@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbj80apo103mi"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/player/day_ex_player.gd" id="1_71xu7"]
+[ext_resource type="Texture2D" uid="uid://dwh1dny803ed7" path="res://art/day_ex/day_ex_player_x_0.png" id="2_jbj5b"]
+[ext_resource type="Texture2D" uid="uid://cpsx1wji7qtrl" path="res://art/day_ex/day_ex_player_x_1.png" id="3_ud54h"]
+[ext_resource type="Texture2D" uid="uid://brkpbhricymk7" path="res://art/day_ex/day_ex_player_x_2.png" id="4_xa0k6"]
+[ext_resource type="Texture2D" uid="uid://wjgkijcn1mat" path="res://art/day_ex/day_ex_player_y_0.png" id="5_2nywi"]
+[ext_resource type="Texture2D" uid="uid://bd13tksgxeg7w" path="res://art/day_ex/day_ex_player_y_1.png" id="6_3tgl2"]
+[ext_resource type="Texture2D" uid="uid://370e4f88u1qu" path="res://art/day_ex/day_ex_player_y_2.png" id="7_k8wlb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dift3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jbj5b")
+}],
+"loop": true,
+"name": &"iddle_horizontal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2nywi")
+}],
+"loop": true,
+"name": &"iddle_vertical",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xa0k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ud54h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jbj5b")
+}],
+"loop": true,
+"name": &"move_horizontal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3tgl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k8wlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2nywi")
+}],
+"loop": true,
+"name": &"move_vertical",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alx6l"]
+size = Vector2(9, 9)
+
+[node name="DayExPlayer" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 128
+motion_mode = 1
+script = ExtResource("1_71xu7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dift3")
+animation = &"iddle_vertical"
+autoplay = "iddle_horizontal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_alx6l")

@@ -22,6 +22,7 @@ content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
 [node name="PauseMenu" type="PanelContainer"]
+process_mode = 3
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0

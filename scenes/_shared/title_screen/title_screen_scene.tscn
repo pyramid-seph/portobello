@@ -34,7 +34,6 @@ bg_color = Color(1, 1, 1, 0)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
-_debug_is_cold_boot = null
 _debug_skip_game_filter = true
 
 [node name="TitleScreen" type="Control" parent="."]
