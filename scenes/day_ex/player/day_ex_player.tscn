@@ -55,8 +55,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_alx6l"]
-size = Vector2(9, 9)
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3wc7"]
+radius = 4.0
 
 [node name="DayExPlayer" type="CharacterBody2D"]
 collision_layer = 32
@@ -70,4 +70,10 @@ animation = &"iddle_vertical"
 autoplay = "iddle_horizontal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_alx6l")
+shape = SubResource("CircleShape2D_b3wc7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
