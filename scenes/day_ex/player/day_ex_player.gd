@@ -1,17 +1,15 @@
 extends CharacterBody2D
 
 
-@export var speed: float = 25 # Original game is 33.33333333
-@export var on_slippery_floor: bool
+@export var speed: float = 33.33
 
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction: Vector2 = _get_input()
-	var motion: Vector2 = speed * direction * delta
-	if move_and_collide(motion):
-		direction = Vector2.ZERO
+	velocity = speed * direction
+	move_and_slide()
 	_update_animation(direction)
  
 
@@ -34,7 +32,7 @@ func _update_animation(direction: Vector2) -> void:
 	var animation: String = _animated_sprite_2d.animation
 	var flip_h: bool = _animated_sprite_2d.flip_h
 	var flip_v: bool = _animated_sprite_2d.flip_v
-	if direction == Vector2.ZERO:
+	if direction == Vector2.ZERO or get_real_velocity().is_zero_approx():
 		if not animation.begins_with("iddle_"):
 			if animation == "move_horizontal":
 				animation = "iddle_horizontal"
@@ -43,10 +41,10 @@ func _update_animation(direction: Vector2) -> void:
 	else:
 		flip_h = direction.x < 0
 		flip_v = direction.y > 0
-		if direction == Vector2.LEFT or direction == Vector2.RIGHT:
-			animation = "move_horizontal"
-		else:
+		if is_zero_approx(direction.x):
 			animation = "move_vertical"
+		else:
+			animation = "move_horizontal"
 	_animated_sprite_2d.play(animation)
 	_animated_sprite_2d.flip_h = flip_h
 	_animated_sprite_2d.flip_v = flip_v
