@@ -76,18 +76,19 @@ GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
 GAME_TITLE,Bucho Busca Comida,Pyramid Seph
 INFO_GAMEPAD_SUPPORT,"Supports gamepad,","Puedes jugar con un control,"
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
-INFO_TOUCHSCREEN_SUPPORT,"touchscreen,","pantalla táctil,"
 INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenu of the day {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
 INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nBuffets of day {unlocked_story_mode_minigame}\n ,Ya puedes comer:\n\nBuffets del día {unlocked_story_mode_minigame}\n 
+INFO_TOUCHSCREEN_SUPPORT,"touchscreen,","pantalla táctil,"
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
 LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_DAY_01_DIZZY,Dizzy,Mareado
 LEVEL_DAY_01_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
-LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
 LEVEL_DAY_02_LEVEL_NAME_SCORE_ATTACK,Buffet {level_pos},Buffet {level_pos}
+LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
 LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+LEVEL_START_LINE_0_DAY_EX,Dessert!,¡Postre!
 LEVEL_START_LINE_0_SCORE_ATTACK,Buffet,Buffet
 LEVEL_START_LINE_0_SCORE_ATTACK_WITH_POS,Buffet {level_pos},Buffet {level_pos}
 LEVEL_START_LINE_0_STORY_MODE,Dish {level_pos},Plato {level_pos}

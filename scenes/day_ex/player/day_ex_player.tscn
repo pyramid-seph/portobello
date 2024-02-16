@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbj80apo103mi"]
+[gd_scene load_steps=11 format=3 uid="uid://cbj80apo103mi"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/player/day_ex_player.gd" id="1_71xu7"]
 [ext_resource type="Texture2D" uid="uid://dwh1dny803ed7" path="res://art/day_ex/day_ex_player_x_0.png" id="2_jbj5b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://wjgkijcn1mat" path="res://art/day_ex/day_ex_player_y_0.png" id="5_2nywi"]
 [ext_resource type="Texture2D" uid="uid://bd13tksgxeg7w" path="res://art/day_ex/day_ex_player_y_1.png" id="6_3tgl2"]
 [ext_resource type="Texture2D" uid="uid://370e4f88u1qu" path="res://art/day_ex/day_ex_player_y_2.png" id="7_k8wlb"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="8_cv2pg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dift3"]
 animations = [{
@@ -55,7 +56,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b3wc7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tyx1y"]
 radius = 4.5
 
 [node name="DayExPlayer" type="CharacterBody2D"]
@@ -66,14 +67,29 @@ script = ExtResource("1_71xu7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dift3")
-animation = &"iddle_vertical"
+animation = &"iddle_horizontal"
 autoplay = "iddle_horizontal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_b3wc7")
+shape = SubResource("CircleShape2D_tyx1y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+
+[node name="WalkingTimeLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -6.5
+offset_right = 6.5
+offset_bottom = 10.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_cv2pg")
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
