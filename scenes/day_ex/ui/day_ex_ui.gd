@@ -7,6 +7,11 @@ const TwoLineTimedLabel = preload("res://scenes/_shared/ui/two_line_timed_label.
 
 @onready var _start_labels: TwoLineTimedLabel = $StartLabels
 @onready var _black_screen: ColorRect = $BlackScreen
+@onready var _pause_menu := $PauseMenu
+
+
+func set_pause_menu_enabled(enabled: bool) -> void:
+	_pause_menu.enabled = enabled
 
 
 func show_level_start() -> void:

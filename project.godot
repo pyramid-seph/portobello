@@ -24,6 +24,7 @@ config/icon="res://art/_shared/ui_counter_lives.png"
 
 SaveDataManager="*res://autoloads/save_data_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
+TransitionPlayer="*res://autoloads/transition_player.tscn"
 SceneChanger="*res://autoloads/scene_changer.tscn"
 TouchControllerManager="*res://autoloads/touch_controller_manager.gd"
 Game="*res://autoloads/game.gd"
@@ -165,6 +166,8 @@ locale/translations=PackedStringArray("res://localization/bucho_portobello_local
 2d_physics/layer_5="enemy_bullets"
 2d_physics/layer_6="player"
 2d_physics/layer_7="enemy"
+2d_physics/layer_8="solid_tile"
+2d_physics/layer_9="exit"
 
 [physics]
 
@@ -174,7 +177,6 @@ common/enable_pause_aware_picking=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true

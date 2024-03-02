@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
 
+enum FacingDirection {
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+}
+
 @export var speed: float = 33.33
 
 @export_group("Debug", "_debug")
@@ -58,6 +65,30 @@ func reset_walking_time() -> void:
 
 func get_walking_time() -> float:
 	return _walking_time
+
+
+func teleport(new_global_position: Vector2, facing_direction: FacingDirection) -> void:
+	global_position = new_global_position
+	velocity = Vector2.ZERO
+	reset_walking_time()
+	
+	match facing_direction:
+		FacingDirection.LEFT:
+			_animated_sprite_2d.play("iddle_horizontal")
+			_animated_sprite_2d.flip_h = true
+			_animated_sprite_2d.flip_v = false
+		FacingDirection.RIGHT:
+			_animated_sprite_2d.play("iddle_horizontal")
+			_animated_sprite_2d.flip_h = false
+			_animated_sprite_2d.flip_v = false
+		FacingDirection.UP:
+			_animated_sprite_2d.play("iddle_vertical")
+			_animated_sprite_2d.flip_h = false
+			_animated_sprite_2d.flip_v = false
+		FacingDirection.DOWN:
+			_animated_sprite_2d.play("iddle_vertical")
+			_animated_sprite_2d.flip_h = false
+			_animated_sprite_2d.flip_v = true
 
 
 func _get_input() -> Vector2:

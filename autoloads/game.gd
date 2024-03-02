@@ -34,6 +34,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color.BLACK)
 	TranslationServer.set_locale(SaveDataManager.save_data.language)
 	
 	if OS.is_debug_build():
