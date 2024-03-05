@@ -11,11 +11,16 @@ const BattleStartSystem = preload("res://scenes/day_ex/game/battle_start_system.
 @onready var _battle_start_system: BattleStartSystem = $Systems/BattleStartSystem
 @onready var _ui: DayExUi = $Interface/DayExUi
 
+const LOL = [
+	{ "name": "Maki", "text": "This was a triumph!" },
+	{ "name": "Mofles", "text": "I'm making a note here" },
+	{ "name": "Mofles", "text": "Huge success" },
+]
 
 func _ready() -> void:
 	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY
 	_start_game()
-
+	_ui.get_node("RpgDialogueBox").play(LOL)
 
 func _start_game() -> void:
 	_ui.set_pause_menu_enabled(false)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg5lsubt653gf"]
+[gd_scene load_steps=6 format=3 uid="uid://dg5lsubt653gf"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_elkqt"]
 [ext_resource type="Script" path="res://scenes/day_ex/ui/day_ex_ui.gd" id="2_4b3uh"]
 [ext_resource type="PackedScene" uid="uid://dxxd4wyd36xa6" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="3_4i2nv"]
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="4_13kum"]
+[ext_resource type="PackedScene" uid="uid://clyn8nlxsbf12" path="res://scenes/day_ex/ui/rpg_dialogue_box.tscn" id="5_auhk2"]
 
 [node name="DayExUi" type="Control"]
 layout_mode = 3
@@ -43,5 +44,19 @@ layout_mode = 1
 offset_left = -93.0
 offset_right = 93.0
 show_auto_fire = false
+
+[node name="RpgDialogueBox" parent="." instance=ExtResource("5_auhk2")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -100.0
+offset_right = 120.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [connection signal="finished" from="StartLabels" to="." method="_on_start_labels_finished"]

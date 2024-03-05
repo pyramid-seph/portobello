@@ -201,7 +201,6 @@ script = ExtResource("1_rv5xb")
 libraries = {
 "": SubResource("AnimationLibrary_qskia")
 }
-autoplay = "RESET"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
