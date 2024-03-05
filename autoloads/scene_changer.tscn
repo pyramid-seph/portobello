@@ -1,12 +1,50 @@
-[gd_scene load_steps=8 format=3 uid="uid://8k034qvxjmd8"]
+[gd_scene load_steps=10 format=3 uid="uid://8k034qvxjmd8"]
 
 [ext_resource type="Script" path="res://autoloads/scene_changer.gd" id="1_wichc"]
 [ext_resource type="Script" path="res://autoloads/threaded_loader.gd" id="2_ux1p7"]
 [ext_resource type="Texture2D" uid="uid://wwx4ny446mjr" path="res://art/_shared/ui_loading_0.png" id="2_w05wq"]
-[ext_resource type="Texture2D" uid="uid://bc6i3vg67kqhg" path="res://art/_shared/ui_loading_1.png" id="3_ebxdm"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_rwund"]
-[ext_resource type="PackedScene" uid="uid://brik70kwkl220" path="res://scenes/_shared/ui/animated_texture_rect.tscn" id="5_qq1kj"]
+[ext_resource type="Script" path="res://autoloads/loding_anim.gd" id="4_6tkct"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="8_o1hk3"]
+
+[sub_resource type="Animation" id="Animation_4amrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(4, 4, 29, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_s2uxx"]
+resource_name = "default"
+length = 0.24
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(4, 4, 29, 15), Rect2(4, 28, 29, 15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mmtjt"]
+_data = {
+"RESET": SubResource("Animation_4amrh"),
+"default": SubResource("Animation_s2uxx")
+}
 
 [node name="SceneChanger" type="CanvasLayer"]
 process_mode = 3
@@ -40,6 +78,7 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_rwund")
+script = ExtResource("4_6tkct")
 
 [node name="Label" type="Label" parent="LodingAnimContainer"]
 layout_mode = 2
@@ -48,14 +87,16 @@ theme_override_constants/line_spacing = 0
 text = "LOADING_SCREEN_LOADING"
 vertical_alignment = 1
 
-[node name="AnimatedTextureRect" parent="LodingAnimContainer" instance=ExtResource("5_qq1kj")]
+[node name="TextureRect" type="TextureRect" parent="LodingAnimContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_w05wq")
 stretch_mode = 2
-frames = Array[Texture2D]([ExtResource("2_w05wq"), ExtResource("3_ebxdm")])
-frame_duration_sec = 0.12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LodingAnimContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_mmtjt")
+}
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -70,5 +111,6 @@ hide_shadow = true
 [connection signal="change_error" from="." to="." method="_on_change_error"]
 [connection signal="change_finished" from="." to="." method="_on_change_finished"]
 [connection signal="change_started" from="." to="." method="_on_change_started"]
+[connection signal="visibility_changed" from="LodingAnimContainer" to="LodingAnimContainer" method="_on_visibility_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="positive_btn_pressed" from="ErrorDialog" to="." method="_on_simple_dialog_positive_btn_pressed"]
