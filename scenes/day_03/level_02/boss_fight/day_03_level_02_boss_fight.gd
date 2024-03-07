@@ -30,6 +30,10 @@ func start() -> void:
 	_play_boss_introduction()
 
 
+func cleanup() -> void:
+	_boss.stop_exploding()
+
+
 func _play_boss_introduction() -> void:
 	await _tween_motership_intro()
 	_timer.start(1.6)

@@ -10,3 +10,7 @@ func prepare() -> void:
 
 func start() -> void:
 	completed.emit()
+
+
+func cleanup() -> void:
+	pass
