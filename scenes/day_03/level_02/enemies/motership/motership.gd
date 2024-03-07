@@ -19,6 +19,7 @@ signal died
 		_on_player_set()
 @export var Explosion: PackedScene
 
+var _tween_explosion: Tween
 var _is_dead: bool
 var _hp: int = 1:
 	set(value):
@@ -68,6 +69,12 @@ func introduce_alien() -> void:
 	_dialogue_box.start()
 	await _dialogue_box.finished
 	_alien_hologram.visible = false
+
+
+func stop_exploding() -> void:
+	if _tween_explosion:
+		_tween_explosion.kill()
+	_tween_explosion = null
 
 
 func _move_player_inside() -> void:
@@ -141,18 +148,21 @@ func _animate_flash() -> void:
 	tween_flash.tween_interval(Utils.FRAME_TIME * 10)
 
 
-func _animate_explosions() -> void:
+func _explode() -> void:
 	var viewport_rect_size = get_viewport_rect().size
-	var tween_explosion = create_tween()
-	tween_explosion.set_loops()
-	tween_explosion.tween_callback(func():
+	if _tween_explosion:
+		_tween_explosion.kill()
+	_tween_explosion = create_tween()
+	_tween_explosion.set_loops()
+	_tween_explosion.tween_callback(func():
 		for i: int in 10:
+			print("BOOM!: ", i)
 			var random_x = randi() % int(viewport_rect_size.x)
 			var random_y = randi() % int(viewport_rect_size.y)
 			var random_pos = Vector2i(random_x, random_y)
 			_spawn_explosion(random_pos)
 	)
-	tween_explosion.tween_interval(Utils.FRAME_TIME)
+	_tween_explosion.tween_interval(Utils.FRAME_TIME)
 
 
 func _die() -> void:
@@ -162,7 +172,7 @@ func _die() -> void:
 	is_attacking = false
 	Utils.vibrate_joy(0, 0.25, 0.25, 2.9)
 	_animate_flash()
-	_animate_explosions()
+	_explode()
 	_remove_hazards()
 	died.emit()
 
