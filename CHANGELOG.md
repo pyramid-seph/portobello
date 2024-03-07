@@ -1,3 +1,8 @@
+# v1.2.1 - The one that fixes invisible stuff running.
+
+* Fix: the scene change indicator animates when invisible.
+* Fix: the second boss of day 3 keeps exploding when the results screen is visible.  
+
 # v1.2.0 - The one that supports touchscreens.
 
 * Touchscreen support (mobile devices only). The touchscreen controller is only 
