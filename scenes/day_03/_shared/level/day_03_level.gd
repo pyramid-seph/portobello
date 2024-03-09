@@ -196,6 +196,7 @@ func _on_boss_fight_completed() -> void:
 	_day_3_ui.set_pause_menu_enabled(false)
 	_timer.start(_results_screen_delay_sec)
 	await _timer.timeout
+	_boss_fight.cleanup()
 	_world.set_process(PROCESS_MODE_DISABLED)
 	_world.set_process_input(false)
 	_world.visible = false
