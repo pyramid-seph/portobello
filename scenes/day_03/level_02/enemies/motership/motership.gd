@@ -156,7 +156,6 @@ func _explode() -> void:
 	_tween_explosion.set_loops()
 	_tween_explosion.tween_callback(func():
 		for i: int in 10:
-			print("BOOM!: ", i)
 			var random_x = randi() % int(viewport_rect_size.x)
 			var random_y = randi() % int(viewport_rect_size.y)
 			var random_pos = Vector2i(random_x, random_y)
