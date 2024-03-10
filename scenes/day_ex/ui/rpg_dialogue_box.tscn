@@ -65,7 +65,7 @@ font_size = 8
 
 [node name="RpgDialogueBox" type="MarginContainer"]
 offset_right = 240.0
-offset_bottom = 100.0
+offset_bottom = 92.0
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -84,23 +84,21 @@ theme_override_constants/separation = 0
 
 [node name="NameContainer" type="PanelContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(232, 26)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ekldn")
 
 [node name="NameLabel" type="Label" parent="VBoxContainer/NameContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(216, 10)
 layout_mode = 2
-text = "Lorem:"
+text = "Lorem"
 label_settings = SubResource("LabelSettings_caf5a")
 vertical_alignment = 1
-autowrap_mode = 2
 justification_flags = 160
 uppercase = true
 
 [node name="MessageContainer" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(232, 66)
+custom_minimum_size = Vector2(232, 58)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ekldn")
 
@@ -112,10 +110,9 @@ theme_override_constants/separation = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(216, 10)
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 3
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing. Vivamus a gravida libero. Maecenas non suscipit dolor. Maecenas non suscipit dolor. "
 label_settings = SubResource("LabelSettings_ec10j")
-vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 160
 uppercase = true
