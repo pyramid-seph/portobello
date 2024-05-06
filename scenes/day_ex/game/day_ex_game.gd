@@ -10,6 +10,7 @@ const BattleStartSystem = preload("res://scenes/day_ex/game/battle_start_system.
 
 @onready var _battle_start_system: BattleStartSystem = $Systems/BattleStartSystem
 @onready var _ui: DayExUi = $Interface/DayExUi
+@onready var _player: CharacterBody2D = $World/TileMap/DayExPlayer
 
 
 func _ready() -> void:
@@ -18,11 +19,13 @@ func _ready() -> void:
 
 
 func _start_game() -> void:
+	_player.set_process_unhandled_input(false)
 	_ui.set_pause_menu_enabled(false)
 	_ui.show_level_start()
 	await _ui.start_level_finished
 	_ui.set_pause_menu_enabled(true)
 	_battle_start_system.reset(5.0)
+	_player.set_process_unhandled_input(true)
 
 
 func _on_battle_start_system_start_battle() -> void:
@@ -39,3 +42,15 @@ func _on_battle_start_system_start_battle() -> void:
 	$World.process_mode = Node.PROCESS_MODE_INHERIT
 	print("BATTLE!")
 	_battle_start_system.reset(3.0)
+
+
+func _on_day_ex_ui_dialogue_started() -> void:
+	_player.set_process_unhandled_input(false)
+
+
+func _on_day_ex_ui_dialogue_finished() -> void:
+	_player.set_process_unhandled_input(true)
+
+
+func _on_day_ex_ui_dialogue_event_requested(event: String) -> void:
+	print("dialogue requested this event to be run: ", event)

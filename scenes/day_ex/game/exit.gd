@@ -82,5 +82,5 @@ func _on_body_entered(player: Player) -> void:
 		return
 	
 	if player:
-		var offset: Vector2 =  player.global_position - global_position
+		var offset: Vector2 = player.global_position - global_position
 		_entrance.teleport_here(player, offset)

@@ -10,3 +10,5 @@ const MIN_TEXT_SPEED = 0.05
 @export var text_speed_chars_per_second: float = 25.0:
 	set(value):
 		text_speed_chars_per_second = maxf(value, MIN_TEXT_SPEED)
+@export var start_event: String
+@export var end_event: String

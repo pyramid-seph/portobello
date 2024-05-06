@@ -29,16 +29,10 @@ func teleport_here(player: Player, distance_offset: Vector2 = Vector2.ZERO) -> v
 	if not player:
 		return
 	
-	player.set_process(false)
-	player.set_process_input(false)
-	player.set_physics_process(false)
 	player.set_process_unhandled_input(false)
 	await TransitionPlayer.play_default()
 	player.teleport(global_position + distance_offset, initial_direction)
 	await get_tree().create_timer(1.0, false).timeout
 	await TransitionPlayer.play_default_backwards()
-	player.set_process(true)
-	player.set_process_input(true)
-	player.set_physics_process(true)
 	player.set_process_unhandled_input(true)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=23 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_1_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ctrwrc3gdhha2" path="res://scenes/day_ex/game/exit.tscn" id="5_weg27"]
 [ext_resource type="PackedScene" uid="uid://dg5lsubt653gf" path="res://scenes/day_ex/ui/day_ex_ui.tscn" id="5_y60w5"]
 [ext_resource type="PackedScene" uid="uid://csorcwveuvxs8" path="res://scenes/day_ex/game/entrance.tscn" id="6_hpgyv"]
+[ext_resource type="PackedScene" uid="uid://bsrfkj87g5ts0" path="res://scenes/day_ex/speak_action_area.tscn" id="8_jk2pm"]
+[ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fpoks"]
 tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 0, 131072, 196609, 0, 196608, 262145, 0)
@@ -875,6 +877,60 @@ pattern_0 = SubResource("TileMapPattern_fpoks")
 pattern_1 = SubResource("TileMapPattern_bhlw2")
 pattern_2 = SubResource("TileMapPattern_acsgs")
 
+[sub_resource type="Resource" id="Resource_lvhfl"]
+script = ExtResource("9_a05ap")
+character = "Maki"
+line = "This was a triumph."
+text_speed_chars_per_second = 25.0
+start_event = ""
+end_event = ""
+
+[sub_resource type="Resource" id="Resource_3cooe"]
+script = ExtResource("9_a05ap")
+character = "Mofles"
+line = "I'm making a note here."
+text_speed_chars_per_second = 25.0
+start_event = ""
+end_event = ""
+
+[sub_resource type="Resource" id="Resource_xi0b2"]
+script = ExtResource("9_a05ap")
+character = "Mesti"
+line = "Huge success!"
+text_speed_chars_per_second = 25.0
+start_event = ""
+end_event = ""
+
+[sub_resource type="Resource" id="Resource_3uldh"]
+script = ExtResource("9_a05ap")
+character = "Misty"
+line = "It's hard to overstate my satisfaction."
+text_speed_chars_per_second = 25.0
+start_event = ""
+end_event = ""
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wumj7"]
+size = Vector2(10, 20)
+
+[sub_resource type="Resource" id="Resource_e6qb7"]
+script = ExtResource("9_a05ap")
+character = "Parakeet"
+line = "I'm a parrot"
+text_speed_chars_per_second = 25.0
+start_event = ""
+end_event = ""
+
+[sub_resource type="Resource" id="Resource_p1lyl"]
+script = ExtResource("9_a05ap")
+character = "Parakeet"
+line = "Lol"
+text_speed_chars_per_second = 25.0
+start_event = ""
+end_event = ""
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5iun"]
+size = Vector2(10, 10)
+
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
 _debug_skip_battles = true
@@ -900,8 +956,13 @@ layer_1/tile_data = PackedInt32Array(262148, 262145, 5, 327684, 917505, 4, 39322
 
 [node name="DayExPlayer" parent="World/TileMap" instance=ExtResource("4_kv2ty")]
 position = Vector2(120, 150)
-_debug_show_walking_time = true
-_debug_show_move_vectors = true
+
+[node name="Camera2D" type="Camera2D" parent="World/TileMap/DayExPlayer"]
+unique_name_in_owner = true
+process_callback = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
 
 [node name="Teleporters" type="Node2D" parent="World/TileMap"]
 
@@ -928,18 +989,22 @@ color_tag = Color(1, 0, 0, 1)
 
 [node name="KitchenEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
 position = Vector2(60, -115)
+initial_direction = 2
 color_tag = Color(0.368627, 0.145098, 0.337255, 1)
 
 [node name="LivingRoomKitchenEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
 position = Vector2(90, 85)
+initial_direction = 3
 color_tag = Color(0, 1, 0, 1)
 
 [node name="LivingRoomKitchenEntrance2" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
 position = Vector2(60, 85)
+initial_direction = 3
 color_tag = Color(0.94902, 0.827451, 0, 1)
 
 [node name="BackYardEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
 position = Vector2(410, 255)
+initial_direction = 2
 color_tag = Color(0, 0, 1, 1)
 
 [node name="BackyardToKitchenExit" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_entrance_node_path") instance=ExtResource("5_weg27")]
@@ -952,6 +1017,26 @@ _entrance_node_path = NodePath("../BackYardEntrance")
 
 [node name="BackyardToKitchenEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
 position = Vector2(150, -185)
+initial_direction = 3
 color_tag = Color(0.384314, 1, 1, 1)
 
+[node name="ActionAreas" type="Node2D" parent="World/TileMap"]
+
+[node name="SpeakActionArea" parent="World/TileMap/ActionAreas" instance=ExtResource("8_jk2pm")]
+position = Vector2(215, 180)
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_lvhfl"), SubResource("Resource_3cooe"), SubResource("Resource_xi0b2"), SubResource("Resource_3uldh")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/SpeakActionArea"]
+shape = SubResource("RectangleShape2D_wumj7")
+
+[node name="SpeakActionArea2" parent="World/TileMap/ActionAreas" instance=ExtResource("8_jk2pm")]
+position = Vector2(155, -125)
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_e6qb7"), SubResource("Resource_p1lyl")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/SpeakActionArea2"]
+shape = SubResource("RectangleShape2D_u5iun")
+
+[connection signal="dialogue_event_requested" from="Interface/DayExUi" to="." method="_on_day_ex_ui_dialogue_event_requested"]
+[connection signal="dialogue_finished" from="Interface/DayExUi" to="." method="_on_day_ex_ui_dialogue_finished"]
+[connection signal="dialogue_started" from="Interface/DayExUi" to="." method="_on_day_ex_ui_dialogue_started"]
 [connection signal="start_battle" from="Systems/BattleStartSystem" to="." method="_on_battle_start_system_start_battle"]

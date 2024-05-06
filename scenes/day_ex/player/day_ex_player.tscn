@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbj80apo103mi"]
+[gd_scene load_steps=14 format=3 uid="uid://cbj80apo103mi"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/player/day_ex_player.gd" id="1_71xu7"]
 [ext_resource type="Texture2D" uid="uid://dwh1dny803ed7" path="res://art/day_ex/day_ex_player_x_0.png" id="2_jbj5b"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bd13tksgxeg7w" path="res://art/day_ex/day_ex_player_y_1.png" id="6_3tgl2"]
 [ext_resource type="Texture2D" uid="uid://370e4f88u1qu" path="res://art/day_ex/day_ex_player_y_2.png" id="7_k8wlb"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="8_cv2pg"]
+[ext_resource type="Texture2D" uid="uid://ceae1kgi6pj40" path="res://art/day_ex/day_ex_interact.png" id="9_2royx"]
+[ext_resource type="Script" path="res://scenes/day_ex/player/action_area_detector.gd" id="10_8vasx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dift3"]
 animations = [{
@@ -59,6 +61,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_tyx1y"]
 radius = 4.5
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5kg2x"]
+radius = 2.0
+
 [node name="DayExPlayer" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 128
@@ -70,14 +75,12 @@ sprite_frames = SubResource("SpriteFrames_dift3")
 animation = &"iddle_horizontal"
 autoplay = "iddle_horizontal"
 
+[node name="InteractSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = ExtResource("9_2royx")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tyx1y")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-process_callback = 0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-editor_draw_drag_margin = true
 
 [node name="WalkingTimeLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -93,3 +96,16 @@ theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ActionAreaDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+script = ExtResource("10_8vasx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionAreaDetector"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_5kg2x")
+debug_color = Color(0.894118, 0.192157, 0.631373, 0.419608)
+
+[connection signal="area_entered" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_exited"]

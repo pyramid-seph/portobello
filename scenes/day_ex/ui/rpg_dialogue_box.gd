@@ -1,6 +1,7 @@
 extends Control
 
-
+signal started
+signal event_requested(event: String)
 signal finished
 
 var _dialogue: Array[DialoguePage]
@@ -16,9 +17,12 @@ var _text_tween: Tween
 
 func _ready() -> void:
 	if get_parent() == get_tree().root:
+		event_requested.connect(func(example_event): 
+				print("Requested event: ", example_event))
 		play(_build_example_dialogue())
 	else:
 		visible = false
+	DialogueManager.scene_play_requested.connect(play)
 	set_process_unhandled_input(visible)
 
 
@@ -40,6 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func play(dialogue: Array[DialoguePage]) -> void:
 	_curr_page = -1
 	_dialogue = dialogue
+	started.emit()
 	visible = not dialogue.is_empty()
 	if visible:
 		_next()
@@ -49,12 +54,23 @@ func play(dialogue: Array[DialoguePage]) -> void:
 
 
 func _next() -> void:
+	if _curr_page > -1:
+		var page: DialoguePage = _dialogue[_curr_page]
+		_request_run_event(page.end_event)
+	
 	_curr_page += 1
 	if _dialogue.size() - 1 >= _curr_page:
-		_say(_dialogue[_curr_page])
+		var page: DialoguePage = _dialogue[_curr_page]
+		_request_run_event(page.start_event)
+		_say(page)
 	else:
 		visible = false
 		finished.emit()
+
+
+func _request_run_event(event_name: String) -> void:
+	if event_name and not event_name.is_empty():
+			event_requested.emit(event_name)
 
 
 func _say(page: DialoguePage) -> void:
@@ -89,8 +105,10 @@ func _build_example_dialogue() -> Array[DialoguePage]:
 	page_1.line = "Lorem ipsum dolor sit amet."
 	var page_2: DialoguePage = DialoguePage.new()
 	page_2.line = "Consectetur adipiscing elit."
+	page_2.start_event = "example - start"
+	page_2.end_event = "example - end"
 	var page_3: DialoguePage = DialoguePage.new()
-	page_3.character = "Bacon"
+	page_3.character = "Ipsum"
 	page_3.line = "Aliquam elementum id elit in consequat."
 	page_3.text_speed_chars_per_second = 75.0
 	return [page_1, page_2, page_3]

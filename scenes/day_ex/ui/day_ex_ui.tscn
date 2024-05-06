@@ -60,3 +60,6 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [connection signal="finished" from="StartLabels" to="." method="_on_start_labels_finished"]
+[connection signal="event_requested" from="RpgDialogueBox" to="." method="_on_rpg_dialogue_box_event_requested"]
+[connection signal="finished" from="RpgDialogueBox" to="." method="_on_rpg_dialogue_box_finished"]
+[connection signal="started" from="RpgDialogueBox" to="." method="_on_rpg_dialogue_box_started"]
