@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=24 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_1_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ctrwrc3gdhha2" path="res://scenes/day_ex/game/exit.tscn" id="5_weg27"]
 [ext_resource type="PackedScene" uid="uid://dg5lsubt653gf" path="res://scenes/day_ex/ui/day_ex_ui.tscn" id="5_y60w5"]
 [ext_resource type="PackedScene" uid="uid://csorcwveuvxs8" path="res://scenes/day_ex/game/entrance.tscn" id="6_hpgyv"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/camera_pos.gd" id="6_wr6ei"]
 [ext_resource type="PackedScene" uid="uid://bsrfkj87g5ts0" path="res://scenes/day_ex/speak_action_area.tscn" id="8_jk2pm"]
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
 
@@ -879,7 +880,7 @@ pattern_2 = SubResource("TileMapPattern_acsgs")
 
 [sub_resource type="Resource" id="Resource_lvhfl"]
 script = ExtResource("9_a05ap")
-character = "Maki"
+character = "Bucho"
 line = "This was a triumph."
 text_speed_chars_per_second = 25.0
 start_event = ""
@@ -887,7 +888,7 @@ end_event = ""
 
 [sub_resource type="Resource" id="Resource_3cooe"]
 script = ExtResource("9_a05ap")
-character = "Mofles"
+character = "Bucho"
 line = "I'm making a note here."
 text_speed_chars_per_second = 25.0
 start_event = ""
@@ -895,7 +896,7 @@ end_event = ""
 
 [sub_resource type="Resource" id="Resource_xi0b2"]
 script = ExtResource("9_a05ap")
-character = "Mesti"
+character = "Bucho"
 line = "Huge success!"
 text_speed_chars_per_second = 25.0
 start_event = ""
@@ -903,7 +904,7 @@ end_event = ""
 
 [sub_resource type="Resource" id="Resource_3uldh"]
 script = ExtResource("9_a05ap")
-character = "Misty"
+character = "Bucho"
 line = "It's hard to overstate my satisfaction."
 text_speed_chars_per_second = 25.0
 start_event = ""
@@ -946,6 +947,10 @@ script = ExtResource("2_ae0mc")
 
 [node name="World" type="Node2D" parent="."]
 
+[node name="Camera2D" type="Camera2D" parent="World"]
+anchor_mode = 0
+metadata/_edit_lock_ = true
+
 [node name="TileMap" type="TileMap" parent="World"]
 tile_set = SubResource("TileSet_7lsfk")
 format = 2
@@ -957,14 +962,33 @@ layer_1/tile_data = PackedInt32Array(262148, 262145, 5, 327684, 917505, 4, 39322
 [node name="DayExPlayer" parent="World/TileMap" instance=ExtResource("4_kv2ty")]
 position = Vector2(120, 150)
 
-[node name="Camera2D" type="Camera2D" parent="World/TileMap/DayExPlayer"]
-unique_name_in_owner = true
-process_callback = 0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-editor_draw_drag_margin = true
+[node name="CameraPositions" type="Node2D" parent="World/TileMap"]
+metadata/_edit_lock_ = true
+
+[node name="KitchenCameraPos" type="Node2D" parent="World/TileMap/CameraPositions"]
+position = Vector2(-15, -311)
+script = ExtResource("6_wr6ei")
+metadata/_edit_lock_ = true
+
+[node name="RoomCameraPos" type="Node2D" parent="World/TileMap/CameraPositions"]
+position = Vector2(260, -387)
+script = ExtResource("6_wr6ei")
+_preview_color = Color(0.682353, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="LivingRoomCameraPos" type="Node2D" parent="World/TileMap/CameraPositions"]
+script = ExtResource("6_wr6ei")
+_preview_color = Color(0, 0, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="BackyardCameraPos" type="Node2D" parent="World/TileMap/CameraPositions"]
+position = Vector2(245, 15)
+script = ExtResource("6_wr6ei")
+_preview_color = Color(0, 1, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Teleporters" type="Node2D" parent="World/TileMap"]
+metadata/_edit_lock_ = true
 
 [node name="LivingRoomToRoomExit" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_entrance_node_path") instance=ExtResource("5_weg27")]
 position = Vector2(60, 65)
@@ -982,30 +1006,35 @@ _entrance_node_path = NodePath("../LivingRoomKitchenEntrance")
 position = Vector2(440, -215)
 _entrance_node_path = NodePath("../LivingRoomKitchenEntrance2")
 
-[node name="RoomEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
+[node name="RoomEntrance" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_camera_pos") instance=ExtResource("6_hpgyv")]
 position = Vector2(440, -235)
 initial_direction = 2
 color_tag = Color(1, 0, 0, 1)
+_camera_pos = NodePath("../../CameraPositions/RoomCameraPos")
 
-[node name="KitchenEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
+[node name="KitchenEntrance" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_camera_pos") instance=ExtResource("6_hpgyv")]
 position = Vector2(60, -115)
 initial_direction = 2
 color_tag = Color(0.368627, 0.145098, 0.337255, 1)
+_camera_pos = NodePath("../../CameraPositions/KitchenCameraPos")
 
-[node name="LivingRoomKitchenEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
+[node name="LivingRoomKitchenEntrance" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_camera_pos") instance=ExtResource("6_hpgyv")]
 position = Vector2(90, 85)
 initial_direction = 3
 color_tag = Color(0, 1, 0, 1)
+_camera_pos = NodePath("../../CameraPositions/LivingRoomCameraPos")
 
-[node name="LivingRoomKitchenEntrance2" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
+[node name="LivingRoomKitchenEntrance2" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_camera_pos") instance=ExtResource("6_hpgyv")]
 position = Vector2(60, 85)
 initial_direction = 3
 color_tag = Color(0.94902, 0.827451, 0, 1)
+_camera_pos = NodePath("../../CameraPositions/LivingRoomCameraPos")
 
-[node name="BackYardEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
+[node name="BackYardEntrance" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_camera_pos") instance=ExtResource("6_hpgyv")]
 position = Vector2(410, 255)
 initial_direction = 2
 color_tag = Color(0, 0, 1, 1)
+_camera_pos = NodePath("../../CameraPositions/BackyardCameraPos")
 
 [node name="BackyardToKitchenExit" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_entrance_node_path") instance=ExtResource("5_weg27")]
 position = Vector2(410, 275)
@@ -1015,12 +1044,14 @@ _entrance_node_path = NodePath("../BackyardToKitchenEntrance")
 position = Vector2(150, -205)
 _entrance_node_path = NodePath("../BackYardEntrance")
 
-[node name="BackyardToKitchenEntrance" parent="World/TileMap/Teleporters" instance=ExtResource("6_hpgyv")]
+[node name="BackyardToKitchenEntrance" parent="World/TileMap/Teleporters" node_paths=PackedStringArray("_camera_pos") instance=ExtResource("6_hpgyv")]
 position = Vector2(150, -185)
 initial_direction = 3
 color_tag = Color(0.384314, 1, 1, 1)
+_camera_pos = NodePath("../../CameraPositions/KitchenCameraPos")
 
 [node name="ActionAreas" type="Node2D" parent="World/TileMap"]
+metadata/_edit_lock_ = true
 
 [node name="SpeakActionArea" parent="World/TileMap/ActionAreas" instance=ExtResource("8_jk2pm")]
 position = Vector2(215, 180)

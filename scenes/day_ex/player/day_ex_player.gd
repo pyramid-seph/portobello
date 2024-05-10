@@ -96,7 +96,6 @@ func teleport(new_global_position: Vector2, facing_direction: FacingDirection) -
 	global_position = new_global_position
 	velocity = Vector2.ZERO
 	reset_walking_time()
-	
 	match facing_direction:
 		FacingDirection.LEFT:
 			_facing_direction = Vector2.LEFT

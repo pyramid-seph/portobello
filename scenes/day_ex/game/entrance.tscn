@@ -11,3 +11,6 @@ texture_repeat = 2
 texture = ExtResource("2_vbcrs")
 region_enabled = true
 region_rect = Rect2(0, 0, 20, 10)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

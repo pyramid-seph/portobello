@@ -36,12 +36,13 @@ func _on_battle_start_system_start_battle() -> void:
 	# Play some neat effect
 	# Start battle state and give control to the battle manager
 	$World.process_mode = Node.PROCESS_MODE_DISABLED
+	_player.set_process_unhandled_input(false)
 	await TransitionPlayer.play_battle()
 	await get_tree().create_timer(1.0, false).timeout
 	await TransitionPlayer.play_battle_backwards()
 	$World.process_mode = Node.PROCESS_MODE_INHERIT
 	print("BATTLE!")
-	_battle_start_system.reset(3.0)
+	_battle_start_system.reset()
 
 
 func _on_day_ex_ui_dialogue_started() -> void:
