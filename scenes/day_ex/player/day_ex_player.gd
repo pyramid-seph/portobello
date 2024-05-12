@@ -8,7 +8,6 @@ enum FacingDirection {
 	DOWN,
 }
 
-const ActionArea = preload("res://scenes/day_ex/game/speak_action_area.gd")
 const ActionAreaDetector = preload("res://scenes/day_ex/player/action_area_detector.gd")
 
 @export var speed: float = 33.33

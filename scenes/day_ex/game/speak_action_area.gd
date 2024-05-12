@@ -1,4 +1,5 @@
-extends Area2D
+class_name SpeakActionArea
+extends ActionArea
 
 
 @export var _dialogue: Array[DialoguePage]

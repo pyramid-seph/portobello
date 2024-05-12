@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dg5lsubt653gf" path="res://scenes/day_ex/ui/day_ex_ui.tscn" id="5_y60w5"]
 [ext_resource type="PackedScene" uid="uid://csorcwveuvxs8" path="res://scenes/day_ex/game/entrance.tscn" id="6_hpgyv"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/camera_pos.gd" id="6_wr6ei"]
-[ext_resource type="PackedScene" uid="uid://bsrfkj87g5ts0" path="res://scenes/day_ex/speak_action_area.tscn" id="8_jk2pm"]
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/speak_action_area.gd" id="9_m68en"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fpoks"]
 tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 0, 131072, 196609, 0, 196608, 262145, 0)
@@ -1053,18 +1053,26 @@ _camera_pos = NodePath("../../CameraPositions/KitchenCameraPos")
 [node name="ActionAreas" type="Node2D" parent="World/TileMap"]
 metadata/_edit_lock_ = true
 
-[node name="SpeakActionArea" parent="World/TileMap/ActionAreas" instance=ExtResource("8_jk2pm")]
+[node name="BathroomSpeakActionArea" type="Area2D" parent="World/TileMap/ActionAreas"]
 position = Vector2(215, 180)
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("9_m68en")
 _dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_lvhfl"), SubResource("Resource_3cooe"), SubResource("Resource_xi0b2"), SubResource("Resource_3uldh")])
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/SpeakActionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/BathroomSpeakActionArea"]
 shape = SubResource("RectangleShape2D_wumj7")
 
-[node name="SpeakActionArea2" parent="World/TileMap/ActionAreas" instance=ExtResource("8_jk2pm")]
+[node name="KitchenParrotSpeakActionArea" type="Area2D" parent="World/TileMap/ActionAreas"]
 position = Vector2(155, -125)
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("9_m68en")
 _dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_e6qb7"), SubResource("Resource_p1lyl")])
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/SpeakActionArea2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/KitchenParrotSpeakActionArea"]
 shape = SubResource("RectangleShape2D_u5iun")
 
 [connection signal="dialogue_event_requested" from="Interface/DayExUi" to="." method="_on_day_ex_ui_dialogue_event_requested"]

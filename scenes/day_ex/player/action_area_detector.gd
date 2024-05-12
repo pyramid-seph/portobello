@@ -3,8 +3,6 @@ extends Area2D
 signal action_area_detected
 signal detected_action_area_exited
 
-const ActionArea = preload("res://scenes/day_ex/game/speak_action_area.gd")
-
 var _detected_action_area: ActionArea
 var _detected_distance: float
 
