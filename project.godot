@@ -42,6 +42,10 @@ window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/handheld/orientation=1
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+
 [gdnative]
 
 singletons=["res://addons/godot-git-plugin/git_api.gdnlib"]
