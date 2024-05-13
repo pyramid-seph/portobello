@@ -1,0 +1,369 @@
+[gd_scene load_steps=28 format=3 uid="uid://c0epbuu3r3wqy"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
+[ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="3_i3dd0"]
+[ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="4_ewlpe"]
+[ext_resource type="Texture2D" uid="uid://o0qioyvpo20p" path="res://art/day_ex/enemies_and_powers_atlas_0.png" id="4_gpnvg"]
+[ext_resource type="Texture2D" uid="uid://55kwu7la68t5" path="res://art/day_ex/rpg_dialog_box_arrow_next.png" id="4_k87g0"]
+[ext_resource type="Texture2D" uid="uid://cveo78p5onwss" path="res://art/day_ex/battle_background_house.png" id="5_1qn1l"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="5_k0cqu"]
+[ext_resource type="Texture2D" uid="uid://52lr8grc822f" path="res://art/day_ex/status_effects.png" id="6_i6stn"]
+[ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="8_jgqt0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6y60"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkdax"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("3_i3dd0")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_676j2"]
+line_spacing = 2.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx7lm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pstmx"]
+atlas = ExtResource("4_gpnvg")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7jss"]
+atlas = ExtResource("6_i6stn")
+region = Rect2(75, 0, 15, 17)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eoyxy"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wp2s"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_14j6r"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vf0sj"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hat3d"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgqrq"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe4ql"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mne00"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy302"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fbht4"]
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7f6hs"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_5fx2w"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+
+[node name="BattleScreen" type="CanvasLayer"]
+script = ExtResource("1_wg4ig")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q6y60")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NarrationContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/NarrationContainer"]
+layout_mode = 2
+
+[node name="NarrationLabel" type="Label" parent="PanelContainer/VBoxContainer/NarrationContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Bucho uses bright eyes ! "
+label_settings = SubResource("LabelSettings_676j2")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/NarrationContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("4_k87g0")
+stretch_mode = 2
+
+[node name="EnemiesContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gx7lm")
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_1qn1l")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -32.0
+offset_right = 49.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EnemyD" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_pstmx")
+stretch_mode = 3
+
+[node name="EnemyF" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_pstmx")
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EnemyA" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_pstmx")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer/EnemyA"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -15.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_t7jss")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer/EnemyA"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "-10HP"
+label_settings = SubResource("LabelSettings_eoyxy")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="EnemyB" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_pstmx")
+stretch_mode = 3
+
+[node name="EnemyC" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_pstmx")
+stretch_mode = 3
+
+[node name="PlayerInfoContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_ewlpe")
+stretch_mode = 3
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lvl. 9"
+label_settings = SubResource("LabelSettings_5wp2s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="StatusLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Normal"
+label_settings = SubResource("LabelSettings_5wp2s")
+vertical_alignment = 1
+
+[node name="StatusTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_ewlpe")
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BuchoHPLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HP: 100"
+label_settings = SubResource("LabelSettings_14j6r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuchoMPLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MP: 100"
+label_settings = SubResource("LabelSettings_vf0sj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerActionContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PlayerActionContainer"]
+layout_mode = 2
+
+[node name="ActionHSelector" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hat3d")
+selector_text = ""
+_options = ["Ability", "Attack"]
+focus_color = Color(0.29366, 0.29366, 0.29366, 1)
+
+[node name="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ActionHSelector" index="0"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "< Ability >"
+label_settings = SubResource("LabelSettings_lgqrq")
+
+[node name="AbilityHSelector" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oe4ql")
+selector_text = "  "
+_options = ["Bright eyes: 10MP", "Ability"]
+focus_color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/AbilityHSelector" index="0"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "   < Bright eyes: 10MP >"
+label_settings = SubResource("LabelSettings_mne00")
+
+[node name="ItemHSelector" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qy302")
+selector_text = "  "
+_options = ["(100) Leftovers", "Ability"]
+focus_color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ItemHSelector" index="0"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "   < (100) Leftovers >"
+label_settings = SubResource("LabelSettings_fbht4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Info"
+label_settings = SubResource("LabelSettings_7f6hs")
+uppercase = true
+
+[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Inflicts love in 1 enemy."
+label_settings = SubResource("LabelSettings_5fx2w")
+
+[editable path="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ActionHSelector"]
+[editable path="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/AbilityHSelector"]
+[editable path="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ItemHSelector"]

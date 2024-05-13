@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=25 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_1_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/day_ex/game/camera_pos.gd" id="6_wr6ei"]
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/speak_action_area.gd" id="9_m68en"]
+[ext_resource type="PackedScene" uid="uid://c0epbuu3r3wqy" path="res://scenes/day_ex/game/battle_screen.tscn" id="11_1txxr"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fpoks"]
 tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 0, 131072, 196609, 0, 196608, 262145, 0)
@@ -935,6 +936,9 @@ size = Vector2(10, 10)
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
 _debug_skip_battles = true
+
+[node name="BattleScreen" parent="." instance=ExtResource("11_1txxr")]
+_preview = false
 
 [node name="Interface" type="CanvasLayer" parent="."]
 

@@ -3,6 +3,7 @@ extends Node
 
 const DayExUi = preload("res://scenes/day_ex/ui/day_ex_ui.gd")
 const BattleStartSystem = preload("res://scenes/day_ex/game/battle_start_system.gd")
+const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 
 @export_group("Debug", "_debug")
 @export var _debug_skip_battles: bool:
@@ -11,6 +12,7 @@ const BattleStartSystem = preload("res://scenes/day_ex/game/battle_start_system.
 @onready var _battle_start_system: BattleStartSystem = $Systems/BattleStartSystem
 @onready var _ui: DayExUi = $Interface/DayExUi
 @onready var _player: CharacterBody2D = $World/TileMap/DayExPlayer
+@onready var _battle_screen: BattleScreen = $BattleScreen
 
 
 func _ready() -> void:
