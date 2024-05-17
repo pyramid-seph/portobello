@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtjka08iauchr"
-path="res://.godot/imported/enemies_and_powers_atlas_1.png-795a034b535f3692ce3251e49f5c1020.ctex"
+uid="uid://boqnr551hv15o"
+path="res://.godot/imported/battle_char_enemy_parrot_yellow.png-2dc037cca76115a185261b01e9c21bac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/enemies_and_powers_atlas_1.png"
-dest_files=["res://.godot/imported/enemies_and_powers_atlas_1.png-795a034b535f3692ce3251e49f5c1020.ctex"]
+source_file="res://art/day_ex/battle_char_enemy_parrot_yellow.png"
+dest_files=["res://.godot/imported/battle_char_enemy_parrot_yellow.png-2dc037cca76115a185261b01e9c21bac.ctex"]
 
 [params]
 

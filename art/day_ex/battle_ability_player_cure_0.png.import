@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o0qioyvpo20p"
-path="res://.godot/imported/enemies_and_powers_atlas_0.png-53366ad53372b0feeca389e5053e0606.ctex"
+uid="uid://b0pjuc1pcjx0l"
+path="res://.godot/imported/battle_ability_player_cure_0.png-72f4d3baa743a1ca67938fe81cb368e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/enemies_and_powers_atlas_0.png"
-dest_files=["res://.godot/imported/enemies_and_powers_atlas_0.png-53366ad53372b0feeca389e5053e0606.ctex"]
+source_file="res://art/day_ex/battle_ability_player_cure_0.png"
+dest_files=["res://.godot/imported/battle_ability_player_cure_0.png-72f4d3baa743a1ca67938fe81cb368e2.ctex"]
 
 [params]
 

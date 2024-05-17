@@ -17,7 +17,9 @@ func _ready() -> void:
 	_on_preview_set()
 
 
-func start() -> void:
+func start() -> void: # args: enemy_party
+	# 1. Determine order using speed
+	# 2. 
 	pass
 
 
