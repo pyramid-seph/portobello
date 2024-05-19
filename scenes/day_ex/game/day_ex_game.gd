@@ -26,7 +26,7 @@ func _start_game() -> void:
 	_ui.show_level_start()
 	await _ui.start_level_finished
 	_ui.set_pause_menu_enabled(true)
-	_battle_start_system.reset(5.0)
+	_battle_start_system.reset(1.0)
 	_player.set_process_unhandled_input(true)
 
 
@@ -34,17 +34,11 @@ func _on_battle_start_system_start_battle() -> void:
 	if _debug_skip_battles:
 		return
 	
-	# disable all world processing
-	# Play some neat effect
-	# Start battle state and give control to the battle manager
-	$World.process_mode = Node.PROCESS_MODE_DISABLED
 	_player.set_process_unhandled_input(false)
-	await TransitionPlayer.play_battle()
-	await get_tree().create_timer(1.0, false).timeout
-	await TransitionPlayer.play_battle_backwards()
-	$World.process_mode = Node.PROCESS_MODE_INHERIT
-	print("BATTLE!")
-	_battle_start_system.reset()
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	$World/TileMap.process_mode = Node.PROCESS_MODE_DISABLED
+	_battle_screen.start()
 
 
 func _on_day_ex_ui_dialogue_started() -> void:
@@ -57,3 +51,12 @@ func _on_day_ex_ui_dialogue_finished() -> void:
 
 func _on_day_ex_ui_dialogue_event_requested(event: String) -> void:
 	print("dialogue requested this event to be run: ", event)
+
+
+func _on_battle_screen_battle_finished(success: bool) -> void:
+	if not success:
+		return
+	
+	$World/TileMap.process_mode = Node.PROCESS_MODE_INHERIT
+	_player.set_process_unhandled_input(true)
+	_battle_start_system.reset()

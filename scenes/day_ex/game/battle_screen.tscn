@@ -104,6 +104,9 @@ region = Rect2(75, 0, 15, 17)
 [node name="BattleScreen" type="CanvasLayer"]
 script = ExtResource("1_wg4ig")
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
