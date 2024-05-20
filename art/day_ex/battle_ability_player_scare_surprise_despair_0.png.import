@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt6adgnbtn7xw"
-path="res://.godot/imported/battle_ability_player_scare_surprise_tackle_1.png-32df5e6678fa054f9760ec21a3df87b4.ctex"
+uid="uid://qmnrikcdeuqs"
+path="res://.godot/imported/battle_ability_player_scare_surprise_despair_0.png-578c6414bf19fa7e311464b9b954b117.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/battle_ability_player_scare_surprise_tackle_1.png"
-dest_files=["res://.godot/imported/battle_ability_player_scare_surprise_tackle_1.png-32df5e6678fa054f9760ec21a3df87b4.ctex"]
+source_file="res://art/day_ex/battle_ability_player_scare_surprise_despair_0.png"
+dest_files=["res://.godot/imported/battle_ability_player_scare_surprise_despair_0.png-578c6414bf19fa7e311464b9b954b117.ctex"]
 
 [params]
 

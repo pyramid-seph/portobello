@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcuqtm68exyh1"
-path="res://.godot/imported/battle_char_enemy_cockroach.png-bda0bb1d6718a60340326af343f77143.ctex"
+uid="uid://fu8cjwc6nsm0"
+path="res://.godot/imported/battle_ability_player_tackle.png-efd46e2465a50674ecbc46646a663c81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/battle_char_enemy_cockroach.png"
-dest_files=["res://.godot/imported/battle_char_enemy_cockroach.png-bda0bb1d6718a60340326af343f77143.ctex"]
+source_file="res://art/day_ex/battle_ability_player_tackle.png"
+dest_files=["res://.godot/imported/battle_ability_player_tackle.png-efd46e2465a50674ecbc46646a663c81.ctex"]
 
 [params]
 

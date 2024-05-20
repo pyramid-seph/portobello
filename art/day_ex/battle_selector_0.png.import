@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o0qioyvpo20p"
-path="res://.godot/imported/battle_atlas_enemies_and_powers_atlas_0.png-3c29a0ce04ed9618da0ce305cf71fa34.ctex"
+uid="uid://cumpixq1a8n80"
+path="res://.godot/imported/battle_selector_0.png-0ca671203ada97100aa9468011f6024d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/battle_atlas_enemies_and_powers_atlas_0.png"
-dest_files=["res://.godot/imported/battle_atlas_enemies_and_powers_atlas_0.png-3c29a0ce04ed9618da0ce305cf71fa34.ctex"]
+source_file="res://art/day_ex/battle_selector_0.png"
+dest_files=["res://.godot/imported/battle_selector_0.png-0ca671203ada97100aa9468011f6024d.ctex"]
 
 [params]
 

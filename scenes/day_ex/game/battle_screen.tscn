@@ -1,13 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=29 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
+[ext_resource type="PackedScene" uid="uid://ctbphqc3meo8i" path="res://scenes/day_ex/game/battle_narration_box.tscn" id="2_mexfq"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="3_i3dd0"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="4_ewlpe"]
-[ext_resource type="Texture2D" uid="uid://55kwu7la68t5" path="res://art/day_ex/rpg_dialog_box_arrow_next.png" id="4_k87g0"]
 [ext_resource type="Texture2D" uid="uid://cveo78p5onwss" path="res://art/day_ex/battle_background_house.png" id="5_1qn1l"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="5_k0cqu"]
-[ext_resource type="Texture2D" uid="uid://52lr8grc822f" path="res://art/day_ex/battle_atlas_status.png" id="6_i6stn"]
-[ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_cockroach.png" id="6_jnjb2"]
+[ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_bug.png" id="6_jnjb2"]
 [ext_resource type="Texture2D" uid="uid://ddaac5etcppcm" path="res://art/day_ex/battle_status_love.png" id="7_v8son"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="8_jgqt0"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_incr.png" id="9_gb3qd"]
@@ -21,6 +20,15 @@ content_margin_bottom = 6.0
 bg_color = Color(0, 0, 0, 1)
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx7lm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eoyxy"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkdax"]
 content_margin_left = 8.0
 content_margin_top = 8.0
@@ -31,20 +39,6 @@ texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_676j2"]
-line_spacing = 2.0
-font = ExtResource("5_k0cqu")
-font_size = 8
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx7lm"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_eoyxy"]
-line_spacing = 0.0
-font = ExtResource("5_k0cqu")
-font_size = 8
-font_color = Color(1, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5wp2s"]
 line_spacing = 0.0
@@ -97,8 +91,11 @@ line_spacing = 0.0
 font = ExtResource("5_k0cqu")
 font_size = 8
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mo5ir"]
+load_path = "res://.godot/imported/battle_atlas_status.png-36597b9b7b716ebd881855a7b8a531a4.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_t7jss"]
-atlas = ExtResource("6_i6stn")
+atlas = SubResource("CompressedTexture2D_mo5ir")
 region = Rect2(75, 0, 15, 17)
 
 [node name="BattleScreen" type="CanvasLayer"]
@@ -119,25 +116,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_q6y60")
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="NarrationContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/NarrationContainer"]
-layout_mode = 2
-
-[node name="NarrationLabel" type="Label" parent="PanelContainer/VBoxContainer/NarrationContainer/VBoxContainer"]
+[node name="BattleNarrationBox" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_mexfq")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-text = "Bucho uses bright eyes ! "
-label_settings = SubResource("LabelSettings_676j2")
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/NarrationContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-texture = ExtResource("4_k87g0")
-stretch_mode = 2
 
 [node name="EnemiesContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -366,9 +347,11 @@ uppercase = true
 
 [node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-text = "Inflicts love in 1 enemy."
+text = "Weakens 1 enemy's ATK, but strengthens their SPD."
 label_settings = SubResource("LabelSettings_5fx2w")
+autowrap_mode = 3
 
 [node name="PlayerCharContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true

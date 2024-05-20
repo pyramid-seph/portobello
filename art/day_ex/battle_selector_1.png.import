@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2ccjn6lxmq6o"
-path="res://.godot/imported/day_1_player.png-b8c9aaaffc3e7cd4568d8d781cd74d05.ctex"
+uid="uid://dr4u8788higfd"
+path="res://.godot/imported/battle_selector_1.png-6243a66de22dec449288e5a8fdb52124.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/day_1_player.png"
-dest_files=["res://.godot/imported/day_1_player.png-b8c9aaaffc3e7cd4568d8d781cd74d05.ctex"]
+source_file="res://art/day_ex/battle_selector_1.png"
+dest_files=["res://.godot/imported/battle_selector_1.png-6243a66de22dec449288e5a8fdb52124.ctex"]
 
 [params]
 

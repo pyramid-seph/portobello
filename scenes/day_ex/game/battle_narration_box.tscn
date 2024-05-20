@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctbphqc3meo8i"]
+
+[ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_h6f6k"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="2_aoa0w"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/battle_narration_box.gd" id="2_j570o"]
+[ext_resource type="Texture2D" uid="uid://55kwu7la68t5" path="res://art/day_ex/rpg_dialog_box_arrow_next.png" id="3_04hrh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkdax"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_h6f6k")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[node name="BattleNarrationBox" type="PanelContainer"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
+script = ExtResource("2_j570o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NarrationLabel" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_aoa0w")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p]"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_04hrh")
+stretch_mode = 2

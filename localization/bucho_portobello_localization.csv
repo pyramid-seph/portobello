@@ -161,3 +161,52 @@ RESULTS_SCREEN_EXTRA_LIVES_SINGULAR,{lives} extra life!,¡{lives} vida extra!
 RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!\n ,¡Reto devorado!\n 
 RESULTS_SCREEN_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 RESULTS_SCREEN_TOTAL_SCORE,Total = {total_score},Total = {total_score}
+RPG_BATTLE_ABILITY_NAME_PLAYER_CURE,Cure,Cura
+RPG_BATTLE_ABILITY_NAME_PLAYER_DESPAIR,Despair,Desesperar
+RPG_BATTLE_ABILITY_NAME_PLAYER_MESMER_EYES,Mesmer-eyes,Ojos tiernos
+RPG_BATTLE_ABILITY_NAME_PLAYER_RIP_AND_TEAR_EX,Rip & tear EX,Garrazos
+RPG_BATTLE_ABILITY_NAME_PLAYER_SCARE,Scare,Asustar
+RPG_BATTLE_ABILITY_NAME_PLAYER_SURPRISE,Surprise,Sorprender
+RPG_BATTLE_ABILITY_NAME_PLAYER_TACKLE,Tackle,Atajar
+RPG_BATTLE_ACTION_ABILITY,Ability,Habilidad
+RPG_BATTLE_ACTION_ATTACK,Attack,Atacar
+RPG_BATTLE_ATTACK_NAME_ENEMY_NIBBLE,Nibble,Mordizco
+RPG_BATTLE_ATTACK_NAME_ENEMY_PECK,Peck,Picotazo
+RPG_BATTLE_ATTACK_NAME_PLAYER_BITE,Bite,Morder
+RPG_BATTLE_ATTACK_NAME_PLAYER_EAT,Eat,Comer
+RPG_BATTLE_ATTACK_NAME_PLAYER_RIP_AND_TEAR,Rip & tear,Garrazo
+RPG_BATTLE_ATTACK_NAME_PLAYER_SCRATCH,Scratch,Arañar
+RPG_BATTLE_ENEMY_NAME_BUG,Bug,Bicho
+RPG_BATTLE_ENEMY_NAME_CROW,Crow,Cuervo
+RPG_BATTLE_ENEMY_NAME_DUCK_STRONG,Duck?,¿Pato?
+RPG_BATTLE_ENEMY_NAME_DUCK_WEAK,Duck,Pato
+RPG_BATTLE_ENEMY_NAME_LIZARD,Lizard,Lagartija
+RPG_BATTLE_ENEMY_NAME_MOUSE,Mouse,Ratón
+RPG_BATTLE_ENEMY_NAME_PARROT_BLUE,Blue Parrot,Perico Azul
+RPG_BATTLE_ENEMY_NAME_PARROT_YELLOW,Yellow Parrot,Perico Amarillo
+RPG_BATTLE_INFO_ABILITY_CURE,Recovers some HP.,Recupera algo de HP.
+RPG_BATTLE_INFO_ABILITY_DESPAIR,"Strengthens 1 enemy's ATK, but hurts them at the end of their turn.","Aumenta el ATQ de 1enemigo, pero recibe daño al final de su turno."
+RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts LOVE in 1 enemy.,Enamora a 1enemigo.
+RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a la mitad el HP de 1enemigo.
+RPG_BATTLE_INFO_ABILITY_SCARE,"Weakens 1 enemy's ATK, but strengthens their SPD.","Debilita el ATQ de 1enemigo, pero aumenta su VEL."
+RPG_BATTLE_INFO_ABILITY_SURPRISE,Weakens 1 enemy's ATK.,Debilita el ATQ de 1 enemigo.
+RPG_BATTLE_INFO_ABILITY_TACKLE,Weakens 1 enemy's SPD.,Debilita la VEL de 1 enemigo.
+RPG_BATTLE_INFO_ATTACK_BITE,Strong attack.,Ataque fuerte.
+RPG_BATTLE_INFO_ATTACK_EAT,Removes 1 enemy from the battle field.,Remueve a 1 enemigo del campo de batalla.
+RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR,Medium attack.,Ataque medio.
+RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack.,Ataque débil.
+RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center][color=#58574]¡Bucho[/color] perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
+RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]Breakfast is served![/center][/p][p][/p][p][center]Bon appétit![/center][/p],[p][center]¡El desayuno está servido![/center][/p][p][/p][p][center]¡Buen provecho![/center][/p]
+RPG_BATTLE_NARRATION_BATTLE_SUCCESS,Piece of cake! [color=#58574]Bucho[/color] got {scraps} leftovers.,¡Pan comido! [color=#58574]Bucho[/color] obtuvo {scraps} sobras.
+RPG_BATTLE_NARRATION_ENEMY_ATTACKS_ENEMY,[color=yellow]{enemy}[/color] attacks [color=yellow]{other_enemy}[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=yellow]{other_enemy}[/color] con [color=green]{attack}[/color].
+RPG_BATTLE_NARRATION_ENEMY_ATTACKS_PLAYER,[color=yellow]{enemy}[/color] attacks [color=#58574]Bucho[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=#58574]Bucho[/color] con [color=green]{attack}[/color].
+RPG_BATTLE_NARRATION_ENEMY_CURED,[color=yellow]{enemy}[/color] recovers [color=blue]{damage} HP[/color].,[color=yellow]{enemy}[/color] recupera [color=blue]{damage} HP[/color].
+RPG_BATTLE_NARRATION_ENEMY_HURT,[color=yellow]{enemy}[/color] takes [color=red]{damage} HP[/color] damage.,[color=yellow]{enemy}[/color] recibe [color=red]{damage} HP[/color] de daño.
+RPG_BATTLE_NARRATION_PLAYER_ATTACKS,[color=#58574f]Bucho[/color] attacks with [color=green]{attack}[/color].,[color=#58574f]Bucho[/color] ataca con [color=green]{attack}[/color].
+RPG_BATTLE_NARRATION_PLAYER_CURED,[color=#58574f]Bucho[/color] recovers [color=blue]{damage} HP[/color].,[color=#58574f]Bucho[/color] recupera [color=blue]{damage} HP[/color].
+RPG_BATTLE_NARRATION_PLAYER_HURT,[color=#58574f]Bucho[/color] takes [color=red]{damage} HP[/color] damage.,[color=#58574f]Bucho[/color] recibe [color=red]{damage} HP[/color] de daño.
+RPG_BATTLE_NARRATION_PLAYER_THINKING,[color=#58574f]Bucho[/color] is thinking his next move.,[color=#58574f]Bucho[/color] está pensando su próxima acción.
+RPG_BATTLE_STATUS_EFFECT_ATTACK_MINUS,ATK-,ATQ-
+RPG_BATTLE_STATUS_EFFECT_ATTACK_PLUS,ATK+,ATQ+
+RPG_BATTLE_STATUS_EFFECT_SPEED_MINUS,SPD-,VEL-
+RPG_BATTLE_STATUS_EFFECT_SPEED_PLUS,SPD+,VEL+

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fu8cjwc6nsm0"
-path="res://.godot/imported/battle_ability_enemy_pecking_0.png-6797e70467c01da066769e30288d6242.ctex"
+uid="uid://bcuqtm68exyh1"
+path="res://.godot/imported/battle_char_enemy_bug.png-f1049b3dabcc302ad7ba2be5145f41c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/battle_ability_enemy_pecking_0.png"
-dest_files=["res://.godot/imported/battle_ability_enemy_pecking_0.png-6797e70467c01da066769e30288d6242.ctex"]
+source_file="res://art/day_ex/battle_char_enemy_bug.png"
+dest_files=["res://.godot/imported/battle_char_enemy_bug.png-f1049b3dabcc302ad7ba2be5145f41c8.ctex"]
 
 [params]
 
