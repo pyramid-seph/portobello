@@ -197,7 +197,7 @@ RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR,Medium attack.,Ataque medio.
 RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack.,Ataque débil.
 RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center][color=#58574]¡Bucho[/color] perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]Breakfast is served![/center][/p][p][/p][p][center]Bon appétit![/center][/p],[p][center]¡El desayuno está servido![/center][/p][p][/p][p][center]¡Buen provecho![/center][/p]
-RPG_BATTLE_NARRATION_BATTLE_SUCCESS,Piece of cake! [color=#58574]Bucho[/color] got {scraps} leftovers.,¡Pan comido! [color=#58574]Bucho[/color] obtuvo {scraps} sobras.
+RPG_BATTLE_NARRATION_BATTLE_SUCCESS,Piece of cake! [color=#58574]Bucho[/color] got {scraps} scraps.,¡Pan comido! [color=#58574]Bucho[/color] obtuvo {scraps} sobras.
 RPG_BATTLE_NARRATION_ENEMY_ATTACKS_ENEMY,[color=yellow]{enemy}[/color] attacks [color=yellow]{other_enemy}[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=yellow]{other_enemy}[/color] con [color=green]{attack}[/color].
 RPG_BATTLE_NARRATION_ENEMY_ATTACKS_PLAYER,[color=yellow]{enemy}[/color] attacks [color=#58574]Bucho[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=#58574]Bucho[/color] con [color=green]{attack}[/color].
 RPG_BATTLE_NARRATION_ENEMY_CURED,[color=yellow]{enemy}[/color] recovers [color=blue]{damage} HP[/color].,[color=yellow]{enemy}[/color] recupera [color=blue]{damage} HP[/color].

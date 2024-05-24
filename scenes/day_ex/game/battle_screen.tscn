@@ -1,13 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=31 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
 [ext_resource type="PackedScene" uid="uid://ctbphqc3meo8i" path="res://scenes/day_ex/game/battle_narration_box.tscn" id="2_mexfq"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="3_i3dd0"]
-[ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="4_ewlpe"]
 [ext_resource type="Texture2D" uid="uid://cveo78p5onwss" path="res://art/day_ex/battle_background_house.png" id="5_1qn1l"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="5_k0cqu"]
 [ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_bug.png" id="6_jnjb2"]
 [ext_resource type="Texture2D" uid="uid://ddaac5etcppcm" path="res://art/day_ex/battle_status_love.png" id="7_v8son"]
+[ext_resource type="Texture2D" uid="uid://dgq5bvxdn1811" path="res://art/day_ex/battle_item_scraps.png" id="8_dp0aj"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="8_jgqt0"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_incr.png" id="9_gb3qd"]
 [ext_resource type="Texture2D" uid="uid://ca0dcipi55a41" path="res://art/day_ex/battle_char_player.png" id="10_h2bob"]
@@ -43,14 +43,25 @@ texture_margin_bottom = 3.0
 [sub_resource type="LabelSettings" id="LabelSettings_5wp2s"]
 line_spacing = 0.0
 font = ExtResource("5_k0cqu")
+font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_14j6r"]
 line_spacing = 0.0
 font = ExtResource("5_k0cqu")
 
+[sub_resource type="LabelSettings" id="LabelSettings_g1src"]
+font = ExtResource("5_k0cqu")
+
 [sub_resource type="LabelSettings" id="LabelSettings_vf0sj"]
 line_spacing = 0.0
 font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vaxnq"]
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2otg2"]
+font = ExtResource("5_k0cqu")
+font_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hat3d"]
 resource_local_to_scene = true
@@ -72,15 +83,6 @@ bg_color = Color(1, 1, 1, 0)
 line_spacing = 0.0
 font = ExtResource("5_k0cqu")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy302"]
-resource_local_to_scene = true
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_fbht4"]
-font = ExtResource("5_k0cqu")
-
 [sub_resource type="LabelSettings" id="LabelSettings_7f6hs"]
 line_spacing = 0.0
 font = ExtResource("5_k0cqu")
@@ -91,8 +93,9 @@ line_spacing = 0.0
 font = ExtResource("5_k0cqu")
 font_size = 8
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5om2m"]
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mo5ir"]
-load_path = "res://.godot/imported/battle_atlas_status.png-36597b9b7b716ebd881855a7b8a531a4.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t7jss"]
 atlas = SubResource("CompressedTexture2D_mo5ir")
@@ -220,47 +223,26 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer"]
 layout_mode = 2
+theme_override_constants/separation = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("4_ewlpe")
-stretch_mode = 3
-
-[node name="LevelLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Lvl. 9"
-label_settings = SubResource("LabelSettings_5wp2s")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
 
-[node name="StatusTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("9_gb3qd")
-stretch_mode = 3
-
-[node name="StatusLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "ATK+"
+text = "BUCHO LVL 9"
 label_settings = SubResource("LabelSettings_5wp2s")
-vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
@@ -270,29 +252,72 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "HP: 100"
+text = "HP: 100/999"
 label_settings = SubResource("LabelSettings_14j6r")
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BuchoMPLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="StatusTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_gb3qd")
+stretch_mode = 3
+
+[node name="StatusLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "ATK+"
+label_settings = SubResource("LabelSettings_g1src")
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BuchoMPLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "MP: 100"
+text = "MP: 100/999"
 label_settings = SubResource("LabelSettings_vf0sj")
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerActionContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="StatusTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_dp0aj")
+stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PlayerActionContainer"]
+[node name="StatusLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "9"
+label_settings = SubResource("LabelSettings_vaxnq")
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ActionHSelector" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "ACTION"
+label_settings = SubResource("LabelSettings_2otg2")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CommandHSelector" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hat3d")
@@ -300,12 +325,12 @@ selector_text = ""
 _options = ["Ability", "Attack"]
 focus_color = Color(0.29366, 0.29366, 0.29366, 1)
 
-[node name="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ActionHSelector" index="0"]
+[node name="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/CommandHSelector" index="0"]
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "< Ability >"
 label_settings = SubResource("LabelSettings_lgqrq")
 
-[node name="AbilityHSelector" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
+[node name="ActionHSelector" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oe4ql")
@@ -313,39 +338,25 @@ selector_text = "  "
 _options = ["Bright eyes: 10MP", "Ability"]
 focus_color = Color(0.294118, 0.294118, 0.294118, 1)
 
-[node name="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/AbilityHSelector" index="0"]
+[node name="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionHSelector" index="0"]
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "   < Bright eyes: 10MP >"
 label_settings = SubResource("LabelSettings_mne00")
 
-[node name="ItemHSelector" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qy302")
-selector_text = "  "
-_options = ["(100) Leftovers", "Ability"]
-focus_color = Color(0.294118, 0.294118, 0.294118, 1)
-
-[node name="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ItemHSelector" index="0"]
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "   < (100) Leftovers >"
-label_settings = SubResource("LabelSettings_fbht4")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/HBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Info"
 label_settings = SubResource("LabelSettings_7f6hs")
 uppercase = true
 
-[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer"]
+[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -353,21 +364,22 @@ text = "Weakens 1 enemy's ATK, but strengthens their SPD."
 label_settings = SubResource("LabelSettings_5fx2w")
 autowrap_mode = 3
 
-[node name="PlayerCharContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="PlayerCharContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(228, 88)
+custom_minimum_size = Vector2(0, 74)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5om2m")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerCharContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCharContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("10_h2bob")
 stretch_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerCharContainer/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCharContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -378,7 +390,7 @@ grow_horizontal = 0
 texture = SubResource("AtlasTexture_t7jss")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerCharContainer/TextureRect"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCharContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -394,6 +406,5 @@ label_settings = SubResource("LabelSettings_eoyxy")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[editable path="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ActionHSelector"]
-[editable path="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/AbilityHSelector"]
-[editable path="PanelContainer/VBoxContainer/PlayerActionContainer/VBoxContainer/ItemHSelector"]
+[editable path="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/CommandHSelector"]
+[editable path="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionHSelector"]
