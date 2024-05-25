@@ -23,15 +23,24 @@ func _ready() -> void:
 	_on_preview_set()
 
 
-func start() -> void: # args: enemy_party
+func start(enemies: Array[BattleEnemyData]) -> void:
 	await TransitionPlayer.play_battle()
 	_timer.start(1.0)
 	await _timer.timeout
+	setup(enemies)
 	_panel_container.show()
 	_battle_narration_box.say("RPG_BATTLE_NARRATION_BATTLE_STARTED")
 	await TransitionPlayer.play_battle_backwards()
 	_timer.start(1.0)
 	await _timer.timeout
+
+
+func setup(enemies: Array[BattleEnemyData]) -> void:
+	setup_screen(enemies)
+
+
+func setup_screen(enemies: Array[BattleEnemyData]) -> void:
+	pass
 
 
 func _on_preview_set() -> void:

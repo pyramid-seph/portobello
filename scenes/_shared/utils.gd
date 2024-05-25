@@ -19,6 +19,21 @@ static func rand_item(arr: Array) -> Node:
 	return arr.pick_random() if arr else null
 
 
+# TODO Deprecte with Godot's implementation whenever is released. 
+# See https://github.com/godotengine/godot/pull/88883.
+static func rand_weigthed(weights: Array[float]) -> int:
+	var remaining_distance: float = \
+			randf() * weights.reduce(func(accum, number): 
+						return accum + number)
+	var picked_index: int = 0
+	for i: int in weights.size():
+		remaining_distance -= weights[i]
+		if remaining_distance < 0:
+			picked_index = i
+			break
+	return picked_index
+
+
 static func first_or_null(arr: Array, callable: Callable):
 	if arr == null or arr.is_empty():
 		return null
