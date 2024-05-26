@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cspmfx76bwjfs"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/action_animations/action_animation.gd" id="1_hp8sh"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/action_animation.gd" id="1_hp8sh"]
 
 [node name="ActionAnimation" type="Control"]
 layout_mode = 3

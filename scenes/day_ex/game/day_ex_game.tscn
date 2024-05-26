@@ -1,9 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=30 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_1_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_start_system.gd" id="2_ae0mc"]
+[ext_resource type="Texture2D" uid="uid://cveo78p5onwss" path="res://art/day_ex/battle_background_house.png" id="2_dc2gq"]
+[ext_resource type="Resource" uid="uid://bcklqmn80yfmp" path="res://resources/instances/day_ex/lizard.tres" id="3_hmkuo"]
+[ext_resource type="Resource" uid="uid://dfbbuuqk1jsui" path="res://resources/instances/day_ex/bug.tres" id="3_hw7ee"]
 [ext_resource type="PackedScene" uid="uid://cbj80apo103mi" path="res://scenes/day_ex/player/day_ex_player.tscn" id="4_kv2ty"]
+[ext_resource type="Script" path="res://resources/battle_party.gd" id="4_t3khk"]
 [ext_resource type="PackedScene" uid="uid://ctrwrc3gdhha2" path="res://scenes/day_ex/game/exit.tscn" id="5_weg27"]
 [ext_resource type="PackedScene" uid="uid://dg5lsubt653gf" path="res://scenes/day_ex/ui/day_ex_ui.tscn" id="5_y60w5"]
 [ext_resource type="PackedScene" uid="uid://csorcwveuvxs8" path="res://scenes/day_ex/game/entrance.tscn" id="6_hpgyv"]
@@ -11,6 +15,12 @@
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/speak_action_area.gd" id="9_m68en"]
 [ext_resource type="PackedScene" uid="uid://c0epbuu3r3wqy" path="res://scenes/day_ex/game/battle_screen.tscn" id="11_1txxr"]
+
+[sub_resource type="Resource" id="Resource_np3up"]
+script = ExtResource("4_t3khk")
+_front_row = Array[Resource("res://resources/battle_enemy_data.gd")]([ExtResource("3_hw7ee"), ExtResource("3_hw7ee"), ExtResource("3_hw7ee")])
+_back_row = Array[Resource("res://resources/battle_enemy_data.gd")]([ExtResource("3_hmkuo"), ExtResource("3_hmkuo")])
+_weight = 0.0
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fpoks"]
 tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 0, 131072, 196609, 0, 196608, 262145, 0)
@@ -935,6 +945,8 @@ size = Vector2(10, 10)
 
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
+_debug_bg = ExtResource("2_dc2gq")
+_debug_battle_party = SubResource("Resource_np3up")
 
 [node name="BattleScreen" parent="." instance=ExtResource("11_1txxr")]
 _preview = false

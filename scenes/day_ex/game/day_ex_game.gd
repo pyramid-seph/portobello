@@ -6,6 +6,8 @@ const BattleStartSystem = preload("res://scenes/day_ex/game/battle_start_system.
 const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 
 @export_group("Debug", "_debug")
+@export var _debug_bg: Texture2D
+@export var _debug_battle_party: BattleParty 
 @export var _debug_skip_battles: bool:
 	get: return OS.is_debug_build() and _debug_skip_battles
 
@@ -38,7 +40,7 @@ func _on_battle_start_system_start_battle() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	$World/TileMap.process_mode = Node.PROCESS_MODE_DISABLED
-	_battle_screen.start()
+	_battle_screen.start(_debug_battle_party, _debug_bg)
 
 
 func _on_day_ex_ui_dialogue_started() -> void:

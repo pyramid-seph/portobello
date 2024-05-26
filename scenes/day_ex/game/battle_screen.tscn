@@ -1,12 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=28 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
 [ext_resource type="PackedScene" uid="uid://ctbphqc3meo8i" path="res://scenes/day_ex/game/battle_narration_box.tscn" id="2_mexfq"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="3_i3dd0"]
-[ext_resource type="Texture2D" uid="uid://cveo78p5onwss" path="res://art/day_ex/battle_background_house.png" id="5_1qn1l"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="5_k0cqu"]
-[ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_bug.png" id="6_jnjb2"]
-[ext_resource type="Texture2D" uid="uid://ddaac5etcppcm" path="res://art/day_ex/battle_status_love.png" id="7_v8son"]
 [ext_resource type="Texture2D" uid="uid://dgq5bvxdn1811" path="res://art/day_ex/battle_item_scraps.png" id="8_dp0aj"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="8_jgqt0"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_incr.png" id="9_gb3qd"]
@@ -21,13 +18,6 @@ bg_color = Color(0, 0, 0, 1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx7lm"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_eoyxy"]
-line_spacing = 0.0
-font = ExtResource("5_k0cqu")
-font_size = 8
-font_color = Color(1, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkdax"]
 content_margin_left = 8.0
@@ -101,6 +91,13 @@ font_size = 8
 atlas = SubResource("CompressedTexture2D_mo5ir")
 region = Rect2(75, 0, 15, 17)
 
+[sub_resource type="LabelSettings" id="LabelSettings_eoyxy"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="BattleScreen" type="CanvasLayer"]
 script = ExtResource("1_wg4ig")
 
@@ -133,89 +130,27 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("5_1qn1l")
 stretch_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -49.0
-offset_top = -32.0
-offset_right = 49.0
-offset_bottom = 32.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
-alignment = 2
+alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer"]
+[node name="BackRow" type="HBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="EnemyD" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer2"]
+[node name="FrontRow" type="HBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("6_jnjb2")
-stretch_mode = 3
-
-[node name="EnemyF" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("6_jnjb2")
-stretch_mode = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer"]
 layout_mode = 2
 alignment = 1
-
-[node name="EnemyA" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("6_jnjb2")
-stretch_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer/EnemyA"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -15.0
-offset_bottom = 17.0
-grow_horizontal = 0
-texture = ExtResource("7_v8son")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer/EnemyA"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -22.0
-offset_top = -10.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "-10HP"
-label_settings = SubResource("LabelSettings_eoyxy")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="EnemyB" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("6_jnjb2")
-stretch_mode = 3
-
-[node name="EnemyC" type="TextureRect" parent="PanelContainer/VBoxContainer/EnemiesContainer/BackgroundTextureRect/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("6_jnjb2")
-stretch_mode = 3
 
 [node name="PlayerInfoContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
