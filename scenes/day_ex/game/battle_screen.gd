@@ -30,37 +30,43 @@ func _ready() -> void:
 
 func start(enemy_party: BattleParty, background: Texture2D) -> void:
 	await TransitionPlayer.play_battle()
-	_timer.start(1.0)
-	await _timer.timeout
 	setup(enemy_party, background)
 	_panel_container.show()
 	_battle_narration_box.say("RPG_BATTLE_NARRATION_BATTLE_STARTED")
 	await TransitionPlayer.play_battle_backwards()
-	_timer.start(1.0)
+	
+	_timer.start(3.0)
+	await _timer.timeout
+	
+	await TransitionPlayer.play_battle()
+	teardown()
+	_panel_container.hide()
+	await TransitionPlayer.play_battle_backwards()
+	battle_finished.emit(true)
+
+
+func _setup_enemy_row(enemies: Array[BattleEnemyData], row: HBoxContainer) -> void:
+	for enemy_data: BattleEnemyData in enemies:
+		var new_enemy_node: RpgEnemy = EnemyScene.instantiate()
+		new_enemy_node.enemy_data = enemy_data
+		row.add_child(new_enemy_node)
 
 
 func setup(enemy_party: BattleParty, background: Texture2D) -> void:
-	setup_screen(enemy_party, background)
-
-
-func setup_screen(enemy_party: BattleParty, background: Texture2D) -> void:
 	_background_texture_rect.texture = background
-	
-	for child_node: Node in _front_row.get_children():
+	_setup_enemy_row(enemy_party.get_front_row_enemies(), _front_row)
+	_setup_enemy_row(enemy_party.get_back_row_enemies(), _back_row)
+
+
+func _clear_enemy_row(row: HBoxContainer) -> void:
+	for child_node: Node in row.get_children():
 		child_node.queue_free()
-	
-	for child_node: Node in _back_row.get_children():
-		child_node.queue_free()
-	
-	for enemy_data: BattleEnemyData in enemy_party.get_front_row_enemies():
-		var new_enemy_node: RpgEnemy = EnemyScene.instantiate()
-		new_enemy_node.enemy_data = enemy_data
-		_front_row.add_child(new_enemy_node)
-	
-	for enemy_data: BattleEnemyData in enemy_party.get_back_row_enemies():
-		var new_enemy_node: RpgEnemy = EnemyScene.instantiate()
-		new_enemy_node.enemy_data = enemy_data
-		_back_row.add_child(new_enemy_node)
+
+
+func teardown() -> void:
+	_background_texture_rect.texture = null
+	_clear_enemy_row(_front_row)
+	_clear_enemy_row(_back_row)
 
 
 func _on_preview_set() -> void:

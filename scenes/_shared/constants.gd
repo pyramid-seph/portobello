@@ -15,3 +15,7 @@ const LAYER_ACTION_AREA: int = 512
 
 const GROUP_PLAYERS: String = "players"
 const GROUP_ENEMIES: String = "enemies"
+
+const RPG_TILEMAP_LAYER_IDX_BATTLE_CONFIG = 2
+
+const RPG_TILEMAP_CUSTOM_DATA_LAYER_RANDOM_BATTLE_ID = "random_battle_id"

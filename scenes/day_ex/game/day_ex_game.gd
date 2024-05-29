@@ -2,19 +2,18 @@ extends Node
 
 
 const DayExUi = preload("res://scenes/day_ex/ui/day_ex_ui.gd")
-const BattleStartSystem = preload("res://scenes/day_ex/game/battle_start_system.gd")
+const RandomBattleSystem = preload("res://scenes/day_ex/game/random_battle_system.gd")
 const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 
 @export_group("Debug", "_debug")
-@export var _debug_bg: Texture2D
-@export var _debug_battle_party: BattleParty 
-@export var _debug_skip_battles: bool:
-	get: return OS.is_debug_build() and _debug_skip_battles
+@export var _debug_skip_random_battles: bool:
+	get:
+		return OS.is_debug_build() and _debug_skip_random_battles
 
-@onready var _battle_start_system: BattleStartSystem = $Systems/BattleStartSystem
-@onready var _ui: DayExUi = $Interface/DayExUi
+@onready var _random_battle_system: RandomBattleSystem = %RandomBattleSystem
 @onready var _player: CharacterBody2D = $World/TileMap/DayExPlayer
 @onready var _battle_screen: BattleScreen = $BattleScreen
+@onready var _ui: DayExUi = $Interface/DayExUi
 
 
 func _ready() -> void:
@@ -28,19 +27,16 @@ func _start_game() -> void:
 	_ui.show_level_start()
 	await _ui.start_level_finished
 	_ui.set_pause_menu_enabled(true)
-	_battle_start_system.reset(1.0)
+	_random_battle_system.reset()
 	_player.set_process_unhandled_input(true)
 
 
-func _on_battle_start_system_start_battle() -> void:
-	if _debug_skip_battles:
-		return
-	
+func _start_battle(enemy_party: BattleParty, background: Texture2D) -> void:
 	_player.set_process_unhandled_input(false)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	$World/TileMap.process_mode = Node.PROCESS_MODE_DISABLED
-	_battle_screen.start(_debug_battle_party, _debug_bg)
+	_battle_screen.start(enemy_party, background)
 
 
 func _on_day_ex_ui_dialogue_started() -> void:
@@ -56,9 +52,15 @@ func _on_day_ex_ui_dialogue_event_requested(event: String) -> void:
 
 
 func _on_battle_screen_battle_finished(success: bool) -> void:
-	if not success:
-		return
-	
-	$World/TileMap.process_mode = Node.PROCESS_MODE_INHERIT
-	_player.set_process_unhandled_input(true)
-	_battle_start_system.reset()
+	if success:
+		$World/TileMap.process_mode = Node.PROCESS_MODE_INHERIT
+		_player.set_process_unhandled_input(true)
+		_random_battle_system.reset()
+	else:
+		Game.start(Game.Minigame.TITLE_SCREEN)
+
+
+func _on_random_battle_system_start_battle(
+		enemy_party: BattleParty, background: Texture2D) -> void:
+	if not _debug_skip_random_battles:
+		_start_battle(enemy_party, background)
