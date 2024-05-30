@@ -45,17 +45,35 @@ func start(enemy_party: BattleParty, background: Texture2D) -> void:
 	battle_finished.emit(true)
 
 
-func _setup_enemy_row(enemies: Array[BattleEnemyData], row: HBoxContainer) -> void:
+func _setup_enemy_row(enemies: Array[BattleEnemyData],
+		row: HBoxContainer, 
+		tally: Dictionary,
+		enemy_ocurrences_count: Dictionary) -> void:
+	
 	for enemy_data: BattleEnemyData in enemies:
 		var new_enemy_node: RpgEnemy = EnemyScene.instantiate()
-		new_enemy_node.enemy_data = enemy_data
+		
+		var enemy_name: String = enemy_data.get_enemy_name()
+		if tally.has(enemy_name):
+			tally[enemy_name] += 1
+		else:
+			tally[enemy_name] = 1
+		var unique: bool = enemy_ocurrences_count[enemy_name] == 1
+		var enemy_ocurrence: int = -1 if unique else tally[enemy_name]
+		new_enemy_node.set_enemy_data(enemy_data, enemy_ocurrence)
+		
 		row.add_child(new_enemy_node)
 
 
 func setup(enemy_party: BattleParty, background: Texture2D) -> void:
 	_background_texture_rect.texture = background
-	_setup_enemy_row(enemy_party.get_front_row_enemies(), _front_row)
-	_setup_enemy_row(enemy_party.get_back_row_enemies(), _back_row)
+	
+	var tally := {}
+	var enemy_ocurrences_count = enemy_party.count_enemy_ocurrences()
+	_setup_enemy_row(enemy_party.get_front_row_enemies(), 
+			_front_row, tally, enemy_ocurrences_count)
+	_setup_enemy_row(enemy_party.get_back_row_enemies(),
+			 _back_row, tally, enemy_ocurrences_count)
 
 
 func _clear_enemy_row(row: HBoxContainer) -> void:

@@ -1,14 +1,17 @@
 extends Node
 
 
-@export var enemy_data: BattleEnemyData:
-	set(value):
-		enemy_data = value
-		_on_enemy_data_set()
+const ALPHABET: PackedStringArray = [
+		"", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
+		"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+var _enemy_data: BattleEnemyData
+var _ocurrence: int
 
 @onready var _status_texture_rect: TextureRect = $StatusTextureRect
 @onready var _enemy_texture_rect: TextureRect = $"."
 @onready var _damage_label: Label = $DamageLabel
+@onready var _name_label: Label = $NameLabel
 @onready var _selector_texture_rect: TextureRect = $SelectorTextureRect
 
 
@@ -21,7 +24,7 @@ var _curr_mp: int = -1:
 
 
 func _ready() -> void:
-	_on_enemy_data_set()
+	_setup()
 
 
 func get_curr_hp() -> int:
@@ -30,6 +33,10 @@ func get_curr_hp() -> int:
 
 func get_curr_mp() -> int:
 	return _curr_mp
+
+
+func get_full_name() -> String:
+	return _name_label.text
 
 
 func hurt(damage: int) -> int:
@@ -42,23 +49,35 @@ func consume_mp(points: int) -> int:
 	return _curr_mp
 
 
-func _on_enemy_data_set() -> void:
+## Set ocurrence to 0 or a negative value if this enemy is 
+## the only ocurrence of his type on this party.
+## Example: In the party there are 1 bug and 2 lizards. For the bug, you should set
+## ocurrence to 0 because there is no point in having the postfix " A" on his name
+## since it is the only bug in the party.
+func set_enemy_data(enemy_data: BattleEnemyData, ocurrence: int) -> void:
+	_enemy_data = enemy_data
+	_ocurrence = ocurrence
+	_setup()
+
+
+func _setup() -> void:
 	if not is_node_ready():
 		return
 	
-	reset()
-	
-	if enemy_data == null:
-		return
-	
-	_enemy_texture_rect.texture = enemy_data.get_texture()
-	_curr_hp = enemy_data.get_initial_hp()
-	_curr_mp = enemy_data.get_initial_mp()
-
-
-func reset() -> void:
 	_curr_hp = -1
 	_curr_mp = -1
 	_enemy_texture_rect.texture = null
 	_status_texture_rect.texture = null
 	_damage_label.text = ""
+	_name_label.text = ""
+	
+	if _enemy_data == null:
+		return
+	
+	_enemy_texture_rect.texture = _enemy_data.get_texture()
+	_curr_hp = _enemy_data.get_initial_hp()
+	_curr_mp = _enemy_data.get_initial_mp()
+	
+	var enemy_name: String = _enemy_data.get_enemy_name()
+	var alphabet_idx: int = clampi(_ocurrence, 0, ALPHABET.size() - 1)
+	_name_label.text = " ".join([enemy_name, ALPHABET[alphabet_idx]])

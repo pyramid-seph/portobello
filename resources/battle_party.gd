@@ -17,3 +17,20 @@ func get_back_row_enemies() -> Array[BattleEnemyData]:
 
 func get_weigth() -> float:
 	return _weight
+
+
+func count_enemy_ocurrences() -> Dictionary:
+	var count: Dictionary = {}
+	_accumulate_enemy_counts_from_row(_front_row, count)
+	_accumulate_enemy_counts_from_row(_back_row, count)
+	return count
+	
+	
+func _accumulate_enemy_counts_from_row(row: Array[BattleEnemyData], 
+		count: Dictionary) -> void:
+	for enemy_data: BattleEnemyData in row:
+		var enemy_name: String = enemy_data.get_enemy_name()
+		if count.has(enemy_name):
+			count[enemy_name] += 1
+		else:
+			count[enemy_name] = 1

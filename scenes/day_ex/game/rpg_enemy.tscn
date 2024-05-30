@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0cegcu8dki0c"]
+[gd_scene load_steps=10 format=3 uid="uid://d0cegcu8dki0c"]
 
-[ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_bug.png" id="1_kvlkt"]
+[ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="1_qirqy"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/rpg_enemy.gd" id="1_spv8x"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="3_30mjy"]
 [ext_resource type="Texture2D" uid="uid://cumpixq1a8n80" path="res://art/day_ex/battle_selector_0.png" id="4_8p67l"]
@@ -11,6 +11,28 @@ font = ExtResource("3_30mjy")
 font_size = 8
 font_color = Color(1, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcnln"]
+line_spacing = 0.0
+font = ExtResource("3_30mjy")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_6vfwm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(120, 272, 7, 8)]
+}
 
 [sub_resource type="Animation" id="Animation_owkpc"]
 resource_name = "focus"
@@ -28,21 +50,6 @@ tracks/0/keys = {
 "values": [Rect2(120, 272, 7, 8), Rect2(136, 272, 7, 8)]
 }
 
-[sub_resource type="Animation" id="Animation_6vfwm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture:region")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(120, 272, 7, 8)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_krrx1"]
 _data = {
 "RESET": SubResource("Animation_6vfwm"),
@@ -53,7 +60,7 @@ _data = {
 custom_minimum_size = Vector2(30, 30)
 offset_right = 30.0
 offset_bottom = 30.0
-texture = ExtResource("1_kvlkt")
+texture = ExtResource("1_qirqy")
 stretch_mode = 3
 script = ExtResource("1_spv8x")
 
@@ -82,6 +89,26 @@ grow_vertical = 0
 label_settings = SubResource("LabelSettings_eoyxy")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -3.0
+offset_right = 11.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BUG A"
+label_settings = SubResource("LabelSettings_bcnln")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="SelectorTextureRect" type="TextureRect" parent="."]
 visible = false
