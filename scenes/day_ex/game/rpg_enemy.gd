@@ -1,4 +1,8 @@
-extends Node
+extends Control
+
+
+signal selected(me)
+signal selection_canceled
 
 
 const ALPHABET: PackedStringArray = [
@@ -7,14 +11,6 @@ const ALPHABET: PackedStringArray = [
 
 var _enemy_data: BattleEnemyData
 var _ocurrence: int
-
-@onready var _status_texture_rect: TextureRect = $StatusTextureRect
-@onready var _enemy_texture_rect: TextureRect = $"."
-@onready var _damage_label: Label = $DamageLabel
-@onready var _name_label: Label = $NameLabel
-@onready var _selector_texture_rect: TextureRect = $SelectorTextureRect
-
-
 var _curr_hp: int = -1:
 	set(value):
 		_curr_hp = maxi(-1, _curr_hp - value)
@@ -22,9 +18,27 @@ var _curr_mp: int = -1:
 	set(value):
 		_curr_mp = maxi(-1, _curr_mp - value)
 
+@onready var _status_texture_rect: TextureRect = $StatusTextureRect
+@onready var _enemy_texture_rect: TextureRect = $"."
+@onready var _damage_label: Label = $DamageLabel
+@onready var _name_label: Label = $NameLabel
+@onready var _selector_texture_rect: TextureRect = $SelectorTextureRect
+@onready var _selector_animation_player: AnimationPlayer = %SelectorAnimationPlayer
+
 
 func _ready() -> void:
 	_setup()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire"):
+		accept_event()
+		release_focus()
+		selected.emit(self)
+	if event.is_action_pressed("ui_cancel"):
+		accept_event()
+		release_focus()
+		selection_canceled.emit()
 
 
 func get_curr_hp() -> int:
@@ -80,4 +94,16 @@ func _setup() -> void:
 	
 	var enemy_name: String = _enemy_data.get_enemy_name()
 	var alphabet_idx: int = clampi(_ocurrence, 0, ALPHABET.size() - 1)
-	_name_label.text = " ".join([enemy_name, ALPHABET[alphabet_idx]])
+	_name_label.text = " ".join([enemy_name, ALPHABET[alphabet_idx]]).trim_suffix(" ")
+
+
+func _on_focus_entered() -> void:
+	_selector_texture_rect.show()
+	_selector_animation_player.play("focus")
+	_name_label.show()
+
+
+func _on_focus_exited() -> void:
+	_selector_animation_player.stop()
+	_selector_texture_rect.hide()
+	_name_label.hide()

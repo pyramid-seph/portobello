@@ -60,6 +60,7 @@ _data = {
 custom_minimum_size = Vector2(30, 30)
 offset_right = 30.0
 offset_bottom = 30.0
+focus_mode = 2
 texture = ExtResource("1_qirqy")
 stretch_mode = 3
 script = ExtResource("1_spv8x")
@@ -123,7 +124,11 @@ grow_horizontal = 2
 texture = ExtResource("4_8p67l")
 stretch_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectorTextureRect"]
+[node name="SelectorAnimationPlayer" type="AnimationPlayer" parent="SelectorTextureRect"]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_krrx1")
 }
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

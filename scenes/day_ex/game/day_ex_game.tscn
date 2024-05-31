@@ -989,8 +989,7 @@ _preview = false
 [node name="RandomBattleSystem" type="Node" parent="Systems"]
 unique_name_in_owner = true
 script = ExtResource("2_ae0mc")
-_min_time_sec = 3.0
-_max_time_sec = 8.0
+_max_time_sec = 3.0
 _battle_configs = Array[ExtResource("8_r6rwp")]([SubResource("Resource_6tnym")])
 
 [node name="World" type="Node2D" parent="."]

@@ -32,6 +32,7 @@ func _start_game() -> void:
 
 
 func _start_battle(enemy_party: BattleParty, background: Texture2D) -> void:
+	_ui.set_pause_menu_enabled(false)
 	_player.set_process_unhandled_input(false)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -53,6 +54,7 @@ func _on_day_ex_ui_dialogue_event_requested(event: String) -> void:
 
 func _on_battle_screen_battle_finished(success: bool) -> void:
 	if success:
+		_ui.set_pause_menu_enabled(true)
 		$World/TileMap.process_mode = Node.PROCESS_MODE_INHERIT
 		_player.set_process_unhandled_input(true)
 		_random_battle_system.reset()
