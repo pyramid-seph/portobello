@@ -41,6 +41,11 @@ func _gui_input(event: InputEvent) -> void:
 		selection_canceled.emit()
 
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED:
+		_update_enemy_name_label()
+
+
 func get_curr_hp() -> int:
 	return _curr_hp
 
@@ -92,7 +97,14 @@ func _setup() -> void:
 	_curr_hp = _enemy_data.get_initial_hp()
 	_curr_mp = _enemy_data.get_initial_mp()
 	
-	var enemy_name: String = _enemy_data.get_enemy_name()
+	_update_enemy_name_label()
+
+
+func _update_enemy_name_label() -> void:
+	if not _enemy_data or not is_node_ready():
+		return
+	
+	var enemy_name: String = tr(_enemy_data.get_enemy_name())
 	var alphabet_idx: int = clampi(_ocurrence, 0, ALPHABET.size() - 1)
 	_name_label.text = " ".join([enemy_name, ALPHABET[alphabet_idx]]).trim_suffix(" ")
 

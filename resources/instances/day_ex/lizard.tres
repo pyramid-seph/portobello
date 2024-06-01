@@ -12,7 +12,7 @@ _weight = 0.0
 
 [resource]
 script = ExtResource("4_0ueij")
-_enemy_name = "Lizard"
+_enemy_name = "RPG_BATTLE_ENEMY_NAME_LIZARD"
 _texture = ExtResource("3_eshl6")
 _initial_hp = 1
 _initial_mp = 1

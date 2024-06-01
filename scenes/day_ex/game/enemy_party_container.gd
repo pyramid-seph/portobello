@@ -33,7 +33,8 @@ func teardown() -> void:
 	_clear_enemy_row(_back_row)
 
 
-func _setup_enemy_row(enemies: Array[BattleEnemyData],
+func _setup_enemy_row(
+		enemies: Array[BattleEnemyData],
 		row: HBoxContainer, 
 		tally: Dictionary,
 		enemy_ocurrences_count: Dictionary) -> void:

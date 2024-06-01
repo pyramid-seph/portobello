@@ -6,7 +6,7 @@
 script = ExtResource("1_mp8b4")
 _attack_type = 0
 _target = 0
-_action_name = ""
+_action_name = "RPG_BATTLE_ATTACK_NAME_ENEMY_NIBBLE"
 _info = ""
 _required_level = 0
 _cost_type = 0

@@ -12,7 +12,7 @@ _weight = 0.0
 
 [resource]
 script = ExtResource("4_s40ux")
-_enemy_name = "Bug"
+_enemy_name = "RPG_BATTLE_ENEMY_NAME_BUG"
 _texture = ExtResource("1_puv4l")
 _initial_hp = 1
 _initial_mp = 1
