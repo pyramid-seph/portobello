@@ -1,6 +1,6 @@
 @tool
 ## Controls the visibility of the referenced Controls
-class_name GroupControl
+class_name GroupVisibility
 extends Control
 
 
