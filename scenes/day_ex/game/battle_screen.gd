@@ -24,8 +24,8 @@ const EnemyScene = preload("res://scenes/day_ex/game/rpg_enemy.tscn")
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_panel_container.visible = get_parent() == $/root
+		_enemy_party_container.enemy_slected.connect(func(_a): _exit_battle_screen())
 	_on_preview_set()
-	_enemy_party_container.enemy_slected.connect(func(_a): _exit_battle_screen())
 
 
 func start(enemy_party: BattleParty, background: Texture2D) -> void:
