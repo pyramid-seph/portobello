@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=28 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
 [ext_resource type="PackedScene" uid="uid://ctbphqc3meo8i" path="res://scenes/day_ex/game/battle_narration_box.tscn" id="2_mexfq"]
@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dgq5bvxdn1811" path="res://art/day_ex/battle_item_scraps.png" id="8_dp0aj"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="8_jgqt0"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_incr.png" id="9_gb3qd"]
+[ext_resource type="Script" path="res://scenes/day_ex/ui/group_visibility.gd" id="10_7g15t"]
 [ext_resource type="Texture2D" uid="uid://ca0dcipi55a41" path="res://art/day_ex/battle_char_player.png" id="10_h2bob"]
-[ext_resource type="Script" path="res://scenes/day_ex/ui/group.gd" id="10_l8x0b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6y60"]
 content_margin_left = 6.0
@@ -83,8 +83,6 @@ line_spacing = 0.0
 font = ExtResource("5_k0cqu")
 font_size = 8
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5om2m"]
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mo5ir"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t7jss"]
@@ -125,6 +123,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="PlayerInfoContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 153)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
 
@@ -275,22 +274,16 @@ text = "Weakens 1 enemy's ATK, but strengthens their SPD."
 label_settings = SubResource("LabelSettings_5fx2w")
 autowrap_mode = 3
 
-[node name="PlayerCharContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="PlayerChar" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(0, 74)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_5om2m")
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCharContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 6
 texture = ExtResource("10_h2bob")
 stretch_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCharContainer/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerChar"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -301,7 +294,7 @@ grow_horizontal = 0
 texture = SubResource("AtlasTexture_t7jss")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCharContainer/TextureRect"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerChar"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -317,10 +310,11 @@ label_settings = SubResource("LabelSettings_eoyxy")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="GroupControl" type="Control" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" node_paths=PackedStringArray("controls")]
+[node name="PlayerCommandsGroupVisibility" type="Control" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" node_paths=PackedStringArray("controls")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
-script = ExtResource("10_l8x0b")
+script = ExtResource("10_7g15t")
 controls = [NodePath("../CommandHSelector"), NodePath("../ActionHSelector"), NodePath("../HBoxContainer3"), NodePath("../InfoLabel")]
 
 [editable path="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/CommandHSelector"]

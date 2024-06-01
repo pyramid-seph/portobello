@@ -15,9 +15,10 @@ const EnemyScene = preload("res://scenes/day_ex/game/rpg_enemy.tscn")
 		_on_preview_set()
 
 @onready var _panel_container: PanelContainer = $PanelContainer
-@onready var _player_char_container: PanelContainer = %PlayerCharContainer
 @onready var _battle_narration_box: BattleNarrationBox = %BattleNarrationBox
 @onready var _enemy_party_container: EnemyPartyContainer = %EnemyPartyContainer
+@onready var _player_char: TextureRect = %PlayerChar
+@onready var _player_commands_group_visibility: GroupVisibility = %PlayerCommandsGroupVisibility
 @onready var _timer: Timer = $Timer
 
 
