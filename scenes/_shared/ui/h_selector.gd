@@ -16,6 +16,11 @@ const SELECTED_NONE: int = -1
 		_options = value
 		_on_options_set()
 
+@export var loop_options: bool = true:
+	set(value):
+		loop_options = value
+		_on_loop_options_set()
+@export var release_focus_on_selection: bool
 @export var focus_color: Color = Color.MAGENTA:
 	set(value):
 		focus_color = value
@@ -32,10 +37,6 @@ const SELECTED_NONE: int = -1
 	set(value):
 		text_size = value
 		_on_text_size_set()
-@export var loop_options: bool = true:
-	set(value):
-		loop_options = value
-		_on_loop_options_set()
 
 var current_option_idx: int = SELECTED_NONE:
 	set(value):
@@ -60,6 +61,8 @@ func _gui_input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("ui_accept") and current_option_idx > SELECTED_NONE:
+		if release_focus_on_selection:
+			release_focus()
 		selected.emit(_get_value_for_option(current_option_idx))
 		accept_event()
 	if event.is_action_pressed("ui_left"):
