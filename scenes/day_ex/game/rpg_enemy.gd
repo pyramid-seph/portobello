@@ -23,7 +23,7 @@ var _curr_mp: int = -1:
 @onready var _damage_label: Label = $DamageLabel
 @onready var _name_label: Label = $NameLabel
 @onready var _selector_texture_rect: TextureRect = $SelectorTextureRect
-@onready var _selector_animation_player: AnimationPlayer = %SelectorAnimationPlayer
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -111,11 +111,11 @@ func _update_enemy_name_label() -> void:
 
 func _on_focus_entered() -> void:
 	_selector_texture_rect.show()
-	_selector_animation_player.play("focus")
+	_animation_player.play(&"focus")
 	_name_label.show()
 
 
 func _on_focus_exited() -> void:
-	_selector_animation_player.stop()
+	_animation_player.stop()
 	_selector_texture_rect.hide()
 	_name_label.hide()
