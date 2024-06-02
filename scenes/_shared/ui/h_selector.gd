@@ -20,6 +20,18 @@ const SELECTED_NONE: int = -1
 	set(value):
 		focus_color = value
 		_on_focus_color_set()
+@export var text_font: Font:
+	set(value):
+		text_font = value
+		_on_text_font_set()
+@export var text_color: Color = Color.BLACK:
+	set(value):
+		text_color = value
+		_on_text_color_set()
+@export var text_size: int = 16:
+	set(value):
+		text_size = value
+		_on_text_size_set()
 @export var loop_options: bool = true:
 	set(value):
 		loop_options = value
@@ -30,7 +42,6 @@ var current_option_idx: int = SELECTED_NONE:
 		current_option_idx = clampi(value, SELECTED_NONE, _options.size() - 1)
 		_on_current_option_idx_set()
 
-@onready var _is_ready: bool = true
 @onready var _label := $Label as Label
 
 
@@ -38,6 +49,9 @@ func _ready() -> void:
 	_on_options_set()
 	_on_current_option_idx_set()
 	_on_focus_color_set()
+	_on_text_font_set()
+	_on_text_color_set()
+	_on_text_size_set()
 	_update_bg_color()
 
 
@@ -119,7 +133,7 @@ func _get_value_for_option(idx: int):
 
 
 func _on_current_option_idx_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	_label.text = tr(selector_text)
@@ -145,7 +159,7 @@ func _on_selector_text_set() -> void:
 
 
 func _on_options_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		current_option_idx = SELECTED_NONE if _options.is_empty() else 0
 
 
@@ -154,8 +168,26 @@ func _on_loop_options_set() -> void:
 
 
 func _on_focus_color_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_update_bg_color()
+
+
+func _on_text_font_set() -> void:
+	if is_node_ready():
+		if text_font:
+			_label.add_theme_font_override("font", text_font)
+		else:
+			_label.remove_theme_font_override("font")
+
+
+func _on_text_color_set() -> void:
+	if is_node_ready():
+		_label.add_theme_color_override("font_color", text_color)
+
+
+func _on_text_size_set() -> void:
+	if is_node_ready():
+		_label.add_theme_font_size_override("font_size", text_size)
 
 
 func _on_focus_entered() -> void:

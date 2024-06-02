@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=27 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_h3bdx"]
 [ext_resource type="PackedScene" uid="uid://ctbphqc3meo8i" path="res://scenes/day_ex/game/battle_narration_box.tscn" id="2_mexfq"]
 [ext_resource type="PackedScene" uid="uid://c3l2edgf8ciay" path="res://scenes/day_ex/game/enemy_party_container.tscn" id="3_4p15x"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="3_i3dd0"]
@@ -59,19 +60,11 @@ content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_lgqrq"]
-line_spacing = 0.0
-font = ExtResource("5_k0cqu")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe4ql"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_mne00"]
-line_spacing = 0.0
-font = ExtResource("5_k0cqu")
 
 [sub_resource type="LabelSettings" id="LabelSettings_7f6hs"]
 line_spacing = 0.0
@@ -108,6 +101,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_h3bdx")
 theme_override_styles/panel = SubResource("StyleBoxFlat_q6y60")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
@@ -232,11 +226,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hat3d")
 selector_text = ""
 _options = ["Ability", "Attack"]
 focus_color = Color(0.29366, 0.29366, 0.29366, 1)
-
-[node name="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/CommandHSelector" index="0"]
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "< Ability >"
-label_settings = SubResource("LabelSettings_lgqrq")
+text_font = ExtResource("5_k0cqu")
+text_color = Color(1, 1, 1, 1)
 
 [node name="ActionHSelector" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("8_jgqt0")]
 unique_name_in_owner = true
@@ -247,11 +238,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oe4ql")
 selector_text = "  "
 _options = ["Bright eyes: 10MP", "Ability"]
 focus_color = Color(0.294118, 0.294118, 0.294118, 1)
-
-[node name="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionHSelector" index="0"]
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "   < Bright eyes: 10MP >"
-label_settings = SubResource("LabelSettings_mne00")
+text_font = ExtResource("5_k0cqu")
+text_color = Color(1, 1, 1, 1)
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
@@ -316,6 +304,3 @@ visible = false
 layout_mode = 2
 script = ExtResource("10_7g15t")
 controls = [NodePath("../CommandHSelector"), NodePath("../ActionHSelector"), NodePath("../HBoxContainer3"), NodePath("../InfoLabel")]
-
-[editable path="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/CommandHSelector"]
-[editable path="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionHSelector"]
