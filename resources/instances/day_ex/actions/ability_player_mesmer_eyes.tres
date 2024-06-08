@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=3 format=3 uid="uid://bngpbdi8vf050"]
+
+[ext_resource type="Script" path="res://resources/battle_action.gd" id="1_3eccw"]
+[ext_resource type="Texture2D" uid="uid://b1d8ttf4eojwn" path="res://art/day_ex/battle_ability_player_mesmer_eyes_0.png" id="1_ql80u"]
+
+[resource]
+script = ExtResource("1_3eccw")
+_attack_type = 1
+_target = 0
+_action_name = "RPG_BATTLE_ABILITY_NAME_PLAYER_MESMER_EYES"
+_info = "RPG_BATTLE_INFO_ABILITY_MESMER_EYES"
+_required_level = 0
+_cost_type = 0
+_mp_cost = 0
+_scraps_cost = 0
+_damage_type = 0
+_damage_points = 0
+_damage_percent = 0.0
+_damage_ignores_atk_stat = false
+_hit_chance = 0.1
+_sprites = Array[Texture2D]([ExtResource("1_ql80u")])
+_duration_sec = 0.75
+_screen_flash_color = Color(1, 1, 1, 0)
+_shake_screen = false
+_status_effect_type = 2
+_status_effect_attack = 0
+_status_effect_defense = 0
+_status_effect_speed = 0

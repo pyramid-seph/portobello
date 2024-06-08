@@ -25,8 +25,10 @@ enum TargetType {
 }
 
 enum StatusEffectType {
+	NONE,
 	STATS,
 	LOVE,
+	POISON,
 }
 
 @export var _attack_type: AttackType
@@ -52,7 +54,6 @@ enum StatusEffectType {
 @export_group("Animation")
 @export var _sprites: Array[Texture2D]
 @export var _duration_sec: float = 1.0
-@export_color_no_alpha var _target_flash_color: Color = Color.WHITE
 @export var _screen_flash_color: Color = Color.TRANSPARENT
 @export var _shake_screen: bool
 
@@ -124,10 +125,6 @@ func get_sprites() -> Array[Texture2D]:
 
 func get_duration_sec() -> float:
 	return _duration_sec
-
-
-func get_target_flash_color() -> Color:
-	return _target_flash_color
 
 
 func get_screen_flash_color() -> Color:

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BattleEnemyData" load_steps=6 format=3 uid="uid://dd8hfy3k84br2"]
+
+[ext_resource type="Resource" uid="uid://dmdeyptx3acva" path="res://resources/instances/day_ex/actions/attack_enemy_peck.tres" id="1_hg5k4"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_vnsam"]
+[ext_resource type="Texture2D" uid="uid://bepdosu7gyand" path="res://art/day_ex/battle_char_enemy_crow.png" id="3_3i5pr"]
+[ext_resource type="Script" path="res://resources/battle_enemy_data.gd" id="4_sjx4u"]
+
+[sub_resource type="Resource" id="Resource_x53hc"]
+script = ExtResource("2_vnsam")
+_action = ExtResource("1_hg5k4")
+_weight = 0.0
+
+[resource]
+script = ExtResource("4_sjx4u")
+_enemy_name = "RPG_BATTLE_ENEMY_NAME_CROW"
+_texture = ExtResource("3_3i5pr")
+_initial_hp = 1
+_initial_mp = 1
+_attack = 5
+_defense = 5
+_speed = 5
+_agility = 45
+_luck = 1
+_loot_scraps = 1
+_loot_exp = 5
+_actions = Array[ExtResource("2_vnsam")]([SubResource("Resource_x53hc")])

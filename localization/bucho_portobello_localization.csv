@@ -1,4 +1,4 @@
-keys,en,es
+RPG_BATTLE_INFO_COMMAND_ABILITY,en,es
 COMMON_OPTIONS_EXIT,Quit game,Salir
 COMMON_OPTIONS_NO,No,No
 COMMON_OPTIONS_OK,OK,OK
@@ -168,33 +168,39 @@ RPG_BATTLE_ABILITY_NAME_PLAYER_RIP_AND_TEAR_EX,Rip & tear EX,Garrazos
 RPG_BATTLE_ABILITY_NAME_PLAYER_SCARE,Scare,Asustar
 RPG_BATTLE_ABILITY_NAME_PLAYER_SURPRISE,Surprise,Sorprender
 RPG_BATTLE_ABILITY_NAME_PLAYER_TACKLE,Tackle,Atajar
-RPG_BATTLE_ACTION_ABILITY,Ability,Habilidad
-RPG_BATTLE_ACTION_ATTACK,Attack,Atacar
 RPG_BATTLE_ATTACK_NAME_ENEMY_NIBBLE,Nibble,Mordizco
 RPG_BATTLE_ATTACK_NAME_ENEMY_PECK,Peck,Picotazo
 RPG_BATTLE_ATTACK_NAME_PLAYER_BITE,Bite,Morder
 RPG_BATTLE_ATTACK_NAME_PLAYER_EAT,Eat,Comer
 RPG_BATTLE_ATTACK_NAME_PLAYER_RIP_AND_TEAR,Rip & tear,Garrazo
 RPG_BATTLE_ATTACK_NAME_PLAYER_SCRATCH,Scratch,Arañar
+RPG_BATTLE_COMMAND_ABILITY,Ability,Habilidad
+RPG_BATTLE_COMMAND_ATTACK,Attack,Atacar
+RPG_BATTLE_COMMAND_EAT,Eat,Comer
+RPG_BATTLE_COMMAND_FLEE,Flee,Huir
 RPG_BATTLE_ENEMY_NAME_BUG,Bug,Bicho
 RPG_BATTLE_ENEMY_NAME_CROW,Crow,Cuervo
 RPG_BATTLE_ENEMY_NAME_DUCK_STRONG,Duck?,¿Pato?
 RPG_BATTLE_ENEMY_NAME_DUCK_WEAK,Duck,Pato
 RPG_BATTLE_ENEMY_NAME_LIZARD,Lizard,Lagartija
 RPG_BATTLE_ENEMY_NAME_MOUSE,Mouse,Ratón
-RPG_BATTLE_ENEMY_NAME_PARROT_BLUE,Blue Parrot,Perico Azul
-RPG_BATTLE_ENEMY_NAME_PARROT_YELLOW,Yellow Parrot,Perico Amarillo
+RPG_BATTLE_ENEMY_NAME_PARROT_BLUE,Blue Parrot,Loro Azul
+RPG_BATTLE_ENEMY_NAME_PARROT_YELLOW,Yellow Parrot,Loro Amarillo
 RPG_BATTLE_INFO_ABILITY_CURE,Recovers some HP.,Recupera algo de HP.
 RPG_BATTLE_INFO_ABILITY_DESPAIR,"Strengthens 1 enemy's ATK, but hurts them at the end of their turn.","Aumenta el ATQ de 1enemigo, pero recibe daño al final de su turno."
 RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts LOVE in 1 enemy.,Enamora a 1enemigo.
 RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a la mitad el HP de 1enemigo.
 RPG_BATTLE_INFO_ABILITY_SCARE,"Weakens 1 enemy's ATK, but strengthens their SPD.","Debilita el ATQ de 1enemigo, pero aumenta su VEL."
-RPG_BATTLE_INFO_ABILITY_SURPRISE,Weakens 1 enemy's ATK.,Debilita el ATQ de 1 enemigo.
+RPG_BATTLE_INFO_ABILITY_SURPRISE,Weakens 1 enemy's DEF.,Debilita la DEF de 1 enemigo.
 RPG_BATTLE_INFO_ABILITY_TACKLE,Weakens 1 enemy's SPD.,Debilita la VEL de 1 enemigo.
 RPG_BATTLE_INFO_ATTACK_BITE,Strong attack.,Ataque fuerte.
 RPG_BATTLE_INFO_ATTACK_EAT,Removes 1 enemy from the battle field.,Remueve a 1 enemigo del campo de batalla.
 RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR,Medium attack.,Ataque medio.
 RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack.,Ataque débil.
+RPG_BATTLE_INFO_COMMAND_ABILITY,Perform an ability that consumes MP or scraps.,Realizar una habilidad que consume MP o sobras.
+RPG_BATTLE_INFO_COMMAND_ATTACK,Attack 1 enemy.,Atacar a 1 enemigo.
+RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener sobras al ganar. Eficaz contra enemigos muy debilitados.
+RPG_BATTLE_INFO_COMMAND_FLEE,Try to escape from this battle.,Intentar escapar de la batalla.
 RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center][color=#58574]¡Bucho[/color] perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]Breakfast is served![/center][/p][p][/p][p][center]Bon appétit![/center][/p],[p][center]¡El desayuno está servido![/center][/p][p][/p][p][center]¡Buen provecho![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_SUCCESS,Piece of cake! [color=#58574]Bucho[/color] got {scraps} scraps.,¡Pan comido! [color=#58574]Bucho[/color] obtuvo {scraps} sobras.

@@ -9,6 +9,10 @@ extends Resource
 @export_range(1, 999, 1, "hide_slider") var _attack: int = 1
 @export_range(1, 999, 1, "hide_slider") var _defense: int = 1
 @export_range(1, 999, 1, "hide_slider") var _speed: int = 1
+@export_range(1, 999, 1, "hide_slider") var _agility: int = 1
+@export_range(1, 999, 1, "hide_slider") var _luck: int = 1
+@export_range(0, 99, 1, "hide_slider") var _loot_scraps: int = 1
+@export_range(0, 99999, 1, "hide_slider") var _loot_exp: int = 1
 @export var _actions: Array[EnemyCommand]
 
 
@@ -38,6 +42,14 @@ func get_defense() -> int:
 
 func get_speed() -> int:
 	return _speed
+
+
+func get_loot_scraps() -> int:
+	return _loot_scraps
+
+
+func get_loot_exp() -> int:
+	return _loot_exp
 
 
 func get_actions() -> Array[EnemyCommand]:

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://clhd3d4jufm58"]
+
+[ext_resource type="Texture2D" uid="uid://b0pjuc1pcjx0l" path="res://art/day_ex/battle_ability_player_cure_0.png" id="1_tlwue"]
+[ext_resource type="Texture2D" uid="uid://b3iait6am4lyi" path="res://art/day_ex/battle_ability_player_cure_1.png" id="2_5d8pv"]
+[ext_resource type="Texture2D" uid="uid://dvao0oerkri8w" path="res://art/day_ex/battle_ability_player_cure_2.png" id="3_gofl6"]
+[ext_resource type="Script" path="res://resources/battle_action.gd" id="4_haah2"]
+
+[resource]
+script = ExtResource("4_haah2")
+_attack_type = 1
+_target = 1
+_action_name = "RPG_BATTLE_ABILITY_NAME_PLAYER_CURE"
+_info = "RPG_BATTLE_INFO_ABILITY_CURE"
+_required_level = 0
+_cost_type = 2
+_mp_cost = 0
+_scraps_cost = 1
+_damage_type = 0
+_damage_points = -50
+_damage_percent = 0.0
+_damage_ignores_atk_stat = false
+_hit_chance = 1.0
+_sprites = Array[Texture2D]([ExtResource("1_tlwue"), ExtResource("2_5d8pv"), ExtResource("3_gofl6")])
+_duration_sec = 0.45
+_screen_flash_color = Color(1, 1, 1, 0)
+_shake_screen = false
+_status_effect_type = 0
+_status_effect_attack = 0
+_status_effect_defense = 0
+_status_effect_speed = 0
