@@ -24,13 +24,6 @@ enum TargetType {
 	SELF,
 }
 
-enum StatusEffectType {
-	NONE,
-	STATS,
-	LOVE,
-	POISON,
-}
-
 @export var _attack_type: AttackType
 @export var _target: TargetType
 @export var _action_name: String
@@ -58,13 +51,12 @@ enum StatusEffectType {
 @export var _shake_screen: bool
 
 @export_group("Status Effect", "_status_effect")
-@export var _status_effect_type: StatusEffectType:
-	set(value):
-		_status_effect_type = value
-		notify_property_list_changed()
-@export var _status_effect_attack: int
-@export var _status_effect_defense: int
-@export var _status_effect_speed: int
+## Lose some hp for 3 turns after completing their turn.
+@export_range(-99999, 0, 1, "hide_slider") var _status_effect_hp: int
+@export var _status_effect_attack: int ## Modify target ATT stat for 3 turns.
+@export var _status_effect_defense: int ## Modify target DEF stat for 3 turns.
+@export var _status_effect_speed: int ## Modify target SPD stat for 3 turns.
+@export var _status_effect_love: bool ## Turn target against their party.
 
 
 func get_attack_type() -> AttackType:
@@ -135,10 +127,6 @@ func shake_screen() -> bool:
 	return _shake_screen
 
 
-func get_status_effect_type() -> StatusEffectType:
-	return _status_effect_type
-
-
 func get_status_effect_attack() -> int:
 	return _status_effect_attack
 
@@ -149,6 +137,50 @@ func get_status_effect_defense() -> int:
 
 func get_status_effect_speed() -> int:
 	return _status_effect_speed
+
+
+func get_poison_damage() -> int:
+	return _status_effect_hp
+
+
+func inflicts_poison() -> bool:
+	return _status_effect_hp < 0
+
+
+func inflicts_love() -> bool:
+	return _status_effect_love
+
+
+func inflicts_attack_incr() -> bool:
+	return _status_effect_attack > 0
+
+
+func inflicts_attack_decr() -> bool:
+	return _status_effect_attack < 0
+
+
+func inflicts_defense_incr() -> bool:
+	return _status_effect_defense > 0
+
+
+func inflicts_defense_decr() -> bool:
+	return _status_effect_defense < 0
+
+
+func inflicts_speed_incr() -> bool:
+	return _status_effect_speed > 0
+
+
+func inflicts_speed_decr() -> bool:
+	return _status_effect_speed < 0
+
+
+func inflicts_any_status_effect() -> bool:
+	return _status_effect_attack != 0 or \
+			_status_effect_defense != 0 or \
+			_status_effect_speed != 0 or \
+			inflicts_poison() or \
+			inflicts_love()
 
 
 func _validate_property(property: Dictionary) -> void:
@@ -164,9 +196,4 @@ func _validate_property(property: Dictionary) -> void:
 				property.usage = PROPERTY_USAGE_NO_EDITOR
 		"_scraps_cost":
 			if _cost_type != CostType.SCRAPS:
-				property.usage = PROPERTY_USAGE_NO_EDITOR
-		"_status_effect_attack", \
-		"_status_effect_defense", \
-		"_status_effect_speed":
-			if _status_effect_type != StatusEffectType.STATS:
 				property.usage = PROPERTY_USAGE_NO_EDITOR
