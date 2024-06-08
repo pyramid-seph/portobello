@@ -3,14 +3,14 @@
 importer="texture_atlas"
 type="Texture2D"
 uid="uid://c5qgjrcv5l6dk"
-path="res://.godot/imported/battle_status_def_incr.png-612f8cb3dcaf0f0a1ca17ca43500853e.res"
+path="res://.godot/imported/battle_status_def_buff.png-1d999a9269b79e9bc989e03a5c76c569.res"
 group_file="res://art/day_ex/atlas_battle_screen.png"
 valid=true
 [deps]
 
 
-source_file="res://art/day_ex/battle_status_def_incr.png"
-dest_files=["res://.godot/imported/battle_status_def_incr.png-612f8cb3dcaf0f0a1ca17ca43500853e.res"]
+source_file="res://art/day_ex/battle_status_def_buff.png"
+dest_files=["res://.godot/imported/battle_status_def_buff.png-1d999a9269b79e9bc989e03a5c76c569.res"]
 
 [params]
 

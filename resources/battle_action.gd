@@ -111,6 +111,10 @@ func get_hit_chance() -> float:
 	return _hit_chance
 
 
+func get_hit_chance_percent() -> int:
+	return _hit_chance * 100
+
+
 func get_sprites() -> Array[Texture2D]:
 	return _sprites
 
@@ -151,27 +155,27 @@ func inflicts_love() -> bool:
 	return _status_effect_love
 
 
-func inflicts_attack_incr() -> bool:
+func buffs_attack() -> bool:
 	return _status_effect_attack > 0
 
 
-func inflicts_attack_decr() -> bool:
+func debuffs_attack() -> bool:
 	return _status_effect_attack < 0
 
 
-func inflicts_defense_incr() -> bool:
+func buffs_deffense() -> bool:
 	return _status_effect_defense > 0
 
 
-func inflicts_defense_decr() -> bool:
+func debuffs_defense() -> bool:
 	return _status_effect_defense < 0
 
 
-func inflicts_speed_incr() -> bool:
+func buffs_speed() -> bool:
 	return _status_effect_speed > 0
 
 
-func inflicts_speed_decr() -> bool:
+func debuffs_speed() -> bool:
 	return _status_effect_speed < 0
 
 
