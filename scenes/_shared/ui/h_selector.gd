@@ -20,6 +20,10 @@ const SELECTED_NONE: int = -1
 	set(value):
 		loop_options = value
 		_on_loop_options_set()
+@export var numbered_list: bool:
+	set(value):
+		numbered_list = value
+		_on_numbered_list_set()
 @export var release_focus_on_selection: bool
 @export var focus_color: Color = Color.MAGENTA:
 	set(value):
@@ -121,10 +125,10 @@ func _update_bg_color() -> void:
 
 func _get_label_for_option(idx: int) -> String:
 	var option = _options[idx]
-	if typeof(option) == TYPE_DICTIONARY:
-		return tr(option.label)
-	else:
-		return tr(option)
+	var option_msg: String = \
+			option.label if typeof(option) == TYPE_DICTIONARY else option
+	var number: String = ("%s. " % (idx + 1)) if numbered_list else ""
+	return number + tr(option_msg)
 
 
 func _get_value_for_option(idx: int):
@@ -168,6 +172,10 @@ func _on_options_set() -> void:
 
 func _on_loop_options_set() -> void:
 	_on_current_option_idx_set()
+
+
+func _on_numbered_list_set() -> void:
+	_on_options_set()
 
 
 func _on_focus_color_set() -> void:
