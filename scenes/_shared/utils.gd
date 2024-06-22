@@ -19,7 +19,7 @@ static func rand_item(arr: Array) -> Node:
 	return arr.pick_random() if arr else null
 
 
-# TODO Deprecate with Godot's implementation whenever is released. 
+# TODO Deprecate in favour of Godot's implementation whenever is released. 
 # See https://github.com/godotengine/godot/pull/88883.
 static func rand_weigthed(weights: Array[float]) -> int:
 	var remaining_distance: float = \
@@ -168,8 +168,9 @@ static func safe_reparent(
 		node.reparent(new_parent, keep_global_transform)
 
 
+## @Deprecated Use array.back() instead.
 static func last(arr: Array):
-	return null if arr.is_empty() else arr[arr.size() - 1]
+	return arr.back()
 
 
 static func last_child(node: Node):

@@ -1,0 +1,13 @@
+[
+    {
+        "level": "1",
+        "experience": "0",
+        "hp": "1",
+        "mp": "30",
+        "attack": "5",
+        "defense": "5",
+        "speed": "5",
+        "agility": "45",
+        "luck": "1"
+    }
+]

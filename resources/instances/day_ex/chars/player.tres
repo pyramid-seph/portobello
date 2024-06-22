@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=4 format=3 uid="uid://cipgo47xsp7df"]
+
+[ext_resource type="Texture2D" uid="uid://ca0dcipi55a41" path="res://art/day_ex/battle_char_player.png" id="1_6xuli"]
+[ext_resource type="Resource" uid="uid://j2gvppwwk05l" path="res://resources/instances/day_ex/progression_curves/stats_progression_player.stats" id="1_8ah5x"]
+[ext_resource type="Script" path="res://resources/fighter_data.gd" id="2_tiv57"]
+
+[resource]
+script = ExtResource("2_tiv57")
+_char_name = "Bucho"
+_texture = ExtResource("1_6xuli")
+_edible = false
+_stats_progression_curve = ExtResource("1_8ah5x")
+_actions = Array[Resource("res://resources/enemy_command.gd")]([])
+_loot_scraps = 0
+_loot_exp = 0

@@ -1,0 +1,14 @@
+[remap]
+
+importer="bucho_portobello.stats_progression_json_importer"
+type="Resource"
+uid="uid://eb8bpoagiwom"
+path="res://.godot/imported/stats_progression_mouse.stats-9cf4a91ddd65133d1efa7368fb6f53fa.tres"
+
+[deps]
+
+source_file="res://resources/instances/day_ex/progression_curves/stats_progression_mouse.stats"
+dest_files=["res://.godot/imported/stats_progression_mouse.stats-9cf4a91ddd65133d1efa7368fb6f53fa.tres"]
+
+[params]
+

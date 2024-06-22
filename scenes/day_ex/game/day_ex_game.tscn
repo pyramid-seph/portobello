@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cveo78p5onwss" path="res://art/day_ex/battle_background_house.png" id="5_r3dm0"]
 [ext_resource type="PackedScene" uid="uid://ctrwrc3gdhha2" path="res://scenes/day_ex/game/exit.tscn" id="5_weg27"]
 [ext_resource type="PackedScene" uid="uid://dg5lsubt653gf" path="res://scenes/day_ex/ui/day_ex_ui.tscn" id="5_y60w5"]
-[ext_resource type="Resource" uid="uid://dfbbuuqk1jsui" path="res://resources/instances/day_ex/enemies/bug.tres" id="6_7ldb6"]
-[ext_resource type="Resource" uid="uid://bcklqmn80yfmp" path="res://resources/instances/day_ex/enemies/lizard.tres" id="6_ensb0"]
+[ext_resource type="Resource" uid="uid://dfbbuuqk1jsui" path="res://resources/instances/day_ex/chars/bug.tres" id="6_7ldb6"]
+[ext_resource type="Resource" uid="uid://bcklqmn80yfmp" path="res://resources/instances/day_ex/chars/lizard.tres" id="6_ensb0"]
 [ext_resource type="PackedScene" uid="uid://csorcwveuvxs8" path="res://scenes/day_ex/game/entrance.tscn" id="6_hpgyv"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/camera_pos.gd" id="6_wr6ei"]
 [ext_resource type="Script" path="res://resources/battle_party.gd" id="7_gq5mr"]
@@ -19,14 +19,14 @@
 
 [sub_resource type="Resource" id="Resource_wixno"]
 script = ExtResource("7_gq5mr")
-_front_row = Array[Resource("res://resources/battle_enemy_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_ensb0"), ExtResource("6_7ldb6")])
-_back_row = Array[Resource("res://resources/battle_enemy_data.gd")]([])
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_ensb0"), ExtResource("6_7ldb6")])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
 _weight = 3.0
 
 [sub_resource type="Resource" id="Resource_6qt4y"]
 script = ExtResource("7_gq5mr")
-_front_row = Array[Resource("res://resources/battle_enemy_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_7ldb6"), ExtResource("6_7ldb6")])
-_back_row = Array[Resource("res://resources/battle_enemy_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_7ldb6")])
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_7ldb6"), ExtResource("6_7ldb6")])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_7ldb6")])
 _weight = 1.0
 
 [sub_resource type="Resource" id="Resource_6tnym"]

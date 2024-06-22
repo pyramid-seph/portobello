@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://bxky55wb8wlrx"]
+
+[ext_resource type="Texture2D" uid="uid://dkjk500de8c0x" path="res://art/day_ex/battle_ability_player_bite_0.png" id="1_tqbq0"]
+[ext_resource type="Texture2D" uid="uid://d20nb6lvubm8u" path="res://art/day_ex/battle_ability_player_bite_1.png" id="2_1p2cw"]
+[ext_resource type="Texture2D" uid="uid://ibk10u7b7bcg" path="res://art/day_ex/battle_ability_player_bite_2.png" id="3_lfbd1"]
+[ext_resource type="Script" path="res://resources/battle_action.gd" id="4_7pwna"]
+
+[resource]
+script = ExtResource("4_7pwna")
+_action_name = "RPG_BATTLE_ATTACK_NAME_PLAYER_BITE"
+_info = "RPG_BATTLE_INFO_ATTACK_BITE"
+_target = 0
+_consumes = 0
+_cost = 1
+_physical_damage = 1
+_damage_points = 7
+_damage_percent = 0.5
+_hit_chance = 0.6
+_devour_attack = false
+_status_effect_poison_damage = 0
+_status_effect_attack = 0
+_status_effect_defense = 0
+_status_effect_speed = 0
+_status_effect_love = false
+_sprites = Array[Texture2D]([ExtResource("1_tqbq0"), ExtResource("2_1p2cw"), ExtResource("3_lfbd1"), ExtResource("2_1p2cw"), ExtResource("1_tqbq0")])
+_duration_sec = 0.75
+_screen_flash_color = Color(1, 1, 1, 0)
+_shake_screen = false

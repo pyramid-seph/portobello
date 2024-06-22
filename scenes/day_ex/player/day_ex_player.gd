@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	
 	_update_animation(direction)
 	
-	# TODO this still counts time when the player retries moving after colliding whit a direction while on wall. This also affects animation!
+	# FIXME this still counts time when the player retries moving after colliding whith a direction while on wall. This also affects animation!
 	if not get_real_velocity().is_zero_approx() and not velocity.is_zero_approx():
 		_walking_time += delta
 	

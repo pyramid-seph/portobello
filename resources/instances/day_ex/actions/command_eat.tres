@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://bn8bu0a3r6uup"]
+
+[ext_resource type="Texture2D" uid="uid://cgpyoex227utu" path="res://art/day_ex/battle_ability_player_eat_0.png" id="1_ixe0w"]
+[ext_resource type="Texture2D" uid="uid://c6qff1dsf3d50" path="res://art/day_ex/battle_ability_player_eat_1.png" id="2_odhgh"]
+[ext_resource type="Texture2D" uid="uid://bhrwlbivh2piu" path="res://art/day_ex/battle_ability_player_eat_2.png" id="3_c6dt4"]
+[ext_resource type="Script" path="res://resources/battle_action.gd" id="4_c8ryn"]
+
+[resource]
+script = ExtResource("4_c8ryn")
+_action_name = "RPG_BATTLE_COMMAND_EAT"
+_info = "RPG_BATTLE_INFO_COMMAND_EAT"
+_target = 0
+_consumes = 0
+_cost = 1
+_physical_damage = 4
+_damage_points = 5
+_damage_percent = 0.5
+_hit_chance = 1.0
+_devour_attack = true
+_status_effect_poison_damage = 0
+_status_effect_attack = 0
+_status_effect_defense = 0
+_status_effect_speed = 0
+_status_effect_love = false
+_sprites = Array[Texture2D]([ExtResource("1_ixe0w"), ExtResource("2_odhgh"), ExtResource("3_c6dt4"), ExtResource("2_odhgh"), ExtResource("1_ixe0w")])
+_duration_sec = 0.75
+_screen_flash_color = Color(1, 1, 1, 0)
+_shake_screen = false

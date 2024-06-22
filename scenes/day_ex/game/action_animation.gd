@@ -23,7 +23,6 @@ func _ready() -> void:
 func configure(battle_action: BattleAction) -> void:
 	_sprites = battle_action.get_sprites()
 	_duration_sec = battle_action.get_duration_sec()
-	_target_flash_color = battle_action.get_target_flash_color()
 	_screen_flash_color = battle_action.get_screen_flash_color()
 	_shake_screen = battle_action.shake_screen()
 

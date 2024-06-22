@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://cfrccih8ppxub"]
+
+[ext_resource type="Resource" uid="uid://dgogiippglk3l" path="res://resources/instances/day_ex/actions/attack_nibble.tres" id="1_4egeu"]
+[ext_resource type="Texture2D" uid="uid://c041ob7k6x4va" path="res://art/day_ex/battle_char_enemy_mouse.png" id="1_4fxku"]
+[ext_resource type="Script" path="res://resources/fighter_data.gd" id="1_88q3o"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_2b0sl"]
+[ext_resource type="Resource" uid="uid://eb8bpoagiwom" path="res://resources/instances/day_ex/progression_curves/stats_progression_mouse.stats" id="3_xqbdi"]
+
+[sub_resource type="Resource" id="Resource_3qnr2"]
+script = ExtResource("2_2b0sl")
+_action = ExtResource("1_4egeu")
+_weight = 0.0
+
+[resource]
+script = ExtResource("1_88q3o")
+_char_name = "RPG_BATTLE_ENEMY_NAME_MOUSE"
+_texture = ExtResource("1_4fxku")
+_edible = true
+_stats_progression_curve = ExtResource("3_xqbdi")
+_actions = Array[ExtResource("2_2b0sl")]([SubResource("Resource_3qnr2")])
+_loot_scraps = 1
+_loot_exp = 5

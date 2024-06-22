@@ -3,46 +3,51 @@ class_name BattleAction
 extends Resource
 
 
-enum AttackType {
-	NORMAL,
-	ABILITY,
-}
+const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
-enum CostType {
-	NONE,
-	MP,
-	SCRAPS
-}
-
-enum DamageType {
-	HP_POINTS,
-	HP_PERCENT,
-}
-
-enum TargetType {
-	ENEMIES,
+enum Target {
+	SINGLE_ENEMY,
 	SELF,
 }
 
-@export var _attack_type: AttackType
-@export var _target: TargetType
+enum Consumable {
+	NOTHING,
+	MP,
+	SCRAPS,
+}
+
+enum PhysicalDamage {
+	NONE,
+	LOSE_HP_POINTS,
+	LOSE_HP_PERCENT,
+	RECOVER_HP_POINTS,
+	DEVOUR,
+}
+
 @export var _action_name: String
-@export_multiline var _info: String
-@export var _required_level: int
-@export var _cost_type: CostType:
+@export var _info: String
+@export var _target: Target
+@export var _consumes: Consumable:
 	set(value):
-		_cost_type = value
+		_consumes = value
 		notify_property_list_changed()
-@export var _mp_cost: int
-@export var _scraps_cost: int
-@export var _damage_type: DamageType:
+@export_range(1, 100, 1, "hide_slider") var _cost: int = 1
+@export var _physical_damage: PhysicalDamage:
 	set(value):
-		_damage_type = value
+		_physical_damage = value
 		notify_property_list_changed()
-@export var _damage_points: int
-@export_range(-1.0, 1.0, 0.01) var _damage_percent: float
-@export var _damage_ignores_atk_stat: bool
+@export_range(1, 99999, 1, "hide_slider") var _damage_points: int = 1
+@export_range(0.05, 1.0, 0.01) var _damage_percent: float = 0.5
 @export_range(0.0, 1.0, 0.01) var _hit_chance: float = 1.0
+@export var _devour_attack: bool
+
+@export_group("Status Effect", "_status_effect")
+## Lose some hp for 3 turns after completing their turn.
+@export_range(0, 99999, 1, "hide_slider") var _status_effect_poison_damage: int
+@export var _status_effect_attack: int ## Modify target ATT stat for 3 turns.
+@export var _status_effect_defense: int ## Modify target DEF stat for 3 turns.
+@export var _status_effect_speed: int ## Modify target SPD stat for 3 turns.
+@export var _status_effect_love: bool ## Turn target against their party.
 
 @export_group("Animation")
 @export var _sprites: Array[Texture2D]
@@ -50,20 +55,55 @@ enum TargetType {
 @export var _screen_flash_color: Color = Color.TRANSPARENT
 @export var _shake_screen: bool
 
-@export_group("Status Effect", "_status_effect")
-## Lose some hp for 3 turns after completing their turn.
-@export_range(-99999, 0, 1, "hide_slider") var _status_effect_hp: int
-@export var _status_effect_attack: int ## Modify target ATT stat for 3 turns.
-@export var _status_effect_defense: int ## Modify target DEF stat for 3 turns.
-@export var _status_effect_speed: int ## Modify target SPD stat for 3 turns.
-@export var _status_effect_love: bool ## Turn target against their party.
+## 0 means evade, positive means damage, negative means recovery
+func calculate_hp_damage(attacker: Fighter, target: Fighter) -> int:
+	var damage: int = 0
+	if _physical_damage == PhysicalDamage.NONE:
+		return damage
+	
+	var attacker_stats: Stats = attacker.get_stats()
+	var target_stats: Stats = target.get_stats()
+	
+	if _physical_damage == PhysicalDamage.LOSE_HP_POINTS:
+		var extra_damage: int = 0
+		if randi() % get_hit_chance_percent() <= target_stats.get_lck():
+			extra_damage = -(randi() % (target_stats.get_def() / attacker_stats.get_atk() + 5))
+		else:
+			extra_damage = randi() % (attacker_stats.get_atk() / target_stats.get_def() + 5)
+		damage = maxi(1, _damage_points + extra_damage)
+		if target.get_curr_hp() < damage:
+			damage = target.get_curr_hp()
+	elif _physical_damage == PhysicalDamage.LOSE_HP_PERCENT:
+		damage = maxi(1, target.get_curr_hp() * _damage_percent)
+		if target.get_curr_hp() < damage:
+			damage = target.get_curr_hp()
+	elif _physical_damage == PhysicalDamage.DEVOUR:
+		damage = _damage_points
+	elif _physical_damage == PhysicalDamage.RECOVER_HP_POINTS:
+		damage = _damage_points * -1
+	return damage
 
 
-func get_attack_type() -> AttackType:
-	return _attack_type
+func inflict_status(attacker: Fighter, target: Fighter) -> bool:
+	var target_stats: Stats = target.get_stats()
+	var inflict: bool = randi() % get_hit_chance_percent() <= target_stats.get_lck()
+	if inflict:
+		# TODO buff/debuff
+		# Stats can be buffed/debuffed 7 points from their initial value.
+		# Example: Bug initial attack is 5, this means its minimum and maximum
+		# attacks are 1 and 12 (stats cannot be less than 1)
+		pass
+	
+	 #int rul = Math.abs( random.nextInt() ) % habilidadesBucho[tecnicaElegida].efectividad;
+						#System.out.println( rul
+								#+ "\n" + enemigo[enemigoElegido].suerte);
+						#efectivo = (rul <=
+								#enemigo[enemigoElegido].suerte ? false : true );
+	
+	return inflict
 
 
-func get_target() -> TargetType:
+func get_target() -> Target:
 	return _target
 
 
@@ -75,24 +115,16 @@ func get_info() -> String:
 	return _info
 
 
-func get_required_level() -> int:
-	return _required_level
+func get_consumes() -> Consumable:
+	return _consumes
 
 
-func get_cost_type() -> CostType:
-	return _cost_type
+func get_cost() -> int:
+	return _cost
 
 
-func get_mp_cost() -> int:
-	return _mp_cost
-
-
-func get_scraps_cost() -> int:
-	return _scraps_cost
-
-
-func get_damage_type() -> DamageType:
-	return _damage_type
+func get_physical_damage() -> PhysicalDamage:
+	return _physical_damage
 
 
 func get_damage_points() -> int:
@@ -103,16 +135,16 @@ func get_damage_percent() -> float:
 	return _damage_percent
 
 
-func damage_ignores_atk_stat() -> bool:
-	return _damage_ignores_atk_stat
-
-
 func get_hit_chance() -> float:
 	return _hit_chance
 
 
 func get_hit_chance_percent() -> int:
 	return _hit_chance * 100
+
+
+func is_devour_attack() -> bool:
+	return _devour_attack
 
 
 func get_sprites() -> Array[Texture2D]:
@@ -144,11 +176,11 @@ func get_status_effect_speed() -> int:
 
 
 func get_poison_damage() -> int:
-	return _status_effect_hp
+	return _status_effect_poison_damage
 
 
 func inflicts_poison() -> bool:
-	return _status_effect_hp < 0
+	return _status_effect_poison_damage < 0
 
 
 func inflicts_love() -> bool:
@@ -189,15 +221,14 @@ func inflicts_any_status_effect() -> bool:
 
 func _validate_property(property: Dictionary) -> void:
 	match property.name:
+		"_cost":
+			if _consumes == Consumable.NOTHING:
+				property.usage = PROPERTY_USAGE_NO_EDITOR
 		"_damage_points":
-			if _damage_type != DamageType.HP_POINTS:
+			if _physical_damage != PhysicalDamage.LOSE_HP_POINTS and \
+					_physical_damage != PhysicalDamage.RECOVER_HP_POINTS and \
+					_physical_damage != PhysicalDamage.DEVOUR:
 				property.usage = PROPERTY_USAGE_NO_EDITOR
 		"_damage_percent":
-			if _damage_type != DamageType.HP_PERCENT:
-				property.usage = PROPERTY_USAGE_NO_EDITOR
-		"_mp_cost":
-			if _cost_type != CostType.MP:
-				property.usage = PROPERTY_USAGE_NO_EDITOR
-		"_scraps_cost":
-			if _cost_type != CostType.SCRAPS:
+			if _physical_damage != PhysicalDamage.LOSE_HP_PERCENT:
 				property.usage = PROPERTY_USAGE_NO_EDITOR
