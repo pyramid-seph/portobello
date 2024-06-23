@@ -1,15 +1,15 @@
 class_name Stats
 extends RefCounted
 
-@export var _level: int = 1
-@export var _experience: int
-@export var _hp: int = 1
-@export var _mp: int = 1
-@export var _attack: int = 1
-@export var _defense: int = 1
-@export var _speed: int = 1
-@export var _agility: int = 1
-@export var _luck: int = 1
+var _level: int = 1
+var _experience: int
+var _hp: int = 1
+var _mp: int = 1
+var _attack: int = 1
+var _defense: int = 1
+var _speed: int = 1
+var _agility: int = 1
+var _luck: int = 1
 
 
 func get_level() -> int:
