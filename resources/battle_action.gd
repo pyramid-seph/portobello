@@ -67,9 +67,9 @@ func calculate_hp_damage(attacker: Fighter, target: Fighter) -> int:
 	if _physical_damage == PhysicalDamage.LOSE_HP_POINTS:
 		var extra_damage: int = 0
 		if randi() % get_hit_chance_percent() <= target_stats.get_lck():
-			extra_damage = -(randi() % (target_stats.get_def() / attacker_stats.get_atk() + 5))
+			extra_damage = -(randi() % (floori(float(target_stats.get_def()) / float(attacker_stats.get_atk())) + 5))
 		else:
-			extra_damage = randi() % (attacker_stats.get_atk() / target_stats.get_def() + 5)
+			extra_damage = randi() % (floori(float(attacker_stats.get_atk()) / float(target_stats.get_def())) + 5)
 		damage = maxi(1, _damage_points + extra_damage)
 		if target.get_curr_hp() < damage:
 			damage = target.get_curr_hp()
@@ -140,7 +140,7 @@ func get_hit_chance() -> float:
 
 
 func get_hit_chance_percent() -> int:
-	return _hit_chance * 100
+	return ceili(_hit_chance * 100.0)
 
 
 func is_devour_attack() -> bool:

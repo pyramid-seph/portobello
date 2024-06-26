@@ -66,11 +66,11 @@ func _setup_row(
 		var unique: bool = member_ocurrences_count[fighter_name] == 1
 		var fighter_ocurrence: int = -1 if unique else tally[fighter_name]
 		new_fighter_node.set_fighter_data(fighter_data, fighter_ocurrence)
-		_members.append(new_fighter_node)
-		
 		new_fighter_node.selected.connect(_on_fighter_selected)
 		new_fighter_node.selection_canceled.connect(_on_fighter_selection_canceled)
 		row.add_child(new_fighter_node)
+		_members.append(new_fighter_node)
+		
 
 
 func _clear_row(row: HBoxContainer) -> void:

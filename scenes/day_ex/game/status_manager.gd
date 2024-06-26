@@ -12,7 +12,7 @@ const _spd_buff_texture = preload("res://art/day_ex/battle_status_spd_buff.png")
 const _love_texture = preload("res://art/day_ex/battle_status_love.png")
 const _poison_texture = preload("res://art/day_ex/battle_status_poison.png")
 
-const DISPLAY_DURATION_SEC: int = 1.0
+const DISPLAY_DURATION_SEC: float = 1.0
 
 var _curr_status_effects_textures: Array[Texture2D]
 var _curr_displayed_texture_index: int
