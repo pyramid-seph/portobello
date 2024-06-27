@@ -31,6 +31,7 @@ var _sorted_by_turn: Array[Fighter]
 @onready var _player_commands_group_visibility: GroupVisibility = %PlayerCommandsGroupVisibility
 @onready var _action_selector: ActionSelector = %ActionSelector
 @onready var _info_label: Label = %InfoLabel
+@onready var _player_background_texture: TextureRect = %PlayerBackgroundTexture
 
 
 func _ready() -> void:
@@ -61,6 +62,7 @@ func start(enemy_party: BattleParty, background: Texture2D) -> void:
 func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> void:
 	await TransitionPlayer.play_battle()
 	_enemy_party_container.setup(enemy_party, background)
+	_player_background_texture.texture = background
 	# TODO setup player party
 	
 	_sorted_by_turn = _enemy_party_container.get_members()
@@ -100,7 +102,7 @@ func _on_preview_set() -> void:
 
 
 func _on_player_commands_group_visibility_referenced_controls_visibility_changed() -> void:
-	_player_char.visible = !_player_commands_group_visibility.referenced_controls_visibility
+	_player_background_texture.visible = !_player_commands_group_visibility.referenced_controls_visibility
 
 
 func _on_action_selector_current_option_changed(info_msg: String) -> void:

@@ -267,11 +267,19 @@ text = "Weakens 1 enemy's ATK, but strengthens their SPD."
 label_settings = SubResource("LabelSettings_5fx2w")
 autowrap_mode = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="PlayerBackgroundTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerBackgroundTexture"]
+layout_mode = 2
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 73.0
 size_flags_vertical = 3
 
-[node name="PlayerChar" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/CenterContainer" instance=ExtResource("12_ivyo5")]
+[node name="PlayerChar" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerBackgroundTexture/CenterContainer" instance=ExtResource("12_ivyo5")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_ds8e0")
 layout_mode = 2

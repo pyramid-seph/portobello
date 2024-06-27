@@ -54,8 +54,8 @@ _data = {
 }
 
 [node name="BattleNarrationBox" type="PanelContainer"]
-custom_minimum_size = Vector2(240, 54)
-offset_right = 240.0
+custom_minimum_size = Vector2(0, 54)
+offset_right = 24.0
 offset_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
