@@ -17,26 +17,40 @@ extends Node2D
 	set(value):
 		action_down = value
 		_on_action_down_set()
-@export var hide_main_action_button: bool:
-	set(value):
-		hide_main_action_button = value
-		_on_hide_main_action_button_set()
-@export var main_action_button_texture: Texture2D:
-	set(value):
-		main_action_button_texture = value
-		_on_main_action_button_texture_set()
 @export var action_button: StringName = &"ui_accept":
 	set(value):
 		action_button = value
 		_on_action_button_set()
+@export var secondary_action_button: StringName = &"ui_cancel":
+	set(value):
+		secondary_action_button = value
+		_on_secondary_action_button_set()
+@export var main_action_button_texture: Texture2D:
+	set(value):
+		main_action_button_texture = value
+		_on_main_action_button_texture_set()
+@export var secondary_action_button_texture: Texture2D:
+	set(value):
+		secondary_action_button_texture = value
+		_on_secondary_action_button_texture_set()
+@export var hide_main_action_button: bool = true:
+	set(value):
+		hide_main_action_button = value
+		_on_hide_main_action_button_set()
+@export var hide_secondary_action_button: bool = true:
+	set(value):
+		hide_secondary_action_button = value
+		_on_hide_secondary_action_button_set()
 @export var hide_pause_button: bool:
 	set(value):
 		hide_pause_button = value
 		_on_hide_pause_button_set()
-		
+
 @onready var _pause_button: TouchScreenButton = $PauseButton
 @onready var _main_action_button: TouchScreenButton = $MainActionButton
 @onready var _main_action_button_sprite: Sprite2D = $MainActionButton/Sprite2D
+@onready var _secondary_action_button: TouchScreenButton = $SecondaryActionButton
+@onready var _secondary_action_button_sprite: Sprite2D = $SecondaryActionButton/Sprite2D
 @onready var _dpad_left_button: TouchScreenButton = $Dpad/LeftButton
 @onready var _dpad_right_button: TouchScreenButton = $Dpad/RightButton
 @onready var _dpad_up_button: TouchScreenButton = $Dpad/UpButton
@@ -49,7 +63,9 @@ func _ready() -> void:
 	_on_action_up_set()
 	_on_action_down_set()
 	_on_main_action_button_texture_set()
+	_on_secondary_action_button_texture_set()
 	_on_action_button_set()
+	_on_secondary_action_button_set()
 	_on_hide_pause_button_set()
 	top_level = true
 
@@ -79,14 +95,29 @@ func _on_hide_main_action_button_set() -> void:
 		_main_action_button.visible = !hide_main_action_button
 
 
+func _on_hide_secondary_action_button_set() -> void:
+	if is_node_ready():
+		_secondary_action_button.visible = !hide_secondary_action_button
+
+
 func _on_main_action_button_texture_set() -> void:
 	if is_node_ready():
 		_main_action_button_sprite.texture = main_action_button_texture
 
 
+func _on_secondary_action_button_texture_set() -> void:
+	if is_node_ready():
+		_secondary_action_button_sprite.texture = secondary_action_button_texture
+
+
 func _on_action_button_set() -> void:
 	if is_node_ready():
 		_main_action_button.action = action_button
+
+
+func _on_secondary_action_button_set() -> void:
+	if is_node_ready():
+		_secondary_action_button.action = secondary_action_button
 
 
 func _on_hide_pause_button_set() -> void:

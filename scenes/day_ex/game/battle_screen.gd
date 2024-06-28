@@ -45,6 +45,8 @@ func _ready() -> void:
 
 
 func start(enemy_party: BattleParty, background: Texture2D) -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_RPG_BATTLE
+	
 	_cur_turn = -1
 	_sorted_by_turn.clear()
 	

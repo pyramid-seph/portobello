@@ -17,7 +17,7 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 
 
 func _ready() -> void:
-	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY
+	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_RPG_WORLD
 	_start_game()
 
 
@@ -54,6 +54,7 @@ func _on_day_ex_ui_dialogue_event_requested(event: String) -> void:
 
 func _on_battle_screen_battle_finished(success: bool) -> void:
 	if success:
+		TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_RPG_WORLD
 		_ui.set_pause_menu_enabled(true)
 		$World/TileMap.process_mode = Node.PROCESS_MODE_INHERIT
 		_player.set_process_unhandled_input(true)

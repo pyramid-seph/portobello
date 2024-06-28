@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdwknd7ffydpx"]
+[gd_scene load_steps=11 format=3 uid="uid://bdwknd7ffydpx"]
 
 [ext_resource type="Script" path="res://scenes/_shared/touch_controller/touch_screen_controller.gd" id="1_byuae"]
 [ext_resource type="Texture2D" uid="uid://h31bnctfaxoc" path="res://art/_shared/touch_button_controller_normal.png" id="2_s4jse"]
@@ -9,12 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://buhbnqp5t28qo" path="res://art/_shared/touch_button_action_dir_up.png" id="6_lgyog"]
 [ext_resource type="Texture2D" uid="uid://de36gidgd607d" path="res://art/_shared/touch_button_action_dir_down.png" id="7_uw13d"]
 [ext_resource type="Texture2D" uid="uid://dtdldobhx6tjl" path="res://art/_shared/touch_button_action_main_accept.png" id="8_r2us6"]
+[ext_resource type="Texture2D" uid="uid://ccmibsytsd4kb" path="res://art/_shared/touch_button_action_secondary_cancel.png" id="10_yne6m"]
 
 [node name="TouchScreenController" type="Node2D"]
 process_mode = 3
 z_index = 4096
 script = ExtResource("1_byuae")
-hide_main_action_button = true
 
 [node name="PauseButton" type="TouchScreenButton" parent="."]
 modulate = Color(1, 1, 1, 0.25098)
@@ -85,3 +85,14 @@ visibility_mode = 1
 [node name="Sprite2D" type="Sprite2D" parent="MainActionButton"]
 position = Vector2(24, 24)
 texture = ExtResource("8_r2us6")
+
+[node name="SecondaryActionButton" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+position = Vector2(184, 247)
+texture_normal = ExtResource("2_s4jse")
+texture_pressed = ExtResource("3_n382d")
+visibility_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="SecondaryActionButton"]
+position = Vector2(24, 24)
+texture = ExtResource("10_yne6m")
