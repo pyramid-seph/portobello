@@ -64,10 +64,7 @@ func get_stats_manager() -> StatsManager:
 
 
 func is_dead() -> bool:
-	if _is_edible():
-		return _stats_manager.get_curr_hp() < 0
-	else:
-		return _stats_manager.get_curr_hp() <= 0
+	return _stats_manager.get_curr_hp() <= 0
 
 
 ## Can be awaited
@@ -91,19 +88,18 @@ func get_hurt(attacker: Fighter, attack: BattleAction) -> void:
 	
 	if attack.is_physical_attack():
 		await _hurt_with_phys_attack(attacker, attack)
-	
-	if is_dead():
-		_animation_player.play(&"eaten" if _is_edible() else &"die")
-		await _animation_player.animation_finished
-		focus_mode = Control.FOCUS_NONE
-		return
+		
+		if is_dead():
+			var is_devoured: bool = attack.is_devour_attack()
+			_animation_player.play(&"eaten" if is_devoured else &"die")
+			# TODO Send devoured/dead event
+			await _animation_player.animation_finished
+			focus_mode = Control.FOCUS_NONE
+			hide()
+			return
 	
 	if attack.inflicts_any_status_effect():
 		await _hurt_with_status_attack(attacker, attack)
-
-
-func _is_edible() -> bool:
-	return _fighter_data and _fighter_data.is_edible()
 
 
 func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:

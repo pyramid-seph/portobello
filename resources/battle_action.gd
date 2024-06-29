@@ -40,7 +40,6 @@ enum PhysicalDamage {
 @export_range(1, 99999, 1, "hide_slider") var _damage_points: int = 1
 @export_range(0.05, 1.0, 0.01) var _damage_percent: float = 0.5
 @export_range(0.0, 1.0, 0.01) var _hit_chance: float = 1.0
-@export var _devour_attack: bool
 
 @export_group("Status Effect", "_status_effect")
 ## Lose some hp for 3 turns after completing their turn.
@@ -72,12 +71,8 @@ func calculate_hp_damage(attacker_stats: StatsManager, target_stats: StatsManage
 			else:
 				extra_damage = randi() % (floori(float(attacker_stats.get_atk()) / float(target_stats.get_def())) + 5)
 			damage = maxi(1, _damage_points + extra_damage)
-			if target_stats.get_curr_hp() < damage:
-				damage = target_stats.get_curr_hp()
 		PhysicalDamage.LOSE_HP_PERCENT:
 			damage = maxi(1, target_stats.get_curr_hp() * _damage_percent)
-			if target_stats.get_curr_hp() < damage:
-				damage = target_stats.get_curr_hp()
 		PhysicalDamage.DEVOUR:
 			damage = _damage_points
 		PhysicalDamage.RECOVER_HP_POINTS:
@@ -126,7 +121,7 @@ func get_hit_chance_percent() -> int:
 
 
 func is_devour_attack() -> bool:
-	return _devour_attack
+	return _physical_damage == PhysicalDamage.DEVOUR
 
 
 func get_sprites() -> Array[Texture2D]:

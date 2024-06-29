@@ -4,7 +4,6 @@ extends Resource
 
 @export var _char_name: String
 @export var _texture: Texture2D
-@export var _edible: bool = true
 @export var _stats_progression_curve: StatsProgression
 @export var _actions: Array[EnemyCommand]
 
@@ -19,10 +18,6 @@ func get_char_name() -> String:
 
 func get_texture() -> Texture2D:
 	return _texture
-
-
-func is_edible() -> bool:
-	return _edible
 
 
 func get_level_by_experience(value: int) -> int:

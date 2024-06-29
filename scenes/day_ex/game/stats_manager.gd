@@ -85,7 +85,7 @@ func gain_experience(experience: int) -> Stats:
 ## Does nothing if this manager has not been set up.
 func decrease_hp(value: int) -> void:
 	if _fighter_data:
-		_curr_hp = clampi(_curr_hp - value, -1, get_max_hp())
+		_curr_hp = clampi(_curr_hp - value, 0, get_max_hp())
 
 
 ## Passing a negative value will add MP.
