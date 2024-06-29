@@ -497,7 +497,7 @@ libraries = {
 "": SubResource("AnimationLibrary_xl45o")
 }
 
-[node name="StatusManager" type="TextureRect" parent="."]
+[node name="StatusDisplay" type="TextureRect" parent="."]
 visible = false
 custom_minimum_size = Vector2(15, 17)
 layout_mode = 1
@@ -511,7 +511,7 @@ texture = ExtResource("4_mcca7")
 stretch_mode = 2
 script = ExtResource("5_xmmr4")
 
-[node name="Timer" type="Timer" parent="StatusManager"]
+[node name="Timer" type="Timer" parent="StatusDisplay"]
 
 [node name="DamageLabel" type="Label" parent="."]
 visible = false
@@ -568,4 +568,4 @@ stretch_mode = 2
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="timeout" from="StatusManager/Timer" to="StatusManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="StatusDisplay/Timer" to="StatusDisplay" method="_on_timer_timeout"]

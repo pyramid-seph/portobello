@@ -4,6 +4,7 @@ extends Resource
 
 
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
+const StatsManager = preload("res://scenes/day_ex/game/stats_manager.gd")
 
 enum Target {
 	SINGLE_ENEMY,
@@ -55,52 +56,33 @@ enum PhysicalDamage {
 @export var _screen_flash_color: Color = Color.TRANSPARENT
 @export var _shake_screen: bool
 
+
+func is_physical_attack() -> bool:
+	return _physical_damage == PhysicalDamage.NONE
+
+
 ## 0 means evade, positive means damage, negative means recovery
-func calculate_hp_damage(attacker: Fighter, target: Fighter) -> int:
+func calculate_hp_damage(attacker_stats: StatsManager, target_stats: StatsManager) -> int:
 	var damage: int = 0
-	if _physical_damage == PhysicalDamage.NONE:
-		return damage
-	
-	var attacker_stats: Stats = attacker.get_stats()
-	var target_stats: Stats = target.get_stats()
-	
-	if _physical_damage == PhysicalDamage.LOSE_HP_POINTS:
-		var extra_damage: int = 0
-		if randi() % get_hit_chance_percent() <= target_stats.get_lck():
-			extra_damage = -(randi() % (floori(float(target_stats.get_def()) / float(attacker_stats.get_atk())) + 5))
-		else:
-			extra_damage = randi() % (floori(float(attacker_stats.get_atk()) / float(target_stats.get_def())) + 5)
-		damage = maxi(1, _damage_points + extra_damage)
-		if target.get_curr_hp() < damage:
-			damage = target.get_curr_hp()
-	elif _physical_damage == PhysicalDamage.LOSE_HP_PERCENT:
-		damage = maxi(1, target.get_curr_hp() * _damage_percent)
-		if target.get_curr_hp() < damage:
-			damage = target.get_curr_hp()
-	elif _physical_damage == PhysicalDamage.DEVOUR:
-		damage = _damage_points
-	elif _physical_damage == PhysicalDamage.RECOVER_HP_POINTS:
-		damage = _damage_points * -1
+	match _physical_damage:
+		PhysicalDamage.LOSE_HP_POINTS:
+			var extra_damage: int = 0
+			if randi() % get_hit_chance_percent() <= target_stats.get_lck():
+				extra_damage = -(randi() % (floori(float(target_stats.get_def()) / float(attacker_stats.get_atk())) + 5))
+			else:
+				extra_damage = randi() % (floori(float(attacker_stats.get_atk()) / float(target_stats.get_def())) + 5)
+			damage = maxi(1, _damage_points + extra_damage)
+			if target_stats.get_curr_hp() < damage:
+				damage = target_stats.get_curr_hp()
+		PhysicalDamage.LOSE_HP_PERCENT:
+			damage = maxi(1, target_stats.get_curr_hp() * _damage_percent)
+			if target_stats.get_curr_hp() < damage:
+				damage = target_stats.get_curr_hp()
+		PhysicalDamage.DEVOUR:
+			damage = _damage_points
+		PhysicalDamage.RECOVER_HP_POINTS:
+			damage = _damage_points * -1
 	return damage
-
-
-func inflict_status(attacker: Fighter, target: Fighter) -> bool:
-	var target_stats: Stats = target.get_stats()
-	var inflict: bool = randi() % get_hit_chance_percent() <= target_stats.get_lck()
-	if inflict:
-		# TODO buff/debuff
-		# Stats can be buffed/debuffed 7 points from their initial value.
-		# Example: Bug initial attack is 5, this means its minimum and maximum
-		# attacks are 1 and 12 (stats cannot be less than 1)
-		pass
-	
-	 #int rul = Math.abs( random.nextInt() ) % habilidadesBucho[tecnicaElegida].efectividad;
-						#System.out.println( rul
-								#+ "\n" + enemigo[enemigoElegido].suerte);
-						#efectivo = (rul <=
-								#enemigo[enemigoElegido].suerte ? false : true );
-	
-	return inflict
 
 
 func get_target() -> Target:

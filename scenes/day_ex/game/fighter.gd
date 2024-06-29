@@ -6,27 +6,15 @@ signal selection_canceled
 
 const ActionAnimation = preload("res://scenes/day_ex/game/action_animation.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
-const StatusManager = preload("res://scenes/day_ex/game/status_manager.gd")
 const StatsManager = preload("res://scenes/day_ex/game/stats_manager.gd")
 
 const ALPHABET: PackedStringArray = [
 		"", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 		"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-var _curr_level: int = 1
 var _fighter_data: FighterData
 var _ocurrence: int
-var _curr_hp: int:
-	set(value):
-		var max_hp: int = _stats_manager.get_max_hp() if _fighter_data else 1
-		_curr_hp = clampi(value, 0, max_hp)
-var _curr_mp: int:
-	set(value):
-		var max_mp: int = _stats_manager.get_max_mp() if _fighter_data else 1
-		_curr_mp = clampi(value, 0, max_mp)
-var _is_dead: bool
 
-@onready var _status_manager: StatusManager = $StatusManager
 @onready var _fighter_texture_rect: TextureRect = $"."
 @onready var _damage_label: Label = $DamageLabel
 @onready var _name_label: Label = $NameLabel
@@ -56,78 +44,6 @@ func _notification(what: int) -> void:
 		_update_fighter_name_label()
 
 
-func get_curr_hp() -> int:
-	return _curr_hp
-
-
-func get_curr_mp() -> int:
-	return _curr_mp
-
-
-func get_full_name() -> String:
-	return _name_label.text
-
-
-func get_stats_manager() -> StatsManager:
-	return _stats_manager
-
-
-## Can be awaited
-func receive_attack(attacker: Fighter, attack: BattleAction) -> void:
-	if _is_dead:
-		return
-	
-	_action_animation.configure(attack)
-	_action_animation.play()
-	await _action_animation.finished
-	
-	if randi() % attack.get_hit_chance_percent() <= _fighter_data.get_agility():
-		_animation_player.play("evade")
-		await _animation_player.animation_finished
-		# TODO Send evasion signal
-		return
-	
-	var damage: int = attack.calculate_hp_damage(attacker, self)
-	var is_status_inflicted: bool = attack.inflict_status(attacker, self)
-	
-	_curr_hp -= damage
-	_damage_label.text = str(absi(damage))
-	# TODO Manage status effects
-	# TODO Play a different animation when char is eaten
-	if damage > 0:
-		_animation_player.play("hurt")
-		await _animation_player.animation_finished
-		# TODO send the hurt signal
-	elif damage < 0:
-		_animation_player.play("cure")
-		await _animation_player.animation_finished
-		# TODO send the cured signal
-	
-	_is_dead = _curr_hp <= 0
-	if _is_dead:
-		_animation_player.play("die")
-		await _animation_player.animation_finished
-		focus_mode = Control.FOCUS_NONE
-
-func take_turn() -> void:
-	_animation_player.play(&"take_turn")
-	await _animation_player.animation_finished
-
-
-func on_turn_finished() -> void:
-	# TODO Apply post turn damage
-	pass
-
-
-func is_dead() -> bool:
-	return _is_dead
-
-
-func consume_mp(points: int) -> int:
-	_curr_mp -= points
-	return _curr_mp
-
-
 ## Set ocurrence to 0 or a negative value if this fighter is 
 ## the only one of their type on this party.
 ## Example: In the party there are 1 bug and 2 lizards. For the bug, you should set
@@ -139,13 +55,100 @@ func set_fighter_data(fighter_data: FighterData, ocurrence: int = 0) -> void:
 	_setup()
 
 
-func _setup(level: int = 1) -> void:
+func get_full_name() -> String:
+	return _name_label.text
+
+
+func get_stats_manager() -> StatsManager:
+	return _stats_manager
+
+
+func is_dead() -> bool:
+	if _is_edible():
+		return _stats_manager.get_curr_hp() < 0
+	else:
+		return _stats_manager.get_curr_hp() <= 0
+
+
+## Can be awaited
+func take_turn() -> void:
+	await _on_turn_started()
+	_animation_player.play(&"take_turn")
+	await _animation_player.animation_finished
+	# TODO Decide next action.
+	# TODO Execute action
+	await _on_turn_finished()
+
+
+## Can be awaited
+func get_hurt(attacker: Fighter, attack: BattleAction) -> void:
+	if is_dead():
+		return
+	
+	_action_animation.configure(attack)
+	_action_animation.play()
+	await _action_animation.finished
+	
+	if attack.is_physical_attack():
+		await _hurt_with_phys_attack(attacker, attack)
+	
+	if is_dead():
+		_animation_player.play(&"eaten" if _is_edible() else &"die")
+		await _animation_player.animation_finished
+		focus_mode = Control.FOCUS_NONE
+		return
+	
+	if attack.inflicts_any_status_effect():
+		await _hurt_with_status_attack(attacker, attack)
+
+
+func _is_edible() -> bool:
+	return _fighter_data and _fighter_data.is_edible()
+
+
+func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
+	if randi() % attack.get_hit_chance_percent() <= _stats_manager.get_agi():
+		_animation_player.play(&"evade")
+		await _animation_player.animation_finished
+		# TODO Send evasion signal
+		return
+	
+	var damage: int = attack.calculate_hp_damage(
+			attacker.get_stats_manager(), _stats_manager)
+	_stats_manager.decrease_hp(damage)
+	_damage_label.text = str(absi(damage))
+	if damage > 0:
+		_animation_player.play(&"hurt")
+		await _animation_player.animation_finished
+		# TODO send the hurt signal
+	elif damage < 0:
+		_animation_player.play(&"cure")
+		await _animation_player.animation_finished
+		# TODO send the cured signal
+
+
+func _hurt_with_status_attack(attacker: Fighter, attack: BattleAction) -> void:
+	var inflict_status: bool = \
+			randi() % attack.get_hit_chance_percent() <= _stats_manager.get_lck()
+	if inflict_status:
+		# TODO Send afflicted event?
+		_apply_buffs(attack)
+	elif not attack.is_physical_attack():
+		_animation_player.play(&"evade")
+		await _animation_player.animation_finished
+		# TODO Send evasion signal
+
+
+func _apply_buffs(attack: BattleAction) -> void:
+	_stats_manager.buff_atk(attack.get_status_effect_attack())
+	_stats_manager.buff_def(attack.get_status_effect_defense())
+	_stats_manager.buff_speed(attack.get_status_effect_speed())
+
+
+func _setup() -> void:
 	if not is_node_ready():
 		return
 	
-	_curr_level = level
-	_curr_hp = 0
-	_curr_mp = 0
 	_fighter_texture_rect.texture = null
 	_damage_label.text = ""
 	_name_label.text = ""
@@ -154,10 +157,26 @@ func _setup(level: int = 1) -> void:
 		return
 	
 	_fighter_texture_rect.texture = _fighter_data.get_texture()
-	_curr_hp = _stats_manager.get_max_hp()
-	_curr_mp = _stats_manager.get_max_mp()
 	
 	_update_fighter_name_label()
+	_stats_manager.setup(_fighter_data)
+
+
+func _on_turn_started() -> void:
+	if is_dead():
+		return
+	
+	if randi() % 101 <= _stats_manager.get_lck():
+		_stats_manager.reset_buffs()
+		# TODO Send stats reset (buff debuff reset) event
+	# TODO Try healing status effects
+
+
+## Can be awaited
+func _on_turn_finished() -> void:
+	if is_dead():
+		return
+	# TODO Apply poison damage
 
 
 func _update_fighter_name_label() -> void:
