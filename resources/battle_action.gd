@@ -3,9 +3,6 @@ class_name BattleAction
 extends Resource
 
 
-const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
-const StatsManager = preload("res://scenes/day_ex/game/stats_manager.gd")
-
 enum Target {
 	SINGLE_ENEMY,
 	SELF,

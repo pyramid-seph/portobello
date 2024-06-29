@@ -6,12 +6,13 @@ signal selection_canceled
 
 const ActionAnimation = preload("res://scenes/day_ex/game/action_animation.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
-const StatsManager = preload("res://scenes/day_ex/game/stats_manager.gd")
 
 const ALPHABET: PackedStringArray = [
 		"", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 		"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
+var _stats_manager := StatsManager.new()
+var _status_manager := StatusManager.new()
 var _fighter_data: FighterData
 var _ocurrence: int
 
@@ -21,7 +22,6 @@ var _ocurrence: int
 @onready var _selector_texture_rect: TextureRect = $SelectorTextureRect
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _action_animation: ActionAnimation = $ActionAnimation
-@onready var _stats_manager: StatsManager = $StatsManager
 
 
 func _ready() -> void:
@@ -95,6 +95,7 @@ func get_hurt(attacker: Fighter, attack: BattleAction) -> void:
 			# TODO Send devoured/dead event
 			await _animation_player.animation_finished
 			focus_mode = Control.FOCUS_NONE
+			_status_manager.clear_all_status_effect()
 			hide()
 			return
 	
@@ -129,6 +130,7 @@ func _hurt_with_status_attack(attacker: Fighter, attack: BattleAction) -> void:
 	if inflict_status:
 		# TODO Send afflicted event?
 		_apply_buffs(attack)
+		_apply_illness(attack)
 	elif not attack.is_physical_attack():
 		_animation_player.play(&"evade")
 		await _animation_player.animation_finished
@@ -139,6 +141,15 @@ func _apply_buffs(attack: BattleAction) -> void:
 	_stats_manager.buff_atk(attack.get_status_effect_attack())
 	_stats_manager.buff_def(attack.get_status_effect_defense())
 	_stats_manager.buff_speed(attack.get_status_effect_speed())
+
+
+func _apply_illness(attack: BattleAction) -> void:
+	if attack.inflicts_poison():
+		_status_manager.set_poison_damage(attack.get_poison_damage())
+		# TODO Send poisoned event
+	if attack.inflicts_love():
+		_status_manager.set_is_charmed(true)
+		# TODO Send charmed event
 
 
 func _setup() -> void:
@@ -165,14 +176,27 @@ func _on_turn_started() -> void:
 	if randi() % 101 <= _stats_manager.get_lck():
 		_stats_manager.reset_buffs()
 		# TODO Send stats reset (buff debuff reset) event
-	# TODO Try healing status effects
+	if randi() % 100 <= _stats_manager.get_lck():
+		_status_manager.clear_all_status_effect()
+		# TODO Send illness cleared event
 
 
 ## Can be awaited
 func _on_turn_finished() -> void:
-	if is_dead():
+	if is_dead() or not _status_manager.is_poisoned():
 		return
-	# TODO Apply poison damage
+	
+	_stats_manager.decrease_hp(_status_manager.get_poison_damage())
+	_animation_player.play(&"hurt")
+	await _animation_player.animation_finished
+	# TODO send the hurt by poison signal
+	
+	if is_dead():
+		_animation_player.play(&"die")
+		await _animation_player.animation_finished
+		focus_mode = Control.FOCUS_NONE
+		_status_manager.clear_all_status_effect()
+		hide()
 
 
 func _update_fighter_name_label() -> void:

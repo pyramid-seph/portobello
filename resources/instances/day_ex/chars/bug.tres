@@ -15,7 +15,6 @@ _weight = 0.0
 script = ExtResource("4_uuxsk")
 _char_name = "RPG_BATTLE_ENEMY_NAME_BUG"
 _texture = ExtResource("1_puv4l")
-_edible = true
 _stats_progression_curve = ExtResource("3_724eh")
 _actions = Array[ExtResource("2_eo7ov")]([SubResource("Resource_5n1jb")])
 _loot_scraps = 1

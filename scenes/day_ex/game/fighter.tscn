@@ -1,11 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://d0cegcu8dki0c"]
+[gd_scene load_steps=25 format=3 uid="uid://d0cegcu8dki0c"]
 
 [ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
 [ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="2_tc2hr"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/fighter.gd" id="3_imod4"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/stats_manager.gd" id="4_m8tqa"]
 [ext_resource type="Texture2D" uid="uid://bq73enwrq4y4i" path="res://art/day_ex/battle_status_atk_debuff.png" id="4_mcca7"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/status_manager.gd" id="5_xmmr4"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
 [ext_resource type="Shader" path="res://shaders/hp_label.gdshader" id="6_7oenr"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_qpj4v"]
 [ext_resource type="Texture2D" uid="uid://cumpixq1a8n80" path="res://art/day_ex/battle_selector_0.png" id="8_iadhb"]
@@ -489,9 +488,6 @@ texture = ExtResource("2_tc2hr")
 stretch_mode = 3
 script = ExtResource("3_imod4")
 
-[node name="StatsManager" type="Node" parent="."]
-script = ExtResource("4_m8tqa")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_xl45o")
@@ -509,7 +505,7 @@ offset_bottom = 17.0
 grow_horizontal = 0
 texture = ExtResource("4_mcca7")
 stretch_mode = 2
-script = ExtResource("5_xmmr4")
+script = ExtResource("5_0vlxv")
 
 [node name="Timer" type="Timer" parent="StatusDisplay"]
 

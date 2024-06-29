@@ -1,4 +1,5 @@
-extends Node
+class_name StatsManager
+extends RefCounted
 
 
 const MAX_BUFF: int = 7

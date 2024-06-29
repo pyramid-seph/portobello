@@ -16,7 +16,6 @@ _physical_damage = 4
 _damage_points = 5
 _damage_percent = 0.5
 _hit_chance = 1.0
-_devour_attack = true
 _status_effect_poison_damage = 0
 _status_effect_attack = 0
 _status_effect_defense = 0

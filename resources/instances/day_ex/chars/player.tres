@@ -8,7 +8,6 @@
 script = ExtResource("2_tiv57")
 _char_name = "Bucho"
 _texture = ExtResource("1_6xuli")
-_edible = false
 _stats_progression_curve = ExtResource("1_8ah5x")
 _actions = Array[Resource("res://resources/enemy_command.gd")]([])
 _loot_scraps = 0
