@@ -2,6 +2,8 @@ class_name StatsManager
 extends RefCounted
 
 
+signal buffed
+
 const MAX_BUFF: int = 7
 const MAX_DEBUFF: int = -7
 
@@ -17,13 +19,22 @@ var _curr_hp: int
 var _curr_mp: int
 var _atk_buffs: int:
 	set(value):
+		var old_val: int = _atk_buffs
 		_atk_buffs = clampi(value, MAX_DEBUFF, MAX_BUFF)
+		if _atk_buffs != old_val:
+			buffed.emit()
 var _def_buffs: int:
 	set(value):
+		var old_val: int = _def_buffs
 		_def_buffs = clampi(value, MAX_DEBUFF, MAX_BUFF)
+		if _def_buffs != old_val:
+			buffed.emit()
 var _spd_buffs: int:
 	set(value):
+		var old_val: int = _spd_buffs
 		_spd_buffs = clampi(value, MAX_DEBUFF, MAX_BUFF)
+		if _def_buffs != old_val:
+			buffed.emit()
 
 
 func setup(fighter_data: FighterData, experience: int = 0) -> void:

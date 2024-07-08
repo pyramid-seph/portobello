@@ -3,10 +3,13 @@ extends CanvasLayer
 
 signal battle_finished(success: bool)
 
+const StatusDisplayManager = preload("res://scenes/day_ex/game/status_display_manager.gd")
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 const PartyContainer = preload("res://scenes/day_ex/game/party_container.gd")
 const ActionSelector = preload("res://scenes/day_ex/game/action_selector.gd")
+const StatusDisplay = preload("res://scenes/day_ex/game/status_display.gd")
+const StatusLabel = preload("res://scenes/day_ex/game/status_label.gd")
 
 const player_data = preload("res://resources/instances/day_ex/chars/player.tres")
 
@@ -32,6 +35,8 @@ var _sorted_by_turn: Array[Fighter]
 @onready var _action_selector: ActionSelector = %ActionSelector
 @onready var _info_label: Label = %InfoLabel
 @onready var _player_background_texture: TextureRect = %PlayerBackgroundTexture
+@onready var _status_display: StatusDisplay = %StatusDisplay
+@onready var _status_label: StatusLabel = %StatusLabel
 
 
 func _ready() -> void:
@@ -41,6 +46,8 @@ func _ready() -> void:
 		return
 	
 	_player_char.set_fighter_data(player_data)
+	_player_char.displayed_status_changed.connect(
+			_on_player_char_displayed_status_changed)
 	_panel_container.visible = get_parent() == $/root
 
 
@@ -101,6 +108,12 @@ func teardown() -> void:
 func _on_preview_set() -> void:
 	if is_node_ready() and Engine.is_editor_hint():
 		_panel_container.visible = _preview
+
+
+func _on_player_char_displayed_status_changed(
+		new_status: StatusDisplayManager.Status) -> void:
+	_status_display.display_status(new_status)
+	_status_label.display_status(new_status)
 
 
 func _on_player_commands_group_visibility_referenced_controls_visibility_changed() -> void:

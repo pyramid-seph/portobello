@@ -1,31 +1,45 @@
-extends Control
+extends TextureRect
 
 
 signal selected(me)
 signal selection_canceled
+signal displayed_status_changed(new_status: StatusDisplayManager.Status)
 
 const ActionAnimation = preload("res://scenes/day_ex/game/action_animation.gd")
+const StatusDisplayManager = preload("res://scenes/day_ex/game/status_display_manager.gd")
+const StatusDisplay = preload("res://scenes/day_ex/game/status_display.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
 const ALPHABET: PackedStringArray = [
 		"", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 		"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
+var _refresh_status_display: bool
 var _stats_manager := StatsManager.new()
 var _status_manager := StatusManager.new()
 var _fighter_data: FighterData
 var _ocurrence: int
 
-@onready var _fighter_texture_rect: TextureRect = $"."
 @onready var _damage_label: Label = $DamageLabel
 @onready var _name_label: Label = $NameLabel
 @onready var _selector_texture_rect: TextureRect = $SelectorTextureRect
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _action_animation: ActionAnimation = $ActionAnimation
+@onready var _status_display_manager: StatusDisplayManager = $StatusDisplayManager
+@onready var _status_display: StatusDisplay = $StatusDisplay
 
 
 func _ready() -> void:
 	_setup()
+
+
+func _process(_delta: float) -> void:
+	if not _fighter_data or is_dead():
+		return
+	
+	if _refresh_status_display:
+		_refresh_status_display = false
+		_status_display_manager.update_status(_stats_manager, _status_manager)
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -72,9 +86,41 @@ func take_turn() -> void:
 	await _on_turn_started()
 	_animation_player.play(&"take_turn")
 	await _animation_player.animation_finished
-	# TODO Decide next action.
-	# TODO Execute action
+	# TODO Pick action.
+	# TODO Pick target.
+	# TODO Execute action.
 	await _on_turn_finished()
+
+
+func _on_turn_started() -> void:
+	if is_dead():
+		return
+	
+	if randi() % 101 <= _stats_manager.get_lck():
+		_stats_manager.reset_buffs()
+		# TODO Send stats reset (buff debuff reset) event
+	if randi() % 100 <= _stats_manager.get_lck():
+		_status_manager.clear_all_status_effect()
+		# TODO Send illness cleared event
+
+
+## Can be awaited
+func _on_turn_finished() -> void:
+	if is_dead() or not _status_manager.is_poisoned():
+		return
+	
+	_stats_manager.decrease_hp(_status_manager.get_poison_damage())
+	_animation_player.play(&"hurt")
+	await _animation_player.animation_finished
+	# TODO send the hurt by poison signal
+	
+	if is_dead():
+		_animation_player.play(&"die")
+		await _animation_player.animation_finished
+		focus_mode = Control.FOCUS_NONE
+		_stats_manager.reset_buffs()
+		_status_manager.clear_all_status_effect()
+		hide()
 
 
 ## Can be awaited
@@ -95,12 +141,13 @@ func get_hurt(attacker: Fighter, attack: BattleAction) -> void:
 			# TODO Send devoured/dead event
 			await _animation_player.animation_finished
 			focus_mode = Control.FOCUS_NONE
+			_stats_manager.reset_buffs()
 			_status_manager.clear_all_status_effect()
 			hide()
 			return
 	
 	if attack.inflicts_any_status_effect():
-		await _hurt_with_status_attack(attacker, attack)
+		await _hurt_with_status_attack(attack)
 
 
 func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
@@ -124,7 +171,7 @@ func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 		# TODO send the cured signal
 
 
-func _hurt_with_status_attack(attacker: Fighter, attack: BattleAction) -> void:
+func _hurt_with_status_attack(attack: BattleAction) -> void:
 	var inflict_status: bool = \
 			randi() % attack.get_hit_chance_percent() <= _stats_manager.get_lck()
 	if inflict_status:
@@ -156,47 +203,20 @@ func _setup() -> void:
 	if not is_node_ready():
 		return
 	
-	_fighter_texture_rect.texture = null
+	texture = null
 	_damage_label.text = ""
 	_name_label.text = ""
+	_refresh_status_display = true
 	
 	if _fighter_data == null:
 		return
 	
-	_fighter_texture_rect.texture = _fighter_data.get_texture()
+	texture = _fighter_data.get_texture()
 	
 	_update_fighter_name_label()
 	_stats_manager.setup(_fighter_data)
-
-
-func _on_turn_started() -> void:
-	if is_dead():
-		return
-	
-	if randi() % 101 <= _stats_manager.get_lck():
-		_stats_manager.reset_buffs()
-		# TODO Send stats reset (buff debuff reset) event
-	if randi() % 100 <= _stats_manager.get_lck():
-		_status_manager.clear_all_status_effect()
-		# TODO Send illness cleared event
-
-
-## Can be awaited
-func _on_turn_finished() -> void:
-	if is_dead() or not _status_manager.is_poisoned():
-		return
-	
-	_stats_manager.decrease_hp(_status_manager.get_poison_damage())
-	_animation_player.play(&"hurt")
-	await _animation_player.animation_finished
-	# TODO send the hurt by poison signal
-	
-	if is_dead():
-		_animation_player.play(&"die")
-		await _animation_player.animation_finished
-		focus_mode = Control.FOCUS_NONE
-		_status_manager.clear_all_status_effect()
-		hide()
+	Utils.safe_connect(_stats_manager.buffed, _on_status_or_stats_changed)
+	Utils.safe_connect(_status_manager.status_changed, _on_status_or_stats_changed)
 
 
 func _update_fighter_name_label() -> void:
@@ -209,6 +229,10 @@ func _update_fighter_name_label() -> void:
 	_name_label.text = " ".join([fighter_name, pos_letter]).trim_suffix(" ")
 
 
+func _on_status_or_stats_changed() -> void:
+	_refresh_status_display = true
+
+
 func _on_focus_entered() -> void:
 	_selector_texture_rect.show()
 	_animation_player.play(&"focus")
@@ -219,3 +243,10 @@ func _on_focus_exited() -> void:
 	_animation_player.stop()
 	_selector_texture_rect.hide()
 	_name_label.hide()
+
+
+func _on_status_display_manager_displayed_status_changed(
+			new_status: StatusDisplayManager.Status) -> void:
+	print(get_full_name(), " > Status: ", new_status)
+	_status_display.display_status(new_status)
+	displayed_status_changed.emit(new_status)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0cegcu8dki0c"]
+[gd_scene load_steps=26 format=3 uid="uid://d0cegcu8dki0c"]
 
 [ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
 [ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="2_tc2hr"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/fighter.gd" id="3_imod4"]
 [ext_resource type="Texture2D" uid="uid://bq73enwrq4y4i" path="res://art/day_ex/battle_status_atk_debuff.png" id="4_mcca7"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/status_display_manager.gd" id="4_wdtdj"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
 [ext_resource type="Shader" path="res://shaders/hp_label.gdshader" id="6_7oenr"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_qpj4v"]
@@ -488,13 +489,19 @@ texture = ExtResource("2_tc2hr")
 stretch_mode = 3
 script = ExtResource("3_imod4")
 
+[node name="StatusDisplayManager" type="Node" parent="."]
+script = ExtResource("4_wdtdj")
+
+[node name="Timer" type="Timer" parent="StatusDisplayManager"]
+wait_time = 2.0
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_xl45o")
 }
 
 [node name="StatusDisplay" type="TextureRect" parent="."]
-visible = false
 custom_minimum_size = Vector2(15, 17)
 layout_mode = 1
 anchors_preset = 1
@@ -506,8 +513,6 @@ grow_horizontal = 0
 texture = ExtResource("4_mcca7")
 stretch_mode = 2
 script = ExtResource("5_0vlxv")
-
-[node name="Timer" type="Timer" parent="StatusDisplay"]
 
 [node name="DamageLabel" type="Label" parent="."]
 visible = false
@@ -564,4 +569,5 @@ stretch_mode = 2
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="timeout" from="StatusDisplay/Timer" to="StatusDisplay" method="_on_timer_timeout"]
+[connection signal="displayed_status_changed" from="StatusDisplayManager" to="." method="_on_status_display_manager_displayed_status_changed"]
+[connection signal="timeout" from="StatusDisplayManager/Timer" to="StatusDisplayManager" method="_on_timer_timeout"]
