@@ -1,15 +1,15 @@
-[gd_scene load_steps=26 format=3 uid="uid://d0cegcu8dki0c"]
+[gd_scene load_steps=27 format=3 uid="uid://d0cegcu8dki0c"]
 
 [ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
 [ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="2_tc2hr"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/fighter.gd" id="3_imod4"]
-[ext_resource type="Texture2D" uid="uid://bq73enwrq4y4i" path="res://art/day_ex/battle_status_atk_debuff.png" id="4_mcca7"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display_manager.gd" id="4_wdtdj"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
+[ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="5_xgu1x"]
 [ext_resource type="Shader" path="res://shaders/hp_label.gdshader" id="6_7oenr"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_qpj4v"]
-[ext_resource type="Texture2D" uid="uid://cumpixq1a8n80" path="res://art/day_ex/battle_selector_0.png" id="8_iadhb"]
 [ext_resource type="PackedScene" uid="uid://cspmfx76bwjfs" path="res://scenes/day_ex/game/action_animation.tscn" id="9_gjy52"]
+[ext_resource type="Texture2D" uid="uid://cltma5bmpwg8u" path="res://art/day_ex/atlas_battle_screen.png" id="9_ho2v8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o3353"]
 resource_local_to_scene = true
@@ -47,62 +47,62 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SelectorTextureRect:texture:region")
+tracks/2/path = NodePath(".:material:shader_parameter/offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(120, 272, 7, 8)]
+"values": [Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/offset")
+tracks/3/path = NodePath("DamageLabel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("DamageLabel:visible")
+tracks/4/path = NodePath("DamageLabel:material:shader_parameter/offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DamageLabel:material:shader_parameter/offset")
+tracks/5/path = NodePath("DamageLabel:label_settings:font_color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("DamageLabel:label_settings:font_color")
+tracks/6/path = NodePath("SelectorTextureRect:texture:region")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Rect2(168, 268, 8, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_roh21"]
@@ -338,7 +338,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Color(1, 1, 1, 0.490196)]
 }
 tracks/1/type = "value"
@@ -363,7 +363,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(120, 272, 7, 8), Rect2(136, 272, 7, 8)]
+"values": [Rect2(168, 268, 8, 8), Rect2(184, 268, 8, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_plgnv"]
@@ -479,6 +479,11 @@ font_size = 8
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1h03"]
+atlas = ExtResource("9_ho2v8")
+region = Rect2(168, 268, 8, 8)
+margin = Rect2(0.5, 0, 0, 0)
+
 [node name="Fighter" type="TextureRect"]
 material = SubResource("ShaderMaterial_o3353")
 custom_minimum_size = Vector2(30, 30)
@@ -510,7 +515,7 @@ anchor_right = 1.0
 offset_left = -15.0
 offset_bottom = 17.0
 grow_horizontal = 0
-texture = ExtResource("4_mcca7")
+texture = ExtResource("5_xgu1x")
 stretch_mode = 2
 script = ExtResource("5_0vlxv")
 
@@ -562,7 +567,7 @@ offset_left = -4.5
 offset_right = 4.5
 offset_bottom = 9.0
 grow_horizontal = 2
-texture = ExtResource("8_iadhb")
+texture = SubResource("AtlasTexture_c1h03")
 stretch_mode = 2
 
 [node name="ActionAnimation" parent="." instance=ExtResource("9_gjy52")]
