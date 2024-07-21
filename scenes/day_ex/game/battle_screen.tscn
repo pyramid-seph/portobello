@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=26 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_h3bdx"]
@@ -7,12 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://c3l2edgf8ciay" path="res://scenes/day_ex/game/party_container.tscn" id="4_qyjvj"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="5_k0cqu"]
 [ext_resource type="Texture2D" uid="uid://dgq5bvxdn1811" path="res://art/day_ex/battle_item_scraps.png" id="8_dp0aj"]
-[ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="8_jgqt0"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="8_kvjtm"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_label.gd" id="9_5uij3"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="9_gb3qd"]
 [ext_resource type="Script" path="res://scenes/day_ex/ui/group_visibility.gd" id="10_7g15t"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/action_selector.gd" id="10_xtk6e"]
+[ext_resource type="PackedScene" uid="uid://dtehqdjeugahu" path="res://scenes/day_ex/ui/action_selector.tscn" id="12_0rvl7"]
 [ext_resource type="PackedScene" uid="uid://d0cegcu8dki0c" path="res://scenes/day_ex/game/fighter.tscn" id="12_ivyo5"]
 [ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="13_ibdsu"]
 
@@ -57,18 +56,6 @@ font = ExtResource("5_k0cqu")
 [sub_resource type="LabelSettings" id="LabelSettings_2otg2"]
 font = ExtResource("5_k0cqu")
 font_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hat3d"]
-resource_local_to_scene = true
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe4ql"]
-resource_local_to_scene = true
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(1, 1, 1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7f6hs"]
 line_spacing = 0.0
@@ -216,39 +203,10 @@ label_settings = SubResource("LabelSettings_2otg2")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ActionSelector" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="ActionSelector" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("12_0rvl7")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-focus_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("10_xtk6e")
-
-[node name="CommandHSelector" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" instance=ExtResource("8_jgqt0")]
-layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-theme_override_styles/panel = SubResource("StyleBoxFlat_hat3d")
-selector_text = ""
-_options = ["Attack", "Attack"]
-numbered_list = true
-release_focus_on_selection = true
-focus_color = Color(0.29366, 0.29366, 0.29366, 1)
-text_font = ExtResource("5_k0cqu")
-text_color = Color(1, 1, 1, 1)
-
-[node name="ActionHSelector" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" instance=ExtResource("8_jgqt0")]
-layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-theme_override_styles/panel = SubResource("StyleBoxFlat_oe4ql")
-selector_text = "  "
-_options = ["Bright eyes", "Ability"]
-numbered_list = true
-release_focus_on_selection = true
-focus_color = Color(0.294118, 0.294118, 0.294118, 1)
-text_font = ExtResource("5_k0cqu")
-text_color = Color(1, 1, 1, 1)
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 visible = false
@@ -300,10 +258,5 @@ script = ExtResource("10_7g15t")
 controls = [NodePath("../HBoxContainer3"), NodePath("../InfoLabel"), NodePath("../ActionSelector")]
 referenced_controls_visibility = false
 
-[connection signal="current_option_changed" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_current_option_changed"]
-[connection signal="focus_entered" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" method="_on_focus_entered"]
-[connection signal="current_option_index_changed" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector/CommandHSelector" to="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" method="_on_command_h_selector_current_option_index_changed"]
-[connection signal="selected" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector/CommandHSelector" to="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" method="_on_command_h_selector_selected"]
-[connection signal="current_option_index_changed" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector/ActionHSelector" to="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" method="_on_action_h_selector_current_option_index_changed"]
-[connection signal="selected" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector/ActionHSelector" to="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" method="_on_action_h_selector_selected"]
+[connection signal="current_info_changed" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_current_info_changed"]
 [connection signal="referenced_controls_visibility_changed" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCommandsGroupVisibility" to="." method="_on_player_commands_group_visibility_referenced_controls_visibility_changed"]

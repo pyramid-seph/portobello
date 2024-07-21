@@ -58,12 +58,40 @@ func start(enemy_party: BattleParty, background: Texture2D) -> void:
 	_sorted_by_turn.clear()
 	
 	await _enter_battle_screen(enemy_party, background)
+	
+	# TEST
+	
+	_action_selector.set_actions(
+		[
+			preload("res://resources/instances/day_ex/actions/ability_mesmer_eyes.tres"),
+			preload("res://resources/instances/day_ex/actions/ability_scare.tres"),
+			preload("res://resources/instances/day_ex/actions/attack_scratch.tres"),
+			preload("res://resources/instances/day_ex/actions/attack_bite.tres"),
+		]
+	)
+	
+	var selected_target: Fighter = null
+	while selected_target == null:
+		_player_commands_group_visibility.referenced_controls_visibility = true
+		_action_selector.call_deferred("grab_focus")
+		var a = await _action_selector.command_selected
+		print(a.get_class())
+		_enemy_party_container.call_deferred("grab_focus")
+		_player_commands_group_visibility.referenced_controls_visibility = false
+		# TODO Go back to command selection if the player does not select a target
+		selected_target = await _enemy_party_container.target_selected
+		if selected_target:
+			var target = selected_target as Fighter
+			print(target.get_full_name())
+		else:
+			print("CANCELED!")
+	# /TEST
 
 	for i in 3:
 		_cur_turn = wrapi(_cur_turn + 1, 0, _sorted_by_turn.size())
 		while _sorted_by_turn[_cur_turn].is_dead():
 			_cur_turn = wrapi(_cur_turn + 1, 0, _sorted_by_turn.size())
-		await _sorted_by_turn[_cur_turn].take_turn()
+		await _sorted_by_turn[_cur_turn].take_turn([])
 		i += 1
 	_exit_battle_screen()
 
@@ -120,5 +148,8 @@ func _on_player_commands_group_visibility_referenced_controls_visibility_changed
 	_player_background_texture.visible = !_player_commands_group_visibility.referenced_controls_visibility
 
 
-func _on_action_selector_current_option_changed(info_msg: String) -> void:
+func _on_action_selector_current_info_changed(info_msg: String) -> void:
+	print("info_msg: ", tr(info_msg))
+	if not is_node_ready():
+		await ready
 	_info_label.text = info_msg

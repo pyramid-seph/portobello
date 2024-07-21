@@ -176,6 +176,7 @@ RPG_BATTLE_ATTACK_NAME_PLAYER_RIP_AND_TEAR,Rip & tear,Garrazo
 RPG_BATTLE_ATTACK_NAME_PLAYER_SCRATCH,Scratch,Arañar
 RPG_BATTLE_COMMAND_ABILITY,Ability,Habilidad
 RPG_BATTLE_COMMAND_ATTACK,Attack,Atacar
+RPG_BATTLE_COMMAND_BACK,Back,Regresar
 RPG_BATTLE_COMMAND_EAT,Eat,Comer
 RPG_BATTLE_COMMAND_FLEE,Flee,Huir
 RPG_BATTLE_ENEMY_NAME_BUG,Bug,Bicho
@@ -187,8 +188,8 @@ RPG_BATTLE_ENEMY_NAME_MOUSE,Mouse,Ratón
 RPG_BATTLE_ENEMY_NAME_PARROT_BLUE,Blue Parrot,Loro Azul
 RPG_BATTLE_ENEMY_NAME_PARROT_YELLOW,Yellow Parrot,Loro Amarillo
 RPG_BATTLE_INFO_ABILITY_CURE,Recover some HP by eating 1 scrap.,Recupera algo de HP al comer 1 trozo de sobras.
-RPG_BATTLE_INFO_ABILITY_DESPAIR,"Strengthens 1 enemy's ATK, but hurts them at the end of their turn.","Aumenta el ATQ de 1enemigo, pero recibe daño al final de su turno."
-RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts LOVE in 1 enemy.,Enamora a 1enemigo.
+RPG_BATTLE_INFO_ABILITY_DESPAIR,"Strengthens 1 enemy's ATK, but inflicts them with POISON.","Aumenta el ATQ de 1enemigo, pero le inflige VENENO."
+RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts 1 enemy with LOVE.,Enamora a 1enemigo.
 RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a la mitad el HP de 1enemigo.
 RPG_BATTLE_INFO_ABILITY_SCARE,"Weakens 1 enemy's ATK, but strengthens their SPD.","Debilita el ATQ de 1enemigo, pero aumenta su VEL."
 RPG_BATTLE_INFO_ABILITY_SURPRISE,Weakens 1 enemy's DEF.,Debilita la DEF de 1 enemigo.
@@ -199,6 +200,7 @@ RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR,Medium attack.,Ataque medio.
 RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack.,Ataque débil.
 RPG_BATTLE_INFO_COMMAND_ABILITY,Perform an ability that consumes 1 MP.,Realizar una habilidad que consume 1 MP.
 RPG_BATTLE_INFO_COMMAND_ATTACK,Attack 1 enemy.,Atacar a 1 enemigo.
+RPG_BATTLE_INFO_COMMAND_BACK,Go back to command selection.,Regresar a seleccionar comando.
 RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener sobras al ganar. Eficaz contra enemigos muy debilitados.
 RPG_BATTLE_INFO_COMMAND_FLEE,Try to escape from this battle.,Intentar escapar de la batalla.
 RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center][color=#58574]¡Bucho[/color] perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]

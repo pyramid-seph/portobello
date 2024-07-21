@@ -53,6 +53,10 @@ enum PhysicalDamage {
 @export var _shake_screen: bool
 
 
+func is_target_self() -> bool:
+	return _target == Target.SELF
+
+
 func is_physical_attack() -> bool:
 	return _physical_damage == PhysicalDamage.NONE
 
@@ -89,7 +93,7 @@ func get_info() -> String:
 	return _info
 
 
-func get_consumes() -> Consumable:
+func get_consumable() -> Consumable:
 	return _consumes
 
 

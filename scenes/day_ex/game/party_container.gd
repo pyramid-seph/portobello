@@ -1,7 +1,6 @@
 extends PanelContainer
 
 
-signal target_selection_canceled
 signal target_selected(target: Fighter)
 
 
@@ -33,6 +32,7 @@ func get_members() -> Array[Fighter]:
 
 
 func is_party_defeated() -> bool:
+	# TODO return true if empty?
 	var front_row_children: Array[Node] = _front_row.get_children()
 	var back_row_children: Array[Node] = _back_row.get_children()
 	var front_row_defeated: bool = front_row_children.all(func(fighter: Fighter):
@@ -111,7 +111,7 @@ func _on_fighter_selected(target: Fighter) -> void:
 
 func _on_fighter_selection_canceled() -> void:
 	print("fighter selection canceled")
-	target_selection_canceled.emit()
+	target_selected.emit(null)
 
 
 func _on_focus_entered() -> void:
@@ -126,3 +126,4 @@ func _on_focus_entered() -> void:
 			fighter.call_deferred("grab_focus")
 			return
 	release_focus()
+	_on_fighter_selection_canceled()

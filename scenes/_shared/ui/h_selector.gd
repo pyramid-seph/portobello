@@ -67,7 +67,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and current_option_idx > SELECTED_NONE:
 		if release_focus_on_selection:
 			release_focus()
-		selected.emit(_get_value_for_option(current_option_idx))
+		selected.emit(get_value_for_option(current_option_idx))
 		accept_event()
 	if event.is_action_pressed("ui_left"):
 		_previous_option()
@@ -84,6 +84,18 @@ func _notification(what: int) -> void:
 
 func set_options(arr: Array) -> void:
 	_options = arr
+
+
+func get_value_for_option(idx: int):
+	var option = _options[idx]
+	if typeof(option) == TYPE_DICTIONARY:
+		return option.value
+	else:
+		return idx
+
+
+func get_options_count() -> int:
+	return _options.size()
 
 
 func _emit_current_option_index_changed() -> void:
@@ -129,14 +141,6 @@ func _get_label_for_option(idx: int) -> String:
 			option.label if typeof(option) == TYPE_DICTIONARY else option
 	var number: String = ("%s. " % (idx + 1)) if numbered_list else ""
 	return number + tr(option_msg)
-
-
-func _get_value_for_option(idx: int):
-	var option = _options[idx]
-	if typeof(option) == TYPE_DICTIONARY:
-		return option.value
-	else:
-		return idx
 
 
 func _on_current_option_idx_set() -> void:
