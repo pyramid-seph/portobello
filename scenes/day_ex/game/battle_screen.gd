@@ -59,34 +59,6 @@ func start(enemy_party: BattleParty, background: Texture2D) -> void:
 	
 	await _enter_battle_screen(enemy_party, background)
 	
-	# TEST
-	
-	_action_selector.set_actions(
-		[
-			preload("res://resources/instances/day_ex/actions/ability_mesmer_eyes.tres"),
-			preload("res://resources/instances/day_ex/actions/ability_scare.tres"),
-			preload("res://resources/instances/day_ex/actions/attack_scratch.tres"),
-			preload("res://resources/instances/day_ex/actions/attack_bite.tres"),
-		]
-	)
-	
-	var selected_target: Fighter = null
-	while selected_target == null:
-		_player_commands_group_visibility.referenced_controls_visibility = true
-		_action_selector.call_deferred("grab_focus")
-		var a = await _action_selector.command_selected
-		print(a.get_class())
-		_enemy_party_container.call_deferred("grab_focus")
-		_player_commands_group_visibility.referenced_controls_visibility = false
-		# TODO Go back to command selection if the player does not select a target
-		selected_target = await _enemy_party_container.target_selected
-		if selected_target:
-			var target = selected_target as Fighter
-			print(target.get_full_name())
-		else:
-			print("CANCELED!")
-	# /TEST
-
 	for i in 3:
 		_cur_turn = wrapi(_cur_turn + 1, 0, _sorted_by_turn.size())
 		while _sorted_by_turn[_cur_turn].is_dead():
@@ -115,10 +87,26 @@ func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> vo
 
 func update_turns() -> void:
 	_sorted_by_turn.sort_custom(func(a: Fighter, b: Fighter):
-			# TODO If everyone has the same speed, let the player take their turn first
 			var a_stats = a.get_stats_manager()
 			var b_stats = b.get_stats_manager()
 			return a_stats.get_spd() > b_stats.get_spd())
+	var spd: int = -1
+	if not _sorted_by_turn.is_empty():
+		spd = _sorted_by_turn[0].get_stats_manager().get_spd()
+	var all_same_speed: bool = _sorted_by_turn.all(func(fighter: Fighter):
+			if fighter.is_dead():
+				return true
+			else:
+				return fighter.get_stats_manager().get_spd() == spd)
+	if all_same_speed:
+		print("Everyone have the same speed. Letting the player fight first!")
+		var player_index: int = _sorted_by_turn.find(_player_char)
+		if player_index != -1:
+			_sorted_by_turn.remove_at(player_index)
+			_sorted_by_turn.push_front(_player_char)
+	var names: Array = _sorted_by_turn.map(func(i: Fighter):
+			return i.get_full_name())
+	print("TURNS UPDATED!: ", names)
 
 
 func _exit_battle_screen() -> void:
@@ -149,7 +137,6 @@ func _on_player_commands_group_visibility_referenced_controls_visibility_changed
 
 
 func _on_action_selector_current_info_changed(info_msg: String) -> void:
-	print("info_msg: ", tr(info_msg))
 	if not is_node_ready():
 		await ready
 	_info_label.text = info_msg
