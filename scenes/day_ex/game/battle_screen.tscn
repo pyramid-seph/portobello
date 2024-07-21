@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=23 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_h3bdx"]
@@ -12,8 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="9_gb3qd"]
 [ext_resource type="Script" path="res://scenes/day_ex/ui/group_visibility.gd" id="10_7g15t"]
 [ext_resource type="PackedScene" uid="uid://dtehqdjeugahu" path="res://scenes/day_ex/ui/action_selector.tscn" id="12_0rvl7"]
-[ext_resource type="PackedScene" uid="uid://d0cegcu8dki0c" path="res://scenes/day_ex/game/fighter.tscn" id="12_ivyo5"]
-[ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="13_ibdsu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6y60"]
 content_margin_left = 6.0
@@ -67,17 +65,10 @@ line_spacing = 0.0
 font = ExtResource("5_k0cqu")
 font_size = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds8e0"]
-resource_local_to_scene = true
-shader = ExtResource("13_ibdsu")
-shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/flash_state = 0.0
-shader_parameter/offset = Vector2(0, 0)
-
 [node name="BattleScreen" type="CanvasLayer"]
 script = ExtResource("1_wg4ig")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="MainContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -86,51 +77,51 @@ grow_vertical = 2
 theme = ExtResource("2_h3bdx")
 theme_override_styles/panel = SubResource("StyleBoxFlat_q6y60")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="BattleNarrationBox" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_mexfq")]
+[node name="BattleNarrationBox" parent="MainContainer/VBoxContainer" instance=ExtResource("2_mexfq")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="EnemyPartyContainer" parent="PanelContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
+[node name="EnemyPartyContainer" parent="MainContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PlayerInfoContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="PlayerInfoContainer" type="PanelContainer" parent="MainContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 153)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer"]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
+[node name="LevelLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "BUCHO LVL 9"
 label_settings = SubResource("LabelSettings_5wp2s")
 
-[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="BuchoHPLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="BuchoHPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -138,12 +129,12 @@ text = "HP: 100/999"
 label_settings = SubResource("LabelSettings_14j6r")
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="StatusDisplay" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+[node name="StatusDisplay" type="TextureRect" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -152,7 +143,7 @@ texture = ExtResource("9_gb3qd")
 stretch_mode = 3
 script = ExtResource("8_kvjtm")
 
-[node name="StatusLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+[node name="StatusLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "ATK+"
@@ -161,10 +152,10 @@ vertical_alignment = 1
 uppercase = true
 script = ExtResource("9_5uij3")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BuchoMPLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+[node name="BuchoMPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -172,57 +163,57 @@ text = "MP: 100/999"
 label_settings = SubResource("LabelSettings_vf0sj")
 vertical_alignment = 1
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="TreatTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
+[node name="TreatTexture" type="TextureRect" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_dp0aj")
 stretch_mode = 3
 
-[node name="TreatCount" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
+[node name="TreatCount" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "9"
 label_settings = SubResource("LabelSettings_vaxnq")
 vertical_alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
+[node name="Label" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
 text = "ACTION"
 label_settings = SubResource("LabelSettings_2otg2")
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
+[node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ActionSelector" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("12_0rvl7")]
+[node name="ActionSelector" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("12_0rvl7")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Info"
 label_settings = SubResource("LabelSettings_7f6hs")
 uppercase = true
 
-[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="InfoLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 20)
@@ -231,26 +222,11 @@ text = "Weakens 1 enemy's ATK, but strengthens their SPD."
 label_settings = SubResource("LabelSettings_5fx2w")
 autowrap_mode = 3
 
-[node name="PlayerBackgroundTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="PlayerPartyContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
 unique_name_in_owner = true
 layout_mode = 2
-stretch_mode = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerBackgroundTexture"]
-layout_mode = 2
-offset_top = 1.0
-offset_right = 212.0
-offset_bottom = 73.0
-size_flags_vertical = 3
-
-[node name="PlayerChar" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerBackgroundTexture/CenterContainer" instance=ExtResource("12_ivyo5")]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ds8e0")
-layout_mode = 2
-size_flags_vertical = 3
-texture = null
-
-[node name="PlayerCommandsGroupVisibility" type="Control" parent="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" node_paths=PackedStringArray("controls")]
+[node name="PlayerCommandsGroupVisibility" type="Control" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" node_paths=PackedStringArray("controls")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -258,5 +234,5 @@ script = ExtResource("10_7g15t")
 controls = [NodePath("../HBoxContainer3"), NodePath("../InfoLabel"), NodePath("../ActionSelector")]
 referenced_controls_visibility = false
 
-[connection signal="current_info_changed" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_current_info_changed"]
-[connection signal="referenced_controls_visibility_changed" from="PanelContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCommandsGroupVisibility" to="." method="_on_player_commands_group_visibility_referenced_controls_visibility_changed"]
+[connection signal="current_info_changed" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_current_info_changed"]
+[connection signal="referenced_controls_visibility_changed" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCommandsGroupVisibility" to="." method="_on_player_commands_group_visibility_referenced_controls_visibility_changed"]

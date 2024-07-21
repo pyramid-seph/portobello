@@ -27,8 +27,19 @@ func setup(party: BattleParty, background: Texture2D) -> void:
 	_setup_member_focus_neighbors()
 
 
+func set_background(background: Texture2D) -> void:
+	if is_node_ready():
+		_background_texture_rect.texture = background
+
+
 func get_members() -> Array[Fighter]:
 	return _members
+
+
+## Returns requested member. Returns null if the index is out of bounds.
+## Front row members go first.
+func get_member_at(idx: int) -> Fighter:
+	return _members[idx] if idx > -1 and idx < _members.size() else null
 
 
 func is_party_defeated() -> bool:

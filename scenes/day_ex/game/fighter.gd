@@ -82,14 +82,47 @@ func is_dead() -> bool:
 
 
 ## Can be awaited
-func take_turn() -> void:
+func take_turn(enemies: Array[Fighter]) -> void:
+	if is_dead():
+		print("WARN: %s is dead. Skipping their turn." % get_full_name())
+		return
+	
 	await _on_turn_started()
 	_animation_player.play(&"take_turn")
 	await _animation_player.animation_finished
-	# TODO Pick action.
-	# TODO Pick target.
-	# TODO Execute action.
+	# TODO Picking attack and target is different for player and enemies
+	var attack = await _pick_attack()
+	if attack == null:
+		print("WARN: %s has no attacks!. Skipping their turn." % get_full_name())
+		return
+	
+	var available_targets: Array[Fighter] = \
+			([self] if attack.is_target_self() else enemies).filter(
+					func(i: Fighter):
+						return not i.is_dead())
+	if available_targets.is_empty(): # Just to be super sure
+		print("WARN: %s has no targets to hurt!. Skipping their turn." % get_full_name())
+		return
+		
+	var target: Fighter = await _pick_target(available_targets)
+	# TODO narrate attack and target
+	# TODO consume resource if needed
+	await target.get_hurt(self, attack)
 	await _on_turn_finished()
+
+
+func _get_available_weighted_actions() -> Array[EnemyCommand]:
+	return _fighter_data.get_actions()
+
+
+func _pick_attack() -> BattleAction:
+	# TODO Filter possible acctions by level
+	# TODO get actions rand weighted!
+	return _get_available_weighted_actions().pick_random().get_action()
+
+
+func _pick_target(targets: Array[Fighter]) -> Fighter:
+	return targets.pick_random()
 
 
 func _on_turn_started() -> void:
@@ -247,6 +280,5 @@ func _on_focus_exited() -> void:
 
 func _on_status_display_manager_displayed_status_changed(
 			new_status: StatusDisplayManager.Status) -> void:
-	print(get_full_name(), " > Status: ", new_status)
 	_status_display.display_status(new_status)
 	displayed_status_changed.emit(new_status)
