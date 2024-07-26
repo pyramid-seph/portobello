@@ -58,7 +58,7 @@ func is_target_self() -> bool:
 
 
 func is_physical_attack() -> bool:
-	return _physical_damage == PhysicalDamage.NONE
+	return _physical_damage != PhysicalDamage.NONE
 
 
 ## 0 means evade, positive means damage, negative means recovery
