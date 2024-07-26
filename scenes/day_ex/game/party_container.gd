@@ -43,9 +43,12 @@ func get_member_at(idx: int) -> Fighter:
 
 
 func is_party_defeated() -> bool:
-	# TODO return true if empty?
 	var front_row_children: Array[Node] = _front_row.get_children()
 	var back_row_children: Array[Node] = _back_row.get_children()
+	
+	if front_row_children.is_empty() and back_row_children.is_empty():
+		return true
+	
 	var front_row_defeated: bool = front_row_children.all(func(fighter: Fighter):
 			return fighter.is_dead())
 	var back_row_defeated: bool = back_row_children.all(func(fighter: Fighter):
