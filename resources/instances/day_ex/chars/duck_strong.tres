@@ -9,13 +9,12 @@
 [sub_resource type="Resource" id="Resource_lxe0h"]
 script = ExtResource("2_iy7f3")
 _action = ExtResource("1_ibq73")
-_weight = 0.0
+_weight = 1.0
 
 [resource]
 script = ExtResource("4_mgvhu")
 _char_name = "RPG_BATTLE_ENEMY_NAME_DUCK_STRONG"
 _texture = ExtResource("3_t67mq")
-_edible = true
 _stats_progression_curve = ExtResource("3_rpbl2")
 _actions = Array[ExtResource("2_iy7f3")]([SubResource("Resource_lxe0h")])
 _loot_scraps = 0

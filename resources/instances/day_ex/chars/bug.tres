@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_5n1jb"]
 script = ExtResource("2_eo7ov")
 _action = ExtResource("1_hftbg")
-_weight = 0.0
+_weight = 1.0
 
 [resource]
 script = ExtResource("4_uuxsk")

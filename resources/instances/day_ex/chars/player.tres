@@ -1,14 +1,69 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=4 format=3 uid="uid://cipgo47xsp7df"]
+[gd_resource type="Resource" script_class="FighterData" load_steps=23 format=3 uid="uid://cipgo47xsp7df"]
 
 [ext_resource type="Texture2D" uid="uid://ca0dcipi55a41" path="res://art/day_ex/battle_char_player.png" id="1_6xuli"]
 [ext_resource type="Resource" uid="uid://j2gvppwwk05l" path="res://resources/instances/day_ex/progression_curves/stats_progression_player.stats" id="1_8ah5x"]
+[ext_resource type="Resource" uid="uid://durkalhb4e6b0" path="res://resources/instances/day_ex/actions/attack_scratch.tres" id="1_18lrd"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_ieakb"]
 [ext_resource type="Script" path="res://resources/fighter_data.gd" id="2_tiv57"]
+[ext_resource type="Resource" uid="uid://fm846kdkqxoi" path="res://resources/instances/day_ex/actions/attack_rip_and_tear.tres" id="3_0ilms"]
+[ext_resource type="Resource" uid="uid://bxky55wb8wlrx" path="res://resources/instances/day_ex/actions/attack_bite.tres" id="4_q5h7k"]
+[ext_resource type="Resource" uid="uid://cu3foa65bpyhp" path="res://resources/instances/day_ex/actions/ability_surprise.tres" id="5_q8vk8"]
+[ext_resource type="Resource" uid="uid://dw7hjoxcq5k5r" path="res://resources/instances/day_ex/actions/ability_tackle.tres" id="6_d2q5i"]
+[ext_resource type="Resource" uid="uid://bngpbdi8vf050" path="res://resources/instances/day_ex/actions/ability_mesmer_eyes.tres" id="7_ag708"]
+[ext_resource type="Resource" uid="uid://on3qtc1dljdj" path="res://resources/instances/day_ex/actions/ability_scare.tres" id="8_1rd6r"]
+[ext_resource type="Resource" uid="uid://bdkbwavrx8ymm" path="res://resources/instances/day_ex/actions/ability_despair.tres" id="9_8ww8v"]
+[ext_resource type="Resource" uid="uid://cd4sudyv4flcl" path="res://resources/instances/day_ex/actions/ability_rip_and_tear_ex.tres" id="10_uda2w"]
+
+[sub_resource type="Resource" id="Resource_20g26"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("1_18lrd")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_hovp6"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("3_0ilms")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_ajd17"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("4_q5h7k")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_js7yg"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("5_q8vk8")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_1naio"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("6_d2q5i")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_7mvjd"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("7_ag708")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_cthcs"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("8_1rd6r")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_ug542"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("9_8ww8v")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_vniak"]
+script = ExtResource("2_ieakb")
+_action = ExtResource("10_uda2w")
+_weight = 1.0
 
 [resource]
 script = ExtResource("2_tiv57")
 _char_name = "Bucho"
 _texture = ExtResource("1_6xuli")
 _stats_progression_curve = ExtResource("1_8ah5x")
-_actions = Array[Resource("res://resources/enemy_command.gd")]([])
+_actions = Array[ExtResource("2_ieakb")]([SubResource("Resource_20g26"), SubResource("Resource_hovp6"), SubResource("Resource_ajd17"), SubResource("Resource_js7yg"), SubResource("Resource_1naio"), SubResource("Resource_7mvjd"), SubResource("Resource_cthcs"), SubResource("Resource_ug542"), SubResource("Resource_vniak")])
 _loot_scraps = 0
 _loot_exp = 0

@@ -9,13 +9,12 @@
 [sub_resource type="Resource" id="Resource_3qnr2"]
 script = ExtResource("2_2b0sl")
 _action = ExtResource("1_4egeu")
-_weight = 0.0
+_weight = 1.0
 
 [resource]
 script = ExtResource("1_88q3o")
 _char_name = "RPG_BATTLE_ENEMY_NAME_MOUSE"
 _texture = ExtResource("1_4fxku")
-_edible = true
 _stats_progression_curve = ExtResource("3_xqbdi")
 _actions = Array[ExtResource("2_2b0sl")]([SubResource("Resource_3qnr2")])
 _loot_scraps = 1
