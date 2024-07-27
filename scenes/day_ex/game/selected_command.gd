@@ -13,10 +13,10 @@ class Pass extends BattleCommand:
 class Hurt extends BattleCommand:
 	var _action: BattleAction
 	
-	func get_action() -> BattleAction:
-		return _action
-	
 	
 	func _init(action: BattleAction) -> void:
 		_action = action
 	
+	
+	func get_action() -> BattleAction:
+		return _action

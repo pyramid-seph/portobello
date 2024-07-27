@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_h3bdx"]
 [ext_resource type="PackedScene" uid="uid://ctbphqc3meo8i" path="res://scenes/day_ex/game/battle_narration_box.tscn" id="2_mexfq"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="3_i3dd0"]
-[ext_resource type="PackedScene" uid="uid://c3l2edgf8ciay" path="res://scenes/day_ex/game/party_container.tscn" id="4_qyjvj"]
+[ext_resource type="PackedScene" uid="uid://c3l2edgf8ciay" path="res://scenes/day_ex/game/battlefield_side.tscn" id="4_qyjvj"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="5_k0cqu"]
 [ext_resource type="Texture2D" uid="uid://dgq5bvxdn1811" path="res://art/day_ex/battle_item_scraps.png" id="8_dp0aj"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="8_kvjtm"]
@@ -85,7 +85,7 @@ theme_override_constants/separation = 4
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="EnemyPartyContainer" parent="MainContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
+[node name="EnemyBattlefieldSide" parent="MainContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -222,7 +222,7 @@ text = "Weakens 1 enemy's ATK, but strengthens their SPD."
 label_settings = SubResource("LabelSettings_5fx2w")
 autowrap_mode = 3
 
-[node name="PlayerPartyContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
+[node name="PlayerBattlefieldSide" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -234,5 +234,7 @@ script = ExtResource("10_7g15t")
 controls = [NodePath("../HBoxContainer3"), NodePath("../InfoLabel"), NodePath("../ActionSelector")]
 referenced_controls_visibility = false
 
+[connection signal="command_selected" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_command_selected"]
 [connection signal="current_info_changed" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_current_info_changed"]
+[connection signal="focus_entered" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_focus_entered"]
 [connection signal="referenced_controls_visibility_changed" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCommandsGroupVisibility" to="." method="_on_player_commands_group_visibility_referenced_controls_visibility_changed"]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3l2edgf8ciay"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/game/party_container.gd" id="1_abp1b"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/battlefield_side.gd" id="1_mlmea"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx7lm"]
 
-[node name="PartyContainer" type="PanelContainer"]
+[node name="BattlefieldSide" type="PanelContainer"]
 size_flags_vertical = 3
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gx7lm")
-script = ExtResource("1_abp1b")
+script = ExtResource("1_mlmea")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true

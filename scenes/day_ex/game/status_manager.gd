@@ -38,5 +38,6 @@ func set_poison_damage(value: int) -> void:
 
 
 func clear_all_status_effect() -> void:
+	# TODO This doesn't seem to be working
 	set_is_charmed(false)
 	set_poison_damage(0)

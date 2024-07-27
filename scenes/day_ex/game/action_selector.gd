@@ -41,7 +41,7 @@ var _main_menu_options: Array[Dictionary] = [
 	{
 		"label": COMMAND_CURE.get_action_name(),
 		"value": { 
-			"command": MainMenu.EAT,
+			"command": MainMenu.CURE,
 			"info": COMMAND_CURE.get_info(),
 		},
 	},

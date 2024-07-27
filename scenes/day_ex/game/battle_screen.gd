@@ -6,7 +6,7 @@ signal battle_finished(success: bool)
 const StatusDisplayManager = preload("res://scenes/day_ex/game/status_display_manager.gd")
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
-const PartyContainer = preload("res://scenes/day_ex/game/party_container.gd")
+const BattlefieldSide = preload("res://scenes/day_ex/game/battlefield_side.gd")
 const ActionSelector = preload("res://scenes/day_ex/game/action_selector.gd")
 const StatusDisplay = preload("res://scenes/day_ex/game/status_display.gd")
 const StatusLabel = preload("res://scenes/day_ex/game/status_label.gd")
@@ -21,12 +21,12 @@ const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 		_preview = value
 		_on_preview_set()
 
-var _turn_order_manager: TurnOrderManager
+var _battle_manager: BattleManager
 
 @onready var _main_container: PanelContainer = $MainContainer
 @onready var _narrator: BattleNarrationBox = %BattleNarrationBox
-@onready var _enemy_party_container: PartyContainer = %EnemyPartyContainer
-@onready var _player_party_container: PartyContainer = %PlayerPartyContainer
+@onready var _enemy_side: BattlefieldSide = %EnemyBattlefieldSide
+@onready var _player_side: BattlefieldSide = %PlayerBattlefieldSide
 @onready var _player_commands_group_visibility: GroupVisibility = %PlayerCommandsGroupVisibility
 @onready var _action_selector: ActionSelector = %ActionSelector
 @onready var _info_label: Label = %InfoLabel
@@ -40,53 +40,45 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	_player_party_container.setup(PLAYER_PARTY_RES, null)
+	_player_side.setup(PLAYER_PARTY_RES, null)
 	var player_fighter: Fighter = _get_player()
 	if player_fighter:
 		player_fighter.displayed_status_changed.connect(
 				_on_player_char_displayed_status_changed)
+		player_fighter.install_brain(PlayerFighterBrain.new(_action_selector))
 	
-	_turn_order_manager = \
-			TurnOrderManager.new(_player_party_container, _enemy_party_container)
+	_battle_manager = BattleManager.new(_player_side, _enemy_side)
 	_main_container.visible = get_parent() == $/root
 
 
 func start(enemy_party: BattleParty, background: Texture2D) -> void:
 	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_RPG_BATTLE
 	await _enter_battle_screen(enemy_party, background)
-	#region TEST
-	_action_selector.set_actions(
-		[
-			preload("res://resources/instances/day_ex/actions/ability_mesmer_eyes.tres"),
-			preload("res://resources/instances/day_ex/actions/ability_scare.tres"),
-			preload("res://resources/instances/day_ex/actions/attack_scratch.tres"),
-			preload("res://resources/instances/day_ex/actions/attack_bite.tres"),
-		]
-	)
-	var selected_target: Fighter = null
-	while selected_target == null:
-		_player_commands_group_visibility.referenced_controls_visibility = true
-		_action_selector.call_deferred("grab_focus")
-		var selected_command = await _action_selector.command_selected
-		_enemy_party_container.call_deferred("grab_focus")
-		_player_commands_group_visibility.referenced_controls_visibility = false
-		# TODO Go back to command selection if the player does not select a target
-		selected_target = await _enemy_party_container.target_selected
-		if selected_target:
-			var target = selected_target as Fighter
-	#endregion TEST
-	_exit_battle_screen()
+	var result: BattleManager.Result = await _battle_manager.start_battle()
+	print("Battle Result: ", result)
+	if result.is_game_over():
+		# TODO Narrate Game over and wait for acknowledgement
+		# TODO Return to title screen
+		_exit_battle_screen() # This is just until game over is implemented
+	else:
+		# TODO Narrate enemy party defeated!
+		var exp_gained: int = result.get_exp_gained()
+		var stats_diff: Stats = \
+				_get_player().get_stats_manager().gain_experience(exp_gained)
+		# TODO Narrate level ups and stat gains if any
+		var treats_obtained: int = result.get_obtained_scraps()
+		# TODO Narrate obtained scraps (if any)
+		# TODO Store in memory current number of scraps
+		_exit_battle_screen()
 
 
 func _setup_battle(enemy_party: BattleParty, background: Texture2D) -> void:
-	_enemy_party_container.setup(enemy_party, background)
-	_player_party_container.set_background(background)
-	_turn_order_manager.on_battle_started()
+	_enemy_side.setup(enemy_party, background)
+	_player_side.set_background(background)
 
 
 func teardown() -> void:
-	_turn_order_manager.on_battle_ended()
-	_enemy_party_container.teardown()
+	_enemy_side.teardown()
 
 
 func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> void:
@@ -108,7 +100,7 @@ func _exit_battle_screen() -> void:
 
 
 func _get_player() -> Fighter:
-	return _player_party_container.get_member_at(0)
+	return _player_side.get_member_at(0)
 
 
 func _on_preview_set() -> void:
@@ -123,10 +115,20 @@ func _on_player_char_displayed_status_changed(
 
 
 func _on_player_commands_group_visibility_referenced_controls_visibility_changed() -> void:
-	_player_party_container.visible = !_player_commands_group_visibility.referenced_controls_visibility
+	_player_side.visible = !_player_commands_group_visibility.referenced_controls_visibility
 
 
 func _on_action_selector_current_info_changed(info_msg: String) -> void:
 	if not is_node_ready():
 		await ready
 	_info_label.text = info_msg
+
+
+func _on_action_selector_focus_entered() -> void:
+	if is_node_ready():
+		_player_commands_group_visibility.referenced_controls_visibility = true
+
+
+func _on_action_selector_command_selected(_command: BattleCommand) -> void:
+	if is_node_ready():
+		_player_commands_group_visibility.referenced_controls_visibility = false
