@@ -3,7 +3,6 @@ extends PanelContainer
 
 signal target_selected(target: Fighter)
 
-
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
 const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
@@ -20,7 +19,7 @@ func setup(party: BattleParty, background: Texture2D) -> void:
 	
 	var tally := {}
 	var member_ocurrences_count = party.count_member_ocurrences()
-	_setup_row(party.get_front_row_members(), 
+	_setup_row(party.get_front_row_members(),
 			_front_row, tally, member_ocurrences_count)
 	_setup_row(party.get_back_row_members(),
 			 _back_row, tally, member_ocurrences_count)
@@ -43,17 +42,11 @@ func get_member_at(idx: int) -> Fighter:
 
 
 func is_party_defeated() -> bool:
-	var front_row_children: Array[Node] = _front_row.get_children()
-	var back_row_children: Array[Node] = _back_row.get_children()
-	
-	if front_row_children.is_empty() and back_row_children.is_empty():
+	if _members.is_empty():
 		return true
 	
-	var front_row_defeated: bool = front_row_children.all(func(fighter: Fighter):
-			return fighter.is_dead())
-	var back_row_defeated: bool = back_row_children.all(func(fighter: Fighter):
-			return fighter.is_dead())
-	return front_row_defeated and back_row_defeated
+	return _members.all(func(fighter: Fighter):
+			return fighter.is_removed_from_battle())
 
 
 func teardown() -> void:
@@ -84,12 +77,6 @@ func _setup_row(
 		new_fighter_node.selection_canceled.connect(_on_fighter_selection_canceled)
 		row.add_child(new_fighter_node)
 		_members.append(new_fighter_node)
-		
-
-
-func _clear_row(row: HBoxContainer) -> void:
-	for child_node: Node in row.get_children():
-		child_node.queue_free()
 
 
 func _setup_member_focus_neighbors() -> void:
@@ -118,6 +105,11 @@ func _setup_member_focus_neighbors() -> void:
 			fighter_node.focus_neighbor_right = fighter_node_path
 
 
+func _clear_row(row: HBoxContainer) -> void:
+	for child_node: Node in row.get_children():
+		child_node.queue_free()
+
+
 func _on_fighter_selected(target: Fighter) -> void:
 	print(target.get_full_name(), " selected")
 	target_selected.emit(target)
@@ -129,15 +121,10 @@ func _on_fighter_selection_canceled() -> void:
 
 
 func _on_focus_entered() -> void:
-	var front_row_children: Array[Node] = _front_row.get_children()
-	for fighter: Fighter in front_row_children:
-		if not fighter.is_dead():
+	for fighter: Fighter in _members:
+		if not fighter.is_removed_from_battle():
 			fighter.call_deferred("grab_focus")
 			return
-	var back_row_children: Array[Node] = _back_row.get_children()
-	for fighter: Fighter in back_row_children:
-		if not fighter.is_dead():
-			fighter.call_deferred("grab_focus")
-			return
+	
 	release_focus()
 	_on_fighter_selection_canceled()
