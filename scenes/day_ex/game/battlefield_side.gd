@@ -49,6 +49,14 @@ func is_party_defeated() -> bool:
 			return fighter.is_removed_from_battle())
 
 
+func is_party_killed() -> bool:
+	if _members.is_empty():
+		return true
+	
+	return _members.all(func(fighter: Fighter):
+			return fighter.is_dead()) 
+
+
 func teardown() -> void:
 	_background_texture_rect.texture = null
 	_members.clear()

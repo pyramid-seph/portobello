@@ -66,8 +66,7 @@ func _can_battle_continue() -> bool:
 
 
 func _build_battle_result() -> Result:
-	# FIXME If player fled, game over should NOT be true
-	var game_over: bool = _player_side.is_party_defeated()
+	var game_over: bool = _player_side.is_party_killed()
 	var scraps_obtained: int = 0
 	var exp_gained: int = 0
 	if not game_over:
