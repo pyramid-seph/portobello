@@ -121,7 +121,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 alignment = 1
 
-[node name="BuchoHPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="HPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -155,7 +155,7 @@ script = ExtResource("9_5uij3")
 [node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BuchoMPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+[node name="MPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

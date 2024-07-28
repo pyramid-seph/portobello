@@ -305,6 +305,7 @@ func _run_pass_command() -> bool:
 
 
 func _run_flee_command() -> bool:
+	# TODO Do not flee from boss fights
 	if not is_removed_from_battle():
 		_has_fled = randi() % 101 <= _stats_manager.get_lck()
 		if _has_fled:

@@ -1,8 +1,10 @@
 class_name StatsManager
 extends RefCounted
 
-
 signal buffed
+signal curr_level_changed
+signal curr_hp_changed
+signal curr_mp_changed
 
 const MAX_BUFF: int = 7
 const MAX_DEBUFF: int = -7
@@ -11,12 +13,25 @@ var _fighter_data: FighterData
 var _base_stats := Stats.new()
 var _curr_level: int:
 	set(value):
+		var old_val: int = _curr_level
 		_curr_level = maxi(value, 1)
+		if old_val != _curr_level:
+			curr_level_changed.emit()
 var _curr_exp: int:
 	set(value):
 		_curr_exp = maxi(value, 0)
-var _curr_hp: int
-var _curr_mp: int
+var _curr_hp: int:
+	set(value):
+		var old_val: int = _curr_hp
+		_curr_hp = value
+		if old_val != _curr_hp:
+			curr_hp_changed.emit()
+var _curr_mp: int:
+	set(value):
+		var old_val: int = _curr_mp
+		_curr_mp = value
+		if old_val != _curr_mp:
+			curr_mp_changed.emit()
 var _atk_buffs: int:
 	set(value):
 		var old_val: int = _atk_buffs

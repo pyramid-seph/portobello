@@ -32,6 +32,9 @@ var _battle_manager: BattleManager
 @onready var _info_label: Label = %InfoLabel
 @onready var _status_display: StatusDisplay = %StatusDisplay
 @onready var _status_label: StatusLabel = %StatusLabel
+@onready var _level_label: Label = %LevelLabel
+@onready var _hp_label: Label = %HPLabel
+@onready var _mp_label: Label = %MPLabel
 
 
 func _ready() -> void:
@@ -40,13 +43,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	_player_side.setup(PLAYER_PARTY_RES, null)
-	var player_fighter: Fighter = _get_player()
-	if player_fighter:
-		player_fighter.displayed_status_changed.connect(
-				_on_player_char_displayed_status_changed)
-		player_fighter.install_brain(PlayerFighterBrain.new(_action_selector))
-	
+	_setup_player()
 	_battle_manager = BattleManager.new(_player_side, _enemy_side)
 	_main_container.visible = get_parent() == $/root
 
@@ -70,6 +67,20 @@ func start(enemy_party: BattleParty, background: Texture2D) -> void:
 		# TODO Narrate obtained scraps (if any)
 		# TODO Store in memory current number of scraps
 		_exit_battle_screen()
+
+
+func _setup_player() -> void:
+	_player_side.setup(PLAYER_PARTY_RES, null)
+	var player_fighter: Fighter = _get_player()
+	if player_fighter:
+		player_fighter.displayed_status_changed.connect(
+				_on_player_char_displayed_status_changed)
+		var stats_manager: StatsManager = player_fighter.get_stats_manager()
+		stats_manager.curr_level_changed.connect(_on_player_level_changed)
+		stats_manager.curr_hp_changed.connect(_on_player_hp_changed)
+		stats_manager.curr_mp_changed.connect(_on_player_mp_changed)
+		_on_player_level_changed()
+		player_fighter.install_brain(PlayerFighterBrain.new(_action_selector))
 
 
 func _setup_battle(enemy_party: BattleParty, background: Texture2D) -> void:
@@ -112,6 +123,30 @@ func _on_player_char_displayed_status_changed(
 		new_status: StatusDisplayManager.Status) -> void:
 	_status_display.display_status(new_status)
 	_status_label.display_status(new_status)
+
+
+func _on_player_hp_changed() -> void:
+	var player: Fighter = _get_player()
+	if player:
+		var stats_manager: StatsManager = player.get_stats_manager()
+		_hp_label.text = "HP: %s/%s" % \
+				[stats_manager.get_curr_hp(), stats_manager.get_max_hp()]
+
+
+func _on_player_mp_changed() -> void:
+	var player: Fighter = _get_player()
+	var stats_manager: StatsManager = player.get_stats_manager()
+	_mp_label.text = "MP: %s/%s" % \
+			[stats_manager.get_curr_mp(), stats_manager.get_max_mp()]
+
+
+func _on_player_level_changed() -> void:
+	var player: Fighter = _get_player()
+	var stats_manager: StatsManager = player.get_stats_manager()
+	_level_label.text = "%s lvl %s" % \
+			[player.get_full_name(), stats_manager.get_current_level()]
+	_on_player_hp_changed()
+	_on_player_mp_changed()
 
 
 func _on_player_commands_group_visibility_referenced_controls_visibility_changed() -> void:
