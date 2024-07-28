@@ -122,6 +122,7 @@ func get_available_weighted_actions() -> Array[EnemyCommand]:
 
 
 func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide) -> void:
+	# TODO Player fled status should be reset before starting a battle
 	if is_removed_from_battle():
 		print("WARN: %s is not in the battle field. Skipping their turn." % get_full_name())
 		return
@@ -226,6 +227,7 @@ func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 	_stats_manager.decrease_hp(damage)
 	_damage_label.text = str(absi(damage))
 	if damage > 0:
+		# FIXME Hide damage label if hurt with a devour attack
 		_animation_player.play(&"hurt")
 		await _animation_player.animation_finished
 		# TODO send the hurt signal
