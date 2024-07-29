@@ -14,7 +14,7 @@ var _members: Array[Fighter]
 @onready var _front_row: HBoxContainer = %FrontRow
 
 
-func setup(party: BattleParty, background: Texture2D) -> void:
+func setup(party: BattleParty, background: Texture2D = null) -> void:
 	_background_texture_rect.texture = background
 	
 	var tally := {}

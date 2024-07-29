@@ -15,6 +15,7 @@ const PLAYER_PARTY_RES = preload("res://resources/instances/day_ex/parties/playe
 
 const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 
+const TRANSITION_DELAY: float = 1.0
 
 @export var _preview: bool = true:
 	set(value):
@@ -23,6 +24,7 @@ const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 
 var _battle_manager: BattleManager
 
+@onready var _transition_delay_timer: Timer = $TransitionDelayTimer
 @onready var _main_container: PanelContainer = $MainContainer
 @onready var _narrator: BattleNarrationBox = %BattleNarrationBox
 @onready var _enemy_side: BattlefieldSide = %EnemyBattlefieldSide
@@ -52,25 +54,11 @@ func start(enemy_party: BattleParty, background: Texture2D) -> void:
 	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_RPG_BATTLE
 	await _enter_battle_screen(enemy_party, background)
 	var result: BattleManager.Result = await _battle_manager.start_battle()
-	print("Battle Result: ", result)
-	if result.is_game_over():
-		# TODO Narrate Game over and wait for acknowledgement
-		# TODO Return to title screen
-		_exit_battle_screen() # This is just until game over is implemented
-	else:
-		# TODO Narrate enemy party defeated!
-		var exp_gained: int = result.get_exp_gained()
-		var stats_diff: Stats = \
-				_get_player().get_stats_manager().gain_experience(exp_gained)
-		# TODO Narrate level ups and stat gains if any
-		var treats_obtained: int = result.get_obtained_scraps()
-		# TODO Narrate obtained scraps (if any)
-		# TODO Store in memory current number of scraps
-		_exit_battle_screen()
+	_on_battle_finished(result)
 
 
 func _setup_player() -> void:
-	_player_side.setup(PLAYER_PARTY_RES, null)
+	_player_side.setup(PLAYER_PARTY_RES)
 	var player_fighter: Fighter = _get_player()
 	if player_fighter:
 		player_fighter.displayed_status_changed.connect(
@@ -88,23 +76,55 @@ func _setup_battle(enemy_party: BattleParty, background: Texture2D) -> void:
 	_player_side.set_background(background)
 
 
-func teardown() -> void:
-	_enemy_side.teardown()
+func _on_battle_finished(result: BattleManager.Result) -> void:
+	if result.is_game_over():
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_BATTLE_FAILURE")
+		_transition_delay_timer.start(TRANSITION_DELAY)
+		await _transition_delay_timer.timeout
+		battle_finished.emit(false)
+	else:
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_BATTLE_SUCCESS")
+		var scraps_obtained: int = result.get_obtained_scraps()
+		var exp_gained: int = result.get_exp_gained()
+		if exp_gained > 0:
+			var msg_string: String = "RPG_BATTLE_NARRATION_LOOT_EXP_ONE"
+			if exp_gained > 1:
+				msg_string = "RPG_BATTLE_NARRATION_LOOT_EXP_MANY"
+			await _narrator.say_and_wait_until_read(
+					msg_string, { "exp": exp_gained })
+		var stats_manager: StatsManager = _get_player().get_stats_manager()
+		var stats_diff: Stats = stats_manager.gain_experience(exp_gained)
+		await _wait_level_up_narration_finished(stats_manager, stats_diff)
+		if scraps_obtained > 0:
+			# TODO Store in memory current number of scraps
+			var msg_string: String = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE"
+			if exp_gained > 1:
+				msg_string = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY"
+			await _narrator.say_and_wait_until_read(
+					msg_string, { "scraps": scraps_obtained })
+		_transition_delay_timer.start(TRANSITION_DELAY)
+		await _transition_delay_timer.timeout
+		_exit_battle_screen()
 
 
 func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> void:
 	await TransitionPlayer.play_battle()
 	_setup_battle(enemy_party, background)
 	_main_container.show()
-	await TransitionPlayer.play_battle_backwards()
 	_narrator.say("RPG_BATTLE_NARRATION_BATTLE_STARTED")
-	_narrator.call_deferred("grab_focus")
-	await _narrator.acknowledged
+	await TransitionPlayer.play_battle_backwards()
+	await _narrator.wait_until_read()
+
+
+func _teardown() -> void:
+	_enemy_side.teardown()
 
 
 func _exit_battle_screen() -> void:
 	await TransitionPlayer.play_battle()
-	teardown()
+	_teardown()
 	_main_container.hide()
 	await TransitionPlayer.play_battle_backwards()
 	battle_finished.emit(true)
@@ -112,6 +132,51 @@ func _exit_battle_screen() -> void:
 
 func _get_player() -> Fighter:
 	return _player_side.get_member_at(0)
+
+
+func _wait_level_up_narration_finished(
+		stats_manager: StatsManager, stats_diff: Stats) -> void:
+	if stats_diff.get_level() > 0:
+		var new_level: int = stats_manager.get_current_level()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP", { "level": new_level })
+	else:
+		return
+	
+	if stats_diff.get_max_hp() > 0:
+		var points: int = stats_manager.get_max_hp()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP_MAX_HP_UP", { "points": points })
+	
+	if stats_diff.get_max_mp() > 0:
+		var points: int = stats_manager.get_max_mp()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP_MAX_MP_UP", { "points": points })
+	
+	if stats_diff.get_atk() > 0:
+		var points: int = stats_diff.get_atk()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP_ATTACK_UP", { "points": points })
+	
+	if stats_diff.get_def() > 0:
+		var points: int = stats_diff.get_def()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP_DEFENSE_UP", { "points": points })
+	
+	if stats_diff.get_spd() > 0:
+		var points: int = stats_diff.get_spd()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP_SPEED_UP", { "points": points })
+	
+	if stats_diff.get_agi() > 0:
+		var points: int = stats_diff.get_agi()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP_AGILITY_UP", { "points": points })
+	
+	if stats_diff.get_lck() > 0:
+		var points: int = stats_diff.get_lck()
+		await _narrator.say_and_wait_until_read(
+				"RPG_BATTLE_NARRATION_LEVEL_UP_LUCK_UP", { "points": points })
 
 
 func _on_preview_set() -> void:
@@ -127,10 +192,9 @@ func _on_player_char_displayed_status_changed(
 
 func _on_player_hp_changed() -> void:
 	var player: Fighter = _get_player()
-	if player:
-		var stats_manager: StatsManager = player.get_stats_manager()
-		_hp_label.text = "HP: %s/%s" % \
-				[stats_manager.get_curr_hp(), stats_manager.get_max_hp()]
+	var stats_manager: StatsManager = player.get_stats_manager()
+	_hp_label.text = "HP: %s/%s" % \
+			[stats_manager.get_curr_hp(), stats_manager.get_max_hp()]
 
 
 func _on_player_mp_changed() -> void:

@@ -138,7 +138,7 @@ func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide) -> void:
 		if command is BattleCommand.Pass:
 			command_completed = await _run_pass_command()
 		elif command is BattleCommand.Flee:
-			command_completed = await _run_flee_command()
+			command_completed = await _run_flee_command(ally_side)
 		elif command is BattleCommand.Hurt:
 			var hurt_command := command as BattleCommand.Hurt
 			command_completed = await _run_attack_command(
@@ -306,19 +306,26 @@ func _run_pass_command() -> bool:
 	return true
 
 
-func _run_flee_command() -> bool:
-	# TODO Do not flee from boss fights
+func wait_flee() -> void:
 	if not is_removed_from_battle():
-		_has_fled = randi() % 101 <= _stats_manager.get_lck()
-		if _has_fled:
-			_animation_player.play(&"flee")
-			await _animation_player.animation_finished
-			self_modulate.a = 0
-			print(get_full_name(), " fled.")
-			# TODO narrate flee
-		else:
-			# TODO Narrate could not flee
-			pass
+		_has_fled = true
+		_animation_player.play(&"flee")
+		await _animation_player.animation_finished
+		self_modulate.a = 0
+		print(get_full_name(), " fled.")
+
+
+func _run_flee_command(ally_side: BattlefieldSide) -> bool:
+	# TODO Do not flee from boss fights
+	# TODO Narrate trying to flee
+	var flee: bool = randi() % 101 <= _stats_manager.get_lck()
+	if flee:
+		for fighter: Fighter in ally_side.get_members():
+			await fighter.wait_flee()
+		# TODO Narrate party fled
+	else:
+		# TODO Narrate could not flee
+		pass
 	return true
 
 

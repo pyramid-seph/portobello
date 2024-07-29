@@ -68,6 +68,9 @@ font_size = 8
 [node name="BattleScreen" type="CanvasLayer"]
 script = ExtResource("1_wg4ig")
 
+[node name="TransitionDelayTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="MainContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0

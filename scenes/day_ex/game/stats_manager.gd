@@ -102,9 +102,12 @@ func gain_experience(experience: int) -> Stats:
 	var min_experience: int = _fighter_data.get_min_experience()
 	var max_experience: int = _fighter_data.get_max_experience()
 	_curr_exp = clampi(_curr_exp + experience, min_experience, max_experience)
-	_curr_level = _fighter_data.get_level_by_experience(_curr_exp)
+	var new_level = _fighter_data.get_level_by_experience(_curr_exp)
 	var old_stats: Stats = _base_stats
-	_base_stats = _fighter_data.get_base_stats_for_level(_curr_level)
+	_base_stats = _fighter_data.get_base_stats_for_level(new_level)
+	# Updating _curr_level at the end so consumers of the level changed signal 
+	# don't get outdated base stats.
+	_curr_level = new_level
 	return _base_stats.diff(old_stats)
 
 
