@@ -16,9 +16,9 @@ func _init(player_side: BattlefieldSide, enemy_side: BattlefieldSide) -> void:
 	_turn_order_manager = TurnOrderManager.new(player_side, enemy_side)
 
 
-func start_battle() -> Result:
+func start_battle(is_boss_battle: bool = false) -> Result:
 	_on_battle_started()
-	await _battle_loop()
+	await _battle_loop(is_boss_battle)
 	_on_battle_ended()
 	return _build_battle_result()
 
@@ -31,7 +31,7 @@ func _on_battle_ended() -> void:
 	_turn_order_manager.on_battle_ended()
 
 
-func _battle_loop() -> void:
+func _battle_loop(is_boss_battle: bool) -> void:
 	while not _can_battle_continue():
 		_turn_order_manager.on_turn_started()
 		
@@ -52,7 +52,7 @@ func _battle_loop() -> void:
 				ally_side = _enemy_side
 				foe_side = _player_side
 			#TODO Divide player turns so we can introduce narration stuff?
-			await next_fighter.take_turn(ally_side, foe_side)
+			await next_fighter.take_turn(ally_side, foe_side, is_boss_battle)
 		else:
 			print("Fighter is removed from battle. Skipping their turn.")
 		

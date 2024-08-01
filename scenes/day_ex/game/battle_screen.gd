@@ -50,10 +50,12 @@ func _ready() -> void:
 	_main_container.visible = get_parent() == $/root
 
 
-func start(enemy_party: BattleParty, background: Texture2D) -> void:
+func start(enemy_party: BattleParty, background: Texture2D, 
+		is_boss_battle: bool) -> void:
 	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_RPG_BATTLE
 	await _enter_battle_screen(enemy_party, background)
-	var result: BattleManager.Result = await _battle_manager.start_battle()
+	var result: BattleManager.Result = \
+			await _battle_manager.start_battle(is_boss_battle)
 	_on_battle_finished(result)
 
 

@@ -121,7 +121,8 @@ func get_available_weighted_actions() -> Array[EnemyCommand]:
 	return _fighter_data.get_actions() if _fighter_data else []
 
 
-func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide) -> void:
+func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide, 
+		is_flee_forbidden: bool) -> void:
 	# TODO Player fled status should be reset before starting a battle
 	if is_removed_from_battle():
 		print("WARN: %s is not in the battle field. Skipping their turn." % get_full_name())
@@ -138,7 +139,8 @@ func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide) -> void:
 		if command is BattleCommand.Pass:
 			command_completed = await _run_pass_command()
 		elif command is BattleCommand.Flee:
-			command_completed = await _run_flee_command(ally_side)
+			command_completed = \
+					await _run_flee_command(ally_side, is_flee_forbidden)
 		elif command is BattleCommand.Hurt:
 			var hurt_command := command as BattleCommand.Hurt
 			command_completed = await _run_attack_command(
@@ -315,10 +317,12 @@ func wait_flee() -> void:
 		print(get_full_name(), " fled.")
 
 
-func _run_flee_command(ally_side: BattlefieldSide) -> bool:
-	# TODO Do not flee from boss fights
+func _run_flee_command(ally_side: BattlefieldSide, 
+		is_flee_forbidden: bool) -> bool:
 	# TODO Narrate trying to flee
-	var flee: bool = randi() % 101 <= _stats_manager.get_lck()
+	var flee: bool = false
+	if not is_flee_forbidden:
+		flee = randi() % 101 <= _stats_manager.get_lck()
 	if flee:
 		for fighter: Fighter in ally_side.get_members():
 			await fighter.wait_flee()

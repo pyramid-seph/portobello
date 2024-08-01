@@ -31,13 +31,14 @@ func _start_game() -> void:
 	_player.set_process_unhandled_input(true)
 
 
-func _start_battle(enemy_party: BattleParty, background: Texture2D) -> void:
+func _start_battle(enemy_party: BattleParty, background: Texture2D, 
+		is_boss_battle: bool = false) -> void:
 	_ui.set_pause_menu_enabled(false)
 	_player.set_process_unhandled_input(false)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	$World/TileMap.process_mode = Node.PROCESS_MODE_DISABLED
-	_battle_screen.start(enemy_party, background)
+	_battle_screen.start(enemy_party, background, is_boss_battle)
 
 
 func _on_day_ex_ui_dialogue_started() -> void:
