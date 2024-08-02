@@ -1,5 +1,8 @@
 extends TextureRect
 
+# FIXME set_path: Another resource is loaded from path 'res://scenes/day_ex/game/fighter.tscn' (possible cyclic resource inclusion).
+# FIXME _parse_ext_resource: res://scenes/day_ex/game/fighter.tscn:561 - Parse Error: [ext_resource] referenced non-existent resource at: res://scenes/day_ex/game/fighter.gd
+
 
 signal selected(me)
 signal selection_canceled
@@ -229,8 +232,8 @@ func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 	_stats_manager.decrease_hp(damage)
 	_damage_label.text = str(absi(damage))
 	if damage > 0:
-		# FIXME Hide damage label if hurt with a devour attack
-		_animation_player.play(&"hurt")
+		_animation_player.play(
+				&"being_eaten" if attack.is_devour_attack() else &"hurt")
 		await _animation_player.animation_finished
 		# TODO send the hurt signal
 	elif damage < 0:
