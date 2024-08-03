@@ -204,7 +204,7 @@ RPG_BATTLE_INFO_COMMAND_BACK,Go back to command selection.,Regresar a selecciona
 RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener sobras al ganar. Eficaz contra enemigos muy debilitados.
 RPG_BATTLE_INFO_COMMAND_FLEE,Try to escape from this battle.,Intentar escapar de la batalla.
 RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center][color=#58574]¡Bucho[/color] perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
-RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]Breakfast is served![/center][/p][p][/p][p][center]Bon appétit![/center][/p],[p][center]¡El desayuno está servido![/center][/p][p][/p][p][center]¡Buen provecho![/center][/p]
+RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]Now that's a dessert![/center][/p][p] [/p][p][center]Bon appétit![/center][/p],[p][center]¡Qué buen postre![/center][/p][p] [/p][p][center]¡Buen provecho![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_SUCCESS,[p][center]Piece of cake![/center][/p],[p][center]¡Pan comido![/p][/center]
 RPG_BATTLE_NARRATION_ENEMY_ATTACKS_ENEMY,[color=yellow]{enemy}[/color] attacks [color=yellow]{other_enemy}[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=yellow]{other_enemy}[/color] con [color=green]{attack}[/color].
 RPG_BATTLE_NARRATION_ENEMY_ATTACKS_PLAYER,[color=yellow]{enemy}[/color] attacks [color=#58574]Bucho[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=#58574]Bucho[/color] con [color=green]{attack}[/color].
