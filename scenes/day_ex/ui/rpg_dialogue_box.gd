@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("next_page"):
+	if not event.is_action_pressed(&"fire"):
 		return
 	
 	get_viewport().set_input_as_handled()
@@ -36,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_text_tween.kill()
 		_text_tween = null
 		_dialogue_label.visible_characters = -1
-		_next_page_anim_player.play("next_page")
+		_next_page_anim_player.play(&"fire")
 	else:
 		_next()
 

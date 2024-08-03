@@ -11,7 +11,7 @@ var _format_values: Dictionary = {}
 
 
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire"): # TODO Or ui_accept?
+	if event.is_action_pressed("ui_accept"):
 		accept_event()
 		release_focus()
 

@@ -2,7 +2,8 @@ extends TextureRect
 
 # FIXME set_path: Another resource is loaded from path 'res://scenes/day_ex/game/fighter.tscn' (possible cyclic resource inclusion).
 # FIXME _parse_ext_resource: res://scenes/day_ex/game/fighter.tscn:561 - Parse Error: [ext_resource] referenced non-existent resource at: res://scenes/day_ex/game/fighter.gd
-
+# FIXME Player fled status should be reset before starting a battle
+# TODO Clear status effects and buffs/debuff when dead or fled
 
 signal selected(me)
 signal selection_canceled
@@ -58,7 +59,7 @@ func _process(_delta: float) -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire"):
+	if event.is_action_pressed("ui_accept"):
 		accept_event()
 		release_focus()
 		selected.emit(self)
@@ -126,7 +127,6 @@ func get_available_weighted_actions() -> Array[EnemyCommand]:
 
 func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide, 
 		is_flee_forbidden: bool) -> void:
-	# TODO Player fled status should be reset before starting a battle
 	if is_removed_from_battle():
 		print("WARN: %s is not in the battle field. Skipping their turn." % get_full_name())
 		return
@@ -208,6 +208,7 @@ func _on_turn_started() -> void:
 
 ## Can be awaited
 func _on_turn_finished() -> void:
+	# TODO DO not apply poison damage when battle is finished
 	if is_removed_from_battle() or not _status_manager.is_poisoned():
 		return
 	

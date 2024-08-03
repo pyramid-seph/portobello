@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 const TouchScreenControllerScn = preload("res://scenes/_shared/touch_controller/touch_screen_controller.tscn")
 const TouchScreenController = preload("res://scenes/_shared/touch_controller/touch_screen_controller.gd")
