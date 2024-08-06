@@ -62,7 +62,7 @@ var _ability_options: Array[Dictionary]
 
 
 func _ready() -> void:
-	_action_selector.text_color.a = 0.0
+	_action_selector.modulate.a = 0.0
 	_command_selector.set_options(_main_menu_options)
 	set_actions([])
 	if OS.is_debug_build() and get_parent() == get_tree().root:
@@ -156,7 +156,7 @@ func _on_command_h_selector_focus_entered() -> void:
 
 
 func _on_action_h_selector_focus_entered() -> void:
-	_action_selector.text_color.a = 1.0
+	_action_selector.modulate.a = 1.0
 	
 	var info: String = ""
 	var curr_idx: int = _action_selector.current_option_idx
@@ -168,4 +168,4 @@ func _on_action_h_selector_focus_entered() -> void:
 
 
 func _on_action_h_selector_focus_exited() -> void:
-	_action_selector.text_color.a = 0.0
+	_action_selector.modulate.a = 0.0

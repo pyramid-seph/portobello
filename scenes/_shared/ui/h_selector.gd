@@ -2,10 +2,12 @@
 class_name HSelector
 extends PanelContainer
 
+
 signal selected(value)
 signal current_option_index_changed(index: int)
 
 const SELECTED_NONE: int = -1
+const DISABLED_ALPHA: float = 0.38
 
 @export var selector_text: String:
 	set(value):
@@ -47,7 +49,13 @@ var current_option_idx: int = SELECTED_NONE:
 		current_option_idx = clampi(value, SELECTED_NONE, _options.size() - 1)
 		_on_current_option_idx_set()
 
-@onready var _label := $Label as Label
+var _option_disabled_state: Array[bool]
+
+@onready var _name_label: Label = %NameLabel
+@onready var _prev_option_label: Label = %PrevOptionLabel
+@onready var _option_label : Label = %OptionLabel
+@onready var _next_option_label: Label = %NextOptionLabel
+@onready var _labels: Array = $LabelContainer.get_children()
 
 
 func _ready() -> void:
@@ -65,9 +73,10 @@ func _gui_input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("ui_accept") and current_option_idx > SELECTED_NONE:
-		if release_focus_on_selection:
-			release_focus()
-		selected.emit(get_value_for_option(current_option_idx))
+		if not is_option_disabled(current_option_idx):
+			if release_focus_on_selection:
+				release_focus()
+			selected.emit(get_value_for_option(current_option_idx))
 		accept_event()
 	if event.is_action_pressed("ui_left"):
 		_previous_option()
@@ -84,6 +93,19 @@ func _notification(what: int) -> void:
 
 func set_options(arr: Array) -> void:
 	_options = arr
+
+
+func is_option_disabled(idx: int) -> bool:
+	if idx > -1 and idx < _options.size():
+		return _option_disabled_state[idx]
+	return false
+
+
+func set_option_disabled(idx: int, disabled: bool) -> void:
+	if idx > -1 and idx < _options.size():
+		_option_disabled_state[idx] = disabled
+		if current_option_idx == idx:
+			_on_current_option_idx_set()
 
 
 func get_value_for_option(idx: int):
@@ -128,17 +150,18 @@ func _next_option() -> void:
 
 
 func _update_bg_color() -> void:
-	var curr_theme_style_box := get_theme_stylebox("panel")
-	if has_focus():
-		curr_theme_style_box.bg_color = focus_color
-	else:
-		curr_theme_style_box.bg_color = Color.TRANSPARENT
+	var curr_theme_style_box := get_theme_stylebox(&"panel")
+	curr_theme_style_box.bg_color = \
+			focus_color if has_focus() else Color.TRANSPARENT
 
 
 func _get_label_for_option(idx: int) -> String:
 	var option = _options[idx]
-	var option_msg: String = \
-			option.label if typeof(option) == TYPE_DICTIONARY else option
+	var option_msg: String = ""
+	if typeof(option) == TYPE_DICTIONARY:
+		option_msg = option.label
+	elif option:
+		option_msg = option
 	var number: String = ("%s. " % (idx + 1)) if numbered_list else ""
 	return number + tr(option_msg)
 
@@ -147,22 +170,32 @@ func _on_current_option_idx_set() -> void:
 	if not is_node_ready():
 		return
 	
-	_label.text = tr(selector_text)
+	_name_label.text = tr(selector_text)
 	if selector_text != null and not selector_text.is_empty():
-		_label.text += " "
+		_name_label.text += " "
 	
 	if current_option_idx == SELECTED_NONE:
+		_prev_option_label.text = ""
+		_option_label.text = ""
+		_next_option_label.text = ""
 		return
 	
-	if _options.size() == 1:
-		_label.text += "- %s -" % _get_label_for_option(0)
+	var option_label_alpha: float = \
+			DISABLED_ALPHA if is_option_disabled(current_option_idx) else 1.0
+	_option_label.self_modulate.a = option_label_alpha
+	
+	var options_size = _options.size()
+	if options_size == 1:
+		_prev_option_label.text = "- "
+		_option_label.text = _get_label_for_option(0)
+		_next_option_label.text = " -"
 		return
 	
-	if loop_options or current_option_idx > 0:
-		_label.text += "< "
-	_label.text += _get_label_for_option(current_option_idx)
-	if loop_options or current_option_idx < _options.size() - 1:
-		_label.text += " >"
+	_prev_option_label.text = \
+			"< " if loop_options or current_option_idx > 0 else ""
+	_option_label.text = _get_label_for_option(current_option_idx)
+	_next_option_label.text = \
+			" >" if loop_options or current_option_idx < options_size - 1 else ""
 
 
 func _on_selector_text_set() -> void:
@@ -171,6 +204,8 @@ func _on_selector_text_set() -> void:
 
 func _on_options_set() -> void:
 	if is_node_ready():
+		_option_disabled_state.resize(_options.size())
+		_option_disabled_state.fill(false)
 		current_option_idx = SELECTED_NONE if _options.is_empty() else 0
 
 
@@ -190,19 +225,23 @@ func _on_focus_color_set() -> void:
 func _on_text_font_set() -> void:
 	if is_node_ready():
 		if text_font:
-			_label.add_theme_font_override("font", text_font)
+			for label: Label in _labels:
+				label.add_theme_font_override(&"font", text_font)
 		else:
-			_label.remove_theme_font_override("font")
+			for label: Label in _labels:
+				label.remove_theme_font_override(&"font")
 
 
 func _on_text_color_set() -> void:
 	if is_node_ready():
-		_label.add_theme_color_override("font_color", text_color)
+		for label: Label in _labels:
+			label.add_theme_color_override(&"font_color", text_color)
 
 
 func _on_text_size_set() -> void:
 	if is_node_ready():
-		_label.add_theme_font_size_override("font_size", text_size)
+		for label: Label in _labels:
+			label.add_theme_font_size_override(&"font_size", text_size)
 
 
 func _on_focus_entered() -> void:
