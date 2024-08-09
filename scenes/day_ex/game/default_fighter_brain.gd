@@ -3,8 +3,7 @@ extends FighterBrain
 
 
 func _start_command_selection(fighter: Fighter) -> void:
-	var weighted_actions: Array[EnemyCommand] = \
-			fighter.get_available_weighted_actions()
+	var weighted_actions: Array[EnemyCommand] = fighter.get_weighted_actions()
 	if weighted_actions.is_empty():
 		command_selected.emit(BattleCommand.Pass.new())
 	

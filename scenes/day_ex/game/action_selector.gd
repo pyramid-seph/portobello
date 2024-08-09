@@ -8,6 +8,8 @@ const COMMAND_CURE = preload("res://resources/instances/day_ex/actions/command_c
 const COMMAND_EAT = preload("res://resources/instances/day_ex/actions/command_eat.tres")
 const COMMAND_DUMMY_BACK = preload("res://resources/instances/day_ex/actions/dummy_back.tres")
 
+const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
+
 enum MainMenu {
 	ATTACK,
 	ABILITY,
@@ -64,20 +66,33 @@ var _ability_options: Array[Dictionary]
 func _ready() -> void:
 	_action_selector.modulate.a = 0.0
 	_command_selector.set_options(_main_menu_options)
-	set_actions([])
-	if OS.is_debug_build() and get_parent() == get_tree().root:
-		call_deferred("grab_focus")
+	_action_selector.set_options([])
+	_reset()
 
 
-func set_actions(actions: Array[BattleAction]) -> void:
+func update_actions(fighter: Fighter, disable_flee: bool = false) -> void:
+	var actions: Array[BattleAction] = fighter.get_actions()
 	var partition: Array = Utils.partition(actions, func(action: BattleAction):
 			return action.get_consumable() == BattleAction.Consumable.NOTHING)
 	var attacks: Array = partition[0]
 	var abilities: Array = partition[1]
 	attacks.append(COMMAND_DUMMY_BACK)
 	abilities.append(COMMAND_DUMMY_BACK)
+	
+	var can_perform_attacks: bool = attacks.size() > 1
+	var can_perform_abilities: bool = \
+			fighter.get_stats_manager().get_curr_mp() > 1 and abilities.size() > 1
+	_command_selector.set_option_disabled(MainMenu.ATTACK, !can_perform_attacks)
+	_command_selector.set_option_disabled(MainMenu.ABILITY, !can_perform_abilities)
+	
 	_attack_options = _map_actions_to_options(attacks)
 	_ability_options = _map_actions_to_options(abilities)
+	
+	var can_cure: bool = true # TODO Disable cure if the player does not have enough scraps
+	_command_selector.set_option_disabled(MainMenu.CURE, !can_cure)
+	
+	_command_selector.set_option_disabled(MainMenu.FLEE, disable_flee)
+	
 	_reset()
 
 

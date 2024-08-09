@@ -121,8 +121,20 @@ func get_exp_granted() -> int:
 	return _fighter_data.get_loot_exp() if _fighter_data else 0
 
 
-func get_available_weighted_actions() -> Array[EnemyCommand]:
+func get_weighted_actions() -> Array[EnemyCommand]:
 	return _fighter_data.get_actions() if _fighter_data else []
+
+
+func get_actions() -> Array[BattleAction]:
+	var available_weighted_actions: Array[EnemyCommand] = \
+			get_weighted_actions()
+	var actions_count: int = available_weighted_actions.size()
+	
+	var actions: Array[BattleAction] = []
+	actions.resize(actions_count)
+	for i: int in actions_count:
+		actions[i] = available_weighted_actions[i].get_action()
+	return actions
 
 
 func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide, 
