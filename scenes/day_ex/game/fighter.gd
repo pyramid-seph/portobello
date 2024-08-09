@@ -360,13 +360,13 @@ func _run_flee_command(ally_side: BattlefieldSide,
 func _run_attack_command(brain: FighterBrain, command: BattleCommand.Hurt, 
 		ally_side: BattlefieldSide, foe_side: BattlefieldSide) -> bool:
 	var attack: BattleAction = command.get_action()
+	if not _have_enough_resources_for(attack):
+		await _narrate_not_enough_resources(attack)
+		return false
+	
 	var target_side: BattlefieldSide = \
 			_get_target_side(attack, ally_side, foe_side)
 	brain.start_target_selection(target_side)
-	if not _have_enough_resources_for(attack):
-		await _narrate_not_enough_resources(attack)
-		return true
-	
 	var target: Fighter = await brain.target_selected
 	if target and not target.is_removed_from_battle():
 		_consume_resource(attack)
@@ -385,8 +385,8 @@ func _have_enough_resources_for(attack: BattleAction) -> bool:
 			if _stats_manager.get_curr_mp() < cost:
 				return false
 		BattleAction.Consumable.SCRAPS:
-			# TODO Check whether there are enough scraps or not
-			return true
+			if scraps < cost:
+				return false
 	return true
 
 
@@ -402,7 +402,7 @@ func _consume_resource(attack: BattleAction) -> bool:
 			print(get_full_name(), " MP: ", _stats_manager.get_curr_mp())
 			return true
 		BattleAction.Consumable.SCRAPS:
-			# TODO Consume scraps
+			scraps -= cost
 			return true
 	return true
 
