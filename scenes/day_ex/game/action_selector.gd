@@ -88,7 +88,7 @@ func update_actions(fighter: Fighter, disable_flee: bool = false) -> void:
 	_attack_options = _map_actions_to_options(attacks)
 	_ability_options = _map_actions_to_options(abilities)
 	
-	var can_cure: bool = true # TODO Disable cure if the player does not have enough scraps
+	var can_cure: bool = fighter.scraps > 0
 	_command_selector.set_option_disabled(MainMenu.CURE, !can_cure)
 	
 	_command_selector.set_option_disabled(MainMenu.FLEE, disable_flee)
