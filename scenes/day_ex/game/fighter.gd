@@ -7,6 +7,7 @@ extends TextureRect
 
 signal selected(me)
 signal selection_canceled
+signal scraps_qty_changed
 signal displayed_status_changed(new_status: StatusDisplayManager.Status)
 
 enum CauseOfDeath {
@@ -26,6 +27,13 @@ var DEFAULT_FIGHTER_BRAIN: FighterBrain = DefaultFighterBrain.new()
 const ALPHABET: PackedStringArray = [
 		"", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 		"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+var scraps: int:
+	set(value):
+		var old_val: int = scraps
+		scraps = clampi(value, 0, 9)
+		if scraps != old_val:
+			scraps_qty_changed.emit()
 
 var _refresh_status_display: bool
 var _stats_manager := StatsManager.new()

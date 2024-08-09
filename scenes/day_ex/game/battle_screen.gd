@@ -37,6 +37,7 @@ var _battle_manager: BattleManager
 @onready var _level_label: Label = %LevelLabel
 @onready var _hp_label: Label = %HPLabel
 @onready var _mp_label: Label = %MPLabel
+@onready var _treat_count: Label = %TreatCount
 
 
 func _ready() -> void:
@@ -63,6 +64,7 @@ func _setup_player() -> void:
 	_player_side.setup(PLAYER_PARTY_RES)
 	var player_fighter: Fighter = _get_player()
 	if player_fighter:
+		player_fighter.scraps_qty_changed.connect(_on_scraps_qty_changed)
 		player_fighter.displayed_status_changed.connect(
 				_on_player_char_displayed_status_changed)
 		var stats_manager: StatsManager = player_fighter.get_stats_manager()
@@ -70,6 +72,7 @@ func _setup_player() -> void:
 		stats_manager.curr_hp_changed.connect(_on_player_hp_changed)
 		stats_manager.curr_mp_changed.connect(_on_player_mp_changed)
 		_on_player_level_changed()
+		_on_scraps_qty_changed()
 		player_fighter.install_brain(PlayerFighterBrain.new(_action_selector))
 
 
@@ -100,7 +103,7 @@ func _on_battle_finished(result: BattleManager.Result) -> void:
 		var stats_diff: Stats = stats_manager.gain_experience(exp_gained)
 		await _wait_level_up_narration_finished(stats_manager, stats_diff)
 		if scraps_obtained > 0:
-			# TODO Store in memory current number of scraps
+			_get_player().scraps += scraps_obtained
 			var msg_string: String = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE"
 			if exp_gained > 1:
 				msg_string = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY"
@@ -213,6 +216,11 @@ func _on_player_level_changed() -> void:
 			[player.get_full_name(), stats_manager.get_current_level()]
 	_on_player_hp_changed()
 	_on_player_mp_changed()
+
+
+func _on_scraps_qty_changed() -> void:
+	var player: Fighter = _get_player()
+	_treat_count.text = str(player.scraps)
 
 
 func _on_player_commands_group_visibility_referenced_controls_visibility_changed() -> void:
