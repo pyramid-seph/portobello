@@ -17,27 +17,65 @@ enum Status {
 
 var _statuses: int
 var _shown_status_index: int
-
+var _stats_manager: StatsManager
+var _status_manager: StatusManager
+var _status_update_enqueued: bool
 
 @onready var _timer: Timer = $Timer
+
+
+func setup(stats_manager: StatsManager, status_manager: StatusManager) -> void:
+	if _stats_manager:
+		Utils.safe_disconnect(
+				_stats_manager.buffed, _on_status_or_stats_changed)
+	if _status_manager:
+		Utils.safe_disconnect(
+				_status_manager.status_changed, _on_status_or_stats_changed)
+	
+	if not stats_manager or not status_manager:
+		print("stats_manager and status manager cannot be null. Skipping setup.")
+		return
+	
+	_stats_manager = stats_manager
+	_status_manager = status_manager
+	Utils.safe_connect(_stats_manager.buffed, _on_status_or_stats_changed)
+	Utils.safe_connect(
+			_status_manager.status_changed, _on_status_or_stats_changed)
+	force_status_update()
 
 
 func get_displayed_status() -> Status:
 	return Status.values()[_shown_status_index]
 
 
-func update_status(stats_manager: StatsManager, status_manager: StatusManager) -> void:
+func force_status_update() -> void:
+	if not _stats_manager or not _stats_manager:
+		print("Do not call force_status_update() before setup().")
+		return
+	
 	var displayed_status: int = get_displayed_status()
-	_set_status_bit(Status.POISON, status_manager.is_poisoned())
-	_set_status_bit(Status.CHARMED, status_manager.is_charmed())
-	_set_status_bit(Status.ATK_BUFF, stats_manager.get_atk_buffs() > 0)
-	_set_status_bit(Status.ATK_DEBUFF, stats_manager.get_atk_buffs() < 0)
-	_set_status_bit(Status.DEF_BUFF, stats_manager.get_def_buffs() > 0)
-	_set_status_bit(Status.DEF_DEBUFF, stats_manager.get_def_buffs() < 0)
-	_set_status_bit(Status.SPD_BUFF, stats_manager.get_spd_buffs() > 0)
-	_set_status_bit(Status.SPD_DEBUFF, stats_manager.get_spd_buffs() < 0)
+	_set_status_bit(Status.POISON, _status_manager.is_poisoned())
+	_set_status_bit(Status.CHARMED, _status_manager.is_charmed())
+	_set_status_bit(Status.ATK_BUFF, _stats_manager.get_atk_buffs() > 0)
+	_set_status_bit(Status.ATK_DEBUFF, _stats_manager.get_atk_buffs() < 0)
+	_set_status_bit(Status.DEF_BUFF, _stats_manager.get_def_buffs() > 0)
+	_set_status_bit(Status.DEF_DEBUFF, _stats_manager.get_def_buffs() < 0)
+	_set_status_bit(Status.SPD_BUFF, _stats_manager.get_spd_buffs() > 0)
+	_set_status_bit(Status.SPD_DEBUFF, _stats_manager.get_spd_buffs() < 0)
 	if not _statuses & displayed_status:
 		_show_next_status()
+
+
+func _enqueue_status_update() -> void:
+	if not _status_update_enqueued:
+		_status_update_enqueued = true
+		await get_tree().process_frame
+		# I'm not sure if this "if" is needed but I'm adding it anyway in case 
+		# this node is enqueued for destruction and it have an status
+		# update queued on the same frame.
+		if is_instance_valid(self):
+			force_status_update()
+			_status_update_enqueued = false
 
 
 func _set_status_bit(status_flag: Status, is_active: bool) -> void:
@@ -66,11 +104,15 @@ func _set_next_shown_status_index() -> void:
 
 func _show_next_status() -> void:
 	_set_next_shown_status_index()
-	if _statuses & (_statuses - 1) == 0: # is single status or normal?
+	if _statuses & (_statuses - 1) == 0: # is _statuses single status or normal?
 		_timer.stop()
 	else:
 		_timer.start()
 	displayed_status_changed.emit(get_displayed_status())
+
+
+func _on_status_or_stats_changed() -> void:
+	_enqueue_status_update()
 
 
 func _on_timer_timeout() -> void:

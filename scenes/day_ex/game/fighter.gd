@@ -3,7 +3,6 @@ extends TextureRect
 # FIXME set_path: Another resource is loaded from path 'res://scenes/day_ex/game/fighter.tscn' (possible cyclic resource inclusion).
 # FIXME _parse_ext_resource: res://scenes/day_ex/game/fighter.tscn:561 - Parse Error: [ext_resource] referenced non-existent resource at: res://scenes/day_ex/game/fighter.gd
 # FIXME Player fled status should be reset before starting a battle
-# TODO Clear status effects and buffs/debuff when dead or fled
 
 signal selected(me)
 signal selection_canceled
@@ -35,7 +34,6 @@ var scraps: int:
 		if scraps != old_val:
 			scraps_qty_changed.emit()
 
-var _refresh_status_display: bool
 var _stats_manager := StatsManager.new()
 var _status_manager := StatusManager.new()
 var _fighter_data: FighterData
@@ -54,16 +52,8 @@ var _installed_brain: FighterBrain
 
 
 func _ready() -> void:
+	_status_display_manager.setup(_stats_manager, _status_manager)
 	_setup()
-
-
-func _process(_delta: float) -> void:
-	if not _fighter_data or is_removed_from_battle():
-		return
-	
-	if _refresh_status_display:
-		_refresh_status_display = false
-		_status_display_manager.update_status(_stats_manager, _status_manager)
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -143,6 +133,17 @@ func get_actions() -> Array[BattleAction]:
 	for i: int in actions_count:
 		actions[i] = available_weighted_actions[i].get_action()
 	return actions
+
+
+func wait_flee() -> void:
+	if not is_removed_from_battle():
+		_has_fled = true
+		_animation_player.play(&"flee")
+		await _animation_player.animation_finished
+		self_modulate.a = 0
+		_stats_manager.reset_buffs()
+		_status_manager.clear_all_status_effect()
+		print(get_full_name(), " fled.")
 
 
 func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide, 
@@ -298,7 +299,6 @@ func _setup() -> void:
 	texture = null
 	_damage_label.text = ""
 	_name_label.text = ""
-	_refresh_status_display = true
 	_cause_of_death = CauseOfDeath.UNSPECIFIED
 	_has_fled = false
 	self_modulate.a = 1.0
@@ -311,8 +311,6 @@ func _setup() -> void:
 	texture = _fighter_data.get_texture()
 	_update_fighter_name_label()
 	_stats_manager.setup(_fighter_data)
-	Utils.safe_connect(_stats_manager.buffed, _on_status_or_stats_changed)
-	Utils.safe_connect(_status_manager.status_changed, _on_status_or_stats_changed)
 
 
 func _update_fighter_name_label() -> void:
@@ -330,15 +328,6 @@ func _run_pass_command() -> bool:
 	# TODO Create pass animation?
 	print(get_full_name(), " passed their turn.")
 	return true
-
-
-func wait_flee() -> void:
-	if not is_removed_from_battle():
-		_has_fled = true
-		_animation_player.play(&"flee")
-		await _animation_player.animation_finished
-		self_modulate.a = 0
-		print(get_full_name(), " fled.")
 
 
 func _run_flee_command(ally_side: BattlefieldSide, 
@@ -417,10 +406,6 @@ func _on_death(cause_of_death: CauseOfDeath = CauseOfDeath.UNSPECIFIED) -> void:
 	self_modulate.a = 0.0
 	_stats_manager.reset_buffs()
 	_status_manager.clear_all_status_effect()
-
-
-func _on_status_or_stats_changed() -> void:
-	_refresh_status_display = true
 
 
 func _on_focus_entered() -> void:
