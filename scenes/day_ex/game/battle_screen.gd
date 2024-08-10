@@ -64,15 +64,19 @@ func _setup_player() -> void:
 	_player_side.setup(PLAYER_PARTY_RES)
 	var player_fighter: Fighter = _get_player()
 	if player_fighter:
+		var status_display_manager: StatusDisplayManager = \
+				player_fighter.get_status_display_manager()
 		player_fighter.scraps_qty_changed.connect(_on_scraps_qty_changed)
-		player_fighter.displayed_status_changed.connect(
-				_on_player_char_displayed_status_changed)
+		status_display_manager.displayed_status_changed.connect(
+				_on_player_displayed_status_changed)
 		var stats_manager: StatsManager = player_fighter.get_stats_manager()
 		stats_manager.curr_level_changed.connect(_on_player_level_changed)
 		stats_manager.curr_hp_changed.connect(_on_player_hp_changed)
 		stats_manager.curr_mp_changed.connect(_on_player_mp_changed)
 		_on_player_level_changed()
 		_on_scraps_qty_changed()
+		_on_player_displayed_status_changed(
+				status_display_manager.get_displayed_status())
 		player_fighter.install_brain(PlayerFighterBrain.new(_action_selector))
 
 
@@ -196,7 +200,7 @@ func _on_preview_set() -> void:
 		_main_container.visible = _preview
 
 
-func _on_player_char_displayed_status_changed(
+func _on_player_displayed_status_changed(
 		new_status: StatusDisplayManager.Status) -> void:
 	_status_display.display_status(new_status)
 	_status_label.display_status(new_status)

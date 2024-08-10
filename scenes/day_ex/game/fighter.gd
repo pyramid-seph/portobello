@@ -6,7 +6,6 @@ extends TextureRect
 signal selected(me)
 signal selection_canceled
 signal scraps_qty_changed
-signal displayed_status_changed(new_status: StatusDisplayManager.Status)
 
 enum CauseOfDeath {
 	UNSPECIFIED,
@@ -92,6 +91,10 @@ func get_full_name() -> String:
 
 func get_stats_manager() -> StatsManager:
 	return _stats_manager
+
+
+func get_status_display_manager() -> StatusDisplayManager:
+	return _status_display_manager
 
 
 func is_removed_from_battle() -> bool:
@@ -431,4 +434,3 @@ func _on_focus_exited() -> void:
 func _on_status_display_manager_displayed_status_changed(
 			new_status: StatusDisplayManager.Status) -> void:
 	_status_display.display_status(new_status)
-	displayed_status_changed.emit(new_status)
