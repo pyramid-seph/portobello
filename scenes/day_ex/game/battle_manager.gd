@@ -32,7 +32,7 @@ func _on_battle_ended() -> void:
 
 
 func _battle_loop(is_boss_battle: bool) -> void:
-	while not _can_battle_continue():
+	while _can_battle_continue():
 		_turn_order_manager.on_turn_started()
 		
 		var turn: TurnOrderManager.Turn = _turn_order_manager.get_next_turn()
@@ -51,7 +51,6 @@ func _battle_loop(is_boss_battle: bool) -> void:
 			else:
 				ally_side = _enemy_side
 				foe_side = _player_side
-			#TODO Divide player turns so we can introduce narration stuff?
 			await next_fighter.take_turn(ally_side, foe_side, is_boss_battle)
 		else:
 			print("Fighter is removed from battle. Skipping their turn.")
@@ -62,7 +61,7 @@ func _battle_loop(is_boss_battle: bool) -> void:
 func _can_battle_continue() -> bool:
 	var any_party_defeated: bool = _player_side.is_party_defeated() or \
 			_enemy_side.is_party_defeated()
-	return any_party_defeated
+	return not any_party_defeated
 
 
 func _build_battle_result() -> Result:

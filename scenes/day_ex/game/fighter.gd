@@ -184,7 +184,7 @@ func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide,
 		else:
 			print("Unknown battle command class. Skipping turn.")
 			command_completed = await _run_pass_command()
-	await _on_turn_finished()
+	await _on_turn_finished(foe_side.is_party_defeated())
 
 
 ## Can be awaited
@@ -240,16 +240,17 @@ func _on_turn_started() -> void:
 
 
 ## Can be awaited
-func _on_turn_finished() -> void:
-	# TODO DO not apply poison damage when battle is finished
-	if is_removed_from_battle() or not _status_manager.is_poisoned():
+func _on_turn_finished(are_foes_defeated: bool) -> void:
+	if is_removed_from_battle() or \
+			not _status_manager.is_poisoned() or \
+			are_foes_defeated:
 		return
 	
-	_stats_manager.decrease_hp(_status_manager.get_poison_damage())
+	var damage: int =_status_manager.get_poison_damage()
+	_stats_manager.decrease_hp(damage)
+	_damage_label.text = str(absi(damage))
 	_animation_player.play(&"hurt")
 	await _animation_player.animation_finished
-	# TODO send the hurt by poison signal
-	
 	if is_dead():
 		_on_death(CauseOfDeath.POISONED)
 

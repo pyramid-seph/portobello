@@ -69,7 +69,12 @@ func force_status_update() -> void:
 func _enqueue_status_update() -> void:
 	if not _status_update_enqueued:
 		_status_update_enqueued = true
-		await get_tree().process_frame
+		
+		var tree = get_tree()
+		if not tree:
+			return
+			
+		await tree.process_frame
 		# I'm not sure if this "if" is needed but I'm adding it anyway in case 
 		# this node is enqueued for destruction and it have an status
 		# update queued on the same frame.
