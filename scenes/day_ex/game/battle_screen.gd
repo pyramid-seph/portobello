@@ -79,6 +79,8 @@ func _setup_player() -> void:
 func _setup_battle(enemy_party: BattleParty, background: Texture2D) -> void:
 	_enemy_side.setup(enemy_party, background)
 	_player_side.set_background(background)
+	_make_them_enter_battlefield(_player_side.get_members())
+	_make_them_enter_battlefield(_enemy_side.get_members())
 
 
 func _on_battle_finished(result: BattleManager.Result) -> void:
@@ -121,6 +123,11 @@ func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> vo
 	_narrator.say("RPG_BATTLE_NARRATION_BATTLE_STARTED")
 	await TransitionPlayer.play_battle_backwards()
 	await _narrator.wait_until_read()
+
+
+func _make_them_enter_battlefield(fighters: Array[Fighter]) -> void:
+	for fighter: Fighter in fighters:
+		fighter.enter_battlefield()
 
 
 func _teardown() -> void:

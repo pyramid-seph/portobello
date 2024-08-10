@@ -2,7 +2,6 @@ extends TextureRect
 
 # FIXME set_path: Another resource is loaded from path 'res://scenes/day_ex/game/fighter.tscn' (possible cyclic resource inclusion).
 # FIXME _parse_ext_resource: res://scenes/day_ex/game/fighter.tscn:561 - Parse Error: [ext_resource] referenced non-existent resource at: res://scenes/day_ex/game/fighter.gd
-# FIXME Player fled status should be reset before starting a battle
 
 signal selected(me)
 signal selection_canceled
@@ -144,6 +143,16 @@ func wait_flee() -> void:
 		_stats_manager.reset_buffs()
 		_status_manager.clear_all_status_effect()
 		print(get_full_name(), " fled.")
+
+
+func enter_battlefield() -> void:
+	if is_dead() or not has_fled():
+		return
+	
+	_has_fled = false
+	_animation_player.play(&"RESET")
+	_stats_manager.reset_buffs()
+	_status_manager.clear_all_status_effect()
 
 
 func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide, 
@@ -333,10 +342,9 @@ func _run_pass_command() -> bool:
 func _run_flee_command(ally_side: BattlefieldSide, 
 		is_flee_forbidden: bool) -> bool:
 	# TODO Narrate trying to flee
-	var flee: bool = false
-	if not is_flee_forbidden:
-		flee = randi() % 101 <= _stats_manager.get_lck()
-	if flee:
+	var successful_flee_attempt: bool = not is_flee_forbidden and \
+			 randi() % 101 <= _stats_manager.get_lck()
+	if successful_flee_attempt:
 		for fighter: Fighter in ally_side.get_members():
 			await fighter.wait_flee()
 		# TODO Narrate party fled
