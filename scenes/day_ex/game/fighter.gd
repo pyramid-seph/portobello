@@ -420,6 +420,11 @@ func _on_death(cause_of_death: CauseOfDeath = CauseOfDeath.UNSPECIFIED) -> void:
 	_status_manager.clear_all_status_effect()
 
 
+func _on_status_display_manager_displayed_status_changed(
+			new_status: StatusDisplayManager.Status) -> void:
+	_status_display.display_status(new_status)
+
+
 func _on_focus_entered() -> void:
 	_selector_texture_rect.show()
 	_animation_player.play(&"focus")
@@ -430,8 +435,3 @@ func _on_focus_exited() -> void:
 	_animation_player.stop()
 	_selector_texture_rect.hide()
 	_name_label.hide()
-
-
-func _on_status_display_manager_displayed_status_changed(
-			new_status: StatusDisplayManager.Status) -> void:
-	_status_display.display_status(new_status)
