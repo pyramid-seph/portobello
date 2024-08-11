@@ -1,7 +1,5 @@
 [gd_resource type="Resource" script_class="FighterData" load_steps=23 format=3 uid="uid://cipgo47xsp7df"]
 
-[ext_resource type="Texture2D" uid="uid://ca0dcipi55a41" path="res://art/day_ex/battle_char_player.png" id="1_6xuli"]
-[ext_resource type="Resource" uid="uid://j2gvppwwk05l" path="res://resources/instances/day_ex/progression_curves/stats_progression_player.stats" id="1_8ah5x"]
 [ext_resource type="Resource" uid="uid://durkalhb4e6b0" path="res://resources/instances/day_ex/actions/attack_scratch.tres" id="1_18lrd"]
 [ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_ieakb"]
 [ext_resource type="Script" path="res://resources/fighter_data.gd" id="2_tiv57"]
@@ -13,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://on3qtc1dljdj" path="res://resources/instances/day_ex/actions/ability_scare.tres" id="8_1rd6r"]
 [ext_resource type="Resource" uid="uid://bdkbwavrx8ymm" path="res://resources/instances/day_ex/actions/ability_despair.tres" id="9_8ww8v"]
 [ext_resource type="Resource" uid="uid://cd4sudyv4flcl" path="res://resources/instances/day_ex/actions/ability_rip_and_tear_ex.tres" id="10_uda2w"]
+[ext_resource type="Resource" uid="uid://j2gvppwwk05l" path="res://resources/instances/day_ex/progression_curves/stats_progression_player.stats" id="11_r5pj4"]
+[ext_resource type="Texture2D" uid="uid://ca0dcipi55a41" path="res://art/day_ex/battle_char_player.png" id="12_3hoop"]
 
 [sub_resource type="Resource" id="Resource_20g26"]
 script = ExtResource("2_ieakb")
@@ -62,8 +62,8 @@ _weight = 1.0
 [resource]
 script = ExtResource("2_tiv57")
 _char_name = "Bucho"
-_texture = ExtResource("1_6xuli")
-_stats_progression_curve = ExtResource("1_8ah5x")
+_texture = ExtResource("12_3hoop")
+_stats_progression_curve = ExtResource("11_r5pj4")
 _actions = Array[ExtResource("2_ieakb")]([SubResource("Resource_20g26"), SubResource("Resource_hovp6"), SubResource("Resource_ajd17"), SubResource("Resource_js7yg"), SubResource("Resource_1naio"), SubResource("Resource_7mvjd"), SubResource("Resource_cthcs"), SubResource("Resource_ug542"), SubResource("Resource_vniak")])
 _loot_scraps = 0
 _loot_exp = 0
