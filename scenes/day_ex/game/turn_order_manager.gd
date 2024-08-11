@@ -26,23 +26,20 @@ func on_battle_started() -> void:
 	
 	_curr_idx = -1
 	_has_any_spd_changed = false
-	# TODO Connect to the signal that is emitted when a_pos fighter speed changes
+	_observe_spd_buffs(_player_side)
+	_observe_spd_buffs(_enemy_side)
 	_update_turns()
 
 
-func on_turn_started() -> void:
-	_has_any_spd_changed = false
+func on_battle_ended() -> void:
+	_stop_observing_spd_buffs(_player_side)
+	_stop_observing_spd_buffs(_enemy_side)
 
 
 func on_turn_ended() -> void:
 	if _has_any_spd_changed:
 		_has_any_spd_changed = false
 		_update_turns()
-
-
-func on_battle_ended() -> void:
-	# TODO Disconnect to the signal that is emitted when a_pos fighter speed changes?
-	pass
 
 
 func get_next_turn() -> Turn:
@@ -112,7 +109,22 @@ func _sort_turn_order(a_pos: int, b_pos: int) -> bool:
 	return a_spd > b_spd
 
 
-func _on_fighter_spd_changed() -> void:
+func _observe_spd_buffs(side: BattlefieldSide) -> void:
+	for member: Fighter in side.get_members():
+		if not member.is_removed_from_battle():
+			Utils.safe_connect(
+					member.get_stats_manager().spd_buffed, _on_fighter_spd_buffed)
+
+
+func _stop_observing_spd_buffs(side: BattlefieldSide) -> void:
+	for member: Fighter in side.get_members():
+		Utils.safe_disconnect(
+				member.get_stats_manager().spd_buffed, _on_fighter_spd_buffed)
+
+
+func _on_fighter_spd_buffed() -> void:
+	if !_has_any_spd_changed:
+		print("Turn order will update at the end of this turn.")
 	_has_any_spd_changed = true
 
 

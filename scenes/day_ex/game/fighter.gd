@@ -278,9 +278,7 @@ func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 
 
 func _hurt_with_status_attack(attack: BattleAction) -> void:
-	var inflict_status: bool = \
-			randi() % attack.get_hit_chance_percent() <= _stats_manager.get_lck()
-	if inflict_status:
+	if randi() % attack.get_hit_chance_percent() <= _stats_manager.get_lck():
 		# TODO Send afflicted event?
 		_apply_buffs(attack)
 		_apply_illness(attack)

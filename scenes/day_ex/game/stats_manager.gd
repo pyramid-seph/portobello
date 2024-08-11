@@ -2,6 +2,7 @@ class_name StatsManager
 extends RefCounted
 
 signal buffed
+signal spd_buffed
 signal curr_level_changed
 signal curr_hp_changed
 signal curr_mp_changed
@@ -48,8 +49,9 @@ var _spd_buffs: int:
 	set(value):
 		var old_val: int = _spd_buffs
 		_spd_buffs = clampi(value, MAX_DEBUFF, MAX_BUFF)
-		if _def_buffs != old_val:
+		if _spd_buffs != old_val:
 			buffed.emit()
+			spd_buffed.emit()
 
 
 func setup(fighter_data: FighterData, experience: int = 0) -> void:

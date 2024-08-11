@@ -17,24 +17,14 @@ func _init(player_side: BattlefieldSide, enemy_side: BattlefieldSide) -> void:
 
 
 func start_battle(is_boss_battle: bool = false) -> Result:
-	_on_battle_started()
-	await _battle_loop(is_boss_battle)
-	_on_battle_ended()
-	return _build_battle_result()
-
-
-func _on_battle_started() -> void:
 	_turn_order_manager.on_battle_started()
-
-
-func _on_battle_ended() -> void:
+	await _battle_loop(is_boss_battle)
 	_turn_order_manager.on_battle_ended()
+	return _build_battle_result()
 
 
 func _battle_loop(is_boss_battle: bool) -> void:
 	while _can_battle_continue():
-		_turn_order_manager.on_turn_started()
-		
 		var turn: TurnOrderManager.Turn = _turn_order_manager.get_next_turn()
 		if not turn:
 			_turn_order_manager.on_turn_ended()
