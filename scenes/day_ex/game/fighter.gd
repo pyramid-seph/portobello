@@ -327,30 +327,42 @@ func _hurt_with_status_attack(attack: BattleAction) -> void:
 
 
 func _apply_buffs(attack: BattleAction) -> void:
-	_stats_manager.buff_atk(attack.get_status_effect_attack())
-	_stats_manager.buff_def(attack.get_status_effect_defense())
-	_stats_manager.buff_speed(attack.get_status_effect_speed())
+	var atk_effect = attack.get_status_effect_attack()
+	var def_effect = attack.get_status_effect_defense()
+	var spd_effect = attack.get_status_effect_speed()
+	_stats_manager.buff_atk(atk_effect)
+	_stats_manager.buff_def(def_effect)
+	_stats_manager.buff_speed(spd_effect)
 	
-	if attack.get_status_effect_attack() != 0:
-		if _stats_manager.get_atk_buffs() == 0:
+	if atk_effect != 0:
+		if _stats_manager.is_atk_normal():
 			_turn_narration.atk_reset(get_full_name())
+		elif _stats_manager.is_atk_at_max():
+			_turn_narration.atk_at_max(get_full_name())
+		elif _stats_manager.is_atk_at_min():
+			_turn_narration.atk_at_min(get_full_name())
 		else:
-			_turn_narration.atk_buff(get_full_name(), 
-					attack.get_status_effect_attack())
+			_turn_narration.atk_buff(get_full_name(), atk_effect)
 		await _turn_narration.wait_until_read()
-	if attack.get_status_effect_defense() != 0:
-		if _stats_manager.get_def_buffs() == 0:
+	if def_effect != 0:
+		if _stats_manager.is_def_normal():
 			_turn_narration.def_reset(get_full_name())
+		elif _stats_manager.is_def_at_max():
+			_turn_narration.def_at_max(get_full_name())
+		elif _stats_manager.is_def_at_min():
+			_turn_narration.def_at_min(get_full_name())
 		else:
-			_turn_narration.def_buff(get_full_name(), 
-					attack.get_status_effect_defense())
+			_turn_narration.def_buff(get_full_name(), def_effect)
 		await _turn_narration.wait_until_read()
-	if attack.get_status_effect_speed() != 0:
-		if _stats_manager.get_spd_buffs() == 0:
+	if spd_effect != 0:
+		if _stats_manager.is_spd_normal():
 			_turn_narration.spd_reset(get_full_name())
+		elif _stats_manager.is_spd_at_max():
+			_turn_narration.spd_at_max(get_full_name())
+		elif _stats_manager.is_spd_at_min():
+			_turn_narration.spd_at_min(get_full_name())
 		else:
-			_turn_narration.spd_buff(get_full_name(), 
-					attack.get_status_effect_speed())
+			_turn_narration.spd_buff(get_full_name(), spd_effect)
 		await _turn_narration.wait_until_read()
 
 
@@ -405,8 +417,6 @@ func _update_fighter_name_label() -> void:
 func _run_pass_command() -> bool:
 	_turn_narration.pass_turn(get_full_name())
 	_turn_narration.wait_until_read()
-	# TODO Create pass animation?
-	print(get_full_name(), " passed their turn.")
 	return true
 
 

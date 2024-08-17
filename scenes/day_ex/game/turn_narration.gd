@@ -109,6 +109,14 @@ func flee_success(who: String, how_many: int) -> void:
 	_narrate(msg, { "target": who })
 
 
+func atk_at_max(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STAT_ATK_MAXIMIZED", { "target": who })
+
+
+func atk_at_min(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STAT_ATK_MINIMIZED", { "target": who })
+
+
 func atk_buff(who: String, points: int) -> void:
 	var msg: String = "RPG_BATTLE_NARRATION_STATUS_EFFECT_ATK_" % (
 			"DEBUFF" if points < 0 else "BUFF")
@@ -119,6 +127,14 @@ func atk_reset(who: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_STAT_ATK_NORMAL", { "target": who })
 
 
+func def_at_max(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STAT_DEF_MAXIMIZED", { "target": who })
+
+
+func def_at_min(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STAT_DEF_MINIMIZED", { "target": who })
+
+
 func def_buff(who: String, points: int) -> void:
 	var msg: String = "RPG_BATTLE_NARRATION_STATUS_EFFECT_DEF_" % (
 			"DEBUFF" if points < 0 else "BUFF")
@@ -127,6 +143,15 @@ func def_buff(who: String, points: int) -> void:
 
 func def_reset(who: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_STAT_DEF_NORMAL", { "target": who })
+
+
+func spd_at_max(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STAT_SPD_MAXIMIZED", { "target": who })
+
+
+func spd_at_min(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STAT_SPD_MINIMIZED", { "target": who })
+
 
 
 func spd_buff(who: String, points: int) -> void:

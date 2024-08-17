@@ -188,6 +188,42 @@ func get_spd_buffs() -> int:
 
 func is_buffed_or_debuffed() -> bool:
 	return _atk_buffs != 0 or _def_buffs != 0 or _spd_buffs != 0
+
+
+func is_atk_normal() -> bool:
+	return _atk_buffs == 0
+
+
+func is_atk_at_max() -> bool:
+	return _atk_buffs == MAX_BUFF
+
+
+func is_atk_at_min() -> bool:
+	return _atk_buffs == MAX_DEBUFF
+
+
+func is_def_normal() -> bool:
+	return _def_buffs == 0
+
+
+func is_def_at_max() -> bool:
+	return _def_buffs == MAX_BUFF
+
+
+func is_def_at_min() -> bool:
+	return _def_buffs == MAX_DEBUFF
+
+
+func is_spd_normal() -> bool:
+	return _spd_buffs == 0
+
+
+func is_spd_at_max() -> bool:
+	return _spd_buffs == MAX_BUFF
+
+
+func is_spd_at_min() -> bool:
+	return _spd_buffs == MAX_DEBUFF
 #endregion
 
 
