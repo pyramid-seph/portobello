@@ -39,6 +39,11 @@ func charmed(who: String) -> void:
 			{ "target": who })
 
 
+func already_charmed(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_ALREADY", 
+			{ "target": who })
+
+
 func charm_clear(who: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_CLEAR",
 			{ "target": who })
@@ -46,6 +51,11 @@ func charm_clear(who: String) -> void:
 
 func poisoned(who: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_INFLICTED",
+			{ "target": who })
+
+
+func already_poisoned(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_ALREADY", 
 			{ "target": who })
 
 

@@ -356,12 +356,18 @@ func _apply_buffs(attack: BattleAction) -> void:
 
 func _apply_illness(attack: BattleAction) -> void:
 	if attack.inflicts_poison():
-		_status_manager.set_poison_damage(attack.get_poison_damage())
-		_turn_narration.poisoned(get_full_name())
+		if _status_manager.is_poisoned():
+			_turn_narration.already_poisoned(get_full_name())
+		else:
+			_status_manager.set_poison_damage(attack.get_poison_damage())
+			_turn_narration.poisoned(get_full_name())
 		await _turn_narration.wait_until_read()
 	if attack.inflicts_love():
-		_status_manager.set_is_charmed(true)
-		_turn_narration.charmed(get_full_name())
+		if _status_manager.is_charmed():
+			_turn_narration.already_charmed(get_full_name())
+		else:
+			_status_manager.set_is_charmed(true)
+			_turn_narration.charmed(get_full_name())
 		await _turn_narration.wait_until_read()
 
 
