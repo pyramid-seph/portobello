@@ -206,16 +206,22 @@ func buff_speed(points: int) -> void:
 
 
 #region BuffsReseters
-func reset_atk_buffs() -> void:
+func reset_atk_buffs() -> bool:
+	var reset: bool = _atk_buffs != 0
 	_atk_buffs = 0
+	return reset
 
 
-func reset_def_buffs() -> void:
+func reset_def_buffs() -> bool:
+	var reset: bool = _def_buffs != 0
 	_def_buffs = 0
+	return reset
 
 
-func reset_spd_buffs() -> void:
+func reset_spd_buffs() -> bool:
+	var reset: bool = _spd_buffs != 0
 	_spd_buffs = 0
+	return reset
 
 
 func reset_buffs() -> void:

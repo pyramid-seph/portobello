@@ -37,6 +37,18 @@ func set_poison_damage(value: int) -> void:
 	_poison_damage = value
 
 
-func clear_all_status_effect() -> void:
-	set_is_charmed(false)
+func clear_poison() -> bool:
+	var reset: bool = _poison_damage > 0
 	set_poison_damage(0)
+	return reset
+
+
+func clear_charm() -> bool:
+	var reset: bool = is_charmed()
+	set_is_charmed(false)
+	return reset
+
+
+func clear_all_status_effect() -> void:
+	clear_charm()
+	clear_poison()

@@ -1,4 +1,4 @@
-keys,en,es
+RPG_BATTLE_NARRATION_COMMAND_PASS,en,es
 COMMON_OPTIONS_EXIT,Quit game,Salir
 COMMON_OPTIONS_NO,No,No
 COMMON_OPTIONS_OK,OK,OK
@@ -203,14 +203,27 @@ RPG_BATTLE_INFO_COMMAND_ATTACK,Attack 1 enemy.,Atacar a 1 enemigo.
 RPG_BATTLE_INFO_COMMAND_BACK,Go back to command selection.,Regresar a seleccionar comando.
 RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener sobras al ganar. Eficaz contra enemigos muy debilitados.
 RPG_BATTLE_INFO_COMMAND_FLEE,Try to escape from this battle.,Intentar escapar de la batalla.
-RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center][color=#58574]¡Bucho[/color] perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
+RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center]Bucho lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center]¡Bucho perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]Now that's a dessert![/center][/p][p] [/p][p][center]Bon appétit![/center][/p],[p][center]¡Qué buen postre![/center][/p][p] [/p][p][center]¡Buen provecho![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_SUCCESS,[p][center]Piece of cake![/center][/p],[p][center]¡Pan comido![/p][/center]
-RPG_BATTLE_NARRATION_ENEMY_ATTACKS_ENEMY,[color=yellow]{enemy}[/color] attacks [color=yellow]{other_enemy}[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=yellow]{other_enemy}[/color] con [color=green]{attack}[/color].
-RPG_BATTLE_NARRATION_ENEMY_ATTACKS_PLAYER,[color=yellow]{enemy}[/color] attacks [color=#58574]Bucho[/color] with [color=green]{attack}[/color].,[color=yellow]{enemy}[/color] ataca a [color=#58574]Bucho[/color] con [color=green]{attack}[/color].
-RPG_BATTLE_NARRATION_ENEMY_CURED,[color=yellow]{enemy}[/color] recovers [color=blue]{damage} HP[/color].,[color=yellow]{enemy}[/color] recupera [color=blue]{damage} HP[/color].
-RPG_BATTLE_NARRATION_ENEMY_HURT,[color=yellow]{enemy}[/color] takes [color=red]{damage} HP[/color] damage.,[color=yellow]{enemy}[/color] recibe [color=red]{damage} HP[/color] de daño.
-RPG_BATTLE_NARRATION_LEVEL_UP,[color=#58574f]Bucho[/color] got to level {level}!,¡[color=#58574f]Bucho[/color] subió al nivel {level}!
+RPG_BATTLE_NARRATION_COMMAND_CURE,{attacker} uses {attack}.,{attacker} usa {attack}.
+RPG_BATTLE_NARRATION_COMMAND_HURT,{attacker} attacks with {attack}.,{attacker} ataca con {attack}.
+RPG_BATTLE_NARRATION_COMMAND_PASS,{target} skips this turn.,{target} se salta este turno.
+RPG_BATTLE_NARRATION_DEAD_DEVOURED,{target} has been devoured!,¡{target} ha sido devorado!
+RPG_BATTLE_NARRATION_DEAD_MURDERED,{target} has been defeated!,¡{target} ha sido derrotado!
+RPG_BATTLE_NARRATION_DEAD_POISONED,{target} has been defeated!,¡{target} ha sido derrotado!
+RPG_BATTLE_NARRATION_DEVOUR_DAMAGE,{target} took some damage.,{target} sufre algo de daño.
+RPG_BATTLE_NARRATION_EVADE,{target} evades the attack.,{target} evade el ataque.
+RPG_BATTLE_NARRATION_FIGHTER_TURN,It's {name}'s turn!,¡Es el turno de {name}!
+RPG_BATTLE_NARRATION_FLEE_ATTEMPT_MANY,{target} and co. try to flee.,{target} y compañía intentan huir.
+RPG_BATTLE_NARRATION_FLEE_ATTEMPT_SINGLE,{target} tries to flee.,{target} intenta huir.
+RPG_BATTLE_NARRATION_FLEE_FAIL_MANY,{target} and co. couldn't flee.,{target} y compañía no pudieron huir.
+RPG_BATTLE_NARRATION_FLEE_FAIL_SINGLE,{target} couldn't flee.,{target} no pudo huir.
+RPG_BATTLE_NARRATION_FLEE_SUCCESS_MANY,{target} and co. flee.,{target} y compañía huyen.
+RPG_BATTLE_NARRATION_FLEE_SUCCESS_SINGLE,{target} flees.,{target} huye.
+RPG_BATTLE_NARRATION_HP_DAMAGE,{target} takes {damage} HP damage.,{target} sufre un daño de {damage} HP.
+RPG_BATTLE_NARRATION_HP_RECOVERY,{target} recovers {damage} HP.,{target} recupera {damage} HP.
+RPG_BATTLE_NARRATION_LEVEL_UP,Bucho gets to level {level}!,¡Bucho sube al nivel {level}!
 RPG_BATTLE_NARRATION_LEVEL_UP_AGILITY_UP,AGI +{points}!,¡AGI +{points}!
 RPG_BATTLE_NARRATION_LEVEL_UP_ATTACK_UP,ATK +{points}!,¡ATQ +{points}!
 RPG_BATTLE_NARRATION_LEVEL_UP_DEFENSE_UP,DEF +{points}!,¡DEF +{points}!
@@ -218,14 +231,24 @@ RPG_BATTLE_NARRATION_LEVEL_UP_LUCK_UP,LCK +{points}!,¡SRT +{points}!
 RPG_BATTLE_NARRATION_LEVEL_UP_MAX_HP_UP,New max HP is {points}!,¡Max HP aumenta a {points}!
 RPG_BATTLE_NARRATION_LEVEL_UP_MAX_MP_UP,New max MP is {points}!,¡Max MP aumenta a {points}!
 RPG_BATTLE_NARRATION_LEVEL_UP_SPEED_UP,SPD +{points}!,¡VEL +{points}!
-RPG_BATTLE_NARRATION_LOOT_EXP_MANY,[color=#58574]Bucho[/color] got {exp} experience points.,[color=#58574]Bucho[/color] obtuvo {exp} puntos de experiencia.
-RPG_BATTLE_NARRATION_LOOT_EXP_ONE,[color=#58574]Bucho[/color] got {exp} experience point.,[color=#58574]Bucho[/color] obtuvo {exp} punto de experiencia.
-RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY,[color=#58574]Bucho[/color] got {scraps} scraps.,[color=#58574]Bucho[/color] obtuvo {scraps} sobras.
-RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE,[color=#58574]Bucho[/color] got {scraps} scrap.,[color=#58574]Bucho[/color] obtuvo {scraps} sobra.
-RPG_BATTLE_NARRATION_PLAYER_ATTACKS,[color=#58574f]Bucho[/color] attacks with [color=green]{attack}[/color].,[color=#58574f]Bucho[/color] ataca con [color=green]{attack}[/color].
-RPG_BATTLE_NARRATION_PLAYER_CURED,[color=#58574f]Bucho[/color] recovers [color=blue]{damage} HP[/color].,[color=#58574f]Bucho[/color] recupera [color=blue]{damage} HP[/color].
-RPG_BATTLE_NARRATION_PLAYER_HURT,[color=#58574f]Bucho[/color] takes [color=red]{damage} HP[/color] damage.,[color=#58574f]Bucho[/color] recibe [color=red]{damage} HP[/color] de daño.
-RPG_BATTLE_NARRATION_PLAYER_THINKING,[color=#58574f]Bucho[/color] is thinking his next move.,[color=#58574f]Bucho[/color] está pensando su próxima acción.
+RPG_BATTLE_NARRATION_LOOT_EXP_MANY,Bucho gets {exp} experience points.,Bucho obtiene {exp} puntos de experiencia.
+RPG_BATTLE_NARRATION_LOOT_EXP_ONE,Bucho gets {exp} experience point.,Bucho obtiene {exp} punto de experiencia.
+RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY,Bucho gets {scraps} scraps.,Bucho obtiene {scraps} sobras.
+RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE,Bucho gets {scraps} scrap.,Bucho obtiene {scraps} sobra.
+RPG_BATTLE_NARRATION_STAT_ATK_BUFF,{target}'s ATK increases by {points}.,El ATQ de {target} se incrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_ATK_DEBUFF,{target}'s ATK decreases by {points}.,El ATQ de {target} se decrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_ATK_NORMAL,{target}'s ATK gets back to normal.,El ATQ de {target} regresa a la normalidad.
+RPG_BATTLE_NARRATION_STAT_DEF_BUFF,{target}'s DEF increases by {points}.,La DEF de {target} se incrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_DEF_DEBUFF,{target}'s DEF decreases by {points}.,La DEF de {target} se decrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_DEF_NORMAL,{target}'s DEF gets back to normal.,La DEF de {target} regresa a la normalidad.
+RPG_BATTLE_NARRATION_STAT_SPD_BUFF,{target}'s SPD increases by {points}.,La VEL de {target}  se incrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_SPD_DEBUFF,{target}'s SPD decreases by {points}.,La VEL de {target}  se decrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_SPD_NORMAL,{target}'s SPD gets back to normal.,La VEL de {target} regresa a la normalidad.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_CLEAR,{target} is no longer charmed.,{target} ya no está enamorado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_INFLICTED,{target} has been charmed.,{target} ha sido enamorado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_CLEAR,{target} is no longer poisoned.,{target} ya no está envenenado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_DAMAGE,{target} takes {damage} HP damage from poison.,{target} sufre un daño de {damage} HP por el veneno.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_INFLICTED,{target} gets poisoned.,{target} es envenenado.
 RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_BUFF,ATK+,ATQ+
 RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_DEBUFF,ATK-,ATQ-
 RPG_BATTLE_STATUS_EFFECT_SHORT_CHARMED,CHRM,AMOR

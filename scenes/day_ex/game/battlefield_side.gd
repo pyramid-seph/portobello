@@ -3,11 +3,20 @@ extends PanelContainer
 
 signal target_selected(target: Fighter)
 
+const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
 const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 
+#@export var _narrator: BattleNarrationBox
+
 var _members: Array[Fighter]
+
+@onready var _narrator: BattleNarrationBox
+
+
+
+
 
 @onready var _background_texture_rect: TextureRect = %BackgroundTextureRect
 @onready var _back_row: HBoxContainer = %BackRow
@@ -81,6 +90,7 @@ func _setup_row(
 		var unique: bool = member_ocurrences_count[fighter_name] == 1
 		var fighter_ocurrence: int = -1 if unique else tally[fighter_name]
 		new_fighter_node.set_fighter_data(fighter_data, fighter_ocurrence)
+		new_fighter_node.set_narrator(_narrator)
 		new_fighter_node.selected.connect(_on_fighter_selected)
 		new_fighter_node.selection_canceled.connect(_on_fighter_selection_canceled)
 		row.add_child(new_fighter_node)

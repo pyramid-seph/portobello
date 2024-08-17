@@ -14,6 +14,7 @@ enum CauseOfDeath {
 	EATEN,
 }
 
+const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const BattlefieldSide = preload("res://scenes/day_ex/game/battlefield_side.gd")
 const ActionAnimation = preload("res://scenes/day_ex/game/action_animation.gd")
 const StatusDisplayManager = preload("res://scenes/day_ex/game/status_display_manager.gd")
@@ -32,6 +33,7 @@ var scraps: int:
 		if scraps != old_val:
 			scraps_qty_changed.emit()
 
+var _turn_narration := TurnNarration.new()
 var _stats_manager := StatsManager.new()
 var _status_manager := StatusManager.new()
 var _fighter_data: FighterData
@@ -68,6 +70,10 @@ func _gui_input(event: InputEvent) -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSLATION_CHANGED:
 		_update_fighter_name_label()
+
+
+func set_narrator(narrator: BattleNarrationBox) -> void:
+	_turn_narration.narrator = narrator
 
 
 ## Set ocurrence to 0 or a negative value if this fighter is 
@@ -145,7 +151,6 @@ func wait_flee() -> void:
 		self_modulate.a = 0
 		_stats_manager.reset_buffs()
 		_status_manager.clear_all_status_effect()
-		print(get_full_name(), " fled.")
 
 
 func enter_battlefield() -> void:
@@ -165,12 +170,14 @@ func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide,
 		return
 	
 	await _on_turn_started()
+	_turn_narration.turn(get_full_name())
 	_animation_player.play(&"take_turn")
 	await _animation_player.animation_finished
+	await _turn_narration.wait_until_read()
 	var brain: FighterBrain = _get_active_brain() 
 	var command_completed: bool = false
 	while not command_completed:
-		brain.start_command_selection(self)
+		brain.start_command_selection(self) # TODO Disable flee
 		var command: BattleCommand = await brain.command_selected
 		if command is BattleCommand.Pass:
 			command_completed = await _run_pass_command()
@@ -231,12 +238,34 @@ func _on_turn_started() -> void:
 	if is_removed_from_battle():
 		return
 	
+	var atk_reset: bool = false
+	var def_reset: bool = false
+	var spd_reset: bool = false
+	var charm_cleared: bool = false
+	var poison_cleared: bool = false
 	if randi() % 101 <= _stats_manager.get_lck():
-		_stats_manager.reset_buffs()
-		# TODO Send stats reset (buff debuff reset) event
+		atk_reset = _stats_manager.reset_atk_buffs()
+		def_reset = _stats_manager.reset_def_buffs()
+		spd_reset = _stats_manager.reset_spd_buffs()
 	if randi() % 100 <= _stats_manager.get_lck():
-		_status_manager.clear_all_status_effect()
-		# TODO Send illness cleared event
+		charm_cleared = _status_manager.clear_charm()
+		poison_cleared = _status_manager.clear_poison()
+	
+	if atk_reset:
+		_turn_narration.atk_reset(get_full_name())
+		await _turn_narration.wait_until_read()
+	if def_reset:
+		_turn_narration.def_reset(get_full_name())
+		await _turn_narration.wait_until_read()
+	if spd_reset:
+		_turn_narration.spd_reset(get_full_name())
+		await _turn_narration.wait_until_read()
+	if charm_cleared:
+		_turn_narration.charm_clear(get_full_name())
+		await _turn_narration.wait_until_read()
+	if poison_cleared:
+		_turn_narration.poison_clear(get_full_name())
+		await _turn_narration.wait_until_read()
 
 
 ## Can be awaited
@@ -251,15 +280,18 @@ func _on_turn_finished(are_foes_defeated: bool) -> void:
 	_damage_label.text = str(absi(damage))
 	_animation_player.play(&"hurt")
 	await _animation_player.animation_finished
+	_turn_narration.poison_damage(get_full_name(), damage)
+	await _turn_narration.wait_until_read()
 	if is_dead():
 		_on_death(CauseOfDeath.POISONED)
 
 
 func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 	if randi() % attack.get_hit_chance_percent() <= _stats_manager.get_agi():
+		_turn_narration.evade(get_full_name())
 		_animation_player.play(&"evade")
 		await _animation_player.animation_finished
-		# TODO Send evasion signal
+		await _turn_narration.wait_until_read()
 		return
 	
 	var damage: int = attack.calculate_hp_damage(
@@ -267,40 +299,70 @@ func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 	_stats_manager.decrease_hp(damage)
 	_damage_label.text = str(absi(damage))
 	if damage > 0:
+		var is_devour_attack: bool = attack.is_devour_attack()
+		if is_devour_attack:
+			_turn_narration.devour_damage(get_full_name())
+		else:
+			_turn_narration.hp_damage(get_full_name(), damage)
 		_animation_player.play(
-				&"being_eaten" if attack.is_devour_attack() else &"hurt")
+				&"being_eaten" if is_devour_attack else &"hurt")
 		await _animation_player.animation_finished
-		# TODO send the hurt signal
+		await _turn_narration.wait_until_read()
 	elif damage < 0:
+		_turn_narration.hp_recover(get_full_name(), absi(damage))
 		_animation_player.play(&"cure")
 		await _animation_player.animation_finished
-		# TODO send the cured signal
+		await _turn_narration.wait_until_read()
 
 
 func _hurt_with_status_attack(attack: BattleAction) -> void:
 	if randi() % attack.get_hit_chance_percent() <= _stats_manager.get_lck():
-		# TODO Send afflicted event?
-		_apply_buffs(attack)
-		_apply_illness(attack)
+		await _apply_buffs(attack)
+		await _apply_illness(attack)
 	elif not attack.is_physical_attack():
+		_turn_narration.evade(get_full_name())
 		_animation_player.play(&"evade")
 		await _animation_player.animation_finished
-		# TODO Send evasion signal
+		await _turn_narration.wait_until_read()
 
 
 func _apply_buffs(attack: BattleAction) -> void:
 	_stats_manager.buff_atk(attack.get_status_effect_attack())
 	_stats_manager.buff_def(attack.get_status_effect_defense())
 	_stats_manager.buff_speed(attack.get_status_effect_speed())
+	
+	if attack.get_status_effect_attack() != 0:
+		if _stats_manager.get_atk_buffs() == 0:
+			_turn_narration.atk_reset(get_full_name())
+		else:
+			_turn_narration.atk_buff(get_full_name(), 
+					attack.get_status_effect_attack())
+		await _turn_narration.wait_until_read()
+	if attack.get_status_effect_defense() != 0:
+		if _stats_manager.get_def_buffs() == 0:
+			_turn_narration.def_reset(get_full_name())
+		else:
+			_turn_narration.def_buff(get_full_name(), 
+					attack.get_status_effect_defense())
+		await _turn_narration.wait_until_read()
+	if attack.get_status_effect_speed() != 0:
+		if _stats_manager.get_spd_buffs() == 0:
+			_turn_narration.spd_reset(get_full_name())
+		else:
+			_turn_narration.spd_buff(get_full_name(), 
+					attack.get_status_effect_speed())
+		await _turn_narration.wait_until_read()
 
 
 func _apply_illness(attack: BattleAction) -> void:
 	if attack.inflicts_poison():
 		_status_manager.set_poison_damage(attack.get_poison_damage())
-		# TODO Send poisoned event
+		_turn_narration.poisoned(get_full_name())
+		await _turn_narration.wait_until_read()
 	if attack.inflicts_love():
 		_status_manager.set_is_charmed(true)
-		# TODO Send charmed event
+		_turn_narration.charmed(get_full_name())
+		await _turn_narration.wait_until_read()
 
 
 func _setup() -> void:
@@ -335,7 +397,8 @@ func _update_fighter_name_label() -> void:
 
 
 func _run_pass_command() -> bool:
-	# TODO Narrate turn passed
+	_turn_narration.pass_turn(get_full_name())
+	_turn_narration.wait_until_read()
 	# TODO Create pass animation?
 	print(get_full_name(), " passed their turn.")
 	return true
@@ -343,16 +406,20 @@ func _run_pass_command() -> bool:
 
 func _run_flee_command(ally_side: BattlefieldSide, 
 		is_flee_forbidden: bool) -> bool:
-	# TODO Narrate trying to flee
+	var allies: Array[Fighter] = ally_side.get_members()
+	var cowards_count: int = Utils.count(allies, func(ally: Fighter):
+			return not ally.is_removed_from_battle())
 	var successful_flee_attempt: bool = not is_flee_forbidden and \
 			 randi() % 101 <= _stats_manager.get_lck()
+	_turn_narration.flee_attempt(get_full_name(), cowards_count)
+	await _turn_narration.wait_until_read()
 	if successful_flee_attempt:
-		for fighter: Fighter in ally_side.get_members():
+		for fighter: Fighter in allies:
 			await fighter.wait_flee()
-		# TODO Narrate party fled
+		_turn_narration.flee_success(get_full_name(), cowards_count)
 	else:
-		# TODO Narrate could not flee
-		pass
+		_turn_narration.flee_fail(get_full_name(), cowards_count)
+	await _turn_narration.wait_until_read()
 	return true
 
 
@@ -369,9 +436,12 @@ func _run_attack_command(brain: FighterBrain, command: BattleCommand.Hurt,
 	var target: Fighter = await brain.target_selected
 	if target and not target.is_removed_from_battle():
 		_consume_resource(attack)
+		if attack.is_curative_attack():
+			_turn_narration.cure(get_full_name(), attack.get_action_name())
+		else:
+			_turn_narration.attack(get_full_name(), attack.get_action_name())
 		_animation_player.play(&"attack")
 		await _animation_player.animation_finished
-		# TODO narrate attack and target
 		await target.get_hurt(self, attack)
 		return true
 	return false
@@ -398,7 +468,6 @@ func _consume_resource(attack: BattleAction) -> bool:
 	match attack.get_consumable():
 		BattleAction.Consumable.MP:
 			_stats_manager.decrease_mp(cost)
-			print(get_full_name(), " MP: ", _stats_manager.get_curr_mp())
 			return true
 		BattleAction.Consumable.SCRAPS:
 			scraps -= cost
@@ -408,14 +477,18 @@ func _consume_resource(attack: BattleAction) -> bool:
 
 func _on_death(cause_of_death: CauseOfDeath = CauseOfDeath.UNSPECIFIED) -> void:
 	_cause_of_death = cause_of_death
+	if cause_of_death == CauseOfDeath.EATEN:
+		_turn_narration.devoured(get_full_name())
+	else:
+		_turn_narration.murdered(get_full_name())
 	_animation_player.play(
 			&"eaten" if cause_of_death == CauseOfDeath.EATEN else &"die")
-	# TODO Send devoured/dead event
 	await _animation_player.animation_finished
 	focus_mode = Control.FOCUS_NONE
 	self_modulate.a = 0.0
 	_stats_manager.reset_buffs()
 	_status_manager.clear_all_status_effect()
+	await _turn_narration.wait_until_read()
 
 
 func _on_status_display_manager_displayed_status_changed(

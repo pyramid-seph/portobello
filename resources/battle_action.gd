@@ -61,6 +61,10 @@ func is_physical_attack() -> bool:
 	return _physical_damage != PhysicalDamage.NONE
 
 
+func is_curative_attack() -> bool:
+	return _physical_damage == PhysicalDamage.RECOVER_HP_POINTS
+
+
 ## 0 means evade, positive means damage, negative means recovery
 func calculate_hp_damage(attacker_stats: StatsManager, target_stats: StatsManager) -> int:
 	var damage: int = 0

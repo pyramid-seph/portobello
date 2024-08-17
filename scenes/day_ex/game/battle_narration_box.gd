@@ -18,16 +18,16 @@ func _gui_input(event: InputEvent) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSLATION_CHANGED:
-		say(_what, _format_values)
+		_update_narration_label_text()
 
 
 func say(what: String, format_values: Dictionary = {}) -> void:
-	if not is_node_ready():
-		await ready
-	
 	_what = what
 	_format_values = format_values
-	_narration_label.text = tr(what).format(format_values)
+	
+	if not is_node_ready():
+		await ready
+	_update_narration_label_text()
 
 
 func say_and_wait_until_read(what: String, format_values: Dictionary = {}) -> void:
@@ -42,6 +42,17 @@ func wait_until_read() -> void:
 
 func silence() -> void:
 	say("")
+
+
+func _update_narration_label_text() -> void:
+	if not is_node_ready():
+		return
+	
+	var tr_format_values: Dictionary = {}
+	for key: String in _format_values:
+		var value : String = str(_format_values[key])
+		tr_format_values[key] = tr(value)
+	_narration_label.text = tr(_what).format(tr_format_values)
 
 
 func _on_focus_entered() -> void:
