@@ -177,7 +177,7 @@ func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide,
 	var brain: FighterBrain = _get_active_brain() 
 	var command_completed: bool = false
 	while not command_completed:
-		brain.start_command_selection(self) # TODO Disable flee
+		brain.start_command_selection(self, is_flee_forbidden)
 		var command: BattleCommand = await brain.command_selected
 		if command is BattleCommand.Pass:
 			command_completed = await _run_pass_command()

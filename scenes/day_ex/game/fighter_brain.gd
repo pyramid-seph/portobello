@@ -8,9 +8,9 @@ const BattlefieldSide = preload("res://scenes/day_ex/game/battlefield_side.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
 
-func start_command_selection(fighter: Fighter) -> void:
+func start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void:
 	# Deferring call so we give consumers a chance to observe the command_selected signal
-	call_deferred("_start_command_selection", fighter)
+	call_deferred("_start_command_selection", fighter, is_flee_forbidden)
 
 
 func  start_target_selection(target_side: BattlefieldSide) -> void:
@@ -19,7 +19,7 @@ func  start_target_selection(target_side: BattlefieldSide) -> void:
 
 
 # Implement this function.
-func _start_command_selection(fighter: Fighter) -> void:
+func _start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void:
 	command_selected.emit(BattleCommand.Pass.new())
 
 
