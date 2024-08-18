@@ -46,17 +46,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	
-	
-	
-	_enemy_side._narrator = _narrator
-	_player_side._narrator = _narrator
-	
-	
-	
-	
-	
-	
+	_enemy_side.set_narrator(_narrator)
+	_player_side.set_narrator(_narrator)
 	_setup_player()
 	_battle_manager = BattleManager.new(_player_side, _enemy_side)
 	_main_container.visible = get_parent() == $/root

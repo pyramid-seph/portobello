@@ -8,15 +8,8 @@ const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
 const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 
-#@export var _narrator: BattleNarrationBox
-
 var _members: Array[Fighter]
-
-@onready var _narrator: BattleNarrationBox
-
-
-
-
+var _narrator: BattleNarrationBox
 
 @onready var _background_texture_rect: TextureRect = %BackgroundTextureRect
 @onready var _back_row: HBoxContainer = %BackRow
@@ -33,6 +26,10 @@ func setup(party: BattleParty, background: Texture2D = null) -> void:
 	_setup_row(party.get_back_row_members(),
 			 _back_row, tally, member_ocurrences_count)
 	_setup_member_focus_neighbors()
+
+
+func set_narrator(narrator: BattleNarrationBox) -> void:
+	_narrator  = narrator
 
 
 func set_background(background: Texture2D) -> void:
