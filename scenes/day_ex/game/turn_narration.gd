@@ -164,6 +164,14 @@ func spd_reset(who: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_STAT_SPD_NORMAL", { "target": who })
 
 
+func not_enough_treats(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_NOT_ENOUGH_TREATS", { "target": who })
+
+
+func not_enough_mp(who: String) -> void:
+	_narrate("RPG_BATTLE_NARRATION_NOT_ENOUGH_MP", { "target": who })
+
+
 func _narrate(what: String, format_values: Dictionary = {}) -> void:
 	if narrator:
 		narrator.say(what, format_values)

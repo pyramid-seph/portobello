@@ -235,18 +235,20 @@ RPG_BATTLE_NARRATION_LOOT_EXP_MANY,Bucho gets {exp} experience points.,Bucho obt
 RPG_BATTLE_NARRATION_LOOT_EXP_ONE,Bucho gets {exp} experience point.,Bucho obtiene {exp} punto de experiencia.
 RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY,Bucho gets {scraps} scraps.,Bucho obtiene {scraps} sobras.
 RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE,Bucho gets {scraps} scrap.,Bucho obtiene {scraps} sobra.
-RPG_BATTLE_NARRATION_STAT_ATK_BUFF,{target}'s ATK increases by {points}.,El ATQ de {target} se incrementa {points} puntos.
-RPG_BATTLE_NARRATION_STAT_ATK_DEBUFF,{target}'s ATK decreases by {points}.,El ATQ de {target} se decrementa {points} puntos.
+RPG_BATTLE_NARRATION_NOT_ENOUGH_MP,{target} has not enough MP to do this.,{target} no tiene el MP necesario para esto..
+RPG_BATTLE_NARRATION_NOT_ENOUGH_TREATS,{target} has not enough scraps to do this.,{target} no tiene las croquetas necesarias para esto.
+RPG_BATTLE_NARRATION_STAT_ATK_BUFF,{target}'s ATK increases by {points}.,El ATQ de {target} sube {points}.
+RPG_BATTLE_NARRATION_STAT_ATK_DEBUFF,{target}'s ATK decreases by {points}.,El ATQ de {target} baja {points}.
 RPG_BATTLE_NARRATION_STAT_ATK_MAXIMIZED,{target}'s ATK is at its maximum.,El ATQ de {target} está al máximo.
 RPG_BATTLE_NARRATION_STAT_ATK_MINIMIZED,{target}'s ATK is at its minimum.,El ATQ de {target} está al mínimo.
 RPG_BATTLE_NARRATION_STAT_ATK_NORMAL,{target}'s ATK gets back to normal.,El ATQ de {target} regresa a la normalidad.
-RPG_BATTLE_NARRATION_STAT_DEF_BUFF,{target}'s DEF increases by {points}.,La DEF de {target} se incrementa {points} puntos.
-RPG_BATTLE_NARRATION_STAT_DEF_DEBUFF,{target}'s DEF decreases by {points}.,La DEF de {target} se decrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_DEF_BUFF,{target}'s DEF increases by {points}.,La DEF de {target} sube {points}.
+RPG_BATTLE_NARRATION_STAT_DEF_DEBUFF,{target}'s DEF decreases by {points}.,La DEF de {target} baja {points}.
 RPG_BATTLE_NARRATION_STAT_DEF_MAXIMIZED,{target}'s DEF is at its maximum.,La DEF de {target} está al máximo.
 RPG_BATTLE_NARRATION_STAT_DEF_MINIMIZED,{target}'s DEF is at its minimum.,La DEF de {target} está al mínimo.
 RPG_BATTLE_NARRATION_STAT_DEF_NORMAL,{target}'s DEF gets back to normal.,La DEF de {target} regresa a la normalidad.
-RPG_BATTLE_NARRATION_STAT_SPD_BUFF,{target}'s SPD increases by {points}.,La VEL de {target}  se incrementa {points} puntos.
-RPG_BATTLE_NARRATION_STAT_SPD_DEBUFF,{target}'s SPD decreases by {points}.,La VEL de {target}  se decrementa {points} puntos.
+RPG_BATTLE_NARRATION_STAT_SPD_BUFF,{target}'s SPD increases by {points}.,La VEL de {target} sube {points}.
+RPG_BATTLE_NARRATION_STAT_SPD_DEBUFF,{target}'s SPD decreases by {points}.,La VEL de {target} baja {points}.
 RPG_BATTLE_NARRATION_STAT_SPD_MAXIMIZED,{target}'s SPD is at its maximum.,La VEL de {target} está al máximo.
 RPG_BATTLE_NARRATION_STAT_SPD_MINIMIZED,{target}'s SPD is at its minimum.,La VEL de {target} está al mínimo.
 RPG_BATTLE_NARRATION_STAT_SPD_NORMAL,{target}'s SPD gets back to normal.,La VEL de {target} regresa a la normalidad.
@@ -255,7 +257,7 @@ RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_CLEAR,{target} is no longer charmed.,{t
 RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_INFLICTED,{target} has been charmed.,{target} ha sido enamorado.
 RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_ALREADY,{target} is already poisoned.,{target} ya está envenenado.
 RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_CLEAR,{target} is no longer poisoned.,{target} ya no está envenenado.
-RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_DAMAGE,{target} takes {damage} HP damage from poison.,{target} sufre un daño de {damage} HP por el veneno.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_DAMAGE,{target} takes {damage} HP damage from poison.,{target} pierde {damage} HP por el veneno.
 RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_INFLICTED,{target} gets poisoned.,{target} es envenenado.
 RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_BUFF,ATK+,ATQ+
 RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_DEBUFF,ATK-,ATQ-

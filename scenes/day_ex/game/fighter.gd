@@ -444,7 +444,7 @@ func _run_attack_command(brain: FighterBrain, command: BattleCommand.Hurt,
 		ally_side: BattlefieldSide, foe_side: BattlefieldSide) -> bool:
 	var attack: BattleAction = command.get_action()
 	if not _have_enough_resources_for(attack):
-		await _narrate_not_enough_resources(attack)
+		await _wait_not_enough_resources(attack)
 		return false
 	
 	var target_side: BattlefieldSide = \
@@ -476,8 +476,14 @@ func _have_enough_resources_for(attack: BattleAction) -> bool:
 	return true
 
 
-func _narrate_not_enough_resources(attack: BattleAction) -> void:
-	pass
+func _wait_not_enough_resources(attack: BattleAction) -> void:
+	var who: String = get_full_name()
+	match attack.get_consumable():
+		BattleAction.Consumable.SCRAPS:
+			_turn_narration.not_enough_treats(who)
+		BattleAction.Consumable.MP:
+			_turn_narration.not_enough_mp(who)
+	await _turn_narration.wait_until_read()
 
 
 func _consume_resource(attack: BattleAction) -> bool:
