@@ -155,13 +155,15 @@ func wait_flee() -> void:
 
 
 func enter_battlefield() -> void:
-	if is_dead() or not has_fled():
+	if is_dead():
 		return
 	
-	_has_fled = false
-	_animation_player.play(&"RESET")
-	_stats_manager.reset_buffs()
-	_status_manager.clear_all_status_effect()
+	_stats_manager.decrease_mp(_stats_manager.get_max_mp() * -1)
+	if has_fled():
+		_has_fled = false
+		_animation_player.play(&"RESET")
+		_stats_manager.reset_buffs()
+		_status_manager.clear_all_status_effect()
 
 
 func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide, 
