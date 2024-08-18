@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
 [ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="2_tc2hr"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/fighter.gd" id="3_wpufo"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/fighter.gd" id="3_33cos"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display_manager.gd" id="4_wdtdj"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="5_xgu1x"]
@@ -558,7 +558,7 @@ offset_bottom = 30.0
 focus_mode = 2
 texture = ExtResource("2_tc2hr")
 stretch_mode = 3
-script = ExtResource("3_wpufo")
+script = ExtResource("3_33cos")
 
 [node name="StatusDisplayManager" type="Node" parent="."]
 script = ExtResource("4_wdtdj")
