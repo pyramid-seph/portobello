@@ -36,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_text_tween.kill()
 		_text_tween = null
 		_dialogue_label.visible_characters = -1
-		_next_page_anim_player.play(&"fire")
+		_next_page_anim_player.play(&"next_page")
 	else:
 		_next()
 
@@ -96,7 +96,7 @@ func _say(page: DialoguePage) -> void:
 			message_length, 
 			duration)
 	await _text_tween.finished
-	_next_page_anim_player.play("next_page")
+	_next_page_anim_player.play(&"next_page")
 
 
 func _build_example_dialogue() -> Array[DialoguePage]:
