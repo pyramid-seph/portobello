@@ -419,7 +419,7 @@ func _update_fighter_name_label() -> void:
 
 func _run_pass_command() -> bool:
 	_turn_narration.pass_turn(get_full_name())
-	_turn_narration.wait_until_read()
+	await _turn_narration.wait_until_read()
 	return true
 
 
