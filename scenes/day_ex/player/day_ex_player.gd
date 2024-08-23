@@ -8,9 +8,11 @@ enum FacingDirection {
 	DOWN,
 }
 
+const SlipperyFloorDetector = preload("res://scenes/day_ex/player/slippery_floor_detector.gd")
 const ActionAreaDetector = preload("res://scenes/day_ex/player/action_area_detector.gd")
 
 @export var speed: float = 33.33
+@export_range(1.0, 3.0, 0.1) var slip_speed_multiplier: float = 2.0
 
 @export_group("Debug", "_debug")
 @export var _debug_show_walking_time: bool:
@@ -33,6 +35,7 @@ var _walking_time: float:
 @onready var _walking_time_label: Label = $WalkingTimeLabel
 @onready var _action_area_detector: ActionAreaDetector = $ActionAreaDetector
 @onready var _interact_sprite_2d: Sprite2D = $InteractSprite2D
+@onready var _slippery_floor_detector: SlipperyFloorDetector = $SlipperyFloorDetector
 
 
 func _ready() -> void:
@@ -42,26 +45,45 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var direction: Vector2 = _get_input()
-	velocity = speed * direction
-	
+	var input_dir: Vector2 = _get_input()
+	var is_on_slippery_floor: bool = \
+			_slippery_floor_detector.is_on_slippery_floor()
+	if is_on_slippery_floor:
+		_set_slip_velocity(input_dir)
+	else:
+		_set_walk_velocity(input_dir)
 	move_and_slide()
 	
-	if direction != Vector2.ZERO:
-		_facing_direction = direction
+	# FIXME this  still counts time when the player retries moving after colliding whith a direction while on wall. This also affects animation!
+	if not is_on_slippery_floor and \
+			not get_real_velocity().is_zero_approx() and \
+			not velocity.is_zero_approx():
+		_walking_time += delta
+	
+	if input_dir != Vector2.ZERO:
+		_facing_direction = input_dir
 	_action_area_detector.rotation = _facing_direction.angle()
 	
-	_update_animation(direction)
-	
-	# FIXME this still counts time when the player retries moving after colliding whith a direction while on wall. This also affects animation!
-	if not get_real_velocity().is_zero_approx() and not velocity.is_zero_approx():
-		_walking_time += delta
+	_update_move_animation(input_dir)
 	
 	if _debug_show_move_vectors:
 		queue_redraw()
+
+
+func _set_slip_velocity(input_dir: Vector2) -> void:
+	if not is_processing_unhandled_input():
+		velocity = Vector2.ZERO
+		return
 	
-	#if not get_real_velocity().is_zero_approx() and is_on_wall():
-		#print("DIR: %s - REAL_VEL: %s - VEL: %s" % [direction, get_real_velocity(), velocity])
+	var last_dir: Vector2 = get_real_velocity().normalized().round()
+	if last_dir.is_zero_approx():
+		if input_dir != last_dir and input_dir != Vector2.ZERO:
+			last_dir = input_dir
+		velocity = speed * slip_speed_multiplier * last_dir
+
+
+func _set_walk_velocity(input_dir: Vector2) -> void:
+	velocity = speed * input_dir
 
 
 func _process(_delta: float) -> void:
@@ -135,7 +157,7 @@ func _get_input() -> Vector2:
 	return input
 
 
-func _update_animation(direction: Vector2) -> void:
+func _update_move_animation(direction: Vector2) -> void:
 	var animation: String = _animated_sprite_2d.animation
 	var flip_h: bool = _animated_sprite_2d.flip_h
 	var flip_v: bool = _animated_sprite_2d.flip_v

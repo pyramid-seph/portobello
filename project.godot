@@ -183,6 +183,7 @@ locale/translations=PackedStringArray("res://localization/bucho_portobello_local
 2d_physics/layer_8="solid_tile"
 2d_physics/layer_9="exit"
 2d_physics/layer_10="action_area"
+2d_physics/layer_11="terrain"
 
 [physics]
 

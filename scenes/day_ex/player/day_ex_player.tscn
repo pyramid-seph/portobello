@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbj80apo103mi"]
+[gd_scene load_steps=16 format=3 uid="uid://cbj80apo103mi"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/player/day_ex_player.gd" id="1_71xu7"]
 [ext_resource type="Texture2D" uid="uid://dwh1dny803ed7" path="res://art/day_ex/day_ex_player_x_0.png" id="2_jbj5b"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="8_cv2pg"]
 [ext_resource type="Texture2D" uid="uid://ceae1kgi6pj40" path="res://art/day_ex/day_ex_interact.png" id="9_2royx"]
 [ext_resource type="Script" path="res://scenes/day_ex/player/action_area_detector.gd" id="10_8vasx"]
+[ext_resource type="Script" path="res://scenes/day_ex/player/slippery_floor_detector.gd" id="11_pku6g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dift3"]
 animations = [{
@@ -64,10 +65,14 @@ radius = 4.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kg2x"]
 radius = 2.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iquxc"]
+size = Vector2(10, 10)
+
 [node name="DayExPlayer" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 128
 motion_mode = 1
+safe_margin = 0.02
 script = ExtResource("1_71xu7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -100,6 +105,7 @@ vertical_alignment = 1
 [node name="ActionAreaDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 512
+input_pickable = false
 script = ExtResource("10_8vasx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActionAreaDetector"]
@@ -107,5 +113,16 @@ position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_5kg2x")
 debug_color = Color(0.894118, 0.192157, 0.631373, 0.419608)
 
+[node name="SlipperyFloorDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+input_pickable = false
+script = ExtResource("11_pku6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlipperyFloorDetector"]
+shape = SubResource("RectangleShape2D_iquxc")
+debug_color = Color(0.846333, 0.225884, 0.74372, 0.898039)
+
 [connection signal="area_entered" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_exited"]
+[connection signal="body_shape_entered" from="SlipperyFloorDetector" to="SlipperyFloorDetector" method="_on_body_shape_entered"]
