@@ -46,19 +46,20 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var input_dir: Vector2 = _get_input()
-	var is_on_slippery_floor: bool = \
-			_slippery_floor_detector.is_on_slippery_floor()
+	var is_on_slippery_floor: bool = _slippery_floor_detector.is_on_slippery_floor()
 	if is_on_slippery_floor:
 		_set_slip_velocity(input_dir)
 	else:
 		_set_walk_velocity(input_dir)
 	move_and_slide()
 	
-	# FIXME this  still counts time when the player retries moving after colliding whith a direction while on wall. This also affects animation!
 	if not is_on_slippery_floor and \
 			not get_real_velocity().is_zero_approx() and \
-			not velocity.is_zero_approx():
-		_walking_time += delta
+			not input_dir.is_zero_approx():
+		var wall_normal: Vector2 =  \
+				get_wall_normal() if is_on_wall() else Vector2.ZERO
+		if wall_normal.dot(input_dir) != -1:
+			_walking_time += delta
 	
 	if input_dir != Vector2.ZERO:
 		_facing_direction = input_dir
@@ -157,20 +158,20 @@ func _get_input() -> Vector2:
 	return input
 
 
-func _update_move_animation(direction: Vector2) -> void:
+func _update_move_animation(input_dir: Vector2) -> void:
 	var animation: String = _animated_sprite_2d.animation
 	var flip_h: bool = _animated_sprite_2d.flip_h
 	var flip_v: bool = _animated_sprite_2d.flip_v
-	if direction == Vector2.ZERO or get_real_velocity().is_zero_approx():
+	if input_dir == Vector2.ZERO or get_real_velocity().normalized().round().is_zero_approx():
 		if not animation.begins_with("iddle_"):
 			if animation == "move_horizontal":
 				animation = "iddle_horizontal"
 			else:
 				animation = "iddle_vertical"
 	else:
-		flip_h = direction.x < 0
-		flip_v = direction.y > 0
-		if is_zero_approx(direction.x):
+		flip_h = input_dir.x < 0
+		flip_v = input_dir.y > 0
+		if is_zero_approx(input_dir.x):
 			animation = "move_vertical"
 		else:
 			animation = "move_horizontal"

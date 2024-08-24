@@ -1460,6 +1460,8 @@ layer_3/tile_data = PackedInt32Array(-1769439, 458753, 13, -1703903, 458753, 268
 [node name="DayExPlayer" parent="World/TileMap" instance=ExtResource("4_kv2ty")]
 unique_name_in_owner = true
 position = Vector2(120, 150)
+_debug_show_walking_time = true
+_debug_show_move_vectors = true
 
 [node name="CameraPositions" type="Node2D" parent="World/TileMap"]
 metadata/_edit_lock_ = true
