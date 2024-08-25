@@ -53,19 +53,20 @@ func _physics_process(delta: float) -> void:
 		_set_walk_velocity(input_dir)
 	move_and_slide()
 	
-	if not is_on_slippery_floor and \
-			not get_real_velocity().is_zero_approx() and \
-			not input_dir.is_zero_approx():
-		var wall_normal: Vector2 =  \
+	var hit_a_wall: bool = true
+	if input_dir != Vector2.ZERO:
+		var wall_normal: Vector2 = \
 				get_wall_normal() if is_on_wall() else Vector2.ZERO
-		if wall_normal.dot(input_dir) != -1:
-			_walking_time += delta
+		hit_a_wall = wall_normal.dot(input_dir) == -1
+	
+	if not hit_a_wall and not is_on_slippery_floor:
+		_walking_time += delta
+	
+	_update_move_animation(input_dir, hit_a_wall)
 	
 	if input_dir != Vector2.ZERO:
 		_facing_direction = input_dir
 	_action_area_detector.rotation = _facing_direction.angle()
-	
-	_update_move_animation(input_dir)
 	
 	if _debug_show_move_vectors:
 		queue_redraw()
@@ -158,23 +159,33 @@ func _get_input() -> Vector2:
 	return input
 
 
-func _update_move_animation(input_dir: Vector2) -> void:
+func _update_move_animation(input_dir: Vector2, hit_a_wall: bool) -> void:
 	var animation: String = _animated_sprite_2d.animation
 	var flip_h: bool = _animated_sprite_2d.flip_h
 	var flip_v: bool = _animated_sprite_2d.flip_v
-	if input_dir == Vector2.ZERO or get_real_velocity().normalized().round().is_zero_approx():
-		if not animation.begins_with("iddle_"):
-			if animation == "move_horizontal":
-				animation = "iddle_horizontal"
-			else:
-				animation = "iddle_vertical"
-	else:
+	
+	if input_dir != Vector2.ZERO and not hit_a_wall:
 		flip_h = input_dir.x < 0
 		flip_v = input_dir.y > 0
-		if is_zero_approx(input_dir.x):
-			animation = "move_vertical"
+		if input_dir.abs().max_axis_index() == Vector2.AXIS_X:
+			animation = &"move_horizontal"
 		else:
-			animation = "move_horizontal"
+			animation = &"move_vertical"
+	elif animation.begins_with("iddle_"):
+		if input_dir.x != 0:
+			flip_h = input_dir.x < 0
+			flip_v = false
+			animation = &"iddle_horizontal"
+		elif input_dir.y != 0:
+			flip_h = false
+			flip_v = input_dir.y > 0
+			animation = &"iddle_vertical"
+	elif animation == &"move_horizontal":
+		animation = &"iddle_horizontal"
+	else:
+		animation = &"iddle_vertical"
+		
+	
 	_animated_sprite_2d.play(animation)
 	_animated_sprite_2d.flip_h = flip_h
 	_animated_sprite_2d.flip_v = flip_v
