@@ -11,6 +11,8 @@ enum FacingDirection {
 const SlipperyFloorDetector = preload("res://scenes/day_ex/player/slippery_floor_detector.gd")
 const ActionAreaDetector = preload("res://scenes/day_ex/player/action_area_detector.gd")
 
+const IDDLE_ANIM_PREFIX: String = "iddle_"
+
 @export var speed: float = 33.33
 @export_range(1.0, 3.0, 0.1) var slip_speed_multiplier: float = 2.0
 
@@ -122,24 +124,13 @@ func teleport(new_global_position: Vector2, facing_direction: FacingDirection) -
 	match facing_direction:
 		FacingDirection.LEFT:
 			_facing_direction = Vector2.LEFT
-			_animated_sprite_2d.play("iddle_horizontal")
-			_animated_sprite_2d.flip_h = true
-			_animated_sprite_2d.flip_v = false
 		FacingDirection.RIGHT:
 			_facing_direction = Vector2.RIGHT
-			_animated_sprite_2d.play("iddle_horizontal")
-			_animated_sprite_2d.flip_h = false
-			_animated_sprite_2d.flip_v = false
 		FacingDirection.UP:
 			_facing_direction = Vector2.UP
-			_animated_sprite_2d.play("iddle_vertical")
-			_animated_sprite_2d.flip_h = false
-			_animated_sprite_2d.flip_v = false
 		FacingDirection.DOWN:
 			_facing_direction = Vector2.DOWN
-			_animated_sprite_2d.play("iddle_vertical")
-			_animated_sprite_2d.flip_h = false
-			_animated_sprite_2d.flip_v = true
+	_update_move_animation(_facing_direction, true)
 
 
 func _get_input() -> Vector2:
@@ -171,7 +162,7 @@ func _update_move_animation(input_dir: Vector2, hit_a_wall: bool) -> void:
 			animation = &"move_horizontal"
 		else:
 			animation = &"move_vertical"
-	elif animation.begins_with("iddle_"):
+	elif animation.begins_with(IDDLE_ANIM_PREFIX):
 		if input_dir.x != 0:
 			flip_h = input_dir.x < 0
 			flip_v = false
@@ -184,7 +175,6 @@ func _update_move_animation(input_dir: Vector2, hit_a_wall: bool) -> void:
 		animation = &"iddle_horizontal"
 	else:
 		animation = &"iddle_vertical"
-		
 	
 	_animated_sprite_2d.play(animation)
 	_animated_sprite_2d.flip_h = flip_h

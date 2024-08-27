@@ -59,14 +59,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iquxc"]
+size = Vector2(10, 10)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_tyx1y"]
 radius = 4.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kg2x"]
 radius = 2.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iquxc"]
-size = Vector2(10, 10)
 
 [node name="DayExPlayer" type="CharacterBody2D"]
 collision_layer = 32
@@ -84,9 +84,6 @@ autoplay = "iddle_horizontal"
 position = Vector2(0, -11)
 texture = ExtResource("9_2royx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_tyx1y")
-
 [node name="WalkingTimeLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -102,6 +99,20 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SlipperyFloorDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+input_pickable = false
+script = ExtResource("11_pku6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlipperyFloorDetector"]
+shape = SubResource("RectangleShape2D_iquxc")
+debug_color = Color(0.219608, 0.227451, 0.745098, 0.427451)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tyx1y")
+debug_color = Color(0, 0.639216, 0.352941, 0.490196)
+
 [node name="ActionAreaDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 512
@@ -113,16 +124,6 @@ position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_5kg2x")
 debug_color = Color(0.894118, 0.192157, 0.631373, 0.419608)
 
-[node name="SlipperyFloorDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 1024
-input_pickable = false
-script = ExtResource("11_pku6g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SlipperyFloorDetector"]
-shape = SubResource("RectangleShape2D_iquxc")
-debug_color = Color(0.846333, 0.225884, 0.74372, 0.898039)
-
+[connection signal="body_shape_entered" from="SlipperyFloorDetector" to="SlipperyFloorDetector" method="_on_body_shape_entered"]
 [connection signal="area_entered" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_exited"]
-[connection signal="body_shape_entered" from="SlipperyFloorDetector" to="SlipperyFloorDetector" method="_on_body_shape_entered"]
