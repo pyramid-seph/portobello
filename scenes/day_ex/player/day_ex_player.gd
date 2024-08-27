@@ -27,7 +27,6 @@ const IDDLE_ANIM_PREFIX: String = "iddle_"
 	get:
 		return OS.is_debug_build() and _debug_show_move_vectors
 
-var _facing_direction: Vector2 = Vector2.RIGHT
 var _walking_time: float:
 	set(value):
 		_walking_time = value
@@ -60,34 +59,15 @@ func _physics_process(delta: float) -> void:
 		var wall_normal: Vector2 = \
 				get_wall_normal() if is_on_wall() else Vector2.ZERO
 		hit_a_wall = wall_normal.dot(input_dir) == -1
+		_action_area_detector.rotation = input_dir.angle()
 	
 	if not hit_a_wall and not is_on_slippery_floor:
 		_walking_time += delta
 	
 	_update_move_animation(input_dir, hit_a_wall)
 	
-	if input_dir != Vector2.ZERO:
-		_facing_direction = input_dir
-	_action_area_detector.rotation = _facing_direction.angle()
-	
 	if _debug_show_move_vectors:
 		queue_redraw()
-
-
-func _set_slip_velocity(input_dir: Vector2) -> void:
-	if not is_processing_unhandled_input():
-		velocity = Vector2.ZERO
-		return
-	
-	var last_dir: Vector2 = get_real_velocity().normalized().round()
-	if last_dir.is_zero_approx():
-		if input_dir != last_dir and input_dir != Vector2.ZERO:
-			last_dir = input_dir
-		velocity = speed * slip_speed_multiplier * last_dir
-
-
-func _set_walk_velocity(input_dir: Vector2) -> void:
-	velocity = speed * input_dir
 
 
 func _process(_delta: float) -> void:
@@ -121,16 +101,34 @@ func teleport(new_global_position: Vector2, facing_direction: FacingDirection) -
 	global_position = new_global_position
 	velocity = Vector2.ZERO
 	reset_walking_time()
+	var direction: Vector2 = Vector2.LEFT
 	match facing_direction:
 		FacingDirection.LEFT:
-			_facing_direction = Vector2.LEFT
+			direction = Vector2.LEFT
 		FacingDirection.RIGHT:
-			_facing_direction = Vector2.RIGHT
+			direction = Vector2.RIGHT
 		FacingDirection.UP:
-			_facing_direction = Vector2.UP
+			direction = Vector2.UP
 		FacingDirection.DOWN:
-			_facing_direction = Vector2.DOWN
-	_update_move_animation(_facing_direction, true)
+			direction = Vector2.DOWN
+	_update_move_animation(direction, true)
+	_action_area_detector.rotation = direction.angle()
+
+
+func _set_slip_velocity(input_dir: Vector2) -> void:
+	if not is_processing_unhandled_input():
+		velocity = Vector2.ZERO
+		return
+	
+	var last_dir: Vector2 = get_real_velocity().normalized().round()
+	if last_dir.is_zero_approx():
+		if input_dir != last_dir and input_dir != Vector2.ZERO:
+			last_dir = input_dir
+		velocity = speed * slip_speed_multiplier * last_dir
+
+
+func _set_walk_velocity(input_dir: Vector2) -> void:
+	velocity = speed * input_dir
 
 
 func _get_input() -> Vector2:
