@@ -72,6 +72,7 @@ radius = 2.0
 collision_layer = 32
 collision_mask = 128
 motion_mode = 1
+wall_min_slide_angle = 0.0
 safe_margin = 0.02
 script = ExtResource("1_71xu7")
 
@@ -85,6 +86,7 @@ position = Vector2(0, -11)
 texture = ExtResource("9_2royx")
 
 [node name="WalkingTimeLabel" type="Label" parent="."]
+z_index = 100
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -93,6 +95,9 @@ offset_right = 6.5
 offset_bottom = 10.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.00392157, 0.00392157, 0.00392157, 0.2)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("8_cv2pg")
 theme_override_font_sizes/font_size = 8
 text = "0"
