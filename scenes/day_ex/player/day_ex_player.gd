@@ -55,10 +55,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	var hit_a_wall: bool = true
-	if input_dir != Vector2.ZERO:
+	if not velocity.is_zero_approx():
 		var wall_normal: Vector2 = \
 				get_wall_normal() if is_on_wall() else Vector2.ZERO
-		hit_a_wall = wall_normal.dot(input_dir) == -1
+		hit_a_wall = wall_normal.dot(velocity.normalized()) == -1
+
 		_action_area_detector.rotation = input_dir.angle()
 	
 	if not hit_a_wall and not is_on_slippery_floor:
