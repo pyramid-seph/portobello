@@ -11,8 +11,6 @@ enum FacingDirection {
 const SlipperyFloorDetector = preload("res://scenes/day_ex/player/slippery_floor_detector.gd")
 const ActionAreaDetector = preload("res://scenes/day_ex/player/action_area_detector.gd")
 
-const IDDLE_ANIM_PREFIX: String = "iddle_"
-
 @export var speed: float = 33.33
 @export_range(1.0, 3.0, 0.1) var slip_speed_multiplier: float = 2.0
 
@@ -27,16 +25,17 @@ const IDDLE_ANIM_PREFIX: String = "iddle_"
 	get:
 		return OS.is_debug_build() and _debug_show_move_vectors
 
+var _is_iddle: bool = true
 var _walking_time: float:
 	set(value):
 		_walking_time = value
 		_on_walking_time_set()
 
-@onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _walking_time_label: Label = $WalkingTimeLabel
 @onready var _action_area_detector: ActionAreaDetector = $ActionAreaDetector
 @onready var _interact_sprite_2d: Sprite2D = $InteractSprite2D
 @onready var _slippery_floor_detector: SlipperyFloorDetector = $SlipperyFloorDetector
+@onready var _animation_tree: AnimationTree = $AnimationTree
 
 
 func _ready() -> void:
@@ -59,13 +58,13 @@ func _physics_process(delta: float) -> void:
 		var wall_normal: Vector2 = \
 				get_wall_normal() if is_on_wall() else Vector2.ZERO
 		hit_a_wall = wall_normal.dot(velocity.normalized()) == -1
-
-		_action_area_detector.rotation = input_dir.angle()
 	
 	if not hit_a_wall and not is_on_slippery_floor:
 		_walking_time += delta
 	
-	_update_move_animation(input_dir, hit_a_wall)
+	var is_iddle: bool = (hit_a_wall or velocity.is_zero_approx()) or \
+			(is_on_slippery_floor and input_dir == Vector2.ZERO)
+	_update_animation_params(input_dir, is_iddle)
 	
 	if _debug_show_move_vectors:
 		queue_redraw()
@@ -112,8 +111,7 @@ func teleport(new_global_position: Vector2, facing_direction: FacingDirection) -
 			direction = Vector2.UP
 		FacingDirection.DOWN:
 			direction = Vector2.DOWN
-	_update_move_animation(direction, true)
-	_action_area_detector.rotation = direction.angle()
+	_update_animation_params(direction, true)
 
 
 func _set_slip_velocity(input_dir: Vector2) -> void:
@@ -149,35 +147,11 @@ func _get_input() -> Vector2:
 	return input
 
 
-func _update_move_animation(input_dir: Vector2, hit_a_wall: bool) -> void:
-	var animation: String = _animated_sprite_2d.animation
-	var flip_h: bool = _animated_sprite_2d.flip_h
-	var flip_v: bool = _animated_sprite_2d.flip_v
-	
-	if input_dir != Vector2.ZERO and not hit_a_wall:
-		flip_h = input_dir.x < 0
-		flip_v = input_dir.y > 0
-		if input_dir.abs().max_axis_index() == Vector2.AXIS_X:
-			animation = &"move_horizontal"
-		else:
-			animation = &"move_vertical"
-	elif animation.begins_with(IDDLE_ANIM_PREFIX):
-		if input_dir.x != 0:
-			flip_h = input_dir.x < 0
-			flip_v = false
-			animation = &"iddle_horizontal"
-		elif input_dir.y != 0:
-			flip_h = false
-			flip_v = input_dir.y > 0
-			animation = &"iddle_vertical"
-	elif animation == &"move_horizontal":
-		animation = &"iddle_horizontal"
-	else:
-		animation = &"iddle_vertical"
-	
-	_animated_sprite_2d.play(animation)
-	_animated_sprite_2d.flip_h = flip_h
-	_animated_sprite_2d.flip_v = flip_v
+func _update_animation_params(facing_dir: Vector2, is_idle: bool):
+	_is_iddle = is_idle
+	if facing_dir != Vector2.ZERO:
+		_animation_tree["parameters/Idle/blend_position"] = facing_dir
+		_animation_tree["parameters/Move/blend_position"] = facing_dir
 
 
 func _on_walking_time_set() -> void:
