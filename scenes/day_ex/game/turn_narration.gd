@@ -16,14 +16,14 @@ func turn(who: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_FIGHTER_TURN", { "name": who })
 
 
-func attack(attacker: String, attack: String) -> void:
+func attack(attacker: String, attack_name: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_COMMAND_HURT", 
-			{ "attacker": attacker, "attack": attack })
+			{ "attacker": attacker, "attack": attack_name })
 
 
-func cure(attacker: String, attack: String) -> void:
+func cure(attacker: String, attack_name: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_COMMAND_CURE", 
-			{ "attacker": attacker, "attack": attack })
+			{ "attacker": attacker, "attack": attack_name })
 
 
 func pass_turn(who: String) -> void:
