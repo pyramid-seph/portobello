@@ -82,7 +82,7 @@ func _say(page: DialoguePage) -> void:
 	_dialogue_label.text = page.line
 	
 	_next_page_anim_player.stop()
-	_next_page_texture_rect.modulate.a = 0
+	_next_page_texture_rect.self_modulate.a = 0
 	_dialogue_label.visible_characters = 0
 	
 	if _text_tween:
