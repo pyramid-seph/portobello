@@ -7,7 +7,21 @@ func _ready() -> void:
 	collision_mask = Constants.LAYER_NONE
 
 
-@warning_ignore("unused_parameter")
-# Override.
+func is_executable() -> bool:
+	return _is_executable()
+
+
 func execute(target: CharacterBody2D) -> void:
+	if _is_executable():
+		_execute(target)
+
+
+# Virtual method.
+func _is_executable() -> bool:
+	return true
+
+
+@warning_ignore("unused_parameter")
+# Virtual method.
+func _execute(target: CharacterBody2D) -> void:
 	pass

@@ -10,7 +10,7 @@ const Player = preload("res://scenes/day_ex/player/day_ex_player.gd")
 		_exit = value
 		update_configuration_warnings()
 
-var _teleporting: bool
+var _is_teleporting: bool
 
 @onready var _timer: Timer = $Timer
 
@@ -22,10 +22,14 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 
-func execute(target: CharacterBody2D) -> void:
+func _is_executable() -> bool:
+	return not _is_teleporting
+
+
+func _execute(target: CharacterBody2D) -> void:
 	var player := target as Player
-	if player and _exit and not _teleporting:
-		_teleporting = true
+	if player and _exit and not _is_teleporting:
+		_is_teleporting = true
 		player.set_process_unhandled_input(false)
 		await TransitionPlayer.play_default()
 		var offset: Vector2 = player.global_position - global_position
@@ -34,4 +38,4 @@ func execute(target: CharacterBody2D) -> void:
 		await _timer.timeout
 		await TransitionPlayer.play_default_backwards()
 		player.set_process_unhandled_input(true)
-		_teleporting = false
+		_is_teleporting = false

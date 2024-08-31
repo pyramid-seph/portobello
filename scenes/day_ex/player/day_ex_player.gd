@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	_interact_sprite_2d.visible = \
-			_action_area_detector.is_action_area_detected() and \
+			_action_area_detector.is_executable_action_area_detected() and \
 			is_processing_unhandled_input()
 
 

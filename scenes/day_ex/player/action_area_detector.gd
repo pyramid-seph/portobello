@@ -11,8 +11,8 @@ func get_detected_action_area() -> ActionArea:
 	return _detected_action_area
 
 
-func is_action_area_detected() -> bool:
-	return _detected_action_area != null
+func is_executable_action_area_detected() -> bool:
+	return _detected_action_area and _detected_action_area.is_executable()
 
 
 func execute_detected_action_area(target: CharacterBody2D) -> void:
