@@ -599,6 +599,7 @@ parameters/Idle/blend_position = Vector2(0.998536, 0.00466108)
 parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="InteractSprite2D" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(0, -11)
 texture = ExtResource("9_2royx")
 
