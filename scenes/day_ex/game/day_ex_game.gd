@@ -41,14 +41,6 @@ func _start_battle(enemy_party: BattleParty, background: Texture2D,
 	_battle_screen.start(enemy_party, background, is_boss_battle)
 
 
-func _on_day_ex_ui_dialogue_started() -> void:
-	_player.set_process_unhandled_input(false)
-
-
-func _on_day_ex_ui_dialogue_finished() -> void:
-	_player.set_process_unhandled_input(true)
-
-
 func _on_day_ex_ui_dialogue_event_requested(event: String) -> void:
 	print("dialogue requested this event to be run: ", event)
 
