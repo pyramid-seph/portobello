@@ -23,6 +23,7 @@ func _ready() -> void:
 
 
 func _start_game() -> void:
+	_on_quest_manager_progress_made()
 	_player.set_process_unhandled_input(false)
 	_ui.set_pause_menu_enabled(false)
 	_ui.show_level_start()
@@ -67,3 +68,7 @@ func _on_quest_manager_progress_made() -> void:
 	if _quest_manager.is_quest_completed():
 		# TODO Play epilogue.
 		Game.start(Game.Minigame.TITLE_SCREEN)
+	else:
+		var quest_msg: String = \
+				"QUEST_STEP_%d" % _quest_manager.get_curr_step()
+		_ui.set_step_text(quest_msg)

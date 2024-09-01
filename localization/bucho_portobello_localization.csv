@@ -146,6 +146,12 @@ MINIGAME_NAME_STORY_MODE_0,1,1
 MINIGAME_NAME_STORY_MODE_1,2,2
 MINIGAME_NAME_STORY_MODE_2,3,3
 MINIGAME_NAME_STORY_MODE_3,EX,EX
+QUEST_MISSION,Mission,Misión
+QUEST_MISSION_TITLE,Eat the world,Comerse al mundo
+QUEST_STEP_0,Find a way out.,Encuentra una salida.
+QUEST_STEP_1,Get the kitchen door key.,Obtén la llave de la puerta de la cocina.
+QUEST_STEP_2,Open the kitchen door.,Abre la puerta de la cocina.
+QUEST_STEP_3,Investigate the backyard.,Investiga el patio.
 RESULTS_SCREEN_BONUS,Bonus = {lives} x 1000 = {bonus},Bono = {lives} x 1000 = {bonus}
 RESULTS_SCREEN_CURR_SCORE,Score = {score},Puntaje = {score}
 RESULTS_SCREEN_EVALUATION,Your grade is,Tu calificación es
