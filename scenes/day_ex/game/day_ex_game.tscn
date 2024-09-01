@@ -1629,6 +1629,7 @@ position = Vector2(155, -125)
 collision_layer = 512
 collision_mask = 0
 script = ExtResource("18_fus5f")
+_living_room_door_path = NodePath("../../LivingRoomDoor")
 _step_one_dialogue_event_01 = SubResource("Resource_dfmtg")
 _step_one_dialogue_event_02 = SubResource("Resource_2y6ia")
 metadata/_edit_lock_ = true

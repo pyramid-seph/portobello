@@ -1,5 +1,6 @@
 extends ActionArea
 
+@export var _living_room_door_path: NodePath
 @export var _step_one_dialogue_event_01: DialogueEvent
 @export var _step_one_dialogue_event_02: DialogueEvent
 
@@ -18,8 +19,10 @@ func _execute(target: CharacterBody2D) -> void:
 	DialogueManager.play(_step_one_dialogue_event_01)
 	await _step_one_dialogue_event_01.finished
 	await TransitionPlayer.play_default()
-	# TODO Destroy living room kitchen
-	print("Living room destroyed!")
+	if _living_room_door_path:
+		var door: Node2D = get_node_or_null(_living_room_door_path)
+		if door:
+			door.queue_free()
 	_timer.start(1.0)
 	await _timer.timeout
 	await TransitionPlayer.play_default_backwards()
