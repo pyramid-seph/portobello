@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=54 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -14,12 +14,14 @@
 [ext_resource type="Script" path="res://resources/battle_party.gd" id="7_gq5mr"]
 [ext_resource type="Script" path="res://resources/random_battle_config.gd" id="8_r6rwp"]
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/mission_manager.gd" id="10_re3j8"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/quest_manager.gd" id="10_re3j8"]
 [ext_resource type="PackedScene" uid="uid://c0epbuu3r3wqy" path="res://scenes/day_ex/game/battle_screen.tscn" id="11_1txxr"]
 [ext_resource type="PackedScene" uid="uid://cdp0di76wda8j" path="res://scenes/day_ex/objects/door.tscn" id="13_k4waj"]
 [ext_resource type="PackedScene" uid="uid://bvns5pk0w8s1g" path="res://scenes/day_ex/game/teleporter_action_area.tscn" id="15_oukx8"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/kitchen_parrot_action_area.gd" id="18_fus5f"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="20_rfyxl"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/room_parrot_action_area.gd" id="21_0a6m3"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/alien_action_area.gd" id="22_x5cfc"]
 
 [sub_resource type="Resource" id="Resource_wixno"]
 script = ExtResource("7_gq5mr")
@@ -1419,27 +1421,112 @@ pattern_2 = SubResource("TileMapPattern_acsgs")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hecm"]
 size = Vector2(20, 2)
 
-[sub_resource type="Resource" id="Resource_p6gff"]
+[sub_resource type="Resource" id="Resource_h33jq"]
 script = ExtResource("9_a05ap")
 character = "Yellow Parrot"
-line = "Let me destroy that door for you..."
+line = "Let me open the living room for you."
 text_speed_chars_per_second = 25.0
 
-[sub_resource type="Resource" id="Resource_dfmtg"]
+[sub_resource type="Resource" id="Resource_82y65"]
 script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_p6gff")])
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_h33jq")])
 
-[sub_resource type="Resource" id="Resource_53gme"]
+[sub_resource type="Resource" id="Resource_cb1eu"]
 script = ExtResource("9_a05ap")
 character = "Yellow Parrot"
-line = "Living room unlocked!"
+line = "The door was destroyed!"
 text_speed_chars_per_second = 25.0
 
-[sub_resource type="Resource" id="Resource_2y6ia"]
+[sub_resource type="Resource" id="Resource_ph3h4"]
 script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_53gme")])
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_cb1eu")])
+
+[sub_resource type="Resource" id="Resource_c7c18"]
+script = ExtResource("9_a05ap")
+character = "Yellow Parrot"
+line = "Let me take care of that for you. Gimme that key."
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_v2ris"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_c7c18")])
+
+[sub_resource type="Resource" id="Resource_pqrnh"]
+script = ExtResource("9_a05ap")
+character = "Yellow Parrot"
+line = "Done!
+Now go eat the world!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_kh6co"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_pqrnh")])
+
+[sub_resource type="Resource" id="Resource_6v4u5"]
+script = ExtResource("9_a05ap")
+character = "Yellow Parrot"
+line = "I did my thing. Now leave me alone!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_auymc"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_6v4u5")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5iun"]
+size = Vector2(4, 4)
+
+[sub_resource type="Resource" id="Resource_n2wam"]
+script = ExtResource("9_a05ap")
+character = "Blue Parrot"
+line = "Let's fight!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_fp32n"]
+script = ExtResource("9_a05ap")
+character = "Blue Parrot"
+line = "Hai-ya!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_x8dqh"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_n2wam"), SubResource("Resource_fp32n")])
+
+[sub_resource type="Resource" id="Resource_kodwm"]
+script = ExtResource("9_a05ap")
+character = ""
+line = "There was a parrot here."
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_m068m"]
+script = ExtResource("9_a05ap")
+character = ""
+line = "It's gone now."
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_iymn7"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_kodwm"), SubResource("Resource_m068m")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0cyl"]
+size = Vector2(4, 4)
+
+[sub_resource type="Resource" id="Resource_mbbvo"]
+script = ExtResource("9_a05ap")
+character = "Duck?"
+line = "I'm actually an alien."
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_dm51l"]
+script = ExtResource("9_a05ap")
+character = "Alien, I guess?"
+line = "Let's fight!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_mgvnu"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_mbbvo"), SubResource("Resource_dm51l")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4i8t"]
 size = Vector2(4, 4)
 
 [node name="DayExGame" type="Node"]
@@ -1461,10 +1548,8 @@ script = ExtResource("2_ae0mc")
 _max_time_sec = 3.0
 _battle_configs = Array[ExtResource("8_r6rwp")]([SubResource("Resource_6tnym")])
 
-[node name="MissionManager" type="Node" parent="Systems"]
+[node name="QuestManager" type="Node" parent="Systems"]
 script = ExtResource("10_re3j8")
-_living_room_door_path = NodePath("../../World/TileMap/LivingRoomDoor")
-_kitchen_door_path = NodePath("../../World/TileMap/KitchenDoor")
 
 [node name="World" type="Node2D" parent="."]
 
@@ -1498,7 +1583,7 @@ position = Vector2(60, 70)
 metadata/_edit_lock_ = true
 
 [node name="KitchenDoor" parent="World/TileMap" instance=ExtResource("13_k4waj")]
-position = Vector2(179, -200)
+position = Vector2(150, -200)
 metadata/_edit_lock_ = true
 
 [node name="CameraPositions" type="Node2D" parent="World/TileMap"]
@@ -1624,14 +1709,20 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -18)
 metadata/_edit_lock_ = true
 
-[node name="KitchenParrotActionArea" type="Area2D" parent="World/TileMap/ActionAreas"]
+[node name="KitchenParrotActionArea" type="Area2D" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_quest_manager")]
+z_index = 1
 position = Vector2(155, -125)
 collision_layer = 512
 collision_mask = 0
 script = ExtResource("18_fus5f")
+_quest_manager = NodePath("../../../../Systems/QuestManager")
 _living_room_door_path = NodePath("../../LivingRoomDoor")
-_step_one_dialogue_event_01 = SubResource("Resource_dfmtg")
-_step_one_dialogue_event_02 = SubResource("Resource_2y6ia")
+_kitchen_door_path = NodePath("../../KitchenDoor")
+_step_01_dialogue_event_01 = SubResource("Resource_82y65")
+_step_01_dialogue_event_02 = SubResource("Resource_ph3h4")
+_step_03_dialogue_event_01 = SubResource("Resource_v2ris")
+_step_03_dialogue_event_02 = SubResource("Resource_kh6co")
+_default_dialogue_event = SubResource("Resource_auymc")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/KitchenParrotActionArea"]
@@ -1642,5 +1733,32 @@ metadata/_edit_lock_ = true
 [node name="Timer" type="Timer" parent="World/TileMap/ActionAreas/KitchenParrotActionArea"]
 one_shot = true
 
+[node name="RoomParrotActionArea" type="Area2D" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_quest_manager")]
+z_index = 1
+position = Vector2(375, -202)
+script = ExtResource("21_0a6m3")
+_quest_manager = NodePath("../../../../Systems/QuestManager")
+_step_02_dialogue_event_01 = SubResource("Resource_x8dqh")
+_default_dialogue_event = SubResource("Resource_iymn7")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/RoomParrotActionArea"]
+position = Vector2(3, -2)
+shape = SubResource("RectangleShape2D_i0cyl")
+metadata/_edit_lock_ = true
+
+[node name="AlienActionArea" type="Area2D" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_quest_manager")]
+z_index = 1
+position = Vector2(355, 128)
+script = ExtResource("22_x5cfc")
+_quest_manager = NodePath("../../../../Systems/QuestManager")
+_step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/AlienActionArea"]
+shape = SubResource("RectangleShape2D_b4i8t")
+metadata/_edit_lock_ = true
+
 [connection signal="battle_finished" from="BattleScreen" to="." method="_on_battle_screen_battle_finished"]
 [connection signal="start_battle" from="Systems/RandomBattleSystem" to="." method="_on_random_battle_system_start_battle"]
+[connection signal="progress_made" from="Systems/QuestManager" to="." method="_on_quest_manager_progress_made"]

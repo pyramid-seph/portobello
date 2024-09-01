@@ -10,6 +10,7 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 	get:
 		return OS.is_debug_build() and _debug_skip_random_battles
 
+@onready var _quest_manager: QuestManager = $Systems/QuestManager
 @onready var _random_battle_system: RandomBattleSystem = %RandomBattleSystem
 @onready var _player: CharacterBody2D = $World/TileMap/DayExPlayer
 @onready var _battle_screen: BattleScreen = $BattleScreen
@@ -60,3 +61,9 @@ func _on_random_battle_system_start_battle(
 		enemy_party: BattleParty, background: Texture2D) -> void:
 	if not _debug_skip_random_battles:
 		_start_battle(enemy_party, background)
+
+
+func _on_quest_manager_progress_made() -> void:
+	if _quest_manager.is_quest_completed():
+		# TODO Play epilogue.
+		Game.start(Game.Minigame.TITLE_SCREEN)
