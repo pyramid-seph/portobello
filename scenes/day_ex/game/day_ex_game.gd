@@ -25,12 +25,14 @@ func _ready() -> void:
 func _start_game() -> void:
 	_on_quest_manager_progress_made()
 	_player.set_process_unhandled_input(false)
+	_ui.hide_quest_indicator()
 	_ui.set_pause_menu_enabled(false)
 	_ui.show_level_start()
 	await _ui.start_level_finished
 	_ui.set_pause_menu_enabled(true)
 	_random_battle_system.reset()
 	_player.set_process_unhandled_input(true)
+	_ui.show_quest_indicator()
 
 
 func _start_battle(enemy_party: BattleParty, background: Texture2D, 

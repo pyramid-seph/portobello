@@ -146,7 +146,7 @@ MINIGAME_NAME_STORY_MODE_0,1,1
 MINIGAME_NAME_STORY_MODE_1,2,2
 MINIGAME_NAME_STORY_MODE_2,3,3
 MINIGAME_NAME_STORY_MODE_3,EX,EX
-QUEST_MISSION,Mission,Misión
+QUEST_MISSION,Mission >>,Misión >>
 QUEST_MISSION_TITLE,Eat the world,Comerse al mundo
 QUEST_STEP_0,Find a way out.,Encuentra una salida.
 QUEST_STEP_1,Get the kitchen door key.,Obtén la llave de la puerta de la cocina.

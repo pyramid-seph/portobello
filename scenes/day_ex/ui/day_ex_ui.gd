@@ -28,5 +28,13 @@ func show_black_screen(value: bool) -> void:
 	_black_screen.visible = value
 
 
+func hide_quest_indicator() -> void:
+	_quest_indicator.disappear(true)
+
+
+func show_quest_indicator() -> void:
+	_quest_indicator.appear()
+
+
 func _on_start_labels_finished() -> void:
 	start_level_finished.emit()
