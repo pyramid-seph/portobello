@@ -4,6 +4,8 @@ extends ActionArea
 @export var _quest_manager: QuestManager
 @export var _step_02_dialogue_event_01: DialogueEvent
 @export var _default_dialogue_event: DialogueEvent
+@export var _blood_splat: Node2D
+@export var _parrot: Node2D
 
 var _is_executing: bool
 
@@ -27,7 +29,8 @@ func _execute_step_02(target: CharacterBody2D) -> void:
 	await _step_02_dialogue_event_01.finished
 	# TODO Fight the blue parrot!
 	print("Bucho wins!")
-	# TODO Remove parrot tile. Add some blood below Bucho?
+	_parrot.hide()
+	_blood_splat.show()
 	_quest_manager.set_step_completed(QuestManager.Steps.TWO)
 	target.set_process_unhandled_input(true)
 	_is_executing = false
