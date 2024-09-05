@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=60 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -21,7 +21,10 @@
 [ext_resource type="Script" path="res://scenes/day_ex/game/kitchen_parrot_action_area.gd" id="18_fus5f"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="20_rfyxl"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/room_parrot_action_area.gd" id="21_0a6m3"]
+[ext_resource type="Resource" uid="uid://dopwgerrghlor" path="res://resources/instances/day_ex/parties/party_boss_room_parrot.tres" id="22_50tig"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/alien_action_area.gd" id="22_x5cfc"]
+[ext_resource type="Texture2D" uid="uid://dbls1jv3djobu" path="res://art/day_ex/battle_background_backyard.png" id="23_jroxv"]
+[ext_resource type="Resource" uid="uid://cqxlnw3nrkxs2" path="res://resources/instances/day_ex/parties/party_boss_backyard_alien.tres" id="25_2bmt5"]
 
 [sub_resource type="Resource" id="Resource_wixno"]
 script = ExtResource("7_gq5mr")
@@ -1546,13 +1549,13 @@ size = Vector2(4, 4)
 script = ExtResource("1_c7cjq")
 _debug_skip_random_battles = true
 
-[node name="BattleScreen" parent="." instance=ExtResource("11_1txxr")]
-_preview = false
-
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="DayExUi" parent="Interface" instance=ExtResource("5_y60w5")]
 metadata/_edit_lock_ = true
+
+[node name="BattleScreen" parent="." instance=ExtResource("11_1txxr")]
+_preview = false
 
 [node name="Systems" type="Node" parent="."]
 
@@ -1769,26 +1772,31 @@ one_shot = true
 
 [node name="RoomParrotActionArea" type="Area2D" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_quest_manager", "_blood_splat", "_parrot")]
 z_index = 1
-position = Vector2(375, -202)
+position = Vector2(378, -204)
 script = ExtResource("21_0a6m3")
+_battle_screen_path = NodePath("../../../../BattleScreen")
 _quest_manager = NodePath("../../../../Systems/QuestManager")
 _step_02_dialogue_event_01 = SubResource("Resource_x8dqh")
 _default_dialogue_event = SubResource("Resource_iymn7")
 _blood_splat = NodePath("../../BlueParrotBloodSplat")
 _parrot = NodePath("../../BlueParrot")
+_background = ExtResource("5_r3dm0")
+_party = ExtResource("22_50tig")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/RoomParrotActionArea"]
-position = Vector2(3, -2)
 shape = SubResource("RectangleShape2D_i0cyl")
 metadata/_edit_lock_ = true
 
 [node name="AlienActionArea" type="Area2D" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_quest_manager")]
 z_index = 1
-position = Vector2(355, 128)
+position = Vector2(357, 128)
 script = ExtResource("22_x5cfc")
+_battle_screen_path = NodePath("../../../../BattleScreen")
 _quest_manager = NodePath("../../../../Systems/QuestManager")
 _step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
+_background = ExtResource("23_jroxv")
+_party = ExtResource("25_2bmt5")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/AlienActionArea"]
@@ -1796,5 +1804,6 @@ shape = SubResource("RectangleShape2D_b4i8t")
 metadata/_edit_lock_ = true
 
 [connection signal="battle_finished" from="BattleScreen" to="." method="_on_battle_screen_battle_finished"]
+[connection signal="battle_starting" from="BattleScreen" to="." method="_on_battle_screen_battle_starting"]
 [connection signal="start_battle" from="Systems/RandomBattleSystem" to="." method="_on_random_battle_system_start_battle"]
 [connection signal="progress_made" from="Systems/QuestManager" to="." method="_on_quest_manager_progress_made"]

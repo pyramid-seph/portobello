@@ -1,7 +1,9 @@
 @tool
 extends CanvasLayer
 
+signal battle_starting
 signal battle_finished(success: bool)
+signal battle_finishing(success: bool)
 
 const StatusDisplayManager = preload("res://scenes/day_ex/game/status_display_manager.gd")
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
@@ -11,7 +13,7 @@ const ActionSelector = preload("res://scenes/day_ex/game/action_selector.gd")
 const StatusDisplay = preload("res://scenes/day_ex/game/status_display.gd")
 const StatusLabel = preload("res://scenes/day_ex/game/status_label.gd")
 
-const PLAYER_PARTY_RES = preload("res://resources/instances/day_ex/parties/player_party.tres")
+const PLAYER_PARTY_RES = preload("res://resources/instances/day_ex/parties/party_player.tres")
 
 const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 
@@ -91,10 +93,11 @@ func _setup_battle(enemy_party: BattleParty, background: Texture2D) -> void:
 
 func _on_battle_finished(result: BattleManager.Result) -> void:
 	if result.is_game_over():
-		await _narrator.say_and_wait_until_read(
-				"RPG_BATTLE_NARRATION_BATTLE_FAILURE")
+		await _narrator.say("RPG_BATTLE_NARRATION_BATTLE_FAILURE")
 		_transition_delay_timer.start(TRANSITION_DELAY)
 		await _transition_delay_timer.timeout
+		battle_finishing.emit(true)
+		await _narrator.wait_until_read()
 		battle_finished.emit(false)
 	else:
 		await _narrator.say_and_wait_until_read(
@@ -124,6 +127,7 @@ func _on_battle_finished(result: BattleManager.Result) -> void:
 
 func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> void:
 	await TransitionPlayer.play_battle()
+	battle_starting.emit()
 	_setup_battle(enemy_party, background)
 	_main_container.show()
 	_narrator.say("RPG_BATTLE_NARRATION_BATTLE_STARTED")
@@ -144,6 +148,7 @@ func _exit_battle_screen() -> void:
 	await TransitionPlayer.play_battle()
 	_teardown()
 	_main_container.hide()
+	battle_finishing.emit(true)
 	await TransitionPlayer.play_battle_backwards()
 	battle_finished.emit(true)
 
