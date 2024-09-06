@@ -62,7 +62,7 @@ func _get_start_path(minigame: Minigame) -> String:
 		Minigame.STORY_DAY_03:
 			return "res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.tscn"
 		Minigame.STORY_DAY_EX:
-			return "res://scenes/day_ex/game/day_ex_game.tscn"
+			return "res://scenes/day_ex/_shared/cutscenes/cutscene_day_ex_01.tscn"
 		Minigame.SCORE_ATTACK_1A, \
 		Minigame.SCORE_ATTACK_1B, \
 		Minigame.SCORE_ATTACK_1C, \
