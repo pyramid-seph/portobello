@@ -413,6 +413,7 @@ offset_top = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("8_obcby")
 theme_override_font_sizes/font_size = 8
 text = "LOGOS_ROLL_GODOT_LOGO_CREDITS"
 horizontal_alignment = 1
@@ -444,6 +445,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="LogosRoll/ControllerSupportInfo/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_obcby")
 theme_override_font_sizes/font_size = 8
 text = "INFO_GAMEPAD_SUPPORT"
 horizontal_alignment = 1
@@ -458,6 +460,7 @@ stretch_mode = 3
 [node name="Label2" type="Label" parent="LogosRoll/ControllerSupportInfo/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_obcby")
 theme_override_font_sizes/font_size = 8
 text = "INFO_TOUCHSCREEN_SUPPORT"
 horizontal_alignment = 1
@@ -472,6 +475,7 @@ stretch_mode = 3
 [node name="Label3" type="Label" parent="LogosRoll/ControllerSupportInfo/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_obcby")
 theme_override_font_sizes/font_size = 8
 text = "INFO_KEYBOARD_SUPPORT"
 horizontal_alignment = 1
