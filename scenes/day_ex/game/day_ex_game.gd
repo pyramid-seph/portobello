@@ -9,9 +9,6 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 @export var _debug_skip_random_battles: bool:
 	get:
 		return OS.is_debug_build() and _debug_skip_random_battles
-@export var _debug_skip_mandatory_battles: bool:
-	get:
-		return OS.is_debug_build() and _debug_skip_mandatory_battles
 
 @onready var _quest_manager: QuestManager = $Systems/QuestManager
 @onready var _random_battle_system: RandomBattleSystem = %RandomBattleSystem
@@ -67,7 +64,9 @@ func _on_battle_screen_battle_finished(success: bool) -> void:
 
 func _on_random_battle_system_start_battle(
 		enemy_party: BattleParty, background: Texture2D) -> void:
-	if not _debug_skip_random_battles:
+	if _debug_skip_random_battles:
+		_random_battle_system.reset()
+	else:
 		_start_battle(enemy_party, background)
 
 

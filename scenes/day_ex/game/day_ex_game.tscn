@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=66 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -14,8 +14,10 @@
 [ext_resource type="Script" path="res://resources/battle_party.gd" id="7_gq5mr"]
 [ext_resource type="Script" path="res://resources/random_battle_config.gd" id="8_r6rwp"]
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
+[ext_resource type="Resource" uid="uid://cfrccih8ppxub" path="res://resources/instances/day_ex/chars/mouse.tres" id="10_05akv"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/quest_manager.gd" id="10_re3j8"]
 [ext_resource type="PackedScene" uid="uid://c0epbuu3r3wqy" path="res://scenes/day_ex/game/battle_screen.tscn" id="11_1txxr"]
+[ext_resource type="Resource" uid="uid://dd8hfy3k84br2" path="res://resources/instances/day_ex/chars/crow.tres" id="12_q1o4c"]
 [ext_resource type="PackedScene" uid="uid://cdp0di76wda8j" path="res://scenes/day_ex/objects/door.tscn" id="13_k4waj"]
 [ext_resource type="PackedScene" uid="uid://bvns5pk0w8s1g" path="res://scenes/day_ex/game/teleporter_action_area.tscn" id="15_oukx8"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/kitchen_parrot_action_area.gd" id="18_fus5f"]
@@ -43,6 +45,30 @@ script = ExtResource("8_r6rwp")
 _id = "living_room"
 _background = ExtResource("5_r3dm0")
 _enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_wixno"), SubResource("Resource_6qt4y")])
+
+[sub_resource type="Resource" id="Resource_3q2ns"]
+script = ExtResource("7_gq5mr")
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("10_05akv")])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_rjehg"]
+script = ExtResource("8_r6rwp")
+_id = "kitchen"
+_background = ExtResource("5_r3dm0")
+_enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_3q2ns")])
+
+[sub_resource type="Resource" id="Resource_g8sji"]
+script = ExtResource("7_gq5mr")
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("12_q1o4c")])
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_fq14a"]
+script = ExtResource("8_r6rwp")
+_id = "backyard"
+_background = ExtResource("23_jroxv")
+_enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_g8sji")])
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fpoks"]
 tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 0, 131072, 196609, 0, 196608, 262145, 0)
@@ -1547,7 +1573,6 @@ size = Vector2(4, 4)
 
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
-_debug_skip_random_battles = true
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -1563,7 +1588,7 @@ _preview = false
 unique_name_in_owner = true
 script = ExtResource("2_ae0mc")
 _max_time_sec = 3.0
-_battle_configs = Array[ExtResource("8_r6rwp")]([SubResource("Resource_6tnym")])
+_battle_configs = Array[ExtResource("8_r6rwp")]([SubResource("Resource_6tnym"), SubResource("Resource_rjehg"), SubResource("Resource_fq14a")])
 
 [node name="QuestManager" type="Node" parent="Systems"]
 script = ExtResource("10_re3j8")
@@ -1604,6 +1629,7 @@ metadata/_edit_lock_ = true
 [node name="DayExPlayer" parent="World/TileMap" instance=ExtResource("4_kv2ty")]
 unique_name_in_owner = true
 position = Vector2(120, 150)
+_debug_show_walking_time = true
 
 [node name="BlueParrot" type="AnimatedSprite2D" parent="World/TileMap"]
 position = Vector2(375, -235)
