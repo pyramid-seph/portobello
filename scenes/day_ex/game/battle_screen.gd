@@ -126,8 +126,8 @@ func _on_battle_finished(result: BattleManager.Result) -> void:
 
 
 func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> void:
-	await TransitionPlayer.play_battle()
 	battle_starting.emit()
+	await TransitionPlayer.play_battle()
 	_setup_battle(enemy_party, background)
 	_main_container.show()
 	_narrator.say("RPG_BATTLE_NARRATION_BATTLE_STARTED")

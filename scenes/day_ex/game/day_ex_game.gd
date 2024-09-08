@@ -38,7 +38,6 @@ func _start_game() -> void:
 
 func _start_battle(enemy_party: BattleParty, background: Texture2D, 
 		is_boss_battle: bool = false) -> void:
-	_ui.set_pause_menu_enabled(false)
 	_player.set_process_unhandled_input(false)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -47,6 +46,7 @@ func _start_battle(enemy_party: BattleParty, background: Texture2D,
 
 func _on_battle_screen_battle_starting() -> void:
 	_field.process_mode = Node.PROCESS_MODE_DISABLED
+	_ui.set_pause_menu_enabled(false)
 
 
 func _on_battle_screen_battle_finished(success: bool) -> void:
@@ -61,7 +61,7 @@ func _on_battle_screen_battle_finished(success: bool) -> void:
 	else:
 		Game.start(Game.Minigame.TITLE_SCREEN)
 
-
+ 
 func _on_random_battle_system_start_battle(
 		enemy_party: BattleParty, background: Texture2D) -> void:
 	if _debug_skip_random_battles:
