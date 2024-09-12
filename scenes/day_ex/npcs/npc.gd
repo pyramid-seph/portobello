@@ -50,10 +50,20 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not Engine.is_editor_hint():
-		if move_and_collide(_speed * _direction * delta) and \
-				not is_zero_approx(_speed):
-			_change_to_random_move_dir()
+	if Engine.is_editor_hint() or \
+			# This conditions mitigate the whole "CharacterBody2Ds pushing each 
+			# other" problem.
+			# Since this NPC is only moved for a brief cutscene at the end,
+			# this workaround is good enough when the player's physics process 
+			# is disabled while the cutscene is playing.
+			#
+			# See more: https://github.com/godotengine/godot/issues/34345
+			is_zero_approx(_speed) or \
+			_direction.is_zero_approx():
+		return
+	
+	if move_and_collide(_speed * _direction * delta):
+		_change_to_random_move_dir()
 
 
 func get_scared(is_scared: bool) -> void:

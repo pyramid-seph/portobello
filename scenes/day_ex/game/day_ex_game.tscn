@@ -1636,7 +1636,6 @@ metadata/_edit_lock_ = true
 [node name="NpcAlien" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(355, 116)
 _sprite_sheet = ExtResource("17_4wxe2")
-_panic_speed = 100.0
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1658,38 +1657,32 @@ metadata/_edit_lock_ = true
 [node name="NpcBodyguard" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(344, 125)
 _sprite_sheet = ExtResource("18_h2ier")
-_panic_speed = 100.0
 metadata/_edit_lock_ = true
 
 [node name="NpcBodyguard2" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(366, 125)
 _sprite_sheet = ExtResource("18_h2ier")
-_panic_speed = 100.0
 metadata/_edit_lock_ = true
 
 [node name="Npc" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(339, 147)
 _sprite_sheet = ExtResource("18_h2ier")
 _initial_facing_dir = 2
-_panic_speed = 100.0
 
 [node name="Npc2" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(350, 155)
 _sprite_sheet = ExtResource("18_h2ier")
 _initial_facing_dir = 2
-_panic_speed = 100.0
 
 [node name="Npc4" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(360, 155)
 _sprite_sheet = ExtResource("23_rmano")
 _initial_facing_dir = 2
-_panic_speed = 100.0
 
 [node name="Npc3" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(371, 147)
 _sprite_sheet = ExtResource("18_h2ier")
 _initial_facing_dir = 2
-_panic_speed = 100.0
 
 [node name="DayExPlayer" parent="World/TileMap" instance=ExtResource("4_kv2ty")]
 unique_name_in_owner = true
