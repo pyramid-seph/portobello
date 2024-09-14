@@ -49,17 +49,14 @@ func _on_battle_screen_battle_starting() -> void:
 	_ui.set_pause_menu_enabled(false)
 
 
-func _on_battle_screen_battle_finished(success: bool) -> void:
+func _on_battle_screen_battle_finished(success: bool, is_boss_battle: bool) -> void:
 	if success:
 		if not _quest_manager.is_quest_completed():
 			TouchControllerManager.mode = \
 					TouchControllerManager.Mode.GAMEPLAY_RPG_WORLD
 			_ui.set_pause_menu_enabled(true)
 			_field.process_mode = Node.PROCESS_MODE_INHERIT
-			var is_random_battle: bool = \
-					_quest_manager.get_curr_step() != QuestManager.Steps.TWO and \
-					_quest_manager.get_curr_step() != QuestManager.Steps.FOUR
-			_player.set_process_unhandled_input(is_random_battle)
+			_player.set_process_unhandled_input(!is_boss_battle)
 			_random_battle_system.reset()
 	else:
 		Game.start(Game.Minigame.TITLE_SCREEN)

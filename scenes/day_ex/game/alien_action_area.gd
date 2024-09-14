@@ -38,7 +38,8 @@ func _execute_step_04(target: CharacterBody2D) -> void:
 	DialogueManager.play(_step_04_dialogue_event_01)
 	await _step_04_dialogue_event_01.finished
 	_battle_screen.start(_party, _background, true)
-	var success: bool = await _battle_screen.battle_finished
+	var battle_finished_return: Array = await _battle_screen.battle_finished
+	var success: bool = battle_finished_return[0]
 	if success:
 		target.set_process_unhandled_input(true)
 		_ending_cutscene_player.play()

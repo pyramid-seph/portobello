@@ -2,7 +2,7 @@
 extends CanvasLayer
 
 signal battle_starting
-signal battle_finished(success: bool)
+signal battle_finished(success: bool, is_boss_battle: bool)
 signal battle_finishing(success: bool)
 
 const StatusDisplayManager = preload("res://scenes/day_ex/game/status_display_manager.gd")
@@ -61,7 +61,7 @@ func start(enemy_party: BattleParty, background: Texture2D,
 	await _enter_battle_screen(enemy_party, background)
 	var result: BattleManager.Result = \
 			await _battle_manager.start_battle(is_boss_battle)
-	_on_battle_finished(result)
+	_on_battle_finished(result, is_boss_battle)
 
 
 func _setup_player() -> void:
@@ -91,14 +91,14 @@ func _setup_battle(enemy_party: BattleParty, background: Texture2D) -> void:
 	_make_them_enter_battlefield(_enemy_side.get_members())
 
 
-func _on_battle_finished(result: BattleManager.Result) -> void:
+func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool) -> void:
 	if result.is_game_over():
 		await _narrator.say("RPG_BATTLE_NARRATION_BATTLE_FAILURE")
 		_transition_delay_timer.start(TRANSITION_DELAY)
 		await _transition_delay_timer.timeout
 		battle_finishing.emit(true)
 		await _narrator.wait_until_read()
-		battle_finished.emit(false)
+		battle_finished.emit(false, is_boss_battle)
 	else:
 		await _narrator.say_and_wait_until_read(
 				"RPG_BATTLE_NARRATION_BATTLE_SUCCESS")
@@ -122,7 +122,7 @@ func _on_battle_finished(result: BattleManager.Result) -> void:
 					msg_string, { "scraps": scraps_obtained })
 		_transition_delay_timer.start(TRANSITION_DELAY)
 		await _transition_delay_timer.timeout
-		_exit_battle_screen()
+		_exit_battle_screen(is_boss_battle)
 
 
 func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> void:
@@ -144,13 +144,13 @@ func _teardown() -> void:
 	_enemy_side.teardown()
 
 
-func _exit_battle_screen() -> void:
+func _exit_battle_screen(is_boss_battle: bool) -> void:
 	await TransitionPlayer.play_battle()
 	_teardown()
 	_main_container.hide()
 	battle_finishing.emit(true)
 	await TransitionPlayer.play_battle_backwards()
-	battle_finished.emit(true)
+	battle_finished.emit(true, is_boss_battle)
 
 
 func _get_player() -> Fighter:
