@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://clyn8nlxsbf12"]
+[gd_scene load_steps=10 format=3 uid="uid://clyn8nlxsbf12"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/ui/rpg_dialogue_box.gd" id="1_f0hiq"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_ukv3d"]
@@ -58,11 +58,6 @@ line_spacing = 0.0
 font = ExtResource("2_xxf2d")
 font_size = 8
 
-[sub_resource type="LabelSettings" id="LabelSettings_ec10j"]
-line_spacing = 2.0
-font = ExtResource("2_xxf2d")
-font_size = 8
-
 [node name="RpgDialogueBox" type="MarginContainer"]
 offset_right = 240.0
 offset_bottom = 92.0
@@ -106,16 +101,18 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ekldn")
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="DialogueLabel" type="Label" parent="VBoxContainer/MessageContainer/VBoxContainer"]
+[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MessageContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(216, 10)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_xxf2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing. Vivamus a gravida libero. Maecenas non suscipit dolor. Maecenas non suscipit dolor. "
-label_settings = SubResource("LabelSettings_ec10j")
+fit_content = true
+scroll_active = false
 autowrap_mode = 2
-justification_flags = 160
-uppercase = true
 visible_characters_behavior = 1
 
 [node name="NextPageTextureRect" type="TextureRect" parent="VBoxContainer/MessageContainer/VBoxContainer"]

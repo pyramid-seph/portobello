@@ -6,7 +6,7 @@ var _curr_page: int = -1
 var _text_tween: Tween
 
 @onready var _name_label: Label = %NameLabel
-@onready var _dialogue_label: Label = %DialogueLabel
+@onready var _dialogue_label: RichTextLabel = %DialogueLabel
 @onready var _next_page_anim_player: AnimationPlayer = $NextPageAnimationPlayer
 @onready var _next_page_texture_rect: TextureRect = %NextPageTextureRect
 @onready var _name_container: PanelContainer = %NameContainer
