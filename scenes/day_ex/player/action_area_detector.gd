@@ -3,7 +3,7 @@ extends Area2D
 signal action_area_detected
 signal detected_action_area_exited
 
-var _detected_action_area: ActionArea
+var _detected_action_area: ActionArea # TODO Should this better be a weakref?
 var _detected_distance: float
 
 
@@ -15,9 +15,11 @@ func is_executable_action_area_detected() -> bool:
 	return _detected_action_area and _detected_action_area.is_executable()
 
 
-func execute_detected_action_area(target: CharacterBody2D) -> void:
-	if _detected_action_area:
+func execute_detected_action_area(target: CharacterBody2D) -> bool:
+	var is_executable: bool = is_executable_action_area_detected()
+	if is_executable:
 		_detected_action_area.execute(target)
+	return is_executable
 
 
 func _on_area_entered(candidate: ActionArea) -> void:

@@ -17,6 +17,10 @@ grow_vertical = 2
 theme = ExtResource("1_elkqt")
 script = ExtResource("2_4b3uh")
 
+[node name="QuestIndicator" parent="." instance=ExtResource("6_w2trs")]
+layout_mode = 0
+offset_right = 163.0
+
 [node name="StartLabels" parent="." instance=ExtResource("3_4i2nv")]
 layout_mode = 1
 text_1 = "LEVEL_START_LINE_0_DAY_EX"
@@ -59,8 +63,5 @@ offset_right = 120.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="QuestIndicator" parent="." instance=ExtResource("6_w2trs")]
-layout_mode = 0
 
 [connection signal="finished" from="StartLabels" to="." method="_on_start_labels_finished"]

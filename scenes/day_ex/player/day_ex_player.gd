@@ -77,9 +77,9 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire"):
+	if event.is_action_pressed("fire") and \
+			_action_area_detector.execute_detected_action_area(self):
 		get_viewport().set_input_as_handled()
-		_action_area_detector.execute_detected_action_area(self)
 
 
 func _draw() -> void:

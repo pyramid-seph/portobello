@@ -231,9 +231,9 @@ func _get_target_side(attack: BattleAction, ally_side: BattlefieldSide,
 	var target_side: BattlefieldSide
 	var target_self: bool = attack.is_target_self()
 	if is_charmed:
-		target_side = foe_side if attack.is_target_self() else ally_side
+		target_side = foe_side if target_self else ally_side
 	else:
-		target_side = ally_side if attack.is_target_self() else foe_side
+		target_side = ally_side if target_self else foe_side
 	return target_side
 
 

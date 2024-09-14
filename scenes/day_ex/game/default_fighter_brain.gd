@@ -2,7 +2,7 @@ class_name DefaultFighterBrain
 extends FighterBrain
 
 
-func _start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void:
+func _start_command_selection(fighter: Fighter, _is_flee_forbidden: bool) -> void:
 	var weighted_actions: Array[EnemyCommand] = fighter.get_weighted_actions()
 	if weighted_actions.is_empty():
 		command_selected.emit(BattleCommand.Pass.new())

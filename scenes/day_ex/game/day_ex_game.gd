@@ -14,7 +14,7 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 @onready var _random_battle_system: RandomBattleSystem = %RandomBattleSystem
 @onready var _player: CharacterBody2D = $World/TileMap/DayExPlayer
 @onready var _battle_screen: BattleScreen = $BattleScreen
-@onready var _ui: DayExUi = $Interface/DayExUi
+@onready var _ui: DayExUi = %DayExUi
 @onready var _field: Node2D = $World/TileMap
 
 
@@ -72,7 +72,6 @@ func _on_random_battle_system_start_battle(
 
 func _on_quest_manager_progress_made() -> void:
 	if _quest_manager.is_quest_completed():
-		# TODO Play epilogue.
 		Game.start(Game.Minigame.TITLE_SCREEN)
 	else:
 		var quest_msg: String = \

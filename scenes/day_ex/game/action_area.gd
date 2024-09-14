@@ -21,7 +21,7 @@ func _is_executable() -> bool:
 	return true
 
 
-@warning_ignore("unused_parameter")
 # Virtual method.
+@warning_ignore("unused_parameter")
 func _execute(target: CharacterBody2D) -> void:
 	pass

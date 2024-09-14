@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=76 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c0epbuu3r3wqy" path="res://scenes/day_ex/game/battle_screen.tscn" id="11_1txxr"]
 [ext_resource type="Resource" uid="uid://dd8hfy3k84br2" path="res://resources/instances/day_ex/chars/crow.tres" id="12_q1o4c"]
 [ext_resource type="PackedScene" uid="uid://cdp0di76wda8j" path="res://scenes/day_ex/objects/door.tscn" id="13_k4waj"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/ending_cutscene_player.gd" id="14_rc3nq"]
 [ext_resource type="PackedScene" uid="uid://bvns5pk0w8s1g" path="res://scenes/day_ex/game/teleporter_action_area.tscn" id="15_oukx8"]
 [ext_resource type="PackedScene" uid="uid://cute6jp2xqrfx" path="res://scenes/day_ex/objects/blood_splat.tscn" id="15_qw1k1"]
 [ext_resource type="PackedScene" uid="uid://cjrmeidj5ljgj" path="res://scenes/day_ex/npcs/npc.tscn" id="16_2n5un"]
@@ -74,6 +75,28 @@ script = ExtResource("8_r6rwp")
 _id = "backyard"
 _background = ExtResource("23_jroxv")
 _enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_g8sji")])
+
+[sub_resource type="Resource" id="Resource_qd0hu"]
+script = ExtResource("9_a05ap")
+character = ""
+line = "And so, Bucho got the power of flying by eating a lot of birds."
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_mbsbk"]
+script = ExtResource("9_a05ap")
+character = ""
+line = "To be continued..."
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_28hm1"]
+script = ExtResource("9_a05ap")
+character = ""
+line = "...in day 3!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_orrs0"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_qd0hu"), SubResource("Resource_mbsbk"), SubResource("Resource_28hm1")])
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fpoks"]
 tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 0, 131072, 196609, 0, 196608, 262145, 0)
@@ -1583,6 +1606,7 @@ _debug_skip_random_battles = true
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="DayExUi" parent="Interface" instance=ExtResource("5_y60w5")]
+unique_name_in_owner = true
 metadata/_edit_lock_ = true
 
 [node name="BattleScreen" parent="." instance=ExtResource("11_1txxr")]
@@ -1598,6 +1622,16 @@ _battle_configs = Array[ExtResource("8_r6rwp")]([SubResource("Resource_6tnym"), 
 
 [node name="QuestManager" type="Node" parent="Systems"]
 script = ExtResource("10_re3j8")
+
+[node name="EndingCutscenePlayer" type="Node" parent="Systems"]
+script = ExtResource("14_rc3nq")
+_bird_fighters_path = Array[NodePath]([NodePath("../../World/TileMap/BackyardNpcs/NpcAlien"), NodePath("../../World/TileMap/BackyardNpcs/NpcBodyguard"), NodePath("../../World/TileMap/BackyardNpcs/NpcBodyguard2")])
+_rest_of_bird_gang_path = Array[NodePath]([NodePath("../../World/TileMap/BackyardNpcs/Npc"), NodePath("../../World/TileMap/BackyardNpcs/Npc2"), NodePath("../../World/TileMap/BackyardNpcs/Npc3")])
+_hen_path = NodePath("../../World/TileMap/BackyardNpcs/Npc4")
+_ending_dialogue = SubResource("Resource_orrs0")
+
+[node name="Timer" type="Timer" parent="Systems/EndingCutscenePlayer"]
+one_shot = true
 
 [node name="World" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -1633,25 +1667,26 @@ position = Vector2(385, -205)
 position = Vector2(0, 9)
 metadata/_edit_lock_ = true
 
+[node name="AlienActionArea" type="Area2D" parent="World/TileMap/BackyardNpcs" node_paths=PackedStringArray("_quest_manager", "_ending_cutscene_player")]
+z_index = 1
+position = Vector2(355, 119)
+script = ExtResource("22_x5cfc")
+_battle_screen_path = NodePath("../../../../BattleScreen")
+_quest_manager = NodePath("../../../../Systems/QuestManager")
+_step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
+_background = ExtResource("23_jroxv")
+_party = ExtResource("25_2bmt5")
+_ending_cutscene_player = NodePath("../../../../Systems/EndingCutscenePlayer")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/BackyardNpcs/AlienActionArea"]
+shape = SubResource("RectangleShape2D_b4i8t")
+metadata/_edit_lock_ = true
+
 [node name="NpcAlien" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(355, 116)
 _sprite_sheet = ExtResource("17_4wxe2")
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="AlienActionArea" type="Area2D" parent="World/TileMap/BackyardNpcs/NpcAlien" node_paths=PackedStringArray("_quest_manager")]
-z_index = 1
-position = Vector2(0, 3)
-script = ExtResource("22_x5cfc")
-_battle_screen_path = NodePath("../../../../../BattleScreen")
-_quest_manager = NodePath("../../../../../Systems/QuestManager")
-_step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
-_background = ExtResource("23_jroxv")
-_party = ExtResource("25_2bmt5")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/BackyardNpcs/NpcAlien/AlienActionArea"]
-shape = SubResource("RectangleShape2D_b4i8t")
 metadata/_edit_lock_ = true
 
 [node name="NpcBodyguard" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
@@ -1678,6 +1713,7 @@ _initial_facing_dir = 2
 position = Vector2(360, 155)
 _sprite_sheet = ExtResource("23_rmano")
 _initial_facing_dir = 2
+_panic_speed = 0.0
 
 [node name="Npc3" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
 position = Vector2(371, 147)
@@ -1687,7 +1723,6 @@ _initial_facing_dir = 2
 [node name="DayExPlayer" parent="World/TileMap" instance=ExtResource("4_kv2ty")]
 unique_name_in_owner = true
 position = Vector2(120, 150)
-_debug_show_walking_time = true
 
 [node name="BlueParrot" type="AnimatedSprite2D" parent="World/TileMap"]
 position = Vector2(375, -235)

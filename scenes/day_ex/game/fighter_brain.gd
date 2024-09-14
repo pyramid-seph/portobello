@@ -19,10 +19,12 @@ func  start_target_selection(target_side: BattlefieldSide) -> void:
 
 
 # Implement this function.
+@warning_ignore("unused_parameter")
 func _start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void:
 	command_selected.emit(BattleCommand.Pass.new())
 
 
 # Implement this function
+@warning_ignore("unused_parameter")
 func _start_target_selection(target_side: BattlefieldSide) -> void:
 	target_selected.emit(null)
