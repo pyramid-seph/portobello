@@ -48,13 +48,13 @@ func _execute_step_02(target: CharacterBody2D) -> void:
 	if success:
 		_parrot.hide()
 		_blood_splat.show()
-		_quest_manager.set_step_completed(QuestManager.Steps.TWO)
 	await _battle_screen.battle_finished
 	if success:
 		_timer.start(1.0)
 		await _timer.timeout
 		DialogueManager.play(_step_02_dialogue_event_02)
 		await _step_02_dialogue_event_02.finished
+		_quest_manager.set_step_completed(QuestManager.Steps.TWO)
 		target.set_process_unhandled_input(true)
 	_is_executing = false
 
