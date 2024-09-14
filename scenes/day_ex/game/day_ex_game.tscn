@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=78 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -1580,6 +1580,16 @@ text_speed_chars_per_second = 25.0
 script = ExtResource("20_rfyxl")
 _dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_n2wam"), SubResource("Resource_fp32n")])
 
+[sub_resource type="Resource" id="Resource_72l6o"]
+script = ExtResource("9_a05ap")
+character = ""
+line = "Bucho got the [color=red]BACKYARD KEY[/color]!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_vlh37"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_72l6o")])
+
 [sub_resource type="Resource" id="Resource_kodwm"]
 script = ExtResource("9_a05ap")
 character = ""
@@ -1900,6 +1910,7 @@ script = ExtResource("21_0a6m3")
 _battle_screen_path = NodePath("../../../../BattleScreen")
 _quest_manager = NodePath("../../../../Systems/QuestManager")
 _step_02_dialogue_event_01 = SubResource("Resource_x8dqh")
+_step_02_dialogue_event_02 = SubResource("Resource_vlh37")
 _default_dialogue_event = SubResource("Resource_iymn7")
 _blood_splat = NodePath("../../BlueParrotBloodSplat")
 _parrot = NodePath("../../BlueParrot")
@@ -1911,6 +1922,9 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/RoomParrotActionArea"]
 shape = SubResource("RectangleShape2D_i0cyl")
 metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="World/TileMap/ActionAreas/RoomParrotActionArea"]
+autostart = true
 
 [connection signal="battle_finished" from="BattleScreen" to="." method="_on_battle_screen_battle_finished"]
 [connection signal="battle_starting" from="BattleScreen" to="." method="_on_battle_screen_battle_starting"]

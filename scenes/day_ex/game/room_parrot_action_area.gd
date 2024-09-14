@@ -6,15 +6,19 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 @export var _battle_screen_path: NodePath
 @export var _quest_manager: QuestManager
 @export var _step_02_dialogue_event_01: DialogueEvent
+@export var _step_02_dialogue_event_02: DialogueEvent
 @export var _default_dialogue_event: DialogueEvent
 @export var _blood_splat: Node2D
 @export var _parrot: Node2D
+
 @export_group("Battle Config")
 @export var _background: Texture2D
 @export var _party: BattleParty
 
 var _is_executing: bool
 var _battle_screen: BattleScreen
+
+@onready var _timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -47,6 +51,10 @@ func _execute_step_02(target: CharacterBody2D) -> void:
 		_quest_manager.set_step_completed(QuestManager.Steps.TWO)
 	await _battle_screen.battle_finished
 	if success:
+		_timer.start(1.0)
+		await _timer.timeout
+		DialogueManager.play(_step_02_dialogue_event_02)
+		await _step_02_dialogue_event_02.finished
 		target.set_process_unhandled_input(true)
 	_is_executing = false
 
