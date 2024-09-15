@@ -25,6 +25,10 @@ extends Node2D
 	set(value):
 		secondary_action_button = value
 		_on_secondary_action_button_set()
+@export var action_pause: StringName = &"pause":
+	set(value):
+		action_pause = value
+		_on_action_pause_set()
 @export var main_action_button_texture: Texture2D:
 	set(value):
 		main_action_button_texture = value
@@ -62,32 +66,55 @@ func _ready() -> void:
 	_on_action_right_set()
 	_on_action_up_set()
 	_on_action_down_set()
-	_on_main_action_button_texture_set()
-	_on_secondary_action_button_texture_set()
 	_on_action_button_set()
 	_on_secondary_action_button_set()
+	_on_action_pause_set()
+	_on_main_action_button_texture_set()
+	_on_secondary_action_button_texture_set()
 	_on_hide_pause_button_set()
 	top_level = true
 
 
 func _on_action_left_set() -> void:
 	if is_node_ready():
+		Input.action_release(_dpad_left_button.action)
 		_dpad_left_button.action = action_left
 
 
 func _on_action_right_set() -> void:
 	if is_node_ready():
+		Input.action_release(_dpad_right_button.action)
 		_dpad_right_button.action = action_right
 
 
 func _on_action_up_set() -> void:
 	if is_node_ready():
+		Input.action_release(_dpad_up_button.action)
 		_dpad_up_button.action = action_up
 
 
 func _on_action_down_set() -> void:
 	if is_node_ready():
+		Input.action_release(_dpad_down_button.action)
 		_dpad_down_button.action = action_down
+
+
+func _on_action_button_set() -> void:
+	if is_node_ready():
+		Input.action_release(_main_action_button.action)
+		_main_action_button.action = action_button
+
+
+func _on_secondary_action_button_set() -> void:
+	if is_node_ready():
+		Input.action_release(_secondary_action_button.action)
+		_secondary_action_button.action = secondary_action_button
+
+
+func _on_action_pause_set() -> void:
+	if is_node_ready():
+		Input.action_release(_pause_button.action)
+		_pause_button.action = action_pause
 
 
 func _on_hide_main_action_button_set() -> void:
@@ -108,16 +135,6 @@ func _on_main_action_button_texture_set() -> void:
 func _on_secondary_action_button_texture_set() -> void:
 	if is_node_ready():
 		_secondary_action_button_sprite.texture = secondary_action_button_texture
-
-
-func _on_action_button_set() -> void:
-	if is_node_ready():
-		_main_action_button.action = action_button
-
-
-func _on_secondary_action_button_set() -> void:
-	if is_node_ready():
-		_secondary_action_button.action = secondary_action_button
 
 
 func _on_hide_pause_button_set() -> void:
