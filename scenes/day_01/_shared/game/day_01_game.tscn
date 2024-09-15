@@ -631,7 +631,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 visible = false
 _skip_level_results_screen = true
-_skip_minigame_results_screen = true
 _stars_threshold_one = 2
 _stars_threshold_two = 4
 _stars_threshold_three = 6

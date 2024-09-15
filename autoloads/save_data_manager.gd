@@ -17,8 +17,6 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	saving_started.connect(func(): _is_saving = true)
-	saving_finished.connect(func(): _is_saving = false)
 	_load()
 
 
@@ -32,10 +30,12 @@ func reset_save_data() -> void:
 
 
 func save() -> void:
+	_is_saving = true
 	saving_started.emit()
 	
 	var file := FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)
 	if not file:
+		_is_saving = false
 		saving_finished.emit()
 		_on_file_open_error()
 		return
@@ -43,8 +43,9 @@ func save() -> void:
 	if not save_data:
 		save_data = SaveData.new()
 	
-	var json_string := JSON.stringify(save_data.to_dictionary())
+	var json_string: String = JSON.stringify(save_data.to_dictionary())
 	file.store_string(json_string)
+	_is_saving = false
 	saving_finished.emit()
 
 

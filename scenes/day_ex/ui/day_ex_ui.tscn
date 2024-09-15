@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg5lsubt653gf"]
+[gd_scene load_steps=8 format=3 uid="uid://dg5lsubt653gf"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_elkqt"]
 [ext_resource type="Script" path="res://scenes/day_ex/ui/day_ex_ui.gd" id="2_4b3uh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="4_13kum"]
 [ext_resource type="PackedScene" uid="uid://clyn8nlxsbf12" path="res://scenes/day_ex/ui/rpg_dialogue_box.tscn" id="5_auhk2"]
 [ext_resource type="PackedScene" uid="uid://dvvm78qgp2fbl" path="res://scenes/day_ex/ui/quest_indicator.tscn" id="6_w2trs"]
+[ext_resource type="PackedScene" uid="uid://ffbhiswhalqd" path="res://scenes/_shared/ui/level_completed_screen.tscn" id="7_8hyhb"]
 
 [node name="DayExUi" type="Control"]
 layout_mode = 3
@@ -63,5 +64,9 @@ offset_right = 120.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="SimpleLevelCompletedScreen" parent="." instance=ExtResource("7_8hyhb")]
+visible = false
+layout_mode = 1
 
 [connection signal="finished" from="StartLabels" to="." method="_on_start_labels_finished"]

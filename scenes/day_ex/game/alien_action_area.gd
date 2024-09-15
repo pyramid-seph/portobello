@@ -16,6 +16,7 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 
 var _is_executing: bool
 var _battle_screen: BattleScreen
+@onready var day_ex_ui: Control = %DayExUi
 
 
 func _ready() -> void:

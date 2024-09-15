@@ -1466,25 +1466,6 @@ pattern_0 = SubResource("TileMapPattern_fpoks")
 pattern_1 = SubResource("TileMapPattern_bhlw2")
 pattern_2 = SubResource("TileMapPattern_acsgs")
 
-[sub_resource type="Resource" id="Resource_mbbvo"]
-script = ExtResource("9_a05ap")
-character = "Duck?"
-line = "I'm actually an alien."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_dm51l"]
-script = ExtResource("9_a05ap")
-character = "Alien, I guess?"
-line = "Let's fight!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_mgvnu"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_mbbvo"), SubResource("Resource_dm51l")])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4i8t"]
-size = Vector2(4, 4)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtqeg"]
 atlas = ExtResource("1_80aou")
 region = Rect2(50, 90, 10, 10)
@@ -1609,9 +1590,30 @@ _dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_kodwm"), SubRes
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0cyl"]
 size = Vector2(4, 4)
 
+[sub_resource type="Resource" id="Resource_mbbvo"]
+script = ExtResource("9_a05ap")
+character = "Duck?"
+line = "I'm actually an alien."
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_dm51l"]
+script = ExtResource("9_a05ap")
+character = "Alien, I guess?"
+line = "Let's fight!"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_mgvnu"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_mbbvo"), SubResource("Resource_dm51l")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4i8t"]
+size = Vector2(4, 4)
+
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
-_debug_skip_random_battles = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -1675,22 +1677,6 @@ position = Vector2(385, -205)
 
 [node name="BackyardNpcs" type="Node2D" parent="World/TileMap"]
 position = Vector2(0, 9)
-metadata/_edit_lock_ = true
-
-[node name="AlienActionArea" type="Area2D" parent="World/TileMap/BackyardNpcs" node_paths=PackedStringArray("_quest_manager", "_ending_cutscene_player")]
-z_index = 1
-position = Vector2(355, 119)
-script = ExtResource("22_x5cfc")
-_battle_screen_path = NodePath("../../../../BattleScreen")
-_quest_manager = NodePath("../../../../Systems/QuestManager")
-_step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
-_background = ExtResource("23_jroxv")
-_party = ExtResource("25_2bmt5")
-_ending_cutscene_player = NodePath("../../../../Systems/EndingCutscenePlayer")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/BackyardNpcs/AlienActionArea"]
-shape = SubResource("RectangleShape2D_b4i8t")
 metadata/_edit_lock_ = true
 
 [node name="NpcAlien" parent="World/TileMap/BackyardNpcs" instance=ExtResource("16_2n5un")]
@@ -1925,6 +1911,23 @@ metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="World/TileMap/ActionAreas/RoomParrotActionArea"]
 autostart = true
+
+[node name="AlienActionArea" type="Area2D" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_quest_manager", "_ending_cutscene_player")]
+z_index = 1
+position = Vector2(355, 128)
+script = ExtResource("22_x5cfc")
+_battle_screen_path = NodePath("../../../../BattleScreen")
+_quest_manager = NodePath("../../../../Systems/QuestManager")
+_step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
+_background = ExtResource("23_jroxv")
+_party = ExtResource("25_2bmt5")
+_ending_cutscene_player = NodePath("../../../../Systems/EndingCutscenePlayer")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TileMap/ActionAreas/AlienActionArea"]
+shape = SubResource("RectangleShape2D_b4i8t")
+metadata/_edit_lock_ = true
 
 [connection signal="battle_finished" from="BattleScreen" to="." method="_on_battle_screen_battle_finished"]
 [connection signal="battle_starting" from="BattleScreen" to="." method="_on_battle_screen_battle_starting"]

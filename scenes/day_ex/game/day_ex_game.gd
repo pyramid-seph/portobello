@@ -16,6 +16,7 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 @onready var _battle_screen: BattleScreen = $BattleScreen
 @onready var _ui: DayExUi = %DayExUi
 @onready var _field: Node2D = $World/TileMap
+@onready var _timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -33,7 +34,7 @@ func _start_game() -> void:
 	_ui.set_pause_menu_enabled(true)
 	_random_battle_system.reset()
 	_player.set_process_unhandled_input(true)
-	_ui.show_quest_indicator()
+	_ui.show_quest_indicator(true)
 
 
 func _start_battle(enemy_party: BattleParty, background: Texture2D, 
@@ -72,6 +73,10 @@ func _on_random_battle_system_start_battle(
 
 func _on_quest_manager_progress_made() -> void:
 	if _quest_manager.is_quest_completed():
+		_ui.set_pause_menu_enabled(false)
+		_ui.show_level_completed_screen(true)
+		_timer.start(3.2)
+		await _timer.timeout
 		Game.start(Game.Minigame.TITLE_SCREEN)
 	else:
 		var quest_msg: String = \

@@ -34,6 +34,7 @@ func _ready() -> void:
 
 
 func play() -> void:
+	_ui.show_quest_indicator(false)
 	_player.set_process_unhandled_input(false)
 	_player.set_physics_process(false)
 	_player.set_process(false)
