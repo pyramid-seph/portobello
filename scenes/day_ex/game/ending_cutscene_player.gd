@@ -34,7 +34,6 @@ func _ready() -> void:
 
 
 func play() -> void:
-	_ui.show_quest_indicator(false)
 	_player.set_process_unhandled_input(false)
 	_player.set_physics_process(false)
 	_player.set_process(false)
@@ -49,7 +48,10 @@ func play() -> void:
 
 
 func _suspend_bucho_eats_fighters() -> void:
-	_timer.start(2.0)
+	_timer.start(1.0)
+	await _timer.timeout
+	_ui.show_quest_indicator(false)
+	_timer.start(1.0)
 	await _timer.timeout
 	_ui.show_black_screen(true)
 	var last_eaten: Npc = _bird_fighters.pick_random()

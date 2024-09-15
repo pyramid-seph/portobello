@@ -1611,6 +1611,7 @@ size = Vector2(4, 4)
 
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
+_debug_skip_random_battles = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
