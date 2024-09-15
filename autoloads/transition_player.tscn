@@ -195,6 +195,7 @@ _data = {
 
 [node name="TransitionPlayer" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 script = ExtResource("1_rv5xb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
