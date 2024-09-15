@@ -37,7 +37,7 @@ func show_quest_indicator(is_shown: bool) -> void:
 	if is_shown:
 		_quest_indicator.appear()
 	else:
-		_quest_indicator.disappear(true)
+		_quest_indicator.disappear()
 
 
 func show_level_completed_screen(is_shown: bool) -> void:
