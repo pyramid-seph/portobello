@@ -1,6 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://do7bac55vb7tv"]
+[gd_scene load_steps=6 format=3 uid="uid://do7bac55vb7tv"]
 
 [ext_resource type="Texture2D" uid="uid://ct14rp3rcmj27" path="res://art/day_1/day_01_furniture_table_large.png" id="1_xpnkx"]
+[ext_resource type="Texture2D" uid="uid://c8ncpwxqqkf74" path="res://art/day_1/day_01_furniture_table_large_mouse_01.png" id="2_gb784"]
+[ext_resource type="Texture2D" uid="uid://bw6wlsjv6ei4p" path="res://art/day_1/day_01_furniture_table_large_mouse_02.png" id="3_u3wq2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5ta5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gb784")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u3wq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmjqb"]
 size = Vector2(72, 40)
@@ -12,6 +28,12 @@ collision_mask = 0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xpnkx")
 centered = false
+
+[node name="Mouse" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, 10)
+sprite_frames = SubResource("SpriteFrames_e5ta5")
+autoplay = "default"
+frame_progress = 0.750264
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, 20)
