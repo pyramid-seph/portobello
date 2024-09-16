@@ -228,9 +228,11 @@ func _notify_unlocks() -> void:
 	save_data.latest_unlocked_day_notified = save_data.latest_day_completed
 	SaveDataManager.save()
 	
-	var story_progress: int = save_data.latest_day_completed
 	var body: String
-	if save_data.latest_day_completed >= 3:
+	var story_progress: int = save_data.latest_day_completed
+	if story_progress >= 4:
+		body = "INFO_DAY_EX_AVAILABLE"
+	elif save_data.latest_day_completed == 3:
 		body = tr("INFO_MINIGAME_UNLOCK_EX").format({
 				unlocked_story_mode_minigame = story_progress
 			})

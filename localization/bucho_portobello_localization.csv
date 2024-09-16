@@ -74,6 +74,7 @@ DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
 DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
 GAME_TITLE,Bucho Busca Comida,Pyramid Seph
+INFO_DAY_EX_AVAILABLE,"Order up!\n\nA ""Day EX""\nwith extra love!\n ","¡Orden lista!\n\n¡Un ""Día EX""\ncon extra amor!\n "
 INFO_GAMEPAD_SUPPORT,"Supports gamepad,","Puedes jugar con un control,"
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
 INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenu of the day {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
