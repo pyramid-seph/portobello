@@ -44,13 +44,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_13kum")]
-visible = false
-layout_mode = 1
-offset_left = -93.0
-offset_right = 93.0
-show_auto_fire = false
-
 [node name="RpgDialogueBox" parent="." instance=ExtResource("5_auhk2")]
 layout_mode = 1
 anchors_preset = 7
@@ -68,5 +61,15 @@ grow_vertical = 0
 [node name="SimpleLevelCompletedScreen" parent="." instance=ExtResource("7_8hyhb")]
 visible = false
 layout_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_13kum")]
+unique_name_in_owner = true
+visible = false
+offset_left = -93.5
+offset_right = 93.5
+show_auto_fire = false
 
 [connection signal="finished" from="StartLabels" to="." method="_on_start_labels_finished"]
