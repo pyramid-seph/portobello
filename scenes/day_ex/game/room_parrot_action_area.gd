@@ -50,7 +50,7 @@ func _execute_step_02(target: CharacterBody2D) -> void:
 		_blood_splat.show()
 	await _battle_screen.battle_finished
 	if success:
-		_timer.start(1.0)
+		_timer.start(0.25)
 		await _timer.timeout
 		DialogueManager.play(_step_02_dialogue_event_02)
 		await _step_02_dialogue_event_02.finished
