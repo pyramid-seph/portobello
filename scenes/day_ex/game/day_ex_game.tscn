@@ -1489,7 +1489,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hecm"]
-size = Vector2(20, 2)
+size = Vector2(14, 2)
 
 [sub_resource type="Resource" id="Resource_h33jq"]
 script = ExtResource("9_a05ap")
@@ -1611,6 +1611,7 @@ size = Vector2(4, 4)
 
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
+_debug_skip_random_battles = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
