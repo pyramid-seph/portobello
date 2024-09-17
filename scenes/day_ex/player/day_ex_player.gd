@@ -71,15 +71,22 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	_interact_sprite_2d.visible = \
-			_action_area_detector.is_executable_action_area_detected() and \
-			is_processing_unhandled_input()
+	var movement_allows_interaction: bool = \
+			not _slippery_floor_detector.is_on_slippery_floor() or \
+			is_zero_approx(velocity.length_squared())
+	_interact_sprite_2d.visible = movement_allows_interaction and \
+			is_processing_unhandled_input() and \
+			_action_area_detector.is_executable_action_area_detected()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire") and \
-			_action_area_detector.execute_detected_action_area(self):
-		get_viewport().set_input_as_handled()
+	if event.is_action_pressed("fire"):
+		var movement_allows_interaction: bool = \
+				not _slippery_floor_detector.is_on_slippery_floor() or \
+				is_zero_approx(velocity.length_squared())
+		if movement_allows_interaction and \
+				_action_area_detector.execute_detected_action_area(self):
+					get_viewport().set_input_as_handled()
 
 
 func _draw() -> void:
