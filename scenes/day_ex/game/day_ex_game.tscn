@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=80 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -75,6 +75,16 @@ script = ExtResource("8_r6rwp")
 _id = "backyard"
 _background = ExtResource("23_jroxv")
 _enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_g8sji")])
+
+[sub_resource type="Resource" id="Resource_4mq8j"]
+script = ExtResource("9_a05ap")
+character = "Alien, I guess?"
+line = "YOU... MONSTER!"
+text_speed_chars_per_second = 5.0
+
+[sub_resource type="Resource" id="Resource_utk17"]
+script = ExtResource("20_rfyxl")
+_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_4mq8j")])
 
 [sub_resource type="Resource" id="Resource_qd0hu"]
 script = ExtResource("9_a05ap")
@@ -1636,11 +1646,13 @@ _battle_configs = Array[ExtResource("8_r6rwp")]([SubResource("Resource_6tnym"), 
 [node name="QuestManager" type="Node" parent="Systems"]
 script = ExtResource("10_re3j8")
 
-[node name="EndingCutscenePlayer" type="Node" parent="Systems"]
+[node name="EndingCutscenePlayer" type="Node" parent="Systems" node_paths=PackedStringArray("_world")]
 script = ExtResource("14_rc3nq")
+_world = NodePath("../../World")
 _bird_fighters_path = Array[NodePath]([NodePath("../../World/TileMap/BackyardNpcs/NpcAlien"), NodePath("../../World/TileMap/BackyardNpcs/NpcBodyguard"), NodePath("../../World/TileMap/BackyardNpcs/NpcBodyguard2")])
 _rest_of_bird_gang_path = Array[NodePath]([NodePath("../../World/TileMap/BackyardNpcs/Npc"), NodePath("../../World/TileMap/BackyardNpcs/Npc2"), NodePath("../../World/TileMap/BackyardNpcs/Npc3")])
 _hen_path = NodePath("../../World/TileMap/BackyardNpcs/Npc4")
+_boss_final_words = SubResource("Resource_utk17")
 _ending_dialogue = SubResource("Resource_orrs0")
 
 [node name="Timer" type="Timer" parent="Systems/EndingCutscenePlayer"]

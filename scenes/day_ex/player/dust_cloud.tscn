@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://0fqdkumpc1cf"]
+
+[ext_resource type="Texture2D" uid="uid://dwjh8xb78a5xe" path="res://art/day_ex/day_ex_player.png" id="1_bkq68"]
+[ext_resource type="Script" path="res://scenes/day_ex/player/dust_cloud.gd" id="2_tb7dj"]
+
+[sub_resource type="Curve" id="Curve_c4bco"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.35082, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lc3dg"]
+curve = SubResource("Curve_c4bco")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3matl"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 1, 0)
+radial_velocity_min = 4.0
+radial_velocity_max = 12.0
+radial_velocity_curve = SubResource("CurveTexture_lc3dg")
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_347to"]
+atlas = ExtResource("1_bkq68")
+region = Rect2(25, 25, 5, 5)
+
+[node name="DustCloud" type="GPUParticles2D"]
+self_modulate = Color(0.695359, 0.675482, 0, 1)
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_3matl")
+texture = SubResource("AtlasTexture_347to")
+one_shot = true
+interpolate = false
+fract_delta = false
+visibility_rect = Rect2(-5, -5, 10, 10)
+script = ExtResource("2_tb7dj")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

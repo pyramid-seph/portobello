@@ -29,9 +29,11 @@ func _is_executable() -> bool:
 
 
 func _execute(target: CharacterBody2D) -> void:
-	_is_executing = true
 	if _quest_manager.get_curr_step() == QuestManager.Steps.FOUR:
+		_is_executing = true
 		_execute_step_04(target)
+	else:
+		_is_executing = false
 
 
 func _execute_step_04(target: CharacterBody2D) -> void:
