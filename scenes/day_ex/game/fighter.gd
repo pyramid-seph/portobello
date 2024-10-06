@@ -290,7 +290,13 @@ func _on_turn_finished(are_foes_defeated: bool) -> void:
 
 
 func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
-	if randi() % attack.get_hit_chance_percent() <= _stats_manager.get_agi():
+	var hit_chance: float = attack.get_hit_chance()
+	if hit_chance > 0.6 and not is_equal_approx(hit_chance, 1.0):
+		var decrement: float = \
+				minf(1.0, float(randi() % _stats_manager.get_agi()) / 99.0) * \
+				(1.0 - attack.get_hit_chance())
+		hit_chance = maxf(0.2, attack.get_hit_chance() - decrement)
+	if randf() > hit_chance:
 		_turn_narration.evade(get_full_name())
 		_animation_player.play(&"evade")
 		await _animation_player.animation_finished
