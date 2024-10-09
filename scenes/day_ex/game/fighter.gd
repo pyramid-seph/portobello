@@ -246,11 +246,11 @@ func _on_turn_started() -> void:
 	var spd_reset: bool = false
 	var charm_cleared: bool = false
 	var poison_cleared: bool = false
-	if randi() % 101 <= _stats_manager.get_lck():
+	if _stats_manager.is_lucky(0.2, 0.3):
 		atk_reset = _stats_manager.reset_atk_buffs()
 		def_reset = _stats_manager.reset_def_buffs()
 		spd_reset = _stats_manager.reset_spd_buffs()
-	if randi() % 100 <= _stats_manager.get_lck():
+	if _stats_manager.is_lucky(0.3, 0.5):
 		charm_cleared = _status_manager.clear_charm()
 		poison_cleared = _status_manager.clear_poison()
 	
@@ -325,10 +325,17 @@ func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 
 
 func _hurt_with_status_attack(attack: BattleAction) -> void:
-	if randi() % attack.get_hit_chance_percent() <= _stats_manager.get_lck():
+	var hit_chance: float = attack.get_hit_chance()
+	if hit_chance > 0.1 and not is_equal_approx(hit_chance, 1.0):
+		var target_lckf: float = float(_stats_manager.get_lck())
+		var max_decrement: float = hit_chance - hit_chance * 0.7
+		var decrement: float = (target_lckf / 99.0) * max_decrement
+		hit_chance = snappedf(hit_chance - decrement, 0.01)
+	
+	if randf() < hit_chance:
 		await _apply_buffs(attack)
 		await _apply_illness(attack)
-	elif not attack.is_physical_attack():
+	else:
 		_turn_narration.evade(get_full_name())
 		_animation_player.play(&"evade")
 		await _animation_player.animation_finished
@@ -435,7 +442,7 @@ func _run_flee_command(ally_side: BattlefieldSide,
 	var cowards_count: int = Utils.count(allies, func(ally: Fighter):
 			return not ally.is_removed_from_battle())
 	var successful_flee_attempt: bool = not is_flee_forbidden and \
-			 randi() % 101 <= _stats_manager.get_lck()
+			_stats_manager.is_lucky(0.2, 0.3)
 	_turn_narration.flee_attempt(get_full_name(), cowards_count)
 	await _turn_narration.wait_until_read()
 	if successful_flee_attempt:

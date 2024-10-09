@@ -127,6 +127,39 @@ func decrease_mp(value: int) -> void:
 		_curr_mp = clampi(_curr_mp - value, 0, get_max_mp())
 
 
+## Determines whether an event with a given probability range occurs,
+## considering this character's LCK stat.
+##
+## Edge cases:
+## - If both min_chance and max_chance are approximately zero, the event always fails.
+## - If both min_chance and max_chance are approximately one, the event always succeeds.
+## - If min_chance and max_chance are approximately equal, the LCK stat is ignored.
+##
+## Otherwise, the LCK stat increases the chances of the event occurring up to max_chance.
+##
+## min_chance and max_chance value is always clamped between 0.0 and 1.0.
+func is_lucky(min_chance: float = 0.0, max_chance: float = 1.0) -> bool:
+	var actual_min_chance: float = minf(min_chance, max_chance)
+	var actual_max_chance: float = maxf(min_chance, max_chance)
+	var clamped_min_chance: float = clampf(actual_min_chance, 0.0, 1.0)
+	var clamped_max_chance: float = clampf(actual_max_chance, 0.0, 1.0)
+	
+	if is_zero_approx(clamped_min_chance) and is_zero_approx(clamped_max_chance):
+		return false
+	
+	if is_equal_approx(clamped_min_chance, 1.0) and \
+			is_equal_approx(clamped_max_chance, 1.0):
+		return true
+	
+	if is_equal_approx(clamped_min_chance, clamped_max_chance):
+		return randf() < snappedf(clamped_max_chance, 0.01)
+	
+	var clamped_lck: float = clampf(float(get_lck()), 1.0, 99.0)
+	var chance: float = \
+			snappedf((clamped_lck / 99.0) * clamped_max_chance, 0.01)
+	return randf() < clampf(chance, clamped_min_chance, clamped_max_chance)
+
+
 #region StatsGetters
 func get_current_level() -> int:
 	return _curr_level
