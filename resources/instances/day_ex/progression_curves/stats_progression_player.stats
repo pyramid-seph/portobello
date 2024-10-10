@@ -4,7 +4,7 @@
         "experience": "0",
         "hp": "100",
         "mp": "30",
-        "attack": "1",
+        "attack": "5",
         "defense": "3",
         "speed": "4",
         "agility": "5",
@@ -15,21 +15,21 @@
         "experience": "10",
         "hp": "200",
         "mp": "30",
-        "attack": "1",
+        "attack": "10",
         "defense": "3",
         "speed": "4",
-        "agility": "5",
+        "agility": "10",
         "luck": "1"
     },
     {
         "level": "3",
-        "experience": "30",
+        "experience": "50",
         "hp": "300",
         "mp": "30",
-        "attack": "1",
+        "attack": "30",
         "defense": "3",
         "speed": "4",
-        "agility": "5",
+        "agility": "15",
         "luck": "1"
     },
     {
@@ -40,7 +40,7 @@
         "attack": "1",
         "defense": "3",
         "speed": "4",
-        "agility": "5",
+        "agility": "20",
         "luck": "1"
     },
     {
@@ -51,7 +51,7 @@
         "attack": "1",
         "defense": "3",
         "speed": "4",
-        "agility": "5",
+        "agility": "25",
         "luck": "1"
     },
     {
@@ -62,7 +62,7 @@
         "attack": "1",
         "defense": "3",
         "speed": "4",
-        "agility": "5",
+        "agility": "30",
         "luck": "1"
     },
     {
@@ -73,7 +73,7 @@
         "attack": "1",
         "defense": "3",
         "speed": "4",
-        "agility": "5",
+        "agility": "45",
         "luck": "1"
     },
     {
@@ -84,18 +84,18 @@
         "attack": "1",
         "defense": "3",
         "speed": "4",
-        "agility": "5",
+        "agility": "55",
         "luck": "1"
     },
     {
         "level": "9",
         "experience": "800",
-        "hp": "900",
-        "mp": "30",
-        "attack": "1",
-        "defense": "3",
-        "speed": "4",
-        "agility": "5",
-        "luck": "1"
+        "hp": "999",
+        "mp": "99",
+        "attack": "99",
+        "defense": "99",
+        "speed": "99",
+        "agility": "99",
+        "luck": "99"
     }
 ]

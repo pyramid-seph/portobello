@@ -292,10 +292,12 @@ func _on_turn_finished(are_foes_defeated: bool) -> void:
 func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 	var hit_chance: float = attack.get_hit_chance()
 	if hit_chance > 0.6 and not is_equal_approx(hit_chance, 1.0):
-		var decrement: float = \
-				minf(1.0, float(randi() % _stats_manager.get_agi()) / 99.0) * \
-				(1.0 - attack.get_hit_chance())
-		hit_chance = maxf(0.2, attack.get_hit_chance() - decrement)
+		var target_agif: float = float(randi() % _stats_manager.get_agi())
+		var min_hit_chance: float = hit_chance * 0.7
+		var max_decrement: float = hit_chance - min_hit_chance
+		var decrement: float = (target_agif / 99.0) * max_decrement
+		hit_chance = snappedf(hit_chance - decrement, 0.01)
+	
 	if randf() > hit_chance:
 		_turn_narration.evade(get_full_name())
 		_animation_player.play(&"evade")
@@ -328,7 +330,8 @@ func _hurt_with_status_attack(attack: BattleAction) -> void:
 	var hit_chance: float = attack.get_hit_chance()
 	if hit_chance > 0.1 and not is_equal_approx(hit_chance, 1.0):
 		var target_lckf: float = float(_stats_manager.get_lck())
-		var max_decrement: float = hit_chance - hit_chance * 0.7
+		var min_hit_chance: float = hit_chance * 0.7
+		var max_decrement: float = hit_chance - min_hit_chance
 		var decrement: float = (target_lckf / 99.0) * max_decrement
 		hit_chance = snappedf(hit_chance - decrement, 0.01)
 	

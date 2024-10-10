@@ -71,7 +71,7 @@ func calculate_hp_damage(attacker_stats: StatsManager, target_stats: StatsManage
 	match _physical_damage:
 		PhysicalDamage.LOSE_HP_POINTS:
 			var extra_damage: int = 0
-			if randi() % get_hit_chance_percent() <= target_stats.get_lck():
+			if target_stats.is_lucky(0.5, minf(0.7, get_hit_chance())):
 				extra_damage = -(randi() % (floori(float(target_stats.get_def()) / float(attacker_stats.get_atk())) + 5))
 			else:
 				extra_damage = randi() % (floori(float(attacker_stats.get_atk()) / float(target_stats.get_def())) + 5)
