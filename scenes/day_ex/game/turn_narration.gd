@@ -118,7 +118,7 @@ func atk_at_min(who: String) -> void:
 
 
 func atk_buff(who: String, points: int) -> void:
-	var msg: String = "RPG_BATTLE_NARRATION_STAT_ATK_" % (
+	var msg: String = "RPG_BATTLE_NARRATION_STAT_ATK_%s" % (
 			"DEBUFF" if points < 0 else "BUFF")
 	_narrate(msg, { "target": who, "points": points })
 
@@ -136,7 +136,7 @@ func def_at_min(who: String) -> void:
 
 
 func def_buff(who: String, points: int) -> void:
-	var msg: String = "RPG_BATTLE_NARRATION_STAT_DEF_" % (
+	var msg: String = "RPG_BATTLE_NARRATION_STAT_DEF_%s" % (
 			"DEBUFF" if points < 0 else "BUFF")
 	_narrate(msg, { "target": who, "points": points })
 
@@ -155,7 +155,7 @@ func spd_at_min(who: String) -> void:
 
 
 func spd_buff(who: String, points: int) -> void:
-	var msg: String = "RPG_BATTLE_NARRATION_STAT_SPD_" % (
+	var msg: String = "RPG_BATTLE_NARRATION_STAT_SPD_%s" % (
 			"DEBUFF" if points < 0 else "BUFF")
 	_narrate(msg, { "target": who, "points": points })
 
