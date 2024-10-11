@@ -75,7 +75,9 @@ func calculate_hp_damage(attacker_stats: StatsManager, target_stats: StatsManage
 				extra_damage = -(randi() % (floori(float(target_stats.get_def()) / float(attacker_stats.get_atk())) + 5))
 			else:
 				extra_damage = randi() % (floori(float(attacker_stats.get_atk()) / float(target_stats.get_def())) + 5)
-			damage = maxi(1, _damage_points + extra_damage)
+			var dmg_mult: float = snappedf(1.0 + 3.0 * float(attacker_stats.get_atk()) / 99.0, 0.01)
+			var base_dmg: int = floori(float(_damage_points) * dmg_mult)
+			damage = maxi(1, base_dmg + extra_damage)
 		PhysicalDamage.LOSE_HP_PERCENT:
 			damage = maxi(1, int(target_stats.get_curr_hp() * _damage_percent))
 		PhysicalDamage.DEVOUR:
