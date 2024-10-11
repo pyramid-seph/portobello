@@ -81,7 +81,7 @@ func update_actions(fighter: Fighter, disable_flee: bool = false) -> void:
 	
 	var can_perform_attacks: bool = attacks.size() > 1
 	var can_perform_abilities: bool = \
-			fighter.get_stats_manager().get_curr_mp() > 1 and abilities.size() > 1
+			fighter.get_stats_manager().get_curr_mp() > 0 and abilities.size() > 1
 	_command_selector.set_option_disabled(MainMenu.ATTACK, !can_perform_attacks)
 	_command_selector.set_option_disabled(MainMenu.ABILITY, !can_perform_abilities)
 	
