@@ -77,16 +77,16 @@ func _build_dmg_preview(attacker_stats: Stats, target_stats: Stats, attack: Batt
 	
 	if attack.get_physical_damage() == BattleAction.PhysicalDamage.LOSE_HP_PERCENT:
 		return "%s%%" % floori(attack.get_damage_percent() * 100.0)
-	
-	var attacker_atkf = float(attacker_stats.get_atk())
-	var target_deff = float(target_stats.get_def())
-	var min_extra_dmg: int = floori(5 + target_deff / attacker_atkf)
-	var max_extra_dmg: int = floori(5 + attacker_atkf / target_deff)
-	var dmg_mult: float = snappedf(1.0 + 3.0 * attacker_atkf / 99.0, 0.01)
-	var attack_dmgf = float(attack.get_damage_points())
-	var base_dmg: int = floori(attack_dmgf * dmg_mult)
-	var min_dmg: int = maxi(1, base_dmg - min_extra_dmg)
-	var max_dmg: int = maxi(1, base_dmg + max_extra_dmg)
+	var power: int = attack.get_damage_points()
+	var attacker_lvl: int = attacker_stats.get_level()
+	var attacker_atk: int = attacker_stats.get_atk()
+	var target_def: int = target_stats.get_def()
+	var base_dmg: int = int(attacker_atk + \
+			((attacker_atk + attacker_lvl) / 32.0) * \
+			((attacker_atk * attacker_lvl) / 32.0))
+	var max_dmg: int = \
+		maxi(1, int((power * (512 - target_def * 3) * base_dmg) / 8_192.0))
+	var min_dmg = maxi(1, int(max_dmg * 3_686.0 / 4_096.0))
 	return " - ".join([min_dmg, max_dmg])
 
 

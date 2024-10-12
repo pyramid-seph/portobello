@@ -67,24 +67,28 @@ func is_curative_attack() -> bool:
 
 ## 0 means evade, positive means damage, negative means recovery
 func calculate_hp_damage(attacker_stats: StatsManager, target_stats: StatsManager) -> int:
-	var damage: int = 0
+	var actual_dmg: int = 0
 	match _physical_damage:
 		PhysicalDamage.LOSE_HP_POINTS:
-			var extra_damage: int = 0
-			if target_stats.is_lucky(0.5, minf(0.7, get_hit_chance())):
-				extra_damage = -(randi() % (floori(float(target_stats.get_def()) / float(attacker_stats.get_atk())) + 5))
-			else:
-				extra_damage = randi() % (floori(float(attacker_stats.get_atk()) / float(target_stats.get_def())) + 5)
-			var dmg_mult: float = snappedf(1.0 + 3.0 * float(attacker_stats.get_atk()) / 99.0, 0.01)
-			var base_dmg: int = floori(float(_damage_points) * dmg_mult)
-			damage = maxi(1, base_dmg + extra_damage)
+			var power: int = _damage_points
+			var attacker_lvl: int = attacker_stats.get_current_level()
+			var attacker_atk: int = attacker_stats.get_atk()
+			var target_def: int = target_stats.get_def()
+			var base_dmg: int = int(attacker_atk + \
+					((attacker_atk + attacker_lvl) / 32.0) * \
+					((attacker_atk * attacker_lvl) / 32.0))
+			var max_dmg: int = \
+					maxi(1, int((power * (512 - target_def * 3) * base_dmg) / 8_192.0))
+			actual_dmg = maxi(1, roundi(max_dmg * (3_686 + randi_range(0, 410)) / 4_096.0))
 		PhysicalDamage.LOSE_HP_PERCENT:
-			damage = maxi(1, int(target_stats.get_curr_hp() * _damage_percent))
+			actual_dmg = maxi(1, int(target_stats.get_curr_hp() * _damage_percent))
 		PhysicalDamage.DEVOUR:
-			damage = _damage_points
+			actual_dmg = maxi(_damage_points, 
+					int(target_stats.get_max_hp() * randf_range(0.01, 0.05)))
 		PhysicalDamage.RECOVER_HP_POINTS:
-			damage = _damage_points * -1
-	return damage
+			actual_dmg = \
+					maxi(1, int(_damage_points * randf_range(0.8, 1.2))) * -1
+	return actual_dmg
 
 
 func get_target() -> Target:
