@@ -463,7 +463,8 @@ func _run_attack_command(brain: FighterBrain, command: BattleCommand.Hurt,
 	var attack: BattleAction = command.get_action()
 	if not _have_enough_resources_for(attack):
 		await _wait_not_enough_resources(attack)
-		return false
+		# Returning true to avoid an infinite loop for baddly implemented FighterBrains
+		return true
 	
 	var target_side: BattlefieldSide = \
 			_get_target_side(attack, ally_side, foe_side)

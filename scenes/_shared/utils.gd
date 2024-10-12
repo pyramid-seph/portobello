@@ -22,10 +22,13 @@ static func rand_item(arr: Array) -> Node:
 # TODO Deprecate in favour of Godot's implementation whenever is released. 
 # See https://github.com/godotengine/godot/pull/88883.
 static func rand_weigthed(weights: Array[float]) -> int:
+	if not weights or weights.is_empty():
+		return -1
+	
 	var remaining_distance: float = \
 			randf() * weights.reduce(func(accum, number): 
 						return accum + number)
-	var picked_index: int = 0
+	var picked_index: int = -1
 	for i: int in weights.size():
 		remaining_distance -= weights[i]
 		if remaining_distance < 0:

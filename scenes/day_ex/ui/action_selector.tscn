@@ -26,7 +26,6 @@ layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 theme_override_styles/panel = SubResource("StyleBoxFlat_hat3d")
-selector_text = ""
 _options = ["Attack", "Attack"]
 numbered_list = true
 release_focus_on_selection = true

@@ -9,12 +9,12 @@ const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
 
 func start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void:
-	# Deferring call so we give consumers a chance to observe the command_selected signal
+	# Deferring call so we give consumers a chance to process the command_selected signal
 	call_deferred("_start_command_selection", fighter, is_flee_forbidden)
 
 
 func  start_target_selection(target_side: BattlefieldSide) -> void:
-	# Deferring call so we give consumers a chance to observe the target_selected signal
+	# Deferring call so we give consumers a chance to process the target_selected signal
 	call_deferred("_start_target_selection", target_side)
 
 

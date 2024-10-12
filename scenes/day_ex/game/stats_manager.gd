@@ -138,6 +138,7 @@ func decrease_mp(value: int) -> void:
 ## Otherwise, the LCK stat increases the chances of the event occurring up to max_chance.
 ##
 ## min_chance and max_chance value is always clamped between 0.0 and 1.0.
+## If min_chance is lesser than max_chance, they are swapped.
 func is_lucky(min_chance: float = 0.0, max_chance: float = 1.0) -> bool:
 	var actual_min_chance: float = minf(min_chance, max_chance)
 	var actual_max_chance: float = maxf(min_chance, max_chance)
