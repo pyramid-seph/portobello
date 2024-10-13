@@ -168,7 +168,7 @@ func get_poison_damage() -> int:
 
 
 func inflicts_poison() -> bool:
-	return _status_effect_poison_damage < 0
+	return _status_effect_poison_damage > 0
 
 
 func inflicts_love() -> bool:
