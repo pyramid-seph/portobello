@@ -118,7 +118,7 @@ func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool) -> 
 		if scraps_obtained > 0:
 			_get_player().scraps += scraps_obtained
 			var msg_string: String = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE"
-			if exp_gained > 1:
+			if scraps_obtained > 1:
 				msg_string = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY"
 			await _narrator.say_and_wait_until_read(
 					msg_string, { "scraps": scraps_obtained })
