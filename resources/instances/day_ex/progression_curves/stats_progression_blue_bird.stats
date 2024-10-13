@@ -1,0 +1,46 @@
+[
+    {
+        "level": "1",
+        "experience": "-1",
+        "hp": "35",
+        "mp": "0",
+        "attack": "10",
+        "defense": "12",
+        "speed": "10",
+        "agility": "18",
+        "luck": "15"
+    },
+    {
+        "level": "2",
+        "experience": "-1",
+        "hp": "35",
+        "mp": "0",
+        "attack": "10",
+        "defense": "12",
+        "speed": "10",
+        "agility": "18",
+        "luck": "15"
+    },
+    {
+        "level": "3",
+        "experience": "-1",
+        "hp": "35",
+        "mp": "0",
+        "attack": "10",
+        "defense": "12",
+        "speed": "10",
+        "agility": "18",
+        "luck": "15"
+    },
+    {
+        "level": "4",
+        "experience": "0",
+        "hp": "35",
+        "mp": "0",
+        "attack": "10",
+        "defense": "12",
+        "speed": "10",
+        "agility": "18",
+        "luck": "15"
+    }
+]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=78 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -7,18 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://cveo78p5onwss" path="res://art/day_ex/battle_background_house.png" id="5_r3dm0"]
 [ext_resource type="PackedScene" uid="uid://ctrwrc3gdhha2" path="res://scenes/day_ex/game/exit.tscn" id="5_weg27"]
 [ext_resource type="PackedScene" uid="uid://dg5lsubt653gf" path="res://scenes/day_ex/ui/day_ex_ui.tscn" id="5_y60w5"]
-[ext_resource type="Resource" uid="uid://dfbbuuqk1jsui" path="res://resources/instances/day_ex/chars/bug.tres" id="6_7ldb6"]
-[ext_resource type="Resource" uid="uid://bcklqmn80yfmp" path="res://resources/instances/day_ex/chars/lizard.tres" id="6_ensb0"]
 [ext_resource type="PackedScene" uid="uid://csorcwveuvxs8" path="res://scenes/day_ex/game/entrance.tscn" id="6_hpgyv"]
+[ext_resource type="Resource" uid="uid://chwvg4b65nkau" path="res://resources/instances/day_ex/parties/party_living_room_nmy_bug_x_2_lizard_x_1.tres" id="6_nhiud"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/camera_pos.gd" id="6_wr6ei"]
-[ext_resource type="Script" path="res://resources/battle_party.gd" id="7_gq5mr"]
 [ext_resource type="Script" path="res://resources/random_battle_config.gd" id="8_r6rwp"]
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
-[ext_resource type="Resource" uid="uid://cfrccih8ppxub" path="res://resources/instances/day_ex/chars/mouse.tres" id="10_05akv"]
+[ext_resource type="Resource" uid="uid://dao5vd01p15vf" path="res://resources/instances/day_ex/parties/party_kitchen_nmy_mouse_x_1_lizard_x_2.tres" id="9_o5g6q"]
+[ext_resource type="Resource" uid="uid://cjpnxefwnbs08" path="res://resources/instances/day_ex/parties/party_living_room_nmy_bug_x_5.tres" id="9_uq5lx"]
+[ext_resource type="Resource" uid="uid://ccog2hcdkab16" path="res://resources/instances/day_ex/parties/party_kitchen_nmy_mouse_x_1.tres" id="10_io2tm"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/quest_manager.gd" id="10_re3j8"]
 [ext_resource type="PackedScene" uid="uid://c0epbuu3r3wqy" path="res://scenes/day_ex/game/battle_screen.tscn" id="11_1txxr"]
-[ext_resource type="Resource" uid="uid://dd8hfy3k84br2" path="res://resources/instances/day_ex/chars/crow.tres" id="12_q1o4c"]
+[ext_resource type="Resource" uid="uid://dv80v3dxamdf7" path="res://resources/instances/day_ex/parties/party_backyard_nmy_crow_x_1_lizard_x_1_mouse_x_1.tres" id="11_3ieqf"]
+[ext_resource type="Resource" uid="uid://dbe25xam7xcfy" path="res://resources/instances/day_ex/parties/party_backyard_nmy_crow_x_2.tres" id="12_u33vr"]
 [ext_resource type="PackedScene" uid="uid://cdp0di76wda8j" path="res://scenes/day_ex/objects/door.tscn" id="13_k4waj"]
+[ext_resource type="Resource" uid="uid://b3ph8se3b1pq0" path="res://resources/instances/day_ex/parties/party_backyard_nmy_bug_x_1_lizard_x_1_mouse_x_1_crow_x_1.tres" id="13_o0alh"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/ending_cutscene_player.gd" id="14_rc3nq"]
 [ext_resource type="PackedScene" uid="uid://bvns5pk0w8s1g" path="res://scenes/day_ex/game/teleporter_action_area.tscn" id="15_oukx8"]
 [ext_resource type="PackedScene" uid="uid://cute6jp2xqrfx" path="res://scenes/day_ex/objects/blood_splat.tscn" id="15_qw1k1"]
@@ -28,53 +30,29 @@
 [ext_resource type="Texture2D" uid="uid://2d078cjcm44u" path="res://art/day_ex/npc_duck.png" id="18_h2ier"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="20_rfyxl"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/room_parrot_action_area.gd" id="21_0a6m3"]
-[ext_resource type="Resource" uid="uid://dopwgerrghlor" path="res://resources/instances/day_ex/parties/party_boss_room_parrot.tres" id="22_50tig"]
+[ext_resource type="Resource" uid="uid://dopwgerrghlor" path="res://resources/instances/day_ex/parties/party_room_boss_blue_bird.tres" id="22_50tig"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/alien_action_area.gd" id="22_x5cfc"]
 [ext_resource type="Texture2D" uid="uid://dbls1jv3djobu" path="res://art/day_ex/battle_background_backyard.png" id="23_jroxv"]
 [ext_resource type="Texture2D" uid="uid://bf7tg47xaj2h" path="res://art/day_ex/npc_hen.png" id="23_rmano"]
-[ext_resource type="Resource" uid="uid://cqxlnw3nrkxs2" path="res://resources/instances/day_ex/parties/party_boss_backyard_alien.tres" id="25_2bmt5"]
-
-[sub_resource type="Resource" id="Resource_wixno"]
-script = ExtResource("7_gq5mr")
-_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_ensb0"), ExtResource("6_7ldb6")])
-_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
-_weight = 3.0
-
-[sub_resource type="Resource" id="Resource_6qt4y"]
-script = ExtResource("7_gq5mr")
-_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_7ldb6"), ExtResource("6_7ldb6")])
-_back_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("6_7ldb6"), ExtResource("6_7ldb6")])
-_weight = 1.0
+[ext_resource type="Resource" uid="uid://cqxlnw3nrkxs2" path="res://resources/instances/day_ex/parties/party_backyard_boss_alien_x_1_duck_x_2.tres" id="25_2bmt5"]
 
 [sub_resource type="Resource" id="Resource_6tnym"]
 script = ExtResource("8_r6rwp")
 _id = "living_room"
 _background = ExtResource("5_r3dm0")
-_enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_wixno"), SubResource("Resource_6qt4y")])
-
-[sub_resource type="Resource" id="Resource_3q2ns"]
-script = ExtResource("7_gq5mr")
-_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("10_05akv")])
-_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
-_weight = 1.0
+_enemy_parties = Array[Resource("res://resources/battle_party.gd")]([ExtResource("6_nhiud"), ExtResource("9_uq5lx")])
 
 [sub_resource type="Resource" id="Resource_rjehg"]
 script = ExtResource("8_r6rwp")
 _id = "kitchen"
 _background = ExtResource("5_r3dm0")
-_enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_3q2ns")])
-
-[sub_resource type="Resource" id="Resource_g8sji"]
-script = ExtResource("7_gq5mr")
-_front_row = Array[Resource("res://resources/fighter_data.gd")]([])
-_back_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("12_q1o4c")])
-_weight = 1.0
+_enemy_parties = Array[Resource("res://resources/battle_party.gd")]([ExtResource("9_o5g6q"), ExtResource("10_io2tm")])
 
 [sub_resource type="Resource" id="Resource_fq14a"]
 script = ExtResource("8_r6rwp")
 _id = "backyard"
 _background = ExtResource("23_jroxv")
-_enemy_parties = Array[ExtResource("7_gq5mr")]([SubResource("Resource_g8sji")])
+_enemy_parties = Array[Resource("res://resources/battle_party.gd")]([ExtResource("11_3ieqf"), ExtResource("12_u33vr"), ExtResource("13_o0alh")])
 
 [sub_resource type="Resource" id="Resource_4mq8j"]
 script = ExtResource("9_a05ap")
@@ -1931,9 +1909,9 @@ script = ExtResource("22_x5cfc")
 _battle_screen_path = NodePath("../../../../BattleScreen")
 _quest_manager = NodePath("../../../../Systems/QuestManager")
 _step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
+_ending_cutscene_player = NodePath("../../../../Systems/EndingCutscenePlayer")
 _background = ExtResource("23_jroxv")
 _party = ExtResource("25_2bmt5")
-_ending_cutscene_player = NodePath("../../../../Systems/EndingCutscenePlayer")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 

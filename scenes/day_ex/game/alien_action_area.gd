@@ -8,11 +8,11 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 @export var _battle_screen_path: NodePath
 @export var _quest_manager: QuestManager
 @export var _step_04_dialogue_event_01: DialogueEvent
+@export var _ending_cutscene_player: Node
 
 @export_group("Battle Config")
 @export var _background: Texture2D
 @export var _party: BattleParty
-@export var _ending_cutscene_player: Node
 
 var _is_executing: bool
 var _battle_screen: BattleScreen

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=13 format=3 uid="uid://ckg341pliq3af"]
+
+[ext_resource type="Resource" uid="uid://dmdeyptx3acva" path="res://resources/instances/day_ex/actions/attack_peck.tres" id="1_u1h8i"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_c36jy"]
+[ext_resource type="Resource" uid="uid://cu34fpa5thrp6" path="res://resources/instances/day_ex/progression_curves/stats_progression_alien.stats" id="3_esucx"]
+[ext_resource type="Resource" uid="uid://b4ti5c4q7e4wk" path="res://resources/instances/day_ex/actions/ability_enemy_scare.tres" id="3_ob7yx"]
+[ext_resource type="Texture2D" uid="uid://xbeh83r5o8yr" path="res://art/day_ex/battle_char_enemy_duck_strong.png" id="4_7423l"]
+[ext_resource type="Resource" uid="uid://dwv2uowry1gs0" path="res://resources/instances/day_ex/actions/ability_enemy_cure.tres" id="4_d7jf6"]
+[ext_resource type="Resource" uid="uid://4hjhfeqkgb1i" path="res://resources/instances/day_ex/actions/ability_enemy_poison.tres" id="4_k1rwb"]
+[ext_resource type="Script" path="res://resources/fighter_data.gd" id="5_7kkrm"]
+
+[sub_resource type="Resource" id="Resource_lxe0h"]
+script = ExtResource("2_c36jy")
+_action = ExtResource("1_u1h8i")
+_weight = 3.0
+
+[sub_resource type="Resource" id="Resource_xvcno"]
+script = ExtResource("2_c36jy")
+_action = ExtResource("3_ob7yx")
+_weight = 5.0
+
+[sub_resource type="Resource" id="Resource_l7c3y"]
+script = ExtResource("2_c36jy")
+_action = ExtResource("4_k1rwb")
+_weight = 2.0
+
+[sub_resource type="Resource" id="Resource_qexj4"]
+script = ExtResource("2_c36jy")
+_action = ExtResource("4_d7jf6")
+_weight = 1.0
+
+[resource]
+script = ExtResource("5_7kkrm")
+_char_name = "RPG_BATTLE_ENEMY_NAME_DUCK_STRONG"
+_texture = ExtResource("4_7423l")
+_stats_progression_curve = ExtResource("3_esucx")
+_actions = Array[ExtResource("2_c36jy")]([SubResource("Resource_lxe0h"), SubResource("Resource_xvcno"), SubResource("Resource_l7c3y"), SubResource("Resource_qexj4")])
+_loot_scraps = 0
+_loot_exp = 0

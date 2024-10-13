@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://cva478sobnjqv"]
+
+[ext_resource type="Texture2D" uid="uid://dkphhwiyjj3wu" path="res://art/day_ex/battle_ability_player_scratch_0.png" id="1_1f4as"]
+[ext_resource type="Texture2D" uid="uid://ckvnn0i104hcg" path="res://art/day_ex/battle_ability_player_scratch_1.png" id="2_rv31y"]
+[ext_resource type="Texture2D" uid="uid://s8mffk6tfib1" path="res://art/day_ex/battle_ability_player_scratch_2.png" id="3_phw83"]
+[ext_resource type="Script" path="res://resources/battle_action.gd" id="4_wk61a"]
+
+[resource]
+script = ExtResource("4_wk61a")
+_action_name = "RPG_BATTLE_ATTACK_NAME_PLAYER_SCRATCH"
+_info = "RPG_BATTLE_INFO_ATTACK_SCRATCH"
+_target = 0
+_consumes = 0
+_cost = 1
+_physical_damage = 1
+_damage_points = 24
+_damage_percent = 0.5
+_hit_chance = 0.5
+_status_effect_poison_damage = 0
+_status_effect_attack = 0
+_status_effect_defense = 0
+_status_effect_speed = 0
+_status_effect_love = false
+_sprites = Array[Texture2D]([ExtResource("1_1f4as"), ExtResource("2_rv31y"), ExtResource("3_phw83")])
+_duration_sec = 0.45
+_screen_flash_color = Color(1, 1, 1, 0)
+_shake_screen = false

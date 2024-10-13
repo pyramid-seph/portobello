@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleParty" load_steps=3 format=3 uid="uid://dopwgerrghlor"]
 
-[ext_resource type="Resource" uid="uid://dspfb8s7yxn8j" path="res://resources/instances/day_ex/chars/parrot_blue.tres" id="1_qgkj3"]
+[ext_resource type="Resource" uid="uid://dspfb8s7yxn8j" path="res://resources/instances/day_ex/chars/boss_blue_bird.tres" id="1_qgkj3"]
 [ext_resource type="Script" path="res://resources/battle_party.gd" id="2_qyxo7"]
 
 [resource]

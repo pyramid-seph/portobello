@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=9 format=3 uid="uid://0yxtdjg2yjo4"]
+
+[ext_resource type="Resource" uid="uid://dmdeyptx3acva" path="res://resources/instances/day_ex/actions/attack_peck.tres" id="1_t701x"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_ux2gy"]
+[ext_resource type="Resource" uid="uid://cva478sobnjqv" path="res://resources/instances/day_ex/actions/attack_enemy_mega_scratch.tres" id="3_b1ynt"]
+[ext_resource type="Resource" uid="uid://d3nwi87a2rri8" path="res://resources/instances/day_ex/progression_curves/stats_progression_duck.stats" id="4_abydu"]
+[ext_resource type="Texture2D" uid="uid://bw2tw3ek7j25k" path="res://art/day_ex/battle_char_enemy_duck_weak.png" id="5_w0ul8"]
+[ext_resource type="Script" path="res://resources/fighter_data.gd" id="6_qey4d"]
+
+[sub_resource type="Resource" id="Resource_lxe0h"]
+script = ExtResource("2_ux2gy")
+_action = ExtResource("1_t701x")
+_weight = 5.0
+
+[sub_resource type="Resource" id="Resource_mlurq"]
+script = ExtResource("2_ux2gy")
+_action = ExtResource("3_b1ynt")
+_weight = 1.0
+
+[resource]
+script = ExtResource("6_qey4d")
+_char_name = "RPG_BATTLE_ENEMY_NAME_DUCK_WEAK"
+_texture = ExtResource("5_w0ul8")
+_stats_progression_curve = ExtResource("4_abydu")
+_actions = Array[ExtResource("2_ux2gy")]([SubResource("Resource_lxe0h"), SubResource("Resource_mlurq")])
+_loot_scraps = 0
+_loot_exp = 0

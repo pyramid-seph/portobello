@@ -18,4 +18,4 @@ _texture = ExtResource("1_puv4l")
 _stats_progression_curve = ExtResource("3_724eh")
 _actions = Array[ExtResource("2_eo7ov")]([SubResource("Resource_5n1jb")])
 _loot_scraps = 1
-_loot_exp = 5
+_loot_exp = 1
