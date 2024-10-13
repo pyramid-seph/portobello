@@ -605,6 +605,7 @@ vertical_alignment = 1
 
 [node name="NameLabel" type="Label" parent="."]
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
