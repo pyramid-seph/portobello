@@ -83,8 +83,7 @@ func calculate_hp_damage(attacker_stats: StatsManager, target_stats: StatsManage
 		PhysicalDamage.LOSE_HP_PERCENT:
 			actual_dmg = maxi(1, int(target_stats.get_curr_hp() * _damage_percent))
 		PhysicalDamage.DEVOUR:
-			actual_dmg = maxi(_damage_points, 
-					int(target_stats.get_max_hp() * randf_range(0.01, 0.05)))
+			actual_dmg = maxi(1, _damage_points)
 		PhysicalDamage.RECOVER_HP_POINTS:
 			actual_dmg = \
 					maxi(1, int(_damage_points * randf_range(0.8, 1.2))) * -1
