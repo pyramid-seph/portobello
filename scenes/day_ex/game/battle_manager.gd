@@ -46,6 +46,12 @@ func _battle_loop(is_boss_battle: bool) -> void:
 			print("Fighter is removed from battle. Skipping their turn.")
 		
 		_turn_order_manager.on_turn_ended()
+	
+	if not _player_side.is_party_killed():
+		for fighter: Fighter in _player_side.get_members():
+			fighter.reset_to_normal_status()
+			var stats_manager: StatsManager = fighter.get_stats_manager()
+			stats_manager.decrease_mp(stats_manager.get_max_mp() * -1)
 
 
 func _can_battle_continue() -> bool:

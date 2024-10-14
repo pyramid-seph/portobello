@@ -150,17 +150,13 @@ func wait_flee() -> void:
 		_animation_player.play(&"flee")
 		await _animation_player.animation_finished
 		self_modulate.a = 0
-		_stats_manager.reset_buffs()
-		_status_manager.clear_all_status_effect()
+		reset_to_normal_status()
 
 
 func enter_battlefield() -> void:
 	if is_dead():
 		return
-	
-	_stats_manager.reset_buffs()
-	_status_manager.clear_all_status_effect()
-	_stats_manager.decrease_mp(_stats_manager.get_max_mp() * -1)
+
 	if has_fled():
 		_has_fled = false
 		_animation_player.play(&"RESET")
@@ -517,6 +513,11 @@ func _consume_resource(attack: BattleAction) -> bool:
 	return true
 
 
+func reset_to_normal_status() -> void:
+	_stats_manager.reset_buffs()
+	_status_manager.clear_all_status_effect()
+
+
 func _on_death(cause_of_death: CauseOfDeath = CauseOfDeath.UNSPECIFIED) -> void:
 	_cause_of_death = cause_of_death
 	if cause_of_death == CauseOfDeath.EATEN:
@@ -528,8 +529,7 @@ func _on_death(cause_of_death: CauseOfDeath = CauseOfDeath.UNSPECIFIED) -> void:
 	await _animation_player.animation_finished
 	focus_mode = Control.FOCUS_NONE
 	self_modulate.a = 0.0
-	_stats_manager.reset_buffs()
-	_status_manager.clear_all_status_effect()
+	reset_to_normal_status()
 	await _turn_narration.wait_until_read()
 
 
