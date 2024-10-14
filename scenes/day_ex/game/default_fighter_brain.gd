@@ -27,6 +27,9 @@ func _start_command_selection(fighter: Fighter, _is_flee_forbidden: bool) -> voi
 
 
 func _start_target_selection(target_side: BattlefieldSide) -> void:
+	# This code executes on any ally a battle action that should target
+	# the fighter that selected it. For this game, that is OK, even if
+	# technically it is a bug.
 	var targets: Array[Fighter] = target_side.get_members()
 	var selected_target: Fighter = \
 			null if targets.is_empty() else targets.pick_random()
