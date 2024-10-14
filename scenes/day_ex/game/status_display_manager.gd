@@ -53,7 +53,9 @@ func force_status_update() -> void:
 		print("Do not call force_status_update() before setup().")
 		return
 	
-	var displayed_status: int = get_displayed_status()
+	var old_statuses: int = _statuses
+	var old_statuses_is_single_or_normal: bool = _is_single_status_or_normal()
+	
 	_set_status_bit(Status.POISON, _status_manager.is_poisoned())
 	_set_status_bit(Status.CHARMED, _status_manager.is_charmed())
 	_set_status_bit(Status.ATK_BUFF, _stats_manager.get_atk_buffs() > 0)
@@ -62,7 +64,10 @@ func force_status_update() -> void:
 	_set_status_bit(Status.DEF_DEBUFF, _stats_manager.get_def_buffs() < 0)
 	_set_status_bit(Status.SPD_BUFF, _stats_manager.get_spd_buffs() > 0)
 	_set_status_bit(Status.SPD_DEBUFF, _stats_manager.get_spd_buffs() < 0)
-	if not _statuses & displayed_status:
+	
+	var is_displayed_status_active: bool = _statuses & get_displayed_status()
+	if (old_statuses_is_single_or_normal and is_displayed_status_active) or \
+			_statuses != old_statuses:
 		_show_next_status()
 
 
@@ -76,7 +81,7 @@ func _enqueue_status_update() -> void:
 			
 		await tree.process_frame
 		# I'm not sure if this "if" is needed but I'm adding it anyway in case 
-		# this node is enqueued for destruction and it have an status
+		# this node is enqueued for destruction and it has an status
 		# update queued on the same frame.
 		if is_instance_valid(self):
 			force_status_update()
@@ -107,9 +112,13 @@ func _set_next_shown_status_index() -> void:
 		_shown_status_index = wrapi(_shown_status_index + 1, 0, statuses_count)
 
 
+func _is_single_status_or_normal() -> bool:
+	return _statuses & (_statuses - 1) == 0
+
+
 func _show_next_status() -> void:
 	_set_next_shown_status_index()
-	if _statuses & (_statuses - 1) == 0: # is _statuses single status or normal?
+	if _is_single_status_or_normal():
 		_timer.stop()
 	else:
 		_timer.start()
