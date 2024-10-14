@@ -7,8 +7,8 @@
 
 [resource]
 script = ExtResource("4_k4057")
-_action_name = "RPG_BATTLE_ABILITY_NAME_PLAYER_CURE"
-_info = "RPG_BATTLE_INFO_ABILITY_CURE"
+_action_name = "RPG_BATTLE_ABILITY_NAME_ENEMY_CURE"
+_info = ""
 _target = 1
 _consumes = 1
 _cost = 10

@@ -7,8 +7,8 @@
 
 [resource]
 script = ExtResource("4_wk61a")
-_action_name = "RPG_BATTLE_ATTACK_NAME_PLAYER_SCRATCH"
-_info = "RPG_BATTLE_INFO_ATTACK_SCRATCH"
+_action_name = "RPG_BATTLE_ATTACK_NAME_ENEMY_MEGA_SCRATCH"
+_info = ""
 _target = 0
 _consumes = 0
 _cost = 1
@@ -21,7 +21,7 @@ _status_effect_attack = 0
 _status_effect_defense = 0
 _status_effect_speed = 0
 _status_effect_love = false
-_sprites = Array[Texture2D]([ExtResource("1_1f4as"), ExtResource("2_rv31y"), ExtResource("3_phw83")])
-_duration_sec = 0.45
+_sprites = Array[Texture2D]([ExtResource("1_1f4as"), ExtResource("2_rv31y"), ExtResource("3_phw83"), ExtResource("2_rv31y"), ExtResource("1_1f4as")])
+_duration_sec = 0.75
 _screen_flash_color = Color(1, 1, 1, 0)
 _shake_screen = false
