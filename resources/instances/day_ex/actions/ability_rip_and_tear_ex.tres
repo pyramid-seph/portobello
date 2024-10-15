@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://cd4sudyv4flcl"]
 
 [ext_resource type="Script" path="res://resources/battle_action.gd" id="1_2bx6u"]
-[ext_resource type="Texture2D" uid="uid://bwnicnaq423bt" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_0.png" id="1_2gfce"]
-[ext_resource type="Texture2D" uid="uid://cis3h3wdylnun" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_1.png" id="2_ueh6g"]
-[ext_resource type="Texture2D" uid="uid://wa3tmaqx3j0m" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_2.png" id="3_nm65o"]
+[ext_resource type="Texture2D" uid="uid://c176su5qpidhp" path="res://art/day_ex/battle_ability_player_rip_and_tear_0.png" id="1_cgiqq"]
+[ext_resource type="Texture2D" uid="uid://de7k6tm2rakrn" path="res://art/day_ex/battle_ability_player_rip_and_tear_1.png" id="2_u4veb"]
+[ext_resource type="Texture2D" uid="uid://bp6buljuntdl5" path="res://art/day_ex/battle_ability_player_rip_and_tear_2.png" id="3_ggcgu"]
 
 [resource]
 script = ExtResource("1_2bx6u")
@@ -21,7 +21,7 @@ _status_effect_attack = 0
 _status_effect_defense = 0
 _status_effect_speed = 0
 _status_effect_love = false
-_sprites = Array[Texture2D]([ExtResource("1_2gfce"), ExtResource("2_ueh6g"), ExtResource("3_nm65o")])
+_sprites = Array[Texture2D]([ExtResource("1_cgiqq"), ExtResource("2_u4veb"), ExtResource("3_ggcgu")])
 _duration_sec = 0.45
 _screen_flash_color = Color(1, 1, 1, 0)
 _shake_screen = true

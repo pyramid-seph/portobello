@@ -1,4 +1,4 @@
-keys,en,es
+-,en,es
 COMMON_OPTIONS_EXIT,Quit game,Salir
 COMMON_OPTIONS_NO,No,No
 COMMON_OPTIONS_OK,OK,OK
@@ -76,7 +76,7 @@ DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_01,"Now that I teach them to march, I won
 DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_02,"*Sniff, sniff*","*Sniff, sniff*"
 DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_03,That sweet SWEET scent!,¡Ese dulce DULCE olor!
 DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_04,"HEY, YOU!","¡OYE, TÚ!"
-DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_05,._.?,._.?
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_05,o_o?,o_o?
 DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_06,Do you like meat?,¿Te gusta la carne?
 DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_07,n_n,n_n
 DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_08,Human meat?,¿La... carne... humana?
@@ -113,7 +113,7 @@ DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_04,You did a great job devouring our master.,
 DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_05,Here! You can take it...,¡Anda! ¡Toma la llave...
 DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_06,...from my cold dead claws!,...sobre mi cadáver!
 DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01,Bucho got the [color=red]key to the backyard[/color]!,Bucho obtuvo la [color=red]llave del patio[/color]
-DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_01,There was a parrot here.,Aquí había un loco.
+DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_01,There was a parrot here.,Aquí había un loro.
 DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_02,It's gone now.,Ya no más.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
 GAME_TITLE,Bucho Busca Comida,Pyramid Seph
@@ -132,7 +132,7 @@ LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
 LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
-LEVEL_START_LINE_0_DAY_EX,Dessert!,¡Postre!
+LEVEL_START_LINE_0_DAY_EX,Midnight snack!,¡Antojo nocturno!
 LEVEL_START_LINE_0_SCORE_ATTACK,Buffet,Buffet
 LEVEL_START_LINE_0_SCORE_ATTACK_WITH_POS,Buffet {level_pos},Buffet {level_pos}
 LEVEL_START_LINE_0_STORY_MODE,Dish {level_pos},Plato {level_pos}

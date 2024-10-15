@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf7tg47xaj2h"
-path="res://.godot/imported/npc_hen.png-9434bdac2e705e1f7f5f836b9ad7731c.ctex"
+uid="uid://brgu6ucl2crh"
+path="res://.godot/imported/npc_goose.png-1993bd1f39dc1a13c82a17264f135469.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_ex/npc_hen.png"
-dest_files=["res://.godot/imported/npc_hen.png-9434bdac2e705e1f7f5f836b9ad7731c.ctex"]
+source_file="res://art/day_ex/npc_goose.png"
+dest_files=["res://.godot/imported/npc_goose.png-1993bd1f39dc1a13c82a17264f135469.ctex"]
 
 [params]
 

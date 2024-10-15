@@ -3,14 +3,14 @@
 importer="texture_atlas"
 type="Texture2D"
 uid="uid://bw2tw3ek7j25k"
-path="res://.godot/imported/battle_char_enemy_duck_weak.png-9a110cd3577be130079c8ebf32a772a5.res"
+path="res://.godot/imported/battle_char_enemy_duck.png-8dff9a59b6dd2775d77bbed9f123171b.res"
 group_file="res://art/day_ex/atlas_battle_screen.png"
 valid=true
 [deps]
 
 
-source_file="res://art/day_ex/battle_char_enemy_duck_weak.png"
-dest_files=["res://.godot/imported/battle_char_enemy_duck_weak.png-9a110cd3577be130079c8ebf32a772a5.res"]
+source_file="res://art/day_ex/battle_char_enemy_duck.png"
+dest_files=["res://.godot/imported/battle_char_enemy_duck.png-8dff9a59b6dd2775d77bbed9f123171b.res"]
 
 [params]
 
