@@ -114,6 +114,7 @@ func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool) -> 
 		var stats_diff: Stats = stats_manager.gain_experience(exp_gained)
 		if stats_diff.get_level() > 0:
 			stats_manager.decrease_hp(stats_manager.get_max_hp() * -1)
+			stats_manager.decrease_mp(stats_manager.get_max_mp() * -1)
 		await _wait_level_up_narration_finished(stats_manager, stats_diff)
 		if scraps_obtained > 0:
 			_get_player().scraps += scraps_obtained
