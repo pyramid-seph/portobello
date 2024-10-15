@@ -1,8 +1,5 @@
 extends TextureRect
 
-# FIXME set_path: Another resource is loaded from path 'res://scenes/day_ex/game/fighter.tscn' (possible cyclic resource inclusion).
-# FIXME _parse_ext_resource: res://scenes/day_ex/game/fighter.tscn:561 - Parse Error: [ext_resource] referenced non-existent resource at: res://scenes/day_ex/game/fighter.gd
-# Both FIXMEs seem to be resolved by migrating to Godot 4.3!
 
 signal selected(me)
 signal selection_canceled

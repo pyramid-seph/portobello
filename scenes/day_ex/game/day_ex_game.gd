@@ -12,10 +12,10 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 
 @onready var _quest_manager: QuestManager = $Systems/QuestManager
 @onready var _random_battle_system: RandomBattleSystem = %RandomBattleSystem
-@onready var _player: CharacterBody2D = $World/TileMap/DayExPlayer
+@onready var _player: CharacterBody2D = %DayExPlayer
 @onready var _battle_screen: BattleScreen = $BattleScreen
 @onready var _ui: DayExUi = %DayExUi
-@onready var _field: Node2D = $World/TileMap
+@onready var _field: Node2D = $World/TiledWorld
 @onready var _timer: Timer = $Timer
 
 
