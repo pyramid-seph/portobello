@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=60 format=3 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://chwvg4b65nkau" path="res://resources/instances/day_ex/parties/party_living_room_nmy_bug_x_2_lizard_x_1.tres" id="6_nhiud"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/camera_pos.gd" id="6_wr6ei"]
 [ext_resource type="Script" path="res://resources/random_battle_config.gd" id="8_r6rwp"]
-[ext_resource type="Script" path="res://resources/dialogue_page.gd" id="9_a05ap"]
 [ext_resource type="Resource" uid="uid://dao5vd01p15vf" path="res://resources/instances/day_ex/parties/party_kitchen_nmy_mouse_x_1_lizard_x_2.tres" id="9_o5g6q"]
 [ext_resource type="Resource" uid="uid://cjpnxefwnbs08" path="res://resources/instances/day_ex/parties/party_living_room_nmy_bug_x_5.tres" id="9_uq5lx"]
 [ext_resource type="Resource" uid="uid://ccog2hcdkab16" path="res://resources/instances/day_ex/parties/party_kitchen_nmy_mouse_x_1.tres" id="10_io2tm"]
@@ -26,15 +25,25 @@
 [ext_resource type="PackedScene" uid="uid://cute6jp2xqrfx" path="res://scenes/day_ex/objects/blood_splat.tscn" id="15_qw1k1"]
 [ext_resource type="PackedScene" uid="uid://cjrmeidj5ljgj" path="res://scenes/day_ex/npcs/npc.tscn" id="16_2n5un"]
 [ext_resource type="Texture2D" uid="uid://brgu6ucl2crh" path="res://art/day_ex/npc_alien.png" id="17_4wxe2"]
+[ext_resource type="Resource" uid="uid://bf58kiumkctq4" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_backyard_event_02.tres" id="17_5fwfp"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/kitchen_parrot_action_area.gd" id="18_fus5f"]
 [ext_resource type="Texture2D" uid="uid://2d078cjcm44u" path="res://art/day_ex/npc_duck.png" id="18_h2ier"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="20_rfyxl"]
+[ext_resource type="Resource" uid="uid://c43cds2382kua" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_backyard_event_03.tres" id="18_iqxyc"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/room_parrot_action_area.gd" id="21_0a6m3"]
 [ext_resource type="Resource" uid="uid://dopwgerrghlor" path="res://resources/instances/day_ex/parties/party_room_boss_blue_bird.tres" id="22_50tig"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/alien_action_area.gd" id="22_x5cfc"]
 [ext_resource type="Texture2D" uid="uid://dbls1jv3djobu" path="res://art/day_ex/battle_background_backyard.png" id="23_jroxv"]
 [ext_resource type="Texture2D" uid="uid://bf7tg47xaj2h" path="res://art/day_ex/npc_hen.png" id="23_rmano"]
 [ext_resource type="Resource" uid="uid://cqxlnw3nrkxs2" path="res://resources/instances/day_ex/parties/party_backyard_boss_alien_x_1_duck_x_2.tres" id="25_2bmt5"]
+[ext_resource type="Resource" uid="uid://bo3q01myol6su" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_01.tres" id="32_5axbo"]
+[ext_resource type="Resource" uid="uid://it88cwxcso7x" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_02.tres" id="33_v1p5x"]
+[ext_resource type="Resource" uid="uid://cb3yn07pyaoch" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_03.tres" id="34_83td5"]
+[ext_resource type="Resource" uid="uid://brimlfrdllvsw" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_backyard_event_01.tres" id="35_ba6si"]
+[ext_resource type="Resource" uid="uid://bvryiea77p2c" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_04.tres" id="35_hcrmx"]
+[ext_resource type="Resource" uid="uid://dwgmvx8sxk5x0" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_default.tres" id="36_v28yn"]
+[ext_resource type="Resource" uid="uid://n1gppdd3vxka" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_01.tres" id="38_ei3ft"]
+[ext_resource type="Resource" uid="uid://b5rkvbwawsbw2" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_02.tres" id="39_wgaev"]
+[ext_resource type="Resource" uid="uid://dpm48otubk5bk" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_default.tres" id="40_yduqi"]
 
 [sub_resource type="Resource" id="Resource_6tnym"]
 script = ExtResource("8_r6rwp")
@@ -53,38 +62,6 @@ script = ExtResource("8_r6rwp")
 _id = "backyard"
 _background = ExtResource("23_jroxv")
 _enemy_parties = Array[Resource("res://resources/battle_party.gd")]([ExtResource("11_3ieqf"), ExtResource("12_u33vr"), ExtResource("13_o0alh")])
-
-[sub_resource type="Resource" id="Resource_4mq8j"]
-script = ExtResource("9_a05ap")
-character = "Alien, I guess?"
-line = "YOU... MONSTER!"
-text_speed_chars_per_second = 5.0
-
-[sub_resource type="Resource" id="Resource_utk17"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_4mq8j")])
-
-[sub_resource type="Resource" id="Resource_qd0hu"]
-script = ExtResource("9_a05ap")
-character = ""
-line = "And so, Bucho got the power of flying by eating a lot of birds."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_mbsbk"]
-script = ExtResource("9_a05ap")
-character = ""
-line = "To be continued..."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_28hm1"]
-script = ExtResource("9_a05ap")
-character = ""
-line = "...in day 3!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_orrs0"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_qd0hu"), SubResource("Resource_mbsbk"), SubResource("Resource_28hm1")])
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fpoks"]
 tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 0, 131072, 196609, 0, 196608, 262145, 0)
@@ -1479,120 +1456,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hecm"]
 size = Vector2(14, 2)
 
-[sub_resource type="Resource" id="Resource_h33jq"]
-script = ExtResource("9_a05ap")
-character = "Yellow Parrot"
-line = "Let me open the living room for you."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_82y65"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_h33jq")])
-
-[sub_resource type="Resource" id="Resource_cb1eu"]
-script = ExtResource("9_a05ap")
-character = "Yellow Parrot"
-line = "The door was destroyed!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_ph3h4"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_cb1eu")])
-
-[sub_resource type="Resource" id="Resource_c7c18"]
-script = ExtResource("9_a05ap")
-character = "Yellow Parrot"
-line = "Let me take care of that for you. Gimme that key."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_v2ris"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_c7c18")])
-
-[sub_resource type="Resource" id="Resource_pqrnh"]
-script = ExtResource("9_a05ap")
-character = "Yellow Parrot"
-line = "Done!
-Now go eat the world!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_kh6co"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_pqrnh")])
-
-[sub_resource type="Resource" id="Resource_6v4u5"]
-script = ExtResource("9_a05ap")
-character = "Yellow Parrot"
-line = "I did my thing. Now leave me alone!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_auymc"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_6v4u5")])
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5iun"]
 size = Vector2(4, 4)
 
-[sub_resource type="Resource" id="Resource_n2wam"]
-script = ExtResource("9_a05ap")
-character = "Blue Parrot"
-line = "Let's fight!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_fp32n"]
-script = ExtResource("9_a05ap")
-character = "Blue Parrot"
-line = "Hai-ya!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_x8dqh"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_n2wam"), SubResource("Resource_fp32n")])
-
-[sub_resource type="Resource" id="Resource_72l6o"]
-script = ExtResource("9_a05ap")
-character = ""
-line = "Bucho got the [color=red]BACKYARD KEY[/color]!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_vlh37"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_72l6o")])
-
-[sub_resource type="Resource" id="Resource_kodwm"]
-script = ExtResource("9_a05ap")
-character = ""
-line = "There was a parrot here."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_m068m"]
-script = ExtResource("9_a05ap")
-character = ""
-line = "It's gone now."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_iymn7"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_kodwm"), SubResource("Resource_m068m")])
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0cyl"]
 size = Vector2(4, 4)
-
-[sub_resource type="Resource" id="Resource_mbbvo"]
-script = ExtResource("9_a05ap")
-character = "Duck?"
-line = "I'm actually an alien."
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_dm51l"]
-script = ExtResource("9_a05ap")
-character = "Alien, I guess?"
-line = "Let's fight!"
-text_speed_chars_per_second = 25.0
-
-[sub_resource type="Resource" id="Resource_mgvnu"]
-script = ExtResource("20_rfyxl")
-_dialogue = Array[ExtResource("9_a05ap")]([SubResource("Resource_mbbvo"), SubResource("Resource_dm51l")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4i8t"]
 size = Vector2(4, 4)
@@ -1617,7 +1485,7 @@ _preview = false
 [node name="RandomBattleSystem" type="Node" parent="Systems"]
 unique_name_in_owner = true
 script = ExtResource("2_ae0mc")
-_max_time_sec = 3.0
+_max_time_sec = 2.5
 _battle_configs = Array[ExtResource("8_r6rwp")]([SubResource("Resource_6tnym"), SubResource("Resource_rjehg"), SubResource("Resource_fq14a")])
 
 [node name="QuestManager" type="Node" parent="Systems"]
@@ -1629,8 +1497,8 @@ _world = NodePath("../../World")
 _bird_fighters_path = Array[NodePath]([NodePath("../../World/TileMap/BackyardNpcs/NpcAlien"), NodePath("../../World/TileMap/BackyardNpcs/NpcBodyguard"), NodePath("../../World/TileMap/BackyardNpcs/NpcBodyguard2")])
 _rest_of_bird_gang_path = Array[NodePath]([NodePath("../../World/TileMap/BackyardNpcs/Npc"), NodePath("../../World/TileMap/BackyardNpcs/Npc2"), NodePath("../../World/TileMap/BackyardNpcs/Npc3")])
 _hen_path = NodePath("../../World/TileMap/BackyardNpcs/Npc4")
-_boss_final_words = SubResource("Resource_utk17")
-_ending_dialogue = SubResource("Resource_orrs0")
+_boss_final_words = ExtResource("17_5fwfp")
+_ending_dialogue = ExtResource("18_iqxyc")
 
 [node name="Timer" type="Timer" parent="Systems/EndingCutscenePlayer"]
 one_shot = true
@@ -1658,6 +1526,7 @@ layer_2/enabled = false
 layer_2/navigation_enabled = false
 layer_2/tile_data = PackedInt32Array(589829, 851969, 14, 589842, 851969, 14, 589841, 851969, 14, 589840, 851969, 14, 589839, 851969, 14, 589838, 851969, 14, 589837, 851969, 14, 589836, 851969, 14, 589835, 851969, 14, 589834, 851969, 14, 589833, 851969, 14, 589832, 851969, 14, 589831, 851969, 14, 589830, 851969, 14, 851973, 851969, 14, 917509, 851969, 14, 983045, 851969, 14, 1048581, 851969, 14, 1114117, 851969, 14, 1179653, 851969, 14, 1245189, 851969, 14, 1310725, 851969, 14, 1376261, 851969, 14, 1441797, 851969, 14, 1507333, 851969, 14, 1572869, 851969, 14, 1638405, 851969, 14, 1638418, 851969, 14, 1638417, 851969, 14, 1638416, 851969, 14, 1638415, 851969, 14, 1638414, 851969, 14, 1638413, 851969, 14, 1638412, 851969, 14, 1638411, 851969, 14, 1638410, 851969, 14, 1638409, 851969, 14, 1638408, 851969, 14, 1638407, 851969, 14, 1638406, 851969, 14, 655378, 851969, 14, 1376274, 851969, 14, 1310738, 851969, 14, 1245202, 851969, 14, 1179666, 851969, 14, 1114130, 851969, 14, 1048594, 851969, 14, 983058, 851969, 14, 917522, 851969, 14, 851986, 851969, 14, 786450, 851969, 14, 720914, 851969, 14, 1441810, 851969, 14, 1507346, 851969, 14, 1572882, 851969, 14, 655366, 851969, 14, 720902, 851969, 14, 786438, 851969, 14, 1179661, 851969, 14, 1114125, 851969, 14, 1048589, 851969, 14, 983053, 851969, 14, 917517, 851969, 14, 851981, 851969, 14, 786445, 851969, 14, 720909, 851969, 14, 655373, 851969, 14, 655372, 851969, 14, 655371, 851969, 14, 655370, 851969, 14, 655369, 851969, 14, 655368, 851969, 14, 655367, 851969, 14, 720903, 851969, 14, 786439, 851969, 14, 851975, 851969, 14, 851974, 851969, 14, 917510, 851969, 14, 983046, 851969, 14, 1048582, 851969, 14, 1114118, 851969, 14, 1179654, 851969, 14, 1245190, 851969, 14, 1310726, 851969, 14, 1376262, 851969, 14, 1441798, 851969, 14, 1507334, 851969, 14, 1572870, 851969, 14, 1572871, 851969, 14, 1507335, 851969, 14, 1441799, 851969, 14, 1376263, 851969, 14, 1310727, 851969, 14, 1245191, 851969, 14, 1179655, 851969, 14, 1114119, 851969, 14, 1048583, 851969, 14, 983047, 851969, 14, 917511, 851969, 14, 917512, 851969, 14, 851976, 851969, 14, 786440, 851969, 14, 720904, 851969, 14, 720905, 851969, 14, 786441, 851969, 14, 851977, 851969, 14, 917513, 851969, 14, 983049, 851969, 14, 983048, 851969, 14, 1048584, 851969, 14, 1114120, 851969, 14, 1179656, 851969, 14, 1245192, 851969, 14, 1310728, 851969, 14, 1376264, 851969, 14, 1441800, 851969, 14, 1507336, 851969, 14, 1572872, 851969, 14, 1572873, 851969, 14, 1507337, 851969, 14, 1441801, 851969, 14, 1376265, 851969, 14, 1310729, 851969, 14, 1245193, 851969, 14, 1179657, 851969, 14, 1114121, 851969, 14, 1048585, 851969, 14, 1048586, 851969, 14, 983050, 851969, 14, 917514, 851969, 14, 851978, 851969, 14, 786442, 851969, 14, 720906, 851969, 14, 720907, 851969, 14, 786443, 851969, 14, 851979, 851969, 14, 917515, 851969, 14, 983051, 851969, 14, 1048587, 851969, 14, 1114123, 851969, 14, 1114122, 851969, 14, 1179658, 851969, 14, 1245194, 851969, 14, 1310730, 851969, 14, 1376266, 851969, 14, 1441802, 851969, 14, 1507338, 851969, 14, 1572874, 851969, 14, 1572875, 851969, 14, 1507339, 851969, 14, 1441803, 851969, 14, 1376267, 851969, 14, 1310731, 851969, 14, 1245195, 851969, 14, 1179659, 851969, 14, 1179660, 851969, 14, 1114124, 851969, 14, 1048588, 851969, 14, 983052, 851969, 14, 917516, 851969, 14, 851980, 851969, 14, 786444, 851969, 14, 720908, 851969, 14, 1245196, 851969, 14, 1310732, 851969, 14, 1376268, 851969, 14, 1441804, 851969, 14, 1507340, 851969, 14, 1572876, 851969, 14, 1572877, 851969, 14, 1507341, 851969, 14, 1441805, 851969, 14, 1376269, 851969, 14, 1310733, 851969, 14, 1245197, 851969, 14, 1245198, 851969, 14, 1179662, 851969, 14, 1114126, 851969, 14, 1048590, 851969, 14, 983054, 851969, 14, 917518, 851969, 14, 851982, 851969, 14, 786446, 851969, 14, 720910, 851969, 14, 655374, 851969, 14, 655375, 851969, 14, 720911, 851969, 14, 786447, 851969, 14, 851983, 851969, 14, 917519, 851969, 14, 983055, 851969, 14, 1048591, 851969, 14, 1114127, 851969, 14, 1179663, 851969, 14, 1245199, 851969, 14, 1310735, 851969, 14, 1310734, 851969, 14, 1376270, 851969, 14, 1441806, 851969, 14, 1507342, 851969, 14, 1572878, 851969, 14, 1572879, 851969, 14, 1507343, 851969, 14, 1441807, 851969, 14, 1376271, 851969, 14, 1376272, 851969, 14, 1310736, 851969, 14, 1245200, 851969, 14, 1179664, 851969, 14, 1114128, 851969, 14, 1048592, 851969, 14, 983056, 851969, 14, 917520, 851969, 14, 851984, 851969, 14, 786448, 851969, 14, 720912, 851969, 14, 655376, 851969, 14, 655377, 851969, 14, 720913, 851969, 14, 786449, 851969, 14, 851985, 851969, 14, 917521, 851969, 14, 983057, 851969, 14, 1048593, 851969, 14, 1114129, 851969, 14, 1179665, 851969, 14, 1245201, 851969, 14, 1310737, 851969, 14, 1376273, 851969, 14, 1441809, 851969, 14, 1441808, 851969, 14, 1507344, 851969, 14, 1572880, 851969, 14, 1572881, 851969, 14, 1507345, 851969, 14, 1376290, 720897, 14, 1376291, 720897, 14, 1376292, 720897, 14, 1376293, 720897, 14, 1376294, 720897, 14, 1441830, 720897, 14, 1441829, 720897, 14, 1441828, 720897, 14, 1441827, 720897, 14, 1441826, 720897, 14, 1507361, 720897, 14, 1507362, 720897, 14, 1507363, 720897, 14, 1507364, 720897, 14, 1507365, 720897, 14, 1572897, 720897, 14, 1572898, 720897, 14, 1572899, 720897, 14, 1572900, 720897, 14, 1572901, 720897, 14, -1048571, 917505, 14, -1048570, 917505, 14, -1048569, 917505, 14, -1048568, 917505, 14, -1048567, 917505, 14, -1048566, 917505, 14, -1048565, 917505, 14, -1048564, 917505, 14, -1048563, 917505, 14, -1114099, 917505, 14, -1114098, 917505, 14, -1179634, 917505, 14, -1179633, 917505, 14, -1114097, 917505, 14, -1048562, 917505, 14, -1048561, 917505, 14, -983035, 917505, 14, -917499, 917505, 14, -851963, 917505, 14, -851962, 917505, 14, -851961, 917505, 14, -851960, 917505, 14, -851959, 917505, 14, -851958, 917505, 14, -851957, 917505, 14, -851956, 917505, 14, -917492, 917505, 14, -983028, 917505, 14, -983029, 917505, 14, -983030, 917505, 14, -983031, 917505, 14, -983032, 917505, 14, -983033, 917505, 14, -983034, 917505, 14, -917498, 917505, 14, -917497, 917505, 14, -917496, 917505, 14, -917495, 917505, 14, -917494, 917505, 14, -917493, 917505, 14, -983027, 917505, 14, 1507359, 720897, 14, 1507360, 720897, 14, 1572896, 720897, 14, 1572895, 720897, 14, 1376295, 720897, 14, 1441831, 720897, 14, 1441832, 720897, 14, 1441833, 720897, 14, 1376297, 720897, 14, 1376296, 720897, 14, 1507368, 720897, 14, 1572904, 720897, 14, 1572905, 720897, 14, 1507369, 720897, 14)
 layer_3/name = "objects_on_floor"
+layer_3/navigation_enabled = false
 layer_3/tile_data = PackedInt32Array(-1769440, 458753, 536870925, 852009, 524289, 9, -1769439, 458753, 268435469)
 metadata/_edit_lock_ = true
 
@@ -1821,7 +1690,7 @@ _camera_pos = NodePath("../../CameraPositions/KitchenCameraPos")
 metadata/_edit_lock_ = true
 
 [node name="TeleportToBackyardFloorActionArea" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_exit") instance=ExtResource("15_oukx8")]
-position = Vector2(321, 205)
+position = Vector2(320, 205)
 initial_direction = 3
 _exit = NodePath("Marker2D")
 metadata/_edit_group_ = true
@@ -1838,7 +1707,7 @@ position = Vector2(0, 15)
 metadata/_edit_lock_ = true
 
 [node name="TeleporterToBackyardGrassActionArea" parent="World/TileMap/ActionAreas" node_paths=PackedStringArray("_exit") instance=ExtResource("15_oukx8")]
-position = Vector2(321, 208)
+position = Vector2(320, 208)
 initial_direction = 2
 _exit = NodePath("Marker2D")
 metadata/_edit_group_ = true
@@ -1863,11 +1732,11 @@ script = ExtResource("18_fus5f")
 _quest_manager = NodePath("../../../../Systems/QuestManager")
 _living_room_door_path = NodePath("../../LivingRoomDoor")
 _kitchen_door_path = NodePath("../../KitchenDoor")
-_step_01_dialogue_event_01 = SubResource("Resource_82y65")
-_step_01_dialogue_event_02 = SubResource("Resource_ph3h4")
-_step_03_dialogue_event_01 = SubResource("Resource_v2ris")
-_step_03_dialogue_event_02 = SubResource("Resource_kh6co")
-_default_dialogue_event = SubResource("Resource_auymc")
+_step_01_dialogue_event_01 = ExtResource("32_5axbo")
+_step_01_dialogue_event_02 = ExtResource("33_v1p5x")
+_step_03_dialogue_event_01 = ExtResource("34_83td5")
+_step_03_dialogue_event_02 = ExtResource("35_hcrmx")
+_default_dialogue_event = ExtResource("36_v28yn")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1885,9 +1754,9 @@ position = Vector2(368, -204)
 script = ExtResource("21_0a6m3")
 _battle_screen_path = NodePath("../../../../BattleScreen")
 _quest_manager = NodePath("../../../../Systems/QuestManager")
-_step_02_dialogue_event_01 = SubResource("Resource_x8dqh")
-_step_02_dialogue_event_02 = SubResource("Resource_vlh37")
-_default_dialogue_event = SubResource("Resource_iymn7")
+_step_02_dialogue_event_01 = ExtResource("38_ei3ft")
+_step_02_dialogue_event_02 = ExtResource("39_wgaev")
+_default_dialogue_event = ExtResource("40_yduqi")
 _blood_splat = NodePath("../../BlueParrotBloodSplat")
 _parrot = NodePath("../../BlueParrot")
 _background = ExtResource("5_r3dm0")
@@ -1908,7 +1777,7 @@ position = Vector2(355, 128)
 script = ExtResource("22_x5cfc")
 _battle_screen_path = NodePath("../../../../BattleScreen")
 _quest_manager = NodePath("../../../../Systems/QuestManager")
-_step_04_dialogue_event_01 = SubResource("Resource_mgvnu")
+_step_04_dialogue_event_01 = ExtResource("35_ba6si")
 _ending_cutscene_player = NodePath("../../../../Systems/EndingCutscenePlayer")
 _background = ExtResource("23_jroxv")
 _party = ExtResource("25_2bmt5")

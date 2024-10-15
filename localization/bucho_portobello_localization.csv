@@ -72,6 +72,49 @@ DIALOGUE_DAY_01_LEVEL_08_LINE_01,have to buy me anything.,Tráeme lo que quieras
 DIALOGUE_DAY_01_LEVEL_08_LINE_02,Call me later! Bye!,Me llamas. ¡Bye!
 DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
 DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_01,"Now that I teach them to march, I wonder if they can carry meat for me.","Ahora que ya les enseñé a marchar, ¿serán capaces de cargar carne por mí?"
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_02,"*Sniff, sniff*","*Sniff, sniff*"
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_03,That sweet SWEET scent!,¡Ese dulce DULCE olor!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_04,"HEY, YOU!","¡OYE, TÚ!"
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_05,._.?,._.?
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_06,Do you like meat?,¿Te gusta la carne?
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_07,n_n,n_n
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_08,Human meat?,¿La... carne... humana?
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_09,:D!!!,:D!!!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_10,How unfortunate!,¡Qué desgracia!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_11,I don't like sharing food!,¡No me gusta compartir comida!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_02_PAGE_01,You... monster!,¡Eres un... monstruo!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_03_PAGE_01,To be continued...,Continuará...
+DIALOGUE_DAY_EX_BACKYARD_EVENT_03_PAGE_02,...on day 3!,...¡en el día 3!
+DIALOGUE_DAY_EX_CHAR_BLUE_BIRD,Blue Parrot,Loro Azul
+DIALOGUE_DAY_EX_CHAR_BUCHO,Bucho,Bucho
+DIALOGUE_DAY_EX_CHAR_GOOSE,Weird Goose,Ganso Extraño
+DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD,Yellow Parrot,Loro Amarillo
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_01,"Hi there, kitty! Have you seen our master around lately?","¡Hola, minino! ¿Has visto a la ama últimamente?"
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_02,...,...
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_03,It's been hours since the last time I heard her annoying voice.,Van horas desde la última vez que oí su desagradable voz.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_04,I'm...,Creo que...
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_05,I'm starting to miss her.,Creo que la estoy comenzando a extrañar.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_06,Anyway...,¡En fin!
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_07,Do you need something?,¿Querías algo?
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_08,Oh! You wanna go out?,¡Oh! ¿Quieres salir?
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_09,Someone has been able to use this door recently.,Alguien recién ha sido capaz de usar esta puerta.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_10,He's in her room. Let me talk to him.,Está en el cuarto de la ama. Hablo con él y regreso.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_11,"Nope, he doesn't want to lend me his ""secret"" [color=red]key to the backyard[/color]. He says he went through a lot of trouble to get it.","Nop, no quiere prestarme su [color=red]llave del patio[/color] ""secreta"". Dice que le costó mucho obtenerla."
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_12,Maybe you can convince him.,Tal vez tú puedas convencerlo.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_13,Just be careful: the floor is super slippery.,Sólo ten cuidado: el piso es muy resbaloso.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_02_PAGE_01,I wonder what's that funny red liquid by the desk?,¿Qué será ese liquido rojizo que está por la mesa de la ama?
+DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_01,"Oh, you got the key! Let me open the door for you.",¡Conseguiste la llave! Permíteme abrirte la puerta.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_02,"Now go and eat the world, young one!","¡Ahora ve y cómete al mundo, jovencito!"
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_01,So you want my stol...,Así que quieres mi llave robad...
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_02,I mean... secret key?,¡Secreta! ¡Secreta!
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_03,Sure! Just because you help me got it.,"¡Claro!, pero sólo porque me ayudaste."
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_04,You did a great job devouring our master.,Hiciste un gran trabajo al devorarte a la ama.
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_05,Here! You can take it...,¡Anda! ¡Toma la llave...
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_06,...from my cold dead claws!,...sobre mi cadáver!
+DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01,Bucho got the [color=red]key to the backyard[/color]!,Bucho obtuvo la [color=red]llave del patio[/color]
+DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_01,There was a parrot here.,Aquí había un loco.
+DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_02,It's gone now.,Ya no más.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
 GAME_TITLE,Bucho Busca Comida,Pyramid Seph
 INFO_DAY_EX_AVAILABLE,"Order up!\n\nA ""Day EX""\nwith extra love!\n ","¡Orden lista!\n\n¡Un ""Día EX""\ncon extra amor!\n "
@@ -149,8 +192,8 @@ MINIGAME_NAME_STORY_MODE_3,EX,EX
 QUEST_MISSION,Mission >>,Misión >>
 QUEST_MISSION_TITLE,Eat the world,Comerse al mundo
 QUEST_STEP_0,Find a way out.,Encuentra una salida.
-QUEST_STEP_1,Get the kitchen door key.,Obtén la llave de la puerta de la cocina.
-QUEST_STEP_2,Open the kitchen door.,Abre la puerta de la cocina.
+QUEST_STEP_1,Get the backyard key.,Obtén la llave del patio.
+QUEST_STEP_2,Open the backyard door.,Abre la puerta al patio.
 QUEST_STEP_3,Investigate the backyard.,Investiga el patio.
 RESULTS_SCREEN_BONUS,Bonus = {lives} x 1000 = {bonus},Bono = {lives} x 1000 = {bonus}
 RESULTS_SCREEN_CURR_SCORE,Score = {score},Puntaje = {score}
@@ -167,6 +210,10 @@ RESULTS_SCREEN_EXTRA_LIVES_SINGULAR,{lives} extra life!,¡{lives} vida extra!
 RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!\n ,¡Reto devorado!\n 
 RESULTS_SCREEN_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 RESULTS_SCREEN_TOTAL_SCORE,Total = {total_score},Total = {total_score}
+RPG_BATTLE_ABILITY_NAME_ENEMY_CURE,Cure,Cura
+RPG_BATTLE_ABILITY_NAME_ENEMY_POISON,Poison,Veneno
+RPG_BATTLE_ABILITY_NAME_ENEMY_SCARE,Scare,Asustar
+RPG_BATTLE_ABILITY_NAME_ENEMY_TACKLE,Tackle,Atajar
 RPG_BATTLE_ABILITY_NAME_PLAYER_CURE,Cure,Cura
 RPG_BATTLE_ABILITY_NAME_PLAYER_DESPAIR,Despair,Desesperar
 RPG_BATTLE_ABILITY_NAME_PLAYER_MESMER_EYES,Mesmer-eyes,Ojos tiernos
@@ -174,6 +221,7 @@ RPG_BATTLE_ABILITY_NAME_PLAYER_RIP_AND_TEAR_EX,Rip & tear EX,Garrazos
 RPG_BATTLE_ABILITY_NAME_PLAYER_SCARE,Scare,Asustar
 RPG_BATTLE_ABILITY_NAME_PLAYER_SURPRISE,Surprise,Sorprender
 RPG_BATTLE_ABILITY_NAME_PLAYER_TACKLE,Tackle,Atajar
+RPG_BATTLE_ATTACK_NAME_ENEMY_MEGA_SCRATCH,Mega Scratch,Mega Garrazo
 RPG_BATTLE_ATTACK_NAME_ENEMY_NIBBLE,Nibble,Mordizco
 RPG_BATTLE_ATTACK_NAME_ENEMY_PECK,Peck,Picotazo
 RPG_BATTLE_ATTACK_NAME_PLAYER_BITE,Bite,Morder
@@ -187,7 +235,7 @@ RPG_BATTLE_COMMAND_EAT,Eat,Comer
 RPG_BATTLE_COMMAND_FLEE,Flee,Huir
 RPG_BATTLE_ENEMY_NAME_BUG,Bug,Bicho
 RPG_BATTLE_ENEMY_NAME_CROW,Crow,Cuervo
-RPG_BATTLE_ENEMY_NAME_DUCK_STRONG,Duck?,¿Pato?
+RPG_BATTLE_ENEMY_NAME_DUCK_STRONG,Weird Goose,Ganzo Extraño
 RPG_BATTLE_ENEMY_NAME_DUCK_WEAK,Duck,Pato
 RPG_BATTLE_ENEMY_NAME_LIZARD,Lizard,Lagartija
 RPG_BATTLE_ENEMY_NAME_MOUSE,Mouse,Ratón
@@ -200,17 +248,17 @@ RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a l
 RPG_BATTLE_INFO_ABILITY_SCARE,"Weakens 1 enemy's ATK, but strengthens their SPD.","Debilita el ATQ de 1enemigo, pero aumenta su VEL."
 RPG_BATTLE_INFO_ABILITY_SURPRISE,Weakens 1 enemy's DEF.,Debilita la DEF de 1 enemigo.
 RPG_BATTLE_INFO_ABILITY_TACKLE,Weakens 1 enemy's SPD.,Debilita la VEL de 1 enemigo.
-RPG_BATTLE_INFO_ATTACK_BITE,Strong attack.,Ataque fuerte.
+RPG_BATTLE_INFO_ATTACK_BITE,Strong attack. Poor accuracy.,Ataque fuerte. Fácilmente evadible.
 RPG_BATTLE_INFO_ATTACK_EAT,Removes 1 enemy from the battle field.,Remueve a 1 enemigo del campo de batalla.
-RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR,Medium attack.,Ataque medio.
-RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack.,Ataque débil.
+RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR,Medium attack. Good accuracy.,Ataque medio. Más o menos evadible.
+RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack. Great accuracy.,Ataque débil. Difícil de evadir.
 RPG_BATTLE_INFO_COMMAND_ABILITY,Perform an ability that consumes 1 MP.,Realizar una habilidad que consume 1 MP.
 RPG_BATTLE_INFO_COMMAND_ATTACK,Attack 1 enemy.,Atacar a 1 enemigo.
 RPG_BATTLE_INFO_COMMAND_BACK,Go back to command selection.,Regresar a seleccionar comando.
 RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener sobras al ganar. Eficaz contra enemigos muy debilitados.
 RPG_BATTLE_INFO_COMMAND_FLEE,Try to escape from this battle.,Intentar escapar de la batalla.
 RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center]Bucho lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center]¡Bucho perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
-RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]Now that's a dessert![/center][/p][p] [/p][p][center]Bon appétit![/center][/p],[p][center]¡Qué buen postre![/center][/p][p] [/p][p][center]¡Buen provecho![/center][/p]
+RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]This looks delicious![/center][/p][p] [/p][p][center]Bon appétit![/center][/p],[p][center]¡Se ve delicioso![/center][/p][p] [/p][p][center]¡Buen provecho![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_SUCCESS,[p][center]Piece of cake![/center][/p],[p][center]¡Pan comido![/center][/p]
 RPG_BATTLE_NARRATION_COMMAND_CURE,{attacker} uses {attack}.,{attacker} usa {attack}.
 RPG_BATTLE_NARRATION_COMMAND_HURT,{attacker} attacks with {attack}.,{attacker} ataca con {attack}.
@@ -265,6 +313,8 @@ RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_ALREADY,{target} is already poisoned.,
 RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_CLEAR,{target} is no longer poisoned.,{target} ya no está envenenado.
 RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_DAMAGE,{target} takes {damage} HP damage from poison.,{target} pierde {damage} HP por el veneno.
 RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_INFLICTED,{target} gets poisoned.,{target} es envenenado.
+RPG_BATTLE_SCREEN_LABEL_ACTION,Action,Acción
+RPG_BATTLE_SCREEN_LABEL_INFO,Info,Info
 RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_BUFF,ATK+,ATQ+
 RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_DEBUFF,ATK-,ATQ-
 RPG_BATTLE_STATUS_EFFECT_SHORT_CHARMED,CHRM,AMOR

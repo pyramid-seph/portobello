@@ -190,7 +190,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
-text = "ACTION"
+text = "RPG_BATTLE_SCREEN_LABEL_ACTION"
 label_settings = SubResource("LabelSettings_2otg2")
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
@@ -212,7 +212,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-text = "Info"
+text = "RPG_BATTLE_SCREEN_LABEL_INFO"
 label_settings = SubResource("LabelSettings_7f6hs")
 uppercase = true
 

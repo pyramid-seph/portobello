@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=14 format=3 uid="uid://brimlfrdllvsw"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="1_ijsuv"]
+[ext_resource type="Script" path="res://resources/dialogue_page.gd" id="1_nxcul"]
+
+[sub_resource type="Resource" id="Resource_fjj72"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_01"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_mevx8"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_02"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_ca62o"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_03"
+text_speed_chars_per_second = 35.0
+
+[sub_resource type="Resource" id="Resource_njwa6"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_04"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_ue2sf"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_BUCHO"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_05"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_iy6e3"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_06"
+text_speed_chars_per_second = 10.0
+
+[sub_resource type="Resource" id="Resource_1xh3l"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_BUCHO"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_07"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_xh23e"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_08"
+text_speed_chars_per_second = 5.0
+
+[sub_resource type="Resource" id="Resource_5kt5r"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_BUCHO"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_09"
+text_speed_chars_per_second = 50.0
+
+[sub_resource type="Resource" id="Resource_b505s"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_10"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_7re08"]
+script = ExtResource("1_nxcul")
+character = "DIALOGUE_DAY_EX_CHAR_GOOSE"
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_11"
+text_speed_chars_per_second = 35.0
+
+[resource]
+script = ExtResource("1_ijsuv")
+_dialogue = Array[ExtResource("1_nxcul")]([SubResource("Resource_fjj72"), SubResource("Resource_mevx8"), SubResource("Resource_ca62o"), SubResource("Resource_njwa6"), SubResource("Resource_ue2sf"), SubResource("Resource_iy6e3"), SubResource("Resource_1xh3l"), SubResource("Resource_xh23e"), SubResource("Resource_5kt5r"), SubResource("Resource_b505s"), SubResource("Resource_7re08")])
