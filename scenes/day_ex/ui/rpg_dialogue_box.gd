@@ -81,7 +81,7 @@ func _say(page: DialoguePage) -> void:
 	if _text_tween:
 		_text_tween.kill()
 	_text_tween = create_tween()
-	var message_length: float = _dialogue_label.text.length()
+	var message_length: float = _dialogue_label.get_total_character_count()
 	var duration: float = message_length / page.text_speed_chars_per_second
 	_text_tween.tween_property(
 			_dialogue_label, 
