@@ -27,6 +27,7 @@ var _touch_screen_controller: TouchScreenController
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	layer = 128
 
 
 func _ready() -> void:
