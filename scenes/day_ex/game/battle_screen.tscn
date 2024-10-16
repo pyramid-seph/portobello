@@ -115,6 +115,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "BUCHO LVL 9"
 label_settings = SubResource("LabelSettings_5wp2s")
+uppercase = true
 
 [node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
@@ -192,6 +193,7 @@ layout_mode = 2
 layout_mode = 2
 text = "RPG_BATTLE_SCREEN_LABEL_ACTION"
 label_settings = SubResource("LabelSettings_2otg2")
+uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
