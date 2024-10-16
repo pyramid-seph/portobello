@@ -18,6 +18,7 @@ config/version="1.2.1"
 run/main_scene="res://scenes/_shared/title_screen/title_screen_scene.tscn"
 config/features=PackedStringArray("4.3")
 boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://art/_shared/ui_counter_lives.png"
 
 [autoload]
