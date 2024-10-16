@@ -234,7 +234,7 @@ func _on_player_died(cause: Player.DeathCause) -> void:
 
 func _on_player_ate() -> void:
 	if not _curr_lvl_settings:
-		print("No _curr_lvl_settings set. Skipping methd.")
+		Log.d("No _curr_lvl_settings set. Skipping methd.")
 		return
 	
 	_score += 1

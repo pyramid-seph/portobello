@@ -162,7 +162,7 @@ func enter_battlefield() -> void:
 func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide, 
 		is_flee_forbidden: bool) -> void:
 	if is_removed_from_battle():
-		print("WARN: %s is not in the battle field. Skipping their turn." % get_full_name())
+		Log.d("WARN: %s is not in the battle field. Skipping their turn." % get_full_name())
 		return
 	
 	await _on_turn_started()
@@ -185,7 +185,7 @@ func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide,
 			command_completed = await _run_attack_command(
 					brain, hurt_command, ally_side, foe_side)
 		else:
-			print("Unknown battle command class. Skipping turn.")
+			Log.d("Unknown battle command class. Skipping turn.")
 			command_completed = await _run_pass_command()
 	await _on_turn_finished(foe_side.is_party_defeated())
 
@@ -211,7 +211,7 @@ func get_hurt(attacker: Fighter, attack: BattleAction) -> void:
 	
 	if attack.inflicts_any_status_effect():
 		await _hurt_with_status_attack(attack)
-	print("%s HP: %s" % [get_full_name(), get_stats_manager().get_curr_hp()])
+	Log.d("%s HP: %s" % [get_full_name(), get_stats_manager().get_curr_hp()])
 
 
 func _get_active_brain() -> FighterBrain:

@@ -33,7 +33,7 @@ func setup(stats_manager: StatsManager, status_manager: StatusManager) -> void:
 				_status_manager.status_changed, _on_status_or_stats_changed)
 	
 	if not stats_manager or not status_manager:
-		print("stats_manager and status manager cannot be null. Skipping setup.")
+		Log.d("stats_manager and status manager cannot be null. Skipping setup.")
 		return
 	
 	_stats_manager = stats_manager
@@ -50,7 +50,7 @@ func get_displayed_status() -> Status:
 
 func force_status_update() -> void:
 	if not _stats_manager or not _stats_manager:
-		print("Do not call force_status_update() before setup().")
+		Log.d("Do not call force_status_update() before setup().")
 		return
 	
 	var old_statuses: int = _statuses

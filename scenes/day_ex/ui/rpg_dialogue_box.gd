@@ -18,7 +18,7 @@ func _ready() -> void:
 	if get_parent() == get_tree().root:
 		var example: DialogueEvent = _build_example_dialogue()
 		example.finished.connect(func():
-				print("Dialogue event finished"))
+				Log.d("Dialogue event finished"))
 		play(example)
 	else:
 		visible = false
@@ -64,7 +64,7 @@ func _next() -> void:
 
 func _say(page: DialoguePage) -> void:
 	if not page:
-		print("DialoguePage is null. Won't say it.")
+		Log.d("DialoguePage is null. Won't say it.")
 		return
 	
 	if is_zero_approx(anchor_bottom):

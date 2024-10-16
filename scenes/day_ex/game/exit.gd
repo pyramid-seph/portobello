@@ -78,7 +78,7 @@ func _on_body_entered(player: Player) -> void:
 		return
 	
 	if not _entrance:
-		print("Entrance not set or invalid.")
+		Log.d("Entrance not set or invalid.")
 		return
 	
 	if player:

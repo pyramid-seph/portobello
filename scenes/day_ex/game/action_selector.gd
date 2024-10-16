@@ -133,7 +133,7 @@ func _on_command_h_selector_selected(selected: Dictionary) -> void:
 			command_selected.emit(BattleCommand.Flee.new())
 			_command_selector.release_focus()
 		_:
-			print(name, " |> Unknown option selected: ", selected)
+			Log.d("%s |> Unknown option selected: %s" % [name, selected])
 
 
 func _on_action_h_selector_selected(action: BattleAction) -> void:

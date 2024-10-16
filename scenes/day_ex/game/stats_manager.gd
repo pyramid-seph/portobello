@@ -56,7 +56,7 @@ var _spd_buffs: int:
 
 func setup(fighter_data: FighterData, experience: int = 0) -> void:
 	if not fighter_data or experience < 0:
-		print("StatsManager :> setup NOT executed: invalid parameters.")
+		Log.d("StatsManager :> setup NOT executed: invalid parameters.")
 		return
 	
 	_fighter_data = fighter_data
@@ -78,7 +78,7 @@ func setup(fighter_data: FighterData, experience: int = 0) -> void:
 ## See also: [code]gain_experience(experience: int)[/code]
 func reset_base_stats_to_level(level: int) -> void:
 	if not _fighter_data or level < 1:
-		print("StatsManager :> reset_level NOT executed: invalid parameters.")
+		Log.d("StatsManager :> reset_level NOT executed: invalid parameters.")
 		return Stats.new()
 	
 	_base_stats = _fighter_data.get_base_stats_for_level(level)
@@ -98,7 +98,7 @@ func reset_base_stats_to_level(level: int) -> void:
 ## value.
 func gain_experience(experience: int) -> Stats:
 	if not _fighter_data or experience < 0:
-		print("StatsManager :> gain_experience NOT executed: invalid parameters.")
+		Log.d("StatsManager :> gain_experience NOT executed: invalid parameters.")
 		return Stats.new()
 	
 	var min_experience: int = _fighter_data.get_min_experience()

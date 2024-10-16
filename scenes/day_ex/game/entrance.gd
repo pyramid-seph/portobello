@@ -42,7 +42,7 @@ func teleport_here(player: Player, distance_offset: Vector2 = Vector2.ZERO) -> v
 		return
 	
 	if not _camera_pos:
-		print("A CameraPos reference is required. The player won't be repositioned.")
+		Log.d("A CameraPos reference is required. The player won't be repositioned.")
 		return
 	
 	player.set_process_unhandled_input(false)

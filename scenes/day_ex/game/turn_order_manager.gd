@@ -21,7 +21,7 @@ func _init(player_side: BattlefieldSide, enemy_side: BattlefieldSide) -> void:
 
 func on_battle_started() -> void:
 	if _player_side == null or _enemy_side == null:
-		print("Parties are null. Skipping updating turns.")
+		Log.d("Parties are null. Skipping updating turns.")
 		return
 	
 	_curr_idx = -1
@@ -45,13 +45,13 @@ func on_turn_ended() -> void:
 func get_next_turn() -> Turn:
 	var turn: Turn = null
 	if _player_side == null or _enemy_side == null:
-		print("Parties not set. Skipping deciding next turn.")
+		Log.d("Parties not set. Skipping deciding next turn.")
 		return turn
 	if _player_side.is_party_defeated() and _enemy_side.is_party_defeated():
-		print("Everyone is defeated. Skipping deciding next turn.")
+		Log.d("Everyone is defeated. Skipping deciding next turn.")
 		return turn
 	if _turns.is_empty():
-		printerr("Turns array have not been created. This should NOT happen! Skipping deciding next turn.")
+		Log.e("Turns array have not been created. This should NOT happen! Skipping deciding next turn.")
 		return turn
 	
 	_curr_idx = wrapi(_curr_idx + 1, 0, _turns.size())
@@ -73,7 +73,7 @@ func _update_turns() -> void:
 	_turns = []
 	
 	if _player_side == null or _enemy_side == null:
-		print("Parties are null. Skipping updating turns.")
+		Log.d("Parties are null. Skipping updating turns.")
 		return
 	
 	var enemy_party_size: int = _enemy_side.get_members().size()
@@ -88,7 +88,7 @@ func _update_turns() -> void:
 		_turns[arr_idx] = i + 1
 	
 	_turns.sort_custom(_sort_turn_order)
-	print("Turn order updated: ", _turns)
+	Log.d("Turn order updated: %s" % _turns)
 
 
 func _sort_turn_order(a_pos: int, b_pos: int) -> bool:
@@ -124,7 +124,7 @@ func _stop_observing_spd_buffs(side: BattlefieldSide) -> void:
 
 func _on_fighter_spd_buffed() -> void:
 	if !_has_any_spd_changed:
-		print("Turn order will update at the end of this turn.")
+		Log.d("Turn order will update at the end of this turn.")
 	_has_any_spd_changed = true
 
 

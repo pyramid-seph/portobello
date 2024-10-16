@@ -126,12 +126,12 @@ func _clear_row(row: HBoxContainer) -> void:
 
 
 func _on_fighter_selected(target: Fighter) -> void:
-	print(target.get_full_name(), " selected")
+	Log.d("%s selected" % target.get_full_name())
 	target_selected.emit(target)
 
 
 func _on_fighter_selection_canceled() -> void:
-	print("fighter selection canceled")
+	Log.d("fighter selection canceled")
 	target_selected.emit(null)
 
 
