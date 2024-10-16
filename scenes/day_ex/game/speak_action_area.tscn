@@ -5,4 +5,4 @@
 
 [node name="SpeakActionArea" instance=ExtResource("1_h611m")]
 script = ExtResource("2_r7jlv")
-_dialogue = Array[Resource("res://resources/dialogue_page.gd")]([])
+_dialogue_event = null

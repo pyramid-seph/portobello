@@ -59,8 +59,8 @@ focus_neighbor_bottom = NodePath("../AutofireSelector")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pavtr")
 selector_text = "MENU_SETTINGS_VIBRATE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
-focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="AutofireSelector" parent="SettingsMenuPanel/VBoxContainer" instance=ExtResource("1_5ep86")]
 unique_name_in_owner = true
@@ -70,8 +70,8 @@ focus_neighbor_bottom = NodePath("../LanguageSelector")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pw7gm")
 selector_text = "MENU_SETTINGS_AUTO_FIRE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
-focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="LanguageSelector" parent="SettingsMenuPanel/VBoxContainer" instance=ExtResource("1_5ep86")]
 unique_name_in_owner = true
@@ -81,8 +81,8 @@ focus_neighbor_bottom = NodePath("../EraseDataBtn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pno8u")
 selector_text = "MENU_SETTINGS_LANGUAGE"
 _options = ["MENU_SETTINGS_LANGUAGE_OPTION_EN", "MENU_SETTINGS_LANGUAGE_OPTION_ES"]
-focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="EraseDataBtn" type="Button" parent="SettingsMenuPanel/VBoxContainer"]
 unique_name_in_owner = true

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drvu0mov0ok2m" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.tscn" id="1_k7jal"]
 [ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/hive_drone.gd" id="2_gj6no"]
 [ext_resource type="Texture2D" uid="uid://dixrba0jityki" path="res://art/day_3/enemy_hive_drone.png" id="3_dqvn5"]
-[ext_resource type="PackedScene" path="res://scenes/day_03/_shared/objects/gun.tscn" id="3_l5rwn"]
+[ext_resource type="PackedScene" uid="uid://becs5x7xd6s18" path="res://scenes/day_03/_shared/objects/gun.tscn" id="3_l5rwn"]
 [ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="4_5m7u5"]
 [ext_resource type="Texture2D" uid="uid://c42ojvu5w4d1t" path="res://art/day_3/enemy_hive_drone_shield.png" id="6_gnyms"]
 

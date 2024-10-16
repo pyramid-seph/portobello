@@ -129,7 +129,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_x3rjv")]
-process_mode = 3
 visible = false
 layout_mode = 1
 show_auto_fire = false

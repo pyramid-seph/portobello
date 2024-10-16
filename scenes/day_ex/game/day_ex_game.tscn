@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=61 format=4 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" path="res://scenes/day_ex/game/kitchen_parrot_action_area.gd" id="18_fus5f"]
 [ext_resource type="Texture2D" uid="uid://2d078cjcm44u" path="res://art/day_ex/npc_duck.png" id="18_h2ier"]
 [ext_resource type="Resource" uid="uid://c43cds2382kua" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_backyard_event_03.tres" id="18_iqxyc"]
+[ext_resource type="PackedScene" uid="uid://0fqdkumpc1cf" path="res://scenes/day_ex/player/dust_cloud.tscn" id="20_x2wsq"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/room_parrot_action_area.gd" id="21_0a6m3"]
 [ext_resource type="Resource" uid="uid://dopwgerrghlor" path="res://resources/instances/day_ex/parties/party_room_boss_blue_bird.tres" id="22_50tig"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/alien_action_area.gd" id="22_x5cfc"]
@@ -617,6 +618,11 @@ one_shot = true
 
 [node name="World" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
+
+[node name="DustCloudPrewarm" parent="World" instance=ExtResource("20_x2wsq")]
+z_index = -4096
+position = Vector2(90, 140)
+_autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="World"]
 anchor_mode = 0

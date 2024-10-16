@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://ceybd47nvxx3s"]
 
 [ext_resource type="PackedScene" uid="uid://drvu0mov0ok2m" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.tscn" id="1_18ayd"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.gd" id="1_tb1ga"]

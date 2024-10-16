@@ -55,4 +55,3 @@ func teleport_here(player: Player, distance_offset: Vector2 = Vector2.ZERO) -> v
 	await _timer.timeout
 	await TransitionPlayer.play_default_backwards()
 	player.set_process_unhandled_input(true)
-

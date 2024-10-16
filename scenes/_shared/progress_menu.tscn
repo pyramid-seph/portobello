@@ -58,16 +58,7 @@ focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="NameLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="0"]
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-text = ""
-
-[node name="PrevOptionLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="1"]
-text = ""
-
 [node name="OptionLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="2"]
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "MENU_PROGRESS_STARS"
 
 [node name="NextOptionLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="3"]
