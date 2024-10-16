@@ -77,43 +77,50 @@ func _ready() -> void:
 
 func _on_action_left_set() -> void:
 	if is_node_ready():
-		Input.action_release(_dpad_left_button.action)
+		if _dpad_left_button.action:
+			Input.action_release(_dpad_left_button.action)
 		_dpad_left_button.action = action_left
 
 
 func _on_action_right_set() -> void:
 	if is_node_ready():
-		Input.action_release(_dpad_right_button.action)
+		if _dpad_right_button.action:
+			Input.action_release(_dpad_right_button.action)
 		_dpad_right_button.action = action_right
 
 
 func _on_action_up_set() -> void:
 	if is_node_ready():
-		Input.action_release(_dpad_up_button.action)
+		if _dpad_up_button.action:
+			Input.action_release(_dpad_up_button.action)
 		_dpad_up_button.action = action_up
 
 
 func _on_action_down_set() -> void:
 	if is_node_ready():
-		Input.action_release(_dpad_down_button.action)
+		if _dpad_down_button.action:
+			Input.action_release(_dpad_down_button.action)
 		_dpad_down_button.action = action_down
 
 
 func _on_action_button_set() -> void:
 	if is_node_ready():
-		Input.action_release(_main_action_button.action)
+		if _main_action_button.action:
+			Input.action_release(_main_action_button.action)
 		_main_action_button.action = action_button
 
 
 func _on_secondary_action_button_set() -> void:
 	if is_node_ready():
-		Input.action_release(_secondary_action_button.action)
+		if _secondary_action_button.action:
+			Input.action_release(_secondary_action_button.action)
 		_secondary_action_button.action = secondary_action_button
 
 
 func _on_action_pause_set() -> void:
 	if is_node_ready():
-		Input.action_release(_pause_button.action)
+		if _pause_button.action:
+			Input.action_release(_pause_button.action)
 		_pause_button.action = action_pause
 
 
