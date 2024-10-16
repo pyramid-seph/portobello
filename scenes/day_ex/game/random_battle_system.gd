@@ -13,7 +13,7 @@ const DayExPlayer = preload("res://scenes/day_ex/player/day_ex_player.gd")
 var _time_before_battle: float
 
 @onready var _player: DayExPlayer = %DayExPlayer
-@onready var _battle_config_tiles: TileMapLayer = %battle_config_tile_map_layer
+@onready var _battle_config_tiles: TileMapLayer = %BattleConfigTileMapLayer
 
 
 func _ready() -> void:
