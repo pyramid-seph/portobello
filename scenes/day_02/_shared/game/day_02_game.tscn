@@ -32,14 +32,17 @@ metadata/_edit_lock_ = true
 [node name="MazeA" parent="World/Mazes" instance=ExtResource("2_g2v7c")]
 process_mode = 4
 visible = false
+use_parent_material = false
 
 [node name="MazeB" parent="World/Mazes" instance=ExtResource("3_y0cd7")]
 process_mode = 4
 visible = false
+use_parent_material = false
 
 [node name="MazeC" parent="World/Mazes" instance=ExtResource("4_6vkor")]
 process_mode = 4
 visible = false
+use_parent_material = false
 
 [node name="Interface" type="Node" parent="."]
 
