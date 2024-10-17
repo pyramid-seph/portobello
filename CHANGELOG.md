@@ -1,3 +1,10 @@
+# v2.0.0 - The one that role plays.
+
+* Added "Day EX", a mini RPG you can access after beating the game.
+* Fix an error that makes the touch controller keeps sending inputs when 
+the touch controller mode changes.
+* Migrated to Godot 4.3.
+
 # v1.2.1 - The one that fixes invisible stuff running.
 
 * Fix: the scene change indicator animates when invisible.
