@@ -40,7 +40,7 @@ func _draw() -> void:
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
-	if not _entrance_node_path or not _entrance_node_path is Entrance:
+	if not _entrance_node_path or _entrance_node_path is not Entrance:
 		warnings.append("An exit must be connected to an entrance.")
 	return warnings
 

@@ -72,7 +72,7 @@ func _on_menu_dismissed(dismissed_menu: Node) -> void:
 
 
 func _on_gui_focus_changed(node: Control) -> void:
-	if not (node is Button or node is HSelector):
+	if node is not Button and node is not HSelector:
 		return
 	
 	if node.owner == _curr_menu:
