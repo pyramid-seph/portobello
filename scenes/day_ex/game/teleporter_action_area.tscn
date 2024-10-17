@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvns5pk0w8s1g"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/game/teleporter_action_area.gd" id="1_ehgwq"]
+
+[node name="TeleporterActionArea" type="Area2D"]
+position = Vector2(411, 208)
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_ehgwq")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

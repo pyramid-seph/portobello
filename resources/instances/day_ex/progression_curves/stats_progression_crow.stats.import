@@ -1,0 +1,14 @@
+[remap]
+
+importer="bucho_portobello.stats_progression_json_importer"
+type="Resource"
+uid="uid://ksti8dw0jcof"
+path="res://.godot/imported/stats_progression_crow.stats-ab77fe39db85a9467ad96cf5d98c81d2.tres"
+
+[deps]
+
+source_file="res://resources/instances/day_ex/progression_curves/stats_progression_crow.stats"
+dest_files=["res://.godot/imported/stats_progression_crow.stats-ab77fe39db85a9467ad96cf5d98c81d2.tres"]
+
+[params]
+

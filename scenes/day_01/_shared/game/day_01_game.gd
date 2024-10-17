@@ -51,7 +51,7 @@ var _immediate_lives_counter_update: bool = true
 
 @onready var _is_ready: bool = true
 @onready var _results_screen := %ResultsScreen as ResultsScreen
-@onready var _player := $World/TileMap/Day01Player as Player
+@onready var _player := %Day01Player as Player
 @onready var _ui := %Day01GameUi as Day01Ui
 @onready var _timer := $Timer as Timer
 @onready var _lvl_info := $Systems/LevelInfo as LevelInfo
@@ -234,7 +234,7 @@ func _on_player_died(cause: Player.DeathCause) -> void:
 
 func _on_player_ate() -> void:
 	if not _curr_lvl_settings:
-		print("No _curr_lvl_settings set. Skipping methd.")
+		Log.d("No _curr_lvl_settings set. Skipping methd.")
 		return
 	
 	_score += 1

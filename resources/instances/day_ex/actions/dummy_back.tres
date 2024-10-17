@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=2 format=3 uid="uid://bgugexdl7ki8y"]
+
+[ext_resource type="Script" path="res://resources/battle_action.gd" id="1_1qvj3"]
+
+[resource]
+script = ExtResource("1_1qvj3")
+_action_name = "RPG_BATTLE_COMMAND_BACK"
+_info = "RPG_BATTLE_INFO_COMMAND_BACK"
+_target = 0
+_consumes = 0
+_cost = 1
+_physical_damage = 0
+_damage_points = 1
+_damage_percent = 0.5
+_hit_chance = 1.0
+_status_effect_poison_damage = 0
+_status_effect_attack = 0
+_status_effect_defense = 0
+_status_effect_speed = 0
+_status_effect_love = false
+_sprites = Array[Texture2D]([])
+_duration_sec = 1.0
+_screen_flash_color = Color(1, 1, 1, 0)
+_shake_screen = false

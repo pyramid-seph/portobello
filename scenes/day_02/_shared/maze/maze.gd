@@ -1,4 +1,4 @@
-extends TileMap
+extends TileMapLayer
 
 
 signal completed
@@ -39,7 +39,6 @@ const RESPAWN_RETRY_DELAY_SECONDS: float = 0.16
 
 var _state: MazeState
 
-@onready var _is_ready := true
 @onready var _player_init_pos_marker = $PlayerInitPosMarker as Marker2D
 @onready var _respawn_pos_marker = $RespawnPosMarker as Marker2D
 @onready var _player_out_of_maze: Marker2D = $PlayerOutOfMazeMarker
@@ -117,11 +116,11 @@ func revive_player() -> void:
 
 
 func is_empty_tile(map_pos: Vector2i) -> bool:
-	return get_cell_source_id(0, map_pos) == -1
+	return get_cell_source_id(map_pos) == -1
 
 
 func get_surrounding_empty_cells(map_pos: Vector2i) -> Array[Vector2i]:
-	var surrounding_cells := get_surrounding_cells(map_pos)
+	var surrounding_cells: Array[Vector2i] = get_surrounding_cells(map_pos)
 	return surrounding_cells.filter(func(item):
 		return is_empty_tile(item)
 	)
@@ -248,17 +247,17 @@ func _start_ghost_respawn_timer(timer: Timer) -> void:
 
 
 func _on_blue_ghost_speed_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_blue_ghost.speed = blue_ghost_speed
 
 
 func _on_red_ghost_speed_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_red_ghost.speed = red_ghost_speed
 
 
 func _on_yellow_ghost_speed_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_yellow_ghost.speed = yellow_ghost_speed
 
 

@@ -59,7 +59,7 @@ var _origin_local_pos: Vector2
 func _ready() -> void:
 	_on_visibility_changed()
 	if not _maze:
-		print("Player must be a direct children of a maze. queue_free() was called on the player.")
+		Log.d("Player must be a direct children of a maze. queue_free() was called on the player.")
 		queue_free()
 
 

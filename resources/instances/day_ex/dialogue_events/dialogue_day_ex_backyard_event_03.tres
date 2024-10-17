@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=5 format=3 uid="uid://c43cds2382kua"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="1_darsw"]
+[ext_resource type="Script" path="res://resources/dialogue_page.gd" id="1_qr4mw"]
+
+[sub_resource type="Resource" id="Resource_g7n1q"]
+script = ExtResource("1_qr4mw")
+character = ""
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_03_PAGE_01"
+text_speed_chars_per_second = 25.0
+
+[sub_resource type="Resource" id="Resource_hwkmb"]
+script = ExtResource("1_qr4mw")
+character = ""
+line = "DIALOGUE_DAY_EX_BACKYARD_EVENT_03_PAGE_02"
+text_speed_chars_per_second = 35.0
+
+[resource]
+script = ExtResource("1_darsw")
+_dialogue = Array[ExtResource("1_qr4mw")]([SubResource("Resource_g7n1q"), SubResource("Resource_hwkmb")])

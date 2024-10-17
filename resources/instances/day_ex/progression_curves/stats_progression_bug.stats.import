@@ -1,0 +1,14 @@
+[remap]
+
+importer="bucho_portobello.stats_progression_json_importer"
+type="Resource"
+uid="uid://ny7hamutreao"
+path="res://.godot/imported/stats_progression_bug.stats-b8df944d19ddde6650d1a221959aaca0.tres"
+
+[deps]
+
+source_file="res://resources/instances/day_ex/progression_curves/stats_progression_bug.stats"
+dest_files=["res://.godot/imported/stats_progression_bug.stats-b8df944d19ddde6650d1a221959aaca0.tres"]
+
+[params]
+

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://6l8f4vt584on"]
+
+[ext_resource type="PackedScene" uid="uid://b5i38qrr21yt8" path="res://scenes/day_ex/game/action_area.tscn" id="1_h611m"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/speak_action_area.gd" id="2_r7jlv"]
+
+[node name="SpeakActionArea" instance=ExtResource("1_h611m")]
+script = ExtResource("2_r7jlv")
+_dialogue_event = null

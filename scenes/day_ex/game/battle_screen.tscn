@@ -1,0 +1,245 @@
+[gd_scene load_steps=23 format=3 uid="uid://c0epbuu3r3wqy"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_h3bdx"]
+[ext_resource type="PackedScene" uid="uid://ctbphqc3meo8i" path="res://scenes/day_ex/game/battle_narration_box.tscn" id="2_mexfq"]
+[ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="3_i3dd0"]
+[ext_resource type="PackedScene" uid="uid://c3l2edgf8ciay" path="res://scenes/day_ex/game/battlefield_side.tscn" id="4_qyjvj"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="5_k0cqu"]
+[ext_resource type="Texture2D" uid="uid://dgq5bvxdn1811" path="res://art/day_ex/battle_item_scraps.png" id="8_dp0aj"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="8_kvjtm"]
+[ext_resource type="Script" path="res://scenes/day_ex/game/status_label.gd" id="9_5uij3"]
+[ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="9_gb3qd"]
+[ext_resource type="Script" path="res://scenes/day_ex/ui/group_visibility.gd" id="10_7g15t"]
+[ext_resource type="PackedScene" uid="uid://dtehqdjeugahu" path="res://scenes/day_ex/ui/action_selector.tscn" id="12_0rvl7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6y60"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkdax"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("3_i3dd0")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wp2s"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_14j6r"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_g1src"]
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vf0sj"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vaxnq"]
+font = ExtResource("5_k0cqu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2otg2"]
+font = ExtResource("5_k0cqu")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_7f6hs"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_5fx2w"]
+line_spacing = 0.0
+font = ExtResource("5_k0cqu")
+font_size = 8
+
+[node name="BattleScreen" type="CanvasLayer"]
+script = ExtResource("1_wg4ig")
+
+[node name="TransitionDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MainContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_h3bdx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_q6y60")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BattleNarrationBox" parent="MainContainer/VBoxContainer" instance=ExtResource("2_mexfq")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EnemyBattlefieldSide" parent="MainContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlayerInfoContainer" type="PanelContainer" parent="MainContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 153)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "BUCHO LVL 9"
+label_settings = SubResource("LabelSettings_5wp2s")
+uppercase = true
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HP: 100/999"
+label_settings = SubResource("LabelSettings_14j6r")
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="StatusDisplay" type="TextureRect" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_gb3qd")
+stretch_mode = 3
+script = ExtResource("8_kvjtm")
+
+[node name="StatusLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ATK+"
+label_settings = SubResource("LabelSettings_g1src")
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("9_5uij3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MPLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MP: 100/999"
+label_settings = SubResource("LabelSettings_vf0sj")
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="TreatTexture" type="TextureRect" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_dp0aj")
+stretch_mode = 3
+
+[node name="TreatCount" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer2/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "9"
+label_settings = SubResource("LabelSettings_vaxnq")
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "RPG_BATTLE_SCREEN_LABEL_ACTION"
+label_settings = SubResource("LabelSettings_2otg2")
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ActionSelector" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("12_0rvl7")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "RPG_BATTLE_SCREEN_LABEL_INFO"
+label_settings = SubResource("LabelSettings_7f6hs")
+uppercase = true
+
+[node name="InfoLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+text = "Weakens 1 enemy's ATK, but strengthens their SPD."
+label_settings = SubResource("LabelSettings_5fx2w")
+autowrap_mode = 3
+
+[node name="PlayerBattlefieldSide" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlayerCommandsGroupVisibility" type="Control" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" node_paths=PackedStringArray("controls")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("10_7g15t")
+controls = [NodePath("../HBoxContainer3"), NodePath("../InfoLabel"), NodePath("../ActionSelector")]
+referenced_controls_visibility = false
+
+[connection signal="command_selected" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_command_selected"]
+[connection signal="current_info_changed" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_current_info_changed"]
+[connection signal="focus_entered" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/ActionSelector" to="." method="_on_action_selector_focus_entered"]
+[connection signal="referenced_controls_visibility_changed" from="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer/PlayerCommandsGroupVisibility" to="." method="_on_player_commands_group_visibility_referenced_controls_visibility_changed"]

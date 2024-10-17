@@ -1,0 +1,14 @@
+[remap]
+
+importer="bucho_portobello.stats_progression_json_importer"
+type="Resource"
+uid="uid://du06gdnpcarc4"
+path="res://.godot/imported/stats_progression_lizard.stats-694b66216ca11de7ca724fe2af486799.tres"
+
+[deps]
+
+source_file="res://resources/instances/day_ex/progression_curves/stats_progression_lizard.stats"
+dest_files=["res://.godot/imported/stats_progression_lizard.stats-694b66216ca11de7ca724fe2af486799.tres"]
+
+[params]
+

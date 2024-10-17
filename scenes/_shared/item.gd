@@ -50,4 +50,3 @@ func _randomize_frame() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	consumed_or_exited_screen.emit()
 	queue_free()
-

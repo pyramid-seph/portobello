@@ -101,12 +101,12 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 ]
 
 @export_group("Debug", "_debug")
-@export var _debug_is_cold_boot: bool:
+@export var _debug_ignore_game_progress: bool:
 	get:
-		return _debug_is_cold_boot and OS.is_debug_build()
-@export var _debug_skip_game_filter: bool:
+		return _debug_ignore_game_progress and OS.is_debug_build()
+@export var _debug_skip_logos_roll: bool:
 	get:
-		return _debug_skip_game_filter and OS.is_debug_build()
+		return _debug_skip_logos_roll and OS.is_debug_build()
 
 @onready var _is_ready := true
 @onready var _title_screen := $TitleScreen
@@ -145,10 +145,13 @@ func _remove_exit_btn_on_web() -> void:
 
 
 func _start() -> void:
-	if Game.is_cold_boot or _debug_is_cold_boot:
+	if Game.is_cold_boot:
 		Game.is_cold_boot = false
 		_enable_title_screen(false)
-		_logos_roll.start()
+		if _debug_skip_logos_roll:
+			call_deferred("_enable_title_screen", true)
+		else:
+			_logos_roll.start()
 	else:
 		_enable_title_screen(true)
 
@@ -158,7 +161,7 @@ func _update_version_label_visibility() -> void:
 
 
 func _get_enabled_story_mode_games() -> Array:
-	if _debug_skip_game_filter:
+	if _debug_ignore_game_progress:
 		return STORY_MODE_OPTIONS
 	
 	var saved_data := SaveDataManager.save_data as SaveData
@@ -168,7 +171,7 @@ func _get_enabled_story_mode_games() -> Array:
 
 
 func _get_enabled_score_attack_games() -> Array:
-	if _debug_skip_game_filter:
+	if _debug_ignore_game_progress:
 		return SCORE_ATTACK_MODE_OPTIONS
 	
 	var saved_data := SaveDataManager.save_data as SaveData
@@ -225,9 +228,11 @@ func _notify_unlocks() -> void:
 	save_data.latest_unlocked_day_notified = save_data.latest_day_completed
 	SaveDataManager.save()
 	
-	var story_progress: int = save_data.latest_day_completed
 	var body: String
-	if save_data.latest_day_completed >= 3:
+	var story_progress: int = save_data.latest_day_completed
+	if story_progress >= 4:
+		body = "INFO_DAY_EX_AVAILABLE"
+	elif save_data.latest_day_completed == 3:
 		body = tr("INFO_MINIGAME_UNLOCK_EX").format({
 				unlocked_story_mode_minigame = story_progress
 			})
@@ -269,11 +274,7 @@ func _on_settings_menu_dangerous_option_unfocused() -> void:
 
 
 func _on_minigame_selected(value) -> void:
-	if value == Game.Minigame.STORY_DAY_EX:
-		_unlocks_dialog.body_text = "MENU_MAIN_SELECT_STORY_MODE_DAY_EX"
-		_unlocks_dialog.visible = true
-	else:
-		Game.start(value)
+	Game.start(value)
 
 
 func _on_story_mode_option_index_changed(index: int) -> void:

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmviupsp68jlo"]
+
+[ext_resource type="Texture2D" uid="uid://dwjh8xb78a5xe" path="res://art/day_ex/day_ex_player.png" id="1_0knkx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0tel"]
+atlas = ExtResource("1_0knkx")
+region = Rect2(0, 20, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vvbd"]
+atlas = ExtResource("1_0knkx")
+region = Rect2(10, 20, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_63yyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0tel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vvbd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="DayExPlayerDummy" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_63yyd")
+autoplay = "default"
+frame_progress = 0.724847
+metadata/_edit_lock_ = true

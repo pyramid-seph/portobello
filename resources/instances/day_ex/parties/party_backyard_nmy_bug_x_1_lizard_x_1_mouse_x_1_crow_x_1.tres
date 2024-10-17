@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleParty" load_steps=6 format=3 uid="uid://b3ph8se3b1pq0"]
+
+[ext_resource type="Resource" uid="uid://cfrccih8ppxub" path="res://resources/instances/day_ex/chars/mouse.tres" id="1_d8bgh"]
+[ext_resource type="Resource" uid="uid://bcklqmn80yfmp" path="res://resources/instances/day_ex/chars/lizard.tres" id="2_yboh1"]
+[ext_resource type="Resource" uid="uid://dfbbuuqk1jsui" path="res://resources/instances/day_ex/chars/bug.tres" id="3_v8ho3"]
+[ext_resource type="Resource" uid="uid://dd8hfy3k84br2" path="res://resources/instances/day_ex/chars/crow.tres" id="4_agi8s"]
+[ext_resource type="Script" path="res://resources/battle_party.gd" id="5_q60cv"]
+
+[resource]
+script = ExtResource("5_q60cv")
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("4_agi8s")])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("1_d8bgh"), ExtResource("2_yboh1"), ExtResource("3_v8ho3")])
+_weight = 1.0

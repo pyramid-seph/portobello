@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://dfbbuuqk1jsui"]
+
+[ext_resource type="Resource" uid="uid://dgogiippglk3l" path="res://resources/instances/day_ex/actions/attack_nibble.tres" id="1_hftbg"]
+[ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_bug.png" id="1_puv4l"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_eo7ov"]
+[ext_resource type="Resource" uid="uid://ny7hamutreao" path="res://resources/instances/day_ex/progression_curves/stats_progression_bug.stats" id="3_724eh"]
+[ext_resource type="Script" path="res://resources/fighter_data.gd" id="4_uuxsk"]
+
+[sub_resource type="Resource" id="Resource_5n1jb"]
+script = ExtResource("2_eo7ov")
+_action = ExtResource("1_hftbg")
+_weight = 1.0
+
+[resource]
+script = ExtResource("4_uuxsk")
+_char_name = "RPG_BATTLE_ENEMY_NAME_BUG"
+_texture = ExtResource("1_puv4l")
+_stats_progression_curve = ExtResource("3_724eh")
+_actions = Array[ExtResource("2_eo7ov")]([SubResource("Resource_5n1jb")])
+_loot_scraps = 1
+_loot_exp = 1

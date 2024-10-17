@@ -34,6 +34,7 @@ func change_to_scene(path: String, shared_data: Dictionary = {}) -> void:
 		return
 	
 	_is_busy = true
+	
 	var current_scene = Utils.last_child($/root)
 	if current_scene:
 		current_scene.queue_free()

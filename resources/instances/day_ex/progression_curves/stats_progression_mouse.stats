@@ -1,0 +1,24 @@
+[
+    {
+        "level": "1",
+        "experience": "-1",
+        "hp": "15",
+        "mp": "1",
+        "attack": "8",
+        "defense": "6",
+        "speed": "12",
+        "agility": "10",
+        "luck": "10"
+    },
+    {
+        "level": "2",
+        "experience": "0",
+        "hp": "15",
+        "mp": "1",
+        "attack": "8",
+        "defense": "6",
+        "speed": "12",
+        "agility": "10",
+        "luck": "10"
+    }
+]
