@@ -88,7 +88,7 @@ func _update_turns() -> void:
 		_turns[arr_idx] = i + 1
 	
 	_turns.sort_custom(_sort_turn_order)
-	Log.d("Turn order updated: %s" % _turns)
+	Log.d("Turn order updated: %s" % str(_turns))
 
 
 func _sort_turn_order(a_pos: int, b_pos: int) -> bool:
