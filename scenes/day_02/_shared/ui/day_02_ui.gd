@@ -105,4 +105,3 @@ func _set_lives_counter(value: int) -> void:
 
 func _on_start_label_timed_label_finished() -> void:
 	start_level_finished.emit()
-

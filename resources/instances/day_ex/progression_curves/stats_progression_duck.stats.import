@@ -1,0 +1,14 @@
+[remap]
+
+importer="bucho_portobello.stats_progression_json_importer"
+type="Resource"
+uid="uid://d3nwi87a2rri8"
+path="res://.godot/imported/stats_progression_duck.stats-9530f6d478a969086a14ef3f70186151.tres"
+
+[deps]
+
+source_file="res://resources/instances/day_ex/progression_curves/stats_progression_duck.stats"
+dest_files=["res://.godot/imported/stats_progression_duck.stats-9530f6d478a969086a14ef3f70186151.tres"]
+
+[params]
+

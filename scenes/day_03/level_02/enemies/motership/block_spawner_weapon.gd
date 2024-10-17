@@ -69,7 +69,7 @@ func _spawn_block() -> void:
 		block.global_position.x = target.global_position.x
 		block.global_position.y = global_position.y
 	else:
-		print("No target set. Will retry next timeout.")
+		Log.d("No target set. Will retry next timeout.")
 	_timer.start(_cooldown)
 
 

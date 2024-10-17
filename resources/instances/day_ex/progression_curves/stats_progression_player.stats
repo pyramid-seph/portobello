@@ -1,0 +1,101 @@
+[
+    {
+        "level": "1",
+        "experience": "0",
+        "hp": "90",
+        "mp": "1",
+        "attack": "5",
+        "defense": "3",
+        "speed": "5",
+        "agility": "10",
+        "luck": "5"
+    },
+    {
+        "level": "2",
+        "experience": "5",
+        "hp": "150",
+        "mp": "1",
+        "attack": "8",
+        "defense": "6",
+        "speed": "10",
+        "agility": "15",
+        "luck": "10"
+    },
+    {
+        "level": "3",
+        "experience": "17",
+        "hp": "275",
+        "mp": "2",
+        "attack": "15",
+        "defense": "8",
+        "speed": "20",
+        "agility": "20",
+        "luck": "15"
+    },
+    {
+        "level": "4",
+        "experience": "100",
+        "hp": "315",
+        "mp": "2",
+        "attack": "25",
+        "defense": "18",
+        "speed": "35",
+        "agility": "28",
+        "luck": "15"
+    },
+    {
+        "level": "5",
+        "experience": "130",
+        "hp": "425",
+        "mp": "3",
+        "attack": "40",
+        "defense": "50",
+        "speed": "42",
+        "agility": "32",
+        "luck": "15"
+    },
+    {
+        "level": "6",
+        "experience": "200",
+        "hp": "550",
+        "mp": "3",
+        "attack": "50",
+        "defense": "50",
+        "speed": "42",
+        "agility": "32",
+        "luck": "15"
+    },
+    {
+        "level": "7",
+        "experience": "230",
+        "hp": "575",
+        "mp": "3",
+        "attack": "50",
+        "defense": "50",
+        "speed": "42",
+        "agility": "32",
+        "luck": "20"
+    },
+    {
+        "level": "8",
+        "experience": "265",
+        "hp": "600",
+        "mp": "5",
+        "attack": "60",
+        "defense": "60",
+        "speed": "42",
+        "agility": "32",
+        "luck": "20"
+    },
+    {
+        "level": "9",
+        "experience": "310",
+        "hp": "999",
+        "mp": "99",
+        "attack": "99",
+        "defense": "99",
+        "speed": "99",
+        "agility": "99",
+        "luck": "99"
+    }
+]

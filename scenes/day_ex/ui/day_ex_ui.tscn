@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg5lsubt653gf"]
+
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_elkqt"]
+[ext_resource type="Script" path="res://scenes/day_ex/ui/day_ex_ui.gd" id="2_4b3uh"]
+[ext_resource type="PackedScene" uid="uid://dxxd4wyd36xa6" path="res://scenes/_shared/ui/two_line_timed_label.tscn" id="3_4i2nv"]
+[ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="4_13kum"]
+[ext_resource type="PackedScene" uid="uid://clyn8nlxsbf12" path="res://scenes/day_ex/ui/rpg_dialogue_box.tscn" id="5_auhk2"]
+[ext_resource type="PackedScene" uid="uid://dvvm78qgp2fbl" path="res://scenes/day_ex/ui/quest_indicator.tscn" id="6_w2trs"]
+[ext_resource type="PackedScene" uid="uid://ffbhiswhalqd" path="res://scenes/_shared/ui/level_completed_screen.tscn" id="7_8hyhb"]
+
+[node name="DayExUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_elkqt")
+script = ExtResource("2_4b3uh")
+
+[node name="QuestIndicator" parent="." instance=ExtResource("6_w2trs")]
+layout_mode = 0
+offset_right = 163.0
+
+[node name="StartLabels" parent="." instance=ExtResource("3_4i2nv")]
+layout_mode = 1
+text_1 = "LEVEL_START_LINE_0_DAY_EX"
+text_2 = "LEVEL_START_LINE_1"
+font_color_normal = Color(0.945098, 0.188235, 0.188235, 1)
+font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
+font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
+duration_sec = 1.6
+label_2_visible_delay_sec = 0.8
+preview_labels = false
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 1)
+
+[node name="RpgDialogueBox" parent="." instance=ExtResource("5_auhk2")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -92.0
+offset_right = 120.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SimpleLevelCompletedScreen" parent="." instance=ExtResource("7_8hyhb")]
+visible = false
+layout_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_13kum")]
+unique_name_in_owner = true
+visible = false
+offset_left = -93.5
+offset_right = 93.5
+show_auto_fire = false
+
+[connection signal="finished" from="StartLabels" to="." method="_on_start_labels_finished"]

@@ -86,7 +86,7 @@ func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, hi
 			_calculate_extra_lives(_lives, _score)
 	_stars = _calculate_stars(_lives, _total_score)
 	
-	var new_high_score = maxi(_curr_high_score, _total_score)
+	var new_high_score: int = maxi(_curr_high_score, _total_score)
 	calculated.emit(new_high_score, _stars)
 	
 	await _show_results()
@@ -215,7 +215,7 @@ func _tween_minigame_results() -> void:
 	_tween.tween_callback(func():
 		_level_completed_container.visible = true
 		var high_score_label_color
-		if _total_score > _curr_high_score:
+		if _total_score > _curr_high_score and _curr_high_score > -1:
 			high_score_label_color = COMPLETE_LABELS_COLOR
 		else:
 			high_score_label_color = Color.TRANSPARENT
@@ -244,7 +244,7 @@ func _tween_stars_results() -> void:
 		)
 		_tween.tween_interval(STARS_DURATION_SEC)
 	else:
-		for i in _stars:
+		for i: int in _stars:
 			_tween.tween_callback(func():
 				_stars_label.text += "*" if i == 0 else " *"
 				SoundManager.play_sound(_stars_count_sound)

@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	print(" \n========\n ")
+	Log.d(" \n========\n ")
 
 
 func start(world: Node2D, player: Day03Player) -> void:
@@ -56,7 +56,7 @@ func stop() -> void:
 	_wave_delay_timer.stop()
 	_spawn_delay_timer.stop()
 	_wave_finished_check_timer.stop()
-	print("Wave manager has been stopped")
+	Log.d("Wave manager has been stopped")
 
 
 func _get_current_wave() -> Wave:
@@ -75,20 +75,20 @@ func _start_next_wave() -> void:
 	var wave: Wave = _get_current_wave()
 	_spawn_delay_timer.start(wave.time_between_spawns)
 	wave_started.emit(_wave_index)
-	print(">>> Wave started: ", _wave_index)
+	Log.d(">>> Wave started: %s" % _wave_index)
 
 
 func _pre_start_checks_passed(world: Node2D, player: Day03Player) -> bool:
 	if world == null:
-		print("Completing _wave phase  because world cannot be null.")
+		Log.d("Completing _wave phase  because world cannot be null.")
 		return false
 	
 	if player == null:
-		print("Completing _wave phase  because player cannot be null.")
+		Log.d("Completing _wave phase  because player cannot be null.")
 		return false
 	
 	if _waves_descriptor == null:
-		print("Completing _wave phase because level waves descriptor cannot be null.")
+		Log.d("Completing _wave phase because level waves descriptor cannot be null.")
 		return false
 	
 	return true
@@ -150,12 +150,12 @@ func _on_wave_delay_timer_timeout() -> void:
 	if _is_stopped:
 		return
 	
-	print("Spawns: ", _spawned_enemies_count)
-	print("<<< Wave completed: ", _wave_index)
+	Log.d("Spawns: %s" % _spawned_enemies_count)
+	Log.d("<<< Wave completed: %s" % _wave_index)
 	
 	if _wave_index >= _waves_descriptor.get_waves().size() - 1:
 		stop()
-		print("All waves completed")
+		Log.d("All waves completed")
 		all_waves_completed.emit()
 	else:
 		wave_completed.emit(_wave_index)

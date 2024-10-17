@@ -34,6 +34,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color.BLACK)
 	TranslationServer.set_locale(SaveDataManager.save_data.language)
 	
 	SoundManager.music_process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -67,6 +68,8 @@ func _get_start_path(minigame: Minigame) -> String:
 			return "res://scenes/day_02/_shared/cutscenes/cutscene_day_02_01.tscn"
 		Minigame.STORY_DAY_03:
 			return "res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.tscn"
+		Minigame.STORY_DAY_EX:
+			return "res://scenes/day_ex/_shared/cutscenes/cutscene_day_ex_01.tscn"
 		Minigame.SCORE_ATTACK_1A, \
 		Minigame.SCORE_ATTACK_1B, \
 		Minigame.SCORE_ATTACK_1C, \

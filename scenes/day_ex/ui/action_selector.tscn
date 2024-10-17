@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtehqdjeugahu"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/game/action_selector.gd" id="1_0127k"]
+[ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="2_lidh8"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="3_d7rwn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hat3d"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe4ql"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[node name="ActionSelector" type="VBoxContainer"]
+focus_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_0127k")
+
+[node name="CommandHSelector" parent="." instance=ExtResource("2_lidh8")]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hat3d")
+_options = ["Attack", "Attack"]
+numbered_list = true
+release_focus_on_selection = true
+focus_color = Color(0.29366, 0.29366, 0.29366, 1)
+text_font = ExtResource("3_d7rwn")
+text_color = Color(1, 1, 1, 1)
+
+[node name="ActionHSelector" parent="." instance=ExtResource("2_lidh8")]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme_override_styles/panel = SubResource("StyleBoxFlat_oe4ql")
+selector_text = "  "
+_options = ["Bright eyes", "Ability"]
+numbered_list = true
+release_focus_on_selection = true
+focus_color = Color(0.294118, 0.294118, 0.294118, 1)
+text_font = ExtResource("3_d7rwn")
+text_color = Color(1, 1, 1, 1)
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="current_option_index_changed" from="CommandHSelector" to="." method="_on_command_h_selector_current_option_index_changed"]
+[connection signal="focus_entered" from="CommandHSelector" to="." method="_on_command_h_selector_focus_entered"]
+[connection signal="selected" from="CommandHSelector" to="." method="_on_command_h_selector_selected"]
+[connection signal="current_option_index_changed" from="ActionHSelector" to="." method="_on_action_h_selector_current_option_index_changed"]
+[connection signal="focus_entered" from="ActionHSelector" to="." method="_on_action_h_selector_focus_entered"]
+[connection signal="focus_exited" from="ActionHSelector" to="." method="_on_action_h_selector_focus_exited"]
+[connection signal="selected" from="ActionHSelector" to="." method="_on_action_h_selector_selected"]

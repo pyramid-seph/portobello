@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://b8aj3or3hlqt8" path="res://audio/ui/ui_pressed.wav" id="5_m8ma7"]
 
 [node name="HSelector" type="PanelContainer"]
-offset_right = 159.0
-offset_bottom = 16.0
+offset_right = 132.0
+offset_bottom = 22.0
 focus_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_vafp5")
@@ -21,10 +21,43 @@ next_option_sound = ExtResource("4_7hotm")
 selection_sound = ExtResource("5_m8ma7")
 cannot_go_next_option_sound = ExtResource("5_605ui")
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme = ExtResource("1_vafp5")
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="LabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1
+
+[node name="PrevOptionLabel" type="Label" parent="LabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 0
-text = "Example "
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1
+
+[node name="OptionLabel" type="Label" parent="LabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1
+
+[node name="NextOptionLabel" type="Label" parent="LabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 16
 vertical_alignment = 1
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

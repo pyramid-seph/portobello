@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://clyn8nlxsbf12"]
+
+[ext_resource type="Script" path="res://scenes/day_ex/ui/rpg_dialogue_box.gd" id="1_f0hiq"]
+[ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_ukv3d"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="2_xxf2d"]
+[ext_resource type="Texture2D" uid="uid://55kwu7la68t5" path="res://art/day_ex/rpg_dialog_box_arrow_next.png" id="3_xp1y4"]
+
+[sub_resource type="Animation" id="Animation_2bwcl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/MessageContainer/VBoxContainer/NextPageTextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pr5es"]
+resource_name = "next_page"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/MessageContainer/VBoxContainer/NextPageTextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ioml"]
+_data = {
+"RESET": SubResource("Animation_2bwcl"),
+"next_page": SubResource("Animation_pr5es")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekldn"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_ukv3d")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_caf5a"]
+line_spacing = 0.0
+font = ExtResource("2_xxf2d")
+font_size = 8
+
+[node name="RpgDialogueBox" type="MarginContainer"]
+offset_right = 240.0
+offset_bottom = 92.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_f0hiq")
+
+[node name="NextPageAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1ioml")
+}
+autoplay = "RESET"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NameContainer" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ekldn")
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lorem"
+label_settings = SubResource("LabelSettings_caf5a")
+vertical_alignment = 1
+justification_flags = 160
+uppercase = true
+
+[node name="MessageContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(232, 58)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ekldn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MessageContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MessageContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(216, 10)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_xxf2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing. Vivamus a gravida libero. Maecenas non suscipit dolor. Maecenas non suscipit dolor. "
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="NextPageTextureRect" type="TextureRect" parent="VBoxContainer/MessageContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_xp1y4")
+stretch_mode = 4
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

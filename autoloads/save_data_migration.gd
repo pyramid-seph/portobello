@@ -12,8 +12,11 @@ func migrate(json: Dictionary) -> bool:
 			1:
 				_migrate_to_v2(json)
 				migrated = true
-			2: 
+			2:
 				_migrate_to_v3(json)
+				migrated = true
+			3:
+				_migrate_to_v4(json)
 				migrated = true
 			_:
 				print("Can't migrate to unknown save data version: ", json.version)
@@ -27,5 +30,12 @@ func _migrate_to_v2(json: Dictionary) -> void:
 
 
 func _migrate_to_v3(json: Dictionary) -> void:
-	json["is_audio_enabled"] = true
+	if json.latest_day_completed == 3 and \
+			json.latest_unlocked_day_notified == 3:
+		json["latest_day_completed"] = 4
 	json["version"] = 3
+
+
+func _migrate_to_v4(json: Dictionary) -> void:
+	json["is_audio_enabled"] = true
+	json["version"] = 4

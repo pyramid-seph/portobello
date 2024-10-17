@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BattleParty" load_steps=4 format=3 uid="uid://dao5vd01p15vf"]
+
+[ext_resource type="Resource" uid="uid://bcklqmn80yfmp" path="res://resources/instances/day_ex/chars/lizard.tres" id="1_pg5tx"]
+[ext_resource type="Resource" uid="uid://cfrccih8ppxub" path="res://resources/instances/day_ex/chars/mouse.tres" id="2_wllql"]
+[ext_resource type="Script" path="res://resources/battle_party.gd" id="3_lk8gl"]
+
+[resource]
+script = ExtResource("3_lk8gl")
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("2_wllql")])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("1_pg5tx"), ExtResource("1_pg5tx")])
+_weight = 1.0

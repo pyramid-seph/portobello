@@ -234,9 +234,11 @@ func _notify_unlocks() -> void:
 	save_data.latest_unlocked_day_notified = save_data.latest_day_completed
 	SaveDataManager.save()
 	
-	var story_progress: int = save_data.latest_day_completed
 	var body: String
-	if save_data.latest_day_completed >= 3:
+	var story_progress: int = save_data.latest_day_completed
+	if story_progress >= 4:
+		body = "INFO_DAY_EX_AVAILABLE"
+	elif save_data.latest_day_completed == 3:
 		body = tr("INFO_MINIGAME_UNLOCK_EX").format({
 				unlocked_story_mode_minigame = story_progress
 			})
@@ -278,11 +280,7 @@ func _on_settings_menu_dangerous_option_unfocused() -> void:
 
 
 func _on_minigame_selected(value) -> void:
-	if value == Game.Minigame.STORY_DAY_EX:
-		_unlocks_dialog.body_text = "MENU_MAIN_SELECT_STORY_MODE_DAY_EX"
-		_unlocks_dialog.visible = true
-	else:
-		Game.start(value)
+	Game.start(value)
 
 
 func _on_story_mode_option_index_changed(index: int) -> void:

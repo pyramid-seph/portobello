@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br2ck7kav17cl"]
+[gd_scene load_steps=7 format=3 uid="uid://p87u4fw01vqs"]
 
 [ext_resource type="PackedScene" uid="uid://brj67hm7ypmn8" path="res://scenes/_shared/moving_item.tscn" id="1_htd8b"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/items/bird.gd" id="2_g1tn3"]
