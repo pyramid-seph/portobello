@@ -11,7 +11,7 @@ extends Node
 var _curr_menu: Node:
 	set(value):
 		_curr_menu = value
-		print("_curr_menu: %s" % _curr_menu.name if _curr_menu else "null")
+		Log.d("_curr_menu: %s" % _curr_menu.name if _curr_menu else "null")
 
 
 func _ready() -> void:
@@ -19,7 +19,7 @@ func _ready() -> void:
 		return
 	
 	if not root_path:
-		print("root_path is required. Aborting UI sounds installation.")
+		Log.d("root_path is required. Aborting UI sounds installation.")
 		return
 	
 	_install_focus_change_sounds()

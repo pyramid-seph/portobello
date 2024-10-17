@@ -49,8 +49,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
-enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
 
 [gdnative]
 

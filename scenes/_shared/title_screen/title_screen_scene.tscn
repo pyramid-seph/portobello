@@ -9,8 +9,8 @@
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/logos_roll.gd" id="6_t81ja"]
 [ext_resource type="Texture2D" uid="uid://c1875bbj1nslk" path="res://art/menu_screen/title_bloody.png" id="7_gbsgd"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/game_title.gd" id="7_pvylf"]
-[ext_resource type="PackedScene" uid="uid://b15s1kucavas8" path="res://scenes/_shared/ui/ui_sounds_installer.tscn" id="9_3ggfc"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="8_obcby"]
+[ext_resource type="PackedScene" uid="uid://b15s1kucavas8" path="res://scenes/_shared/ui/ui_sounds_installer.tscn" id="9_3ggfc"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
 [ext_resource type="PackedScene" uid="uid://ckjfj1kxcsge6" path="res://scenes/_shared/progress_menu.tscn" id="10_33qhf"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
@@ -165,8 +165,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_v21ph")
 selector_text = "MENU_MAIN_SELECT_STORY_MODE"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
-options_selectable = true
-selectable = true
 
 [node name="ScoreAttackGameSelector" parent="TitleScreen/MainMenu/VBoxContainer" instance=ExtResource("9_d05si")]
 unique_name_in_owner = true
@@ -177,8 +175,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_37lb0")
 selector_text = "MENU_MAIN_SELECT_SCORE_ATTACK_MODE"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
-options_selectable = true
-selectable = true
 
 [node name="ShowScoresBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]
 unique_name_in_owner = true

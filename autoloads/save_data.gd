@@ -4,7 +4,7 @@ extends RefCounted
 signal is_autofire_enabled_changed(old_val, new_val)
 
 
-const VERSION: int = 3
+const VERSION: int = 4
 
 var version: int = VERSION
 # First day is 1. "The lost chapter" does not count.

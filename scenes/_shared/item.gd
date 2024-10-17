@@ -8,7 +8,6 @@ signal consumed_or_exited_screen
 @export var randomize_starting_frame: bool
 @export var pick_up_sound: AudioStream
 
-@onready var _is_ready: bool = true
 @onready var _animated_sprite := $AnimatedSprite2D as AnimatedSprite2D
 
 
@@ -18,7 +17,7 @@ func _ready() -> void:
 
 
 func is_ready() -> bool:
-	return _is_ready
+	return is_node_ready()
 
 
 func get_animated_sprite() -> AnimatedSprite2D:
@@ -35,7 +34,7 @@ func pick_up(picker) -> void:
 func _on_pick_up(_picker) -> void:
 	pass
 
-const SoundEffects = preload("res://addons/sound_manager/sound_effects.gd")
+
 func _internal_on_pick_up(picker) -> void:
 	if picker.has_method("add_points_to_score"):
 		picker.add_points_to_score(score_points_pick_up)
