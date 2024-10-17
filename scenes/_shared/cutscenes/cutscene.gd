@@ -9,7 +9,9 @@ signal finished
 
 var _old_touch_controller_mode: TouchControllerManager.Mode
 
+
 func _ready() -> void:
+	set_process_unhandled_input(false)
 	TouchControllerManager.mode = TouchControllerManager.Mode.CUTSCENE
 	if _autostart:
 		play()
@@ -27,12 +29,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func play() -> void:
+	set_process_unhandled_input(true)
 	_old_touch_controller_mode = TouchControllerManager.mode
 	TouchControllerManager.mode = TouchControllerManager.Mode.CUTSCENE
 	_play()
 
 
 func finish() -> void:
+	set_process_unhandled_input(false)
 	_internal_stop()
 
 
