@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjiiffracbg0c"]
+
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1jj31"]
+[ext_resource type="Script" path="res://scenes/day_ex/_shared/cutscenes/cutscene_day_ex_01.gd" id="1_mjshw"]
+
+[node name="CutsceneDayEx01" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1jj31")
+script = ExtResource("1_mjshw")
+_autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DayLabel" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "CUTSCENE_DAY_TITLE_04"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="finished" from="." to="." method="_on_finished"]

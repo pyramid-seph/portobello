@@ -10,11 +10,6 @@ const TileMapHelper = preload("res://scenes/day_01/_shared/game/day_01_tile_map_
 @export var _max_tries: int
 @export var _tile_map_helper_path: NodePath
 
-@export_group("Debug", "_debug")
-@export var _debug_enable_log: bool:
-	get:
-		return OS.is_debug_build() and _debug_enable_log
-
 var _top_left_map_pos: Vector2i
 var _top_right_map_pos: Vector2i
 var _bottom_left_map_pos: Vector2i
@@ -56,7 +51,7 @@ func _free_curr_treat() -> void:
 func _randomize_placement() -> Vector2:
 	var tries: int = 0
 	var map_pos: Vector2
-	_print_debug("\n")
+	Log.d("\n")
 	while tries < _max_tries:
 		map_pos.x = randi_range(_top_left_map_pos.x, _top_right_map_pos.x)
 		map_pos.y = randi_range(_top_left_map_pos.y, _bottom_left_map_pos.y)
@@ -69,7 +64,7 @@ func _randomize_placement() -> Vector2:
 		else:
 			break
 	if tries >= _max_tries:
-		_print_debug("Exceeded retries. Placing at the neck pos.")
+		Log.d("Exceeded retries. Placing at the neck pos.")
 		map_pos = _get_first_trunc_part_map_pos()
 	return _house_helper.map_to_global(map_pos)
 
@@ -81,9 +76,9 @@ func _collides_with_furniture(map_pos: Vector2i) -> bool:
 	_collision_detector.force_shapecast_update()
 	if _collision_detector.is_colliding():
 		var area = _collision_detector.get_collider(0)
-		_print_debug("Collides with: %s: %s -> %s." % [area.name, map_pos, _collision_detector.global_position])
+		Log.d("Collides with: %s: %s -> %s." % [area.name, map_pos, _collision_detector.global_position])
 	else:
-		_print_debug("No collision with furniture detected: %s -> %s." % [map_pos, _collision_detector.global_position])
+		Log.d("No collision with furniture detected: %s -> %s." % [map_pos, _collision_detector.global_position])
 	return _collision_detector.is_colliding()
 
 
@@ -93,25 +88,20 @@ func _collides_with_player_head(map_pos: Vector2i) -> bool:
 	# when a treat placement is attempted after the player eats a treat.
 	var collision_detected := map_pos == _house_helper.global_to_map(_player.get_head_global_postion())
 	if  collision_detected:
-		_print_debug("Collides with the head. :(")
+		Log.d("Collides with the head. :(")
 	else:
-		_print_debug("Does NOT collide with the head.")
+		Log.d("Does NOT collide with the head.")
 	return collision_detected
 
 
 func _collides_with_start_position(map_pos: Vector2i) -> bool:
 	var collision_detected := map_pos == _house_helper.global_to_map(_player.get_global_start_position())
 	if collision_detected:
-		_print_debug("collides with start pos.")
+		Log.d("collides with start pos.")
 	else:
-		_print_debug("Does NOT collide with start pos.")
+		Log.d("Does NOT collide with start pos.")
 	return collision_detected
 
 
 func _get_first_trunc_part_map_pos() -> Vector2i:
 	return _house_helper.global_to_map(_player.get_first_trunk_part_global_postion())
-
-
-func _print_debug(msg: String) -> void:
-	if _debug_enable_log:
-		print(msg)

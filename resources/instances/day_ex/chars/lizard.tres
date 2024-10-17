@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://bcklqmn80yfmp"]
+
+[ext_resource type="Resource" uid="uid://dgogiippglk3l" path="res://resources/instances/day_ex/actions/attack_nibble.tres" id="1_obnc3"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_h62y6"]
+[ext_resource type="Resource" uid="uid://du06gdnpcarc4" path="res://resources/instances/day_ex/progression_curves/stats_progression_lizard.stats" id="3_encho"]
+[ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="3_eshl6"]
+[ext_resource type="Script" path="res://resources/fighter_data.gd" id="4_ha4jh"]
+
+[sub_resource type="Resource" id="Resource_5n1jb"]
+script = ExtResource("2_h62y6")
+_action = ExtResource("1_obnc3")
+_weight = 1.0
+
+[resource]
+script = ExtResource("4_ha4jh")
+_char_name = "RPG_BATTLE_ENEMY_NAME_LIZARD"
+_texture = ExtResource("3_eshl6")
+_stats_progression_curve = ExtResource("3_encho")
+_actions = Array[ExtResource("2_h62y6")]([SubResource("Resource_5n1jb")])
+_loot_scraps = 1
+_loot_exp = 3

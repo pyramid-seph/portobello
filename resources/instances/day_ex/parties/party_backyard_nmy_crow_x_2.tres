@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleParty" load_steps=3 format=3 uid="uid://dbe25xam7xcfy"]
+
+[ext_resource type="Resource" uid="uid://dd8hfy3k84br2" path="res://resources/instances/day_ex/chars/crow.tres" id="1_nney5"]
+[ext_resource type="Script" path="res://resources/battle_party.gd" id="2_22d07"]
+
+[resource]
+script = ExtResource("2_22d07")
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("1_nney5"), ExtResource("1_nney5")])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
+_weight = 3.0

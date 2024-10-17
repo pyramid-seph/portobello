@@ -4,7 +4,7 @@ extends RefCounted
 signal is_autofire_enabled_changed(old_val, new_val)
 
 
-const VERSION: int = 2
+const VERSION: int = 3
 
 var version: int = VERSION
 # First day is 1. "The lost chapter" does not count.
@@ -47,7 +47,7 @@ func to_dictionary() -> Dictionary:
 	}
 
 static func from_json(json: Dictionary) -> SaveData:
-	var save_data = SaveData.new()
+	var save_data := SaveData.new()
 	save_data.version = json.version
 	save_data.latest_day_completed = json.latest_day_completed
 	save_data.latest_unlocked_day_notified = json.latest_unlocked_day_notified

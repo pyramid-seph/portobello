@@ -6,3 +6,5 @@
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kb2c1")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

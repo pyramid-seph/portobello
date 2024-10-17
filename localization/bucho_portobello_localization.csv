@@ -1,4 +1,4 @@
-keys,en,es
+-,en,es
 COMMON_OPTIONS_EXIT,Quit game,Salir
 COMMON_OPTIONS_NO,No,No
 COMMON_OPTIONS_OK,OK,OK
@@ -72,22 +72,67 @@ DIALOGUE_DAY_01_LEVEL_08_LINE_01,have to buy me anything.,Tráeme lo que quieras
 DIALOGUE_DAY_01_LEVEL_08_LINE_02,Call me later! Bye!,Me llamas. ¡Bye!
 DIALOGUE_DAY_03_MOTERSHIP_01,We won't let you eat,No permitiremos que acabes
 DIALOGUE_DAY_03_MOTERSHIP_02,all of our food supply.,con nuestro alimento.
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_01,"Now that I teach them to march, I wonder if they can carry meat for me.","Ahora que ya les enseñé a marchar, ¿serán capaces de cargar carne por mí?"
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_02,"*Sniff, sniff*","*Sniff, sniff*"
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_03,That sweet SWEET scent!,¡Ese dulce DULCE olor!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_04,"HEY, YOU!","¡OYE, TÚ!"
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_05,o_o?,o_o?
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_06,Do you like meat?,¿Te gusta la carne?
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_07,n_n,n_n
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_08,Human meat?,¿La... carne... humana?
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_09,:D!!!,:D!!!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_10,How unfortunate!,¡Qué desgracia!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_01_PAGE_11,I don't like sharing food!,¡No me gusta compartir comida!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_02_PAGE_01,You... monster!,¡Eres un... monstruo!
+DIALOGUE_DAY_EX_BACKYARD_EVENT_03_PAGE_01,To be continued...,Continuará...
+DIALOGUE_DAY_EX_BACKYARD_EVENT_03_PAGE_02,...on day 3!,...¡en el día 3!
+DIALOGUE_DAY_EX_CHAR_BLUE_BIRD,Blue Parrot,Loro Azul
+DIALOGUE_DAY_EX_CHAR_BUCHO,Bucho,Bucho
+DIALOGUE_DAY_EX_CHAR_GOOSE,Weird Goose,Ganso Extraño
+DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD,Yellow Parrot,Loro Amarillo
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_01,"Hi there, kitty! Have you seen our master around lately?","¡Hola, minino! ¿Has visto a la ama últimamente?"
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_02,...,...
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_03,It's been hours since the last time I heard her annoying voice.,Van horas desde la última vez que oí su desagradable voz.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_04,I'm...,Creo que...
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_05,I'm starting to miss her.,Creo que la estoy comenzando a extrañar.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_06,Anyway...,¡En fin!
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_07,Do you need something?,¿Querías algo?
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_08,Oh! You wanna go out?,¡Oh! ¿Deseas salir?
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_09,Someone has been able to use this door recently.,Alguien recién ha sido capaz de usar esta puerta.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_10,He's in her room. Let me talk to him.,Está en el cuarto de la ama. Hablo con él y regreso.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_11,"Nope, he doesn't want to lend me his ""secret"" [color=red]backyard key[/color]. He says he went through a lot of trouble to get it.","Nop, no quiere prestarme su [color=red]llave del patio[/color] ""secreta"". Dice que le costó mucho obtenerla."
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_12,Maybe you can convince him.,Tal vez tú puedas convencerlo.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_13,Just be careful: the floor is super slippery.,Sólo ten cuidado: el piso es muy resbaloso.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_02_PAGE_01,I wonder what's that funny red liquid by the desk?,¿Qué será ese liquido rojizo que está por la mesa de la ama?
+DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_01,"Oh, you got the key! Let me open the door for you.",¡Conseguiste la llave! Permíteme abrirte la puerta.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_02,"Now go and eat the world, young one!","¡Ahora ve y cómete al mundo, jovencito!"
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_01,So you want my stol...,Así que quieres mi llave robad...
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_02,I mean... secret key?,¡Secreta! ¡Secreta!
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_03,Sure! Just because you help me got it.,"¡Claro!, pero sólo porque me ayudaste."
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_04,You did a great job devouring our master.,Hiciste un gran trabajo al devorarte a la ama.
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_05,Here! You can take it...,¡Anda! ¡Toma la llave...
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_06,...from my cold dead claws!,...sobre mi cadáver!
+DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01,Bucho got the [color=red]key to the backyard[/color]!,Bucho obtuvo la [color=red]llave del patio[/color]
+DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_01,There was a parrot here.,Aquí había un loro.
+DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_02,It's gone now.,Ya no más.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
 GAME_TITLE,Bucho Busca Comida,Pyramid Seph
+INFO_DAY_EX_AVAILABLE,"Order up!\n\nA ""Day EX""\nwith extra love!\n ","¡Orden lista!\n\n¡Un ""Día EX""\ncon extra amor!\n "
 INFO_GAMEPAD_SUPPORT,"Supports gamepad,","Puedes jugar con un control,"
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
-INFO_TOUCHSCREEN_SUPPORT,"touchscreen,","pantalla táctil,"
 INFO_MINIGAME_UNLOCK,Now you can eat:\n\nMenu of the day {unlocked_story_mode_minigame}\nBuffets of day {unlocked_score_attack_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día {unlocked_story_mode_minigame}\nBuffets del día {unlocked_score_attack_mode_minigame}\n 
-INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nBuffets of day {unlocked_story_mode_minigame}\n ,Ya puedes comer:\n\nBuffets del día {unlocked_story_mode_minigame}\n 
+INFO_MINIGAME_UNLOCK_EX,Now you can eat:\n\nMenu of the day EX\nBuffets of day {unlocked_story_mode_minigame}\n ,Ya puedes comer:\n\nMenú del día EX\nBuffets del día {unlocked_story_mode_minigame}\n 
+INFO_TOUCHSCREEN_SUPPORT,"touchscreen,","pantalla táctil,"
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
 LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_DAY_01_DIZZY,Dizzy,Mareado
 LEVEL_DAY_01_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
-LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
 LEVEL_DAY_02_LEVEL_NAME_SCORE_ATTACK,Buffet {level_pos},Buffet {level_pos}
+LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
 LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
+LEVEL_START_LINE_0_DAY_EX,Midnight snack!,¡Antojo nocturno!
 LEVEL_START_LINE_0_SCORE_ATTACK,Buffet,Buffet
 LEVEL_START_LINE_0_SCORE_ATTACK_WITH_POS,Buffet {level_pos},Buffet {level_pos}
 LEVEL_START_LINE_0_STORY_MODE,Dish {level_pos},Plato {level_pos}
@@ -104,7 +149,6 @@ MENU_MAIN_PROGRESS,High Scores,Récords
 MENU_MAIN_QUIT,Quit,Salir
 MENU_MAIN_SELECT_SCORE_ATTACK_MODE,Buffet,Buffet
 MENU_MAIN_SELECT_STORY_MODE,Menu of the day,Menú del día
-MENU_MAIN_SELECT_STORY_MODE_DAY_EX,This one needs\njust a little more time\nin the oven!,\n¡Muy pronto!\n\n¡No comas ansias!\n 
 MENU_MAIN_SETTINGS,Settings,Opciones
 MENU_PAUSE_AUTO_FIRE,Auto fire,Auto fuego
 MENU_PAUSE_QUIT_MINIGAME,Give up,Rendirse
@@ -145,6 +189,12 @@ MINIGAME_NAME_STORY_MODE_0,1,1
 MINIGAME_NAME_STORY_MODE_1,2,2
 MINIGAME_NAME_STORY_MODE_2,3,3
 MINIGAME_NAME_STORY_MODE_3,EX,EX
+QUEST_MISSION,Mission >>,Misión >>
+QUEST_MISSION_TITLE,Eat the world,Comerse al mundo
+QUEST_STEP_0,Find a way out.,Encuentra una salida.
+QUEST_STEP_1,Get the backyard key.,Obtén la llave del patio.
+QUEST_STEP_2,Open the backyard door.,Abre la puerta al patio.
+QUEST_STEP_3,Investigate the backyard.,Investiga el patio.
 RESULTS_SCREEN_BONUS,Bonus = {lives} x 1000 = {bonus},Bono = {lives} x 1000 = {bonus}
 RESULTS_SCREEN_CURR_SCORE,Score = {score},Puntaje = {score}
 RESULTS_SCREEN_EVALUATION,Your grade is,Tu calificación es
@@ -160,3 +210,117 @@ RESULTS_SCREEN_EXTRA_LIVES_SINGULAR,{lives} extra life!,¡{lives} vida extra!
 RESULTS_SCREEN_MINIGAME_COMPLETED,Challenge devoured!\n ,¡Reto devorado!\n 
 RESULTS_SCREEN_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 RESULTS_SCREEN_TOTAL_SCORE,Total = {total_score},Total = {total_score}
+RPG_BATTLE_ABILITY_NAME_ENEMY_CURE,Cure,Cura
+RPG_BATTLE_ABILITY_NAME_ENEMY_POISON,Poison,Veneno
+RPG_BATTLE_ABILITY_NAME_ENEMY_SCARE,Scare,Asustar
+RPG_BATTLE_ABILITY_NAME_ENEMY_TACKLE,Tackle,Atajar
+RPG_BATTLE_ABILITY_NAME_PLAYER_CURE,Cure,Cura
+RPG_BATTLE_ABILITY_NAME_PLAYER_DESPAIR,Despair,Desesperar
+RPG_BATTLE_ABILITY_NAME_PLAYER_MESMER_EYES,Mesmer-eyes,Ojos tiernos
+RPG_BATTLE_ABILITY_NAME_PLAYER_RIP_AND_TEAR_EX,Rip & tear EX,Garrazos
+RPG_BATTLE_ABILITY_NAME_PLAYER_SCARE,Scare,Asustar
+RPG_BATTLE_ABILITY_NAME_PLAYER_SURPRISE,Surprise,Sorprender
+RPG_BATTLE_ABILITY_NAME_PLAYER_TACKLE,Tackle,Atajar
+RPG_BATTLE_ATTACK_NAME_ENEMY_MEGA_SCRATCH,Mega Scratch,Mega Garrazo
+RPG_BATTLE_ATTACK_NAME_ENEMY_NIBBLE,Nibble,Mordizco
+RPG_BATTLE_ATTACK_NAME_ENEMY_PECK,Peck,Picotazo
+RPG_BATTLE_ATTACK_NAME_PLAYER_BITE,Bite,Morder
+RPG_BATTLE_ATTACK_NAME_PLAYER_EAT,Eat,Comer
+RPG_BATTLE_ATTACK_NAME_PLAYER_RIP_AND_TEAR,Rip & tear,Garrazo
+RPG_BATTLE_ATTACK_NAME_PLAYER_SCRATCH,Scratch,Arañar
+RPG_BATTLE_COMMAND_ABILITY,Ability,Habilidad
+RPG_BATTLE_COMMAND_ATTACK,Attack,Atacar
+RPG_BATTLE_COMMAND_BACK,Back,Regresar
+RPG_BATTLE_COMMAND_EAT,Eat,Comer
+RPG_BATTLE_COMMAND_FLEE,Flee,Huir
+RPG_BATTLE_ENEMY_NAME_BUG,Bug,Bicho
+RPG_BATTLE_ENEMY_NAME_CROW,Crow,Cuervo
+RPG_BATTLE_ENEMY_NAME_DUCK_STRONG,Weird Goose,Ganso Extraño
+RPG_BATTLE_ENEMY_NAME_DUCK_WEAK,Duck,Pato
+RPG_BATTLE_ENEMY_NAME_LIZARD,Lizard,Lagartija
+RPG_BATTLE_ENEMY_NAME_MOUSE,Mouse,Ratón
+RPG_BATTLE_ENEMY_NAME_PARROT_BLUE,Blue Parrot,Loro Azul
+RPG_BATTLE_ENEMY_NAME_PARROT_YELLOW,Yellow Parrot,Loro Amarillo
+RPG_BATTLE_INFO_ABILITY_CURE,Recover some HP by eating 1 scrap.,Recupera algo de HP al comer 1 trozo de sobras.
+RPG_BATTLE_INFO_ABILITY_DESPAIR,"Strengthens 1 enemy's ATK, but inflicts them with POISON.","Aumenta el ATQ de 1enemigo, pero le inflige VENENO."
+RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts 1 enemy with LOVE.,Enamora a 1enemigo.
+RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a la mitad el HP de 1enemigo.
+RPG_BATTLE_INFO_ABILITY_SCARE,"Weakens 1 enemy's ATK, but strengthens their SPD.","Debilita el ATQ de 1enemigo, pero aumenta su VEL."
+RPG_BATTLE_INFO_ABILITY_SURPRISE,Weakens 1 enemy's DEF.,Debilita la DEF de 1 enemigo.
+RPG_BATTLE_INFO_ABILITY_TACKLE,Weakens 1 enemy's SPD.,Debilita la VEL de 1 enemigo.
+RPG_BATTLE_INFO_ATTACK_BITE,Strong attack. Poor accuracy.,Ataque fuerte. Fácilmente evadible.
+RPG_BATTLE_INFO_ATTACK_EAT,Removes 1 enemy from the battle field.,Remueve a 1 enemigo del campo de batalla.
+RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR,Medium attack. Good accuracy.,Ataque medio. Más o menos evadible.
+RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack. Great accuracy.,Ataque débil. Difícil de evadir.
+RPG_BATTLE_INFO_COMMAND_ABILITY,Perform an ability that consumes 1 MP.,Realizar una habilidad que consume 1 MP.
+RPG_BATTLE_INFO_COMMAND_ATTACK,Attack 1 enemy.,Atacar a 1 enemigo.
+RPG_BATTLE_INFO_COMMAND_BACK,Go back to command selection.,Regresar a seleccionar comando.
+RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener sobras al ganar. Eficaz contra enemigos muy debilitados.
+RPG_BATTLE_INFO_COMMAND_FLEE,Try to escape from this battle.,Intentar escapar de la batalla.
+RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center]Bucho lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center]¡Bucho perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
+RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]This looks delicious![/center][/p][p] [/p][p][center]Bon appétit![/center][/p],[p][center]¡Se ve delicioso![/center][/p][p] [/p][p][center]¡Buen provecho![/center][/p]
+RPG_BATTLE_NARRATION_BATTLE_SUCCESS,[p][center]Piece of cake![/center][/p],[p][center]¡Pan comido![/center][/p]
+RPG_BATTLE_NARRATION_COMMAND_CURE,{attacker} uses {attack}.,{attacker} usa {attack}.
+RPG_BATTLE_NARRATION_COMMAND_HURT,{attacker} attacks with {attack}.,{attacker} ataca con {attack}.
+RPG_BATTLE_NARRATION_COMMAND_PASS,{target} skips this turn.,{target} se salta este turno.
+RPG_BATTLE_NARRATION_DEAD_DEVOURED,{target} has been devoured!,¡{target} ha sido devorado!
+RPG_BATTLE_NARRATION_DEAD_MURDERED,{target} has been defeated!,¡{target} ha sido derrotado!
+RPG_BATTLE_NARRATION_DEAD_POISONED,{target} has been defeated!,¡{target} ha sido derrotado!
+RPG_BATTLE_NARRATION_DEVOUR_DAMAGE,{target} took some damage.,{target} sufre algo de daño.
+RPG_BATTLE_NARRATION_EVADE,{target} evades the attack.,{target} evade el ataque.
+RPG_BATTLE_NARRATION_FIGHTER_TURN,It's {name}'s turn!,¡Es el turno de {name}!
+RPG_BATTLE_NARRATION_FLEE_ATTEMPT_MANY,{target} and co. try to flee.,{target} y compañía intentan huir.
+RPG_BATTLE_NARRATION_FLEE_ATTEMPT_SINGLE,{target} tries to flee.,{target} intenta huir.
+RPG_BATTLE_NARRATION_FLEE_FAIL_MANY,{target} and co. couldn't flee.,{target} y compañía no pudieron huir.
+RPG_BATTLE_NARRATION_FLEE_FAIL_SINGLE,{target} couldn't flee.,{target} no pudo huir.
+RPG_BATTLE_NARRATION_FLEE_SUCCESS_MANY,{target} and co. flee.,{target} y compañía huyen.
+RPG_BATTLE_NARRATION_FLEE_SUCCESS_SINGLE,{target} flees.,{target} huye.
+RPG_BATTLE_NARRATION_HP_DAMAGE,{target} takes {damage} HP damage.,{target} sufre un daño de {damage} HP.
+RPG_BATTLE_NARRATION_HP_RECOVERY,{target} recovers {damage} HP.,{target} recupera {damage} HP.
+RPG_BATTLE_NARRATION_LEVEL_UP,Bucho gets to level {level}!,¡Bucho sube al nivel {level}!
+RPG_BATTLE_NARRATION_LEVEL_UP_AGILITY_UP,AGI +{points}!,¡AGI +{points}!
+RPG_BATTLE_NARRATION_LEVEL_UP_ATTACK_UP,ATK +{points}!,¡ATQ +{points}!
+RPG_BATTLE_NARRATION_LEVEL_UP_DEFENSE_UP,DEF +{points}!,¡DEF +{points}!
+RPG_BATTLE_NARRATION_LEVEL_UP_LUCK_UP,LCK +{points}!,¡SRT +{points}!
+RPG_BATTLE_NARRATION_LEVEL_UP_MAX_HP_UP,New max HP is {points}!,¡Max HP aumenta a {points}!
+RPG_BATTLE_NARRATION_LEVEL_UP_MAX_MP_UP,New max MP is {points}!,¡Max MP aumenta a {points}!
+RPG_BATTLE_NARRATION_LEVEL_UP_SPEED_UP,SPD +{points}!,¡VEL +{points}!
+RPG_BATTLE_NARRATION_LOOT_EXP_MANY,Bucho gets {exp} experience points.,Bucho obtiene {exp} puntos de experiencia.
+RPG_BATTLE_NARRATION_LOOT_EXP_ONE,Bucho gets {exp} experience point.,Bucho obtiene {exp} punto de experiencia.
+RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY,Bucho gets {scraps} scraps.,Bucho obtiene {scraps} sobras.
+RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE,Bucho gets {scraps} scrap.,Bucho obtiene {scraps} sobra.
+RPG_BATTLE_NARRATION_NOT_ENOUGH_MP,{target} has not enough MP to do this.,{target} no tiene el MP necesario para esto..
+RPG_BATTLE_NARRATION_NOT_ENOUGH_TREATS,{target} has not enough scraps to do this.,{target} no tiene las croquetas necesarias para esto.
+RPG_BATTLE_NARRATION_STAT_ATK_BUFF,{target}'s ATK increases by {points}.,El ATQ de {target} sube {points}.
+RPG_BATTLE_NARRATION_STAT_ATK_DEBUFF,{target}'s ATK decreases by {points}.,El ATQ de {target} baja {points}.
+RPG_BATTLE_NARRATION_STAT_ATK_MAXIMIZED,{target}'s ATK is at its maximum.,El ATQ de {target} está al máximo.
+RPG_BATTLE_NARRATION_STAT_ATK_MINIMIZED,{target}'s ATK is at its minimum.,El ATQ de {target} está al mínimo.
+RPG_BATTLE_NARRATION_STAT_ATK_NORMAL,{target}'s ATK gets back to normal.,El ATQ de {target} regresa a la normalidad.
+RPG_BATTLE_NARRATION_STAT_DEF_BUFF,{target}'s DEF increases by {points}.,La DEF de {target} sube {points}.
+RPG_BATTLE_NARRATION_STAT_DEF_DEBUFF,{target}'s DEF decreases by {points}.,La DEF de {target} baja {points}.
+RPG_BATTLE_NARRATION_STAT_DEF_MAXIMIZED,{target}'s DEF is at its maximum.,La DEF de {target} está al máximo.
+RPG_BATTLE_NARRATION_STAT_DEF_MINIMIZED,{target}'s DEF is at its minimum.,La DEF de {target} está al mínimo.
+RPG_BATTLE_NARRATION_STAT_DEF_NORMAL,{target}'s DEF gets back to normal.,La DEF de {target} regresa a la normalidad.
+RPG_BATTLE_NARRATION_STAT_SPD_BUFF,{target}'s SPD increases by {points}.,La VEL de {target} sube {points}.
+RPG_BATTLE_NARRATION_STAT_SPD_DEBUFF,{target}'s SPD decreases by {points}.,La VEL de {target} baja {points}.
+RPG_BATTLE_NARRATION_STAT_SPD_MAXIMIZED,{target}'s SPD is at its maximum.,La VEL de {target} está al máximo.
+RPG_BATTLE_NARRATION_STAT_SPD_MINIMIZED,{target}'s SPD is at its minimum.,La VEL de {target} está al mínimo.
+RPG_BATTLE_NARRATION_STAT_SPD_NORMAL,{target}'s SPD gets back to normal.,La VEL de {target} regresa a la normalidad.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_ALREADY,{target} is already charmed.,{target} ya está enamorado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_CLEAR,{target} is no longer charmed.,{target} ya no está enamorado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_CHARM_INFLICTED,{target} has been charmed.,{target} ha sido enamorado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_ALREADY,{target} is already poisoned.,{target} ya está envenenado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_CLEAR,{target} is no longer poisoned.,{target} ya no está envenenado.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_DAMAGE,{target} takes {damage} HP damage from poison.,{target} pierde {damage} HP por el veneno.
+RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_INFLICTED,{target} gets poisoned.,{target} es envenenado.
+RPG_BATTLE_SCREEN_LABEL_ACTION,Action,Acción
+RPG_BATTLE_SCREEN_LABEL_INFO,Info,Info
+RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_BUFF,ATK+,ATQ+
+RPG_BATTLE_STATUS_EFFECT_SHORT_ATTACK_DEBUFF,ATK-,ATQ-
+RPG_BATTLE_STATUS_EFFECT_SHORT_CHARMED,CHRM,AMOR
+RPG_BATTLE_STATUS_EFFECT_SHORT_DEFENSE_BUFF,ATK+,ATQ+
+RPG_BATTLE_STATUS_EFFECT_SHORT_DEFENSE_DEBUFF,ATK-,ATQ-
+RPG_BATTLE_STATUS_EFFECT_SHORT_NORMAL,NRML,NRML
+RPG_BATTLE_STATUS_EFFECT_SHORT_POISON,POIS,VNNO
+RPG_BATTLE_STATUS_EFFECT_SHORT_SPEED_BUFF,SPD+,VEL+
+RPG_BATTLE_STATUS_EFFECT_SHORT_SPEED_DEBUFF,SPD-,VEL-

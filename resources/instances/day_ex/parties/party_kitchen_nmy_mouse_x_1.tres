@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleParty" load_steps=3 format=3 uid="uid://ccog2hcdkab16"]
+
+[ext_resource type="Resource" uid="uid://cfrccih8ppxub" path="res://resources/instances/day_ex/chars/mouse.tres" id="1_t0qgo"]
+[ext_resource type="Script" path="res://resources/battle_party.gd" id="2_ktkac"]
+
+[resource]
+script = ExtResource("2_ktkac")
+_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("1_t0qgo")])
+_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
+_weight = 2.0

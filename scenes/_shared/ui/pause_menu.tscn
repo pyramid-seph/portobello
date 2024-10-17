@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene load_steps=9 format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
+[ext_resource type="FontFile" uid="uid://cwc2c33qocoqn" path="res://art/fonts/peaberry_font_v2_0/peaberry_base.woff2" id="4_8nmq5"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="4_u35yd"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="5_tyfqu"]
 
@@ -9,19 +10,20 @@
 bg_color = Color(0, 0, 0, 0.784314)
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71v0q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p8f3"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpx1d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_av7u1"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
 [node name="PauseMenu" type="PanelContainer"]
+process_mode = 3
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +36,7 @@ script = ExtResource("1")
 show_auto_fire = true
 
 [node name="PauseDialog" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(150, 114)
+custom_minimum_size = Vector2(152, 114)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -54,21 +56,25 @@ uppercase = true
 
 [node name="VibrationSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_71v0q")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3p8f3")
 selector_text = "MENU_PAUSE_VIBRATE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
-focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+text_font = ExtResource("4_8nmq5")
 
 [node name="AutofireSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jpx1d")
+theme_override_styles/panel = SubResource("StyleBoxFlat_av7u1")
 selector_text = "MENU_PAUSE_AUTO_FIRE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
-focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 loop_options = false
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+text_font = ExtResource("4_8nmq5")
 
 [node name="GiveUpButton" type="Button" parent="PauseDialog/VBoxContainer"]
 unique_name_in_owner = true

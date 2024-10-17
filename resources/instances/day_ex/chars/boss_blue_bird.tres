@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="FighterData" load_steps=11 format=3 uid="uid://dspfb8s7yxn8j"]
+
+[ext_resource type="Resource" uid="uid://dmdeyptx3acva" path="res://resources/instances/day_ex/actions/attack_peck.tres" id="1_j8j71"]
+[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_tsnft"]
+[ext_resource type="Resource" uid="uid://ctml0uiekpwwr" path="res://resources/instances/day_ex/progression_curves/stats_progression_blue_bird.stats" id="3_3d61r"]
+[ext_resource type="Texture2D" uid="uid://bpmgk63khq5dq" path="res://art/day_ex/battle_char_enemy_parrot_blue.png" id="3_ufxo1"]
+[ext_resource type="Resource" uid="uid://fm846kdkqxoi" path="res://resources/instances/day_ex/actions/attack_rip_and_tear.tres" id="3_wxthk"]
+[ext_resource type="Script" path="res://resources/fighter_data.gd" id="4_dr5rg"]
+[ext_resource type="Resource" uid="uid://durkalhb4e6b0" path="res://resources/instances/day_ex/actions/attack_scratch.tres" id="4_y02vm"]
+
+[sub_resource type="Resource" id="Resource_x53hc"]
+script = ExtResource("2_tsnft")
+_action = ExtResource("1_j8j71")
+_weight = 1.0
+
+[sub_resource type="Resource" id="Resource_l63uc"]
+script = ExtResource("2_tsnft")
+_action = ExtResource("3_wxthk")
+_weight = 2.0
+
+[sub_resource type="Resource" id="Resource_adaqm"]
+script = ExtResource("2_tsnft")
+_action = ExtResource("4_y02vm")
+_weight = 1.0
+
+[resource]
+script = ExtResource("4_dr5rg")
+_char_name = "RPG_BATTLE_ENEMY_NAME_PARROT_BLUE"
+_texture = ExtResource("3_ufxo1")
+_stats_progression_curve = ExtResource("3_3d61r")
+_actions = Array[ExtResource("2_tsnft")]([SubResource("Resource_x53hc"), SubResource("Resource_l63uc"), SubResource("Resource_adaqm")])
+_loot_scraps = 5
+_loot_exp = 85

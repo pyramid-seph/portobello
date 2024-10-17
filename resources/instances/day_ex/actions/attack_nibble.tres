@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://dgogiippglk3l"]
+
+[ext_resource type="Texture2D" uid="uid://cs71y72u6nuqi" path="res://art/day_ex/battle_ability_enemy_nibble_0.png" id="1_ys20a"]
+[ext_resource type="Texture2D" uid="uid://bjgmqelb7lud" path="res://art/day_ex/battle_ability_enemy_nibble_1.png" id="2_ehk0h"]
+[ext_resource type="Texture2D" uid="uid://f44kxiy3wvu3" path="res://art/day_ex/battle_ability_enemy_nibble_2.png" id="3_uap1h"]
+[ext_resource type="Script" path="res://resources/battle_action.gd" id="4_00edb"]
+
+[resource]
+script = ExtResource("4_00edb")
+_action_name = "RPG_BATTLE_ATTACK_NAME_ENEMY_NIBBLE"
+_info = ""
+_target = 0
+_consumes = 0
+_cost = 1
+_physical_damage = 1
+_damage_points = 16
+_damage_percent = 0.5
+_hit_chance = 0.9
+_status_effect_poison_damage = 0
+_status_effect_attack = 0
+_status_effect_defense = 0
+_status_effect_speed = 0
+_status_effect_love = false
+_sprites = Array[Texture2D]([ExtResource("1_ys20a"), ExtResource("2_ehk0h"), ExtResource("3_uap1h")])
+_duration_sec = 0.45
+_screen_flash_color = Color(1, 1, 1, 0)
+_shake_screen = false

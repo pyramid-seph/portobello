@@ -2,8 +2,6 @@ class_name StateMachine
 extends Node
 
 @export var _initial_state: NodePath
-@export_group("Debug", "_debug")
-@export var _debug_is_log_enabled: bool
 
 @onready var _state := get_node(_initial_state) as State
 
@@ -34,5 +32,4 @@ func change_state(state_name: String) -> void:
 
 
 func _debug_print(text: String) -> void:
-	if _debug_is_log_enabled:
-		print("[%s] %s" % [owner.name, text])
+	Log.d("[%s] %s" % [owner.name, text])

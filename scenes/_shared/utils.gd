@@ -19,6 +19,24 @@ static func rand_item(arr: Array) -> Node:
 	return arr.pick_random() if arr else null
 
 
+# TODO Deprecate in favour of Godot's implementation whenever is released. 
+# See https://github.com/godotengine/godot/pull/88883.
+static func rand_weigthed(weights: Array[float]) -> int:
+	if not weights or weights.is_empty():
+		return -1
+	
+	var remaining_distance: float = \
+			randf() * weights.reduce(func(accum, number): 
+						return accum + number)
+	var picked_index: int = -1
+	for i: int in weights.size():
+		remaining_distance -= weights[i]
+		if remaining_distance < 0:
+			picked_index = i
+			break
+	return picked_index
+
+
 static func first_or_null(arr: Array, callable: Callable):
 	if arr == null or arr.is_empty():
 		return null
@@ -133,6 +151,11 @@ static func safe_disconnect(sg: Signal, callable: Callable) -> void:
 		sg.disconnect(callable)
 
 
+static func safe_connect(sg: Signal, callable: Callable) -> void:
+	if not sg.is_connected(callable):
+		sg.connect(callable)
+
+
 static func safe_reparent(
 	node: Node,
 	new_parent: Node,
@@ -148,8 +171,9 @@ static func safe_reparent(
 		node.reparent(new_parent, keep_global_transform)
 
 
+## @Deprecated Use array.back() instead.
 static func last(arr: Array):
-	return null if arr.is_empty() else arr[arr.size() - 1]
+	return arr.back()
 
 
 static func last_child(node: Node):

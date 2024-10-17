@@ -6,7 +6,7 @@ const Player = preload("res://scenes/day_01/player/day_01_player.gd")
 
 const OUT_OF_SCREEN_POS: Vector2 = Vector2(-100, 100)
 
-@export var _tile_map: TileMap
+@export var _tile_map_layer: TileMapLayer
 @export var _player_node_path: NodePath
 @export var _origin: Marker2D
 @export var _tile_size: Vector2i: # Tile map does not expose its tile_size :(
@@ -165,19 +165,19 @@ func map_pos_of_player_tail() -> Vector2i:
 
 
 func global_to_map(pos: Vector2) -> Vector2i:
-	return local_to_map(_tile_map.to_local(pos))
+	return local_to_map(_tile_map_layer.to_local(pos))
 
 
 func local_to_map(pos: Vector2) -> Vector2i:
-	return _tile_map.local_to_map(pos)
+	return _tile_map_layer.local_to_map(pos)
 
 
 func map_to_local(pos: Vector2i) -> Vector2:
-	return _tile_map.map_to_local(pos)
+	return _tile_map_layer.map_to_local(pos)
 
 
 func map_to_global(pos: Vector2i) -> Vector2:
-	return _tile_map.to_global(map_to_local(pos))
+	return _tile_map_layer.to_global(map_to_local(pos))
 
 
 func global_to_grid(pos: Vector2) -> Vector2i:
