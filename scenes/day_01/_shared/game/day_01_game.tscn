@@ -580,11 +580,13 @@ metadata/_edit_lock_ = true
 
 [node name="LargeCouch" parent="World/FloorTileMapLayer" instance=ExtResource("9_8h8mx")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(-177, 65)
 metadata/_edit_lock_ = true
 
 [node name="SmallCouchFacingLeft" parent="World/FloorTileMapLayer" instance=ExtResource("10_jkjik")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(-89, 57)
 metadata/_edit_lock_ = true
 
@@ -593,21 +595,25 @@ flip_h = true
 
 [node name="SmallCouchFacingRight" parent="World/FloorTileMapLayer" instance=ExtResource("10_jkjik")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(-185, 113)
 metadata/_edit_lock_ = true
 
 [node name="SmallTable00" parent="World/FloorTileMapLayer" instance=ExtResource("11_t3pbc")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(-129, 81)
 metadata/_edit_lock_ = true
 
 [node name="SmallTable01" parent="World/FloorTileMapLayer" instance=ExtResource("11_t3pbc")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(-41, 49)
 metadata/_edit_lock_ = true
 
 [node name="LargeTable" parent="World/FloorTileMapLayer" instance=ExtResource("12_w5pkf")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(-97, 153)
 metadata/_edit_lock_ = true
 
