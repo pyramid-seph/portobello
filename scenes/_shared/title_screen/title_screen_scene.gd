@@ -7,7 +7,6 @@ const MenuBgDayExTexture: Texture2D = preload("res://art/menu_screen/menu_bg_day
 const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_scores.png")
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
-const BgmTestSound: AudioStream = preload("res://audio/bgm/fantasy_world_loop_ambience_spider_den_minimal_airy_dark_tunnel_cave_underground_graveyard_b.wav")
 
 const BG_COLOR_DAY_1_LIKE_GAME := Color("7CE194")
 const BG_COLOR_DAY_2_LIKE_GAME := Color("E76F6F")
@@ -109,7 +108,6 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 	get:
 		return _debug_skip_logos_roll and OS.is_debug_build()
 
-@onready var _is_ready := true
 @onready var _title_screen := $TitleScreen
 @onready var _logos_roll := $LogosRoll
 @onready var _story_mode_game_selector := %StoryModeGameSelector as HSelector
@@ -129,16 +127,11 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 
 
 func _ready() -> void:
-	SoundManager.play_music(preload("res://audio/bgm/fantasy_world_loop_ambience_spider_den_minimal_airy_dark_tunnel_cave_underground_graveyard_b.wav"))
 	TouchControllerManager.mode = TouchControllerManager.Mode.UI_MENU
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()
 	_start()
-
-
-func _exit_tree() -> void:
-	SoundManager.stop_music()
 
 
 func _remove_exit_btn_on_web() -> void:
@@ -221,7 +214,7 @@ func _enable_title_screen(show_screen: bool) -> void:
 
 
 func _on_minigame_selection_changed(value) -> void:
-	if _is_ready:
+	if is_node_ready():
 		_title_screen_bg.game_texture = value.texture
 		_title_screen_bg.game_color = value.color
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=25 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_bg.gd" id="2_prsyc"]
 [ext_resource type="Texture2D" uid="uid://ydnoqkd04fkt" path="res://art/menu_screen/title.png" id="3_oe3xx"]
 [ext_resource type="Texture2D" uid="uid://d0q3xvjq2e100" path="res://art/menu_screen/menu_bg_day_01.png" id="3_of2ca"]
+[ext_resource type="AudioStream" uid="uid://buvnw2ren08is" path="res://audio/bgm/fantasy_world_loop_ambience_spider_den_minimal_airy_dark_tunnel_cave_underground_graveyard_b.wav" id="4_mr6x8"]
 [ext_resource type="Texture2D" uid="uid://i37nr0nsawys" path="res://art/menu_screen/splash.png" id="6_0gi6x"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/logos_roll.gd" id="6_t81ja"]
 [ext_resource type="Texture2D" uid="uid://c1875bbj1nslk" path="res://art/menu_screen/title_bloody.png" id="7_gbsgd"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
 [ext_resource type="Texture2D" uid="uid://druain36dsm0w" path="res://art/menu_screen/godot_icon_monochrome_light.png" id="16_k07gw"]
 [ext_resource type="Texture2D" uid="uid://dx2c45d18sp6i" path="res://art/menu_screen/controller_support_touchscreen.png" id="18_jtcvj"]
+[ext_resource type="Script" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v21ph"]
 resource_local_to_scene = true
@@ -36,10 +38,13 @@ bg_color = Color(1, 1, 1, 0)
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
-_debug_skip_logos_roll = true
 
 [node name="UiSoundsInstaller" parent="." node_paths=PackedStringArray("root_path") instance=ExtResource("9_3ggfc")]
 root_path = NodePath("..")
+
+[node name="SimpleBgmPlayer" type="Node" parent="."]
+script = ExtResource("21_m04mu")
+_music = ExtResource("4_mr6x8")
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
