@@ -38,6 +38,7 @@ bg_color = Color(1, 1, 1, 0)
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
+_debug_skip_logos_roll = true
 
 [node name="UiSoundsInstaller" parent="." node_paths=PackedStringArray("root_path") instance=ExtResource("9_3ggfc")]
 root_path = NodePath("..")

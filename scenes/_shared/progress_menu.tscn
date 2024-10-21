@@ -50,13 +50,18 @@ layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../MarginContainer/GoBackBtn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qykqa")
+selector_text = ""
 _options = ["MENU_PROGRESS_STARS", "MENU_PROGRESS_HIGH_SCORES"]
 loop_options = false
+selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="LabelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector" index="0"]
 size_flags_horizontal = 4
 alignment = 1
+
+[node name="NameLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="0"]
+text = ""
 
 [node name="OptionLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="2"]
 text = "MENU_PROGRESS_STARS"

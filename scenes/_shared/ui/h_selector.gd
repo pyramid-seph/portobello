@@ -25,6 +25,7 @@ const DISABLED_ALPHA: float = 0.38
 	set(value):
 		numbered_list = value
 		_on_numbered_list_set()
+@export var selection_disabled: bool
 @export var release_focus_on_selection: bool
 @export var focus_color: Color = Color.MAGENTA:
 	set(value):
@@ -72,7 +73,7 @@ func _gui_input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("ui_accept") and current_option_idx > SELECTED_NONE:
-		if not is_option_disabled(current_option_idx):
+		if not is_option_disabled(current_option_idx) and not selection_disabled:
 			if release_focus_on_selection:
 				release_focus()
 			selected.emit(get_value_for_option(current_option_idx))
