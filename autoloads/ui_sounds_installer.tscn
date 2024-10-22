@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b15s1kucavas8"]
 
-[ext_resource type="Script" path="res://scenes/_shared/ui/ui_sounds_installer.gd" id="1_qk6vr"]
+[ext_resource type="Script" path="res://autoloads/ui_sounds_installer.gd" id="1_qk6vr"]
 [ext_resource type="AudioStream" uid="uid://dyt3rdtjacitn" path="res://audio/ui/ui_move.wav" id="2_uekkg"]
 [ext_resource type="AudioStream" uid="uid://b8aj3or3hlqt8" path="res://audio/ui/ui_pressed.wav" id="3_err7g"]
 

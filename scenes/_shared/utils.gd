@@ -151,9 +151,9 @@ static func safe_disconnect(sg: Signal, callable: Callable) -> void:
 		sg.disconnect(callable)
 
 
-static func safe_connect(sg: Signal, callable: Callable) -> void:
+static func safe_connect(sg: Signal, callable: Callable, flags: int = 0) -> void:
 	if not sg.is_connected(callable):
-		sg.connect(callable)
+		sg.connect(callable, flags)
 
 
 static func safe_reparent(

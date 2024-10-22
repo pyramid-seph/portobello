@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=24 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://c1875bbj1nslk" path="res://art/menu_screen/title_bloody.png" id="7_gbsgd"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/game_title.gd" id="7_pvylf"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="8_obcby"]
-[ext_resource type="PackedScene" uid="uid://b15s1kucavas8" path="res://scenes/_shared/ui/ui_sounds_installer.tscn" id="9_3ggfc"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
 [ext_resource type="PackedScene" uid="uid://ckjfj1kxcsge6" path="res://scenes/_shared/progress_menu.tscn" id="10_33qhf"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
@@ -35,13 +34,10 @@ content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[node name="TitleScreenScene" type="Node"]
+[node name="TitleScreenScene" type="Node" groups=["__ui_sound_skip_sound_install"]]
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
 _debug_skip_logos_roll = true
-
-[node name="UiSoundsInstaller" parent="." node_paths=PackedStringArray("root_path") instance=ExtResource("9_3ggfc")]
-root_path = NodePath("..")
 
 [node name="SimpleBgmPlayer" type="Node" parent="."]
 script = ExtResource("21_m04mu")
