@@ -56,6 +56,7 @@ var _level_state: LevelState = LevelState.READY:
 @onready var _boss_fight := $BossFight as Day03BossFight
 @onready var _results_screen := $Interface/ResultsScreen
 @onready var _day_3_ui := $Interface/Day03Ui
+@onready var _level_bgm: Day03InteractiveBgm = $Day03InteractiveBgm
 
 
 func _ready() -> void:
@@ -63,6 +64,10 @@ func _ready() -> void:
 	_set_up_player()
 	if get_parent() == $"/root":
 		start(_game_mode, 0, false, Day03PlayerData.MAX_LIVES, 0)
+
+
+func _exit_tree() -> void:
+	_level_bgm.stop_music()
 
 
 func start(mode: Game.Mode, level_index: int, is_last_level: bool, lives: int, score: int) -> void:
@@ -75,6 +80,7 @@ func start(mode: Game.Mode, level_index: int, is_last_level: bool, lives: int, s
 	_is_last_level = is_last_level
 	_level_index = level_index
 	_player.set_high_score(_get_high_score())
+	_level_bgm.play_music()
 	await _start_level()
 	if _debug_start_at_boss_fight:
 		_start_boss_phase()
@@ -89,7 +95,6 @@ func _get_high_score() -> int:
 	else:
 		prop_name = _get_score_attack_high_score_prop_name()
 	return SaveDataManager.save_data.get_indexed(prop_name)
-
 
 func _set_up_player() -> void:
 	_player.revived.connect(_on_player_revived)
@@ -125,6 +130,7 @@ func _start_wave_phase() -> void:
 
 
 func _start_boss_phase() -> void:
+	_level_bgm.stop_music()
 	get_tree().call_group("bullets", "queue_free")
 	get_tree().call_group("items", "queue_free")
 	_stamina_spawner.disable()

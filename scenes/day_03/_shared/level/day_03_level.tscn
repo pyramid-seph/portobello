@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://2h71m1hkjgum"]
+[gd_scene load_steps=15 format=3 uid="uid://2h71m1hkjgum"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_level.gd" id="1_wjcvv"]
+[ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_interactive_bgm.gd" id="2_mvosc"]
 [ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_boss_fight.gd" id="2_wci2p"]
+[ext_resource type="AudioStream" uid="uid://c6dlkd846ger1" path="res://audio/bgm/remaki_0.wav" id="3_syjod"]
 [ext_resource type="PackedScene" uid="uid://dgusui2goqk5w" path="res://scenes/day_03/_shared/player/day_03_player.tscn" id="3_x4rdx"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="4_0lkhk"]
 [ext_resource type="PackedScene" uid="uid://cwr1ojj4316st" path="res://scenes/day_03/_shared/systems/stamina_spawner.tscn" id="6_2hiem"]
@@ -17,6 +19,11 @@
 process_mode = 1
 script = ExtResource("1_wjcvv")
 _player = NodePath("World/Player")
+
+[node name="Day03InteractiveBgm" type="Node" parent="."]
+script = ExtResource("2_mvosc")
+_song = ExtResource("3_syjod")
+_player_data = ExtResource("4_0lkhk")
 
 [node name="BossFight" type="Node" parent="."]
 script = ExtResource("2_wci2p")
