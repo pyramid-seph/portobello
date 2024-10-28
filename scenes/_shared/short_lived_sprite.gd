@@ -4,10 +4,9 @@ extends Sprite2D
 
 
 func _ready() -> void:
-	var is_sfx_playing: bool = SoundUtils.is_sfx_started_playing(sound_effect)
-	print("is_sfx_started_playing: ", is_sfx_playing)
-	if sound_effect and not is_sfx_playing:
-		SoundManager.play_sound(sound_effect)
+	if sound_effect and not SoundUtils.is_sfx_started_playing(sound_effect):
+		var pitch: float = randf_range(0.8, 1.2)
+		SoundManager.play_sound_with_pitch(sound_effect, pitch)
 
 
 func _on_Timer_timeout():
