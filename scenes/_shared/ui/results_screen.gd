@@ -69,10 +69,6 @@ func _ready() -> void:
 	_ensure_reset_ui()
 
 
-func _exit_tree() -> void:
-	SoundManager.stop_music()
-
-
 func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, high_score: int) -> void:
 	_lives = lives
 	_score = score
@@ -266,7 +262,6 @@ func _tween_stars_results() -> void:
 
 
 func _show_results() -> Signal:
-	SoundManager.play_music(_results_screen_bgm)
 	visible = true
 	_setup_label_texts()
 	
