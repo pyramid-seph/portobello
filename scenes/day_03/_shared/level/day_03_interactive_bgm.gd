@@ -49,7 +49,7 @@ func stop_music(fade_out_duration_sec: float = 0.0) -> void:
 		return
 	
 	Utils.safe_disconnect(_player_data.stamina_updated, _update_pitch)
-	_stop_if_playing()
+	_stop_if_playing(fade_out_duration_sec)
 	_audio_player = null
 
 
