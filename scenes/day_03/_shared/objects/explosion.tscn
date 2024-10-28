@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b2bcnuh0rckio" path="res://scenes/_shared/short_lived_sprite.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq53a6iqt04jk" path="res://art/day_3/object_explosion.png" id="2_vqewr"]
-[ext_resource type="AudioStream" uid="uid://n8yebd1qx6w7" path="res://audio/sfx/explosion.wav" id="3_oxvdo"]
+[ext_resource type="AudioStream" uid="uid://n8yebd1qx6w7" path="res://audio/sfx/sfx_explosion.wav" id="3_oxvdo"]
 
 [node name="Explosion" instance=ExtResource("1")]
 z_index = -40
