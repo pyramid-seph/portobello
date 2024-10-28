@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamSynchronized" load_steps=4 format=3 uid="uid://dyqcb2srt3g3"]
+
+[ext_resource type="AudioStream" uid="uid://c6dlkd846ger1" path="res://audio/bgm/remaki_0.wav" id="1_yybnq"]
+[ext_resource type="AudioStream" uid="uid://dckhy10b8wdpg" path="res://audio/bgm/remaki_1.wav" id="2_mqhfi"]
+[ext_resource type="AudioStream" uid="uid://bequenev4mf17" path="res://audio/bgm/remaki_2.wav" id="3_c0683"]
+
+[resource]
+stream_count = 3
+stream_0/stream = ExtResource("1_yybnq")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_mqhfi")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("3_c0683")
+stream_2/volume = -60.0
