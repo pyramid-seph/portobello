@@ -37,6 +37,10 @@ func _ready() -> void:
 	_on_stand_by_color_set()
 
 
+func get_charging_duration_sec() -> float:
+	return _charging_duration_sec
+
+
 func is_discharged() -> bool:
 	return _state_machine.is_in_state("Discharged")
 
