@@ -8,6 +8,9 @@ const LINES_POS_2: float = 21.0
 @export var _ray_color_2: Color = Color.MAGENTA
 @export var _autostart: bool 
 
+
+const SFX_MOTERSHIP_ABDUCTION_RAY = preload("res://audio/sfx/sfx_motership_abduction_ray.wav")
+
 var _tween: Tween
 
 @onready var _ray := $Ray as Line2D
@@ -20,7 +23,12 @@ func _ready() -> void:
 		start()
 
 
+func _exit_tree() -> void:
+	SoundManager.stop_sound(SFX_MOTERSHIP_ABDUCTION_RAY)
+
+
 func start() -> void:
+	SoundManager.play_sound(SFX_MOTERSHIP_ABDUCTION_RAY)
 	visible = true
 	if _tween:
 		_tween.kill()
@@ -39,6 +47,7 @@ func start() -> void:
 
 
 func stop() -> void:
+	SoundManager.stop_sound(SFX_MOTERSHIP_ABDUCTION_RAY)
 	visible = false
 	if _tween:
 		_tween.kill()

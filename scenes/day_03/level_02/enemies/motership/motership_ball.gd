@@ -8,13 +8,11 @@ extends Node2D
 
 @onready var ball_sprite = $BallSprite
 
-@onready var _is_ready: bool = true
-
 
 func _ready() -> void:
 	_on_color_set()
 
 
 func _on_color_set():
-	if _is_ready:
+	if is_node_ready():
 		ball_sprite.modulate = color
