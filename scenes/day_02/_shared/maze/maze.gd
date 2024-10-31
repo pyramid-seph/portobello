@@ -18,6 +18,7 @@ enum MazeState {
 
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
 const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd")
+const MazeBgm = preload("res://scenes/day_02/_shared/maze/maze_bgm.gd")
 
 const GHOST_RESPAWN_DELAY_SECONDS: float = 0.5
 const RED_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5
@@ -53,7 +54,7 @@ var _state: MazeState
 @onready var _red_ghost_first_spawn_timer := $RedGhostFirstSpawnTimer as Timer
 @onready var _yellow_ghost_first_spawn_timer := $YellowGhostFirstSpawnTimer as Timer
 @onready var _player_revival_delay_timer := $PlayerRevivalDelayTimer as Timer
-@onready var _maze_bgm_manager: Node = $MazeBGMManager
+@onready var _maze_bgm: MazeBgm = $MazeBgm
 
 
 func _ready() -> void:
@@ -94,7 +95,7 @@ func start() -> void:
 		_blue_ghost.is_halt = false
 		_red_ghost_first_spawn_timer.start(RED_GHOST_MOVEMENT_DELAY_SECONDS)
 		_yellow_ghost_first_spawn_timer.start(YELLOW_GHOST_MOVEMENT_DELAY_SECONDS)
-		_maze_bgm_manager.play()
+		_maze_bgm.play()
 		_state = MazeState.STARTED
 
 
@@ -105,7 +106,7 @@ func failed() -> void:
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
 		_halt_player()
-		_maze_bgm_manager.stop()
+		_maze_bgm.stop()
 		_state = MazeState.FAILED
 
 
@@ -113,7 +114,6 @@ func revive_player() -> void:
 	if _state == MazeState.STARTED:
 		_stop_pending_player_revival()
 		if _is_respawn_point_safe_for_the_player():
-			_maze_bgm_manager.play()
 			_player.revive(_respawn_point_map_pos())
 		else:
 			_delay_player_revival()
@@ -237,7 +237,7 @@ func _check_maze_completion() -> void:
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
 		_halt_player()
-		_maze_bgm_manager.stop()
+		_maze_bgm.stop()
 		_state = MazeState.COMPLETED
 		completed.emit()
 
