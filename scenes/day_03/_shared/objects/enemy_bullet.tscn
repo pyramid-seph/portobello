@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceehojvd7nkaa"]
+[gd_scene load_steps=6 format=3 uid="uid://ceehojvd7nkaa"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/objects/bullet.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://wrdafi2tkptv" path="res://audio/sfx/sfx_bullet_enemy.wav" id="2_dkish"]
 [ext_resource type="Texture2D" uid="uid://vv7hfytqeqxd" path="res://art/day_3/bullet_enemy.png" id="2_nd03d"]
 [ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="3_gow7k"]
 
@@ -11,6 +12,7 @@ size = Vector2(4, 14)
 z_index = -70
 script = ExtResource("2")
 score_points_mega_gun = 2
+sound = ExtResource("2_dkish")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nd03d")
