@@ -59,7 +59,8 @@ func _stop_if_playing(fade_out_duration_sec: float = 0.0) -> void:
 
 
 func _update_pitch() -> void:
-	if not _audio_player or not _player_data:
+	# Pitch does not work properly on web :(
+	if not _audio_player or not _player_data or Utils.is_running_on_web():
 		return
 	
 	var is_stamina_low: bool = not _player_data.stamina > _low_stamina_points
