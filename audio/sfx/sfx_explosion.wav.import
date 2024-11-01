@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/sfx_explosion.wav-6261177a89d07de61a5552ffaec
 [params]
 
 force/8_bit=false
-force/mono=true
+force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true

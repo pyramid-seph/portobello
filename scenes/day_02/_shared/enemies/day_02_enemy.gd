@@ -5,14 +5,16 @@ extends Node2D
 signal chomped
 signal dead
 
-const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
-
 enum MazeEnemyState {
 	CHASING,
 	SCARED,
 	NOT_SO_SCARED,
 	DEAD,
 }
+
+const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
+
+const SFX_ENEMY_DIE = preload("res://audio/sfx/sfx_day_02_enemy_die.wav")
 
 const SCARE_DURATION_SEC: float = 6.4
 const NOT_SO_SCARED_DELAY_SEC: float = 4.4
@@ -164,6 +166,8 @@ func _update_animation() -> void:
 
 func _die() -> void:
 	if not is_dead() and is_scared():
+		if not SoundUtils.is_sfx_started_playing(SFX_ENEMY_DIE):
+			SoundManager.play_sound(SFX_ENEMY_DIE)
 		_area_2d.set_deferred("monitoring", false)
 		_scare_timer.stop()
 		_not_so_scared_delay_timer.stop()
