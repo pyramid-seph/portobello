@@ -81,7 +81,7 @@ func _set_up_level() -> void:
 	_timer.start(LEVEL_CHANGE_DELAY_SEC)
 	await _timer.timeout
 	var current_maze = _get_current_maze()
-	current_maze.reset()
+	current_maze.prepare()
 	
 	if _level > 0:
 		current_maze.blue_ghost_speed = FAST_ENEMY_SPEED

@@ -9,7 +9,7 @@ signal player_dying
 signal player_died
 
 enum MazeState {
-	RESET,
+	PREPARED,
 	STARTED,
 	FAILED,
 	COMPLETED,
@@ -62,7 +62,7 @@ func _ready() -> void:
 	_on_red_ghost_speed_set()
 	_on_yellow_ghost_speed_set()
 	if get_parent() == $/root:
-		reset()
+		prepare()
 		start()
 
 
@@ -77,7 +77,8 @@ func quit() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 
-func reset() -> void:
+func prepare() -> void:
+	_maze_bgm.play()
 	_stop_pending_player_revival()
 	_stop_pending_ghost_respawn()
 	_stop_pending_ghost_first_spawn()
@@ -86,16 +87,15 @@ func reset() -> void:
 	_reset_food()
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
-	_state = MazeState.RESET
+	_state = MazeState.PREPARED
 
 
 func start() -> void:
-	if _state == MazeState.RESET:
+	if _state == MazeState.PREPARED:
 		_player.is_movement_allowed = true
 		_blue_ghost.is_halt = false
 		_red_ghost_first_spawn_timer.start(RED_GHOST_MOVEMENT_DELAY_SECONDS)
 		_yellow_ghost_first_spawn_timer.start(YELLOW_GHOST_MOVEMENT_DELAY_SECONDS)
-		_maze_bgm.play()
 		_state = MazeState.STARTED
 
 
