@@ -62,9 +62,10 @@ func _can_battle_continue() -> bool:
 
 func _build_battle_result() -> Result:
 	var game_over: bool = _player_side.is_party_killed()
+	var is_player_party_killed_or_fled: bool = _player_side.is_party_defeated()
 	var scraps_obtained: int = 0
 	var exp_gained: int = 0
-	if not game_over:
+	if not is_player_party_killed_or_fled:
 		for enemy: Fighter in _enemy_side.get_members():
 			if enemy.is_eaten():
 				scraps_obtained += enemy.get_scraps_granted()
