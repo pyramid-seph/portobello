@@ -131,6 +131,7 @@ cooldown = 8.0
 ignore_cooldown = true
 
 [node name="LaserSight" type="Line2D" parent="HeatSeekerWeapon/Gun"]
+physics_interpolation_mode = 2
 visible = false
 texture_repeat = 2
 points = PackedVector2Array(0, 8, 0, 136)
@@ -140,6 +141,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 
 [node name="LaserSightWarning" type="Line2D" parent="HeatSeekerWeapon/Gun"]
+physics_interpolation_mode = 2
 visible = false
 points = PackedVector2Array(0, 8, 0, 136)
 width = 1.0
@@ -322,6 +324,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AbductionRay" type="Node2D" parent="."]
+physics_interpolation_mode = 2
 z_as_relative = false
 position = Vector2(120, 311)
 script = ExtResource("21_41s2u")

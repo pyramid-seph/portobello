@@ -67,6 +67,8 @@ func _physics_process(delta: float) -> void:
 				curr_pos.y += 30 + randi() % 10
 	_velocity = _direction * speed
 	_set_parent_positon(curr_pos + _velocity * delta)
+	if pattern == Pattern.SQUARE_UP or Pattern.SQUARE_DOWN:
+		get_parent().reset_physics_interpolation()
 
 
 func _get_parent_positon() -> Vector2:

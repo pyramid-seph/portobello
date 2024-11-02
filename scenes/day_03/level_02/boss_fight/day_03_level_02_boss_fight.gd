@@ -21,6 +21,7 @@ func prepare() -> void:
 	_world.add_child(_boss)
 	_boss.died.connect(_on_motership_died, CONNECT_ONE_SHOT)
 	_player.position = _start_marker.position
+	_player.reset_physics_interpolation()
 	_ui.change_bars_visibility(false)
 	_ui.change_score_visibility(false)
 	_ui.change_lives_visibility(false)
@@ -49,6 +50,7 @@ func _play_boss_introduction() -> void:
 	_timer.start(0.8)
 	await _timer.timeout
 	_boss.position = Vector2.ZERO
+	_boss.reset_physics_interpolation()
 	_boss.player = _player
 	_ui.change_black_screen_visibility(false)
 	_timer.start(0.8)
@@ -63,13 +65,16 @@ func _play_boss_introduction() -> void:
 
 
 func _tween_motership_intro() -> Signal:
-	var tween = create_tween()
 	_boss.position = Vector2i(0, -312)
+	_boss.reset_physics_interpolation()
+	var tween = create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(_boss, "position:y", -281, 2.4)
 	return tween.finished
 
 
 func _tween_player_abduction() -> void:
+	_player.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	for i: int in 10:
 		_player_abduction_timer.start(Utils.FRAME_TIME)
 		await _player_abduction_timer.timeout
@@ -82,6 +87,7 @@ func _tween_player_abduction() -> void:
 		_player_abduction_timer.start(Utils.FRAME_TIME)
 		await _player_abduction_timer.timeout
 		_player.position.y += -30 * i
+	_player.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_INHERIT
 
 
 func _start_boss_fight() -> void:

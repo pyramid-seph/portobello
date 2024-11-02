@@ -19,6 +19,7 @@ func prepare() -> void:
 	_boss.died.connect(_on_hive_dead)
 	_boss.almost_dead.connect(_on_hive_almost_dead)
 	_player.position = _start_marker.position
+	_player.reset_physics_interpolation()
 	_ui.change_bars_visibility(false)
 	_ui.change_score_visibility(false)
 

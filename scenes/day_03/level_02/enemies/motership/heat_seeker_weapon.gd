@@ -102,6 +102,8 @@ func _shoot_gun() -> void:
 
 
 func _seek_an_destroy() -> void:
+	_laser_sight.reset_physics_interpolation()
+	_laser_sight_warning.reset_physics_interpolation()
 	_tween = create_tween()
 	_tween.tween_callback(func(): _laser_sight.visible = true)
 	_tween.tween_interval(_laser_sight_duration_sec)

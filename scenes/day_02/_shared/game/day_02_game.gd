@@ -76,7 +76,7 @@ func _set_up_level() -> void:
 		await maze.quit()
 	_timer.start(LEVEL_CHANGE_DELAY_SEC)
 	await _timer.timeout
-	var current_maze = _get_current_maze()
+	var current_maze: Maze = _get_current_maze()
 	current_maze.reset()
 	
 	if _level > 0:

@@ -105,17 +105,17 @@ func start_timed_invincibility() -> void:
 
 func explode() -> void:
 	var explosion = Explosion.instantiate()
-	_world.add_child(explosion)
 	explosion.centered = _animation_sprite.centered
 	explosion.global_position = global_position
+	_world.add_child(explosion)
 	Utils.vibrate_joy()
 	_die()
 
 
 func plummet() -> void:
 	var fall = Fall.instantiate()
-	_world.add_child(fall)
 	fall.global_position = global_position
+	_world.add_child(fall)
 	Utils.vibrate_joy()
 	_die()
 

@@ -106,6 +106,7 @@ func get_walking_time() -> float:
 
 func teleport(new_global_position: Vector2, facing_direction: FacingDirection) -> void:
 	global_position = new_global_position
+	reset_physics_interpolation()
 	velocity = Vector2.ZERO
 	reset_walking_time()
 	var direction: Vector2 = Vector2.LEFT
