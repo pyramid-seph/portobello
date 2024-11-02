@@ -43,7 +43,7 @@ func _battle_loop(is_boss_battle: bool) -> void:
 				foe_side = _player_side
 			await next_fighter.take_turn(ally_side, foe_side, is_boss_battle)
 		else:
-			Log.d("Fighter is removed from battle. Skipping their turn.")
+			Log.d("Fighter removed from battle. Skipping their turn.")
 		
 		_turn_order_manager.on_turn_ended()
 	

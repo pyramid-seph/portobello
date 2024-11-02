@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=3 format=3 uid="uid://bngpbdi8vf050"]
+[gd_resource type="Resource" script_class="BattleAction" load_steps=4 format=3 uid="uid://bngpbdi8vf050"]
 
 [ext_resource type="Script" path="res://resources/battle_action.gd" id="1_3eccw"]
+[ext_resource type="AudioStream" uid="uid://dwbd81r8hoj23" path="res://audio/sfx/sfx_day_01_player_die_fatigue.wav" id="1_6ekgr"]
 [ext_resource type="Texture2D" uid="uid://b1d8ttf4eojwn" path="res://art/day_ex/battle_ability_player_mesmer_eyes_0.png" id="1_ql80u"]
 
 [resource]
@@ -23,3 +24,4 @@ _sprites = Array[Texture2D]([ExtResource("1_ql80u")])
 _duration_sec = 0.75
 _screen_flash_color = Color(1, 1, 1, 0)
 _shake_screen = false
+_sound = ExtResource("1_6ekgr")
