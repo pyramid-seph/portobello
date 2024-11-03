@@ -1,76 +1,79 @@
-[gd_resource type="Resource" script_class="DialogueEvent" load_steps=14 format=3 uid="uid://bo3q01myol6su"]
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=17 format=3 uid="uid://bo3q01myol6su"]
 
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="1_0cyy5"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="1_upg3s"]
-[ext_resource type="AudioStream" uid="uid://lt3amqyyavsv" path="res://audio/kenney_interface_sounds/Audio/select_002.ogg" id="2_spr6y"]
+[ext_resource type="AudioStream" uid="uid://btucth6m616sl" path="res://audio/kenney_interface_sounds/Audio/drop_001.ogg" id="2_ivi0n"]
+[ext_resource type="AudioStream" uid="uid://7mjp3kdc1rty" path="res://audio/kenney_interface_sounds/Audio/drop_002.ogg" id="3_qpng6"]
+[ext_resource type="AudioStream" uid="uid://bm0m28k2y4ogg" path="res://audio/kenney_interface_sounds/Audio/drop_003.ogg" id="4_mekse"]
+[ext_resource type="AudioStream" uid="uid://1tdm530i1432" path="res://audio/kenney_interface_sounds/Audio/drop_004.ogg" id="5_mjqgv"]
 
 [sub_resource type="Resource" id="Resource_2uu8x"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_01"
 text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_k7apo"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_BUCHO"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_02"
 text_speed_chars_per_second = 10.0
 
 [sub_resource type="Resource" id="Resource_njb8p"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_03"
 text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_02ar5"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_04"
 text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_3rhly"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_05"
 text_speed_chars_per_second = 15.0
 
 [sub_resource type="Resource" id="Resource_2i6k0"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_06"
 text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_hkr80"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_07"
 text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_qc7uy"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_08"
 text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_wlmqe"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_09"
 text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_i2t76"]
 script = ExtResource("1_0cyy5")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
-voice = ExtResource("2_spr6y")
+voice = Array[AudioStream]([ExtResource("2_ivi0n"), ExtResource("3_qpng6"), ExtResource("4_mekse"), ExtResource("5_mjqgv")])
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_10"
 text_speed_chars_per_second = 25.0
 
