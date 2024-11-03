@@ -36,13 +36,9 @@ var _tweens: Dictionary
 	]
 
 
-func _init() -> void:
-	if Engine.is_editor_hint():
-		set_process(false)
-
-
 func _ready() -> void:
 	if Engine.is_editor_hint():
+		set_process(false)
 		return
 	
 	if _base_stream and _combo_stream and _scare_stream:
