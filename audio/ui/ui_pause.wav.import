@@ -13,11 +13,11 @@ dest_files=["res://.godot/imported/ui_pause.wav-3c896daf14e66e76f37c926f4f990885
 [params]
 
 force/8_bit=false
-force/mono=true
+force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
+edit/trim=true
+edit/normalize=true
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1

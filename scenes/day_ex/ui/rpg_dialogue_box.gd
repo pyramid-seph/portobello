@@ -1,6 +1,28 @@
 extends Control
 
 
+const SELECT_002 = preload("res://audio/kenney_interface_sounds/Audio/select_002.ogg")
+const SELECT_003 = preload("res://audio/kenney_interface_sounds/Audio/select_003.ogg")
+const SELECT_004 = preload("res://audio/kenney_interface_sounds/Audio/select_004.ogg")
+const BACK_001 = preload("res://audio/kenney_interface_sounds/Audio/back_001.ogg")
+
+const DEFAULT_VOICES: Array[AudioStream] = [SELECT_003, SELECT_004]
+const MUTE_CHARS: Array[String] = [
+	"*",
+	",",
+	".",
+	"'",
+	"\"",
+	":",
+	"¡",
+	"!",
+	"¿",
+	"?",
+	"",
+	" ",
+]
+
+var _old_visible_chars: int = -1
 var _dialogue_event: DialogueEvent
 var _curr_page: int = -1
 var _text_tween: Tween
@@ -14,6 +36,7 @@ var _text_tween: Tween
 
 func _ready() -> void:
 	DialogueManager.play_requested.connect(play)
+	set_process(false)
 	
 	if get_parent() == get_tree().root:
 		var example: DialogueEvent = _build_example_dialogue()
@@ -36,6 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_text_tween.kill()
 		_text_tween = null
 		_dialogue_label.visible_characters = -1
+		set_process(false)
 		_next_page_anim_player.play(&"next_page")
 	else:
 		_next()
@@ -54,6 +78,10 @@ func play(dialogue_event: DialogueEvent) -> void:
 
 func _next() -> void:
 	_curr_page += 1
+	
+	if _curr_page > 0:
+		SoundManager.play_sound(BACK_001)
+	
 	if _dialogue_event and _dialogue_event.get_page_count() - 1 >= _curr_page:
 		var page: DialoguePage = _dialogue_event.get_page(_curr_page)
 		_say(page)
@@ -77,6 +105,7 @@ func _say(page: DialoguePage) -> void:
 	_next_page_anim_player.stop()
 	_next_page_texture_rect.self_modulate.a = 0
 	_dialogue_label.visible_characters = 0
+	_old_visible_chars = -2
 	
 	if _text_tween:
 		_text_tween.kill()
@@ -88,8 +117,23 @@ func _say(page: DialoguePage) -> void:
 			"visible_characters", 
 			message_length, 
 			duration)
+	set_process(true)
 	await _text_tween.finished
+	set_process(false)
 	_next_page_anim_player.play(&"next_page")
+
+
+func _process(delta: float) -> void:
+	if _curr_page == -1 or \
+			_old_visible_chars == _dialogue_label.visible_characters:
+		return
+	
+	var curr_char_idx: int = _dialogue_label.visible_characters - 1
+	if curr_char_idx > -1:
+		var curr_char: String = _dialogue_label.get_parsed_text()[curr_char_idx]
+		if curr_char not in MUTE_CHARS:
+			SoundManager.play_sound(DEFAULT_VOICES.pick_random())
+	_old_visible_chars = _dialogue_label.visible_characters
 
 
 func _build_example_dialogue() -> DialogueEvent:
