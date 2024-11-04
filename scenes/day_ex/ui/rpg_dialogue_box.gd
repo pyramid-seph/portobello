@@ -1,8 +1,6 @@
 extends Control
 
 
-const NEXT_PAGE = preload("res://audio/kenney_interface_sounds/Audio/back_001.ogg")
-
 const MUTE_CHARS: Array[String] = [
 	"*",
 	",",
@@ -17,6 +15,8 @@ const MUTE_CHARS: Array[String] = [
 	"",
 	" ",
 ]
+
+@export var _next_page_sound: AudioStream
 
 var _dialogue_event: DialogueEvent
 var _curr_page: int = -1
@@ -72,8 +72,8 @@ func play(dialogue_event: DialogueEvent) -> void:
 func _next() -> void:
 	_curr_page += 1
 	
-	if _curr_page > 0:
-		SoundManager.play_sound(NEXT_PAGE)
+	if _curr_page > 0 and _next_page_sound:
+		SoundManager.play_sound(_next_page_sound)
 	
 	if _dialogue_event and _dialogue_event.get_page_count() - 1 >= _curr_page:
 		var page: DialoguePage = _dialogue_event.get_page(_curr_page)
