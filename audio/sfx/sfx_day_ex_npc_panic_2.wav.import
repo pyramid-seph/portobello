@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bkicnwmtybl8d"
-path="res://.godot/imported/sfx_npc_panic_2.wav-8e54a924f97667f33b62a1d1a53577f2.sample"
+path="res://.godot/imported/sfx_day_ex_npc_panic_2.wav-61a1b8a086e3a5f7caaa64376e9ec1f1.sample"
 
 [deps]
 
-source_file="res://audio/sfx/sfx_npc_panic_2.wav"
-dest_files=["res://.godot/imported/sfx_npc_panic_2.wav-8e54a924f97667f33b62a1d1a53577f2.sample"]
+source_file="res://audio/sfx/sfx_day_ex_npc_panic_2.wav"
+dest_files=["res://.godot/imported/sfx_day_ex_npc_panic_2.wav-61a1b8a086e3a5f7caaa64376e9ec1f1.sample"]
 
 [params]
 

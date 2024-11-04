@@ -3,6 +3,9 @@ extends Node
 
 signal finished
 
+const SFX_DUST_PUFF = preload("res://audio/sfx/sfx_day_ex_dust_puff.wav")
+const SFX_PLAYER_START_FLYING = preload("res://audio/sfx/sfx_day_ex_player_start_flying.wav")
+
 const DayExPlayer = preload("res://scenes/day_ex/player/day_ex_player.gd")
 const DayExUi = preload("res://scenes/day_ex/ui/day_ex_ui.gd")
 const Npc = preload("res://scenes/day_ex/npcs/npc.gd")
@@ -50,7 +53,6 @@ func play() -> void:
 	await _suspend_bucho_eats_last_duck()
 	await _suspend_bucho_takes_flight()
 	await _suspend_narrator()
-	
 	finished.emit()
 
 
@@ -132,19 +134,17 @@ func _suspend_bucho_takes_flight() -> void:
 	dust_cloud.z_index = dummy.z_index
 	_world.add_child(dummy)
 	_world.add_child(dust_cloud)
-	var tween: Tween = create_tween()
+	SoundManager.play_sound(SFX_DUST_PUFF)
 	var dummy_global_pos: Vector2 = dummy.global_position
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_QUINT)
+	var tween: Tween = create_tween()
 	tween.tween_property(dummy, "global_position:y", dummy_global_pos.y - 125.0,
-			2.0)
+			2.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_interval(2.0)
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(dummy, "speed_scale", 4.0, 0.2)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(dummy, "speed_scale", 4.0, 0.2).set_trans(
+			Tween.TRANS_LINEAR)
+	tween.tween_callback(func(): SoundManager.play_sound(SFX_PLAYER_START_FLYING))
 	tween.tween_property(dummy, "global_position:x", dummy_global_pos.x + 140.0,
-			1.0)
+			1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	await tween.finished
 	dummy.queue_free()
 
