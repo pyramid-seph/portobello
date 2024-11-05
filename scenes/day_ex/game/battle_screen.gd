@@ -14,6 +14,9 @@ const StatusDisplay = preload("res://scenes/day_ex/game/status_display.gd")
 const StatusLabel = preload("res://scenes/day_ex/game/status_label.gd")
 const DayExBgm = preload("res://scenes/day_ex/game/day_ex_bgm.gd")
 
+const SFX_LEVEL_UP = preload("res://audio/sfx/sfx_day_ex_level_up.wav")
+const SFX_LOOT_FOUND = preload("res://audio/sfx/sfx_day_03_loot_found.wav")
+
 const PLAYER_PARTY_RES = preload("res://resources/instances/day_ex/parties/party_player.tres")
 
 const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
@@ -124,6 +127,7 @@ func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool,
 			stats_manager.decrease_mp(stats_manager.get_max_mp() * -1)
 		await _wait_level_up_narration_finished(stats_manager, stats_diff)
 		if scraps_obtained > 0:
+			SoundManager.play_sound(SFX_LOOT_FOUND)
 			_get_player().scraps += scraps_obtained
 			var msg_string: String = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE"
 			if scraps_obtained > 1:
@@ -182,6 +186,7 @@ func _get_player() -> Fighter:
 func _wait_level_up_narration_finished(
 		stats_manager: StatsManager, stats_diff: Stats) -> void:
 	if stats_diff.get_level() > 0:
+		SoundManager.play_sound(SFX_LEVEL_UP)
 		var new_level: int = stats_manager.get_current_level()
 		await _narrator.say_and_wait_until_read(
 				"RPG_BATTLE_NARRATION_LEVEL_UP", { "level": new_level })
