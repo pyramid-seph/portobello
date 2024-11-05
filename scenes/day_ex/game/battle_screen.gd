@@ -12,6 +12,7 @@ const BattlefieldSide = preload("res://scenes/day_ex/game/battlefield_side.gd")
 const ActionSelector = preload("res://scenes/day_ex/game/action_selector.gd")
 const StatusDisplay = preload("res://scenes/day_ex/game/status_display.gd")
 const StatusLabel = preload("res://scenes/day_ex/game/status_label.gd")
+const DayExBgm = preload("res://scenes/day_ex/game/day_ex_bgm.gd")
 
 const PLAYER_PARTY_RES = preload("res://resources/instances/day_ex/parties/party_player.tres")
 
@@ -19,6 +20,7 @@ const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 
 const TRANSITION_DELAY: float = 1.0
 
+@export var _bgm: DayExBgm
 @export var _preview: bool = true:
 	set(value):
 		_preview = value
@@ -56,12 +58,12 @@ func _ready() -> void:
 
 
 func start(enemy_party: BattleParty, background: Texture2D, 
-		is_boss_battle: bool) -> void:
+		is_boss_battle: bool, stop_bgm_after_battle: bool = false) -> void:
 	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_RPG_BATTLE
-	await _enter_battle_screen(enemy_party, background)
+	await _enter_battle_screen(enemy_party, background, is_boss_battle)
 	var result: BattleManager.Result = \
 			await _battle_manager.start_battle(is_boss_battle)
-	_on_battle_finished(result, is_boss_battle)
+	_on_battle_finished(result, is_boss_battle, stop_bgm_after_battle)
 
 
 func _setup_player() -> void:
@@ -91,8 +93,11 @@ func _setup_battle(enemy_party: BattleParty, background: Texture2D) -> void:
 	_make_them_enter_battlefield(_enemy_side.get_members())
 
 
-func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool) -> void:
+func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool,
+		stop_bgm_after_battle: bool) -> void:
 	if result.is_game_over():
+		if _bgm:
+			_bgm.play_game_over_bgm()
 		await _narrator.say("RPG_BATTLE_NARRATION_BATTLE_FAILURE")
 		_transition_delay_timer.start(TRANSITION_DELAY)
 		await _transition_delay_timer.timeout
@@ -100,6 +105,8 @@ func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool) -> 
 		await _narrator.wait_until_read()
 		battle_finished.emit(false, is_boss_battle)
 	else:
+		if _bgm:
+			_bgm.play_battle_won_bgm()
 		await _narrator.say_and_wait_until_read(
 				"RPG_BATTLE_NARRATION_BATTLE_SUCCESS")
 		var scraps_obtained: int = result.get_obtained_scraps()
@@ -125,11 +132,18 @@ func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool) -> 
 					msg_string, { "scraps": scraps_obtained })
 		_transition_delay_timer.start(TRANSITION_DELAY)
 		await _transition_delay_timer.timeout
-		_exit_battle_screen(is_boss_battle)
+		_exit_battle_screen(is_boss_battle, stop_bgm_after_battle)
 
 
-func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D) -> void:
+func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D, is_boss_battle: bool) -> void:
 	battle_starting.emit()
+	
+	if _bgm:
+		if is_boss_battle:
+			_bgm.play_boss_battle_bgm()
+		else:
+			_bgm.play_normal_battle_bgm()
+		
 	await TransitionPlayer.play_battle()
 	_setup_battle(enemy_party, background)
 	_main_container.show()
@@ -147,7 +161,12 @@ func _teardown() -> void:
 	_enemy_side.teardown()
 
 
-func _exit_battle_screen(is_boss_battle: bool) -> void:
+func _exit_battle_screen(is_boss_battle: bool, stop_bgm_after_battle: bool) -> void:
+	if _bgm:
+		if stop_bgm_after_battle:
+			_bgm.stop_music()
+		else:
+			_bgm.play_exploration_bgm()
 	await TransitionPlayer.play_battle()
 	_teardown()
 	_main_container.hide()
