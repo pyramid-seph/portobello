@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddt6mk30fvhmd"]
+[gd_scene load_steps=10 format=3 uid="uid://ddt6mk30fvhmd"]
 
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="1_5ep86"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_wud83"]
 [ext_resource type="Script" path="res://scenes/_shared/settings_menu/settings_menu.gd" id="2_acgwn"]
+[ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="4_hjm68"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="4_swkte"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pavtr"]
@@ -56,6 +57,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_wud83")
+
+[node name="UiSounds" parent="SettingsMenuPanel" instance=ExtResource("4_hjm68")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenuPanel"]
 layout_mode = 2

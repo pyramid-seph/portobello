@@ -34,7 +34,6 @@ SoundManager="*res://addons/sound_manager/sound_manager.gd"
 TouchControllerManager="*res://autoloads/touch_controller_manager.gd"
 DialogueManager="*res://autoloads/dialogue_manager.gd"
 Game="*res://autoloads/game.gd"
-UiSoundsInstaller="*res://autoloads/ui_sounds_installer.tscn"
 
 [display]
 

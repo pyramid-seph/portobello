@@ -124,6 +124,7 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _show_options_btn := %ShowOptionsBtn
 @onready var _title_screen_bg := %TitleScreenBg
 @onready var _version_label := $TitleScreen/VersionLabel as Label
+@onready var _ui_sounds: UiSounds = $TitleScreen/MainMenu/UiSounds
 
 
 func _ready() -> void:
@@ -209,7 +210,7 @@ func _enable_title_screen(show_screen: bool) -> void:
 		_set_stars_count()
 		_set_title_type()
 		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
-		_story_mode_game_selector.call_deferred("grab_focus")
+		_ui_sounds.call_deferred("focus_node_no_sound", _story_mode_game_selector)
 		_notify_unlocks()
 
 
@@ -314,7 +315,7 @@ func _on_exit_game_btn_pressed() -> void:
 
 
 func _on_confirm_exit_dialog_negative_btn_pressed() -> void:
-	_exit_game_btn.call_deferred("grab_focus")
+	_ui_sounds.call_deferred("focus_node_no_sound", _exit_game_btn)
 
 
 func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
@@ -322,18 +323,18 @@ func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
 
 
 func _on_unlocks_dialog_positive_btn_pressed() -> void:
-	_story_mode_game_selector.call_deferred("grab_focus")
+	_ui_sounds.call_deferred("focus_node_no_sound", _story_mode_game_selector)
 
 
 func _on_progress_menu_closed() -> void:
 	_main_menu.visible = true
 	_game_title.visible = true
-	_show_scores_button.call_deferred("grab_focus")
+	_ui_sounds.call_deferred("focus_node_no_sound", _show_scores_button)
 
 
 func _on_settings_menu_closed() -> void:
 	_main_menu.visible = true
-	_show_options_btn.call_deferred("grab_focus")
+	_ui_sounds.call_deferred("focus_node_no_sound", _show_options_btn)
 
 
 func _on_progress_menu_visibility_changed() -> void:

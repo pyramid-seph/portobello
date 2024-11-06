@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene load_steps=12 format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cwc2c33qocoqn" path="res://art/fonts/peaberry_font_v2_0/peaberry_base.woff2" id="4_8nmq5"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="4_u35yd"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="5_tyfqu"]
+[ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="6_8odcl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hi4pj"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -48,6 +49,8 @@ custom_minimum_size = Vector2(152, 114)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="UiSounds" parent="PauseDialog" instance=ExtResource("6_8odcl")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseDialog"]
 layout_mode = 2

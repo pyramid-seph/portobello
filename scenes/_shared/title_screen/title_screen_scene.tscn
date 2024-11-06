@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=25 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ckjfj1kxcsge6" path="res://scenes/_shared/progress_menu.tscn" id="10_33qhf"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 [ext_resource type="PackedScene" uid="uid://ddt6mk30fvhmd" path="res://scenes/_shared/settings_menu/settings_menu.tscn" id="11_5qu15"]
+[ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="11_ljvha"]
 [ext_resource type="Texture2D" uid="uid://bggbygu4g7uir" path="res://art/menu_screen/dark_heart.png" id="15_a0if4"]
 [ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
@@ -154,6 +155,8 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_lock_ = true
+
+[node name="UiSounds" parent="TitleScreen/MainMenu" instance=ExtResource("11_ljvha")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/MainMenu"]
 layout_mode = 2
