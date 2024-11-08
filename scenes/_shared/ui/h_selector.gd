@@ -4,6 +4,7 @@ extends PanelContainer
 
 
 signal selected(value)
+signal selected_disabled_option
 signal current_option_index_changed(index: int)
 
 const SELECTED_NONE: int = -1
@@ -73,10 +74,13 @@ func _gui_input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("ui_accept") and current_option_idx > SELECTED_NONE:
-		if not is_option_disabled(current_option_idx) and not selection_disabled:
-			if release_focus_on_selection:
-				release_focus()
-			selected.emit(get_value_for_option(current_option_idx))
+		if not selection_disabled:
+			if is_option_disabled(current_option_idx):
+				selected_disabled_option.emit()
+			else:
+				if release_focus_on_selection:
+					release_focus()
+				selected.emit(get_value_for_option(current_option_idx))
 		accept_event()
 	if event.is_action_pressed("ui_left"):
 		_previous_option()
