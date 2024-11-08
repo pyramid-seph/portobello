@@ -3,9 +3,9 @@ extends PanelContainer
 
 signal target_selected(target: Fighter)
 
-const UI_SOUND_FOCUS = preload("res://audio/ui/ui_move.wav")
-const UI_SOUND_SELECT = preload("res://audio/ui/ui_pressed.wav")
-const UI_SOUND_CANCEL_SELECT = preload("res://audio/ui/ui_pressed_disabled.wav")
+const UI_SOUND_FOCUS = preload("res://audio/ui/kenney_interface_sounds/drop_003.ogg")
+const UI_SOUND_SELECT = preload("res://audio/ui/kenney_interface_sounds/drop_002.ogg")
+const UI_SOUND_CANCEL_SELECT = preload("res://audio/ui/kenney_interface_sounds/select_002.ogg")
 
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")

@@ -2,7 +2,7 @@ extends PanelContainer
 
 signal read
 
-const UI_SOUND_SELECT = preload("res://audio/ui/ui_pressed.wav")
+const UI_NEXT_SOUND = preload("res://audio/ui/ui_next.wav")
 
 var _what: String = ""
 var _format_values: Dictionary = {}
@@ -14,7 +14,7 @@ var _format_values: Dictionary = {}
 
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		SoundManager.play_sound(UI_SOUND_SELECT)
+		SoundManager.play_sound(UI_NEXT_SOUND)
 		accept_event()
 		release_focus()
 

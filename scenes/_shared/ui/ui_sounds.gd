@@ -8,6 +8,8 @@ extends Node
 		_max_depth = maxi(value, 1)
 @export var move_sound: AudioStream
 @export var pressed_sound: AudioStream
+@export var pressed_disabled_sound: AudioStream
+
 
 var _skip_focus_sound: bool
 
@@ -18,7 +20,7 @@ func _ready() -> void:
 
 
 ## Call this method instead of node.grab_focus() to
-## focus node without playin the focus sound.
+## focus node without playing the focus sound.
 func focus_node_no_sound(node: Control) -> void:
 	if node:
 		_skip_focus_sound = true
@@ -43,6 +45,8 @@ func _connect_signals(node: Control) -> void:
 		Utils.safe_connect(node.current_option_index_changed,
 				_on_h_selector_current_option_index_changed.bind(node))
 		Utils.safe_connect(node.focus_entered, _on_focus_entered)
+		Utils.safe_connect(node.selected_disabled_option, 
+				_on_h_selector_selected_disabled_option)
 
 
 func _install_control_ui_sounds(parent_node: Node, depth: int = 0) -> void:
@@ -74,3 +78,7 @@ func _on_h_selector_current_option_index_changed(_index, node: Control) -> void:
 
 func _on_h_selector_selected(_value) -> void:
 	_play_sound(pressed_sound)
+
+
+func _on_h_selector_selected_disabled_option() -> void:
+	_play_sound(pressed_disabled_sound)

@@ -4,7 +4,7 @@ extends Control
 signal finished
 
 
-@export var _skip_sound = preload("res://audio/ui/ui_pressed.wav")
+@export var _skip_sound = preload("res://audio/ui/kenney_interface_sounds/select_002.ogg")
 @export var _autostart: bool
 
 var _old_touch_controller_mode: TouchControllerManager.Mode
