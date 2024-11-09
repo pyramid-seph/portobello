@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmfc5e84lpwkj"]
+[gd_scene load_steps=5 format=3 uid="uid://bmfc5e84lpwkj"]
 
 [ext_resource type="PackedScene" uid="uid://b2bcnuh0rckio" path="res://scenes/_shared/short_lived_sprite.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bq53a6iqt04jk" path="res://art/day_3/object_explosion.png" id="2_vqewr"]
-[ext_resource type="AudioStream" uid="uid://n8yebd1qx6w7" path="res://audio/sfx/sfx_explosion.wav" id="3_oxvdo"]
+[ext_resource type="AudioStream" uid="uid://bvmwrnpwxviba" path="res://audio/sfx/sfx_day_03_explosion_01.wav" id="3_4or5c"]
+[ext_resource type="AudioStream" uid="uid://bny1h10ofj0k0" path="res://audio/sfx/sfx_day_03_explosion_02.wav" id="6_m2xoa"]
 
 [node name="Explosion" instance=ExtResource("1")]
 z_index = -40
 texture = ExtResource("2_vqewr")
 centered = false
-sound_effect = ExtResource("3_oxvdo")
+sound_effect = Array[AudioStream]([ExtResource("3_4or5c"), ExtResource("6_m2xoa")])
 
 [node name="Timer" parent="." index="0"]
 wait_time = 0.08

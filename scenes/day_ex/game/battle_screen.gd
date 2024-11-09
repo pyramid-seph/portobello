@@ -15,7 +15,7 @@ const StatusLabel = preload("res://scenes/day_ex/game/status_label.gd")
 const DayExBgm = preload("res://scenes/day_ex/game/day_ex_bgm.gd")
 
 const SFX_LEVEL_UP = preload("res://audio/sfx/sfx_day_ex_level_up.wav")
-const SFX_LOOT_FOUND = preload("res://audio/sfx/sfx_day_03_loot_found.wav")
+const SFX_LOOT_FOUND = preload("res://audio/sfx/sfx_day_ex_loot_found.wav")
 
 const PLAYER_PARTY_RES = preload("res://resources/instances/day_ex/parties/party_player.tres")
 

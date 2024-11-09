@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://y455hdyo7ait"]
+[gd_scene load_steps=67 format=4 uid="uid://y455hdyo7ait"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_80aou"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/day_ex_game.gd" id="1_c7cjq"]
@@ -37,16 +37,17 @@
 [ext_resource type="Script" path="res://scenes/day_ex/game/alien_action_area.gd" id="22_x5cfc"]
 [ext_resource type="Texture2D" uid="uid://dbls1jv3djobu" path="res://art/day_ex/battle_background_backyard.png" id="23_jroxv"]
 [ext_resource type="Resource" uid="uid://cqxlnw3nrkxs2" path="res://resources/instances/day_ex/parties/party_backyard_boss_alien_x_1_duck_x_2.tres" id="25_2bmt5"]
-[ext_resource type="AudioStream" uid="uid://ca84gcc5bp3ea" path="res://audio/sfx/sfx_day_ex_npc_panic_1.wav" id="27_7uxql"]
-[ext_resource type="AudioStream" uid="uid://bkicnwmtybl8d" path="res://audio/sfx/sfx_day_ex_npc_panic_2.wav" id="28_vh24q"]
-[ext_resource type="AudioStream" uid="uid://ecjqbyiwq58a" path="res://audio/sfx/sfx_day_ex_npc_panic_3.wav" id="29_fifbs"]
-[ext_resource type="AudioStream" uid="uid://dy2hs38tjic1s" path="res://audio/sfx/sfx_day_ex_npc_panic_4.wav" id="29_hf5i2"]
+[ext_resource type="AudioStream" uid="uid://ca84gcc5bp3ea" path="res://audio/sfx/sfx_day_ex_npc_01_panic.wav" id="27_7uxql"]
+[ext_resource type="AudioStream" uid="uid://bkicnwmtybl8d" path="res://audio/sfx/sfx_day_ex_npc_02_panic.wav" id="28_vh24q"]
+[ext_resource type="AudioStream" uid="uid://ecjqbyiwq58a" path="res://audio/sfx/sfx_day_ex_npc_03_panic.wav" id="29_fifbs"]
+[ext_resource type="AudioStream" uid="uid://dy2hs38tjic1s" path="res://audio/sfx/sfx_day_ex_npc_04_panic.wav" id="29_hf5i2"]
 [ext_resource type="Resource" uid="uid://bo3q01myol6su" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_01.tres" id="32_5axbo"]
 [ext_resource type="Resource" uid="uid://it88cwxcso7x" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_02.tres" id="33_v1p5x"]
 [ext_resource type="Resource" uid="uid://cb3yn07pyaoch" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_03.tres" id="34_83td5"]
 [ext_resource type="Resource" uid="uid://brimlfrdllvsw" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_backyard_event_01.tres" id="35_ba6si"]
 [ext_resource type="Resource" uid="uid://bvryiea77p2c" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_04.tres" id="35_hcrmx"]
 [ext_resource type="Resource" uid="uid://dwgmvx8sxk5x0" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_default.tres" id="36_v28yn"]
+[ext_resource type="AudioStream" uid="uid://dtaca1t4elkqb" path="res://audio/sfx/kenney_rpg_audio/clothBelt.ogg" id="37_ggogx"]
 [ext_resource type="Resource" uid="uid://n1gppdd3vxka" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_01.tres" id="38_ei3ft"]
 [ext_resource type="Resource" uid="uid://b5rkvbwawsbw2" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_02.tres" id="39_wgaev"]
 [ext_resource type="Resource" uid="uid://dpm48otubk5bk" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_default.tres" id="40_yduqi"]
@@ -585,6 +586,7 @@ size = Vector2(4, 4)
 
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
+_debug_skip_random_battles = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -839,6 +841,7 @@ metadata/_edit_lock_ = true
 position = Vector2(320, 205)
 initial_direction = 3
 _exit = NodePath("Marker2D")
+sound = ExtResource("37_ggogx")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -856,6 +859,7 @@ metadata/_edit_lock_ = true
 position = Vector2(320, 208)
 initial_direction = 2
 _exit = NodePath("Marker2D")
+sound = ExtResource("37_ggogx")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 

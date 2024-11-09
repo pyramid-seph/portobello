@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://babcuq1igjp4p"]
+[gd_resource type="Resource" script_class="BattleAction" load_steps=4 format=3 uid="uid://babcuq1igjp4p"]
 
-[ext_resource type="AudioStream" uid="uid://dwbd81r8hoj23" path="res://audio/sfx/sfx_day_01_player_die_fatigue.wav" id="1_02ajy"]
-[ext_resource type="Texture2D" uid="uid://qmnrikcdeuqs" path="res://art/day_ex/battle_ability_player_scare_surprise_despair_0.png" id="1_kgqn1"]
-[ext_resource type="Texture2D" uid="uid://dt6adgnbtn7xw" path="res://art/day_ex/battle_ability_player_scare_surprise_despair_1.png" id="2_kjjh0"]
+[ext_resource type="AudioStream" uid="uid://b0s4rc55g4lqw" path="res://audio/sfx/sfx_day_ex_attack_strong.wav" id="1_1btx7"]
+[ext_resource type="Texture2D" uid="uid://fu8cjwc6nsm0" path="res://art/day_ex/battle_ability_player_tackle.png" id="2_ic1jl"]
 [ext_resource type="Script" path="res://resources/battle_action.gd" id="3_crjgw"]
 
 [resource]
@@ -21,8 +20,8 @@ _status_effect_attack = 0
 _status_effect_defense = 0
 _status_effect_speed = -7
 _status_effect_love = false
-_sprites = Array[Texture2D]([ExtResource("1_kgqn1"), ExtResource("2_kjjh0")])
+_sprites = Array[Texture2D]([ExtResource("2_ic1jl")])
 _duration_sec = 0.3
 _screen_flash_color = Color(1, 0, 0, 1)
 _shake_screen = false
-_sound = ExtResource("1_02ajy")
+_sound = ExtResource("1_1btx7")

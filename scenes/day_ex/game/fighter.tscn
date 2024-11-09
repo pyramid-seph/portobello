@@ -1,18 +1,15 @@
-[gd_scene load_steps=34 format=3 uid="uid://d0cegcu8dki0c"]
+[gd_scene load_steps=31 format=3 uid="uid://d0cegcu8dki0c"]
 
 [ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
 [ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="2_tc2hr"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/fighter.gd" id="3_33cos"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display_manager.gd" id="4_wdtdj"]
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
-[ext_resource type="AudioStream" uid="uid://d2aknrsd4qaqi" path="res://audio/sfx/sfx_day_ex_fighter_attack.wav" id="5_pknt3"]
-[ext_resource type="AudioStream" uid="uid://cb2ltqd8iwel3" path="res://audio/sfx/sfx_day_ex_fighter_being_eaten.wav" id="5_tibib"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="5_xgu1x"]
 [ext_resource type="Shader" path="res://shaders/hp_label.gdshader" id="6_7oenr"]
-[ext_resource type="AudioStream" uid="uid://bhupdp6oa2oqq" path="res://audio/sfx/sfx_day_ex_fighter_die.wav" id="6_y7d5u"]
 [ext_resource type="AudioStream" uid="uid://njvfucnrbvaw" path="res://audio/sfx/sfx_day_ex_fighter_eaten.wav" id="7_5npwn"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_qpj4v"]
-[ext_resource type="AudioStream" uid="uid://c4r0ygftn6nhd" path="res://audio/sfx/sfx_day_ex_fighter_hurt.wav" id="8_2goai"]
+[ext_resource type="AudioStream" uid="uid://da0debqqguqip" path="res://audio/sfx/sfx_day_ex_fighter_die.wav" id="7_x6j3b"]
 [ext_resource type="AudioStream" uid="uid://bd4b23laqhyp3" path="res://audio/sfx/sfx_day_ex_fighter_evade.wav" id="9_1bhey"]
 [ext_resource type="PackedScene" uid="uid://cspmfx76bwjfs" path="res://scenes/day_ex/game/action_animation.tscn" id="9_gjy52"]
 [ext_resource type="Texture2D" uid="uid://cumpixq1a8n80" path="res://art/day_ex/battle_selector_0.png" id="9_qgetd"]
@@ -126,21 +123,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_pknt3")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_yu8hm"]
 resource_name = "being_eaten"
@@ -206,21 +188,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_tibib")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_eg5v7"]
 resource_name = "cure"
@@ -337,7 +304,7 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("6_y7d5u")
+"stream": ExtResource("7_x6j3b")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -389,7 +356,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_v0sv5"]
 resource_name = "evade"
-length = 0.2
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -410,7 +377,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
-"end_offset": 0.0,
+"end_offset": 0.000760257,
 "start_offset": 0.0,
 "stream": ExtResource("9_1bhey")
 }],
@@ -420,7 +387,7 @@ tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ir8wu"]
 resource_name = "flee"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -465,7 +432,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "clips": [{
-"end_offset": 0.0,
+"end_offset": 0.126205,
 "start_offset": 0.0,
 "stream": ExtResource("10_812hy")
 }],
@@ -578,21 +545,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_2goai")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_roh21"]
 resource_name = "take_turn"
