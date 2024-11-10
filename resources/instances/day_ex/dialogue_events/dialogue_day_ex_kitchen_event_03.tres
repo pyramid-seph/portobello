@@ -13,4 +13,5 @@ text_speed_chars_per_second = 25.0
 
 [resource]
 script = ExtResource("1_1uw22")
+_skip_close_sound = true
 _dialogue = Array[ExtResource("1_5vlfh")]([SubResource("Resource_k6iki")])

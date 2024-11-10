@@ -72,10 +72,9 @@ func play(dialogue_event: DialogueEvent) -> void:
 func _next() -> void:
 	_curr_page += 1
 	
-	if _curr_page > 0 and _next_page_sound:
-		SoundManager.play_sound(_next_page_sound)
-	
-	if _dialogue_event and _dialogue_event.get_page_count() - 1 >= _curr_page:
+	var can_continue: bool = _dialogue_event and \
+			_dialogue_event.get_page_count() - 1 >= _curr_page
+	if can_continue:
 		var page: DialoguePage = _dialogue_event.get_page(_curr_page)
 		_say(page)
 	else:
@@ -152,6 +151,8 @@ func _build_example_dialogue() -> DialogueEvent:
 func _finish_event() -> void:
 	_curr_page = -1
 	if _dialogue_event:
+		if _next_page_sound and not _dialogue_event.should_skip_close_sound():
+			SoundManager.play_sound(_next_page_sound)
 		_dialogue_event.finished.emit()
 		_dialogue_event = null
 

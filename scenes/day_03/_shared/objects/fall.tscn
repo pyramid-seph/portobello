@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b2bcnuh0rckio" path="res://scenes/_shared/short_lived_sprite.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://cl2j7tlqoyl30" path="res://art/day_3/object_fall.png" id="2_jfvln"]
-[ext_resource type="AudioStream" uid="uid://br25bw0mm27l3" path="res://audio/sfx/sfx_player_falling.wav" id="3_deqcl"]
+[ext_resource type="AudioStream" uid="uid://br25bw0mm27l3" path="res://audio/sfx/sfx_day_03_player_falling.wav" id="3_deqcl"]
 
 [node name="Fall" instance=ExtResource("2")]
 z_index = -50
