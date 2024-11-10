@@ -47,7 +47,7 @@
 [ext_resource type="Resource" uid="uid://brimlfrdllvsw" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_backyard_event_01.tres" id="35_ba6si"]
 [ext_resource type="Resource" uid="uid://bvryiea77p2c" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_04.tres" id="35_hcrmx"]
 [ext_resource type="Resource" uid="uid://dwgmvx8sxk5x0" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_kitchen_event_default.tres" id="36_v28yn"]
-[ext_resource type="AudioStream" uid="uid://dtaca1t4elkqb" path="res://audio/sfx/kenney_rpg_audio/clothBelt.ogg" id="37_ggogx"]
+[ext_resource type="AudioStream" uid="uid://xd54eu0uwma0" path="res://audio/sfx/sfx_day_ex_go_through.wav" id="37_v7emr"]
 [ext_resource type="Resource" uid="uid://n1gppdd3vxka" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_01.tres" id="38_ei3ft"]
 [ext_resource type="Resource" uid="uid://b5rkvbwawsbw2" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_02.tres" id="39_wgaev"]
 [ext_resource type="Resource" uid="uid://dpm48otubk5bk" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_room_event_default.tres" id="40_yduqi"]
@@ -586,7 +586,6 @@ size = Vector2(4, 4)
 
 [node name="DayExGame" type="Node"]
 script = ExtResource("1_c7cjq")
-_debug_skip_random_battles = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -841,7 +840,7 @@ metadata/_edit_lock_ = true
 position = Vector2(320, 205)
 initial_direction = 3
 _exit = NodePath("Marker2D")
-sound = ExtResource("37_ggogx")
+sound = ExtResource("37_v7emr")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -859,7 +858,7 @@ metadata/_edit_lock_ = true
 position = Vector2(320, 208)
 initial_direction = 2
 _exit = NodePath("Marker2D")
-sound = ExtResource("37_ggogx")
+sound = ExtResource("37_v7emr")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 

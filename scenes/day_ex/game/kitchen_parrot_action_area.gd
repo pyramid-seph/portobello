@@ -1,6 +1,6 @@
 extends ActionArea
 
-const SFX_DOOR_CLOSE_4 = preload("res://audio/sfx/kenney_rpg_audio/doorClose_4.ogg")
+const SFX_DOOR_OPEN = preload("res://audio/sfx/sfx_day_ex_door_open.wav")
 
 @export var _quest_manager: QuestManager
 @export var _living_room_door_path: NodePath
@@ -36,7 +36,7 @@ func _execute_step_01(target: CharacterBody2D) -> void:
 	DialogueManager.play(_step_01_dialogue_event_01)
 	await _step_01_dialogue_event_01.finished
 	await TransitionPlayer.play_default()
-	SoundManager.play_sound(SFX_DOOR_CLOSE_4)
+	await SoundManager.play_sound(SFX_DOOR_OPEN).finished
 	if _living_room_door_path:
 		var door: Node2D = get_node_or_null(_living_room_door_path)
 		if door:
@@ -56,7 +56,7 @@ func _execute_step_03(target: CharacterBody2D) -> void:
 	DialogueManager.play(_step_03_dialogue_event_01)
 	await _step_03_dialogue_event_01.finished
 	await TransitionPlayer.play_default()
-	SoundManager.play_sound(SFX_DOOR_CLOSE_4)
+	await SoundManager.play_sound(SFX_DOOR_OPEN).finished
 	if _kitchen_door_path:
 		var door: Node2D = get_node_or_null(_kitchen_door_path)
 		if door:
