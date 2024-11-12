@@ -10,7 +10,7 @@ enum DeathCause {
 	CRASH,
 }
 
-const SFX_PLAYER_EAT_TREAT = preload("res://audio/sfx/sfx_day_02_player_eat_treat.wav")
+const SFX_PLAYER_EAT_TREAT = preload("res://audio/sfx/sfx_day_01_player_eat_treat.wav")
 const SFX_PLAYER_DIE_CRASH = preload("res://audio/sfx/sfx_day_01_player_die_crash.wav")
 const SFX_PLAYER_DIE_FATIGUE = preload("res://audio/sfx/sfx_day_01_player_die_fatigue.wav")
 
