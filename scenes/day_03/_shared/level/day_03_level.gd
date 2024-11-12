@@ -147,6 +147,7 @@ func _get_score_attack_high_score_prop_name() -> String:
 
 func _game_over() -> void:
 	_level_state = LevelState.GAME_OVER
+	_level_bgm.stop_music()
 	_wave_manager.stop()
 	_stamina_spawner.disable()
 	_power_up_spawner.disable()
