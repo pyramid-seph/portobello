@@ -13,11 +13,11 @@ dest_files=["res://.godot/imported/sfx_day_02_player_eat_treat.wav-79036075ed00c
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=true
-edit/normalize=true
+edit/trim=false
+edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1

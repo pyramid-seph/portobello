@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://da2fw2fh22lgh"]
+[gd_scene load_steps=6 format=3 uid="uid://da2fw2fh22lgh"]
 
 [ext_resource type="Script" path="res://scenes/day_03/_shared/objects/bullet.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://b7t2bf53nvyor" path="res://audio/sfx/sfx_day_03_player_bullet.wav" id="2_42dce"]
 [ext_resource type="Texture2D" uid="uid://bjkqy61iscfwo" path="res://art/day_3/bullet_player.png" id="2_i65fw"]
 [ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="2_p207d"]
 
@@ -11,6 +12,7 @@ radius = 3.0
 z_index = -80
 script = ExtResource("2")
 score_points_mega_gun = 7
+sound = ExtResource("2_42dce")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_i65fw")

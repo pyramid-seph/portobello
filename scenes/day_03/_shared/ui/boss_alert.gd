@@ -3,11 +3,11 @@ extends ColorRect
 
 signal finished
 
-const SFX_BOSS_ALERT = preload("res://audio/sfx/sfx_boss_alert.wav")
+const SFX_BOSS_ALERT = preload("res://audio/sfx/sfx_day_03_boss_alert.wav")
 
 @export var duration_sec: float = 1.0
-@export_color_no_alpha var color_1: Color = Color.MAGENTA
-@export_color_no_alpha var color_2: Color = Color.MAGENTA
+@export_color_no_alpha var color_1: Color
+@export_color_no_alpha var color_2: Color
 
 var _tween: Tween
 

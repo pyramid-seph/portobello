@@ -64,10 +64,9 @@ func _play_boss_introduction() -> void:
 
 
 func _tween_motership_intro() -> Signal:
-	var tween = create_tween()
 	_boss.position = Vector2i(0, -312)
-	tween.tween_property(_boss, "position:y", -281, 2.4)
-	return tween.finished
+	return create_tween().tween_property(_boss, "position:y", -281, 2.4).finished
+
 
 
 func _tween_player_abduction() -> void:

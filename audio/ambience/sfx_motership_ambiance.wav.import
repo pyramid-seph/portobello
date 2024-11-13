@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://spc0tyvy2icy"
+uid="uid://cs3kn0frqp85x"
 path="res://.godot/imported/sfx_motership_ambiance.wav-6868d93510935baef6ef34a456f8d43f.sample"
 
 [deps]
@@ -12,13 +12,13 @@ dest_files=["res://.godot/imported/sfx_motership_ambiance.wav-6868d93510935baef6
 
 [params]
 
-force/8_bit=true
+force/8_bit=false
 force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=true
-edit/normalize=true
+edit/trim=false
+edit/normalize=false
 edit/loop_mode=3
-edit/loop_begin=10000
-edit/loop_end=200000
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

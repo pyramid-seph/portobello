@@ -1,6 +1,6 @@
 extends Sprite2D
 
-const SFX_ALIEN_HOLOGRAM_VISIBLE = preload("res://audio/sfx/sfx_alien_hologram_visible.wav")
+const SFX_ALIEN_HOLOGRAM_VISIBLE = preload("res://audio/sfx/sfx_motership_hologram.wav")
 
 @export var _flicker_duration_sec: float = 1.0
 
