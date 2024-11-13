@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cs3kn0frqp85x"
-path="res://.godot/imported/sfx_motership_ambiance.wav-6868d93510935baef6ef34a456f8d43f.sample"
+path="res://.godot/imported/sfx_motership_ambience.wav-dbf12129c3406dbc255b4f4edf022a04.sample"
 
 [deps]
 
-source_file="res://audio/ambience/sfx_motership_ambiance.wav"
-dest_files=["res://.godot/imported/sfx_motership_ambiance.wav-6868d93510935baef6ef34a456f8d43f.sample"]
+source_file="res://audio/ambience/sfx_motership_ambience.wav"
+dest_files=["res://.godot/imported/sfx_motership_ambience.wav-dbf12129c3406dbc255b4f4edf022a04.sample"]
 
 [params]
 

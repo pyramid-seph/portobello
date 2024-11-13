@@ -38,6 +38,7 @@ func _ready() -> void:
 	TranslationServer.set_locale(SaveDataManager.save_data.language)
 	
 	SoundManager.music_process_mode = Node.PROCESS_MODE_PAUSABLE
+	SoundManager.ambient_sound_process_mode = Node.PROCESS_MODE_PAUSABLE
 	var save_data := SaveDataManager.save_data as SaveData
 	if save_data.is_audio_enabled:
 		SoundUtils.unmute()

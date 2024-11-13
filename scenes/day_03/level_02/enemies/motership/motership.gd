@@ -3,7 +3,7 @@ extends Node2D
 
 signal died
 
-const SFX_MOTERSHIP_AMBIANCE = preload("res://audio/ambience/sfx_motership_ambiance.wav")
+const SFX_MOTERSHIP_AMBIANCE = preload("res://audio/ambience/sfx_motership_ambience.wav")
 
 @export var _initial_hp: int = 1
 @export var is_attacking: bool:
