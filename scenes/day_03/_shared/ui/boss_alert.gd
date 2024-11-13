@@ -28,7 +28,6 @@ func start(time_sec: float = duration_sec) -> void:
 	_tween.tween_callback(func(): color = color_1).set_delay(Utils.FRAME_TIME)
 	_timer.start(time_sec)
 	_timer.timeout.connect(func():
-		SoundManager.stop_sound(SFX_BOSS_ALERT)
 		visible = false
 		finished.emit()
 		_tween.kill()
