@@ -5,6 +5,7 @@ signal finished
 
 const SFX_DUST_PUFF = preload("res://audio/sfx/sfx_day_ex_dust_puff.wav")
 const SFX_PLAYER_START_FLYING = preload("res://audio/sfx/sfx_day_ex_player_start_flying.wav")
+const SFX_PLAYER_EAT = preload("res://audio/sfx/sfx_day_ex_player_eat.wav")
 
 const DayExPlayer = preload("res://scenes/day_ex/player/day_ex_player.gd")
 const DayExUi = preload("res://scenes/day_ex/ui/day_ex_ui.gd")
@@ -75,10 +76,15 @@ func _suspend_bucho_eats_fighters() -> void:
 	_ui.show_black_screen(true)
 	var last_eaten: Npc = _bird_fighters.pick_random()
 	_player.teleport(last_eaten.global_position, DayExPlayer.FacingDirection.DOWN)
+	var tween = create_tween()
+	tween.set_loops(_bird_fighters.size())
+	tween.tween_callback(SoundManager.play_sound.bind(
+			SFX_PLAYER_EAT)).set_delay(0.1)
+	await tween.finished
 	for npc: Npc in _bird_fighters:
 		npc.die()
 	_bird_fighters.clear()
-	_timer.start(0.5)
+	_timer.start(0.2)
 	await _timer.timeout
 	_ui.show_black_screen(false)
 
@@ -99,7 +105,10 @@ func _suspend_bucho_eats_rest_of_the_ducks() -> void:
 		_ui.show_black_screen(true)
 		_player.teleport(npc.global_position, DayExPlayer.FacingDirection.DOWN)
 		npc.die()
-		_timer.start(1.0)
+		_timer.start(0.9)
+		await _timer.timeout
+		SoundManager.play_sound(SFX_PLAYER_EAT)
+		_timer.start(0.1)
 		await _timer.timeout
 		_ui.show_black_screen(false)
 		_timer.start(1.0)
@@ -114,7 +123,10 @@ func _suspend_bucho_eats_last_duck() -> void:
 	_player.teleport(_last_duck.global_position, DayExPlayer.FacingDirection.DOWN)
 	_last_duck.die()
 	_last_duck = null
-	_timer.start(0.5)
+	_timer.start(0.4)
+	await _timer.timeout
+	SoundManager.play_sound(SFX_PLAYER_EAT)
+	_timer.start(0.1)
 	await _timer.timeout
 	_ui.show_black_screen(false)
 
