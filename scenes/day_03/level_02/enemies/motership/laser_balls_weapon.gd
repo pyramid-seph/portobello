@@ -1,7 +1,6 @@
 extends Node2D
 
 const SFX_CANNONS_FIRED = preload("res://audio/sfx/sfx_motership_laser_ball_cannon_fired.wav")
-const SFX_CANNONS_CHARGING = preload("res://audio/sfx/sfx_motership_laser_ball_cannon_charging.wav")
 
 @export var _cooldown: float = 1.0
 @export var is_active: bool:
@@ -11,7 +10,6 @@ const SFX_CANNONS_CHARGING = preload("res://audio/sfx/sfx_motership_laser_ball_c
 		if old_is_active != is_active:
 			_on_is_active_changed()
 
-var _charging_sound_pitch_tween: Tween
 var _pattern: Array[LaserBallsCannon]
 
 @onready var _cannon_0 := $LaserBallsCannon0
@@ -27,7 +25,6 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	SoundManager.stop_sound(SFX_CANNONS_FIRED)
-	SoundManager.stop_sound(SFX_CANNONS_CHARGING)
 
 
 func _activate() -> void:
@@ -35,9 +32,6 @@ func _activate() -> void:
 
 
 func _deactivate() -> void:
-	if _charging_sound_pitch_tween:
-		_charging_sound_pitch_tween.kill()
-	SoundManager.stop_sound(SFX_CANNONS_CHARGING)
 	_cannon_0.deactivate()
 	_cannon_1.deactivate()
 	_cannon_2.deactivate()
@@ -107,22 +101,11 @@ func _on_timer_timeout() -> void:
 	if not _pattern.is_empty():
 		charge_duration_sec = _pattern[0].get_charging_duration_sec()
 	
-	var audio_player := SoundManager.play_sound(SFX_CANNONS_CHARGING)
-	if _charging_sound_pitch_tween:
-		_charging_sound_pitch_tween.kill()
-	_charging_sound_pitch_tween = create_tween()
-	_charging_sound_pitch_tween.tween_property(audio_player, "pitch_scale",
-			1.2, charge_duration_sec)
-	
 	for cannon: LaserBallsCannon in _pattern:
 		cannon.charge()
 
 
 func _on_laser_balls_cannon_target_detected(_target: Node2D) -> void:
-	if _charging_sound_pitch_tween:
-		_charging_sound_pitch_tween.kill()
-	
-	SoundManager.stop_sound(SFX_CANNONS_CHARGING)
 	SoundManager.play_sound(SFX_CANNONS_FIRED)
 	for cannon: LaserBallsCannon in _pattern:
 		cannon.fire()
@@ -130,8 +113,4 @@ func _on_laser_balls_cannon_target_detected(_target: Node2D) -> void:
 
 func _on_laser_balls_cannon_discharged() -> void:
 	if _pattern.all(func(cannon): return cannon.is_discharged()):
-		if _charging_sound_pitch_tween:
-			_charging_sound_pitch_tween.kill()
-		
-		SoundManager.stop_sound(SFX_CANNONS_CHARGING)
 		_timer.start(_cooldown)
