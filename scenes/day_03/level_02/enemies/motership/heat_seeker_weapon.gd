@@ -110,11 +110,8 @@ func _shoot_gun() -> void:
 
 func _seek_an_destroy() -> void:
 	_tween = create_tween()
-	var audio_player: AudioStreamPlayer = \
-			SoundManager.play_sound(SFX_HEAT_SEEKER_CHARGING)
-	_tween.parallel().tween_property(audio_player, "pitch_scale", 2.0,
-			_laser_sight_duration_sec)
-	_tween.parallel().tween_callback(func(): _laser_sight.visible = true)
+	SoundManager.play_sound(SFX_HEAT_SEEKER_CHARGING)
+	_tween.tween_callback(func(): _laser_sight.visible = true)
 	_tween.tween_interval(_laser_sight_duration_sec)
 	_tween.tween_callback(func():
 		_laser_sight_warning.visible = true
@@ -122,7 +119,6 @@ func _seek_an_destroy() -> void:
 	)
 	_tween.tween_interval(_warning_duration_sec)
 	_tween.tween_callback(func():
-		SoundManager.stop_sound(SFX_HEAT_SEEKER_CHARGING)
 		_reset_sight()
 		_shoot_gun()
 	)
