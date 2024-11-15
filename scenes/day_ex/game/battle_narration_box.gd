@@ -14,7 +14,6 @@ var _format_values: Dictionary = {}
 
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		SoundManager.play_sound(UI_NEXT_SOUND)
 		accept_event()
 		release_focus()
 
@@ -41,6 +40,7 @@ func say_and_wait_until_read(what: String, format_values: Dictionary = {}) -> vo
 func wait_until_read() -> void:
 	call_deferred("grab_focus")
 	await read
+	SoundManager.play_sound(UI_NEXT_SOUND)
 
 
 func silence() -> void:
