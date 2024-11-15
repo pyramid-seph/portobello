@@ -46,8 +46,8 @@ duration_sec = 2.0
 
 [node name="Motership" type="Node2D"]
 script = ExtResource("1_lyngl")
-_initial_hp = 500
-_activate_block_spawner_at_hp = 400
+_initial_hp = 450
+_activate_block_spawner_at_hp = 350
 _speed_up_block_spawner_at_hp = 200
 _activate_heat_seeker_at_hp = 150
 Explosion = ExtResource("2_wk4gl")
