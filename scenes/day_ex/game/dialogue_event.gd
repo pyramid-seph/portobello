@@ -5,16 +5,11 @@ extends Resource
 @warning_ignore("unused_signal")
 signal finished
 
-@export var _skip_close_sound: bool
 @export var _dialogue: Array[DialoguePage]
 
 
 func is_empty() -> bool:
 	return not _dialogue or _dialogue.is_empty()
-
-
-func should_skip_close_sound() -> bool:
-	return _skip_close_sound
 
 
 func get_page(idx: int) -> DialoguePage:

@@ -16,8 +16,6 @@ const MUTE_CHARS: Array[String] = [
 	" ",
 ]
 
-@export var _next_page_sound: AudioStream
-
 var _dialogue_event: DialogueEvent
 var _curr_page: int = -1
 var _text_tween: Tween
@@ -151,8 +149,6 @@ func _build_example_dialogue() -> DialogueEvent:
 func _finish_event() -> void:
 	_curr_page = -1
 	if _dialogue_event:
-		if _next_page_sound and not _dialogue_event.should_skip_close_sound():
-			SoundManager.play_sound(_next_page_sound)
 		_dialogue_event.finished.emit()
 		_dialogue_event = null
 
