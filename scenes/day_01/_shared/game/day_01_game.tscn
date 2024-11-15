@@ -464,6 +464,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
 [node name="Day01Game" type="Node"]
+physics_interpolation_mode = 2
 script = ExtResource("1_745ra")
 
 [node name="Timer" type="Timer" parent="."]

@@ -101,9 +101,9 @@ func _dispose() -> void:
 
 func _spawn_explosion() -> void:
 	var explosion = Explosion.instantiate()
-	_world_or_default().add_child(explosion)
 	explosion.centered = _animated_sprite.centered
 	explosion.global_position = global_position
+	_world_or_default().add_child(explosion)
 
 
 func _internal_on_set_world() -> void:

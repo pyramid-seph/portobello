@@ -14,14 +14,15 @@ const SPRITE_WIDTH: float = 16.0
 var world:
 	set(value):
 		world = value
-		if not _is_ready: return
+		if not is_node_ready():
+			return
+		
 		for drone: HiveDrone in Utils.children_in_group(body, "hive_drones"):
 			drone.world = value
 
 var _horizontal_direction: float = 1
 var _hive_drones: Array[HiveDrone] = []
 
-@onready var _is_ready = true
 @onready var body := $Body
 @onready var movement_timer := $MovementTimer as Timer
 @onready var gun_timer := $GunTimer as Timer

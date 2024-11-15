@@ -79,17 +79,20 @@ func teleport(map_pos: Vector2i) -> void:
 	_dir_pressed_sec = 0
 	position = _maze.map_to_local(map_pos)
 	_target_local_pos = position
+	reset_physics_interpolation()
 	_calculate_next_target()
 
 
 func reset(map_pos: Vector2i) -> void:
-	teleport(map_pos)
 	_animated_sprite.rotation_degrees = 0.0
 	_animated_sprite.flip_h = false
 	_animated_sprite.flip_v = false
 	is_movement_allowed = false
 	_state = Day02PlayerState.ALIVE
 	visible = true
+	# To avoid the glitch metioned on the reset_physics_interpolation() docs,
+	# always call teleport after setting visible to true.
+	teleport(map_pos)
 
 
 func revive(map_pos: Vector2i) -> void:
