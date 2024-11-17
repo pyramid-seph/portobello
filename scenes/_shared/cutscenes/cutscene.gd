@@ -4,9 +4,9 @@ extends Control
 signal finished
 
 
-@export var _skip_sound = preload("res://audio/ui/kenney_interface_sounds/select_002.ogg")
 @export var _autostart: bool
 
+var _is_playing: bool
 var _old_touch_controller_mode: TouchControllerManager.Mode
 
 
@@ -23,12 +23,15 @@ func _exit_tree() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("skip_cutscene"):
-		SoundManager.play_ui_sound(_skip_sound)
 		get_viewport().set_input_as_handled()
 		finish()
 
 
 func play() -> void:
+	if _is_playing:
+		return
+	
+	_is_playing = true
 	set_process_unhandled_input(true)
 	_old_touch_controller_mode = TouchControllerManager.mode
 	TouchControllerManager.mode = TouchControllerManager.Mode.CUTSCENE
@@ -38,6 +41,7 @@ func play() -> void:
 func finish() -> void:
 	set_process_unhandled_input(false)
 	_internal_stop()
+	_is_playing = false
 
 
 # Override

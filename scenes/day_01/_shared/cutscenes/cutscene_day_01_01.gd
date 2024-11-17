@@ -1,24 +1,29 @@
 extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
+const BGM_CUTSCENE = preload("res://audio/bgm/cutscene.wav")
+const BGM_CUTSCENE_ENDS = preload("res://audio/bgm/cutscene_ends.wav")
+
 @onready var _background := $Background
 @onready var _panel_00 := $Panel00
 @onready var _panel_01 := $Panel01
 @onready var _timer := $Timer as Timer
+@onready var _title_label: Label = $Background/Label
 
 
 func _play() -> void:
-	_background.visible = true
-	_panel_00.visible = true
+	_background.show()
+	_panel_00.show()
+	await SoundManager.play_music(BGM_CUTSCENE).finished
+	_panel_00.hide()
+	_panel_01.show()
+	await SoundManager.play_music(BGM_CUTSCENE).finished
+	_panel_00.hide()
+	_panel_01.hide()
+	SoundManager.stop_music(1.5)
 	_timer.start(2.0)
 	await _timer.timeout
-	_panel_00.visible = false
-	_panel_01.visible = true
-	_timer.start(1.6)
-	await _timer.timeout
-	_panel_00.visible = false
-	_panel_01.visible = false
-	_timer.start(1.2)
-	await _timer.timeout
+	_title_label.show()
+	await SoundManager.play_music(BGM_CUTSCENE_ENDS).finished
 	finish()
 
 
@@ -30,9 +35,10 @@ func _clean_up() -> void:
 	if not _timer.is_stopped():
 		_timer.stop()
 		Utils.safe_disconnect_all(_timer.timeout)
-	_background.visible = false
-	_panel_00.visible = false
-	_panel_01.visible = false
+	_background.hide()
+	_panel_00.hide()
+	_panel_01.hide()
+	_title_label.hide()
 
 
 func _on_finished() -> void:

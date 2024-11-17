@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpc2fbvwdk03l"]
+[gd_scene load_steps=13 format=3 uid="uid://dpc2fbvwdk03l"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_between_levels.gd" id="2_lfnil"]
 [ext_resource type="Texture2D" uid="uid://bas5srb0fec1" path="res://art/cutscenes/day_01_level_00.png" id="3_cl58a"]
 [ext_resource type="Texture2D" uid="uid://ccsjk0l850fht" path="res://art/cutscenes/day_01_level_01_text_en.png" id="3_ja20l"]
+[ext_resource type="AudioStream" uid="uid://cknak87db4uxv" path="res://audio/bgm/cutscene_loop.wav" id="3_supr0"]
 [ext_resource type="Texture2D" uid="uid://cc5o6hpah25jm" path="res://art/cutscenes/day_01_level_01.png" id="4_4e7iw"]
 [ext_resource type="Texture2D" uid="uid://oqbmdpyrnu0l" path="res://art/cutscenes/day_01_level_02_.png" id="5_3ymp4"]
 [ext_resource type="Texture2D" uid="uid://cbqbvcjylljmf" path="res://art/cutscenes/day_01_level_03.png" id="6_t15ny"]
+[ext_resource type="Script" path="res://scenes/_shared/simple_bgm_player.gd" id="7_tbbug"]
 
 [sub_resource type="Animation" id="Animation_soxm5"]
 resource_name = "Default"
-length = 4.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,10 +84,27 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SimpleBgmPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [1.5],
+"method": &"stop"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_st4f0"]
 resource_name = "Dizzy"
-length = 4.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -157,6 +176,23 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SimpleBgmPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [1.5],
+"method": &"stop"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_22q4m"]
@@ -249,6 +285,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_lfnil")
+
+[node name="SimpleBgmPlayer" type="Node" parent="."]
+script = ExtResource("7_tbbug")
+_music = ExtResource("3_supr0")
+_autostart = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

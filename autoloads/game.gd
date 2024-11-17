@@ -2,6 +2,7 @@ extends Node
 
 const ScreenshotTool = preload("res://scenes/_shared/screenshot_tool.gd")
 const ScreenshotToolScn = preload("res://scenes/_shared/screenshot_tool.tscn")
+const FpsScn = preload("res://scenes/_shared/fps.tscn")
 
 enum Mode { 
 	SCORE_ATTACK,
@@ -47,6 +48,7 @@ func _ready() -> void:
 	
 	if OS.is_debug_build():
 		add_child(ScreenshotToolScn.instantiate())
+		add_child(FpsScn.instantiate())
 
 
 func start(minigame: Minigame, allow_restart := false) -> void:

@@ -16,6 +16,9 @@ theme = ExtResource("3_sbdps")
 script = ExtResource("1_i8prj")
 _autostart = true
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -26,6 +29,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="DayLabel" type="Label" parent="ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
