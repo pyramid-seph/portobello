@@ -95,6 +95,7 @@ func _get_high_score() -> int:
 		prop_name = _get_score_attack_high_score_prop_name()
 	return SaveDataManager.save_data.get_indexed(prop_name)
 
+
 func _set_up_player() -> void:
 	_player.revived.connect(_on_player_revived)
 	_player.out_of_lives.connect(_on_player_out_of_lives)
@@ -208,7 +209,9 @@ func _on_boss_fight_completed() -> void:
 	_timer.start(_results_screen_delay_sec)
 	await _timer.timeout
 	_boss_fight.cleanup()
-	_world.set_process(PROCESS_MODE_DISABLED)
+	get_tree().call_group("bullets", "queue_free")
+	get_tree().call_group("items", "queue_free")
+	_world.process_mode = PROCESS_MODE_DISABLED
 	_world.set_process_input(false)
 	_world.visible = false
 	_level_state = LevelState.SHOWING_RESULTS
