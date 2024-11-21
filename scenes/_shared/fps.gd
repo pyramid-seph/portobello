@@ -12,6 +12,6 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _label.visible:
 		_label.text = str(Engine.get_frames_per_second())

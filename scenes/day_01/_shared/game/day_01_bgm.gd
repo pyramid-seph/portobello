@@ -3,7 +3,8 @@ extends Node
 
 const Day01Player = preload("res://scenes/day_01/player/day_01_player.gd")
 
-const BGM_DAY_01_INTRO = preload("res://audio/bgm/remaki_1.wav")
+const BGM_DAY_01_INTRO = preload("res://audio/bgm/bgm_day_01_intro.wav")
+const BGM_DAY_01_INTRO_BACKWARD = preload("res://audio/bgm/bgm_day_01_intro_backward.wav")
 const BGM_DAY_01_MAIN = preload("res://audio/bgm/remaki_0.wav")
 const BGM_DAY_01_SUCCESS_FANFARE = preload("res://audio/bgm/bgm_day_01_success_fanfare.wav")
 
@@ -34,7 +35,10 @@ func stop_music() -> void:
 
 
 func _switch_to_intro() -> void:
-	SoundManager.play_music(BGM_DAY_01_INTRO)
+	if _player.inverted_controls:
+		SoundManager.play_music(BGM_DAY_01_INTRO_BACKWARD)
+	else:
+		SoundManager.play_music(BGM_DAY_01_INTRO)
 
 
 func _switch_to_main() -> void:
