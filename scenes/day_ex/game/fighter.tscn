@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="5_xgu1x"]
 [ext_resource type="Shader" path="res://shaders/hp_label.gdshader" id="6_7oenr"]
-[ext_resource type="AudioStream" uid="uid://njvfucnrbvaw" path="res://audio/sfx/sfx_day_ex_fighter_eaten.wav" id="7_5npwn"]
+[ext_resource type="AudioStream" uid="uid://cbttoilcferj" path="res://audio/sfx/sfx_day_ex_fighter_eaten.wav" id="6_heqhy"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_qpj4v"]
 [ext_resource type="AudioStream" uid="uid://da0debqqguqip" path="res://audio/sfx/sfx_day_ex_fighter_die.wav" id="7_x6j3b"]
 [ext_resource type="AudioStream" uid="uid://bd4b23laqhyp3" path="res://audio/sfx/sfx_day_ex_fighter_evade.wav" id="9_1bhey"]
@@ -348,7 +348,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_5npwn")
+"stream": ExtResource("6_heqhy")
 }],
 "times": PackedFloat32Array(0)
 }
