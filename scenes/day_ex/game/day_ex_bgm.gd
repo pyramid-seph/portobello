@@ -1,81 +1,75 @@
 extends Node
 
 
-const DAY_EX_BGM_STREAM = preload("res://resources/instances/day_ex_bgm_stream.tres")
+const BGM_EXPLORATION = preload("res://audio/bgm/remaki_0.wav")
+const BGM_BATTLE = preload("res://audio/bgm/remaki_1.wav")
+const BGM_SUCCESS = preload("res://audio/bgm/bgm_level_test.wav")
+const BGM_GAME_OVER = preload("res://audio/bgm/bgm_boss_test.wav")
 
-
-var _playback: AudioStreamPlaybackInteractive
+var _exploration_bgm_position: float
+var _exploration_bgm_audio_player: AudioStreamPlayer
 
 
 func _exit_tree() -> void:
-	stop_music()
+	SoundManager.stop_music()
 
 
 func play_exploration_bgm() -> void:
-	await _suspend_ensure_playing()
 	_switch_to_exploration_stream()
 
 
 func play_normal_battle_bgm() -> void:
-	await _suspend_ensure_playing()
+	_remember_exploration_bgm_playback_position()
 	_switch_to_normal_battle_stream()
+	_exploration_bgm_audio_player = null
 
 
 func play_boss_battle_bgm() -> void:
-	await _suspend_ensure_playing()
+	_remember_exploration_bgm_playback_position()
 	_switch_to_boss_battle_stream()
+	_exploration_bgm_audio_player = null
 
 
 func play_battle_won_bgm() -> void:
-	await _suspend_ensure_playing()
 	_switch_to_battle_won_stream()
+	_exploration_bgm_audio_player = null
 
 
 func play_game_over_bgm() -> void:
-	await _suspend_ensure_playing()
 	_switch_to_game_over_stream()
+	_exploration_bgm_audio_player = null
 
 
-func stop_music() -> void:
-	_playback = null
-	if SoundManager.is_music_playing(DAY_EX_BGM_STREAM):
-		SoundManager.stop_music()
-
-
-func _suspend_ensure_playing() -> void:
-	if SoundManager.is_music_playing(DAY_EX_BGM_STREAM):
+func _remember_exploration_bgm_playback_position() -> void:
+	if Utils.is_running_on_web():
+		# TODO Godot 4.4 (which is still on DEV phase) may fix 
+		# get_playback_position() not working on web.
+		# See: https://github.com/godotengine/godot/pull/95197 
 		return
 	
-	var audio_player: AudioStreamPlayer = \
-			SoundManager.play_music(DAY_EX_BGM_STREAM)
-	# Waiting for the next process frame so I don't get an error 
-	# when trying to access the AudioStreamPlaybackInteractive.
-	await get_tree().process_frame
-	if SoundManager.is_music_playing(DAY_EX_BGM_STREAM):
-		_playback = \
-				audio_player.get_stream_playback() as AudioStreamPlaybackInteractive
+	if _exploration_bgm_audio_player:
+		_exploration_bgm_position = \
+				_exploration_bgm_audio_player.get_playback_position()
 
 
 func _switch_to_exploration_stream() -> void:
-	if _playback:
-		_playback.switch_to_clip_by_name(&"exploration")
+	var crossfade_duration: float = \
+			0.2 if SoundManager.is_music_playing() else 0.0
+	_exploration_bgm_audio_player = SoundManager.play_music_from_position(
+			BGM_EXPLORATION, _exploration_bgm_position, crossfade_duration)
 
 
 func _switch_to_normal_battle_stream() -> void:
-	if _playback:
-		_playback.switch_to_clip_by_name(&"normal_battle")
+	SoundManager.play_music(BGM_BATTLE)
 
 
 func _switch_to_boss_battle_stream() -> void:
-	if _playback:
-		_playback.switch_to_clip_by_name(&"boss_battle")
+	_switch_to_normal_battle_stream()
 
 
 func _switch_to_battle_won_stream() -> void:
-	if _playback:
-		_playback.switch_to_clip_by_name(&"battle_won")
+	SoundManager.play_music(BGM_SUCCESS)
 
 
 func _switch_to_game_over_stream() -> void:
-	if _playback:
-		_playback.switch_to_clip_by_name(&"game_over")
+	SoundManager.play_music(BGM_GAME_OVER)
