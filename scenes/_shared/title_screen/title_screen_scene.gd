@@ -125,6 +125,7 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _title_screen_bg := %TitleScreenBg
 @onready var _version_label := $TitleScreen/VersionLabel as Label
 @onready var _ui_sounds: UiSounds = $TitleScreen/MainMenu/UiSounds
+@onready var _bgm_player: SimpleBgmPlayer = $SimpleBgmPlayer
 
 
 func _ready() -> void:
@@ -211,6 +212,7 @@ func _enable_title_screen(show_screen: bool) -> void:
 		_set_title_type()
 		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 		_ui_sounds.call_deferred("focus_node_no_sound", _story_mode_game_selector)
+		_bgm_player.play()
 		_notify_unlocks()
 
 

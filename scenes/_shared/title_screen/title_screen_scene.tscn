@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=27 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -36,6 +36,8 @@ content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otkpc"]
+
 [node name="TitleScreenScene" type="Node" groups=["__ui_sound_skip_sound_install"]]
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
@@ -44,6 +46,7 @@ _debug_skip_logos_roll = true
 [node name="SimpleBgmPlayer" type="Node" parent="."]
 script = ExtResource("21_m04mu")
 _music = ExtResource("3_nu8sc")
+_autostart = false
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -296,6 +299,23 @@ script = ExtResource("6_t81ja")
 
 [node name="Timer" type="Timer" parent="LogosRoll"]
 one_shot = true
+
+[node name="ParticlesPrewarmer" type="PanelContainer" parent="LogosRoll"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_otkpc")
+
+[node name="BloodDropParticles" parent="LogosRoll/ParticlesPrewarmer" instance=ExtResource("11_0fxou")]
+position = Vector2(123, 49)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="LogosRoll/ParticlesPrewarmer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="GameCLLogo" type="ColorRect" parent="LogosRoll"]
 visible = false
