@@ -1,3 +1,9 @@
+# v2.1.0 - The one with less jitter.
+
+* Enabled physics inyterpolation.
+* Fixed some small bugs.
+
+
 # v2.0.1 - The one that remembers the rules.
 
 * Fix an error that let the player get loot and experience when fleeing from battle.

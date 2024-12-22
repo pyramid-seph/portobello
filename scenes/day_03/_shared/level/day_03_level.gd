@@ -104,6 +104,7 @@ func _set_up_player() -> void:
 
 func _start_level() -> void:
 	_player.position = _world_player_start_marker.position
+	_player.reset_physics_interpolation()
 	_player.is_input_enabled = false
 	_player.is_losing_stamina = false
 	_level_state = LevelState.STARTING
@@ -159,6 +160,7 @@ func _on_debug_is_god_mode_enabled_set() -> void:
 func _on_player_revived() -> void:
 	if _player.get_parent() == _world:
 		_player.position = _world_player_start_marker.position
+		_player.reset_physics_interpolation()
 
 
 func _on_player_out_of_lives() -> void:
@@ -197,7 +199,9 @@ func _on_boss_fight_completed() -> void:
 	_timer.start(_results_screen_delay_sec)
 	await _timer.timeout
 	_boss_fight.cleanup()
-	_world.set_process(PROCESS_MODE_DISABLED)
+	get_tree().call_group("bullets", "queue_free")
+	get_tree().call_group("items", "queue_free")
+	_world.process_mode = PROCESS_MODE_DISABLED
 	_world.set_process_input(false)
 	_world.visible = false
 	_level_state = LevelState.SHOWING_RESULTS

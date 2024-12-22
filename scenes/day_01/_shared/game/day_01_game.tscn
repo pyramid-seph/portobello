@@ -464,6 +464,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
 [node name="Day01Game" type="Node"]
+physics_interpolation_mode = 2
 script = ExtResource("1_745ra")
 
 [node name="Timer" type="Timer" parent="."]
@@ -531,7 +532,6 @@ script = ExtResource("6_mkoph")
 _tile_map_layer = NodePath("../../World/FloorTileMapLayer")
 _player_node_path = NodePath("../../World/FloorTileMapLayer/Day01Player")
 _origin = NodePath("../../World/FloorTileMapLayer/GridOrigin")
-_tile_size = Vector2i(8, 8)
 _large_table = NodePath("../../World/FloorTileMapLayer/LargeTable")
 _large_couch = NodePath("../../World/FloorTileMapLayer/LargeCouch")
 _small_couch_facing_left = NodePath("../../World/FloorTileMapLayer/SmallCouchFacingLeft")

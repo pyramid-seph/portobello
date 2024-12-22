@@ -9,15 +9,11 @@ const OUT_OF_SCREEN_POS: Vector2 = Vector2(-100, 100)
 @export var _tile_map_layer: TileMapLayer
 @export var _player_node_path: NodePath
 @export var _origin: Marker2D
-@export var _tile_size: Vector2i: # Tile map does not expose its tile_size :(
-	set(value):
-		_tile_size = value
-		_tile_offset = Vector2(_tile_size / 2)
 
 # Tile map uses the center of a cell as its local position.
 # Furniture sprites are not centered. We use this
 # offset to place them correctly.
-var _tile_offset: Vector2 # Depends on _tile_size.
+var _tile_offset: Vector2
 
 @export_group("Furniture")
 @export var _large_table: Area2D
@@ -55,33 +51,41 @@ var _all_furniture: Array[Area2D]:
 @onready var _origin_tile_pos: Vector2i = global_to_map(_origin.global_position)
 
 
+func _ready() -> void:
+	if _tile_map_layer and _tile_map_layer.tile_set:
+		var tile_size: Vector2i = _tile_map_layer.tile_set.tile_size
+		_tile_offset = Vector2(tile_size / 2)
+
+
 func place_furniture_outside() -> void:
 	for furniture: Area2D in _all_furniture:
-		furniture.call_deferred("set_position", OUT_OF_SCREEN_POS)
+		furniture.set_deferred("position", OUT_OF_SCREEN_POS)
 
 
 func place_large_table(grid_pos: Vector2i) -> void:
-	_large_table.call_deferred("set_position", map_to_local_grid_pos(grid_pos))
+	_large_table.set_deferred("position", map_to_local_grid_pos(grid_pos))
 
 
 func place_large_couch(grid_pos: Vector2i) -> void:
-	_large_couch.call_deferred("set_position", map_to_local_grid_pos(grid_pos))
+	_large_couch.set_deferred("position", map_to_local_grid_pos(grid_pos))
 
 
 func place_small_couch_facing_left(grid_pos: Vector2i) -> void:
-	_small_couch_facing_left.call_deferred("set_position", map_to_local_grid_pos(grid_pos))
+	_small_couch_facing_left.set_deferred("position",
+			map_to_local_grid_pos(grid_pos))
 
 
 func place_small_couch_facing_right(grid_pos: Vector2i) -> void:
-	_small_couch_facing_right.call_deferred("set_position", map_to_local_grid_pos(grid_pos))
+	_small_couch_facing_right.set_deferred("position",
+			map_to_local_grid_pos(grid_pos))
 
 
 func place_small_table_00(grid_pos: Vector2i) -> void:
-	_small_table_00.call_deferred("set_position", map_to_local_grid_pos(grid_pos))
+	_small_table_00.set_deferred("position", map_to_local_grid_pos(grid_pos))
 
 
 func place_small_table_01(grid_pos: Vector2i) -> void:
-	_small_table_01.call_deferred("set_position", map_to_local_grid_pos(grid_pos))
+	_small_table_01.set_deferred("position", map_to_local_grid_pos(grid_pos))
 
 
 func get_large_table_tile_size() -> Vector2i:
