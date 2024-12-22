@@ -199,7 +199,9 @@ func _on_boss_fight_completed() -> void:
 	_timer.start(_results_screen_delay_sec)
 	await _timer.timeout
 	_boss_fight.cleanup()
-	_world.set_process(PROCESS_MODE_DISABLED)
+	get_tree().call_group("bullets", "queue_free")
+	get_tree().call_group("items", "queue_free")
+	_world.process_mode = PROCESS_MODE_DISABLED
 	_world.set_process_input(false)
 	_world.visible = false
 	_level_state = LevelState.SHOWING_RESULTS
