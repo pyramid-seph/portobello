@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=25 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_bg.gd" id="2_prsyc"]
+[ext_resource type="PackedScene" uid="uid://be46fmlrxbeev" path="res://scenes/_shared/cheat_code.tscn" id="2_udsfp"]
 [ext_resource type="Texture2D" uid="uid://ydnoqkd04fkt" path="res://art/menu_screen/title.png" id="3_oe3xx"]
 [ext_resource type="Texture2D" uid="uid://d0q3xvjq2e100" path="res://art/menu_screen/menu_bg_day_01.png" id="3_of2ca"]
 [ext_resource type="Texture2D" uid="uid://i37nr0nsawys" path="res://art/menu_screen/splash.png" id="6_0gi6x"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ckjfj1kxcsge6" path="res://scenes/_shared/progress_menu.tscn" id="10_33qhf"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
 [ext_resource type="PackedScene" uid="uid://ddt6mk30fvhmd" path="res://scenes/_shared/settings_menu/settings_menu.tscn" id="11_5qu15"]
+[ext_resource type="Texture2D" uid="uid://dpjxr28rrgvac" path="res://art/_shared/_atlas_ui_shared.png" id="13_jai3w"]
 [ext_resource type="Texture2D" uid="uid://bggbygu4g7uir" path="res://art/menu_screen/dark_heart.png" id="15_a0if4"]
 [ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
@@ -32,10 +34,18 @@ content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1547"]
+atlas = ExtResource("13_jai3w")
+region = Rect2(24, 4, 10, 10)
+
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
 _debug_skip_logos_roll = true
+
+[node name="KCheatCode" parent="." instance=ExtResource("2_udsfp")]
+_cheat_code = Array[StringName]([&"move_up", &"move_up", &"move_down", &"move_down", &"move_left", &"move_right", &"move_left", &"move_right"])
+disabled = true
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -484,6 +494,24 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("15_nefsx")
 stretch_mode = 2
+
+[node name="CheaterTextureRect" type="TextureRect" parent="LogosRoll"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_u1547")
+stretch_mode = 5
 
 [connection signal="current_option_index_changed" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_option_index_changed"]
 [connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_game_selector_focus_entered"]
