@@ -29,6 +29,7 @@ SceneChanger="*res://autoloads/scene_changer.tscn"
 TouchControllerManager="*res://autoloads/touch_controller_manager.gd"
 DialogueManager="*res://autoloads/dialogue_manager.gd"
 Game="*res://autoloads/game.gd"
+AutoMouseHide="*res://autoloads/auto_mouse_hide.gd"
 
 [display]
 
