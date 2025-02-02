@@ -129,6 +129,11 @@ func _pick_next_movement() -> void:
 		return
 	
 	var curr_map_pos = _map_pos()
+	
+	if candidates.size() > 1 and _curr_dir != Vector2i.ZERO:
+		var back_map_pos: Vector2i = curr_map_pos + (_curr_dir * -1)
+		candidates.erase(back_map_pos)
+	
 	var candidates_partition: Array = Utils.partition(candidates, func(candidate):
 		var curr_dir_candidate: Vector2i = candidate - curr_map_pos
 		return Vector2(_curr_dir).dot(curr_dir_candidate) == 0
