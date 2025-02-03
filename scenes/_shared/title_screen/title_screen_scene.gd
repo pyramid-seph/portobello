@@ -8,6 +8,8 @@ const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_sc
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
 
+const CheatCode = preload("res://scenes/_shared/cheat_code.gd")
+
 const BG_COLOR_DAY_1_LIKE_GAME := Color("7CE194")
 const BG_COLOR_DAY_2_LIKE_GAME := Color("E76F6F")
 const BG_COLOR_DAY_3_LIKE_GAME := Color("E98BEA")
@@ -108,6 +110,8 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 	get:
 		return _debug_skip_logos_roll and OS.is_debug_build()
 
+var _cheat_code_tween: Tween
+
 @onready var _is_ready := true
 @onready var _title_screen := $TitleScreen
 @onready var _logos_roll := $LogosRoll
@@ -125,6 +129,8 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 @onready var _show_options_btn := %ShowOptionsBtn
 @onready var _title_screen_bg := %TitleScreenBg
 @onready var _version_label := $TitleScreen/VersionLabel as Label
+@onready var _k_cheat_code: CheatCode = $KCheatCode
+@onready var _cheater_texture_rect: TextureRect = %CheaterTextureRect
 
 
 func _ready() -> void:
@@ -149,9 +155,10 @@ func _start() -> void:
 		Game.is_cold_boot = false
 		_enable_title_screen(false)
 		if _debug_skip_logos_roll:
-			call_deferred("_enable_title_screen", true)
+			_enable_title_screen.call_deferred(true)
 		else:
 			_logos_roll.start()
+			_start_listening_for_cheat_codes()
 	else:
 		_enable_title_screen(true)
 
@@ -210,7 +217,7 @@ func _enable_title_screen(show_screen: bool) -> void:
 		_set_stars_count()
 		_set_title_type()
 		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
-		_story_mode_game_selector.call_deferred("grab_focus")
+		_story_mode_game_selector.grab_focus.call_deferred()
 		_notify_unlocks()
 
 
@@ -245,9 +252,20 @@ func _notify_unlocks() -> void:
 	_unlocks_dialog.visible = true
 
 
+func _start_listening_for_cheat_codes() -> void:
+	var save_data := SaveDataManager.save_data as SaveData
+	_k_cheat_code.disabled = save_data.latest_day_completed >= 3
+	Utils.safe_connect(_k_cheat_code.completed, _on_k_cheat_code_completed)
+
+
+func _stop_listening_for_cheat_codes() -> void:
+	_k_cheat_code.disabled = true
+
+
 func _on_logos_roll_rolled() -> void:
+	_stop_listening_for_cheat_codes()
 	_logos_roll.visible = false
-	_enable_title_screen(true)
+	_enable_title_screen.call_deferred(true)
 
 
 func _on_show_scores_btn_focus_entered() -> void:
@@ -315,7 +333,7 @@ func _on_exit_game_btn_pressed() -> void:
 
 
 func _on_confirm_exit_dialog_negative_btn_pressed() -> void:
-	_exit_game_btn.call_deferred("grab_focus")
+	_exit_game_btn.grab_focus.call_deferred()
 
 
 func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
@@ -323,19 +341,35 @@ func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
 
 
 func _on_unlocks_dialog_positive_btn_pressed() -> void:
-	_story_mode_game_selector.call_deferred("grab_focus")
+	_story_mode_game_selector.grab_focus.call_deferred()
 
 
 func _on_progress_menu_closed() -> void:
 	_main_menu.visible = true
 	_game_title.visible = true
-	_show_scores_button.call_deferred("grab_focus")
+	_show_scores_button.grab_focus.call_deferred()
 
 
 func _on_settings_menu_closed() -> void:
 	_main_menu.visible = true
-	_show_options_btn.call_deferred("grab_focus")
+	_show_options_btn.grab_focus.call_deferred()
 
 
 func _on_progress_menu_visibility_changed() -> void:
 	_update_version_label_visibility()
+
+
+func _on_k_cheat_code_completed() -> void:
+	var save_data := SaveDataManager.save_data as SaveData
+	save_data.latest_day_completed = 100
+	save_data.latest_unlocked_day_notified = 100
+	SaveDataManager.save()
+	
+	if _cheat_code_tween:
+		_cheat_code_tween.kill()
+	_cheat_code_tween = create_tween()
+	_cheat_code_tween.set_loops(3)
+	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",
+			1.0, 0.1).from(0)
+	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",
+			0.0, 0.1)

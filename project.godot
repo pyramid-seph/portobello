@@ -14,7 +14,7 @@ config/name="Bucho Busca Comida: The Portobello Mushroom Edition"
 config/name_localized={
 "es": "Bucho Busca Comida: Edición Hongo Portobello"
 }
-config/version="2.1.0"
+config/version="2.2.0"
 run/main_scene="res://scenes/_shared/title_screen/title_screen_scene.tscn"
 config/features=PackedStringArray("4.3")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -29,6 +29,7 @@ SceneChanger="*res://autoloads/scene_changer.tscn"
 TouchControllerManager="*res://autoloads/touch_controller_manager.gd"
 DialogueManager="*res://autoloads/dialogue_manager.gd"
 Game="*res://autoloads/game.gd"
+AutoMouseHide="*res://autoloads/auto_mouse_hide.gd"
 
 [display]
 
