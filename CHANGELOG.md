@@ -1,6 +1,17 @@
+# v2.2.0 - The one that cheats.
+
+* Added a cheatcode (based on certain one that starts with "K") that unlocks 
+all games in story and arcade modes. Input it while the logos are rolling. 
+**Does not work with touch controllers**.
+* Hides the cursor after not moving it for 1 second. Move your mouse to show it again.
+* Improvement: ghosts no longer move back. This reduces the likelihood of them 
+ping-ponging.
+* Fix: some pixel flashing.
+
+
 # v2.1.0 - The one with less jitter.
 
-* Enabled physics inyterpolation.
+* Enabled physics interpolation.
 * Fixed some small bugs.
 
 
