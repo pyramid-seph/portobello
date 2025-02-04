@@ -14,6 +14,10 @@ func _exit_tree() -> void:
 	SoundManager.stop_music()
 
 
+func stop_music() -> void:
+	SoundManager.stop_music()
+
+
 func play_exploration_bgm() -> void:
 	_switch_to_exploration_stream()
 
