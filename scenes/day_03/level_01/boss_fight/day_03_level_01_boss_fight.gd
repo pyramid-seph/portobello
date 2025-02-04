@@ -10,6 +10,7 @@ var _boss: Node2D
 @onready var _power_up_spawner := $"../Systems/PowerUpSpawner"
 @onready var _ui := $"../Interface/Day03Ui" as Day03Ui
 @onready var _start_marker := $"../World/WavePhaseStartMarker" as Marker2D
+@onready var _boss_bgm: Day03InteractiveBgm = $Day03InteractiveBgm
 
 
 func prepare() -> void:
@@ -29,6 +30,7 @@ func start() -> void:
 
 
 func _play_boss_introduction() -> void:
+	_boss_bgm.play_music()
 	_boss.position.y = (3 + _boss.body_height()) * -1
 	_boss.position.x =  _world.get_viewport_rect().size.x / 2 - 30
 	_ui.start_main_course_presentation()
@@ -51,6 +53,7 @@ func _start_boss_fight() -> void:
 
 
 func _on_hive_dead() -> void:
+	_boss_bgm.stop_music()
 	completed.emit()
 
 

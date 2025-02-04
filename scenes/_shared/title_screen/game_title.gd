@@ -10,8 +10,8 @@ extends TextureRect
 		if old_value != stars_count:
 			_on_stars_count_changed()
 
-@onready var _is_ready: bool = true
 @onready var _stars_label := $StarsLabel as Label
+@onready var _blood_drops: Node2D = $BloodDrops
 
 
 func _ready() -> void:
@@ -19,11 +19,21 @@ func _ready() -> void:
 
 
 func set_story_mode_progress(max_day_completed: int) -> void:
-	texture = normal_title if max_day_completed < 2 else bloody_title
+	if max_day_completed < 2:
+		texture = normal_title
+		_emit_blood_drop_particles(false)
+	else:
+		texture = bloody_title
+		_emit_blood_drop_particles(true)
+
+
+func _emit_blood_drop_particles(emit: bool) -> void:
+	for blood_drop_spawner: GPUParticles2D in _blood_drops.get_children():
+		blood_drop_spawner.emitting = emit
 
 
 func _on_stars_count_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	var stars_text: String = ""

@@ -57,6 +57,10 @@ func _ready() -> void:
 	_on_level_set()
 
 
+func _exit_tree() -> void:
+	SoundUtils.stop_all_sfx()
+
+
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_initial_level = data.level
@@ -76,8 +80,8 @@ func _set_up_level() -> void:
 		await maze.quit()
 	_timer.start(LEVEL_CHANGE_DELAY_SEC)
 	await _timer.timeout
-	var current_maze: Maze = _get_current_maze()
-	current_maze.reset()
+	var current_maze = _get_current_maze()
+	current_maze.prepare()
 	
 	if _level > 0:
 		current_maze.blue_ghost_speed = FAST_ENEMY_SPEED

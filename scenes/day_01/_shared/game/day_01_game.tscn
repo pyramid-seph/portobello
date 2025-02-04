@@ -1,6 +1,7 @@
-[gd_scene load_steps=75 format=4 uid="uid://cqn328nqhcfq7"]
+[gd_scene load_steps=76 format=4 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
+[ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_bgm.gd" id="2_25dnx"]
 [ext_resource type="Script" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
 [ext_resource type="Script" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
@@ -466,6 +467,9 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 [node name="Day01Game" type="Node"]
 physics_interpolation_mode = 2
 script = ExtResource("1_745ra")
+
+[node name="Day01Bgm" type="Node" parent="."]
+script = ExtResource("2_25dnx")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

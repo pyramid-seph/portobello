@@ -45,17 +45,17 @@ var _level_state: LevelState = LevelState.READY:
 		_level_state = value
 		level_state_changed.emit(_level_state)
 
-@onready var _is_ready: bool = true
 @onready var _world := $World
 @onready var _world_background := $World/Day03Bg
-@onready var _world_player_start_marker := $World/WavePhaseStartMarker as Marker2D
-@onready var _wave_manager := $Systems/WaveManager as WaveManager
+@onready var _world_player_start_marker: Marker2D = $World/WavePhaseStartMarker
+@onready var _wave_manager: WaveManager = $Systems/WaveManager
 @onready var _stamina_spawner := $Systems/StaminaSpawner
 @onready var _power_up_spawner := $Systems/PowerUpSpawner
-@onready var _timer := $Timer as Timer
-@onready var _boss_fight := $BossFight as Day03BossFight
+@onready var _timer: Timer = $Timer
+@onready var _boss_fight: Day03BossFight = $BossFight
 @onready var _results_screen := $Interface/ResultsScreen
 @onready var _day_3_ui := $Interface/Day03Ui
+@onready var _level_bgm: Day03InteractiveBgm = $Day03InteractiveBgm
 
 
 func _ready() -> void:
@@ -63,6 +63,10 @@ func _ready() -> void:
 	_set_up_player()
 	if get_parent() == $"/root":
 		start(_game_mode, 0, false, Day03PlayerData.MAX_LIVES, 0)
+
+
+func _exit_tree() -> void:
+	_level_bgm.stop_music()
 
 
 func start(mode: Game.Mode, level_index: int, is_last_level: bool, lives: int, score: int) -> void:
@@ -75,6 +79,7 @@ func start(mode: Game.Mode, level_index: int, is_last_level: bool, lives: int, s
 	_is_last_level = is_last_level
 	_level_index = level_index
 	_player.set_high_score(_get_high_score())
+	_level_bgm.play_music()
 	await _start_level()
 	if _debug_start_at_boss_fight:
 		_start_boss_phase()
@@ -126,6 +131,7 @@ func _start_wave_phase() -> void:
 
 
 func _start_boss_phase() -> void:
+	_level_bgm.stop_music()
 	get_tree().call_group("bullets", "queue_free")
 	get_tree().call_group("items", "queue_free")
 	_stamina_spawner.disable()
@@ -143,6 +149,7 @@ func _get_score_attack_high_score_prop_name() -> String:
 
 func _game_over() -> void:
 	_level_state = LevelState.GAME_OVER
+	_level_bgm.stop_music()
 	_wave_manager.stop()
 	_stamina_spawner.disable()
 	_power_up_spawner.disable()
@@ -153,7 +160,7 @@ func _game_over() -> void:
 
 
 func _on_debug_is_god_mode_enabled_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_player.is_god_mode_enabled = _debug_is_god_mode_enabled
 
 
@@ -180,6 +187,11 @@ func _on_day_3_ui_boss_alert_finished() -> void:
 func _on_wave_manager_all_waves_completed() -> void:
 	if _player.lives == 0:
 		return
+	
+	_power_up_spawner.disable()
+	_level_bgm.stop_music(3.0)
+	_timer.start(4.5)
+	await _timer.timeout
 	
 	if _player.is_dead():
 		_player.revived.connect(_start_boss_phase, CONNECT_ONE_SHOT)

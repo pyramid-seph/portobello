@@ -22,6 +22,7 @@ const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
 const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
 const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
 const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")
+const Day01Bgm = preload("res://scenes/day_01/_shared/game/day_01_bgm.gd")
 
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 1
@@ -59,12 +60,17 @@ var _immediate_lives_counter_update: bool = true
 @onready var _furniture_placement_system := $Systems/FurniturePlacementSystem as FurniturePlacementSystem
 @onready var _cutscene := %Day01BetweenLevelsCutscene
 @onready var _max_time_limit: float = _get_max_time_limit()
+@onready var _bgm: Day01Bgm = $Day01Bgm
 
 
 func _ready() -> void:
 	TouchControllerManager.mode = TouchControllerManager.Mode.GAMEPLAY_DPAD_ONLY
 	_set_initial_lives()
 	_on_level_changed()
+
+
+func _exit_tree() -> void:
+	SoundUtils.stop_all_sfx()
 
 
 func set_shared_data(data: Dictionary = {}) -> void:
@@ -126,6 +132,7 @@ func _reset_level() -> void:
 
 
 func _start_level() -> void:
+	_bgm.play_level_music()
 	_ui.show_inverted_controls_alert(_curr_lvl_settings.inverted_controls)
 	var game_mode: Game.Mode = _lvl_info.get_game_mode(_level)
 	var lvl_index: int = _lvl_info.get_lvl_index(_level)
@@ -187,6 +194,7 @@ func _on_level_failed() -> void:
 
 
 func _on_level_beaten() -> void:
+	_bgm.play_success_music()
 	_player.is_allowed_to_move = false
 	_ui.set_pause_menu_enabled(false)
 	_ui.show_level_beaten()
@@ -215,6 +223,7 @@ func _on_level_beaten() -> void:
 
 func _on_player_died(cause: Player.DeathCause) -> void:
 	_remaining_lives -= 1
+	_bgm.stop_music()
 	
 	if cause == Player.DeathCause.FATIGUE:
 		_ui.show_time_up()
@@ -230,6 +239,7 @@ func _on_player_died(cause: Player.DeathCause) -> void:
 		if _curr_lvl_settings.change_treat_pos_on_player_death:
 			_place_treat()
 		_play_dialogue()
+		_bgm.play_level_music()
 
 
 func _on_player_ate() -> void:

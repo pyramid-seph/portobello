@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="VoicePack" load_steps=4 format=3 uid="uid://3xr36xrw1gkr"]
+
+[ext_resource type="Script" path="res://resources/voice_pack.gd" id="1_yrrqe"]
+[ext_resource type="AudioStream" uid="uid://cidk64t4ifpjn" path="res://audio/sfx/sfx_day_ex_voice_yellow_parrot_01.wav" id="2_oqs8x"]
+[ext_resource type="AudioStream" uid="uid://cx6taheypjj5y" path="res://audio/sfx/sfx_day_ex_voice_yellow_parrot_02.wav" id="3_jmhnc"]
+
+[resource]
+script = ExtResource("1_yrrqe")
+sounds = Array[AudioStream]([ExtResource("2_oqs8x"), ExtResource("3_jmhnc")])

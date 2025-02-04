@@ -4,6 +4,8 @@ extends Node2D
 @export var score_points_mega_gun: int = 0
 @export var speed: float = 0.0
 @export var direction: Vector2 = Vector2.ZERO
+@export var sound: AudioStream
+
 
 var shooter:
 	set(value):
@@ -18,6 +20,9 @@ func _ready() -> void:
 	if not get_viewport_rect().has_point(global_position):
 		process_mode = Node.PROCESS_MODE_DISABLED
 		queue_free()
+	else:
+		if sound:
+			SoundManager.play_sound(sound)
 
 
 func _physics_process(delta: float) -> void:

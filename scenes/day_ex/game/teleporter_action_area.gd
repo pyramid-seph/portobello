@@ -9,6 +9,7 @@ const Player = preload("res://scenes/day_ex/player/day_ex_player.gd")
 	set(value):
 		_exit = value
 		update_configuration_warnings()
+@export var sound: AudioStream
 
 var _is_teleporting: bool
 
@@ -32,6 +33,8 @@ func _execute(target: CharacterBody2D) -> void:
 		_is_teleporting = true
 		player.set_process_unhandled_input(false)
 		await TransitionPlayer.play_default()
+		if sound:
+			await SoundManager.play_sound(sound).finished
 		var offset: Vector2 = player.global_position - global_position
 		player.teleport(_exit.global_position + offset, initial_direction)
 		_timer.start(1.0)

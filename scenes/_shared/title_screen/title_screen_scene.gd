@@ -7,6 +7,7 @@ const MenuBgDayExTexture: Texture2D = preload("res://art/menu_screen/menu_bg_day
 const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_scores.png")
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
+const SfxCheated: AudioStream = preload("res://audio/sfx/sfx_title_screen_cheated.wav")
 
 const CheatCode = preload("res://scenes/_shared/cheat_code.gd")
 
@@ -112,7 +113,6 @@ const SCORE_ATTACK_MODE_OPTIONS := [
 
 var _cheat_code_tween: Tween
 
-@onready var _is_ready := true
 @onready var _title_screen := $TitleScreen
 @onready var _logos_roll := $LogosRoll
 @onready var _story_mode_game_selector := %StoryModeGameSelector as HSelector
@@ -129,6 +129,8 @@ var _cheat_code_tween: Tween
 @onready var _show_options_btn := %ShowOptionsBtn
 @onready var _title_screen_bg := %TitleScreenBg
 @onready var _version_label := $TitleScreen/VersionLabel as Label
+@onready var _ui_sounds: UiSounds = $TitleScreen/MainMenu/UiSounds
+@onready var _bgm_player: SimpleBgmPlayer = $SimpleBgmPlayer
 @onready var _k_cheat_code: CheatCode = $KCheatCode
 @onready var _cheater_texture_rect: TextureRect = %CheaterTextureRect
 
@@ -217,12 +219,14 @@ func _enable_title_screen(show_screen: bool) -> void:
 		_set_stars_count()
 		_set_title_type()
 		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
+		_ui_sounds.call_deferred("focus_node_no_sound", _story_mode_game_selector)
+		_bgm_player.play()
 		_story_mode_game_selector.grab_focus.call_deferred()
 		_notify_unlocks()
 
 
 func _on_minigame_selection_changed(value) -> void:
-	if _is_ready:
+	if is_node_ready():
 		_title_screen_bg.game_texture = value.texture
 		_title_screen_bg.game_color = value.color
 
@@ -333,6 +337,7 @@ func _on_exit_game_btn_pressed() -> void:
 
 
 func _on_confirm_exit_dialog_negative_btn_pressed() -> void:
+	_ui_sounds.call_deferred("focus_node_no_sound", _exit_game_btn)
 	_exit_game_btn.grab_focus.call_deferred()
 
 
@@ -341,17 +346,20 @@ func _on_confirm_exit_dialog_positive_btn_pressed() -> void:
 
 
 func _on_unlocks_dialog_positive_btn_pressed() -> void:
+	_ui_sounds.call_deferred("focus_node_no_sound", _story_mode_game_selector)
 	_story_mode_game_selector.grab_focus.call_deferred()
 
 
 func _on_progress_menu_closed() -> void:
 	_main_menu.visible = true
 	_game_title.visible = true
+	_ui_sounds.call_deferred("focus_node_no_sound", _show_scores_button)
 	_show_scores_button.grab_focus.call_deferred()
 
 
 func _on_settings_menu_closed() -> void:
 	_main_menu.visible = true
+	_ui_sounds.call_deferred("focus_node_no_sound", _show_options_btn)
 	_show_options_btn.grab_focus.call_deferred()
 
 
@@ -369,6 +377,7 @@ func _on_k_cheat_code_completed() -> void:
 		_cheat_code_tween.kill()
 	_cheat_code_tween = create_tween()
 	_cheat_code_tween.set_loops(3)
+	_cheat_code_tween.tween_callback(SoundManager.play_sound.bind(SfxCheated))
 	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",
 			1.0, 0.1).from(0)
 	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",

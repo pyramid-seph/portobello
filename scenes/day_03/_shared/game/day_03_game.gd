@@ -22,6 +22,10 @@ func _ready() -> void:
 	_play_level()
 
 
+func _exit_tree() -> void:
+	SoundUtils.stop_all_sfx()
+
+
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_level = data.level

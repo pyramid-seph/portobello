@@ -8,6 +8,8 @@ enum DisposeMode {
 	DISABLE_PROCESS,
 }
 
+const SFX_BULLET_SHIELD_IMPACTED = preload("res://audio/sfx/sfx_day_03_bullet_shield_impacted.wav")
+ 
 @export var score_points_gun: int
 @export var score_points_mega_gun: int
 @export var hp: int = 1
@@ -142,5 +144,8 @@ func _on_hitbox_hit(_hitbox:Hitbox, hurtbox: Hurtbox) -> void:
 
 
 func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
-	if not is_immune_to_bullets:
+	if is_immune_to_bullets:
+		if not SoundUtils.is_sfx_started_playing(SFX_BULLET_SHIELD_IMPACTED):
+			SoundManager.play_sound(SFX_BULLET_SHIELD_IMPACTED)
+	else:
 		hurt(hitbox.owner.shooter)

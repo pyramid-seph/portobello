@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://csyep514u36ex" path="res://scenes/day_03/level_02/enemies/block.tscn" id="6_svbuj"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/heat_seeker_weapon.gd" id="7_gjhag"]
 [ext_resource type="PackedScene" uid="uid://becs5x7xd6s18" path="res://scenes/day_03/_shared/objects/gun.tscn" id="7_rkunh"]
-[ext_resource type="PackedScene" uid="uid://ceehojvd7nkaa" path="res://scenes/day_03/_shared/objects/enemy_bullet.tscn" id="8_coaat"]
 [ext_resource type="Texture2D" uid="uid://dcmolxxqilyi3" path="res://art/day_3/dotted_line.png" id="9_441i0"]
 [ext_resource type="PackedScene" uid="uid://spq6o43sfcc1" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.tscn" id="10_oilhl"]
 [ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_weapon.gd" id="11_gqj8r"]
+[ext_resource type="PackedScene" uid="uid://bh0w88nmy5lov" path="res://scenes/day_03/_shared/objects/heat_seeker_bullet.tscn" id="11_iev77"]
 [ext_resource type="Texture2D" uid="uid://b8pjqd3prajm1" path="res://art/day_3/enemy_duck_block_yellow.png" id="13_8ybbm"]
 [ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="17_s7cdp"]
 [ext_resource type="PackedScene" uid="uid://dvq3mnqmcgelf" path="res://scenes/_shared/clean_up_zone.tscn" id="18_f0wfx"]
@@ -126,7 +126,7 @@ metadata/_edit_lock_ = true
 [node name="Gun" parent="HeatSeekerWeapon" instance=ExtResource("7_rkunh")]
 z_index = -100
 z_as_relative = false
-Bullet = ExtResource("8_coaat")
+Bullet = ExtResource("11_iev77")
 cooldown = 8.0
 ignore_cooldown = true
 

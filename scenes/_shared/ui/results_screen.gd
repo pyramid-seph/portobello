@@ -9,6 +9,14 @@ enum StarsEvaluationMode {
 	SCORE,
 }
 
+const SFX_CALCULATION: AudioStream = preload("res://audio/sfx/sfx_results_screen_total_score_calculation.wav")
+const SFX_EXTRA_LIVES: AudioStream = preload("res://audio/sfx/sfx_results_screen_total_score_extra_lives.wav")
+const SFX_STARS_COUNT_ZERO: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_count_zero.wav")
+const SFX_STARS_COUNT: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_count.wav")
+const SFX_STARS_RESULT_GOOD: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_result_good.wav")
+const SFX_STARS_RESULT_BEST: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_result_best.wav")
+const SFX_STARS_RESULT_BAD: AudioStream = preload("res://audio/sfx/sfx_results_screen_stars_result_bad.wav")
+
 const BONUS_MULTIPLIER: int = 1000
 const MAX_LIVES: int = 9
 const LEVEL_RESULTS_INITIAL_INTERVAL_SEC: float = 0.8
@@ -60,7 +68,8 @@ func _ready() -> void:
 	_ensure_reset_ui()
 
 
-func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int, high_score: int) -> void:
+func start(game_mode: Game.Mode, is_last_level: bool, lives: int, score: int,
+		high_score: int) -> void:
 	_lives = lives
 	_score = score
 	_curr_high_score = high_score
@@ -170,15 +179,27 @@ func _tween_level_results() -> void:
 		_change_results_labels_color(Color.TRANSPARENT)
 	)
 	_tween.tween_interval(LEVEL_RESULTS_INITIAL_INTERVAL_SEC)
-	_tween.tween_callback(func(): Utils.change_label_color(_score_label, RESULTS_LABELS_COLOR))
+	_tween.tween_callback(func(): 
+		Utils.change_label_color(_score_label, RESULTS_LABELS_COLOR)
+		SoundManager.play_sound(SFX_CALCULATION)
+	)
 	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
-	_tween.tween_callback(func(): Utils.change_label_color(_lives_bonus_label, RESULTS_LABELS_COLOR))
+	_tween.tween_callback(func(): 
+		Utils.change_label_color(_lives_bonus_label, RESULTS_LABELS_COLOR)
+		SoundManager.play_sound(SFX_CALCULATION)
+	)
 	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
-	_tween.tween_callback(func(): Utils.change_label_color(_total_score_label, RESULTS_LABELS_COLOR))
+	_tween.tween_callback(func(): 
+		Utils.change_label_color(_total_score_label, RESULTS_LABELS_COLOR)
+		SoundManager.play_sound(SFX_CALCULATION)
+	)
 	_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
 	if _extra_lives > 0:
 		_tween.tween_interval(LEVEL_RESULTS_LABELS_DELAY_SEC)
-		_tween.tween_callback(func(): Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR))
+		_tween.tween_callback(func(): 
+			Utils.change_label_color(_extra_lives_label, RESULTS_LABELS_COLOR)
+			SoundManager.play_sound(SFX_EXTRA_LIVES)
+		)
 	_tween.tween_interval(LEVEL_RESULTS_LAST_INTERVAL_SEC)
 	_tween.tween_callback(func(): _results_container.visible = false)
 
@@ -194,7 +215,8 @@ func _tween_minigame_results() -> void:
 			high_score_label_color = COMPLETE_LABELS_COLOR
 		else:
 			high_score_label_color = Color.TRANSPARENT
-		Utils.change_label_color(_new_curr_high_score_label, high_score_label_color)
+		Utils.change_label_color(_new_curr_high_score_label,
+				high_score_label_color)
 	)
 	_tween.tween_interval(LEVEL_COMPLETED_DURATION_SEC)
 	_tween.tween_callback(func():
@@ -215,16 +237,24 @@ func _tween_stars_results() -> void:
 	if _stars < 1:
 		_tween.tween_callback(func():
 			_stars_label.text = "RESULTS_SCREEN_EVALUATION_RESULT_ZERO"
+			SoundManager.play_sound(SFX_STARS_COUNT_ZERO)
 		)
 		_tween.tween_interval(STARS_DURATION_SEC)
 	else:
 		for i: int in _stars:
 			_tween.tween_callback(func():
 				_stars_label.text += "*" if i == 0 else " *"
+				SoundManager.play_sound(SFX_STARS_COUNT)
 			)
 			_tween.tween_interval(STARS_DURATION_SEC)
 	_tween.tween_callback(func():
 		_evaluation_label.visible = true
+		var stars_result_sound: AudioStream = SFX_STARS_RESULT_GOOD
+		if _stars < 2:
+			stars_result_sound = SFX_STARS_RESULT_BAD
+		elif _stars == 5:
+			stars_result_sound = SFX_STARS_RESULT_BEST
+		SoundManager.play_sound(stars_result_sound)
 	)
 	_tween.tween_interval(STARS_LAST_INTERVAL_SEC)
 	_tween.tween_callback(func():

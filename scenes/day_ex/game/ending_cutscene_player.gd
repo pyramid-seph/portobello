@@ -3,6 +3,10 @@ extends Node
 
 signal finished
 
+const SFX_DUST_PUFF = preload("res://audio/sfx/sfx_day_ex_dust_puff.wav")
+const SFX_PLAYER_START_FLYING = preload("res://audio/sfx/sfx_day_ex_player_start_flying.wav")
+const SFX_FIGHTER_EATEN = preload("res://audio/sfx/sfx_day_ex_fighter_eaten.wav")
+
 const DayExPlayer = preload("res://scenes/day_ex/player/day_ex_player.gd")
 const DayExUi = preload("res://scenes/day_ex/ui/day_ex_ui.gd")
 const Npc = preload("res://scenes/day_ex/npcs/npc.gd")
@@ -50,7 +54,6 @@ func play() -> void:
 	await _suspend_bucho_eats_last_duck()
 	await _suspend_bucho_takes_flight()
 	await _suspend_narrator()
-	
 	finished.emit()
 
 
@@ -73,10 +76,15 @@ func _suspend_bucho_eats_fighters() -> void:
 	_ui.show_black_screen(true)
 	var last_eaten: Npc = _bird_fighters.pick_random()
 	_player.teleport(last_eaten.global_position, DayExPlayer.FacingDirection.DOWN)
+	var tween = create_tween()
+	tween.set_loops(_bird_fighters.size())
+	tween.tween_callback(SoundManager.play_sound.bind(
+			SFX_FIGHTER_EATEN)).set_delay(0.1)
+	await tween.finished
 	for npc: Npc in _bird_fighters:
 		npc.die()
 	_bird_fighters.clear()
-	_timer.start(0.5)
+	_timer.start(0.2)
 	await _timer.timeout
 	_ui.show_black_screen(false)
 
@@ -97,7 +105,10 @@ func _suspend_bucho_eats_rest_of_the_ducks() -> void:
 		_ui.show_black_screen(true)
 		_player.teleport(npc.global_position, DayExPlayer.FacingDirection.DOWN)
 		npc.die()
-		_timer.start(1.0)
+		_timer.start(0.9)
+		await _timer.timeout
+		SoundManager.play_sound(SFX_FIGHTER_EATEN)
+		_timer.start(0.1)
 		await _timer.timeout
 		_ui.show_black_screen(false)
 		_timer.start(1.0)
@@ -112,7 +123,10 @@ func _suspend_bucho_eats_last_duck() -> void:
 	_player.teleport(_last_duck.global_position, DayExPlayer.FacingDirection.DOWN)
 	_last_duck.die()
 	_last_duck = null
-	_timer.start(0.5)
+	_timer.start(0.4)
+	await _timer.timeout
+	SoundManager.play_sound(SFX_FIGHTER_EATEN)
+	_timer.start(0.1)
 	await _timer.timeout
 	_ui.show_black_screen(false)
 
@@ -132,21 +146,17 @@ func _suspend_bucho_takes_flight() -> void:
 	dust_cloud.z_index = dummy.z_index
 	_world.add_child(dummy)
 	_world.add_child(dust_cloud)
+	SoundManager.play_sound(SFX_DUST_PUFF)
 	var tween: Tween = create_tween()
-	var dummy_global_pos: Vector2 = dummy.global_position
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_QUINT)
-	tween.tween_property(dummy, "global_position:y", dummy_global_pos.y - 125.0,
-			2.0)
+	tween.tween_property(dummy, "position:y", -125.0, 2.0).as_relative() \
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_interval(2.0)
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(dummy, "speed_scale", 4.0, 0.2)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_QUINT)
-	tween.tween_property(dummy, "global_position:x", dummy_global_pos.x + 140.0,
-			1.0)
+	tween.tween_property(dummy, "speed_scale", 4.0, 0.2).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_callback(SoundManager.play_sound.bind(SFX_PLAYER_START_FLYING))
+	tween.tween_property(dummy, "position:x", 140, 1.0).as_relative() \
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.tween_callback(dummy.queue_free)
 	await tween.finished
-	dummy.queue_free()
 
 
 func _suspend_narrator() -> void:

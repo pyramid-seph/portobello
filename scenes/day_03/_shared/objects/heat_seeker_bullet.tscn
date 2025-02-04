@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh0w88nmy5lov"]
+
+[ext_resource type="Script" path="res://scenes/day_03/_shared/objects/bullet.gd" id="1_kmomt"]
+[ext_resource type="Texture2D" uid="uid://vv7hfytqeqxd" path="res://art/day_3/bullet_enemy.png" id="2_3rchh"]
+[ext_resource type="AudioStream" uid="uid://c0d1hs3vp1d10" path="res://audio/sfx/sfx_day_03_bullet_heat_seeker.wav" id="2_gpupx"]
+[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="3_lvvdi"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(4, 14)
+
+[node name="EnemyBullet" type="Node2D" groups=["bullets", "enemy_bullets"]]
+z_index = -70
+script = ExtResource("1_kmomt")
+score_points_mega_gun = 2
+sound = ExtResource("2_gpupx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3rchh")
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+script = ExtResource("3_lvvdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
+shape = SubResource("1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-2, -8, 4, 16)
+
+[connection signal="hit" from="Sprite2D/Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

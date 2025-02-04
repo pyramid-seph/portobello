@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=4 format=3 uid="uid://bdkbwavrx8ymm"]
+[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://bdkbwavrx8ymm"]
 
+[ext_resource type="AudioStream" uid="uid://bb7whdgh2b16p" path="res://audio/sfx/sfx_day_ex_ability_default.wav" id="1_bfgaj"]
 [ext_resource type="Texture2D" uid="uid://qmnrikcdeuqs" path="res://art/day_ex/battle_ability_player_scare_surprise_despair_0.png" id="1_s25ql"]
 [ext_resource type="Texture2D" uid="uid://dt6adgnbtn7xw" path="res://art/day_ex/battle_ability_player_scare_surprise_despair_1.png" id="2_kpac3"]
 [ext_resource type="Script" path="res://resources/battle_action.gd" id="3_ybs70"]
@@ -24,3 +25,4 @@ _sprites = Array[Texture2D]([ExtResource("1_s25ql"), ExtResource("2_kpac3")])
 _duration_sec = 0.3
 _screen_flash_color = Color(0.956863, 0.980392, 0.345098, 1)
 _shake_screen = false
+_sound = ExtResource("1_bfgaj")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=30 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
 [ext_resource type="Script" path="res://scenes/_shared/title_screen/title_screen_bg.gd" id="2_prsyc"]
 [ext_resource type="PackedScene" uid="uid://be46fmlrxbeev" path="res://scenes/_shared/cheat_code.tscn" id="2_udsfp"]
+[ext_resource type="AudioStream" uid="uid://buyv7j0ssj45d" path="res://audio/bgm/bgm_boss_test.wav" id="3_nu8sc"]
 [ext_resource type="Texture2D" uid="uid://ydnoqkd04fkt" path="res://art/menu_screen/title.png" id="3_oe3xx"]
 [ext_resource type="Texture2D" uid="uid://d0q3xvjq2e100" path="res://art/menu_screen/menu_bg_day_01.png" id="3_of2ca"]
 [ext_resource type="Texture2D" uid="uid://i37nr0nsawys" path="res://art/menu_screen/splash.png" id="6_0gi6x"]
@@ -14,13 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="9_d05si"]
 [ext_resource type="PackedScene" uid="uid://ckjfj1kxcsge6" path="res://scenes/_shared/progress_menu.tscn" id="10_33qhf"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="10_dgmig"]
+[ext_resource type="PackedScene" uid="uid://baxkyqp0rboen" path="res://scenes/_shared/blood_drop_particles.tscn" id="11_0fxou"]
 [ext_resource type="PackedScene" uid="uid://ddt6mk30fvhmd" path="res://scenes/_shared/settings_menu/settings_menu.tscn" id="11_5qu15"]
+[ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="11_ljvha"]
 [ext_resource type="Texture2D" uid="uid://dpjxr28rrgvac" path="res://art/_shared/_atlas_ui_shared.png" id="13_jai3w"]
 [ext_resource type="Texture2D" uid="uid://bggbygu4g7uir" path="res://art/menu_screen/dark_heart.png" id="15_a0if4"]
 [ext_resource type="Texture2D" uid="uid://dnshvktxvh6ln" path="res://art/menu_screen/controller_support_keyboard.png" id="15_nefsx"]
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
 [ext_resource type="Texture2D" uid="uid://druain36dsm0w" path="res://art/menu_screen/godot_icon_monochrome_light.png" id="16_k07gw"]
 [ext_resource type="Texture2D" uid="uid://dx2c45d18sp6i" path="res://art/menu_screen/controller_support_touchscreen.png" id="18_jtcvj"]
+[ext_resource type="Script" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v21ph"]
 resource_local_to_scene = true
@@ -34,6 +38,8 @@ content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kps1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1547"]
 atlas = ExtResource("13_jai3w")
 region = Rect2(24, 4, 10, 10)
@@ -42,6 +48,11 @@ region = Rect2(24, 4, 10, 10)
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
 _debug_skip_logos_roll = true
+
+[node name="SimpleBgmPlayer" type="Node" parent="."]
+script = ExtResource("21_m04mu")
+_music = ExtResource("3_nu8sc")
+_autostart = false
 
 [node name="KCheatCode" parent="." instance=ExtResource("2_udsfp")]
 _cheat_code = Array[StringName]([&"move_up", &"move_up", &"move_down", &"move_down", &"move_left", &"move_right", &"move_left", &"move_right"])
@@ -125,6 +136,49 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
+[node name="BloodDrops" type="Node2D" parent="TitleScreen/GameTitle"]
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(5, 26)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles2" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(7, 26)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles3" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(9, 26)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles4" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(12, 26)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles5" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(14, 26)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles6" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(38, 49)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles7" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(41, 49)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles8" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(43, 48)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles9" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(46, 50)
+metadata/_edit_lock_ = true
+
+[node name="BloodDropParticles10" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(48, 49)
+metadata/_edit_lock_ = true
+
 [node name="VersionLabel" type="Label" parent="TitleScreen"]
 layout_mode = 1
 anchors_preset = 3
@@ -152,12 +206,14 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = 133.0
+offset_top = 120.0
 offset_right = -20.0
-offset_bottom = -37.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_lock_ = true
+
+[node name="UiSounds" parent="TitleScreen/MainMenu" instance=ExtResource("11_ljvha")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/MainMenu"]
 layout_mode = 2
@@ -253,6 +309,23 @@ script = ExtResource("6_t81ja")
 
 [node name="Timer" type="Timer" parent="LogosRoll"]
 one_shot = true
+
+[node name="ParticlesPrewarmer" type="PanelContainer" parent="LogosRoll"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6kps1")
+
+[node name="BloodDropParticles" parent="LogosRoll/ParticlesPrewarmer" instance=ExtResource("11_0fxou")]
+position = Vector2(123, 49)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="LogosRoll/ParticlesPrewarmer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="GameCLLogo" type="ColorRect" parent="LogosRoll"]
 visible = false

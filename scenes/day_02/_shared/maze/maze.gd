@@ -9,7 +9,7 @@ signal player_dying
 signal player_died
 
 enum MazeState {
-	RESET,
+	PREPARED,
 	STARTED,
 	FAILED,
 	COMPLETED,
@@ -18,6 +18,7 @@ enum MazeState {
 
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
 const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd")
+const MazeBgm = preload("res://scenes/day_02/_shared/maze/maze_bgm.gd")
 
 const GHOST_RESPAWN_DELAY_SECONDS: float = 0.5
 const RED_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5
@@ -53,6 +54,7 @@ var _state: MazeState
 @onready var _red_ghost_first_spawn_timer := $RedGhostFirstSpawnTimer as Timer
 @onready var _yellow_ghost_first_spawn_timer := $YellowGhostFirstSpawnTimer as Timer
 @onready var _player_revival_delay_timer := $PlayerRevivalDelayTimer as Timer
+@onready var _maze_bgm: MazeBgm = $MazeBgm
 
 
 func _ready() -> void:
@@ -60,7 +62,7 @@ func _ready() -> void:
 	_on_red_ghost_speed_set()
 	_on_yellow_ghost_speed_set()
 	if get_parent() == $/root:
-		reset()
+		prepare()
 		start()
 
 
@@ -75,7 +77,8 @@ func quit() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 
-func reset() -> void:
+func prepare() -> void:
+	_maze_bgm.play()
 	_stop_pending_player_revival()
 	_stop_pending_ghost_respawn()
 	_stop_pending_ghost_first_spawn()
@@ -88,11 +91,11 @@ func reset() -> void:
 	_reset_food()
 	reset_physics_interpolation()
 	process_mode = Node.PROCESS_MODE_INHERIT
-	_state = MazeState.RESET
+	_state = MazeState.PREPARED
 
 
 func start() -> void:
-	if _state == MazeState.RESET:
+	if _state == MazeState.PREPARED:
 		_player.is_movement_allowed = true
 		_blue_ghost.is_halt = false
 		_red_ghost_first_spawn_timer.start(RED_GHOST_MOVEMENT_DELAY_SECONDS)
@@ -107,6 +110,7 @@ func failed() -> void:
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
 		_halt_player()
+		_maze_bgm.stop()
 		_state = MazeState.FAILED
 
 
@@ -239,6 +243,7 @@ func _check_maze_completion() -> void:
 		_stop_pending_ghost_respawn()
 		_halt_all_ghosts()
 		_halt_player()
+		_maze_bgm.stop()
 		_state = MazeState.COMPLETED
 		completed.emit()
 

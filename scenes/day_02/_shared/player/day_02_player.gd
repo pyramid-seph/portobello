@@ -14,6 +14,10 @@ enum Day02PlayerState {
 
 const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
 
+const SFX_PLAYER_DIE = preload("res://audio/sfx/sfx_day_02_player_die.wav")
+const SFX_PLAYER_EAT_TREAT = preload("res://audio/sfx/sfx_day_02_player_eat_treat.wav")
+const SFX_PLAYER_EAT_SUPER_TREAT = preload("res://audio/sfx/sfx_day_02_player_eat_super_treat.wav")
+
 const SPEED: float = 40.0
 const MAX_DIR_PRESSED_SEC: float = 0.15
 const CORNERING_ZONE_SQRD_LENGHT: float = pow(4.0, 2.0)
@@ -104,6 +108,7 @@ func revive(map_pos: Vector2i) -> void:
 func die() -> void:
 	if not _is_dead() and not _debug_is_invincible:
 		_state = Day02PlayerState.DYING
+		SoundManager.play_sound(SFX_PLAYER_DIE)
 		Utils.vibrate_joy()
 		dying.emit()
 
@@ -272,9 +277,11 @@ func _on_target_local_pos_set() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("treats"):
+		SoundManager.play_sound(SFX_PLAYER_EAT_TREAT)
 		area.visible = false
 		ate_regular_treat.emit()
 	if area.is_in_group("super_treats"):
+		SoundManager.play_sound(SFX_PLAYER_EAT_SUPER_TREAT)
 		area.visible = false
 		ate_super_treat.emit()
 

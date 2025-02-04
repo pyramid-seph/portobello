@@ -1,10 +1,12 @@
 extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
+
 const ANIM_DEFAULT: String = "Default"
 const ANIM_DIZZY: String = "Dizzy"
 
 @export var inverted_controls: bool
 
+@onready var _bgm_player: SimpleBgmPlayer = $SimpleBgmPlayer
 @onready var _animator := $AnimationPlayer as AnimationPlayer
 @onready var _color_rect := $ColorRect
 
@@ -21,6 +23,7 @@ func _play() -> void:
 
 func _clean_up() -> void:
 	if _animator.is_playing():
+		_bgm_player.stop()
 		_animator.stop()
 	_color_rect.visible = false
 

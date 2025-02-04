@@ -27,6 +27,7 @@ const DEFAULT_SHADOW_COLOR := Color("#000000C8")
 @onready var _body_label := %BodyLabel as Label
 @onready var _negative_btn := %NegativeBtn as Button
 @onready var _positive_btn := %PositiveBtn as Button
+@onready var _ui_sounds: UiSounds = $UiSounds
 
 
 func _ready() -> void:
@@ -72,7 +73,7 @@ func _grab_focus() -> void:
 	if Engine.is_editor_hint():
 		return
 	var btn = _negative_btn if _negative_btn.visible else _positive_btn
-	btn.call_deferred("grab_focus")
+	_ui_sounds.call_deferred("focus_node_no_sound", btn)
 
 
 func _on_negative_btn_pressed() -> void:

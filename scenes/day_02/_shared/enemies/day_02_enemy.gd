@@ -5,14 +5,16 @@ extends Node2D
 signal chomped
 signal dead
 
-const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
-
 enum MazeEnemyState {
 	CHASING,
 	SCARED,
 	NOT_SO_SCARED,
 	DEAD,
 }
+
+const Maze = preload("res://scenes/day_02/_shared/maze/maze.gd")
+
+const SFX_ENEMY_DIE = preload("res://audio/sfx/sfx_day_02_enemy_die.wav")
 
 const SCARE_DURATION_SEC: float = 6.4
 const NOT_SO_SCARED_DELAY_SEC: float = 4.4
@@ -98,7 +100,7 @@ func is_dead() -> bool:
 	return _state == MazeEnemyState.DEAD
 
 
-func _is_scared() -> bool:
+func is_scared() -> bool:
 	return _state == MazeEnemyState.SCARED or \
 			_state == MazeEnemyState.NOT_SO_SCARED
 
@@ -171,7 +173,9 @@ func _update_animation() -> void:
 
 
 func _die() -> void:
-	if not is_dead() and _is_scared():
+	if not is_dead() and is_scared():
+		if not SoundUtils.is_sfx_started_playing(SFX_ENEMY_DIE):
+			SoundManager.play_sound(SFX_ENEMY_DIE)
 		_area_2d.set_deferred("monitoring", false)
 		_scare_timer.stop()
 		_not_so_scared_delay_timer.stop()
@@ -222,7 +226,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		return
 	
 	var area_owner := area.get_parent()
-	if _is_scared():
+	if is_scared():
 		_die()
 	elif not is_dead() and area_owner and area_owner.has_method("die"):
 		area_owner.die()

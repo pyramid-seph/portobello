@@ -2,6 +2,8 @@ extends PanelContainer
 
 signal read
 
+const UI_NEXT_SOUND = preload("res://audio/ui/ui_next.wav")
+
 var _what: String = ""
 var _format_values: Dictionary = {}
 
@@ -38,6 +40,7 @@ func say_and_wait_until_read(what: String, format_values: Dictionary = {}) -> vo
 func wait_until_read() -> void:
 	call_deferred("grab_focus")
 	await read
+	SoundManager.play_sound(UI_NEXT_SOUND)
 
 
 func silence() -> void:

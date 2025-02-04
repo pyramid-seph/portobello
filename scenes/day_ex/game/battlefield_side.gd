@@ -3,6 +3,10 @@ extends PanelContainer
 
 signal target_selected(target: Fighter)
 
+const UI_SOUND_FOCUS = preload("res://audio/ui/kenney_interface_sounds/drop_003.ogg")
+const UI_SOUND_SELECT = preload("res://audio/ui/kenney_interface_sounds/drop_002.ogg")
+const UI_SOUND_CANCEL_SELECT = preload("res://audio/ui/kenney_interface_sounds/select_002.ogg")
+
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
@@ -10,6 +14,7 @@ const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
 
 var _members: Array[Fighter]
 var _narrator: BattleNarrationBox
+var _skip_focus_sound: bool
 
 @onready var _background_texture_rect: TextureRect = %BackgroundTextureRect
 @onready var _back_row: HBoxContainer = %BackRow
@@ -26,6 +31,8 @@ func setup(party: BattleParty, background: Texture2D = null) -> void:
 	_setup_row(party.get_back_row_members(),
 			 _back_row, tally, member_ocurrences_count)
 	_setup_member_focus_neighbors()
+	_setup_member_focus_sounds()
+	
 
 
 func set_narrator(narrator: BattleNarrationBox) -> void:
@@ -120,24 +127,41 @@ func _setup_member_focus_neighbors() -> void:
 			fighter_node.focus_neighbor_right = fighter_node_path
 
 
+func _setup_member_focus_sounds() -> void:
+	for node: Control in get_members():
+		node.focus_entered.connect(_on_fighter_focus_entered)
+
+
 func _clear_row(row: HBoxContainer) -> void:
 	for child_node: Node in row.get_children():
 		child_node.queue_free()
 
 
+func _on_fighter_focus_entered() -> void:
+	if _skip_focus_sound:
+		_skip_focus_sound = false
+	else:
+		SoundManager.play_sound(UI_SOUND_FOCUS)
+
+
 func _on_fighter_selected(target: Fighter) -> void:
 	Log.d("%s selected" % target.get_full_name())
+	_skip_focus_sound = false
+	SoundManager.play_sound(UI_SOUND_SELECT)
 	target_selected.emit(target)
 
 
 func _on_fighter_selection_canceled() -> void:
 	Log.d("fighter selection canceled")
+	_skip_focus_sound = false
+	SoundManager.play_sound(UI_SOUND_CANCEL_SELECT)
 	target_selected.emit(null)
 
 
 func _on_focus_entered() -> void:
 	for fighter: Fighter in _members:
 		if not fighter.is_removed_from_battle():
+			_skip_focus_sound = true
 			fighter.call_deferred("grab_focus")
 			return
 	

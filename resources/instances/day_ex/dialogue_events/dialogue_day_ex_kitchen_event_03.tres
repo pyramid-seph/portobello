@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="DialogueEvent" load_steps=4 format=3 uid="uid://cb3yn07pyaoch"]
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=5 format=3 uid="uid://cb3yn07pyaoch"]
 
 [ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="1_1uw22"]
 [ext_resource type="Script" path="res://resources/dialogue_page.gd" id="1_5vlfh"]
+[ext_resource type="Resource" uid="uid://3xr36xrw1gkr" path="res://resources/instances/day_ex/voice_packs/voice_yellow_parrot.tres" id="2_0xu1k"]
 
 [sub_resource type="Resource" id="Resource_k6iki"]
 script = ExtResource("1_5vlfh")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
+voice_pack = ExtResource("2_0xu1k")
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_01"
 text_speed_chars_per_second = 25.0
 

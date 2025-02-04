@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=25 format=3 uid="uid://ct51hooycinfb"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/pre_credits_scene.gd" id="3_dru3q"]
 [ext_resource type="Resource" uid="uid://bpca423ydapsn" path="res://resources/instances/rolling_credits_og_data.tres" id="3_fi3qg"]
 [ext_resource type="Texture2D" uid="uid://h3iwfl4hn1b1" path="res://art/cutscenes/ending/ending_0.png" id="3_m4aea"]
+[ext_resource type="Script" path="res://scenes/_shared/simple_bgm_player.gd" id="3_nidus"]
 [ext_resource type="Texture2D" uid="uid://dt82ohryt68b2" path="res://art/cutscenes/ending/ending_1.png" id="4_m1vlt"]
+[ext_resource type="AudioStream" uid="uid://cknak87db4uxv" path="res://audio/bgm/cutscene_loop.wav" id="4_p4748"]
 [ext_resource type="Resource" uid="uid://kmr1uhgtp68d" path="res://resources/instances/rolling_credits_port_data.tres" id="4_t8b2n"]
 [ext_resource type="Script" path="res://scenes/_shared/cutscenes/sea_sparkles_parallax_bg.gd" id="5_5olc8"]
 [ext_resource type="Texture2D" uid="uid://cmfcg56p1ywdu" path="res://art/cutscenes/ending/ending_credits_moon.png" id="5_kv0di"]
@@ -129,6 +131,11 @@ grow_vertical = 2
 theme = ExtResource("1_1lrlh")
 script = ExtResource("2_eca4p")
 _autostart = true
+
+[node name="SimpleBgmPlayer" type="Node" parent="."]
+script = ExtResource("3_nidus")
+_music = ExtResource("4_p4748")
+_autostart = false
 
 [node name="Timer" type="Timer" parent="."]
 

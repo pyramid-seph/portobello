@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://cfcfhqs6pqgcm"]
+[gd_scene load_steps=15 format=4 uid="uid://cfcfhqs6pqgcm"]
 
 [ext_resource type="Texture2D" uid="uid://j3ged81fnnl6" path="res://art/day_2/_atlas_day_02_tiles_maze.png" id="1_744ve"]
 [ext_resource type="Script" path="res://scenes/day_02/_shared/maze/maze.gd" id="2_hjgam"]
 [ext_resource type="PackedScene" uid="uid://d0x0fhmsb17ts" path="res://scenes/day_02/_shared/player/day_02_player.tscn" id="3_ac50a"]
+[ext_resource type="Script" path="res://scenes/day_02/_shared/maze/maze_bgm.gd" id="3_iecab"]
+[ext_resource type="AudioStream" uid="uid://c6dlkd846ger1" path="res://audio/bgm/remaki_0.wav" id="4_j1bhu"]
 [ext_resource type="Texture2D" uid="uid://coul13cr0fb2a" path="res://art/day_2/enemy_ghost_blue_0.png" id="5_08ki7"]
+[ext_resource type="AudioStream" uid="uid://dckhy10b8wdpg" path="res://audio/bgm/remaki_1.wav" id="5_okc7n"]
+[ext_resource type="AudioStream" uid="uid://bequenev4mf17" path="res://audio/bgm/remaki_2.wav" id="6_f70v6"]
 [ext_resource type="Texture2D" uid="uid://bqy1eiauwg23p" path="res://art/day_2/enemy_ghost_blue_1.png" id="6_w82sn"]
 [ext_resource type="Texture2D" uid="uid://eeuatuh87lj5" path="res://art/day_2/enemy_ghost_yellow_0.png" id="7_uvffd"]
 [ext_resource type="Texture2D" uid="uid://d3rmc66fdmxxx" path="res://art/day_2/enemy_ghost_yellow_1.png" id="8_k30f1"]
@@ -47,6 +51,12 @@ tile_set = SubResource("TileSet_tiqs2")
 collision_enabled = false
 navigation_enabled = false
 script = ExtResource("2_hjgam")
+
+[node name="MazeBgm" type="Node" parent="."]
+script = ExtResource("3_iecab")
+_base_stream = ExtResource("4_j1bhu")
+_combo_stream = ExtResource("5_okc7n")
+_scare_stream = ExtResource("6_f70v6")
 
 [node name="BlueGhostRespawnTimer" type="Timer" parent="."]
 one_shot = true
@@ -107,7 +117,9 @@ metadata/_edit_lock_ = true
 [connection signal="timeout" from="YellowGhostFirstSpawnTimer" to="." method="_on_yellow_ghost_first_spawn_timer_timeout"]
 [connection signal="timeout" from="PlayerRevivalDelayTimer" to="." method="_on_player_revival_delay_timer_timeout"]
 [connection signal="ate_regular_treat" from="Day02Player" to="." method="_on_day_02_player_ate_regular_treat"]
+[connection signal="ate_regular_treat" from="Day02Player" to="MazeBgm" method="_on_player_ate_treat"]
 [connection signal="ate_super_treat" from="Day02Player" to="." method="_on_day_02_player_ate_super_treat"]
+[connection signal="ate_super_treat" from="Day02Player" to="MazeBgm" method="_on_player_ate_treat"]
 [connection signal="died" from="Day02Player" to="." method="_on_day_02_player_died"]
 [connection signal="dying" from="Day02Player" to="." method="_on_day_02_player_dying"]
 [connection signal="chomped" from="YellowGhost" to="." method="_on_enemy_chomped"]

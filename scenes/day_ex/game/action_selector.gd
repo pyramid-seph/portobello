@@ -61,6 +61,7 @@ var _ability_options: Array[Dictionary]
 
 @onready var _command_selector: HSelector = $CommandHSelector
 @onready var _action_selector: HSelector = $ActionHSelector
+@onready var _ui_sounds: UiSounds = $UiSounds
 
 
 func _ready() -> void:
@@ -119,10 +120,10 @@ func _on_command_h_selector_selected(selected: Dictionary) -> void:
 	match selected.command:
 		MainMenu.ATTACK:
 			_action_selector.set_options(_attack_options)
-			_action_selector.call_deferred("grab_focus")
+			_ui_sounds.call_deferred("focus_node_no_sound", _action_selector)
 		MainMenu.ABILITY:
 			_action_selector.set_options(_ability_options)
-			_action_selector.call_deferred("grab_focus")
+			_ui_sounds.call_deferred("focus_node_no_sound", _action_selector)
 		MainMenu.EAT:
 			command_selected.emit(BattleCommand.Hurt.new(COMMAND_EAT))
 			_command_selector.release_focus()
@@ -138,7 +139,7 @@ func _on_command_h_selector_selected(selected: Dictionary) -> void:
 
 func _on_action_h_selector_selected(action: BattleAction) -> void:
 	if action == COMMAND_DUMMY_BACK:
-		_command_selector.call_deferred("grab_focus")
+		_ui_sounds.call_deferred("focus_node_no_sound", _command_selector)
 		_reset(true)
 	else:
 		command_selected.emit(BattleCommand.Hurt.new(action))
@@ -156,7 +157,7 @@ func _on_action_h_selector_current_option_index_changed(index: int) -> void:
 
 
 func _on_focus_entered() -> void:
-	_command_selector.call_deferred("grab_focus")
+	_ui_sounds.call_deferred("focus_node_no_sound", _command_selector)
 	_reset()
 
 

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://dm28xvcmyse10"]
+[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://dm28xvcmyse10"]
 
 [ext_resource type="Texture2D" uid="uid://466t72xmiue6" path="res://art/day_ex/battle_ability_enemy_peck_0.png" id="1_1due2"]
+[ext_resource type="AudioStream" uid="uid://b70ocs6s8ng0p" path="res://audio/sfx/sfx_day_ex_attack_weak.wav" id="1_cfxgk"]
 [ext_resource type="Texture2D" uid="uid://djqgdvmyeq3od" path="res://art/day_ex/battle_ability_enemy_peck_1.png" id="2_2rrd8"]
 [ext_resource type="Texture2D" uid="uid://b1du2gkxjckrs" path="res://art/day_ex/battle_ability_enemy_peck_2.png" id="3_w3wjb"]
 [ext_resource type="Script" path="res://resources/battle_action.gd" id="4_0rdmr"]
@@ -25,3 +26,4 @@ _sprites = Array[Texture2D]([ExtResource("1_1due2"), ExtResource("2_2rrd8"), Ext
 _duration_sec = 0.45
 _screen_flash_color = Color(1, 1, 1, 0)
 _shake_screen = false
+_sound = ExtResource("1_cfxgk")

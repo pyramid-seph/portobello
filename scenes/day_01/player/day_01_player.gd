@@ -3,11 +3,16 @@ extends Marker2D
 signal ate
 signal died(death_cause: DeathCause)
 signal stamina_changed(remaining_stamina: float)
+signal started_moving
 
 enum DeathCause {
 	FATIGUE,
 	CRASH,
 }
+
+const SFX_PLAYER_EAT_TREAT = preload("res://audio/sfx/sfx_day_01_player_eat_treat.wav")
+const SFX_PLAYER_DIE_CRASH = preload("res://audio/sfx/sfx_day_01_player_die_crash.wav")
+const SFX_PLAYER_DIE_FATIGUE = preload("res://audio/sfx/sfx_day_01_player_die_fatigue.wav")
 
 const TrunkPart: PackedScene = preload("res://scenes/day_01/player/trunk_part.tscn")
 
@@ -72,6 +77,10 @@ func _physics_process(delta: float) -> void:
 	
 	if is_first_movement_done:
 		_animate()
+
+
+func is_awaiting_first_movement() -> bool:
+	return _is_awaiting_first_movement
 
 
 func revive(force: bool = false) -> void:
@@ -172,7 +181,11 @@ func _update_next_direction() -> bool:
 	var old_is_awaiting_first_movement_val := _is_awaiting_first_movement
 	if _is_awaiting_first_movement:
 		_is_awaiting_first_movement = !(direction_changed or pressed == INITIAL_DIR)
-	return old_is_awaiting_first_movement_val != _is_awaiting_first_movement
+	var just_started_moving: bool = \
+			old_is_awaiting_first_movement_val != _is_awaiting_first_movement
+	if just_started_moving:
+		started_moving.emit()
+	return just_started_moving
 
 
 func _move() -> void:
@@ -213,6 +226,7 @@ func _move() -> void:
 
 
 func _eat(thing: Node) -> void:
+	SoundManager.play_sound(SFX_PLAYER_EAT_TREAT)
 	_growth_pending = _trunk.get_child_count() < MAX_TRUNK_PARTS
 	thing.queue_free()
 	ate.emit()
@@ -231,10 +245,12 @@ func _on_died(cause: DeathCause) -> void:
 	
 	var dead_head_pos
 	if cause == DeathCause.CRASH:
+		SoundManager.play_sound(SFX_PLAYER_DIE_CRASH)
 		dead_head_pos = _first_trunk_part.position
 		_first_trunk_part.visible = false
 		Utils.vibrate_joy()
 	else:
+		SoundManager.play_sound(SFX_PLAYER_DIE_FATIGUE)
 		dead_head_pos = _head.position
 	_dead_head.position = dead_head_pos
 	_dead_head.rotation = _head.rotation
