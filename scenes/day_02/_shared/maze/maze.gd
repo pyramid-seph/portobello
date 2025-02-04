@@ -82,10 +82,14 @@ func prepare() -> void:
 	_stop_pending_player_revival()
 	_stop_pending_ghost_respawn()
 	_stop_pending_ghost_first_spawn()
+	# Maze should be set to visible (even whith its own physics interpolation 
+	# disabled) before our physics objects (the player and the enemies) set 
+	# their positions. Otherwise, a weird visual glitch happens on them. 
+	visible = true
 	_reset_player()
 	_reset_all_ghosts()
 	_reset_food()
-	visible = true
+	reset_physics_interpolation()
 	process_mode = Node.PROCESS_MODE_INHERIT
 	_state = MazeState.PREPARED
 
@@ -172,10 +176,12 @@ func _delay_player_revival() -> void:
 
 func _reset_player() -> void:
 	_player.reset(local_to_map(_player_init_pos_marker.position))
+	_player.reset_physics_interpolation()
 
 
 func _reset_ghost(ghost: Day02Enemy) -> void:
 	ghost.reset(_respawn_point_map_pos())
+	ghost.reset_physics_interpolation()
 
 
 func _reset_food() -> void:

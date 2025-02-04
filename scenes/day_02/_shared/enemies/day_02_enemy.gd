@@ -72,18 +72,21 @@ func _physics_process(delta: float) -> void:
 func teleport(map_pos: Vector2i) -> void:
 	if _maze:
 		position = _maze.map_to_local(map_pos)
+		reset_physics_interpolation()
 		_pick_next_movement()
 
 
 func reset(map_pos: Vector2i) -> void:
 	_area_2d.set_deferred("monitoring", true)
 	visible = true
+	# To avoid the glitch metioned on the reset_physics_interpolation() docs,
+	# always call teleport after setting visible to true.
+	teleport(map_pos)
 	_scare_timer.stop()
 	_not_so_scared_delay_timer.stop()
 	_dying_timer.stop()
 	_state = MazeEnemyState.CHASING
 	is_halt = true
-	teleport(map_pos)
 
 
 func get_scared() -> void:
@@ -128,6 +131,11 @@ func _pick_next_movement() -> void:
 		return
 	
 	var curr_map_pos = _map_pos()
+	
+	if candidates.size() > 1 and _curr_dir != Vector2i.ZERO:
+		var back_map_pos: Vector2i = curr_map_pos + (_curr_dir * -1)
+		candidates.erase(back_map_pos)
+	
 	var candidates_partition: Array = Utils.partition(candidates, func(candidate):
 		var curr_dir_candidate: Vector2i = candidate - curr_map_pos
 		return Vector2(_curr_dir).dot(curr_dir_candidate) == 0

@@ -94,6 +94,7 @@ func _move_player_inside() -> void:
 	player.move_offset_bottom = -32
 	player.move_offset_right = -52
 	player.move_offset_top = 143
+	player.reset_physics_interpolation()
 	player.revived.connect(_on_player_revived)
 
 
@@ -197,10 +198,10 @@ func _spawn_explosion(pos: Vector2,
 		center: bool = false, 
 		world: Node2D = _explosions_container) -> void:
 	var explosion = Explosion.instantiate()
-	world.add_child(explosion)
 	explosion.z_index = 0
 	explosion.centered = center
 	explosion.global_position = pos
+	world.add_child(explosion)
 
 
 func _on_hurtbox_hurt(_hitbox: Hitbox) -> void:
@@ -214,3 +215,4 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _on_player_revived() -> void:
 	player.global_position = _start_position.global_position
+	player.reset_physics_interpolation()

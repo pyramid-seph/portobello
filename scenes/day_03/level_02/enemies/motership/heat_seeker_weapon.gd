@@ -34,9 +34,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if is_active and not _target_locked and target:
-		var sprite_size: Vector2 = target.size() if target.has_method("size") else Vector2.ZERO
-		_gun.global_position.x = target.global_position.x + sprite_size.x / 2
+	if is_active and not _target_locked:
+		_move_to_target()
 
 
 func _exit_tree() -> void:
@@ -108,13 +107,25 @@ func _shoot_gun() -> void:
 		_start_cooldown()
 
 
+func _move_to_target() -> void:
+	if not target:
+		return
+	
+	var sprite_size: Vector2 = \
+				target.size() if target.has_method("size") else Vector2.ZERO
+	_gun.global_position.x = target.global_position.x + sprite_size.x / 2
+
+
 func _seek_an_destroy() -> void:
-	_tween = create_tween()
+	_move_to_target()
+	_laser_sight.show()
+	_gun.reset_physics_interpolation()
 	SoundManager.play_sound(SFX_HEAT_SEEKER_CHARGING)
+	_tween = create_tween()
 	_tween.tween_callback(func(): _laser_sight.visible = true)
 	_tween.tween_interval(_laser_sight_duration_sec)
 	_tween.tween_callback(func():
-		_laser_sight_warning.visible = true
+		_laser_sight_warning.show()
 		_target_locked = true
 	)
 	_tween.tween_interval(_warning_duration_sec)

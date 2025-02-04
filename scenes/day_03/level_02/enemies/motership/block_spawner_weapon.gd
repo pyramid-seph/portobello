@@ -63,11 +63,11 @@ func _on_is_max_speed_enabled_changed() -> void:
 func _spawn_block() -> void:
 	if target:
 		var block = Block.instantiate() as MovingDay03Enemy
-		world.add_child(block)
 		block.world = world
 		block.movement_pattern = SimpleMover.Pattern.VERTICAL_DOWN
 		block.global_position.x = target.global_position.x
 		block.global_position.y = global_position.y
+		world.add_child(block)
 	else:
 		Log.d("No target set. Will retry next timeout.")
 	_timer.start(_cooldown)

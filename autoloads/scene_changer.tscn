@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://autoloads/scene_changer.gd" id="1_wichc"]
 [ext_resource type="Script" path="res://autoloads/threaded_loader.gd" id="2_ux1p7"]
-[ext_resource type="Texture2D" uid="uid://wwx4ny446mjr" path="res://art/_shared/ui_loading_0.png" id="2_w05wq"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_rwund"]
 [ext_resource type="Script" path="res://autoloads/loding_anim.gd" id="4_6tkct"]
+[ext_resource type="Texture2D" uid="uid://b84bx5tqxpvye" path="res://art/_shared/ui_loading_0.png" id="5_gwtjp"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="8_o1hk3"]
 
 [sub_resource type="Animation" id="Animation_4amrh"]
@@ -90,7 +90,7 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="LodingAnimContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_w05wq")
+texture = ExtResource("5_gwtjp")
 stretch_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LodingAnimContainer"]

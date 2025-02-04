@@ -30,6 +30,8 @@ score_points_mega_gun = 5
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_nghcw")
+frame = 1
+frame_progress = 0.576864
 
 [node name="TopGun" parent="." index="4" instance=ExtResource("4_mo5jo")]
 position = Vector2(8, -3)

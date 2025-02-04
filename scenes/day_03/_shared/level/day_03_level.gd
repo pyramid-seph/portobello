@@ -109,6 +109,7 @@ func _set_up_player() -> void:
 
 func _start_level() -> void:
 	_player.position = _world_player_start_marker.position
+	_player.reset_physics_interpolation()
 	_player.is_input_enabled = false
 	_player.is_losing_stamina = false
 	_level_state = LevelState.STARTING
@@ -166,6 +167,7 @@ func _on_debug_is_god_mode_enabled_set() -> void:
 func _on_player_revived() -> void:
 	if _player.get_parent() == _world:
 		_player.position = _world_player_start_marker.position
+		_player.reset_physics_interpolation()
 
 
 func _on_player_out_of_lives() -> void:
