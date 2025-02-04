@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://drvu0mov0ok2m"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.gd" id="1_u8kdk"]
-[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="2_aodou"]
+[ext_resource type="Script" uid="uid://dflxvsy1o2oix" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.gd" id="1_u8kdk"]
+[ext_resource type="Script" uid="uid://bv7id7yvoes87" path="res://scenes/_shared/hitbox.gd" id="2_aodou"]
 [ext_resource type="Texture2D" uid="uid://ci13fxrajkcrv" path="res://art/day_3/enemy_drone.png" id="2_ot8c6"]
-[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="3_sl1yr"]
+[ext_resource type="Script" uid="uid://ue4vtd0enbh6" path="res://scenes/_shared/hurtbox.gd" id="3_sl1yr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtxue"]
 size = Vector2(14, 16)

@@ -32,7 +32,6 @@ func setup(party: BattleParty, background: Texture2D = null) -> void:
 			 _back_row, tally, member_ocurrences_count)
 	_setup_member_focus_neighbors()
 	_setup_member_focus_sounds()
-	
 
 
 func set_narrator(narrator: BattleNarrationBox) -> void:

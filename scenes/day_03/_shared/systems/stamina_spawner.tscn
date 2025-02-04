@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwr1ojj4316st"]
 
-[ext_resource type="Script" path="res://resources/day_03_player_data.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/stamina_spawner.gd" id="2"]
+[ext_resource type="Script" uid="uid://dwabcwxn00r6a" path="res://resources/day_03_player_data.gd" id="1"]
+[ext_resource type="Script" uid="uid://tsm8kr0vtyi" path="res://scenes/day_03/_shared/systems/stamina_spawner.gd" id="2"]
 
 [node name="StaminaSpawner" type="Node2D"]
 process_mode = 1

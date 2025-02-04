@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="BattleParty" load_steps=3 format=3 uid="uid://cn6l0fyqc2gf1"]
+[gd_resource type="Resource" script_class="BattleParty" load_steps=4 format=3 uid="uid://cn6l0fyqc2gf1"]
 
+[ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="1_fjb4q"]
 [ext_resource type="Resource" uid="uid://cipgo47xsp7df" path="res://resources/instances/day_ex/chars/player.tres" id="1_pijle"]
-[ext_resource type="Script" path="res://resources/battle_party.gd" id="2_j8qgf"]
+[ext_resource type="Script" uid="uid://cwqxe8y3k6vpq" path="res://resources/battle_party.gd" id="2_j8qgf"]
 
 [resource]
 script = ExtResource("2_j8qgf")
-_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("1_pijle")])
-_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
+_front_row = Array[ExtResource("1_fjb4q")]([ExtResource("1_pijle")])
+_back_row = Array[ExtResource("1_fjb4q")]([])
 _weight = 1.0

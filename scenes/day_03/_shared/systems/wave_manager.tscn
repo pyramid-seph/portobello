@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://clo8ecw1nr7f2"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/wave_manager.gd" id="1_hscuc"]
+[ext_resource type="Script" uid="uid://qdvtkxvwq4yv" path="res://scenes/day_03/_shared/systems/wave_manager.gd" id="1_hscuc"]
 
 [node name="WaveManager" type="Node2D"]
 process_mode = 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtehqdjeugahu"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/game/action_selector.gd" id="1_0127k"]
+[ext_resource type="Script" uid="uid://oswmn5tx068r" path="res://scenes/day_ex/game/action_selector.gd" id="1_0127k"]
 [ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="2_6jy4n"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="2_lidh8"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="3_d7rwn"]

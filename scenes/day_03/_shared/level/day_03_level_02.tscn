@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2y8ad6yqxp0h"]
 
 [ext_resource type="PackedScene" uid="uid://2h71m1hkjgum" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_02_waves.gd" id="2_1y1mh"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/boss_fight/day_03_level_02_boss_fight.gd" id="2_qu7pv"]
+[ext_resource type="Script" uid="uid://dt3ayy1amsf1b" path="res://scenes/day_03/_shared/systems/level_02_waves.gd" id="2_1y1mh"]
+[ext_resource type="Script" uid="uid://caxisndrp68kd" path="res://scenes/day_03/level_02/boss_fight/day_03_level_02_boss_fight.gd" id="2_qu7pv"]
 [ext_resource type="PackedScene" uid="uid://mwi2r5cdmh24" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.tscn" id="3_i5cuv"]
-[ext_resource type="Script" path="res://scenes/_shared/simple_bgm_player.gd" id="4_nq3bm"]
+[ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="4_nq3bm"]
 [ext_resource type="PackedScene" uid="uid://c0r23aw37b8uw" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
 [ext_resource type="AudioStream" uid="uid://bequenev4mf17" path="res://audio/bgm/remaki_2.wav" id="5_764sq"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://da2fw2fh22lgh"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/objects/bullet.gd" id="2"]
+[ext_resource type="Script" uid="uid://bi0ksrjo43kx" path="res://scenes/day_03/_shared/objects/bullet.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://b7t2bf53nvyor" path="res://audio/sfx/sfx_day_03_player_bullet.wav" id="2_42dce"]
 [ext_resource type="Texture2D" uid="uid://bjkqy61iscfwo" path="res://art/day_3/bullet_player.png" id="2_i65fw"]
-[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="2_p207d"]
+[ext_resource type="Script" uid="uid://bv7id7yvoes87" path="res://scenes/_shared/hitbox.gd" id="2_p207d"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 3.0

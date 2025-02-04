@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwqvrgqp2kstp"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/ui/power_up_bar.gd" id="1_ommc4"]
+[ext_resource type="Script" uid="uid://g52bacaekkna" path="res://scenes/day_03/_shared/ui/power_up_bar.gd" id="1_ommc4"]
 [ext_resource type="Texture2D" uid="uid://d16g60q03k2re" path="res://art/_shared/ui_counter_power.png" id="2"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gcwvq"]

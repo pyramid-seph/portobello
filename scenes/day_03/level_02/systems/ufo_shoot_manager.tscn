@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://mwi2r5cdmh24"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.gd" id="1_h0j1c"]
+[ext_resource type="Script" uid="uid://cs5prnrcatk2d" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.gd" id="1_h0j1c"]
 
 [node name="UfoShootManager" type="Node"]
 process_mode = 1

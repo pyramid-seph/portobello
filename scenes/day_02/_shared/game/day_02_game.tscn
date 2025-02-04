@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c48hbuyvs82xn"]
 
-[ext_resource type="Script" path="res://scenes/day_02/_shared/game/day_02_game.gd" id="1_fhvpp"]
+[ext_resource type="Script" uid="uid://eawoihoxcupy" path="res://scenes/day_02/_shared/game/day_02_game.gd" id="1_fhvpp"]
 [ext_resource type="PackedScene" uid="uid://na2o7hvtlo1g" path="res://scenes/day_02/_shared/maze/maze_a.tscn" id="2_g2v7c"]
 [ext_resource type="PackedScene" uid="uid://bkurq57vlqf73" path="res://scenes/day_02/_shared/ui/day_02_ui.tscn" id="3_ooiqs"]
 [ext_resource type="PackedScene" uid="uid://b641o7baidxlf" path="res://scenes/day_02/_shared/maze/maze_b.tscn" id="3_y0cd7"]

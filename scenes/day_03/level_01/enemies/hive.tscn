@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://brp0l3ldv6jxe"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_01/enemies/hive.gd" id="1_y5hvm"]
+[ext_resource type="Script" uid="uid://d3ji6fe3ehvvl" path="res://scenes/day_03/level_01/enemies/hive.gd" id="1_y5hvm"]
 [ext_resource type="PackedScene" uid="uid://bqgvcndlue3si" path="res://scenes/day_03/level_01/enemies/hive_drone.tscn" id="2_5k2f8"]
 
 [node name="Hive" type="Node2D"]

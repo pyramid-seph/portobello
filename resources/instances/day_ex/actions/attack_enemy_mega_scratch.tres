@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bnwtojrrktgvl" path="res://audio/sfx/sfx_day_ex_attack_double_01.wav" id="1_3jd5n"]
 [ext_resource type="Texture2D" uid="uid://ckvnn0i104hcg" path="res://art/day_ex/battle_ability_player_scratch_1.png" id="2_rv31y"]
 [ext_resource type="Texture2D" uid="uid://s8mffk6tfib1" path="res://art/day_ex/battle_ability_player_scratch_2.png" id="3_phw83"]
-[ext_resource type="Script" path="res://resources/battle_action.gd" id="4_wk61a"]
+[ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="4_wk61a"]
 
 [resource]
 script = ExtResource("4_wk61a")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjiiffracbg0c"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1jj31"]
-[ext_resource type="Script" path="res://scenes/day_ex/_shared/cutscenes/cutscene_day_ex_01.gd" id="1_mjshw"]
+[ext_resource type="Script" uid="uid://dklwctfs1fhi5" path="res://scenes/day_ex/_shared/cutscenes/cutscene_day_ex_01.gd" id="1_mjshw"]
 
 [node name="CutsceneDayEx01" type="Control"]
 layout_mode = 3

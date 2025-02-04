@@ -1,16 +1,16 @@
 [gd_scene load_steps=19 format=3 uid="uid://dgusui2goqk5w"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/player/day_03_player.gd" id="1_mps85"]
+[ext_resource type="Script" uid="uid://bbqd50afxsuoa" path="res://scenes/day_03/_shared/player/day_03_player.gd" id="1_mps85"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="2_g6ucs"]
 [ext_resource type="PackedScene" uid="uid://cdi2dku78c2an" path="res://scenes/day_03/_shared/objects/fall.tscn" id="3_nbxsb"]
 [ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="4_xc36q"]
-[ext_resource type="Script" path="res://scenes/_shared/hurtbox.gd" id="5_84f5h"]
+[ext_resource type="Script" uid="uid://ue4vtd0enbh6" path="res://scenes/_shared/hurtbox.gd" id="5_84f5h"]
 [ext_resource type="Texture2D" uid="uid://uisfobfu2fmd" path="res://art/day_3/_atlas_day_03_shield.png" id="6_equse"]
 [ext_resource type="Texture2D" uid="uid://475vgdsqkh4p" path="res://art/day_3/day_03_player_0.png" id="7_ggeht"]
 [ext_resource type="Texture2D" uid="uid://bp6juho2qydsv" path="res://art/day_3/day_03_player_1.png" id="8_vmafx"]
 [ext_resource type="PackedScene" uid="uid://becs5x7xd6s18" path="res://scenes/day_03/_shared/objects/gun.tscn" id="9_fgecs"]
 [ext_resource type="PackedScene" uid="uid://da2fw2fh22lgh" path="res://scenes/day_03/_shared/objects/player_bullet.tscn" id="10_2vf6h"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/player/mega_gun.gd" id="11_vuy7j"]
+[ext_resource type="Script" uid="uid://c0ovy0ohiodva" path="res://scenes/day_03/_shared/player/mega_gun.gd" id="11_vuy7j"]
 
 [sub_resource type="RectangleShape2D" id="8"]
 size = Vector2(8, 16)
@@ -100,8 +100,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vkqq"]
 _data = {
-"RESET": SubResource("11"),
-"invincible": SubResource("10")
+&"RESET": SubResource("11"),
+&"invincible": SubResource("10")
 }
 
 [sub_resource type="AtlasTexture" id="9"]
@@ -154,7 +154,7 @@ debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8vkqq")
+&"": SubResource("AnimationLibrary_8vkqq")
 }
 
 [node name="ShieldSprite" type="Sprite2D" parent="."]

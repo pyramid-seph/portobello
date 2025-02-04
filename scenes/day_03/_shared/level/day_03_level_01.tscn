@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://wrm5u67h8dys"]
 
 [ext_resource type="PackedScene" uid="uid://2h71m1hkjgum" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_dfqff"]
-[ext_resource type="Script" path="res://scenes/day_03/level_01/boss_fight/day_03_level_01_boss_fight.gd" id="2_p20nx"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_01_waves.gd" id="3_hgugf"]
+[ext_resource type="Script" uid="uid://ruejge5270mq" path="res://scenes/day_03/level_01/boss_fight/day_03_level_01_boss_fight.gd" id="2_p20nx"]
+[ext_resource type="Script" uid="uid://y8t8pdi20iqm" path="res://scenes/day_03/_shared/systems/level_01_waves.gd" id="3_hgugf"]
 [ext_resource type="PackedScene" uid="uid://crhr2l33jctpy" path="res://scenes/day_03/_shared/systems/drone_shoot_manager.tscn" id="4_alffp"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/level/day_03_interactive_bgm.gd" id="4_k0o2u"]
+[ext_resource type="Script" uid="uid://dsq1xlj0pwlmt" path="res://scenes/day_03/_shared/level/day_03_interactive_bgm.gd" id="4_k0o2u"]
 [ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="5_8yjdr"]
 [ext_resource type="AudioStream" uid="uid://bequenev4mf17" path="res://audio/bgm/remaki_2.wav" id="5_85wn6"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="6_yj070"]

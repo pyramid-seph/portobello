@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://brik70kwkl220"]
 
-[ext_resource type="Script" path="res://scenes/_shared/ui/animated_texture_rect.gd" id="1_kb2c1"]
+[ext_resource type="Script" uid="uid://c84deph2fk6s7" path="res://scenes/_shared/ui/animated_texture_rect.gd" id="1_kb2c1"]
 
 [node name="TextureRect" type="TextureRect"]
 offset_right = 40.0

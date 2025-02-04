@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xi0yyj2nr2tn" path="res://art/day_3/motership_ball.png" id="1_fjc6y"]
 [ext_resource type="Texture2D" uid="uid://cko85wlmtrl2p" path="res://art/day_3/motership_ball_shine.png" id="2_gb71c"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/motership_ball.gd" id="2_ri438"]
+[ext_resource type="Script" uid="uid://c5l8picgs005a" path="res://scenes/day_03/level_02/enemies/motership/motership_ball.gd" id="2_ri438"]
 
 [node name="MotershipBall" type="Node2D"]
 script = ExtResource("2_ri438")

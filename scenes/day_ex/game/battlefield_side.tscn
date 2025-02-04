@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3l2edgf8ciay"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/game/battlefield_side.gd" id="1_mlmea"]
+[ext_resource type="Script" uid="uid://b1k1nl1mtvp86" path="res://scenes/day_ex/game/battlefield_side.gd" id="1_mlmea"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx7lm"]
 

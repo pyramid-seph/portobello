@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvq3mnqmcgelf"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/clean_up_zone.gd" id="1_5i8p7"]
+[ext_resource type="Script" uid="uid://c6h3c6jelimpl" path="res://scenes/day_03/level_02/enemies/motership/clean_up_zone.gd" id="1_5i8p7"]
 
 [node name="CleanUpZone" type="Area2D"]
 position = Vector2(0, -2)

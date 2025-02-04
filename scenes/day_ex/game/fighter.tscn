@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://d0cegcu8dki0c"]
+[gd_scene load_steps=31 format=3 uid="uid://b36t6cdxkgoq5"]
 
-[ext_resource type="Shader" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
+[ext_resource type="Shader" uid="uid://b300tliqdrffv" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
 [ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="2_tc2hr"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/fighter.gd" id="3_33cos"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/status_display_manager.gd" id="4_wdtdj"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
+[ext_resource type="Script" uid="uid://dcngjjrxammy1" path="res://scenes/day_ex/game/fighter.gd" id="3_33cos"]
+[ext_resource type="Script" uid="uid://dqbygum5x1n3w" path="res://scenes/day_ex/game/status_display_manager.gd" id="4_wdtdj"]
+[ext_resource type="Script" uid="uid://bmv6cy7ev776w" path="res://scenes/day_ex/game/status_display.gd" id="5_0vlxv"]
 [ext_resource type="Texture2D" uid="uid://bsq5d3kt6pl73" path="res://art/day_ex/battle_status_atk_buff.png" id="5_xgu1x"]
-[ext_resource type="Shader" path="res://shaders/hp_label.gdshader" id="6_7oenr"]
+[ext_resource type="Shader" uid="uid://je7hjlrj8383" path="res://shaders/hp_label.gdshader" id="6_7oenr"]
 [ext_resource type="AudioStream" uid="uid://cbttoilcferj" path="res://audio/sfx/sfx_day_ex_fighter_eaten.wav" id="6_heqhy"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_qpj4v"]
 [ext_resource type="AudioStream" uid="uid://da0debqqguqip" path="res://audio/sfx/sfx_day_ex_fighter_die.wav" id="7_x6j3b"]
@@ -577,17 +577,17 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xl45o"]
 _data = {
-"RESET": SubResource("Animation_c4s6s"),
-"attack": SubResource("Animation_4ih82"),
-"being_eaten": SubResource("Animation_yu8hm"),
-"cure": SubResource("Animation_eg5v7"),
-"die": SubResource("Animation_4xvqa"),
-"eaten": SubResource("Animation_kgng6"),
-"evade": SubResource("Animation_v0sv5"),
-"flee": SubResource("Animation_ir8wu"),
-"focus": SubResource("Animation_akbh2"),
-"hurt": SubResource("Animation_plgnv"),
-"take_turn": SubResource("Animation_roh21")
+&"RESET": SubResource("Animation_c4s6s"),
+&"attack": SubResource("Animation_4ih82"),
+&"being_eaten": SubResource("Animation_yu8hm"),
+&"cure": SubResource("Animation_eg5v7"),
+&"die": SubResource("Animation_4xvqa"),
+&"eaten": SubResource("Animation_kgng6"),
+&"evade": SubResource("Animation_v0sv5"),
+&"flee": SubResource("Animation_ir8wu"),
+&"focus": SubResource("Animation_akbh2"),
+&"hurt": SubResource("Animation_plgnv"),
+&"take_turn": SubResource("Animation_roh21")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r02qg"]
@@ -631,7 +631,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xl45o")
+&"": SubResource("AnimationLibrary_xl45o")
 }
 
 [node name="StatusDisplay" type="TextureRect" parent="."]
