@@ -7,6 +7,7 @@ const MenuBgDayExTexture: Texture2D = preload("res://art/menu_screen/menu_bg_day
 const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_scores.png")
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
+const SfxCheated: AudioStream = preload("res://audio/sfx/sfx_title_screen_cheated.wav")
 
 const CheatCode = preload("res://scenes/_shared/cheat_code.gd")
 
@@ -376,6 +377,7 @@ func _on_k_cheat_code_completed() -> void:
 		_cheat_code_tween.kill()
 	_cheat_code_tween = create_tween()
 	_cheat_code_tween.set_loops(3)
+	_cheat_code_tween.tween_callback(SoundManager.play_sound.bind(SfxCheated))
 	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",
 			1.0, 0.1).from(0)
 	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",
