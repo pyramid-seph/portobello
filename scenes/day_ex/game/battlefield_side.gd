@@ -10,7 +10,13 @@ const UI_SOUND_CANCEL_SELECT = preload("res://audio/ui/kenney_interface_sounds/s
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
-const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
+# WORKAROUND FighterScene.instantiate() returns null if 
+# fighter.tscn is preloaded because there is a reference cycle between
+# fighter.tscn and battle_side.tscn (via their custom scripts).
+# This bad behaviour did not happen before Godot 4.4.
+# Since this project is on maintenance mode, I don't feel like refactoring
+# these scripts to break the reference cycle :P.
+var FighterScene = load("res://scenes/day_ex/game/fighter.tscn")
 
 var _members: Array[Fighter]
 var _narrator: BattleNarrationBox
