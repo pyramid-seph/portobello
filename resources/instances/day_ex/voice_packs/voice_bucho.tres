@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VoicePack" load_steps=3 format=3 uid="uid://d1atrrvl2opnk"]
 
-[ext_resource type="Script" path="res://resources/voice_pack.gd" id="1_rcwji"]
+[ext_resource type="Script" uid="uid://dbyld21cmkoc" path="res://resources/voice_pack.gd" id="1_rcwji"]
 [ext_resource type="AudioStream" uid="uid://ddecvkvqas860" path="res://audio/sfx/sfx_day_ex_voice_bucho_01.wav" id="2_cgugv"]
 
 [resource]
