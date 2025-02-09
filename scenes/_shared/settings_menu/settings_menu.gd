@@ -89,7 +89,7 @@ func _on_visibility_changed() -> void:
 	if visible:
 		process_mode = Node.PROCESS_MODE_ALWAYS
 		_load_data()
-		_ui_sounds.call_deferred("focus_node_no_sound", _vibration_selector)
+		_ui_sounds.focus_node_no_sound.call_deferred(_vibration_selector)
 	else:
 		process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -105,7 +105,7 @@ func _on_confirm_erase_data_dialog_positive_btn_pressed() -> void:
 
 
 func _on_confirm_erase_data_dialog_negative_btn_pressed() -> void:
-	_ui_sounds.call_deferred("focus_node_no_sound", _erase_data_btn)
+	_ui_sounds.focus_node_no_sound.call_deferred(_erase_data_btn)
 
 
 func _on_erased_data_dialog_positive_btn_pressed() -> void:

@@ -167,7 +167,7 @@ func _on_focus_entered() -> void:
 	for fighter: Fighter in _members:
 		if not fighter.is_removed_from_battle():
 			_skip_focus_sound = true
-			fighter.call_deferred("grab_focus")
+			fighter.grab_focus.call_deferred()
 			return
 	
 	release_focus()
