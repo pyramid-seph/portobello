@@ -38,9 +38,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gjy1r"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25
-}
+})
 time_limit_sec = 40.0
 treats_limit = 5
 change_treat_pos_on_player_death = false
@@ -80,9 +80,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_tbt28"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.2
-}
+})
 time_limit_sec = 45.0
 treats_limit = 10
 change_treat_pos_on_player_death = false
@@ -122,9 +122,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_wx64e"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.15
-}
+})
 time_limit_sec = 60.0
 treats_limit = 15
 change_treat_pos_on_player_death = false
@@ -182,9 +182,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2q7hw"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.125
-}
+})
 time_limit_sec = 80.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -218,9 +218,9 @@ duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_ewe2o"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.1
-}
+})
 time_limit_sec = 60.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -290,9 +290,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_roknf"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.2
-}
+})
 time_limit_sec = 102.0
 treats_limit = 10
 change_treat_pos_on_player_death = false
@@ -332,9 +332,9 @@ duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_re2ea"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.125
-}
+})
 time_limit_sec = 45.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -362,9 +362,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2cvf3"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.1
-}
+})
 time_limit_sec = 40.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -374,13 +374,13 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_n0awb"), SubReso
 
 [sub_resource type="Resource" id="Resource_giumw"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false
@@ -390,13 +390,13 @@ dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_fb7o2"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false
@@ -406,13 +406,13 @@ dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_uuev1"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false
@@ -422,13 +422,13 @@ dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_nvdo7"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false

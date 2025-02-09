@@ -30,8 +30,9 @@ var _skip_focus_sound: bool
 func setup(party: BattleParty, background: Texture2D = null) -> void:
 	_background_texture_rect.texture = background
 	
-	var tally := {}
-	var member_ocurrences_count = party.count_member_ocurrences()
+	var tally: Dictionary[String, int] = {}
+	var member_ocurrences_count: Dictionary[String, int] = \
+			party.count_member_ocurrences()
 	_setup_row(party.get_front_row_members(),
 			_front_row, tally, member_ocurrences_count)
 	_setup_row(party.get_back_row_members(),
@@ -85,8 +86,8 @@ func teardown() -> void:
 func _setup_row(
 		members: Array[FighterData],
 		row: HBoxContainer, 
-		tally: Dictionary,
-		member_ocurrences_count: Dictionary) -> void:
+		tally: Dictionary[String, int],
+		member_ocurrences_count: Dictionary[String, int]) -> void:
 	
 	for fighter_data: FighterData in members:
 		var new_fighter_node: Fighter = FighterScene.instantiate()

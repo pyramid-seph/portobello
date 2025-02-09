@@ -3,7 +3,7 @@ extends Label
 
 const StatusDisplayManager = preload("res://scenes/day_ex/game/status_display_manager.gd")
 
-const SHORT_NAMES: Dictionary = {
+const SHORT_NAMES: Dictionary[StatusDisplayManager.Status, String] = {
 	StatusDisplayManager.Status.NORMAL: "RPG_BATTLE_STATUS_EFFECT_SHORT_NORMAL",
 	StatusDisplayManager.Status.POISON: "RPG_BATTLE_STATUS_EFFECT_SHORT_POISON",
 	StatusDisplayManager.Status.CHARMED: "RPG_BATTLE_STATUS_EFFECT_SHORT_CHARMED",

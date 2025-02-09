@@ -20,7 +20,7 @@ const BG_COLOR_SCORES := Color("83857a")
 const BG_COLOR_SETTINGS := Color("2ec939")
 const BG_COLOR_EXIT := Color("355f9d")
 
-const STORY_MODE_OPTIONS := [
+const STORY_MODE_OPTIONS: Array[Dictionary] = [
 	{
 		"label": "MINIGAME_NAME_STORY_MODE_0",
 		"value": Game.Minigame.STORY_DAY_01,
@@ -51,7 +51,7 @@ const STORY_MODE_OPTIONS := [
 	}
 ]
 
-const SCORE_ATTACK_MODE_OPTIONS := [
+const SCORE_ATTACK_MODE_OPTIONS: Array[Dictionary] = [
 	{
 		"label": "MINIGAME_NAME_SCORE_ATTACK_0",
 		"value": Game.Minigame.SCORE_ATTACK_1A,

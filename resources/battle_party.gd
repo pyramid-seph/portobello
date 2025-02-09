@@ -19,15 +19,15 @@ func get_weigth() -> float:
 	return _weight
 
 
-func count_member_ocurrences() -> Dictionary:
-	var count: Dictionary = {}
+func count_member_ocurrences() -> Dictionary[String, int]:
+	var count: Dictionary[String, int] = {}
 	_accumulate_member_ocurrences_from_row(_front_row, count)
 	_accumulate_member_ocurrences_from_row(_back_row, count)
 	return count
 	
 	
 func _accumulate_member_ocurrences_from_row(row: Array[FighterData], 
-		count: Dictionary) -> void:
+		count: Dictionary[String, int]) -> void:
 	for fighter_data: FighterData in row:
 		var fighter_name: String = fighter_data.get_char_name()
 		if count.has(fighter_name):

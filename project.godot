@@ -56,10 +56,6 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 
 singletons=["res://addons/godot-git-plugin/git_api.gdnlib"]
 
-[global_group]
-
-__ui_sound_skip_focus="Tells the UiSoundsInstaller to not play a sound when this control is focused"
-
 [gui]
 
 theme/use_hidpi=true

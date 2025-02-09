@@ -24,7 +24,7 @@ script = ExtResource("1_0127k")
 
 [node name="UiSounds" parent="." instance=ExtResource("2_6jy4n")]
 
-[node name="CommandHSelector" parent="." groups=["__ui_sound_skip_focus"] instance=ExtResource("2_lidh8")]
+[node name="CommandHSelector" parent="." instance=ExtResource("2_lidh8")]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
@@ -37,7 +37,7 @@ focus_color = Color(0.29366, 0.29366, 0.29366, 1)
 text_font = ExtResource("3_d7rwn")
 text_color = Color(1, 1, 1, 1)
 
-[node name="ActionHSelector" parent="." groups=["__ui_sound_skip_focus"] instance=ExtResource("2_lidh8")]
+[node name="ActionHSelector" parent="." instance=ExtResource("2_lidh8")]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
