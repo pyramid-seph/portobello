@@ -635,6 +635,7 @@ position = Vector2(90, 140)
 _autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="World"]
+physics_interpolation_mode = 2
 anchor_mode = 0
 metadata/_edit_lock_ = true
 
