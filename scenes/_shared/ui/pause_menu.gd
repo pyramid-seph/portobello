@@ -13,6 +13,7 @@ var enabled := true:
 		_on_enabled_set()
 
 var _old_touch_controller_mode: TouchControllerManager.Mode
+var _pause_text_tween: Tween
 
 @onready var _give_up_button := %GiveUpButton as Button
 @onready var _pause_dialog := $PauseDialog
@@ -22,6 +23,7 @@ var _old_touch_controller_mode: TouchControllerManager.Mode
 @onready var _audio_selector := %AudioSelector as HSelector
 @onready var _scene_tree := get_tree() as SceneTree
 @onready var _ui_sounds: UiSounds = $PauseDialog/UiSounds
+@onready var _pause_label: Label = %PauseLabel
 
 
 func _ready() -> void:
@@ -125,3 +127,18 @@ func _on_confirm_exit_level_dialog_positive_btn_pressed() -> void:
 	_save_settings()
 	_scene_tree.paused = false
 	Game.start(Game.Minigame.TITLE_SCREEN)
+
+
+func _on_visibility_changed() -> void:
+	if _pause_text_tween:
+		_pause_text_tween.kill()
+		_pause_text_tween = null
+	if visible:
+		_pause_text_tween = create_tween()
+		_pause_text_tween.set_loops()
+		_pause_text_tween.tween_property(_pause_label, "self_modulate:a", 1.0,
+				0.0).from(1.0)
+		_pause_text_tween.tween_interval(2.0)
+		_pause_text_tween.tween_property(_pause_label, "self_modulate:a", 0.0,
+				0.0)
+		_pause_text_tween.tween_interval(0.5)

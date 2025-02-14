@@ -126,6 +126,7 @@ body_text = "CONFIRM_GIVE_UP"
 negative_btn_text = "COMMON_OPTIONS_NO"
 positive_btn_text = "COMMON_OPTIONS_YES"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
 [connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/AudioSelector" to="." method="_on_audio_selector_current_option_index_changed"]
 [connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
