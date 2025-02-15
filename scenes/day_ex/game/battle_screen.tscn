@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0epbuu3r3wqy"]
+[gd_scene load_steps=22 format=3 uid="uid://c0epbuu3r3wqy"]
 
 [ext_resource type="Script" uid="uid://tn8rsejlirrg" path="res://scenes/day_ex/game/battle_screen.gd" id="1_wg4ig"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_h3bdx"]
@@ -56,11 +56,6 @@ font = ExtResource("5_k0cqu")
 font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_7f6hs"]
-line_spacing = 0.0
-font = ExtResource("5_k0cqu")
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_5fx2w"]
 line_spacing = 0.0
 font = ExtResource("5_k0cqu")
 font_size = 8
@@ -218,14 +213,21 @@ text = "RPG_BATTLE_SCREEN_LABEL_INFO"
 label_settings = SubResource("LabelSettings_7f6hs")
 uppercase = true
 
-[node name="InfoLabel" type="Label" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
+[node name="InfoLabel" type="RichTextLabel" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_constants/line_separation = 0
+theme_override_fonts/normal_font = ExtResource("5_k0cqu")
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
 text = "Weakens 1 enemy's ATK, but strengthens their SPD."
-label_settings = SubResource("LabelSettings_5fx2w")
-autowrap_mode = 3
+fit_content = true
 
 [node name="PlayerBattlefieldSide" parent="MainContainer/VBoxContainer/PlayerInfoContainer/VBoxContainer" instance=ExtResource("4_qyjvj")]
 unique_name_in_owner = true
