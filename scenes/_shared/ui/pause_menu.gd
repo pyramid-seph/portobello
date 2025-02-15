@@ -16,13 +16,14 @@ var _old_touch_controller_mode: TouchControllerManager.Mode
 var _pause_text_tween: Tween
 
 @onready var _give_up_button := %GiveUpButton as Button
-@onready var _pause_dialog := $PauseDialog
+@onready var _pause_dialog := %PauseDialog
+@onready var _settings_dialog: PanelContainer = %SettingsDialog
 @onready var _confirm_exit_dialog := $ConfirmExitLevelDialog
 @onready var _autofire_selector := %AutofireSelector as HSelector
 @onready var _vibration_selector := %VibrationSelector as HSelector
 @onready var _audio_selector := %AudioSelector as HSelector
 @onready var _scene_tree := get_tree() as SceneTree
-@onready var _ui_sounds: UiSounds = $PauseDialog/UiSounds
+@onready var _ui_sounds: UiSounds = %UiSounds
 @onready var _pause_label: Label = %PauseLabel
 
 
@@ -57,8 +58,6 @@ func _pause_game(pause: bool) -> void:
 		_autofire_selector.visible = show_auto_fire
 		_load_settings()
 		_ui_sounds.call_deferred("focus_node_no_sound", _vibration_selector)
-		# Hack? This resets its size to the height of its content.
-		_pause_dialog.size.y = 0
 	else:
 		TouchControllerManager.mode = _old_touch_controller_mode
 		_save_settings()
@@ -142,3 +141,13 @@ func _on_visibility_changed() -> void:
 		_pause_text_tween.tween_property(_pause_label, "self_modulate:a", 0.0,
 				0.0)
 		_pause_text_tween.tween_interval(0.5)
+
+
+func _on_confirm_exit_level_dialog_visibility_changed() -> void:
+	if not _pause_text_tween:
+		return
+	
+	if _confirm_exit_dialog.visible:
+		_pause_text_tween.stop()
+	else:
+		_pause_text_tween.play()

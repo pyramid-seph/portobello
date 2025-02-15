@@ -44,28 +44,39 @@ script = ExtResource("1")
 pause_menu_shown_sound = ExtResource("3_runxt")
 show_auto_fire = true
 
-[node name="PauseDialog" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(152, 114)
+[node name="UiSounds" parent="." instance=ExtResource("6_8odcl")]
+unique_name_in_owner = true
+_root_path = NodePath("../PauseDialog/SettingsDialog")
+
+[node name="PauseDialog" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="UiSounds" parent="PauseDialog" instance=ExtResource("6_8odcl")]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseDialog"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="PauseLabel" type="Label" parent="PauseDialog/VBoxContainer"]
+[node name="PauseLabel" type="Label" parent="PauseDialog"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 32
 text = "MENU_PAUSE_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="VibrationSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
+[node name="SettingsDialog" type="PanelContainer" parent="PauseDialog"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(152, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseDialog/SettingsDialog"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VibrationSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -78,7 +89,7 @@ selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 text_font = ExtResource("4_8nmq5")
 
-[node name="AudioSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
+[node name="AudioSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -90,7 +101,7 @@ selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 text_font = ExtResource("4_8nmq5")
 
-[node name="AutofireSelector" parent="PauseDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
+[node name="AutofireSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -102,7 +113,7 @@ selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 text_font = ExtResource("4_8nmq5")
 
-[node name="GiveUpButton" type="Button" parent="PauseDialog/VBoxContainer"]
+[node name="GiveUpButton" type="Button" parent="PauseDialog/SettingsDialog/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -110,7 +121,7 @@ text = "MENU_PAUSE_QUIT_MINIGAME"
 flat = true
 alignment = 0
 
-[node name="ContinueButton" type="Button" parent="PauseDialog/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="PauseDialog/SettingsDialog/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../VibrationSelector")
@@ -127,9 +138,10 @@ negative_btn_text = "COMMON_OPTIONS_NO"
 positive_btn_text = "COMMON_OPTIONS_YES"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
-[connection signal="current_option_index_changed" from="PauseDialog/VBoxContainer/AudioSelector" to="." method="_on_audio_selector_current_option_index_changed"]
-[connection signal="pressed" from="PauseDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
-[connection signal="pressed" from="PauseDialog/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="current_option_index_changed" from="PauseDialog/SettingsDialog/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
+[connection signal="current_option_index_changed" from="PauseDialog/SettingsDialog/VBoxContainer/AudioSelector" to="." method="_on_audio_selector_current_option_index_changed"]
+[connection signal="pressed" from="PauseDialog/SettingsDialog/VBoxContainer/GiveUpButton" to="." method="_on_give_up_button_pressed"]
+[connection signal="pressed" from="PauseDialog/SettingsDialog/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="negative_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_positive_btn_pressed"]
+[connection signal="visibility_changed" from="ConfirmExitLevelDialog" to="." method="_on_confirm_exit_level_dialog_visibility_changed"]
