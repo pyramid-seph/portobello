@@ -17,7 +17,6 @@ var _pause_text_tween: Tween
 
 @onready var _give_up_button := %GiveUpButton as Button
 @onready var _pause_dialog := %PauseDialog
-@onready var _settings_dialog: PanelContainer = %SettingsDialog
 @onready var _confirm_exit_dialog := $ConfirmExitLevelDialog
 @onready var _autofire_selector := %AutofireSelector as HSelector
 @onready var _vibration_selector := %VibrationSelector as HSelector
