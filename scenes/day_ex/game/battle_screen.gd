@@ -38,7 +38,7 @@ var _battle_manager: BattleManager
 @onready var _player_side: BattlefieldSide = %PlayerBattlefieldSide
 @onready var _player_commands_group_visibility: GroupVisibility = %PlayerCommandsGroupVisibility
 @onready var _action_selector: ActionSelector = %ActionSelector
-@onready var _info_label: Label = %InfoLabel
+@onready var _info_label: RichTextLabel = %InfoLabel
 @onready var _status_display: StatusDisplay = %StatusDisplay
 @onready var _status_label: StatusLabel = %StatusLabel
 @onready var _level_label: Label = %LevelLabel
