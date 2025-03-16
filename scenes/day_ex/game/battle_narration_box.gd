@@ -38,7 +38,7 @@ func say_and_wait_until_read(what: String, format_values: Dictionary = {}) -> vo
 
 
 func wait_until_read() -> void:
-	call_deferred("grab_focus")
+	grab_focus.call_deferred()
 	await read
 	SoundManager.play_sound(UI_NEXT_SOUND)
 

@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func _activate() -> void:
-	call_deferred("_spawn_block")
+	_spawn_block.call_deferred()
 
 
 func _deactivate() -> void:
@@ -62,7 +62,7 @@ func _on_is_max_speed_enabled_changed() -> void:
 
 func _spawn_block() -> void:
 	if target:
-		var block = Block.instantiate() as MovingDay03Enemy
+		var block := Block.instantiate() as MovingDay03Enemy
 		block.world = world
 		block.movement_pattern = SimpleMover.Pattern.VERTICAL_DOWN
 		block.global_position.x = target.global_position.x
