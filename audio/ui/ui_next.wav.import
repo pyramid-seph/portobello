@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/ui_next.wav-6e68f88c66fd478e78e4725394e5034c.
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
@@ -21,4 +21,4 @@ edit/normalize=true
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=1
