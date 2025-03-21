@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://dpc2fbvwdk03l"]
 
-[ext_resource type="Script" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_between_levels.gd" id="2_lfnil"]
+[ext_resource type="Script" uid="uid://worywa4pgng3" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_between_levels.gd" id="2_lfnil"]
 [ext_resource type="Texture2D" uid="uid://bas5srb0fec1" path="res://art/cutscenes/day_01_level_00.png" id="3_cl58a"]
 [ext_resource type="Texture2D" uid="uid://ccsjk0l850fht" path="res://art/cutscenes/day_01_level_01_text_en.png" id="3_ja20l"]
 [ext_resource type="AudioStream" uid="uid://cknak87db4uxv" path="res://audio/bgm/cutscene_loop.wav" id="3_supr0"]
 [ext_resource type="Texture2D" uid="uid://cc5o6hpah25jm" path="res://art/cutscenes/day_01_level_01.png" id="4_4e7iw"]
 [ext_resource type="Texture2D" uid="uid://oqbmdpyrnu0l" path="res://art/cutscenes/day_01_level_02_.png" id="5_3ymp4"]
 [ext_resource type="Texture2D" uid="uid://cbqbvcjylljmf" path="res://art/cutscenes/day_01_level_03.png" id="6_t15ny"]
-[ext_resource type="Script" path="res://scenes/_shared/simple_bgm_player.gd" id="7_tbbug"]
+[ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="7_tbbug"]
 
 [sub_resource type="Animation" id="Animation_soxm5"]
 resource_name = "Default"
@@ -272,9 +272,9 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uwof8"]
 _data = {
-"Default": SubResource("Animation_soxm5"),
-"Dizzy": SubResource("Animation_st4f0"),
-"RESET": SubResource("Animation_22q4m")
+&"Default": SubResource("Animation_soxm5"),
+&"Dizzy": SubResource("Animation_st4f0"),
+&"RESET": SubResource("Animation_22q4m")
 }
 
 [node name="Day01BetweenLevelsCutscene" type="Control"]
@@ -293,7 +293,7 @@ _autostart = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_uwof8")
+&"": SubResource("AnimationLibrary_uwof8")
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="FighterData" load_steps=23 format=3 uid="uid://cipgo47xsp7df"]
 
 [ext_resource type="Resource" uid="uid://durkalhb4e6b0" path="res://resources/instances/day_ex/actions/attack_scratch.tres" id="1_18lrd"]
-[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_ieakb"]
-[ext_resource type="Script" path="res://resources/fighter_data.gd" id="2_tiv57"]
+[ext_resource type="Script" uid="uid://tqdmlxo83op1" path="res://resources/enemy_command.gd" id="2_ieakb"]
+[ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="2_tiv57"]
 [ext_resource type="Resource" uid="uid://fm846kdkqxoi" path="res://resources/instances/day_ex/actions/attack_rip_and_tear.tres" id="3_0ilms"]
 [ext_resource type="Resource" uid="uid://bxky55wb8wlrx" path="res://resources/instances/day_ex/actions/attack_bite.tres" id="4_q5h7k"]
 [ext_resource type="Resource" uid="uid://cu3foa65bpyhp" path="res://resources/instances/day_ex/actions/ability_surprise.tres" id="5_q8vk8"]

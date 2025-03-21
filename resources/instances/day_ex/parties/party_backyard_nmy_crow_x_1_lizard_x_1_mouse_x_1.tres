@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="BattleParty" load_steps=5 format=3 uid="uid://dv80v3dxamdf7"]
+[gd_resource type="Resource" script_class="BattleParty" load_steps=6 format=3 uid="uid://dv80v3dxamdf7"]
 
 [ext_resource type="Resource" uid="uid://dd8hfy3k84br2" path="res://resources/instances/day_ex/chars/crow.tres" id="1_liv3e"]
+[ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="1_vcblt"]
 [ext_resource type="Resource" uid="uid://cfrccih8ppxub" path="res://resources/instances/day_ex/chars/mouse.tres" id="3_km3tm"]
 [ext_resource type="Resource" uid="uid://bcklqmn80yfmp" path="res://resources/instances/day_ex/chars/lizard.tres" id="4_qlpmp"]
-[ext_resource type="Script" path="res://resources/battle_party.gd" id="5_dpu4a"]
+[ext_resource type="Script" uid="uid://cwqxe8y3k6vpq" path="res://resources/battle_party.gd" id="5_dpu4a"]
 
 [resource]
 script = ExtResource("5_dpu4a")
-_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("3_km3tm"), ExtResource("1_liv3e"), ExtResource("4_qlpmp")])
-_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
+_front_row = Array[ExtResource("1_vcblt")]([ExtResource("3_km3tm"), ExtResource("1_liv3e"), ExtResource("4_qlpmp")])
+_back_row = Array[ExtResource("1_vcblt")]([])
 _weight = 8.0

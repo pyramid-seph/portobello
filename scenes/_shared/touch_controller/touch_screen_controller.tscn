@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdwknd7ffydpx"]
 
-[ext_resource type="Script" path="res://scenes/_shared/touch_controller/touch_screen_controller.gd" id="1_byuae"]
+[ext_resource type="Script" uid="uid://2asp4c433osp" path="res://scenes/_shared/touch_controller/touch_screen_controller.gd" id="1_byuae"]
 [ext_resource type="Texture2D" uid="uid://h31bnctfaxoc" path="res://art/_shared/touch_button_controller_normal.png" id="2_s4jse"]
 [ext_resource type="Texture2D" uid="uid://dqa4culfa35cg" path="res://art/_shared/touch_button_controller_pressed.png" id="3_n382d"]
 [ext_resource type="Texture2D" uid="uid://cvx3pdt7vngqd" path="res://art/_shared/touch_button_action_dir_left.png" id="4_wk8l5"]

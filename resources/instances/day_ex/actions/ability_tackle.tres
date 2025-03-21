@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://b0s4rc55g4lqw" path="res://audio/sfx/sfx_day_ex_attack_strong.wav" id="1_fs8l3"]
 [ext_resource type="Texture2D" uid="uid://fu8cjwc6nsm0" path="res://art/day_ex/battle_ability_player_tackle.png" id="1_tyvnh"]
-[ext_resource type="Script" path="res://resources/battle_action.gd" id="1_u8gga"]
+[ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="1_u8gga"]
 
 [resource]
 script = ExtResource("1_u8gga")

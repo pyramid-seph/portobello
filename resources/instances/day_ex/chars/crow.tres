@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="FighterData" load_steps=11 format=3 uid="uid://dd8hfy3k84br2"]
 
 [ext_resource type="Resource" uid="uid://dmdeyptx3acva" path="res://resources/instances/day_ex/actions/attack_peck.tres" id="1_hg5k4"]
-[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_vnsam"]
+[ext_resource type="Script" uid="uid://tqdmlxo83op1" path="res://resources/enemy_command.gd" id="2_vnsam"]
 [ext_resource type="Texture2D" uid="uid://bepdosu7gyand" path="res://art/day_ex/battle_char_enemy_crow.png" id="3_3i5pr"]
 [ext_resource type="Resource" uid="uid://durkalhb4e6b0" path="res://resources/instances/day_ex/actions/attack_scratch.tres" id="3_o2d25"]
 [ext_resource type="Resource" uid="uid://ksti8dw0jcof" path="res://resources/instances/day_ex/progression_curves/stats_progression_crow.stats" id="3_vl6ku"]
-[ext_resource type="Script" path="res://resources/fighter_data.gd" id="4_bpqi8"]
+[ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="4_bpqi8"]
 [ext_resource type="Resource" uid="uid://babcuq1igjp4p" path="res://resources/instances/day_ex/actions/ability_enemy_tackle.tres" id="4_bwn6e"]
 
 [sub_resource type="Resource" id="Resource_x53hc"]

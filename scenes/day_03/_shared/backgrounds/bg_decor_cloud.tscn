@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhydiy1l74um"]
 
 [ext_resource type="Texture2D" uid="uid://nx5dqv7ydbi3" path="res://art/day_3/bg_cloud_0.png" id="1_7xuhe"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/backgrounds/bg_decor_cloud.gd" id="2"]
+[ext_resource type="Script" uid="uid://bfi8gedxi2nyl" path="res://scenes/day_03/_shared/backgrounds/bg_decor_cloud.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://52ibquxhxli5" path="res://art/day_3/bg_cloud_1.png" id="2_qmqla"]
 
 [sub_resource type="SpriteFrames" id="3"]

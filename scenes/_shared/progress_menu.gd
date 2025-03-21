@@ -135,7 +135,7 @@ func _on_visibility_changed() -> void:
 		process_mode = Node.PROCESS_MODE_INHERIT
 		_record_type_selector.current_option_idx = SECTION_STARS
 		_on_record_type_label_current_option_index_changed(SECTION_STARS)
-		_ui_sounds.call_deferred("focus_node_no_sound", _record_type_selector)
+		_ui_sounds.focus_node_no_sound.call_deferred(_record_type_selector)
 	else:
 		process_mode = Node.PROCESS_MODE_DISABLED
 

@@ -96,7 +96,7 @@ func _on_set_world(_new_world) -> void:
 func _dispose() -> void:
 	if dispose_mode == DisposeMode.DISABLE_PROCESS:
 		visible = false
-		call_deferred("set_process_mode", Node.PROCESS_MODE_DISABLED)
+		set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	else:
 		queue_free()
 

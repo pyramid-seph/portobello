@@ -16,9 +16,9 @@ config/name_localized={
 }
 config/version="2.2.0"
 run/main_scene="res://scenes/_shared/title_screen/title_screen_scene.tscn"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-config/icon="res://art/_shared/ui_counter_lives.png"
+config/icon="uid://dmses76gqv1x"
 
 [audio]
 
@@ -30,11 +30,11 @@ SaveDataManager="*res://autoloads/save_data_manager.gd"
 SceneTreeUtils="*res://autoloads/scene_tree_utils.gd"
 TransitionPlayer="*res://autoloads/transition_player.tscn"
 SceneChanger="*res://autoloads/scene_changer.tscn"
-SoundManager="*res://addons/sound_manager/sound_manager.gd"
 TouchControllerManager="*res://autoloads/touch_controller_manager.gd"
 DialogueManager="*res://autoloads/dialogue_manager.gd"
 Game="*res://autoloads/game.gd"
 AutoMouseHide="*res://autoloads/auto_mouse_hide.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [display]
 
@@ -55,10 +55,6 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 [gdnative]
 
 singletons=["res://addons/godot-git-plugin/git_api.gdnlib"]
-
-[global_group]
-
-__ui_sound_skip_focus="Tells the UiSoundsInstaller to not play a sound when this control is focused"
 
 [gui]
 

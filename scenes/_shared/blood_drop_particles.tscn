@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://baxkyqp0rboen"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_3hdif"]
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6scf0"]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(0.5, 0, 0)
 gravity = Vector3(0, 98, 0)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_3hdif"]
 
 [node name="BloodDropParticles" type="GPUParticles2D"]
 self_modulate = Color(1, 0, 0, 1)
 emitting = false
 amount = 2
 amount_ratio = 0.338
-process_material = SubResource("ParticleProcessMaterial_6scf0")
 texture = SubResource("CanvasTexture_3hdif")
 lifetime = 1.2
 explosiveness = 0.5
 visibility_rect = Rect2(-2, -2, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_6scf0")

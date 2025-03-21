@@ -1,22 +1,22 @@
 [gd_scene load_steps=25 format=3 uid="uid://ct51hooycinfb"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
-[ext_resource type="Script" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
-[ext_resource type="Script" path="res://scenes/_shared/cutscenes/end_credits.gd" id="2_l4t77"]
-[ext_resource type="Script" path="res://scenes/_shared/cutscenes/pre_credits_scene.gd" id="3_dru3q"]
+[ext_resource type="Script" uid="uid://bncn3rylpiytm" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
+[ext_resource type="Script" uid="uid://vu1mv21j7m3c" path="res://scenes/_shared/cutscenes/end_credits.gd" id="2_l4t77"]
+[ext_resource type="Script" uid="uid://cfhbbfgo7g2qx" path="res://scenes/_shared/cutscenes/pre_credits_scene.gd" id="3_dru3q"]
 [ext_resource type="Resource" uid="uid://bpca423ydapsn" path="res://resources/instances/rolling_credits_og_data.tres" id="3_fi3qg"]
 [ext_resource type="Texture2D" uid="uid://h3iwfl4hn1b1" path="res://art/cutscenes/ending/ending_0.png" id="3_m4aea"]
-[ext_resource type="Script" path="res://scenes/_shared/simple_bgm_player.gd" id="3_nidus"]
+[ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="3_nidus"]
 [ext_resource type="Texture2D" uid="uid://dt82ohryt68b2" path="res://art/cutscenes/ending/ending_1.png" id="4_m1vlt"]
 [ext_resource type="AudioStream" uid="uid://cknak87db4uxv" path="res://audio/bgm/cutscene_loop.wav" id="4_p4748"]
 [ext_resource type="Resource" uid="uid://kmr1uhgtp68d" path="res://resources/instances/rolling_credits_port_data.tres" id="4_t8b2n"]
-[ext_resource type="Script" path="res://scenes/_shared/cutscenes/sea_sparkles_parallax_bg.gd" id="5_5olc8"]
+[ext_resource type="Script" uid="uid://uyc0vj4ill6p" path="res://scenes/_shared/cutscenes/sea_sparkles_parallax_bg.gd" id="5_5olc8"]
 [ext_resource type="Texture2D" uid="uid://cmfcg56p1ywdu" path="res://art/cutscenes/ending/ending_credits_moon.png" id="5_kv0di"]
 [ext_resource type="Texture2D" uid="uid://b0cyvobvfrbid" path="res://art/cutscenes/ending/ending_1_text_en.png" id="6_ejc4k"]
-[ext_resource type="Script" path="res://scenes/_shared/cutscenes/flying_credits_bucho.gd" id="10_07ai5"]
+[ext_resource type="Script" uid="uid://v886bffaysic" path="res://scenes/_shared/cutscenes/flying_credits_bucho.gd" id="10_07ai5"]
 [ext_resource type="Texture2D" uid="uid://cue7pestmbrcu" path="res://art/cutscenes/ending/ending_credits_sea_shine_0.png" id="10_yjovn"]
 [ext_resource type="Texture2D" uid="uid://g4iith1xpt1" path="res://art/cutscenes/ending/ending_credits_bucho_0.png" id="13_gwfa2"]
-[ext_resource type="Script" path="res://scenes/_shared/cutscenes/post_credits_scene.gd" id="13_qgbjn"]
+[ext_resource type="Script" uid="uid://ckp70i718mq54" path="res://scenes/_shared/cutscenes/post_credits_scene.gd" id="13_qgbjn"]
 [ext_resource type="Texture2D" uid="uid://bg5pf3f7vadyl" path="res://art/cutscenes/ending/ending_post_credits.png" id="13_tg2lj"]
 [ext_resource type="Texture2D" uid="uid://cgxdaj67ey6yj" path="res://art/cutscenes/ending/ending_credits_bucho_1.png" id="14_1thfa"]
 [ext_resource type="Texture2D" uid="uid://c4dymrfuhbcl3" path="res://art/cutscenes/ending/ending_post_credits_bucho_mouth.png" id="14_wtijq"]
@@ -117,8 +117,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gyh0w"]
 _data = {
-"RESET": SubResource("Animation_j7m4o"),
-"default": SubResource("Animation_gik3p")
+&"RESET": SubResource("Animation_j7m4o"),
+&"default": SubResource("Animation_gik3p")
 }
 
 [node name="CutsceneCredits" type="Control"]
@@ -427,7 +427,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PostCreditsScene/BuchoFace"]
 libraries = {
-"": SubResource("AnimationLibrary_gyh0w")
+&"": SubResource("AnimationLibrary_gyh0w")
 }
 autoplay = "RESET"
 

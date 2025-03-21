@@ -73,7 +73,7 @@ func _grab_focus() -> void:
 	if Engine.is_editor_hint():
 		return
 	var btn = _negative_btn if _negative_btn.visible else _positive_btn
-	_ui_sounds.call_deferred("focus_node_no_sound", btn)
+	_ui_sounds.focus_node_no_sound.call_deferred(btn)
 
 
 func _on_negative_btn_pressed() -> void:

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://dmdeyptx3acva"]
 
-[ext_resource type="Script" path="res://resources/battle_action.gd" id="1_fbt43"]
+[ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="1_fbt43"]
 [ext_resource type="Texture2D" uid="uid://466t72xmiue6" path="res://art/day_ex/battle_ability_enemy_peck_0.png" id="1_n8cvs"]
 [ext_resource type="AudioStream" uid="uid://bw4665uxm7fw1" path="res://audio/sfx/sfx_day_ex_attack_medium.wav" id="1_v06r4"]
 [ext_resource type="Texture2D" uid="uid://djqgdvmyeq3od" path="res://art/day_ex/battle_ability_enemy_peck_1.png" id="2_g4lx0"]

@@ -17,7 +17,6 @@ var _pause_text_tween: Tween
 
 @onready var _give_up_button := %GiveUpButton as Button
 @onready var _pause_dialog := %PauseDialog
-@onready var _settings_dialog: PanelContainer = %SettingsDialog
 @onready var _confirm_exit_dialog := $ConfirmExitLevelDialog
 @onready var _autofire_selector := %AutofireSelector as HSelector
 @onready var _vibration_selector := %VibrationSelector as HSelector
@@ -57,7 +56,7 @@ func _pause_game(pause: bool) -> void:
 		_pause_dialog.visible = true
 		_autofire_selector.visible = show_auto_fire
 		_load_settings()
-		_ui_sounds.call_deferred("focus_node_no_sound", _vibration_selector)
+		_ui_sounds.focus_node_no_sound.call_deferred(_vibration_selector)
 	else:
 		TouchControllerManager.mode = _old_touch_controller_mode
 		_save_settings()
@@ -119,7 +118,7 @@ func _on_continue_button_pressed() -> void:
 func _on_confirm_exit_level_dialog_negative_btn_pressed() -> void:
 	_confirm_exit_dialog.visible = false
 	_pause_dialog.visible = true
-	_ui_sounds.call_deferred("focus_node_no_sound", _give_up_button)
+	_ui_sounds.focus_node_no_sound.call_deferred(_give_up_button)
 
 
 func _on_confirm_exit_level_dialog_positive_btn_pressed() -> void:

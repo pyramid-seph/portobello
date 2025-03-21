@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DialogueEvent" load_steps=5 format=3 uid="uid://bvryiea77p2c"]
 
-[ext_resource type="Script" path="res://resources/dialogue_page.gd" id="1_f664p"]
-[ext_resource type="Script" path="res://scenes/day_ex/game/dialogue_event.gd" id="2_hrh3n"]
+[ext_resource type="Script" uid="uid://fturu7sc7ogm" path="res://resources/dialogue_page.gd" id="1_f664p"]
+[ext_resource type="Script" uid="uid://d138wt0n8uolw" path="res://scenes/day_ex/game/dialogue_event.gd" id="2_hrh3n"]
 [ext_resource type="Resource" uid="uid://3xr36xrw1gkr" path="res://resources/instances/day_ex/voice_packs/voice_yellow_parrot.tres" id="2_ln6bo"]
 
 [sub_resource type="Resource" id="Resource_2cxbg"]

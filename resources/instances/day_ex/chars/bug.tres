@@ -2,9 +2,9 @@
 
 [ext_resource type="Resource" uid="uid://dgogiippglk3l" path="res://resources/instances/day_ex/actions/attack_nibble.tres" id="1_hftbg"]
 [ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_bug.png" id="1_puv4l"]
-[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_eo7ov"]
+[ext_resource type="Script" uid="uid://tqdmlxo83op1" path="res://resources/enemy_command.gd" id="2_eo7ov"]
 [ext_resource type="Resource" uid="uid://ny7hamutreao" path="res://resources/instances/day_ex/progression_curves/stats_progression_bug.stats" id="3_724eh"]
-[ext_resource type="Script" path="res://resources/fighter_data.gd" id="4_uuxsk"]
+[ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="4_uuxsk"]
 
 [sub_resource type="Resource" id="Resource_5n1jb"]
 script = ExtResource("2_eo7ov")

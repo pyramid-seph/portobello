@@ -2,8 +2,8 @@
 
 [ext_resource type="Resource" uid="uid://dgogiippglk3l" path="res://resources/instances/day_ex/actions/attack_nibble.tres" id="1_4egeu"]
 [ext_resource type="Texture2D" uid="uid://c041ob7k6x4va" path="res://art/day_ex/battle_char_enemy_mouse.png" id="1_4fxku"]
-[ext_resource type="Script" path="res://resources/fighter_data.gd" id="1_88q3o"]
-[ext_resource type="Script" path="res://resources/enemy_command.gd" id="2_2b0sl"]
+[ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="1_88q3o"]
+[ext_resource type="Script" uid="uid://tqdmlxo83op1" path="res://resources/enemy_command.gd" id="2_2b0sl"]
 [ext_resource type="Resource" uid="uid://durkalhb4e6b0" path="res://resources/instances/day_ex/actions/attack_scratch.tres" id="3_mi1bo"]
 [ext_resource type="Resource" uid="uid://eb8bpoagiwom" path="res://resources/instances/day_ex/progression_curves/stats_progression_mouse.stats" id="3_xqbdi"]
 [ext_resource type="Resource" uid="uid://b4ti5c4q7e4wk" path="res://resources/instances/day_ex/actions/ability_enemy_scare.tres" id="4_qewse"]

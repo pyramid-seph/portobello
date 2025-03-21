@@ -15,9 +15,9 @@ var _is_busy: bool:
 		else:
 			change_finished.emit()
 
-@onready var _timer := $Timer as Timer
+@onready var _timer: Timer = $Timer
 @onready var _loading_anim_container := $LodingAnimContainer
-@onready var _threaded_loader := $ThreadedLoader as ThreadedLoader
+@onready var _threaded_loader: ThreadedLoader = $ThreadedLoader
 @onready var _error_dialog := $ErrorDialog
 
 
@@ -30,20 +30,20 @@ func change_to_scene(path: String, shared_data: Dictionary = {}) -> void:
 	if _is_busy:
 		var msg = """Already changing an scene. Ignoring this request: %s 
 				with shared data: %s.""" % [path, shared_data]
-		print(msg)
+		Log.w(msg)
 		return
 	
 	_is_busy = true
 	
-	var current_scene = Utils.last_child($/root)
+	var current_scene: Node = Utils.last_child($/root)
 	if current_scene:
 		current_scene.queue_free()
 		current_scene = null
 		await get_tree().process_frame
 	
-	var result = await _load_scene(path)
+	var result: LoadResult = await _load_scene(path)
 	if result.is_success():
-		var scene = result.get_resource().instantiate()
+		var scene: Node = result.get_resource().instantiate()
 		if scene.has_method("set_shared_data"):
 			scene.set_shared_data(shared_data)
 		_is_busy = false
@@ -98,8 +98,8 @@ func _on_change_error() -> void:
 class LoadResult:
 	extends RefCounted
 	
-	const SUCCESS = 0
-	const ERROR = 1
+	const SUCCESS: int = 0
+	const ERROR: int = 1
 	
 	var _result: int
 	var _resource: Resource

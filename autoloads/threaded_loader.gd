@@ -1,7 +1,7 @@
 class_name ThreadedLoader
 extends Node
 
-var _queue: Dictionary
+var _queue: Dictionary[String, Request]
 var _progress: Array[float]
 
 
@@ -10,10 +10,11 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var removed = []
-	for path in _queue:
-		var request := _queue[path] as Request
-		var status = ResourceLoader.load_threaded_get_status(path, _progress)
+	var removed: Array[String] = []
+	for path: String in _queue:
+		var request: Request = _queue[path]
+		var status: ResourceLoader.ThreadLoadStatus = \
+				ResourceLoader.load_threaded_get_status(path, _progress)
 		request.progress = _progress[0]
 		match status:
 			ResourceLoader.THREAD_LOAD_IN_PROGRESS:
@@ -28,7 +29,7 @@ func _process(_delta: float) -> void:
 				removed.append(path)
 				request.status = Request.Status.ERROR
 				request.finished.emit()
-	for path in removed:
+	for path: String in removed:
 		_queue.erase(path)
 	if _queue.is_empty():
 		set_process(false)
@@ -38,8 +39,9 @@ func make_request(path: String, use_sub_threads: bool = false) -> Request:
 	if _queue.has(path):
 		return _queue[path]
 	
-	var error = ResourceLoader.load_threaded_request(path, "", use_sub_threads)
-	var request = Request.new()
+	var error: Error = ResourceLoader.load_threaded_request(path, "",
+			use_sub_threads)
+	var request: Request = Request.new()
 	_queue[path] = request
 	if error:
 		request.status = Request.Status.ERROR

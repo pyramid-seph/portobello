@@ -13,17 +13,17 @@ const BloodSplatScene = preload("res://scenes/day_ex/objects/blood_splat.tscn")
 
 const NORMAL_ANIM_SPEED_SCALE: float = 1.0
 const SCARED_ANIM_SPEED_SCALE: float = 10.0
-const DIRECTION_VECTORS: Dictionary = {
+const DIRECTION_VECTORS: Dictionary[Direction, Vector2] = {
 	Direction.DOWN: Vector2.DOWN,
 	Direction.LEFT: Vector2.LEFT,
 	Direction.UP: Vector2.UP,
 	Direction.RIGHT: Vector2.RIGHT,
 }
-const VECTOR_ANIMS: Dictionary = {
-	Vector2.DOWN: "move_down",
-	Vector2.LEFT: "move_left",
-	Vector2.UP: "move_up",
-	Vector2.RIGHT: "move_right",
+const VECTOR_ANIMS: Dictionary[Vector2, StringName] = {
+	Vector2.DOWN: &"move_down",
+	Vector2.LEFT: &"move_left",
+	Vector2.UP: &"move_up",
+	Vector2.RIGHT: &"move_right",
 }
 
 @export var _sprite_sheet: Texture2D:

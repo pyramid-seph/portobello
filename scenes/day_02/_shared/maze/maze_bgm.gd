@@ -24,10 +24,10 @@ const INDEX_SCARE_STREAM: int = 2
 		update_configuration_warnings()
 
 var _combo_stream_timer: float
-var _combo_stream_switch := Switch.new()
-var _scare_stream_switch := Switch.new()
+var _combo_stream_switch: Switch = Switch.new()
+var _scare_stream_switch: Switch = Switch.new()
 var _sync_audio: AudioStreamSynchronized
-var _tweens: Dictionary
+var _tweens: Dictionary[int, Tween]
 
 @onready var _ghosts: Array[Ghost] = [
 		$"../YellowGhost",

@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://spq6o43sfcc1"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.gd" id="1_4dg2f"]
+[ext_resource type="Script" uid="uid://0al4eghbrw4v" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.gd" id="1_4dg2f"]
 [ext_resource type="PackedScene" uid="uid://pokyleuxj61d" path="res://scenes/day_03/level_02/enemies/motership/motership_ball.tscn" id="1_70o5a"]
-[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="2_u8mdr"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon_state_machine.gd" id="3_0t5xr"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/stand_by.gd" id="4_78yud"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/charging.gd" id="5_q4iqa"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/detecting.gd" id="6_brua2"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/firing.gd" id="7_h04pi"]
-[ext_resource type="Script" path="res://scenes/day_03/level_02/enemies/motership/discharged.gd" id="8_i6llu"]
+[ext_resource type="Script" uid="uid://bv7id7yvoes87" path="res://scenes/_shared/hitbox.gd" id="2_u8mdr"]
+[ext_resource type="Script" uid="uid://bpb4pwy0ggj2c" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon_state_machine.gd" id="3_0t5xr"]
+[ext_resource type="Script" uid="uid://ca6deau2nccv8" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/stand_by.gd" id="4_78yud"]
+[ext_resource type="Script" uid="uid://cnxx0ew61ims" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/charging.gd" id="5_q4iqa"]
+[ext_resource type="Script" uid="uid://74ynwrcy6774" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/detecting.gd" id="6_brua2"]
+[ext_resource type="Script" uid="uid://dmrqxsqcykb4i" path="res://scenes/day_03/level_02/enemies/motership/states/laser_balls_cannon/firing.gd" id="7_h04pi"]
+[ext_resource type="Script" uid="uid://dm6cscfdaoxp8" path="res://scenes/day_03/level_02/enemies/motership/discharged.gd" id="8_i6llu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fd4x2"]
 size = Vector2(144, 18)

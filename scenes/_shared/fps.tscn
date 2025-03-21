@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://drg31ptsu2hl0"]
 
-[ext_resource type="Script" path="res://scenes/_shared/fps.gd" id="1_6o3is"]
+[ext_resource type="Script" uid="uid://cnv0rfqkm7vv2" path="res://scenes/_shared/fps.gd" id="1_6o3is"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="1_witxt"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j5vum"]

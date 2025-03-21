@@ -37,7 +37,7 @@ func spawn_treat_random() -> void:
 	_free_curr_treat()
 	var treat := Treat.instantiate()
 	treat.global_position = _randomize_placement()
-	_world.call_deferred("add_child", treat)
+	_world.add_child.call_deferred(treat)
 	_treat_weak_ref = weakref(treat)
 
 

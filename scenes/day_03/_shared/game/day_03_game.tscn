@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ibcjinjlhhi"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/game/day_03_game.gd" id="1_fcdcw"]
+[ext_resource type="Script" uid="uid://nuhbbw0j2rsr" path="res://scenes/day_03/_shared/game/day_03_game.gd" id="1_fcdcw"]
 
 [node name="Day03Game" type="Node"]
 script = ExtResource("1_fcdcw")

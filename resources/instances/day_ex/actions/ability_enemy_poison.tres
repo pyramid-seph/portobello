@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://qmnrikcdeuqs" path="res://art/day_ex/battle_ability_player_scare_surprise_despair_0.png" id="1_prcma"]
 [ext_resource type="AudioStream" uid="uid://bb7whdgh2b16p" path="res://audio/sfx/sfx_day_ex_ability_default.wav" id="1_qdmou"]
 [ext_resource type="Texture2D" uid="uid://dt6adgnbtn7xw" path="res://art/day_ex/battle_ability_player_scare_surprise_despair_1.png" id="2_rcyef"]
-[ext_resource type="Script" path="res://resources/battle_action.gd" id="3_nln36"]
+[ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="3_nln36"]
 
 [resource]
 script = ExtResource("3_nln36")

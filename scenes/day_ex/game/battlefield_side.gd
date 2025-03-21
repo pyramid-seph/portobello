@@ -10,7 +10,13 @@ const UI_SOUND_CANCEL_SELECT = preload("res://audio/ui/kenney_interface_sounds/s
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
 
-const FighterScene = preload("res://scenes/day_ex/game/fighter.tscn")
+# WORKAROUND FighterScene.instantiate() returns null if 
+# fighter.tscn is preloaded because there is a reference cycle between
+# fighter.tscn and battle_side.tscn (via their custom scripts).
+# This bad behaviour did not happen before Godot 4.4.
+# Since this project is on maintenance mode, I don't feel like refactoring
+# these scripts to break the reference cycle :P.
+var FighterScene = load("res://scenes/day_ex/game/fighter.tscn")
 
 var _members: Array[Fighter]
 var _narrator: BattleNarrationBox
@@ -24,15 +30,15 @@ var _skip_focus_sound: bool
 func setup(party: BattleParty, background: Texture2D = null) -> void:
 	_background_texture_rect.texture = background
 	
-	var tally := {}
-	var member_ocurrences_count = party.count_member_ocurrences()
+	var tally: Dictionary[String, int] = {}
+	var member_ocurrences_count: Dictionary[String, int] = \
+			party.count_member_ocurrences()
 	_setup_row(party.get_front_row_members(),
 			_front_row, tally, member_ocurrences_count)
 	_setup_row(party.get_back_row_members(),
 			 _back_row, tally, member_ocurrences_count)
 	_setup_member_focus_neighbors()
 	_setup_member_focus_sounds()
-	
 
 
 func set_narrator(narrator: BattleNarrationBox) -> void:
@@ -80,8 +86,8 @@ func teardown() -> void:
 func _setup_row(
 		members: Array[FighterData],
 		row: HBoxContainer, 
-		tally: Dictionary,
-		member_ocurrences_count: Dictionary) -> void:
+		tally: Dictionary[String, int],
+		member_ocurrences_count: Dictionary[String, int]) -> void:
 	
 	for fighter_data: FighterData in members:
 		var new_fighter_node: Fighter = FighterScene.instantiate()
@@ -162,7 +168,7 @@ func _on_focus_entered() -> void:
 	for fighter: Fighter in _members:
 		if not fighter.is_removed_from_battle():
 			_skip_focus_sound = true
-			fighter.call_deferred("grab_focus")
+			fighter.grab_focus.call_deferred()
 			return
 	
 	release_focus()

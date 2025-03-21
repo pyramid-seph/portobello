@@ -10,7 +10,7 @@ const EXPRECTED_ITEM_KEYS: Array[String] = [
 	"defense",
 	"speed",
 	"agility",
-	"luck"
+	"luck",
 ]
 
 
