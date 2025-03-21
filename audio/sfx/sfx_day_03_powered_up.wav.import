@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dbgs24bpncgt0"
+uid="uid://55ks8f2ubjm2"
 path="res://.godot/imported/sfx_day_03_powered_up.wav-88d43ea45091c4ed13636629ac5fe0db.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=3
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0
