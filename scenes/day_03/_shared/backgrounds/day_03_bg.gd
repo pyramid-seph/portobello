@@ -4,8 +4,8 @@ extends Parallax2D
 @export var cloud: PackedScene
 @export var wave: PackedScene
 @export var mega_gun_flash_duration_sec: float = 0.08
-@export var mega_gun_flash_color: Color = Color8(255, 0, 255)
-@export var sea_color: Color = Color8(255, 0, 255)
+@export var mega_gun_flash_color: Color = Color.from_rgba8(255, 0, 255)
+@export var sea_color: Color = Color.from_rgba8(255, 0, 255)
 
 var _tween: Tween
 

@@ -11,6 +11,6 @@ func _on_day_3_ui_stamina_changed(new_val: int, max_value: int) -> void:
 	if new_val > max_value * dangerous_level:
 		new_tint = Color.BLUE
 	else:
-		new_tint = Color8(237, 107, 247)
+		new_tint = Color.from_rgba8(237, 107, 247)
 
 	_progress_bar.set_tint_progress(new_tint)
