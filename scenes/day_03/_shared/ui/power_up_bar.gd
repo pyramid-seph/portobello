@@ -2,7 +2,7 @@ extends HBoxContainer
 
 const SFX_POWERED_UP = preload("res://audio/sfx/sfx_day_03_powered_up.wav")
 
-const NORMAL_COLOR: Color = Color8(250, 172, 88)
+var NORMAL_COLOR: Color = Color.from_rgba8(250, 172, 88)
 
 var _tween: Tween
 var _audio_player: AudioStreamPlayer
