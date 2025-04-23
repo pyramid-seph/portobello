@@ -37,8 +37,8 @@ func setup(party: BattleParty, background: Texture2D = null) -> void:
 			_front_row, tally, member_ocurrences_count)
 	_setup_row(party.get_back_row_members(),
 			 _back_row, tally, member_ocurrences_count)
-	_setup_member_focus_neighbors()
-	_setup_member_focus_sounds()
+	_setup_focus_neighbors()
+	_setup_focus_sounds()
 
 
 func set_narrator(narrator: BattleNarrationBox) -> void:
@@ -103,37 +103,78 @@ func _setup_row(
 		new_fighter_node.set_narrator(_narrator)
 		new_fighter_node.selected.connect(_on_fighter_selected)
 		new_fighter_node.selection_canceled.connect(_on_fighter_selection_canceled)
+		new_fighter_node.get_stats_manager().curr_hp_changed.connect(
+				_on_member_hp_changed.bind(new_fighter_node))
 		row.add_child(new_fighter_node)
 		_members.append(new_fighter_node)
 
 
-func _setup_member_focus_neighbors() -> void:
-	var has_members_on_the_back_row: int = _back_row.get_child_count() > 0
-	var front_row_max_index: int = _front_row.get_child_count() - 1
-	var back_row_max_index: int = _back_row.get_child_count() - 1
+func _setup_row_focus_neighbors(this_row: Node, other_row: Node) -> void:
+	var this_row_children: Array[Node] = this_row.get_children()
+	var is_this_row_empty: bool = this_row_children.is_empty()
+	var has_this_row_any_active_fighters: bool = this_row_children.any(
+			func(member: Fighter):
+				return not member.is_removed_from_battle())
 	
-	for index: int in _front_row.get_child_count():
-		var fighter_node := _front_row.get_child(index) as Control
+	var other_row_children: Array[Node] = other_row.get_children()
+	var is_other_row_empty: bool = other_row_children.is_empty()
+	var has_other_row_any_active_fighters: bool = other_row_children.any(
+			func(member: Fighter):
+				return not member.is_removed_from_battle())
+	
+	var other_row_first_active_path: String = ""
+	if not is_other_row_empty and has_other_row_any_active_fighters:
+		for member: Fighter in other_row_children:
+			if not member.is_removed_from_battle():
+				other_row_first_active_path = member.get_path()
+				break
+	
+	for idx: int in this_row.get_child_count():
+		var fighter_node := this_row.get_child(idx) as Control
 		var fighter_node_path = fighter_node.get_path()
-		fighter_node.focus_neighbor_bottom = fighter_node_path
-		if not has_members_on_the_back_row:
+		
+		if (fighter_node as Fighter).is_removed_from_battle():
 			fighter_node.focus_neighbor_top = fighter_node_path
-		if index == 0:
-			fighter_node.focus_neighbor_left = fighter_node_path
-		if index == front_row_max_index:
+			fighter_node.focus_neighbor_bottom = fighter_node_path
 			fighter_node.focus_neighbor_right = fighter_node_path
-	
-	for index: int in _back_row.get_child_count():
-		var fighter_node := _back_row.get_child(index) as Control
-		var fighter_node_path = fighter_node.get_path()
-		fighter_node.focus_neighbor_top = fighter_node_path
-		if index == 0:
 			fighter_node.focus_neighbor_left = fighter_node_path
-		if index == back_row_max_index:
-			fighter_node.focus_neighbor_right = fighter_node_path
+			continue
+		
+		var top_bottom_focus_path: String = other_row_first_active_path
+		if not top_bottom_focus_path:
+			top_bottom_focus_path  = fighter_node_path
+		
+		fighter_node.focus_neighbor_top = top_bottom_focus_path
+		fighter_node.focus_neighbor_bottom = top_bottom_focus_path
+		
+		var next_idx: int = idx
+		for _i: int in this_row.get_child_count():
+			next_idx = wrapi(next_idx + 1, 0, this_row.get_child_count())
+			var member := this_row.get_child(next_idx) as Fighter
+			if not member.is_removed_from_battle():
+				break
+		var next_path: String = this_row.get_child(next_idx).get_path()
+		
+		var prev_idx: int = idx
+		for _i: int in this_row.get_child_count():
+			prev_idx = wrapi(prev_idx - 1, 0, this_row.get_child_count())
+			var member := this_row.get_child(prev_idx) as Fighter
+			if not member.is_removed_from_battle():
+				break
+		var prev_path: String = this_row.get_child(prev_idx).get_path()
+		
+		fighter_node.focus_next = next_path
+		fighter_node.focus_neighbor_right = next_path
+		fighter_node.focus_previous = prev_path
+		fighter_node.focus_neighbor_left = prev_path
 
 
-func _setup_member_focus_sounds() -> void:
+func _setup_focus_neighbors() -> void:
+	_setup_row_focus_neighbors(_front_row, _back_row)
+	_setup_row_focus_neighbors(_back_row, _front_row)
+
+
+func _setup_focus_sounds() -> void:
 	for node: Control in get_members():
 		node.focus_entered.connect(_on_fighter_focus_entered)
 
@@ -141,6 +182,12 @@ func _setup_member_focus_sounds() -> void:
 func _clear_row(row: HBoxContainer) -> void:
 	for child_node: Node in row.get_children():
 		child_node.queue_free()
+
+
+func _on_member_hp_changed(member: Fighter) -> void:
+	if not is_party_defeated() and \
+			member.get_stats_manager().get_curr_hp() <= 0:
+		_setup_focus_neighbors()
 
 
 func _on_fighter_focus_entered() -> void:
