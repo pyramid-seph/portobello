@@ -106,6 +106,24 @@ font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
 duration_sec = 1.6
 label_2_visible_delay_sec = 0.8
 
+[node name="LevelName" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -16.0
+offset_right = 44.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_rsd5w")
+theme_override_font_sizes/font_size = 8
+text = "Dish 1 of 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MainCourseLabels" parent="." instance=ExtResource("11_rm35m")]
 layout_mode = 1
 text_1 = "LEVEL_BOSS_LINE_0"

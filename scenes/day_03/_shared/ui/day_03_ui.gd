@@ -18,6 +18,7 @@ signal main_course_presented
 @onready var _main_course_label := $MainCourseLabels
 @onready var _score_label := $Score
 @onready var _hi_score_label := $HiScore
+@onready var _level_name: Label = %LevelName
 @onready var _bars := $BarsMargin/Bars
 @onready var _black_screen := $BlackScreen
 @onready var _pause_menu := $PauseMenu
@@ -59,6 +60,10 @@ func change_black_screen_visibility(value: bool) -> void:
 	_black_screen.visible = value
 
 
+func hide_level_name() -> void:
+	_level_name.hide()
+
+
 func start_game_presentation(mode: Game.Mode, index: int) -> void:
 	var line_1: String
 	if mode == Game.Mode.STORY:
@@ -73,6 +78,20 @@ func start_game_presentation(mode: Game.Mode, index: int) -> void:
 
 func set_pause_menu_enabled(enabled: bool) -> void:
 	_pause_menu.enabled = enabled
+
+
+func show_level_name(mode: Game.Mode, level_index: int,
+		total_levels: int) -> void:
+	if mode == Game.Mode.STORY:
+		_level_name.show()
+		_level_name.text = tr("LEVEL_DAY_03_LEVEL_NAME_STORY_MODE").format(
+				{
+					level_pos = (level_index + 1),
+					total_levels = total_levels,
+				}
+		)
+	else:
+		_level_name.hide()
 
 
 func _on_player_data_score_updated() -> void:

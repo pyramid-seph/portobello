@@ -23,6 +23,7 @@ const POINTS_SUPER_TREAT: int = 20
 const POINTS_GHOST: int = 200
 const FAST_ENEMY_SPEED: float = 40.0
 const SLOW_ENEMY_SPEED: float = 13.375
+const MAZES_COUNT: int = 3
 
 @export var _initial_level: Day02Game.Level
 
@@ -101,7 +102,7 @@ func _start_level() -> void:
 	var game_mode: Game.Mode = _get_game_mode()
 	_ui.show_level_start(game_mode, _level)
 	await _ui.start_level_finished
-	_ui.show_level_name(game_mode, _level)
+	_ui.show_level_name(game_mode, _level, MAZES_COUNT)
 	_get_current_maze().start()
 
 

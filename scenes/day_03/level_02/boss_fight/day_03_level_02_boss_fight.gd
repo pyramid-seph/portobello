@@ -26,6 +26,7 @@ func prepare() -> void:
 	_ui.change_bars_visibility(false)
 	_ui.change_score_visibility(false)
 	_ui.change_lives_visibility(false)
+	_ui.hide_level_name()
 
 
 func start() -> void:
