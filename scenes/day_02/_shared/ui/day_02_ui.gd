@@ -83,11 +83,15 @@ func set_pause_menu_enabled(enabled: bool) -> void:
 	_pause_menu.enabled = enabled
 
 
-func show_level_name(mode: Game.Mode, level_index: int) -> void:
+func show_level_name(mode: Game.Mode, level_index: int,
+		total_levels: int) -> void:
 	_level_name.visible = true
 	if mode == Game.Mode.STORY:
 		_level_name.text = tr("LEVEL_DAY_02_LEVEL_NAME_STORY_MODE").format(
-				{ level_pos = (level_index + 1) }
+				{
+					level_pos = (level_index + 1),
+					total_levels = total_levels,
+				}
 		)
 	else:
 		_level_name.text = tr("LEVEL_DAY_02_LEVEL_NAME_SCORE_ATTACK").format(

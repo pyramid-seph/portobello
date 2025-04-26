@@ -92,6 +92,13 @@ func get_lvl_index(level: Day01Game.Level) -> int:
 	return maxi(STORY_MODE_LEVELS.find(level), 0)
 
 
+func get_level_count_for_mode(game_mode: Game.Mode) -> int:
+	if game_mode == Game.Mode.STORY:
+		return STORY_MODE_LEVELS.size()
+	else:
+		return -1
+
+
 func get_high_score(level: Day01Game.Level) -> int:
 	match level:
 		Day01Game.Level.SCORE_ATTACK_1A:
