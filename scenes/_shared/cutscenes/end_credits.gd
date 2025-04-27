@@ -5,6 +5,8 @@ signal finished
 @export var _original_credits: RollingCredits
 @export var _port_credits: RollingCredits
 
+var _moon_tween: Tween
+
 @onready var _job_label := %JobLabel as Label
 @onready var _names_label := %NamesLabel as Label
 @onready var _timer := $Timer as Timer
@@ -17,6 +19,16 @@ signal finished
 
 func play() -> void:
 	_moon_sprite.visible = true
+	if _moon_tween:
+		_moon_tween.kill()
+	_moon_tween = create_tween()
+	var _moon_move_duration: float = 9.0
+	for credit: Credit in _port_credits.list:
+		_moon_move_duration += credit.duration_sec
+	for credit: Credit in _original_credits.list:
+		_moon_move_duration += credit.duration_sec
+	_moon_tween.tween_property(_moon_sprite, "position:x", -208.0,
+			_moon_move_duration).as_relative()
 	_flying_credits_bucho.visible = true
 	_parallax_bg.visible = true
 	_ui.visible = true
@@ -43,6 +55,9 @@ func play() -> void:
 
 
 func stop() -> void:
+	if _moon_tween:
+		_moon_tween.kill()
+		_moon_tween = null
 	_timer.stop()
 	_moon_sprite.visible = false
 	_flying_credits_bucho.visible = false

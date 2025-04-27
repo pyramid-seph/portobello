@@ -3,7 +3,7 @@ extends Node
 
 signal finished
 
-const BGM_CUTSCENE_LOOP = preload("res://audio/bgm/cutscene_loop.wav")
+const BGM_CUTSCENE = preload("res://audio/bgm/cutscene.wav")
 
 @onready var _timer := $Timer as Timer
 @onready var _pre_credit_sprite_00 : Sprite2D = $PreCreditsSprite00
@@ -11,10 +11,8 @@ const BGM_CUTSCENE_LOOP = preload("res://audio/bgm/cutscene_loop.wav")
 
 
 func play() -> void:
-	SoundManager.play_music(BGM_CUTSCENE_LOOP)
 	_pre_credit_sprite_00.show()
-	_timer.start(3.0)
-	await _timer.timeout
+	await SoundManager.play_music(BGM_CUTSCENE).finished
 	_pre_credit_sprite_00.hide()
 	_pre_credits_sprite_01.show()
 	_timer.start(4.0)
