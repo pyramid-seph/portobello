@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=24 format=3 uid="uid://ct51hooycinfb"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
 [ext_resource type="Script" uid="uid://bncn3rylpiytm" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dt82ohryt68b2" path="res://art/cutscenes/ending/ending_1.png" id="4_m1vlt"]
 [ext_resource type="AudioStream" uid="uid://cknak87db4uxv" path="res://audio/bgm/cutscene_loop.wav" id="4_p4748"]
 [ext_resource type="Resource" uid="uid://kmr1uhgtp68d" path="res://resources/instances/rolling_credits_port_data.tres" id="4_t8b2n"]
-[ext_resource type="Script" uid="uid://uyc0vj4ill6p" path="res://scenes/_shared/cutscenes/sea_sparkles_parallax_bg.gd" id="5_5olc8"]
 [ext_resource type="Texture2D" uid="uid://cmfcg56p1ywdu" path="res://art/cutscenes/ending/ending_credits_moon.png" id="5_kv0di"]
 [ext_resource type="Texture2D" uid="uid://b0cyvobvfrbid" path="res://art/cutscenes/ending/ending_1_text_en.png" id="6_ejc4k"]
 [ext_resource type="Script" uid="uid://v886bffaysic" path="res://scenes/_shared/cutscenes/flying_credits_bucho.gd" id="10_07ai5"]
@@ -32,7 +31,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="Animation" id="Animation_j7m4o"]
@@ -214,161 +213,158 @@ Name 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SeaSparklesParallaxBackground" type="ParallaxBackground" parent="EndCredits"]
-layer = 0
+[node name="SeaSparklesParallaxBackground" type="Parallax2D" parent="EndCredits"]
 visible = false
-script = ExtResource("5_5olc8")
-scroll_speed = 25.0
+scroll_offset = Vector2(0, 273)
+repeat_size = Vector2(10, 0)
+autoscroll = Vector2(-100, 0)
+metadata/_edit_lock_ = true
 
 [node name="SeaColor" type="ColorRect" parent="EndCredits/SeaSparklesParallaxBackground"]
-offset_top = 283.0
+offset_top = 10.0
 offset_right = 240.0
-offset_bottom = 303.0
+offset_bottom = 30.0
 color = Color(0.180392, 0.180392, 0.74902, 1)
 metadata/_edit_lock_ = true
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="EndCredits/SeaSparklesParallaxBackground"]
-position = Vector2(0, 273)
-metadata/_edit_lock_ = true
-
-[node name="SeaSparkles" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles2" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles2" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(10, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles3" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles3" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(20, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles4" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles4" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(30, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles5" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles5" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(40, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles6" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles6" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(50, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles7" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles7" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(60, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles8" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles8" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(70, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles9" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles9" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(80, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles10" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles10" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(90, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles11" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles11" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(100, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles12" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles12" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(110, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles13" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles13" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(120, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles14" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles14" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(130, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles15" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles15" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(140, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles16" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles16" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(150, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles17" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles17" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(160, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles18" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles18" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(170, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles19" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles19" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(180, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles20" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles20" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(190, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles21" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles21" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(200, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles22" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles22" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(210, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles23" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles23" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(220, 0)
 texture = ExtResource("10_yjovn")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="SeaSparkles24" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground/ParallaxLayer"]
+[node name="SeaSparkles24" type="Sprite2D" parent="EndCredits/SeaSparklesParallaxBackground"]
 position = Vector2(230, 0)
 texture = ExtResource("10_yjovn")
 centered = false
