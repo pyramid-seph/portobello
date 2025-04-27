@@ -13,9 +13,6 @@ enum DeathCause {
 const SFX_PLAYER_EAT_TREAT = preload("res://audio/sfx/sfx_day_01_player_eat_treat.wav")
 const SFX_PLAYER_DIE_CRASH = preload("res://audio/sfx/sfx_day_01_player_die_crash.wav")
 const SFX_PLAYER_DIE_FATIGUE = preload("res://audio/sfx/sfx_day_01_player_die_fatigue.wav")
-const SFX_PLAYER_DIR_CHANGE_01 = preload("res://audio/sfx/sfx_day_01_player_dir_change_01.wav")
-const SFX_PLAYER_DIR_CHANGE_02 = preload("res://audio/sfx/sfx_day_01_player_dir_change_02.wav")
-const SFX_PLAYER_DIR_CHANGE_03 = preload("res://audio/sfx/sfx_day_01_player_dir_change_03.wav")
 
 const TrunkPart: PackedScene = preload("res://scenes/day_01/player/trunk_part.tscn")
 
@@ -23,9 +20,9 @@ const INITIAL_DIR := Vector2i.RIGHT
 const MAX_TRUNK_PARTS: int = 98
 const DEBUG_POS := Vector2(120, 150)
 const PLAYER_DIR_CHANGE_SOUNDS = [
-	SFX_PLAYER_DIR_CHANGE_01,
-	SFX_PLAYER_DIR_CHANGE_02,
-	SFX_PLAYER_DIR_CHANGE_03,
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_01.wav"),
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_02.wav"),
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_03.wav"),
 ]
 
 @export var stamina_sec: float:
