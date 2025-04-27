@@ -21,6 +21,11 @@ const SFX_PLAYER_EAT_SUPER_TREAT = preload("res://audio/sfx/sfx_day_02_player_ea
 const SPEED: float = 40.0
 const MAX_DIR_PRESSED_SEC: float = 0.15
 const CORNERING_ZONE_SQRD_LENGHT: float = pow(4.0, 2.0)
+const PLAYER_DIR_CHANGE_SOUNDS = [
+	preload("res://audio/sfx/sfx_day_02_player_dir_change_01.wav"),
+	preload("res://audio/sfx/sfx_day_02_player_dir_change_02.wav"),
+	preload("res://audio/sfx/sfx_day_02_player_dir_change_03.wav"),
+]
 
 @export_group("Debug", "_debug")
 @export var _debug_is_invincible: bool:
@@ -190,6 +195,7 @@ func _take_the_corner_if_possible() -> void:
 
 
 func _move(delta_time: float) -> void:
+	var old_dir: Vector2i = _curr_dir
 	if not _maze or not is_movement_allowed:
 		_candidate_dir = Vector2.ZERO
 		return
@@ -226,6 +232,8 @@ func _move(delta_time: float) -> void:
 	
 	_candidate_dir = Vector2i.ZERO
 	_update_sprite_direction()
+	if old_dir != _curr_dir and _curr_dir != Vector2i.ZERO:
+		SoundManager.play_sound(PLAYER_DIR_CHANGE_SOUNDS.pick_random())
 
 
 func _update_sprite_direction() -> void:
