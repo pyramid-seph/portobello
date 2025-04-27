@@ -25,7 +25,7 @@ const LEVEL_RESULTS_LAST_INTERVAL_SEC: float = 3.2
 const LEVEL_COMPLETED_DURATION_SEC: float = 3.2
 const STARS_DELAY_SEC: float = 0.6
 const STARS_DURATION_SEC: float = 0.4
-const STARS_LAST_INTERVAL_SEC: float = 1.4
+const STARS_LAST_INTERVAL_SEC: float = 2.8
 const RESULTS_LABELS_COLOR: Color = Color.WHITE
 const COMPLETE_LABELS_COLOR: Color = Color("F13030")
 
