@@ -1,7 +1,7 @@
 extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
 
-const BGM_CUTSCENE = preload("res://audio/bgm/cutscene.mp3")
+const BGM_CUTSCENE = preload("res://audio/bgm/cutscene.wav")
 const BGM_CUTSCENE_ENDS = preload("res://audio/bgm/cutscene_ends.mp3")
 
 @onready var _day_label := $ColorRect/DayLabel
