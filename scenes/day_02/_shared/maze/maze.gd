@@ -16,6 +16,8 @@ enum MazeState {
 	QUITTED,
 }
 
+const SFX_SCARED_GHOSTS = preload("res://audio/sfx/sfx_day_02_scared_ghosts.wav")
+
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
 const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd")
 const MazeBgm = preload("res://scenes/day_02/_shared/maze/maze_bgm_temp.gd")
@@ -39,6 +41,7 @@ const RESPAWN_RETRY_DELAY_SECONDS: float = 0.16
 		_on_yellow_ghost_speed_set()
 
 var _state: MazeState
+var _scare_sfx_switch: Switch = Switch.new()
 
 @onready var _player_init_pos_marker = $PlayerInitPosMarker as Marker2D
 @onready var _respawn_pos_marker = $RespawnPosMarker as Marker2D
@@ -55,6 +58,11 @@ var _state: MazeState
 @onready var _yellow_ghost_first_spawn_timer := $YellowGhostFirstSpawnTimer as Timer
 @onready var _player_revival_delay_timer := $PlayerRevivalDelayTimer as Timer
 @onready var _maze_bgm: MazeBgm = $MazeBgm
+@onready var _ghosts: Array = [
+		_yellow_ghost,
+		_blue_ghost,
+		_red_ghost,
+	]
 
 
 func _ready() -> void:
@@ -66,6 +74,11 @@ func _ready() -> void:
 		start()
 
 
+func _process(_delta: float) -> void:
+	if Engine.get_process_frames() % 5:
+		_scare_sfx_switch.is_on = _ghosts.any(_is_ghost_scared)
+
+
 func quit() -> void:
 	_state = MazeState.QUITTED
 	visible = false
@@ -75,6 +88,7 @@ func quit() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	process_mode = Node.PROCESS_MODE_DISABLED
+	_scare_sfx_switch.is_on = false
 
 
 func prepare() -> void:
@@ -90,6 +104,9 @@ func prepare() -> void:
 	_reset_all_ghosts()
 	_reset_food()
 	reset_physics_interpolation()
+	Utils.safe_connect(_scare_sfx_switch.switched,
+			_on_scare_sfx_switch_switched)
+	_scare_sfx_switch.is_on = _ghosts.any(_is_ghost_scared)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	_state = MazeState.PREPARED
 
@@ -111,6 +128,9 @@ func failed() -> void:
 		_halt_all_ghosts()
 		_halt_player()
 		_maze_bgm.stop()
+		_scare_sfx_switch.is_on = false
+		Utils.safe_disconnect(_scare_sfx_switch.switched,
+			_on_scare_sfx_switch_switched)
 		_state = MazeState.FAILED
 
 
@@ -136,6 +156,10 @@ func get_surrounding_empty_cells(map_pos: Vector2i) -> Array[Vector2i]:
 
 func global_to_map(global_pos: Vector2) -> Vector2i:
 	return local_to_map(to_local(global_pos))
+
+
+func _is_ghost_scared(ghost) -> bool:
+	return ghost.is_scared()
 
 
 func _is_respawn_point_safe_for_the_player() -> bool:
@@ -244,6 +268,9 @@ func _check_maze_completion() -> void:
 		_halt_all_ghosts()
 		_halt_player()
 		_maze_bgm.stop()
+		_scare_sfx_switch.is_on = false
+		Utils.safe_disconnect(_scare_sfx_switch.switched,
+			_on_scare_sfx_switch_switched)
 		_state = MazeState.COMPLETED
 		completed.emit()
 
@@ -255,6 +282,13 @@ func _revive_ghost(ghost: Node2D) -> void:
 
 func _start_ghost_respawn_timer(timer: Timer) -> void:
 	timer.start(GHOST_RESPAWN_DELAY_SECONDS)
+
+
+func _on_scare_sfx_switch_switched() -> void:
+	if _scare_sfx_switch.is_on:
+		SoundManager.play_sound(SFX_SCARED_GHOSTS)
+	else:
+		SoundManager.stop_sound(SFX_SCARED_GHOSTS)
 
 
 func _on_blue_ghost_speed_set() -> void:
