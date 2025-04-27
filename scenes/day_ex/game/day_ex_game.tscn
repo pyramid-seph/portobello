@@ -30,7 +30,7 @@
 [ext_resource type="Script" uid="uid://o8lb6rgxemnv" path="res://scenes/day_ex/game/kitchen_parrot_action_area.gd" id="18_fus5f"]
 [ext_resource type="Texture2D" uid="uid://2d078cjcm44u" path="res://art/day_ex/npc_duck.png" id="18_h2ier"]
 [ext_resource type="Resource" uid="uid://c43cds2382kua" path="res://resources/instances/day_ex/dialogue_events/dialogue_day_ex_backyard_event_03.tres" id="18_iqxyc"]
-[ext_resource type="Script" uid="uid://clbqmo1fw20uc" path="res://scenes/day_ex/game/day_ex_bgm.gd" id="20_cc1ld"]
+[ext_resource type="Script" uid="uid://doi5l8fd7xegf" path="res://scenes/day_ex/game/day_ex_bgm_temp.gd" id="20_bbg68"]
 [ext_resource type="PackedScene" uid="uid://0fqdkumpc1cf" path="res://scenes/day_ex/player/dust_cloud.tscn" id="20_x2wsq"]
 [ext_resource type="Script" uid="uid://dx3ag2yrdu28o" path="res://scenes/day_ex/game/room_parrot_action_area.gd" id="21_0a6m3"]
 [ext_resource type="Resource" uid="uid://dopwgerrghlor" path="res://resources/instances/day_ex/parties/party_room_boss_blue_bird.tres" id="22_50tig"]
@@ -596,8 +596,7 @@ one_shot = true
 unique_name_in_owner = true
 metadata/_edit_lock_ = true
 
-[node name="BattleScreen" parent="." node_paths=PackedStringArray("_bgm") instance=ExtResource("11_1txxr")]
-_bgm = NodePath("../Systems/DayExBgm")
+[node name="BattleScreen" parent="." instance=ExtResource("11_1txxr")]
 _preview = false
 
 [node name="Systems" type="Node" parent="."]
@@ -624,7 +623,7 @@ _ending_dialogue = ExtResource("18_iqxyc")
 one_shot = true
 
 [node name="DayExBgm" type="Node" parent="Systems"]
-script = ExtResource("20_cc1ld")
+script = ExtResource("20_bbg68")
 
 [node name="World" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
