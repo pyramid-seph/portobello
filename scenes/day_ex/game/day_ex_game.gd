@@ -4,7 +4,7 @@ extends Node
 const DayExUi = preload("res://scenes/day_ex/ui/day_ex_ui.gd")
 const RandomBattleSystem = preload("res://scenes/day_ex/game/random_battle_system.gd")
 const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
-const DayExBgm = preload("res://scenes/day_ex/game/day_ex_bgm.gd")
+const DayExBgm = preload("res://scenes/day_ex/game/day_ex_bgm_temp.gd")
 
 
 @export_group("Debug", "_debug")

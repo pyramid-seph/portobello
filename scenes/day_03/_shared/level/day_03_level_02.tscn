@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2y8ad6yqxp0h"]
+[gd_scene load_steps=7 format=3 uid="uid://c2y8ad6yqxp0h"]
 
 [ext_resource type="PackedScene" uid="uid://2h71m1hkjgum" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
 [ext_resource type="Script" uid="uid://dt3ayy1amsf1b" path="res://scenes/day_03/_shared/systems/level_02_waves.gd" id="2_1y1mh"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://mwi2r5cdmh24" path="res://scenes/day_03/level_02/systems/ufo_shoot_manager.tscn" id="3_i5cuv"]
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="4_nq3bm"]
 [ext_resource type="PackedScene" uid="uid://c0r23aw37b8uw" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
-[ext_resource type="AudioStream" uid="uid://bequenev4mf17" path="res://audio/bgm/remaki_2.wav" id="5_764sq"]
 
 [node name="Day03Level02" instance=ExtResource("1_ttrf2")]
 _results_screen_delay_sec = 3.6
@@ -19,7 +18,6 @@ Motership = ExtResource("5_27b35")
 
 [node name="SimpleBgmPlayer" type="Node" parent="BossFight" index="0"]
 script = ExtResource("4_nq3bm")
-_music = ExtResource("5_764sq")
 _autostart = false
 
 [node name="PlayerAbductionTimer" type="Timer" parent="BossFight" index="1"]

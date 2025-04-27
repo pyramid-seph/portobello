@@ -22,7 +22,7 @@ const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
 const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
 const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
 const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")
-const Day01Bgm = preload("res://scenes/day_01/_shared/game/day_01_bgm.gd")
+const Day01Bgm = preload("res://scenes/day_01/_shared/game/day_01_bgm_temp.gd")
 
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 1

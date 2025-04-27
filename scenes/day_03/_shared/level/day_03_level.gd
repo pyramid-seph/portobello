@@ -56,7 +56,7 @@ var _level_state: LevelState = LevelState.READY:
 @onready var _boss_fight: Day03BossFight = $BossFight
 @onready var _results_screen := $Interface/ResultsScreen
 @onready var _day_3_ui := $Interface/Day03Ui
-@onready var _level_bgm: Day03InteractiveBgm = $Day03InteractiveBgm
+@onready var _level_bgm: Day03InteractiveBgmTemp = $Day03InteractiveBgm
 
 
 func _ready() -> void:

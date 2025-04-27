@@ -18,7 +18,7 @@ enum MazeState {
 
 const Day02Enemy = preload("res://scenes/day_02/_shared/enemies/day_02_enemy.gd")
 const Day02Player = preload("res://scenes/day_02/_shared/player/day_02_player.gd")
-const MazeBgm = preload("res://scenes/day_02/_shared/maze/maze_bgm.gd")
+const MazeBgm = preload("res://scenes/day_02/_shared/maze/maze_bgm_temp.gd")
 
 const GHOST_RESPAWN_DELAY_SECONDS: float = 0.5
 const RED_GHOST_MOVEMENT_DELAY_SECONDS: float = 0.5

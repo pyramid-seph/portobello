@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://j3ged81fnnl6" path="res://art/day_2/_atlas_day_02_tiles_maze.png" id="1_744ve"]
 [ext_resource type="Script" uid="uid://d277x63d66v6m" path="res://scenes/day_02/_shared/maze/maze.gd" id="2_hjgam"]
 [ext_resource type="PackedScene" uid="uid://d0x0fhmsb17ts" path="res://scenes/day_02/_shared/player/day_02_player.tscn" id="3_ac50a"]
-[ext_resource type="Script" uid="uid://crqk5m28i5ycs" path="res://scenes/day_02/_shared/maze/maze_bgm.gd" id="3_iecab"]
+[ext_resource type="Script" uid="uid://unb1jan6kf2m" path="res://scenes/day_02/_shared/maze/maze_bgm_temp.gd" id="3_ir55d"]
 [ext_resource type="Texture2D" uid="uid://coul13cr0fb2a" path="res://art/day_2/enemy_ghost_blue_0.png" id="5_08ki7"]
 [ext_resource type="Texture2D" uid="uid://bqy1eiauwg23p" path="res://art/day_2/enemy_ghost_blue_1.png" id="6_w82sn"]
 [ext_resource type="Texture2D" uid="uid://eeuatuh87lj5" path="res://art/day_2/enemy_ghost_yellow_0.png" id="7_uvffd"]
@@ -50,7 +50,7 @@ navigation_enabled = false
 script = ExtResource("2_hjgam")
 
 [node name="MazeBgm" type="Node" parent="."]
-script = ExtResource("3_iecab")
+script = ExtResource("3_ir55d")
 
 [node name="BlueGhostRespawnTimer" type="Timer" parent="."]
 one_shot = true
