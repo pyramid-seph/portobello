@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=27 format=3 uid="uid://ct51hooycinfb"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
 [ext_resource type="Script" uid="uid://bncn3rylpiytm" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://bg5pf3f7vadyl" path="res://art/cutscenes/ending/ending_post_credits.png" id="13_tg2lj"]
 [ext_resource type="Texture2D" uid="uid://cgxdaj67ey6yj" path="res://art/cutscenes/ending/ending_credits_bucho_1.png" id="14_1thfa"]
 [ext_resource type="Texture2D" uid="uid://c4dymrfuhbcl3" path="res://art/cutscenes/ending/ending_post_credits_bucho_mouth.png" id="14_wtijq"]
+[ext_resource type="AudioStream" uid="uid://rew2370r0bfv" path="res://audio/voice/va_postcredits_bucho_01_en.wav" id="20_ly3p3"]
+[ext_resource type="AudioStream" uid="uid://d00735eni24eu" path="res://audio/voice/va_postcredits_bucho_02_en.wav" id="21_f08bk"]
+[ext_resource type="AudioStream" uid="uid://7mst7bn6pl2o" path="res://audio/voice/va_postcredits_bucho_03_en.wav" id="22_2vgm6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w1dyf"]
 animations = [{
@@ -113,6 +116,29 @@ tracks/2/keys = {
 "update": 1,
 "values": ["", "CREDITS_BUCHO_TALKS_0", "CREDITS_BUCHO_TALKS_1", "CREDITS_BUCHO_TALKS_2"]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("20_ly3p3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("21_f08bk")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("22_2vgm6")
+}],
+"times": PackedFloat32Array(4, 6, 8)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gyh0w"]
 _data = {
@@ -426,6 +452,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_gyh0w")
 }
 autoplay = "RESET"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PostCreditsScene/BuchoFace"]
+bus = &"SFX"
 
 [connection signal="finished" from="." to="." method="_on_finished"]
 [connection signal="visibility_changed" from="EndCredits/FlyingCreditsBucho" to="EndCredits/FlyingCreditsBucho" method="_on_visibility_changed"]
