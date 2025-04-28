@@ -6,6 +6,7 @@ COMMON_OPTIONS_YES,Yes,Sí
 CONFIRM_DELETE_DATA,Delete all data?,¿Borrar todos\nlos datos?
 CONFIRM_GIVE_UP,All progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
 CONFIRM_QUIT,Quit game?,¿Salir del juego?
+CREDITS_AUDIO,Audio,Audio
 CREDITS_BUCHO_TALKS_0,Se...,Se -
 CREDITS_BUCHO_TALKS_1,Se -,Se - cue
 CREDITS_BUCHO_TALKS_2,Se - quel,Se - cue - la
