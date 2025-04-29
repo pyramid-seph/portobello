@@ -111,11 +111,6 @@ func _setup_row(
 
 func _setup_row_focus_neighbors(this_row: Node, other_row: Node) -> void:
 	var this_row_children: Array[Node] = this_row.get_children()
-	var is_this_row_empty: bool = this_row_children.is_empty()
-	var has_this_row_any_active_fighters: bool = this_row_children.any(
-			func(member: Fighter):
-				return not member.is_removed_from_battle())
-	
 	var other_row_children: Array[Node] = other_row.get_children()
 	var is_other_row_empty: bool = other_row_children.is_empty()
 	var has_other_row_any_active_fighters: bool = other_row_children.any(
