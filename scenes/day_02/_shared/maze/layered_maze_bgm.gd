@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 	
 	_combo_stream_timer = maxf(0.0, _combo_stream_timer - delta)
 	
-	if Engine.get_process_frames() % 5:
+	if Engine.get_process_frames() % 2 == 0:
 		_scare_stream_switch.is_on = _ghosts.any(_is_ghost_scared)
 		_combo_stream_switch.is_on = _combo_stream_timer > 0
 

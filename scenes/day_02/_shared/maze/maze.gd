@@ -75,7 +75,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Engine.get_process_frames() % 5:
+	if Engine.get_process_frames() % 2 == 0:
 		_scare_sfx_switch.is_on = _ghosts.any(_is_ghost_scared)
 
 
