@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://dx2c45d18sp6i" path="res://art/menu_screen/controller_support_touchscreen.png" id="18_jtcvj"]
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kps1"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v21ph"]
 resource_local_to_scene = true
 content_margin_left = 8.0
@@ -36,8 +38,6 @@ resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kps1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1547"]
 atlas = ExtResource("13_jai3w")
@@ -56,6 +56,23 @@ _autostart = false
 _cheat_code = Array[StringName]([&"move_up", &"move_up", &"move_down", &"move_down", &"move_left", &"move_right", &"move_left", &"move_right"])
 disabled = true
 
+[node name="ParticlesPrewarmer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6kps1")
+
+[node name="BloodDropParticles" parent="ParticlesPrewarmer" instance=ExtResource("11_0fxou")]
+position = Vector2(123, 49)
+emitting = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ParticlesPrewarmer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -69,7 +86,7 @@ metadata/_edit_lock_ = true
 [node name="TitleScreenBg" type="Parallax2D" parent="TitleScreen"]
 unique_name_in_owner = true
 repeat_size = Vector2(60, 0)
-autoscroll = Vector2(20, 0)
+autoscroll = Vector2(10, 0)
 script = ExtResource("2_prsyc")
 game_texture = ExtResource("3_of2ca")
 game_color = Color(0.486275, 0.882353, 0.580392, 1)
@@ -307,23 +324,6 @@ script = ExtResource("6_t81ja")
 
 [node name="Timer" type="Timer" parent="LogosRoll"]
 one_shot = true
-
-[node name="ParticlesPrewarmer" type="PanelContainer" parent="LogosRoll"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6kps1")
-
-[node name="BloodDropParticles" parent="LogosRoll/ParticlesPrewarmer" instance=ExtResource("11_0fxou")]
-position = Vector2(123, 49)
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" type="ColorRect" parent="LogosRoll/ParticlesPrewarmer"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
 
 [node name="GameCLLogo" type="ColorRect" parent="LogosRoll"]
 visible = false
