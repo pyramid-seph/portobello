@@ -23,6 +23,7 @@ const POINTS_SUPER_TREAT: int = 20
 const POINTS_GHOST: int = 200
 const FAST_ENEMY_SPEED: float = 40.0
 const SLOW_ENEMY_SPEED: float = 13.375
+const MAZES_COUNT: int = 3
 
 @export var _initial_level: Day02Game.Level
 
@@ -57,6 +58,10 @@ func _ready() -> void:
 	_on_level_set()
 
 
+func _exit_tree() -> void:
+	SoundUtils.stop_all_sfx()
+
+
 func set_shared_data(data: Dictionary = {}) -> void:
 	if data.has("level"):
 		_initial_level = data.level
@@ -76,8 +81,8 @@ func _set_up_level() -> void:
 		await maze.quit()
 	_timer.start(LEVEL_CHANGE_DELAY_SEC)
 	await _timer.timeout
-	var current_maze: Maze = _get_current_maze()
-	current_maze.reset()
+	var current_maze = _get_current_maze()
+	current_maze.prepare()
 	
 	if _level > 0:
 		current_maze.blue_ghost_speed = FAST_ENEMY_SPEED
@@ -97,7 +102,7 @@ func _start_level() -> void:
 	var game_mode: Game.Mode = _get_game_mode()
 	_ui.show_level_start(game_mode, _level)
 	await _ui.start_level_finished
-	_ui.show_level_name(game_mode, _level)
+	_ui.show_level_name(game_mode, _level, MAZES_COUNT)
 	_get_current_maze().start()
 
 

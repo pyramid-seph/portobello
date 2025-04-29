@@ -3,17 +3,27 @@ extends Marker2D
 signal ate
 signal died(death_cause: DeathCause)
 signal stamina_changed(remaining_stamina: float)
+signal started_moving
 
 enum DeathCause {
 	FATIGUE,
 	CRASH,
 }
 
+const SFX_PLAYER_EAT_TREAT = preload("res://audio/sfx/sfx_day_01_player_eat_treat.wav")
+const SFX_PLAYER_DIE_CRASH = preload("res://audio/sfx/sfx_day_01_player_die_crash.wav")
+const SFX_PLAYER_DIE_FATIGUE = preload("res://audio/sfx/sfx_day_01_player_die_fatigue.wav")
+
 const TrunkPart: PackedScene = preload("res://scenes/day_01/player/trunk_part.tscn")
 
 const INITIAL_DIR := Vector2i.RIGHT
 const MAX_TRUNK_PARTS: int = 98
 const DEBUG_POS := Vector2(120, 150)
+const PLAYER_DIR_CHANGE_SOUNDS = [
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_01.wav"),
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_02.wav"),
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_03.wav"),
+]
 
 @export var stamina_sec: float:
 	set(value):
@@ -67,11 +77,17 @@ func _physics_process(delta: float) -> void:
 	var is_first_movement_done := _update_next_direction()
 	
 	if tick or is_first_movement_done:
-		_move()
+		var changed_dir = _move()
+		if changed_dir or is_first_movement_done:
+			SoundManager.play_sound(PLAYER_DIR_CHANGE_SOUNDS.pick_random())
 		_elapsed_time_sec = 0.0
 	
 	if is_first_movement_done:
 		_animate()
+
+
+func is_awaiting_first_movement() -> bool:
+	return _is_awaiting_first_movement
 
 
 func revive(force: bool = false) -> void:
@@ -172,14 +188,19 @@ func _update_next_direction() -> bool:
 	var old_is_awaiting_first_movement_val := _is_awaiting_first_movement
 	if _is_awaiting_first_movement:
 		_is_awaiting_first_movement = !(direction_changed or pressed == INITIAL_DIR)
-	return old_is_awaiting_first_movement_val != _is_awaiting_first_movement
+	var just_started_moving: bool = \
+			old_is_awaiting_first_movement_val != _is_awaiting_first_movement
+	if just_started_moving:
+		started_moving.emit()
+	return just_started_moving
 
 
-func _move() -> void:
+func _move() -> bool:
+	var changed_dir: bool = _curr_dir != _next_dir 
 	_curr_dir = _next_dir
-
+	
 	if _is_awaiting_first_movement:
-		return
+		return false
 
 	var last_trunk_part = Utils.last_child(_trunk)
 	
@@ -210,9 +231,11 @@ func _move() -> void:
 	
 	_head.rotation = Vector2(_curr_dir).angle()
 	_head.position += Vector2(_curr_dir * _pixels_per_step)
+	return changed_dir
 
 
 func _eat(thing: Node) -> void:
+	SoundManager.play_sound(SFX_PLAYER_EAT_TREAT)
 	_growth_pending = _trunk.get_child_count() < MAX_TRUNK_PARTS
 	thing.queue_free()
 	ate.emit()
@@ -231,10 +254,12 @@ func _on_died(cause: DeathCause) -> void:
 	
 	var dead_head_pos
 	if cause == DeathCause.CRASH:
+		SoundManager.play_sound(SFX_PLAYER_DIE_CRASH)
 		dead_head_pos = _first_trunk_part.position
 		_first_trunk_part.visible = false
 		Utils.vibrate_joy()
 	else:
+		SoundManager.play_sound(SFX_PLAYER_DIE_FATIGUE)
 		dead_head_pos = _head.position
 	_dead_head.position = dead_head_pos
 	_dead_head.rotation = _head.rotation

@@ -1,14 +1,15 @@
-[gd_scene load_steps=75 format=4 uid="uid://cqn328nqhcfq7"]
+[gd_scene load_steps=76 format=4 uid="uid://cqn328nqhcfq7"]
 
-[ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
-[ext_resource type="Script" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
+[ext_resource type="Script" uid="uid://jsgibygde652" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
+[ext_resource type="Script" uid="uid://bm5hgqmjs8u3k" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
-[ext_resource type="Script" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
-[ext_resource type="Script" path="res://scenes/day_01/_shared/game/level_info.gd" id="2_tq1t3"]
-[ext_resource type="Script" path="res://scenes/day_01/_shared/game/furniture_placement_system.gd" id="3_fkre0"]
-[ext_resource type="Script" path="res://resources/dialogue_line.gd" id="3_i3orw"]
+[ext_resource type="Script" uid="uid://c3h31nxi6b3a4" path="res://scenes/day_01/_shared/game/day_01_bgm_temp.gd" id="2_bgswp"]
+[ext_resource type="Script" uid="uid://bl748fif2rd4o" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
+[ext_resource type="Script" uid="uid://gs2gv6om2i5a" path="res://scenes/day_01/_shared/game/level_info.gd" id="2_tq1t3"]
+[ext_resource type="Script" uid="uid://co7mdisduh7fb" path="res://scenes/day_01/_shared/game/furniture_placement_system.gd" id="3_fkre0"]
+[ext_resource type="Script" uid="uid://bgshxjxekx1y5" path="res://resources/dialogue_line.gd" id="3_i3orw"]
 [ext_resource type="PackedScene" uid="uid://bi48jeuci3exe" path="res://scenes/day_01/player/day_01_player.tscn" id="6_kn384"]
-[ext_resource type="Script" path="res://scenes/day_01/_shared/game/day_01_tile_map_helper.gd" id="6_mkoph"]
+[ext_resource type="Script" uid="uid://c1i0f6ky5u2p2" path="res://scenes/day_01/_shared/game/day_01_tile_map_helper.gd" id="6_mkoph"]
 [ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_ui.tscn" id="6_s8541"]
 [ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/_atlas_day_01_tile.png" id="8_lwdxb"]
 [ext_resource type="PackedScene" uid="uid://n4padnmrc2c0" path="res://scenes/day_01/_shared/furniture/large_couch.tscn" id="9_8h8mx"]
@@ -37,9 +38,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gjy1r"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25
-}
+})
 time_limit_sec = 40.0
 treats_limit = 5
 change_treat_pos_on_player_death = false
@@ -79,9 +80,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_tbt28"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.2
-}
+})
 time_limit_sec = 45.0
 treats_limit = 10
 change_treat_pos_on_player_death = false
@@ -121,9 +122,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_wx64e"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.15
-}
+})
 time_limit_sec = 60.0
 treats_limit = 15
 change_treat_pos_on_player_death = false
@@ -181,9 +182,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2q7hw"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.125
-}
+})
 time_limit_sec = 80.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -217,9 +218,9 @@ duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_ewe2o"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.1
-}
+})
 time_limit_sec = 60.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -289,9 +290,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_roknf"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.2
-}
+})
 time_limit_sec = 102.0
 treats_limit = 10
 change_treat_pos_on_player_death = false
@@ -331,9 +332,9 @@ duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_re2ea"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.125
-}
+})
 time_limit_sec = 45.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -361,9 +362,9 @@ duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2cvf3"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.1
-}
+})
 time_limit_sec = 40.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
@@ -373,13 +374,13 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_n0awb"), SubReso
 
 [sub_resource type="Resource" id="Resource_giumw"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false
@@ -389,13 +390,13 @@ dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_fb7o2"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false
@@ -405,13 +406,13 @@ dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_uuev1"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false
@@ -421,13 +422,13 @@ dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_nvdo7"]
 script = ExtResource("2_fmqcn")
-pace_thresholds = {
+pace_thresholds = Dictionary[int, float]({
 0: 0.25,
 15: 0.2,
 30: 0.15,
 50: 0.125,
 75: 0.1
-}
+})
 time_limit_sec = 0.0
 treats_limit = 0
 change_treat_pos_on_player_death = false
@@ -466,6 +467,9 @@ sources/0 = SubResource("TileSetAtlasSource_a6blw")
 [node name="Day01Game" type="Node"]
 physics_interpolation_mode = 2
 script = ExtResource("1_745ra")
+
+[node name="Day01Bgm" type="Node" parent="."]
+script = ExtResource("2_bgswp")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

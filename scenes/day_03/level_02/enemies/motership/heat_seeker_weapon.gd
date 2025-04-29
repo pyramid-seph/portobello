@@ -1,5 +1,7 @@
 extends Node2D
 
+const SFX_HEAT_SEEKER_CHARGING = preload("res://audio/sfx/sfx_motership_heat_seeker_charging.wav")
+
 @export var target: Node2D
 @export var world: Node2D
 @export var is_active: bool:
@@ -36,6 +38,10 @@ func _process(_delta: float) -> void:
 		_move_to_target()
 
 
+func _exit_tree() -> void:
+	SoundManager.stop_sound(SFX_HEAT_SEEKER_CHARGING)
+
+
 func _activate() -> void:
 	_seek_an_destroy()
 
@@ -49,6 +55,7 @@ func _reset_weapon() -> void:
 		_tween.kill()
 	_reset_sight()
 	_target_locked = false
+	SoundManager.stop_sound(SFX_HEAT_SEEKER_CHARGING)
 	if not _timer.is_stopped(): # Otherwise CONNECT_ONE_SHOT makes trouble.
 		Utils.safe_disconnect_all(_timer.timeout)
 		_timer.stop()
@@ -113,7 +120,9 @@ func _seek_an_destroy() -> void:
 	_move_to_target()
 	_laser_sight.show()
 	_gun.reset_physics_interpolation()
+	SoundManager.play_sound(SFX_HEAT_SEEKER_CHARGING)
 	_tween = create_tween()
+	_tween.tween_callback(func(): _laser_sight.visible = true)
 	_tween.tween_interval(_laser_sight_duration_sec)
 	_tween.tween_callback(func():
 		_laser_sight_warning.show()

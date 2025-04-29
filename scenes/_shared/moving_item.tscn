@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://brj67hm7ypmn8"]
 
 [ext_resource type="PackedScene" uid="uid://e4o4ytds4tos" path="res://scenes/_shared/item.tscn" id="1_564ck"]
-[ext_resource type="Script" path="res://scenes/_shared/moving_item.gd" id="2_antn5"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/simple_mover.gd" id="3_pb2yu"]
+[ext_resource type="Script" uid="uid://tdvtkys1tfv7" path="res://scenes/_shared/moving_item.gd" id="2_antn5"]
+[ext_resource type="Script" uid="uid://dfxnqq55facjm" path="res://scenes/day_03/_shared/systems/simple_mover.gd" id="3_pb2yu"]
 
 [node name="MovingItem" instance=ExtResource("1_564ck")]
 script = ExtResource("2_antn5")

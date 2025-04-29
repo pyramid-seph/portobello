@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://m4700b26gge1"]
 
-[ext_resource type="Script" path="res://addons/stats_progression_json_importer/damage_previewer.gd" id="1_6yaio"]
+[ext_resource type="Script" uid="uid://2q1a2hfu62rw" path="res://addons/stats_progression_json_importer/damage_previewer.gd" id="1_6yaio"]
 
 [node name="DamagePreviewer" type="MarginContainer"]
 anchors_preset = 15

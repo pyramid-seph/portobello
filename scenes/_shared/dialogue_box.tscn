@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjldxfd1a76li"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_fq1r4"]
-[ext_resource type="Script" path="res://scenes/_shared/dialogue_box.gd" id="3_kwica"]
+[ext_resource type="Script" uid="uid://b7lmjv22hcvlg" path="res://scenes/_shared/dialogue_box.gd" id="3_kwica"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7matd"]
 

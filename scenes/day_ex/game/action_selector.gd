@@ -21,35 +21,35 @@ enum MainMenu {
 var _main_menu_options: Array[Dictionary] = [
 	{
 		"label": "RPG_BATTLE_COMMAND_ATTACK",
-		"value": { 
+		"value": {
 			"command": MainMenu.ATTACK,
 			"info": "RPG_BATTLE_INFO_COMMAND_ATTACK",
 		},
 	},
 	{
 		"label": "RPG_BATTLE_COMMAND_ABILITY",
-		"value": { 
+		"value": {
 			"command": MainMenu.ABILITY,
 			"info": "RPG_BATTLE_INFO_COMMAND_ABILITY",
 		},
 	},
 	{
 		"label": COMMAND_EAT.get_action_name(),
-		"value": { 
+		"value": {
 			"command": MainMenu.EAT,
 			"info": COMMAND_EAT.get_info(),
 		},
 	},
 	{
 		"label": COMMAND_CURE.get_action_name(),
-		"value": { 
+		"value": {
 			"command": MainMenu.CURE,
 			"info": COMMAND_CURE.get_info(),
 		},
 	},
 	{
 		"label": "RPG_BATTLE_COMMAND_FLEE",
-		"value": { 
+		"value": {
 			"command": MainMenu.FLEE,
 			"info": "RPG_BATTLE_INFO_COMMAND_FLEE",
 		},
@@ -61,6 +61,7 @@ var _ability_options: Array[Dictionary]
 
 @onready var _command_selector: HSelector = $CommandHSelector
 @onready var _action_selector: HSelector = $ActionHSelector
+@onready var _ui_sounds: UiSounds = $UiSounds
 
 
 func _ready() -> void:
@@ -78,21 +79,21 @@ func update_actions(fighter: Fighter, disable_flee: bool = false) -> void:
 	var abilities: Array = partition[1]
 	attacks.append(COMMAND_DUMMY_BACK)
 	abilities.append(COMMAND_DUMMY_BACK)
-	
+
 	var can_perform_attacks: bool = attacks.size() > 1
 	var can_perform_abilities: bool = \
 			fighter.get_stats_manager().get_curr_mp() > 0 and abilities.size() > 1
 	_command_selector.set_option_disabled(MainMenu.ATTACK, !can_perform_attacks)
 	_command_selector.set_option_disabled(MainMenu.ABILITY, !can_perform_abilities)
-	
+
 	_attack_options = _map_actions_to_options(attacks)
 	_ability_options = _map_actions_to_options(abilities)
-	
+
 	var can_cure: bool = fighter.scraps > 0
 	_command_selector.set_option_disabled(MainMenu.CURE, !can_cure)
-	
+
 	_command_selector.set_option_disabled(MainMenu.FLEE, disable_flee)
-	
+
 	_reset()
 
 
@@ -109,7 +110,7 @@ func _map_actions_to_options(actions: Array) -> Array[Dictionary]:
 func _reset(skip_select_first_main_menu_option: bool = false) -> void:
 	if not skip_select_first_main_menu_option:
 		_command_selector.current_option_idx = 0
-	
+
 	if _action_selector.get_options_count() > 0:
 		_action_selector.current_option_idx = 0
 	_action_selector.release_focus()
@@ -119,10 +120,10 @@ func _on_command_h_selector_selected(selected: Dictionary) -> void:
 	match selected.command:
 		MainMenu.ATTACK:
 			_action_selector.set_options(_attack_options)
-			_action_selector.call_deferred("grab_focus")
+			_ui_sounds.focus_node_no_sound.call_deferred(_action_selector)
 		MainMenu.ABILITY:
 			_action_selector.set_options(_ability_options)
-			_action_selector.call_deferred("grab_focus")
+			_ui_sounds.focus_node_no_sound.call_deferred(_action_selector)
 		MainMenu.EAT:
 			command_selected.emit(BattleCommand.Hurt.new(COMMAND_EAT))
 			_command_selector.release_focus()
@@ -138,7 +139,7 @@ func _on_command_h_selector_selected(selected: Dictionary) -> void:
 
 func _on_action_h_selector_selected(action: BattleAction) -> void:
 	if action == COMMAND_DUMMY_BACK:
-		_command_selector.call_deferred("grab_focus")
+		_ui_sounds.focus_node_no_sound.call_deferred(_command_selector)
 		_reset(true)
 	else:
 		command_selected.emit(BattleCommand.Hurt.new(action))
@@ -156,7 +157,7 @@ func _on_action_h_selector_current_option_index_changed(index: int) -> void:
 
 
 func _on_focus_entered() -> void:
-	_command_selector.call_deferred("grab_focus")
+	_ui_sounds.focus_node_no_sound.call_deferred(_command_selector)
 	_reset()
 
 
@@ -172,7 +173,7 @@ func _on_command_h_selector_focus_entered() -> void:
 
 func _on_action_h_selector_focus_entered() -> void:
 	_action_selector.modulate.a = 1.0
-	
+
 	var info: String = ""
 	var curr_idx: int = _action_selector.current_option_idx
 	if curr_idx != HSelector.SELECTED_NONE:

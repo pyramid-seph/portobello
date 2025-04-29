@@ -9,7 +9,7 @@ enum ObstacleCourseType {
 	RANDOM,
 }
 
-@export var pace_thresholds: Dictionary:
+@export var pace_thresholds: Dictionary[int, float]:
 	set(value):
 		pace_thresholds = value
 		_pace_thresholds_changed()
@@ -20,7 +20,7 @@ enum ObstacleCourseType {
 @export var inverted_controls: bool
 @export var dialogue: Array[DialogueLine]
 
-var _thresholds: Array:
+var _thresholds: Array[int]:
 	get:
 		if _thresholds.is_empty():
 			_pace_thresholds_changed()
@@ -42,14 +42,14 @@ func get_pace(eaten_treats: int) -> float:
 	if _thresholds.size() == 1:
 		return pace_thresholds[_thresholds[0]]
 	
-	for threshold in _thresholds:
+	for threshold: int in _thresholds:
 		if eaten_treats >= threshold:
 			return pace_thresholds[threshold]
 	return _DEFAULT_PACE
 
 
 func _pace_thresholds_changed() -> void:
-	var thresholds := pace_thresholds.keys()
+	var thresholds: Array[int] = pace_thresholds.keys()
 	thresholds.sort()
 	thresholds.reverse()
 	_thresholds = thresholds

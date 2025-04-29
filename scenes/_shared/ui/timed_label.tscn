@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4nnvy7hmhkml"]
 
-[ext_resource type="Script" path="res://scenes/_shared/ui/timed_label.gd" id="1_t08ef"]
+[ext_resource type="Script" uid="uid://itua5fqk122o" path="res://scenes/_shared/ui/timed_label.gd" id="1_t08ef"]
 
 [node name="TimedLabel" type="Label"]
 anchors_preset = 15

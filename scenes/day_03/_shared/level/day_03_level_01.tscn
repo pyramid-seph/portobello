@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wrm5u67h8dys"]
+[gd_scene load_steps=7 format=3 uid="uid://wrm5u67h8dys"]
 
 [ext_resource type="PackedScene" uid="uid://2h71m1hkjgum" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_dfqff"]
-[ext_resource type="Script" path="res://scenes/day_03/level_01/boss_fight/day_03_level_01_boss_fight.gd" id="2_p20nx"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/systems/level_01_waves.gd" id="3_hgugf"]
+[ext_resource type="Script" uid="uid://ruejge5270mq" path="res://scenes/day_03/level_01/boss_fight/day_03_level_01_boss_fight.gd" id="2_p20nx"]
+[ext_resource type="Script" uid="uid://y8t8pdi20iqm" path="res://scenes/day_03/_shared/systems/level_01_waves.gd" id="3_hgugf"]
+[ext_resource type="Script" uid="uid://fc265eyjhy7g" path="res://scenes/day_03/_shared/level/day_03_interactive_bgm_temp.gd" id="4_8xt1v"]
 [ext_resource type="PackedScene" uid="uid://crhr2l33jctpy" path="res://scenes/day_03/_shared/systems/drone_shoot_manager.tscn" id="4_alffp"]
 [ext_resource type="PackedScene" uid="uid://brp0l3ldv6jxe" path="res://scenes/day_03/level_01/enemies/hive.tscn" id="5_8yjdr"]
 
@@ -10,10 +11,13 @@
 _results_screen_delay_sec = 2.4
 _save_data_score_attack_mode_score_name = "buff_three_a"
 
-[node name="BossFight" parent="." index="0" node_paths=PackedStringArray("_player")]
+[node name="BossFight" parent="." index="1" node_paths=PackedStringArray("_player")]
 script = ExtResource("2_p20nx")
 _player = NodePath("../World/Player")
 Hive = ExtResource("5_8yjdr")
+
+[node name="Day03InteractiveBgm" type="Node" parent="BossFight" index="0"]
+script = ExtResource("4_8xt1v")
 
 [node name="Level01Waves" type="Node" parent="Systems/WaveManager" index="1"]
 script = ExtResource("3_hgugf")

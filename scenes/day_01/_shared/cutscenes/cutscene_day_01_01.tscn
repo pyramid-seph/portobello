@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqd3waxa863r3"]
 
-[ext_resource type="Script" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_01.gd" id="2_effvj"]
+[ext_resource type="Script" uid="uid://vnrigub6dw6k" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_01.gd" id="2_effvj"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_yemx5"]
 [ext_resource type="Texture2D" uid="uid://bpcksnp3lmau1" path="res://art/cutscenes/day_01_intro_00.png" id="3_tc33n"]
 [ext_resource type="Texture2D" uid="uid://drbma24q1mvtn" path="res://art/cutscenes/day_01_intro_01.png" id="4_1osry"]
@@ -26,6 +26,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

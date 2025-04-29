@@ -2,6 +2,7 @@ class_name DialogueEvent
 extends Resource
 
 
+@warning_ignore("unused_signal")
 signal finished
 
 @export var _dialogue: Array[DialoguePage]

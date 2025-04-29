@@ -12,7 +12,7 @@ const DEF_DEBUFF_TEXTURE = preload("res://art/day_ex/battle_status_def_debuff.pn
 const SPD_BUFF_TEXTURE = preload("res://art/day_ex/battle_status_spd_buff.png")
 const SPD_DEBUFF_TEXTURE = preload("res://art/day_ex/battle_status_spd_debuff.png")
 
-const TEXTURES: Dictionary = {
+const TEXTURES: Dictionary[StatusDisplayManager.Status, Texture2D] = {
 	StatusDisplayManager.Status.NORMAL: null,
 	StatusDisplayManager.Status.POISON: POISON_TEXTURE,
 	StatusDisplayManager.Status.CHARMED: CHARMED_TEXTURE,

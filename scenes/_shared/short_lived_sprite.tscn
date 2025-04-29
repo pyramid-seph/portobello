@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2bcnuh0rckio"]
 
-[ext_resource type="Script" path="res://scenes/_shared/short_lived_sprite.gd" id="1"]
+[ext_resource type="Script" uid="uid://dbpwvodx3sxrn" path="res://scenes/_shared/short_lived_sprite.gd" id="1"]
 
 [node name="ShortLivedSprite" type="Sprite2D"]
 script = ExtResource("1")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://djle3i2ou6cx1"]
 
-[ext_resource type="Script" path="res://scenes/day_02/_shared/enemies/day_02_enemy.gd" id="1_h5v7e"]
+[ext_resource type="Script" uid="uid://dj3xn6x6rugqu" path="res://scenes/day_02/_shared/enemies/day_02_enemy.gd" id="1_h5v7e"]
 [ext_resource type="Texture2D" uid="uid://cyorhj0i20rdm" path="res://art/day_2/enemy_ghost_red_0.png" id="2_8rakd"]
 [ext_resource type="Texture2D" uid="uid://iw1ie7574y0g" path="res://art/day_2/enemy_ghost_red_1.png" id="3_8px7h"]
 [ext_resource type="Texture2D" uid="uid://b1u66eqv0q3tj" path="res://art/day_2/enemy_ghost_death_0.png" id="4_xgk6b"]

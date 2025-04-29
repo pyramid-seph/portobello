@@ -8,6 +8,7 @@ signal finished
 @export_color_no_alpha var _target_flash_color: Color = Color.WHITE
 @export var _screen_flash_color: Color = Color.TRANSPARENT
 @export var _shake_screen: bool
+@export var _sound: AudioStream
 @export var _autoplay: bool = true
 
 var _tween: Tween
@@ -25,10 +26,15 @@ func configure(battle_action: BattleAction) -> void:
 	_duration_sec = battle_action.get_duration_sec()
 	_screen_flash_color = battle_action.get_screen_flash_color()
 	_shake_screen = battle_action.shake_screen()
+	_sound = battle_action.get_sound()
 
 
 func play() -> void:
 	stop()
+	
+	if _sound:
+		SoundManager.play_sound(_sound)
+	
 	var time: float = _duration_sec / _sprites.size()
 	_tween = create_tween()
 	_tween.set_trans(Tween.TRANS_LINEAR)

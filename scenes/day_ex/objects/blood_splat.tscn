@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cute6jp2xqrfx"]
 
 [ext_resource type="Texture2D" uid="uid://dah08askmf0pi" path="res://art/day_ex/day_ex_tiles.png" id="1_0g2eu"]
-[ext_resource type="Script" path="res://scenes/day_ex/objects/blood_splat.gd" id="2_ov48l"]
+[ext_resource type="Script" uid="uid://cmyi82vkpvaar" path="res://scenes/day_ex/objects/blood_splat.gd" id="2_ov48l"]
 
 [node name="BloodSplat" type="Sprite2D"]
 z_index = -1

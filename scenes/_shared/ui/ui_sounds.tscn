@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxs3xgk30vwbi"]
+
+[ext_resource type="Script" uid="uid://cpbta6ff2npah" path="res://scenes/_shared/ui/ui_sounds.gd" id="1_neil4"]
+[ext_resource type="AudioStream" uid="uid://web4jaxibboc" path="res://audio/ui/kenney_interface_sounds/drop_003.ogg" id="2_3aj3u"]
+[ext_resource type="AudioStream" uid="uid://ds4duhpjlw0fu" path="res://audio/ui/kenney_interface_sounds/drop_002.ogg" id="2_rt42k"]
+[ext_resource type="AudioStream" uid="uid://4dnij5uuyvpc" path="res://audio/ui/kenney_interface_sounds/error_008.ogg" id="4_7ssso"]
+
+[node name="UiSounds" type="Node"]
+script = ExtResource("1_neil4")
+move_sound = ExtResource("2_3aj3u")
+pressed_sound = ExtResource("2_rt42k")
+pressed_disabled_sound = ExtResource("4_7ssso")

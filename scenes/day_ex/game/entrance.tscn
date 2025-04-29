@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://csorcwveuvxs8"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/game/entrance.gd" id="1_8u80q"]
+[ext_resource type="Script" uid="uid://cjb27ykwhoof1" path="res://scenes/day_ex/game/entrance.gd" id="1_8u80q"]
 [ext_resource type="Texture2D" uid="uid://bw3p7kq28i1hk" path="res://art/day_ex/day_ex_entrance.png" id="2_vbcrs"]
 
 [node name="Entrance" type="Node2D"]

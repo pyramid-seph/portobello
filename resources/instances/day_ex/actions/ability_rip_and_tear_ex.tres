@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://cd4sudyv4flcl"]
+[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://cd4sudyv4flcl"]
 
-[ext_resource type="Script" path="res://resources/battle_action.gd" id="1_2bx6u"]
-[ext_resource type="Texture2D" uid="uid://bwnicnaq423bt" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_0.png" id="1_l5hnq"]
-[ext_resource type="Texture2D" uid="uid://cis3h3wdylnun" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_1.png" id="2_5xqtj"]
-[ext_resource type="Texture2D" uid="uid://wa3tmaqx3j0m" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_2.png" id="3_2iofu"]
+[ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="1_2bx6u"]
+[ext_resource type="AudioStream" uid="uid://b0s4rc55g4lqw" path="res://audio/sfx/sfx_day_ex_attack_strong.wav" id="1_d4es1"]
+[ext_resource type="Texture2D" uid="uid://bwnicnaq423bt" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_0.png" id="2_fbar1"]
+[ext_resource type="Texture2D" uid="uid://cis3h3wdylnun" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_1.png" id="3_byomr"]
+[ext_resource type="Texture2D" uid="uid://wa3tmaqx3j0m" path="res://art/day_ex/battle_ability_player_rip_and_tear_ex_2.png" id="4_h0u4k"]
 
 [resource]
 script = ExtResource("1_2bx6u")
@@ -21,7 +22,8 @@ _status_effect_attack = 0
 _status_effect_defense = 0
 _status_effect_speed = 0
 _status_effect_love = false
-_sprites = Array[Texture2D]([ExtResource("1_l5hnq"), ExtResource("2_5xqtj"), ExtResource("3_2iofu")])
+_sprites = Array[Texture2D]([ExtResource("2_fbar1"), ExtResource("3_byomr"), ExtResource("4_h0u4k")])
 _duration_sec = 0.45
 _screen_flash_color = Color(1, 1, 1, 0)
 _shake_screen = true
+_sound = ExtResource("1_d4es1")

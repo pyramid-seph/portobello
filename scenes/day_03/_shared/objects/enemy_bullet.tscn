@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceehojvd7nkaa"]
 
-[ext_resource type="Script" path="res://scenes/day_03/_shared/objects/bullet.gd" id="2"]
+[ext_resource type="Script" uid="uid://bi0ksrjo43kx" path="res://scenes/day_03/_shared/objects/bullet.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://vv7hfytqeqxd" path="res://art/day_3/bullet_enemy.png" id="2_nd03d"]
-[ext_resource type="Script" path="res://scenes/_shared/hitbox.gd" id="3_gow7k"]
+[ext_resource type="Script" uid="uid://bv7id7yvoes87" path="res://scenes/_shared/hitbox.gd" id="3_gow7k"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(4, 14)

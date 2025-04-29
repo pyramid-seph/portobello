@@ -51,6 +51,7 @@ enum PhysicalDamage {
 @export var _duration_sec: float = 1.0
 @export var _screen_flash_color: Color = Color.TRANSPARENT
 @export var _shake_screen: bool
+@export var _sound: AudioStream
 
 
 func is_target_self() -> bool:
@@ -148,6 +149,10 @@ func get_screen_flash_color() -> Color:
 
 func shake_screen() -> bool:
 	return _shake_screen
+
+
+func get_sound() -> AudioStream:
+	return _sound
 
 
 func get_status_effect_attack() -> int:

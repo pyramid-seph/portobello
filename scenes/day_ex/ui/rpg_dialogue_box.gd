@@ -1,6 +1,21 @@
 extends Control
 
 
+const MUTE_CHARS: Array[String] = [
+	"*",
+	",",
+	".",
+	"'",
+	"\"",
+	":",
+	"¡",
+	"!",
+	"¿",
+	"?",
+	"",
+	" ",
+]
+
 var _dialogue_event: DialogueEvent
 var _curr_page: int = -1
 var _text_tween: Tween
@@ -54,7 +69,10 @@ func play(dialogue_event: DialogueEvent) -> void:
 
 func _next() -> void:
 	_curr_page += 1
-	if _dialogue_event and _dialogue_event.get_page_count() - 1 >= _curr_page:
+	
+	var can_continue: bool = _dialogue_event and \
+			_dialogue_event.get_page_count() - 1 >= _curr_page
+	if can_continue:
 		var page: DialoguePage = _dialogue_event.get_page(_curr_page)
 		_say(page)
 	else:
@@ -83,13 +101,34 @@ func _say(page: DialoguePage) -> void:
 	_text_tween = create_tween()
 	var message_length: float = _dialogue_label.get_total_character_count()
 	var duration: float = message_length / page.text_speed_chars_per_second
-	_text_tween.tween_property(
-			_dialogue_label, 
-			"visible_characters", 
+	_text_tween.tween_method(
+			_reveal_dialogue.bind(_dialogue_label, page.voice_pack),
+			0, 
 			message_length, 
 			duration)
 	await _text_tween.finished
 	_next_page_anim_player.play(&"next_page")
+
+
+func _reveal_dialogue(value: int, label: RichTextLabel,
+		voice_pack: VoicePack) -> void:
+	if value == label.visible_characters:
+		return
+	
+	label.visible_characters = value
+	
+	if not voice_pack:
+		return
+	
+	var sounds: Array[AudioStream] = voice_pack.sounds
+	if sounds.is_empty():
+		return
+	
+	var curr_char_idx: int = label.visible_characters - 1
+	if curr_char_idx > -1:
+		var curr_char: String = label.get_parsed_text()[curr_char_idx]
+		if curr_char not in MUTE_CHARS:
+			SoundManager.play_sound(sounds.pick_random())
 
 
 func _build_example_dialogue() -> DialogueEvent:

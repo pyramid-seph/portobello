@@ -2,6 +2,7 @@ extends Node
 
 const ScreenshotTool = preload("res://scenes/_shared/screenshot_tool.gd")
 const ScreenshotToolScn = preload("res://scenes/_shared/screenshot_tool.tscn")
+const FpsScn = preload("res://scenes/_shared/fps.tscn")
 
 enum Mode { 
 	SCORE_ATTACK,
@@ -37,8 +38,17 @@ func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	TranslationServer.set_locale(SaveDataManager.save_data.language)
 	
+	SoundManager.music_process_mode = Node.PROCESS_MODE_PAUSABLE
+	SoundManager.ambient_sound_process_mode = Node.PROCESS_MODE_PAUSABLE
+	var save_data := SaveDataManager.save_data as SaveData
+	if save_data.is_audio_enabled:
+		SoundUtils.unmute()
+	else:
+		SoundUtils.mute()
+	
 	if OS.is_debug_build():
 		add_child(ScreenshotToolScn.instantiate())
+		add_child(FpsScn.instantiate())
 
 
 func start(minigame: Minigame, allow_restart := false) -> void:

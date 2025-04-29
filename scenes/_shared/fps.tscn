@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://drg31ptsu2hl0"]
+
+[ext_resource type="Script" uid="uid://cnv0rfqkm7vv2" path="res://scenes/_shared/fps.gd" id="1_6o3is"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="1_witxt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j5vum"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tcxp4"]
+texture = SubResource("CanvasTexture_j5vum")
+modulate_color = Color(0, 0, 0, 0.713726)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 99
+script = ExtResource("1_6o3is")
+
+[node name="Fps" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Fps"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -23.0
+offset_right = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_witxt")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_tcxp4")
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1

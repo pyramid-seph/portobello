@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="BattleParty" load_steps=3 format=3 uid="uid://dopwgerrghlor"]
+[gd_resource type="Resource" script_class="BattleParty" load_steps=4 format=3 uid="uid://dopwgerrghlor"]
 
 [ext_resource type="Resource" uid="uid://dspfb8s7yxn8j" path="res://resources/instances/day_ex/chars/boss_blue_bird.tres" id="1_qgkj3"]
-[ext_resource type="Script" path="res://resources/battle_party.gd" id="2_qyxo7"]
+[ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="1_url7n"]
+[ext_resource type="Script" uid="uid://cwqxe8y3k6vpq" path="res://resources/battle_party.gd" id="2_qyxo7"]
 
 [resource]
 script = ExtResource("2_qyxo7")
-_front_row = Array[Resource("res://resources/fighter_data.gd")]([ExtResource("1_qgkj3")])
-_back_row = Array[Resource("res://resources/fighter_data.gd")]([])
+_front_row = Array[ExtResource("1_url7n")]([ExtResource("1_qgkj3")])
+_back_row = Array[ExtResource("1_url7n")]([])
 _weight = 1.0

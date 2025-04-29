@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cjrmeidj5ljgj"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/npcs/npc.gd" id="1_5wttw"]
+[ext_resource type="Script" uid="uid://chhmfr0lsss1f" path="res://scenes/day_ex/npcs/npc.gd" id="1_5wttw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e5m6"]
 size = Vector2(10, 10)
@@ -150,11 +150,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8v5i"]
 _data = {
-"RESET": SubResource("Animation_wkhs8"),
-"move_down": SubResource("Animation_16dcs"),
-"move_left": SubResource("Animation_8aucg"),
-"move_right": SubResource("Animation_5h2lu"),
-"move_up": SubResource("Animation_dsqvr")
+&"RESET": SubResource("Animation_wkhs8"),
+&"move_down": SubResource("Animation_16dcs"),
+&"move_left": SubResource("Animation_8aucg"),
+&"move_right": SubResource("Animation_5h2lu"),
+&"move_up": SubResource("Animation_dsqvr")
 }
 
 [node name="Npc" type="CharacterBody2D"]
@@ -177,7 +177,7 @@ vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_c8v5i")
+&"": SubResource("AnimationLibrary_c8v5i")
 }
 
 [node name="Timer" type="Timer" parent="."]

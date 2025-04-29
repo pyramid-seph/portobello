@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhty1re6kx2i2"]
+[gd_scene load_steps=9 format=3 uid="uid://dhty1re6kx2i2"]
 
 [ext_resource type="PackedScene" uid="uid://brj67hm7ypmn8" path="res://scenes/_shared/moving_item.tscn" id="1_srnir"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/items/stormy_cloud.gd" id="2_gle03"]
+[ext_resource type="Script" uid="uid://l2bxnabwcdoc" path="res://scenes/day_03/_shared/items/stormy_cloud.gd" id="2_gle03"]
+[ext_resource type="AudioStream" uid="uid://by5tgny246tjh" path="res://audio/sfx/sfx_day_03_player_eat_stormy_cloud.wav" id="3_ko1h0"]
 [ext_resource type="Texture2D" uid="uid://82mnd81a4in1" path="res://art/day_3/pickup_stormy_cloud_0.png" id="3_ou3mi"]
 [ext_resource type="Texture2D" uid="uid://chywriq5d53pr" path="res://art/day_3/pickup_stormy_cloud_1.png" id="4_xlu78"]
 [ext_resource type="Texture2D" uid="uid://o6sppwsbu2is" path="res://art/day_3/pickup_stormy_cloud_2.png" id="5_cokah"]
@@ -48,6 +49,7 @@ speed = 75.0
 movement_pattern = 1
 score_points_pick_up = 50
 randomize_starting_frame = true
+pick_up_sound = ExtResource("3_ko1h0")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_e1usk")

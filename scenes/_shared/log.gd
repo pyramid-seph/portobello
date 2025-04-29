@@ -7,6 +7,11 @@ static func d(msg: String) -> void:
 		print(msg)
 
 
+static func w(msg: String) -> void:
+	if OS.is_debug_build():
+		push_warning(msg)
+
+
 static func e(msg: String) -> void:
 	if OS.is_debug_build():
-		printerr(msg)
+		push_error(msg)

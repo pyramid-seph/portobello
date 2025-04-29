@@ -14,11 +14,15 @@ config/name="Bucho Busca Comida: The Portobello Mushroom Edition"
 config/name_localized={
 "es": "Bucho Busca Comida: Edición Hongo Portobello"
 }
-config/version="2.2.0"
+config/version="3.0.0"
 run/main_scene="res://scenes/_shared/title_screen/title_screen_scene.tscn"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-config/icon="res://art/_shared/ui_counter_lives.png"
+config/icon="uid://dmses76gqv1x"
+
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 [autoload]
 
@@ -30,6 +34,7 @@ TouchControllerManager="*res://autoloads/touch_controller_manager.gd"
 DialogueManager="*res://autoloads/dialogue_manager.gd"
 Game="*res://autoloads/game.gd"
 AutoMouseHide="*res://autoloads/auto_mouse_hide.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [display]
 
@@ -45,7 +50,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
 
 [gdnative]
 
@@ -174,9 +179,13 @@ pointing/emulate_mouse_from_touch=false
 locale/translation_remaps={
 "res://art/cutscenes/day_01_level_01_text_en.png": PackedStringArray("res://art/cutscenes/day_01_level_01_text_es.png:es"),
 "res://art/cutscenes/day_03_intro_0_text_en.png": PackedStringArray("res://art/cutscenes/day_03_intro_0_text_es.png:es"),
-"res://art/cutscenes/ending/ending_1_text_en.png": PackedStringArray("res://art/cutscenes/ending/ending_1_text_es.png:es")
+"res://art/cutscenes/ending/ending_1_text_en.png": PackedStringArray("res://art/cutscenes/ending/ending_1_text_es.png:es"),
+"res://audio/voice/va_postcredits_bucho_01_en.wav": PackedStringArray("res://audio/voice/va_postcredits_bucho_01_es.wav:es"),
+"res://audio/voice/va_postcredits_bucho_02_en.wav": PackedStringArray("res://audio/voice/va_postcredits_bucho_02_es.wav:es"),
+"res://audio/voice/va_postcredits_bucho_03_en.wav": PackedStringArray("res://audio/voice/va_postcredits_bucho_03_es.wav:es")
 }
 locale/translations=PackedStringArray("res://localization/bucho_portobello_localization.en.translation", "res://localization/bucho_portobello_localization.es.translation")
+locale/locale_filter_mode=0
 
 [layer_names]
 

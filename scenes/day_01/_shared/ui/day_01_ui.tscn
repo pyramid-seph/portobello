@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cnfahjhvwxeo2"]
 
-[ext_resource type="Script" path="res://scenes/day_01/_shared/ui/day_01_ui.gd" id="1_vfhqe"]
+[ext_resource type="Script" uid="uid://b7s1barv5hfeg" path="res://scenes/day_01/_shared/ui/day_01_ui.gd" id="1_vfhqe"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="2_dhqsk"]
 [ext_resource type="Texture2D" uid="uid://085ky11hend8" path="res://art/_shared/ui_counter_cat_food.png" id="4_4e12d"]
 [ext_resource type="Texture2D" uid="uid://b1ldw26sv5ng" path="res://art/_shared/ui_counter_time.png" id="5_tkprg"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgqrapqihdd85"]
 
 [ext_resource type="Texture2D" uid="uid://copb6xp56jikc" path="res://art/cutscenes/day_03_intro_0.png" id="1_2g317"]
-[ext_resource type="Script" path="res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.gd" id="1_i8prj"]
+[ext_resource type="Script" uid="uid://bn67861yh3kul" path="res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.gd" id="1_i8prj"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_sbdps"]
 [ext_resource type="Texture2D" uid="uid://bdfkee7jtg4ld" path="res://art/cutscenes/day_03_intro_0_text_en.png" id="4_jds0c"]
 
@@ -16,6 +16,9 @@ theme = ExtResource("3_sbdps")
 script = ExtResource("1_i8prj")
 _autostart = true
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -26,6 +29,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="DayLabel" type="Label" parent="ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

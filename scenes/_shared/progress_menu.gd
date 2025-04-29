@@ -20,6 +20,7 @@ const UNKNOWN_VALUE: String = "---"
 @onready var _label_6 := %TwoColLabel6
 @onready var _label_7 := %TwoColLabel7
 @onready var _label_8 := %TwoColLabel8
+@onready var _ui_sounds: UiSounds = $UiSounds
 
 
 func _init() -> void:
@@ -134,7 +135,7 @@ func _on_visibility_changed() -> void:
 		process_mode = Node.PROCESS_MODE_INHERIT
 		_record_type_selector.current_option_idx = SECTION_STARS
 		_on_record_type_label_current_option_index_changed(SECTION_STARS)
-		_record_type_selector.call_deferred("grab_focus")
+		_ui_sounds.focus_node_no_sound.call_deferred(_record_type_selector)
 	else:
 		process_mode = Node.PROCESS_MODE_DISABLED
 

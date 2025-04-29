@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=3 format=3 uid="uid://dw7hjoxcq5k5r"]
+[gd_resource type="Resource" script_class="BattleAction" load_steps=4 format=3 uid="uid://dw7hjoxcq5k5r"]
 
+[ext_resource type="AudioStream" uid="uid://b0s4rc55g4lqw" path="res://audio/sfx/sfx_day_ex_attack_strong.wav" id="1_fs8l3"]
 [ext_resource type="Texture2D" uid="uid://fu8cjwc6nsm0" path="res://art/day_ex/battle_ability_player_tackle.png" id="1_tyvnh"]
-[ext_resource type="Script" path="res://resources/battle_action.gd" id="1_u8gga"]
+[ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="1_u8gga"]
 
 [resource]
 script = ExtResource("1_u8gga")
@@ -23,3 +24,4 @@ _sprites = Array[Texture2D]([ExtResource("1_tyvnh")])
 _duration_sec = 0.3
 _screen_flash_color = Color(1, 0, 0, 1)
 _shake_screen = false
+_sound = ExtResource("1_fs8l3")

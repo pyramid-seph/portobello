@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cw16n0jtxmc6c"]
 
-[ext_resource type="Script" path="res://scenes/day_02/_shared/cutscenes/cutscene_day_02_02.gd" id="2_goiei"]
+[ext_resource type="Script" uid="uid://c1rimpul3s6wk" path="res://scenes/day_02/_shared/cutscenes/cutscene_day_02_02.gd" id="2_goiei"]
 [ext_resource type="Texture2D" uid="uid://jxt7qyck7yjd" path="res://art/cutscenes/day_02_outro_00.png" id="3_suly8"]
 [ext_resource type="Texture2D" uid="uid://bhe5yh2q53r6h" path="res://art/cutscenes/day_02_outro_01.png" id="4_ro7q7"]
 [ext_resource type="Texture2D" uid="uid://cq2fmhn5t3a2t" path="res://art/cutscenes/day_02_outro_02.png" id="5_bldve"]

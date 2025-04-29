@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crhr2l33jctpy"]
 
-[ext_resource type="Script" path="res://scenes/day_03/level_01/systems/drone_shoot_manager.gd" id="1_q5hex"]
+[ext_resource type="Script" uid="uid://dioxsli8ojscs" path="res://scenes/day_03/level_01/systems/drone_shoot_manager.gd" id="1_q5hex"]
 
 [node name="DroneShootManager" type="Node"]
 process_mode = 1

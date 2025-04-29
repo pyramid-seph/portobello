@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_vafp5"]
 [ext_resource type="StyleBox" uid="uid://dvn8b501xre75" path="res://resources/instances/h_selector_panel_style.tres" id="2_1hlqb"]
-[ext_resource type="Script" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
+[ext_resource type="Script" uid="uid://dc1tlpdew567m" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
 
 [node name="HSelector" type="PanelContainer"]
 offset_right = 132.0
@@ -12,6 +12,7 @@ mouse_filter = 2
 theme = ExtResource("1_vafp5")
 theme_override_styles/panel = ExtResource("2_1hlqb")
 script = ExtResource("2_psdub")
+selector_text = "Example"
 
 [node name="LabelContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -25,6 +26,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
+text = "Example "
 vertical_alignment = 1
 
 [node name="PrevOptionLabel" type="Label" parent="LabelContainer"]

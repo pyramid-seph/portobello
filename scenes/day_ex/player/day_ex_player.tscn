@@ -1,11 +1,11 @@
 [gd_scene load_steps=34 format=3 uid="uid://cbj80apo103mi"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/player/day_ex_player.gd" id="1_71xu7"]
+[ext_resource type="Script" uid="uid://mf78wgx7345m" path="res://scenes/day_ex/player/day_ex_player.gd" id="1_71xu7"]
 [ext_resource type="Texture2D" uid="uid://dwjh8xb78a5xe" path="res://art/day_ex/day_ex_player.png" id="2_klu10"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="8_cv2pg"]
 [ext_resource type="Texture2D" uid="uid://ceae1kgi6pj40" path="res://art/day_ex/day_ex_interact.png" id="9_2royx"]
-[ext_resource type="Script" path="res://scenes/day_ex/player/action_area_detector.gd" id="10_8vasx"]
-[ext_resource type="Script" path="res://scenes/day_ex/player/slippery_floor_detector.gd" id="11_pku6g"]
+[ext_resource type="Script" uid="uid://ba2swyouoovka" path="res://scenes/day_ex/player/action_area_detector.gd" id="10_8vasx"]
+[ext_resource type="Script" uid="uid://7lcdvsv0xywd" path="res://scenes/day_ex/player/slippery_floor_detector.gd" id="11_pku6g"]
 
 [sub_resource type="Animation" id="Animation_k2ftb"]
 length = 0.001
@@ -484,15 +484,15 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ksaq6"]
 _data = {
-"RESET": SubResource("Animation_k2ftb"),
-"idle_down": SubResource("Animation_16xw3"),
-"idle_left": SubResource("Animation_n0bwp"),
-"idle_right": SubResource("Animation_fui7r"),
-"idle_up": SubResource("Animation_8k2bf"),
-"move_down": SubResource("Animation_f312v"),
-"move_left": SubResource("Animation_k5vo1"),
-"move_right": SubResource("Animation_u0to7"),
-"move_up": SubResource("Animation_hytsa")
+&"RESET": SubResource("Animation_k2ftb"),
+&"idle_down": SubResource("Animation_16xw3"),
+&"idle_left": SubResource("Animation_n0bwp"),
+&"idle_right": SubResource("Animation_fui7r"),
+&"idle_up": SubResource("Animation_8k2bf"),
+&"move_down": SubResource("Animation_f312v"),
+&"move_left": SubResource("Animation_k5vo1"),
+&"move_right": SubResource("Animation_u0to7"),
+&"move_up": SubResource("Animation_hytsa")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_788i0"]
@@ -588,7 +588,7 @@ vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ksaq6")
+&"": SubResource("AnimationLibrary_ksaq6")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

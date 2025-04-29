@@ -14,6 +14,7 @@ var _boss: Node2D
 @onready var _player_abduction_timer := $PlayerAbductionTimer as Timer
 @onready var _start_marker := $"../World/WavePhaseStartMarker" as Marker2D
 @onready var _sea_bg := $"../World/Day03Bg"
+@onready var _boss_bgm: SimpleBgmPlayer = $SimpleBgmPlayer
 
 
 func prepare() -> void:
@@ -25,6 +26,7 @@ func prepare() -> void:
 	_ui.change_bars_visibility(false)
 	_ui.change_score_visibility(false)
 	_ui.change_lives_visibility(false)
+	_ui.hide_level_name()
 
 
 func start() -> void:
@@ -94,7 +96,9 @@ func _start_boss_fight() -> void:
 	_player.start_timed_invincibility()
 	_player.is_input_enabled = true
 	_boss.is_attacking = true
+	_boss_bgm.play()
 
 
 func _on_motership_died() -> void:
+	_boss_bgm.stop()
 	completed.emit()

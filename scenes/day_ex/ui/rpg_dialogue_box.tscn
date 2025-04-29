@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://clyn8nlxsbf12"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/ui/rpg_dialogue_box.gd" id="1_f0hiq"]
+[ext_resource type="Script" uid="uid://hfyq1gsn65ew" path="res://scenes/day_ex/ui/rpg_dialogue_box.gd" id="1_f0hiq"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_ukv3d"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="2_xxf2d"]
 [ext_resource type="Texture2D" uid="uid://55kwu7la68t5" path="res://art/day_ex/rpg_dialog_box_arrow_next.png" id="3_xp1y4"]
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ioml"]
 _data = {
-"RESET": SubResource("Animation_2bwcl"),
-"next_page": SubResource("Animation_pr5es")
+&"RESET": SubResource("Animation_2bwcl"),
+&"next_page": SubResource("Animation_pr5es")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekldn"]
@@ -69,7 +69,7 @@ script = ExtResource("1_f0hiq")
 
 [node name="NextPageAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1ioml")
+&"": SubResource("AnimationLibrary_1ioml")
 }
 autoplay = "RESET"
 

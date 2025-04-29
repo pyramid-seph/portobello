@@ -1,4 +1,4 @@
--,en,es
+keys,en,es
 COMMON_OPTIONS_EXIT,Quit game,Salir
 COMMON_OPTIONS_NO,No,No
 COMMON_OPTIONS_OK,OK,OK
@@ -6,6 +6,7 @@ COMMON_OPTIONS_YES,Yes,Sí
 CONFIRM_DELETE_DATA,Delete all data?,¿Borrar todos\nlos datos?
 CONFIRM_GIVE_UP,All progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
 CONFIRM_QUIT,Quit game?,¿Salir del juego?
+CREDITS_AUDIO,Audio,Audio
 CREDITS_BUCHO_TALKS_0,Se...,Se -
 CREDITS_BUCHO_TALKS_1,Se -,Se - cue
 CREDITS_BUCHO_TALKS_2,Se - quel,Se - cue - la
@@ -100,19 +101,19 @@ DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_07,Do you need something?,¿Querías algo?
 DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_08,Oh! You wanna go out?,¡Oh! ¿Deseas salir?
 DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_09,Someone has been able to use this door recently.,Alguien recién ha sido capaz de usar esta puerta.
 DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_10,He's in her room. Let me talk to him.,Está en el cuarto de la ama. Hablo con él y regreso.
-DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_11,"Nope, he doesn't want to lend me his ""secret"" [color=red]backyard key[/color]. He says he went through a lot of trouble to get it.","Nop, no quiere prestarme su [color=red]llave del patio[/color] ""secreta"". Dice que le costó mucho obtenerla."
+DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_11,"Nope, he doesn't want to lend me his ""secret"" [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img][color=red]backyard key[/color]. He says he went through a lot of trouble to get it.","Nop, no quiere prestarme su [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img][color=red]llave del patio[/color] ""secreta"". Dice que le costó mucho obtenerla."
 DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_12,Maybe you can convince him.,Tal vez tú puedas convencerlo.
 DIALOGUE_DAY_EX_KITCHEN_EVENT_01_PAGE_13,Just be careful: the floor is super slippery.,Sólo ten cuidado: el piso es muy resbaloso.
 DIALOGUE_DAY_EX_KITCHEN_EVENT_02_PAGE_01,I wonder what's that funny red liquid by the desk?,¿Qué será ese liquido rojizo que está por la mesa de la ama?
-DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_01,"Oh, you got the key! Let me open the door for you.",¡Conseguiste la llave! Permíteme abrirte la puerta.
+DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_01,"Oh, you got the [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img]key! Let me open the door for you.",¡Conseguiste la [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img]llave! Permíteme abrirte la puerta.
 DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_02,"Now go and eat the world, young one!","¡Ahora ve y cómete al mundo, jovencito!"
-DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_01,So you want my stol...,Así que quieres mi llave robad...
-DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_02,I mean... secret key?,¡Secreta! ¡Secreta!
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_01,So you want my stol...,Así que quieres mi [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img]llave robad...
+DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_02,I mean... secret [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img]key?,¡Secreta! ¡Secreta!
 DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_03,Sure! Just because you help me got it.,"¡Claro!, pero sólo porque me ayudaste."
 DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_04,You did a great job devouring our master.,Hiciste un gran trabajo al devorarte a la ama.
 DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_05,Here! You can take it...,¡Anda! ¡Toma la llave...
 DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_06,...from my cold dead claws!,...sobre mi cadáver!
-DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01,Bucho got the [color=red]key to the backyard[/color]!,Bucho obtuvo la [color=red]llave del patio[/color]
+DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01,Bucho got the [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img][color=red]key to the backyard[/color]!,Bucho obtuvo la [img=valign]res://art/day_ex/dialogue_item_key_backyard.png[/img][color=red]llave del patio[/color]
 DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_01,There was a parrot here.,Aquí había un loro.
 DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_02,It's gone now.,Ya no más.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
@@ -126,10 +127,11 @@ INFO_TOUCHSCREEN_SUPPORT,"touchscreen,","pantalla táctil,"
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
 LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_DAY_01_DIZZY,Dizzy,Mareado
-LEVEL_DAY_01_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_DAY_01_LEVEL_NAME_STORY_MODE,Dish {level_pos} of {total_levels},Plato {level_pos} de {total_levels}
 LEVEL_DAY_02_LEVEL_NAME_SCORE_ATTACK,Buffet {level_pos},Buffet {level_pos}
-LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos} of {total_levels},Plato {level_pos} de {total_levels}
 LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
+LEVEL_DAY_03_LEVEL_NAME_STORY_MODE,Dish {level_pos} of {total_levels},Plato {level_pos} de {total_levels}
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 LEVEL_START_LINE_0_DAY_EX,Midnight snack!,¡Antojo nocturno!
@@ -241,7 +243,7 @@ RPG_BATTLE_ENEMY_NAME_LIZARD,Lizard,Lagartija
 RPG_BATTLE_ENEMY_NAME_MOUSE,Mouse,Ratón
 RPG_BATTLE_ENEMY_NAME_PARROT_BLUE,Blue Parrot,Loro Azul
 RPG_BATTLE_ENEMY_NAME_PARROT_YELLOW,Yellow Parrot,Loro Amarillo
-RPG_BATTLE_INFO_ABILITY_CURE,Recover some HP by eating 1 scrap.,Recupera algo de HP al comer 1 trozo de sobras.
+RPG_BATTLE_INFO_ABILITY_CURE,Recover some HP by eating 1 [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]scrap.,Recupera algo de HP al comer 1 [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]trozo de sobras.
 RPG_BATTLE_INFO_ABILITY_DESPAIR,"Strengthens 1 enemy's ATK, but inflicts them with POISON.","Aumenta el ATQ de 1enemigo, pero le inflige VENENO."
 RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts 1 enemy with LOVE.,Enamora a 1enemigo.
 RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a la mitad el HP de 1enemigo.
@@ -255,7 +257,7 @@ RPG_BATTLE_INFO_ATTACK_SCRATCH,Weak attack. Great accuracy.,Ataque débil. Difí
 RPG_BATTLE_INFO_COMMAND_ABILITY,Perform an ability that consumes 1 MP.,Realizar una habilidad que consume 1 MP.
 RPG_BATTLE_INFO_COMMAND_ATTACK,Attack 1 enemy.,Atacar a 1 enemigo.
 RPG_BATTLE_INFO_COMMAND_BACK,Go back to command selection.,Regresar a seleccionar comando.
-RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener sobras al ganar. Eficaz contra enemigos muy debilitados.
+RPG_BATTLE_INFO_COMMAND_EAT,Defeat 1 enemy to gain [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]scraps at the end of the battle. Effective against very weakened enemies.,Derrotar a 1 enemigo para obtener [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]sobras al ganar. Eficaz contra enemigos muy debilitados.
 RPG_BATTLE_INFO_COMMAND_FLEE,Try to escape from this battle.,Intentar escapar de la batalla.
 RPG_BATTLE_NARRATION_BATTLE_FAILURE,[p][center]Bucho lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p],[p][center]¡Bucho perdió![/center][/p][p] [/p][p][center]¡Qué indigestión![/center][/p]
 RPG_BATTLE_NARRATION_BATTLE_STARTED,[p][center]This looks delicious![/center][/p][p] [/p][p][center]Bon appétit![/center][/p],[p][center]¡Se ve delicioso![/center][/p][p] [/p][p][center]¡Buen provecho![/center][/p]
@@ -287,10 +289,10 @@ RPG_BATTLE_NARRATION_LEVEL_UP_MAX_MP_UP,New max MP is {points}!,¡Max MP aumenta
 RPG_BATTLE_NARRATION_LEVEL_UP_SPEED_UP,SPD +{points}!,¡VEL +{points}!
 RPG_BATTLE_NARRATION_LOOT_EXP_MANY,Bucho gets {exp} experience points.,Bucho obtiene {exp} puntos de experiencia.
 RPG_BATTLE_NARRATION_LOOT_EXP_ONE,Bucho gets {exp} experience point.,Bucho obtiene {exp} punto de experiencia.
-RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY,Bucho gets {scraps} scraps.,Bucho obtiene {scraps} sobras.
-RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE,Bucho gets {scraps} scrap.,Bucho obtiene {scraps} sobra.
+RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY,Bucho gets {scraps} [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]scraps.,Bucho obtiene {scraps} [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]sobras.
+RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE,Bucho gets {scraps} [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]scrap.,Bucho obtiene {scraps} [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]sobra.
 RPG_BATTLE_NARRATION_NOT_ENOUGH_MP,{target} has not enough MP to do this.,{target} no tiene el MP necesario para esto..
-RPG_BATTLE_NARRATION_NOT_ENOUGH_TREATS,{target} has not enough scraps to do this.,{target} no tiene las croquetas necesarias para esto.
+RPG_BATTLE_NARRATION_NOT_ENOUGH_TREATS,{target} has not enough [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]scraps to do this.,{target} no tiene las [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]sobras necesarias para esto.
 RPG_BATTLE_NARRATION_STAT_ATK_BUFF,{target}'s ATK increases by {points}.,El ATQ de {target} sube {points}.
 RPG_BATTLE_NARRATION_STAT_ATK_DEBUFF,{target}'s ATK decreases by {points}.,El ATQ de {target} baja {points}.
 RPG_BATTLE_NARRATION_STAT_ATK_MAXIMIZED,{target}'s ATK is at its maximum.,El ATQ de {target} está al máximo.

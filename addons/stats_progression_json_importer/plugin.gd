@@ -32,7 +32,7 @@ func _open_dmg_previewer_window() -> void:
 				_close_dmg_previewer_window)
 		EditorInterface.popup_dialog_centered(_dmg_previewer_window)
 	else:
-		_dmg_previewer_window.call_deferred("grab_focus")
+		_dmg_previewer_window.grab_focus.call_deferred()
 
 
 func _close_dmg_previewer_window() -> void:

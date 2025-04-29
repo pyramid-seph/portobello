@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvns5pk0w8s1g"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/game/teleporter_action_area.gd" id="1_ehgwq"]
+[ext_resource type="Script" uid="uid://bm2bypsdmvdxs" path="res://scenes/day_ex/game/teleporter_action_area.gd" id="1_ehgwq"]
 
 [node name="TeleporterActionArea" type="Area2D"]
 position = Vector2(411, 208)

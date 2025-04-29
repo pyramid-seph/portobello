@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://d0x0fhmsb17ts"]
 
-[ext_resource type="Script" path="res://scenes/day_02/_shared/player/day_02_player.gd" id="1_18evh"]
+[ext_resource type="Script" uid="uid://y8cuv4gjwqc4" path="res://scenes/day_02/_shared/player/day_02_player.gd" id="1_18evh"]
 [ext_resource type="Texture2D" uid="uid://bwdibri83ew7" path="res://art/day_2/day_02_player_0.png" id="2_v6tjh"]
 [ext_resource type="Texture2D" uid="uid://c0ucesno6okvn" path="res://art/day_2/day_02_player_1.png" id="3_duspt"]
 [ext_resource type="Texture2D" uid="uid://bq13ghd8wb778" path="res://art/day_2/day_02_player_2.png" id="4_qhk02"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ksol15gs7fuf" path="res://art/day_2/day_02_player_dead_5.png" id="11_hvjuf"]
 [ext_resource type="Texture2D" uid="uid://bwlc0ekoyuk5w" path="res://art/day_2/day_02_player_dead_6.png" id="12_x8xgp"]
 [ext_resource type="Texture2D" uid="uid://cplnfpknckkpc" path="res://art/day_2/day_02_player_dead_7.png" id="13_i46ro"]
-[ext_resource type="Script" path="res://scenes/day_02/_shared/player/day_02_player_movement_debug.gd" id="14_2r3w2"]
+[ext_resource type="Script" uid="uid://4rsw71rfe8f8" path="res://scenes/day_02/_shared/player/day_02_player_movement_debug.gd" id="14_2r3w2"]
 [ext_resource type="Texture2D" uid="uid://4wq4kjwsblmt" path="res://art/day_2/cat_food_super.png" id="14_nxlt4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tdrqc"]

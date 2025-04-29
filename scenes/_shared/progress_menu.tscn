@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckjfj1kxcsge6"]
+[gd_scene load_steps=9 format=3 uid="uid://ckjfj1kxcsge6"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_g671f"]
-[ext_resource type="Script" path="res://scenes/_shared/progress_menu.gd" id="2_e35o3"]
+[ext_resource type="Script" uid="uid://815ea5s2ydui" path="res://scenes/_shared/progress_menu.gd" id="2_e35o3"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="2_s01o1"]
+[ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="3_hq30q"]
 [ext_resource type="PackedScene" uid="uid://t4mwxni2f1u5" path="res://scenes/_shared/ui/two_col_label.tscn" id="4_bducy"]
 [ext_resource type="StyleBox" uid="uid://deqo7rbmjjsvj" path="res://resources/instances/odd_high_score_item.tres" id="5_yate7"]
 [ext_resource type="StyleBox" uid="uid://c2d5slbtpw4ix" path="res://resources/instances/even_high_score_item.tres" id="6_736vx"]
@@ -22,6 +23,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_g671f")
 script = ExtResource("2_e35o3")
+
+[node name="UiSounds" parent="." instance=ExtResource("3_hq30q")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -50,13 +53,18 @@ layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../MarginContainer/GoBackBtn")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qykqa")
+selector_text = ""
 _options = ["MENU_PROGRESS_STARS", "MENU_PROGRESS_HIGH_SCORES"]
 loop_options = false
+selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="LabelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector" index="0"]
 size_flags_horizontal = 4
 alignment = 1
+
+[node name="NameLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="0"]
+text = ""
 
 [node name="OptionLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="2"]
 text = "MENU_PROGRESS_STARS"

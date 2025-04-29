@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvvm78qgp2fbl"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/ui/quest_indicator.gd" id="1_pfojr"]
+[ext_resource type="Script" uid="uid://brse65wrlnrqi" path="res://scenes/day_ex/ui/quest_indicator.gd" id="1_pfojr"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_r57jh"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="2_p7do0"]
 
@@ -61,8 +61,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ij5l"]
 _data = {
-"RESET": SubResource("Animation_5pvei"),
-"appear": SubResource("Animation_2qd8t")
+&"RESET": SubResource("Animation_5pvei"),
+&"appear": SubResource("Animation_2qd8t")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_603kd"]
@@ -87,7 +87,7 @@ script = ExtResource("1_pfojr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_7ij5l")
+&"": SubResource("AnimationLibrary_7ij5l")
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

@@ -22,4 +22,5 @@ mono_crash.*.json
 *~
 
 # Personal stuff
-__tmpd
+_tmpd
+_builds

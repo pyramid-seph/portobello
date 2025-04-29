@@ -1,11 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddt6mk30fvhmd"]
+[gd_scene load_steps=10 format=3 uid="uid://ddt6mk30fvhmd"]
 
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="1_5ep86"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_wud83"]
-[ext_resource type="Script" path="res://scenes/_shared/settings_menu/settings_menu.gd" id="2_acgwn"]
+[ext_resource type="Script" uid="uid://b2p3rs45hd37j" path="res://scenes/_shared/settings_menu/settings_menu.gd" id="2_acgwn"]
+[ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="4_hjm68"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="4_swkte"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pavtr"]
+resource_local_to_scene = true
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpxjx"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -35,18 +42,23 @@ script = ExtResource("2_acgwn")
 
 [node name="SettingsMenuPanel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(204, 0)
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = 20.0
-offset_top = 133.0
+offset_top = -31.5
 offset_right = -20.0
-offset_bottom = -34.0
+offset_bottom = 118.5
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_wud83")
+
+[node name="UiSounds" parent="SettingsMenuPanel" instance=ExtResource("4_hjm68")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenuPanel"]
 layout_mode = 2
@@ -55,22 +67,36 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../GoBackBtn")
-focus_neighbor_bottom = NodePath("../AutofireSelector")
+focus_neighbor_bottom = NodePath("../AudioSelector")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pavtr")
 selector_text = "MENU_SETTINGS_VIBRATE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 loop_options = false
+selection_disabled = true
+focus_color = Color(0.647059, 0.862745, 0.878431, 1)
+
+[node name="AudioSelector" parent="SettingsMenuPanel/VBoxContainer" instance=ExtResource("1_5ep86")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../VibrationSelector")
+focus_neighbor_bottom = NodePath("../AutofireSelector")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qpxjx")
+selector_text = "MENU_SETTINGS_AUDIO"
+_options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
+loop_options = false
+selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="AutofireSelector" parent="SettingsMenuPanel/VBoxContainer" instance=ExtResource("1_5ep86")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../VibrationSelector")
+focus_neighbor_top = NodePath("../AudioSelector")
 focus_neighbor_bottom = NodePath("../LanguageSelector")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pw7gm")
 selector_text = "MENU_SETTINGS_AUTO_FIRE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 loop_options = false
+selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="LanguageSelector" parent="SettingsMenuPanel/VBoxContainer" instance=ExtResource("1_5ep86")]
@@ -82,6 +108,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pno8u")
 selector_text = "MENU_SETTINGS_LANGUAGE"
 _options = ["MENU_SETTINGS_LANGUAGE_OPTION_EN", "MENU_SETTINGS_LANGUAGE_OPTION_ES"]
 loop_options = false
+selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
 [node name="EraseDataBtn" type="Button" parent="SettingsMenuPanel/VBoxContainer"]
@@ -132,6 +159,7 @@ hide_shadow = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="current_option_index_changed" from="SettingsMenuPanel/VBoxContainer/VibrationSelector" to="." method="_on_vibration_selector_current_option_index_changed"]
+[connection signal="current_option_index_changed" from="SettingsMenuPanel/VBoxContainer/AudioSelector" to="." method="_on_audio_selector_current_option_index_changed"]
 [connection signal="current_option_index_changed" from="SettingsMenuPanel/VBoxContainer/LanguageSelector" to="." method="_on_language_selector_current_option_index_changed"]
 [connection signal="focus_entered" from="SettingsMenuPanel/VBoxContainer/EraseDataBtn" to="." method="_on_erase_data_btn_focus_entered"]
 [connection signal="focus_exited" from="SettingsMenuPanel/VBoxContainer/EraseDataBtn" to="." method="_on_erase_data_btn_focus_exited"]

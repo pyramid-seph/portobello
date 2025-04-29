@@ -13,17 +13,17 @@ const BloodSplatScene = preload("res://scenes/day_ex/objects/blood_splat.tscn")
 
 const NORMAL_ANIM_SPEED_SCALE: float = 1.0
 const SCARED_ANIM_SPEED_SCALE: float = 10.0
-const DIRECTION_VECTORS: Dictionary = {
+const DIRECTION_VECTORS: Dictionary[Direction, Vector2] = {
 	Direction.DOWN: Vector2.DOWN,
 	Direction.LEFT: Vector2.LEFT,
 	Direction.UP: Vector2.UP,
 	Direction.RIGHT: Vector2.RIGHT,
 }
-const VECTOR_ANIMS: Dictionary = {
-	Vector2.DOWN: "move_down",
-	Vector2.LEFT: "move_left",
-	Vector2.UP: "move_up",
-	Vector2.RIGHT: "move_right",
+const VECTOR_ANIMS: Dictionary[Vector2, StringName] = {
+	Vector2.DOWN: &"move_down",
+	Vector2.LEFT: &"move_left",
+	Vector2.UP: &"move_up",
+	Vector2.RIGHT: &"move_right",
 }
 
 @export var _sprite_sheet: Texture2D:
@@ -34,10 +34,14 @@ const VECTOR_ANIMS: Dictionary = {
 	set(value):
 		_initial_facing_dir = value
 		_on_initial_facing_dir_set()
+@export_group("Panic Animation", "_panic")
 @export var _panic_speed: float = 100
+@export var _panic_sound: AudioStream
+@export_range(0.1, 1.0) var _panic_scream_delay_sec: float = 0.5
 
 var _speed: float
 var _direction: Vector2
+var _scream_tween: Tween
 
 @onready var _timer: Timer = $Timer
 @onready var _sprite_2d: Sprite2D = $Sprite2D
@@ -68,16 +72,19 @@ func _physics_process(delta: float) -> void:
 
 func get_scared(is_scared: bool) -> void:
 	if is_scared:
+		_start_screaming()
 		_animation_player.speed_scale = SCARED_ANIM_SPEED_SCALE
 		_speed = _panic_speed
 		_start_panic_move_timer()
 	else:
+		_stop_screaming()
 		_animation_player.speed_scale = NORMAL_ANIM_SPEED_SCALE
 		_speed = 0.0
 		_timer.stop()
 
 
 func die() -> void:
+	_stop_screaming()
 	var parent := get_parent() as Node2D
 	if parent:
 		var blood_splat := BloodSplatScene.instantiate()
@@ -111,6 +118,23 @@ func _change_to_random_move_dir() -> void:
 func _start_panic_move_timer() -> void:
 	var duration: float = randf_range(0.1, 0.4)
 	_timer.start(duration)
+
+
+func _scream() -> void:
+	SoundManager.play_sound(_panic_sound)
+
+
+func _stop_screaming() -> void:
+	if _scream_tween:
+		_scream_tween.kill()
+	_scream_tween = null
+
+
+func _start_screaming() -> void:
+	_stop_screaming()
+	_scream_tween = create_tween()
+	_scream_tween.set_loops()
+	_scream_tween.tween_callback(_scream).set_delay(_panic_scream_delay_sec)
 
 
 func _on_sprite_sheet_set() -> void:

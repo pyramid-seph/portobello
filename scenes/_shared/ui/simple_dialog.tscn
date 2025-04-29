@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://boe7wya5y54mq"]
+[gd_scene load_steps=6 format=3 uid="uid://boe7wya5y54mq"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_760co"]
-[ext_resource type="Script" path="res://scenes/_shared/ui/simple_dialog.gd" id="1_o20yj"]
+[ext_resource type="Script" uid="uid://0xqxc1ynwyt3" path="res://scenes/_shared/ui/simple_dialog.gd" id="1_o20yj"]
+[ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="3_lsdg3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlpij"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -28,6 +29,8 @@ grow_vertical = 2
 theme = ExtResource("1_760co")
 theme_override_styles/panel = SubResource("StyleBoxFlat_mlpij")
 script = ExtResource("1_o20yj")
+
+[node name="UiSounds" parent="." instance=ExtResource("3_lsdg3")]
 
 [node name="DialogContainer" type="PanelContainer" parent="."]
 layout_mode = 2

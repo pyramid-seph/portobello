@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctrwrc3gdhha2"]
 
-[ext_resource type="Script" path="res://scenes/day_ex/game/exit.gd" id="1_hl1yl"]
+[ext_resource type="Script" uid="uid://b72j2rb3jcs5" path="res://scenes/day_ex/game/exit.gd" id="1_hl1yl"]
 [ext_resource type="Texture2D" uid="uid://dc5w2o4rmxs81" path="res://art/day_ex/day_ex_exit.png" id="2_bkfck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vivgk"]

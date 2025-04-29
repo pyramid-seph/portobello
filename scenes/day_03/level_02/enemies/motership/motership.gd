@@ -3,6 +3,8 @@ extends Node2D
 
 signal died
 
+const SFX_MOTERSHIP_AMBIANCE = preload("res://audio/ambience/sfx_motership_ambience.wav")
+
 @export var _initial_hp: int = 1
 @export var is_attacking: bool:
 	set(value):
@@ -43,9 +45,14 @@ var _hp: int = 1:
 
 
 func _ready() -> void:
+	SoundManager.play_ambient_sound(SFX_MOTERSHIP_AMBIANCE, 0.7)
 	_hp = _initial_hp
 	_on_player_set()
 	_on_is_attacking_changed()
+
+
+func _exit_tree() -> void:
+	SoundManager.stop_ambient_sound(SFX_MOTERSHIP_AMBIANCE)
 
 
 func is_dead() -> bool:
@@ -69,6 +76,7 @@ func introduce_alien() -> void:
 	_dialogue_box.start()
 	await _dialogue_box.finished
 	_alien_hologram.visible = false
+	SoundManager.stop_ambient_sound(SFX_MOTERSHIP_AMBIANCE, 1.0)
 
 
 func stop_exploding() -> void:

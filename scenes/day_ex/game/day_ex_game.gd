@@ -4,6 +4,8 @@ extends Node
 const DayExUi = preload("res://scenes/day_ex/ui/day_ex_ui.gd")
 const RandomBattleSystem = preload("res://scenes/day_ex/game/random_battle_system.gd")
 const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
+const DayExBgm = preload("res://scenes/day_ex/game/day_ex_bgm_temp.gd")
+
 
 @export_group("Debug", "_debug")
 @export var _debug_skip_random_battles: bool:
@@ -14,6 +16,7 @@ const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")
 @onready var _random_battle_system: RandomBattleSystem = %RandomBattleSystem
 @onready var _player: CharacterBody2D = %DayExPlayer
 @onready var _battle_screen: BattleScreen = $BattleScreen
+@onready var _bgm: DayExBgm = $Systems/DayExBgm
 @onready var _ui: DayExUi = %DayExUi
 @onready var _field: Node2D = $World/TiledWorld
 @onready var _timer: Timer = $Timer
@@ -24,7 +27,12 @@ func _ready() -> void:
 	_start_game()
 
 
+func _exit_tree() -> void:
+	SoundUtils.stop_all_sfx()
+
+
 func _start_game() -> void:
+	_bgm.play_exploration_bgm()
 	_on_quest_manager_progress_made()
 	_player.set_process_unhandled_input(false)
 	_ui.hide_quest_indicator()

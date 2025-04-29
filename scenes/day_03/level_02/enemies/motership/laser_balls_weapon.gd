@@ -1,5 +1,6 @@
 extends Node2D
 
+const SFX_CANNONS_FIRED = preload("res://audio/sfx/sfx_motership_laser_ball_cannon_fired.wav")
 
 @export var _cooldown: float = 1.0
 @export var is_active: bool:
@@ -15,12 +16,15 @@ var _pattern: Array[LaserBallsCannon]
 @onready var _cannon_1 := $LaserBallsCannon1
 @onready var _cannon_2 := $LaserBallsCannon2
 @onready var _cannon_3 := $LaserBallsCannon3
-@onready var _timer := $Timer as Timer
-@onready var _is_ready: bool = true
+@onready var _timer: Timer = $Timer
 
 
 func _ready() -> void:
 	_on_is_active_changed()
+
+
+func _exit_tree() -> void:
+	SoundManager.stop_sound(SFX_CANNONS_FIRED)
 
 
 func _activate() -> void:
@@ -37,7 +41,7 @@ func _deactivate() -> void:
 
 
 func _on_is_active_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	if is_active:
@@ -48,7 +52,7 @@ func _on_is_active_changed() -> void:
 
 func _randomize_cannons_charge() -> void:
 	_pattern.clear()
-	var pattern = randi() % 13
+	var pattern: int = randi() % 13
 	match pattern:
 		0:
 			_pattern.append(_cannon_0)
@@ -90,17 +94,19 @@ func _randomize_cannons_charge() -> void:
 			_pattern.append(_cannon_3)
 
 
-func _fire_charged_cannon(cannon: Node) -> void:
-	cannon.fire()
-
-
 func _on_timer_timeout() -> void:
 	_randomize_cannons_charge()
+	
+	var charge_duration_sec: float = 0.0
+	if not _pattern.is_empty():
+		charge_duration_sec = _pattern[0].get_charging_duration_sec()
+	
 	for cannon: LaserBallsCannon in _pattern:
 		cannon.charge()
 
 
 func _on_laser_balls_cannon_target_detected(_target: Node2D) -> void:
+	SoundManager.play_sound(SFX_CANNONS_FIRED)
 	for cannon: LaserBallsCannon in _pattern:
 		cannon.fire()
 
