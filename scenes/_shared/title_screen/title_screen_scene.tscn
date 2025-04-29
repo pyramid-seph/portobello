@@ -86,7 +86,7 @@ metadata/_edit_lock_ = true
 [node name="TitleScreenBg" type="Parallax2D" parent="TitleScreen"]
 unique_name_in_owner = true
 repeat_size = Vector2(60, 0)
-autoscroll = Vector2(20, 0)
+autoscroll = Vector2(10, 0)
 script = ExtResource("2_prsyc")
 game_texture = ExtResource("3_of2ca")
 game_color = Color(0.486275, 0.882353, 0.580392, 1)
