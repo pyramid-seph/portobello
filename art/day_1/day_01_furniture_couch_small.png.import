@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://dw4vtvfyouxnf"
 path="res://.godot/imported/day_01_furniture_couch_small.png-6637b0b6daa89b9c9f6dd2a13fdb29e3.res"
-group_file="res://art/day_1/_atlas_day_01_object.png"
+group_file="res://art/day_1/_atlas_day_01_tile.png"
 valid=true
 [deps]
 
