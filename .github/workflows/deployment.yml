@@ -1,0 +1,167 @@
+name: Deployment (production)
+
+on:
+  push:
+    branches: ["chore/cicd"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  GODOT_VERSION: "4.4.1"
+  GODOT_RELEASE_NAME: "stable"
+
+jobs:
+  # compile-export-templates-web:
+    # runs-on: "ubuntu-24.04"
+    # env: 
+    #   EMSCRIPTEN_VERSION: "4.0.9"
+    #   BUILD_PROFILE_PATH: "${{ github.workspace }}/main/custom_profile.build"
+    
+    # steps:
+    #   - uses: actions/checkout@v4
+    #     with:
+    #       path: main
+      
+    #   - uses: actions/checkout@v4
+    #     with:
+    #       repository: emscripten-core/emsdk
+    #       path: emsdk
+
+    #   - uses: actions/checkout@v4
+    #     with:
+    #       repository: godotengine/godot
+    #       ref: ${{ env.GODOT_VERSION }}-${{ env.GODOT_RELEASE_NAME }}
+    #       path: godotengine
+
+    #   - name: Install SCons
+    #     run: sudo apt-get update -qq && sudo apt-get install -qq scons
+
+    #   - name: Install emscripten
+    #     working-directory: emsdk
+    #     run: |
+    #       ./emsdk install ${{ env.EMSCRIPTEN_VERSION }}
+    #       ./emsdk activate ${{ env.EMSCRIPTEN_VERSION }} --permanent
+    #       echo "${{ github.workspace }}/emsdk" >> "$GITHUB_PATH"
+    #       echo "${{ github.workspace }}/emsdk/upstream/emscripten" >> "$GITHUB_PATH"
+
+    #   - name: Compile custom web build template
+    #     working-directory: godotengine
+    #     run: |
+    #       scons platform=web target=template_release optimize=size use_volk=no \
+    #           tools=no deprecated=no threads=no \
+    #           build_profile=${{ env.BUILD_PROFILE_PATH }}
+    #       mkdir -vp ../export_templates/
+    #       mv -v bin/godot.web.template_release.wasm32.nothreads.zip \
+    #           ../export_templates/web_nothreads_release.zip
+
+    #   - uses: actions/upload-artifact@v4
+    #     with:
+    #       name: export_templates
+    #       path: ${{ github.workspace }}/export_templates/
+    #       retention-days: 1
+
+  export-web:
+    runs-on: "ubuntu-24.04"
+    #needs: compile-export-templates-web
+    env:
+      BUTLER_VERSION: "15.24.0"
+      EXPORT_PRESET_NAME: "Web"
+  
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: main
+
+      - uses: actions/download-artifact@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update -qq && sudo apt-get install -qq binaryen
+      
+      - name: Install export templates
+        env:
+          GODOT_RELEASE: ${{ env.GODOT_VERSION }}-${{ env.GODOT_RELEASE_NAME }}
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_RELEASE_NAME }}
+          if [[ -d export_templates ]]; then
+            echo Installing custom export templates...
+            mv -v export_templates/* ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_RELEASE_NAME }}
+          else
+            echo Installing default export templates...
+            wget -q https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_RELEASE }}/Godot_v${{ env.GODOT_RELEASE }}_export_templates.tpz
+            unzip -q Godot_v${{ env.GODOT_RELEASE }}_export_templates.tpz
+            mv -v templates/* ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_RELEASE_NAME }}
+            rm -r Godot_v${{ env.GODOT_RELEASE }}_export_templates.tpz
+          fi
+      
+      - name: Download Godot
+        env:
+          GODOT_RELEASE: ${{ env.GODOT_VERSION }}-${{ env.GODOT_RELEASE_NAME }}
+        run: |
+          wget -q https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_RELEASE }}/Godot_v${{ env.GODOT_RELEASE }}_linux.x86_64.zip
+          unzip -q Godot_v${{ env.GODOT_RELEASE }}_linux.x86_64.zip
+          rm Godot_v${{ env.GODOT_RELEASE }}_linux.x86_64.zip
+          mv -v Godot_v${{ env.GODOT_RELEASE }}_linux.x86_64 godot
+
+      - name: Build and optimize for web
+        timeout-minutes: 5
+        run: |
+          mkdir -vp ${{ github.workspace }}/builds/web
+          ./godot --headless --path ${{ github.workspace }}/main \
+              --export-release "${{ env.EXPORT_PRESET_NAME }}" ${{ github.workspace }}/builds/web/index.html
+          wasm-opt ${{ github.workspace }}/builds/web/index.wasm \
+              -o builds/web/optimized.wasm -all --post-emscripten -Oz
+        
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: builds
+          path: ${{ github.workspace }}/builds
+          retention-days: 1
+
+      - name: Upload an artifact suitable for Github Pages
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ github.workspace }}/builds/web/
+          retention-days: 1
+    
+  deploy-to-itch:
+    runs-on: ubuntu-24.04
+    needs: export-web
+    env:
+      BUTLER_VERSION: "15.24.0"
+      ITCH_USER: "pyramid-seph"
+      ITCH_PROJECT: "bucho-busca-comida-portobello-ex"
+    
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: builds
+
+      - name: Deploy to Itch
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          wget -q -o butler.zip https://broth.itch.ovh/butler/linux-amd64/${{ env.BUTLER_VERSION }}/archive/default
+          unzip -q butler.zip
+          chmod +x butler
+          zip -vr web.zip web
+          ./butler push web.zip ${{ env.ITCH_USER }}/${{ env.ITCH_PROJECT }}:html
+
+  deploy-to-github-pages:
+    runs-on: ubuntu-24.04
+    needs: export-web
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
