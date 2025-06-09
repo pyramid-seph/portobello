@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=30 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" uid="uid://cjrxno5rl6xnc" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
 [ext_resource type="Script" uid="uid://740h1i7wraom" path="res://scenes/_shared/title_screen/title_screen_bg.gd" id="2_prsyc"]
 [ext_resource type="PackedScene" uid="uid://be46fmlrxbeev" path="res://scenes/_shared/cheat_code.tscn" id="2_udsfp"]
+[ext_resource type="AudioStream" uid="uid://buyv7j0ssj45d" path="res://audio/bgm/bgm_boss_test.wav" id="3_nu8sc"]
 [ext_resource type="Texture2D" uid="uid://ydnoqkd04fkt" path="res://art/menu_screen/title.png" id="3_oe3xx"]
 [ext_resource type="Texture2D" uid="uid://d0q3xvjq2e100" path="res://art/menu_screen/menu_bg_day_01.png" id="3_of2ca"]
 [ext_resource type="Texture2D" uid="uid://i37nr0nsawys" path="res://art/menu_screen/splash.png" id="6_0gi6x"]
@@ -50,6 +51,7 @@ _debug_skip_logos_roll = true
 
 [node name="SimpleBgmPlayer" type="Node" parent="."]
 script = ExtResource("21_m04mu")
+_music = ExtResource("3_nu8sc")
 _autostart = false
 
 [node name="KCheatCode" parent="." instance=ExtResource("2_udsfp")]

@@ -4,7 +4,7 @@ importer="texture_atlas"
 type="Texture2D"
 uid="uid://befjr0d5ldojt"
 path="res://.godot/imported/day_01_player_body.png-d0ca386f91c58910b3ed6c9dc6cfc9b1.res"
-group_file="res://art/day_1/_atlas_day_01_tile.png"
+group_file="res://art/day_1/_atlas_day_01_object.png"
 valid=true
 [deps]
 
