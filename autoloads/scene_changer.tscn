@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://8k034qvxjmd8"]
+[gd_scene load_steps=11 format=3 uid="uid://8k034qvxjmd8"]
 
 [ext_resource type="Script" uid="uid://cqwb22yigbfct" path="res://autoloads/scene_changer.gd" id="1_wichc"]
 [ext_resource type="Script" uid="uid://dcldepjshxib4" path="res://autoloads/threaded_loader.gd" id="2_ux1p7"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_rwund"]
 [ext_resource type="Script" uid="uid://c128m5wnpbcsc" path="res://autoloads/loding_anim.gd" id="4_6tkct"]
-[ext_resource type="Texture2D" uid="uid://b84bx5tqxpvye" path="res://art/_shared/ui_loading_0.png" id="5_gwtjp"]
+[ext_resource type="Texture2D" uid="uid://c1j4oyhdyakws" path="res://art/_shared/_atlas_ui_scene_changer.png" id="5_ux73q"]
 [ext_resource type="PackedScene" uid="uid://boe7wya5y54mq" path="res://scenes/_shared/ui/simple_dialog.tscn" id="8_o1hk3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsohd"]
+atlas = ExtResource("5_ux73q")
+region = Rect2(4, 4, 29, 15)
 
 [sub_resource type="Animation" id="Animation_4amrh"]
 length = 0.001
@@ -20,6 +24,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Rect2(4, 4, 29, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_s2uxx"]
@@ -38,6 +54,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Rect2(4, 4, 29, 15), Rect2(4, 28, 29, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mmtjt"]
@@ -90,7 +118,7 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="LodingAnimContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("5_gwtjp")
+texture = SubResource("AtlasTexture_wsohd")
 stretch_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LodingAnimContainer"]
