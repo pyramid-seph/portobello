@@ -1,9 +1,9 @@
 [gd_scene load_steps=76 format=4 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" uid="uid://jsgibygde652" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
-[ext_resource type="Script" uid="uid://baaxw6hqj1e0u" path="res://scenes/day_01/_shared/game/day_01_bgm.gd" id="2_25dnx"]
 [ext_resource type="Script" uid="uid://bm5hgqmjs8u3k" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="2_28578"]
+[ext_resource type="Script" uid="uid://c3h31nxi6b3a4" path="res://scenes/day_01/_shared/game/day_01_bgm_temp.gd" id="2_bgswp"]
 [ext_resource type="Script" uid="uid://bl748fif2rd4o" path="res://resources/day_01_level_settings.gd" id="2_fmqcn"]
 [ext_resource type="Script" uid="uid://gs2gv6om2i5a" path="res://scenes/day_01/_shared/game/level_info.gd" id="2_tq1t3"]
 [ext_resource type="Script" uid="uid://co7mdisduh7fb" path="res://scenes/day_01/_shared/game/furniture_placement_system.gd" id="3_fkre0"]
@@ -469,7 +469,7 @@ physics_interpolation_mode = 2
 script = ExtResource("1_745ra")
 
 [node name="Day01Bgm" type="Node" parent="."]
-script = ExtResource("2_25dnx")
+script = ExtResource("2_bgswp")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

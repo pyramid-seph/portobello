@@ -22,7 +22,7 @@ const LevelInfo = preload("res://scenes/day_01/_shared/game/level_info.gd")
 const ResultsScreen = preload("res://scenes/_shared/ui/results_screen.gd")
 const TreatPlacementSystem = preload("res://scenes/day_01/_shared/game/treat_placement_system.gd")
 const FurniturePlacementSystem = preload("res://scenes/day_01/_shared/game/furniture_placement_system.gd")
-const Day01Bgm = preload("res://scenes/day_01/_shared/game/day_01_bgm.gd")
+const Day01Bgm = preload("res://scenes/day_01/_shared/game/day_01_bgm_temp.gd")
 
 const MAX_LIVES_STORY: int = 9
 const MAX_LIVES_SCORE_ATTACK: int = 1
@@ -136,11 +136,12 @@ func _start_level() -> void:
 	_ui.show_inverted_controls_alert(_curr_lvl_settings.inverted_controls)
 	var game_mode: Game.Mode = _lvl_info.get_game_mode(_level)
 	var lvl_index: int = _lvl_info.get_lvl_index(_level)
+	var total_levels: int = _lvl_info.get_level_count_for_mode(game_mode)
 	_ui.show_level_start(game_mode, lvl_index)
 	await _ui.start_level_finished
 	_play_dialogue()
 	_player.is_allowed_to_move = true
-	_ui.show_level_name(game_mode, lvl_index)
+	_ui.show_level_name(game_mode, lvl_index, total_levels)
 
 
 func _play_dialogue() -> void:

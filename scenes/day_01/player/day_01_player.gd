@@ -19,6 +19,11 @@ const TrunkPart: PackedScene = preload("res://scenes/day_01/player/trunk_part.ts
 const INITIAL_DIR := Vector2i.RIGHT
 const MAX_TRUNK_PARTS: int = 98
 const DEBUG_POS := Vector2(120, 150)
+const PLAYER_DIR_CHANGE_SOUNDS = [
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_01.wav"),
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_02.wav"),
+	preload("res://audio/sfx/sfx_day_01_player_dir_change_03.wav"),
+]
 
 @export var stamina_sec: float:
 	set(value):
@@ -72,7 +77,9 @@ func _physics_process(delta: float) -> void:
 	var is_first_movement_done := _update_next_direction()
 	
 	if tick or is_first_movement_done:
-		_move()
+		var changed_dir = _move()
+		if changed_dir or is_first_movement_done:
+			SoundManager.play_sound(PLAYER_DIR_CHANGE_SOUNDS.pick_random())
 		_elapsed_time_sec = 0.0
 	
 	if is_first_movement_done:
@@ -188,11 +195,12 @@ func _update_next_direction() -> bool:
 	return just_started_moving
 
 
-func _move() -> void:
+func _move() -> bool:
+	var changed_dir: bool = _curr_dir != _next_dir 
 	_curr_dir = _next_dir
-
+	
 	if _is_awaiting_first_movement:
-		return
+		return false
 
 	var last_trunk_part = Utils.last_child(_trunk)
 	
@@ -223,6 +231,7 @@ func _move() -> void:
 	
 	_head.rotation = Vector2(_curr_dir).angle()
 	_head.position += Vector2(_curr_dir * _pixels_per_step)
+	return changed_dir
 
 
 func _eat(thing: Node) -> void:

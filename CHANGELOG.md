@@ -1,3 +1,10 @@
+# v3.0.0 - The one that beeps and boops.
+
+* Sound effects!
+* Show the total number of levels for each story mode minigame.
+* Touched up some images, the pause menu, the title screen and some cutscenes.
+* Migrated to Godot 4.4.1.
+
 # v2.2.0 - The one that cheats.
 
 * Added a cheatcode (based on certain one that starts with "K") that unlocks 

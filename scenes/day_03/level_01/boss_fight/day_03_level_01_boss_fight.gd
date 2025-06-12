@@ -10,7 +10,7 @@ var _boss: Node2D
 @onready var _power_up_spawner := $"../Systems/PowerUpSpawner"
 @onready var _ui := $"../Interface/Day03Ui" as Day03Ui
 @onready var _start_marker := $"../World/WavePhaseStartMarker" as Marker2D
-@onready var _boss_bgm: Day03InteractiveBgm = $Day03InteractiveBgm
+@onready var _boss_bgm: Day03InteractiveBgmTemp = $Day03InteractiveBgm
 
 
 func prepare() -> void:

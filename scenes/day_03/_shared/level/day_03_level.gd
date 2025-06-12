@@ -21,6 +21,7 @@ const START_DURATION: float = 1.6
 const GAME_OVER_DURATION: float = 3.0
 const PROP_NAME_STORY_SAVE_DATA_HIGH_SCORE: String = "high_scores:day_three"
 const PROP_NAME_STORY_SAVE_DATA_STARS: String = "stars:day_three"
+const STORY_MODE_LEVELS_COUNT: int = 2
 
 @export var _player: Day03Player
 @export var _game_mode: Game.Mode
@@ -55,7 +56,7 @@ var _level_state: LevelState = LevelState.READY:
 @onready var _boss_fight: Day03BossFight = $BossFight
 @onready var _results_screen := $Interface/ResultsScreen
 @onready var _day_3_ui := $Interface/Day03Ui
-@onready var _level_bgm: Day03InteractiveBgm = $Day03InteractiveBgm
+@onready var _level_bgm: Day03InteractiveBgmTemp = $Day03InteractiveBgm
 
 
 func _ready() -> void:
@@ -69,7 +70,8 @@ func _exit_tree() -> void:
 	_level_bgm.stop_music()
 
 
-func start(mode: Game.Mode, level_index: int, is_last_level: bool, lives: int, score: int) -> void:
+func start(mode: Game.Mode, level_index: int, is_last_level: bool, lives: int,
+		score: int) -> void:
 	if _level_state != LevelState.READY:
 		return
 	_level_state = LevelState.STARTING
@@ -115,9 +117,10 @@ func _start_level() -> void:
 	_level_state = LevelState.STARTING
 	_day_3_ui.set_pause_menu_enabled(false)
 	_day_3_ui.start_game_presentation(_game_mode, _level_index)
-	_timer.start(START_DURATION)
 	_level_state = LevelState.PLAYING
+	_timer.start(START_DURATION)
 	await _timer.timeout
+	_day_3_ui.show_level_name(_game_mode, _level_index, STORY_MODE_LEVELS_COUNT)
 	_day_3_ui.set_pause_menu_enabled(true)
 
 

@@ -6,6 +6,7 @@ COMMON_OPTIONS_YES,Yes,Sí
 CONFIRM_DELETE_DATA,Delete all data?,¿Borrar todos\nlos datos?
 CONFIRM_GIVE_UP,All progress will be lost.\nGive up?,Perderás tu progreso.\n¿Rendirse?
 CONFIRM_QUIT,Quit game?,¿Salir del juego?
+CREDITS_AUDIO,Audio,Audio
 CREDITS_BUCHO_TALKS_0,Se...,Se -
 CREDITS_BUCHO_TALKS_1,Se -,Se - cue
 CREDITS_BUCHO_TALKS_2,Se - quel,Se - cue - la
@@ -126,10 +127,11 @@ INFO_TOUCHSCREEN_SUPPORT,"touchscreen,","pantalla táctil,"
 LEVEL_BOSS_LINE_0,Main course,Plato fuerte
 LEVEL_BOSS_LINE_1,Bon appétit!,¡Buen provecho!
 LEVEL_DAY_01_DIZZY,Dizzy,Mareado
-LEVEL_DAY_01_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_DAY_01_LEVEL_NAME_STORY_MODE,Dish {level_pos} of {total_levels},Plato {level_pos} de {total_levels}
 LEVEL_DAY_02_LEVEL_NAME_SCORE_ATTACK,Buffet {level_pos},Buffet {level_pos}
-LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos},Plato {level_pos}
+LEVEL_DAY_02_LEVEL_NAME_STORY_MODE,Dish {level_pos} of {total_levels},Plato {level_pos} de {total_levels}
 LEVEL_DAY_03_DANGER,Danger!,¡Peligro!
+LEVEL_DAY_03_LEVEL_NAME_STORY_MODE,Dish {level_pos} of {total_levels},Plato {level_pos} de {total_levels}
 LEVEL_GAME_OVER,What a heartburn!,¡Qué indigestion!
 LEVEL_NEW_HIGH_SCORE,New high score!,¡Nuevo récord!
 LEVEL_START_LINE_0_DAY_EX,Midnight snack!,¡Antojo nocturno!

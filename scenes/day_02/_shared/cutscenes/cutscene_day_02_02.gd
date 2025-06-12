@@ -1,6 +1,7 @@
 extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
 const BGM_CUTSCENE_LOOP = preload("res://audio/bgm/cutscene_loop.wav")
+const SFX_PLAYER_EAT_MASTER = preload("res://audio/sfx/sfx_day_02_player_eat_master.wav")
 
 @onready var _timer := $Timer as Timer
 @onready var _background := $Background
@@ -19,6 +20,7 @@ func _play() -> void:
 	SoundManager.stop_music(2.0)
 	_timer.start(2.0)
 	await _timer.timeout
+	SoundManager.play_sound(SFX_PLAYER_EAT_MASTER)
 	_panel_01.show()
 	_timer.start(1.0)
 	await _timer.timeout
