@@ -2,9 +2,9 @@
 
 importer="texture_atlas"
 type="Texture2D"
-uid="uid://b3xvbnr7xksvy"
+uid="uid://b84bx5tqxpvye"
 path="res://.godot/imported/ui_loading_0.png-983ba516ac535cb1b8440e51db9c3e04.res"
-group_file="uid://c1j4oyhdyakws"
+group_file="res://art/_shared/_atlas_ui_scene_changer.png"
 valid=true
 [deps]
 
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/ui_loading_0.png-983ba516ac535cb1b8440e51db9c
 
 [params]
 
-atlas_file="uid://c1j4oyhdyakws"
+atlas_file="res://art/_shared/_atlas_ui_scene_changer.png"
 import_mode=0
 crop_to_region=false
 trim_alpha_border_from_region=true
