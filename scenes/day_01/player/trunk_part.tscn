@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8vng1vad0pht"]
+[gd_scene load_steps=4 format=3 uid="uid://b8vng1vad0pht"]
 
-[ext_resource type="Texture2D" uid="uid://befjr0d5ldojt" path="res://art/day_1/day_01_player_body.png" id="1_q8dsu"]
+[ext_resource type="Texture2D" uid="uid://b02xm1srohgpq" path="res://art/day_1/_atlas_day_01_object.png" id="1_al286"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd0x4"]
+atlas = ExtResource("1_al286")
+region = Rect2(44, 76, 8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxe2i"]
 size = Vector2(6, 6)
 
 [node name="TrunkPart000" type="Sprite2D"]
-texture = ExtResource("1_q8dsu")
+texture = SubResource("AtlasTexture_sd0x4")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
