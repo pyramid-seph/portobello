@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bi48jeuci3exe" path="res://scenes/day_01/player/day_01_player.tscn" id="6_kn384"]
 [ext_resource type="Script" uid="uid://c1i0f6ky5u2p2" path="res://scenes/day_01/_shared/game/day_01_tile_map_helper.gd" id="6_mkoph"]
 [ext_resource type="PackedScene" uid="uid://cnfahjhvwxeo2" path="res://scenes/day_01/_shared/ui/day_01_ui.tscn" id="6_s8541"]
-[ext_resource type="Texture2D" uid="uid://csam0st8oa8lg" path="res://art/day_1/_atlas_day_01_tile.png" id="8_lwdxb"]
+[ext_resource type="Texture2D" uid="uid://bwjq6y6l4041p" path="res://art/day_1/_atlas_day_01_tile.png" id="8_lwdxb"]
 [ext_resource type="PackedScene" uid="uid://n4padnmrc2c0" path="res://scenes/day_01/_shared/furniture/large_couch.tscn" id="9_8h8mx"]
 [ext_resource type="PackedScene" uid="uid://3474g83ryj02" path="res://scenes/day_01/_shared/furniture/small_couch.tscn" id="10_jkjik"]
 [ext_resource type="PackedScene" uid="uid://ck0x8gugcvdde" path="res://scenes/day_01/_shared/furniture/small_table.tscn" id="11_t3pbc"]
