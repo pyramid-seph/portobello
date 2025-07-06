@@ -114,7 +114,6 @@ const SCORE_ATTACK_MODE_OPTIONS: Array[Dictionary] = [
 var _cheat_code_tween: Tween
 
 @onready var _title_screen := $TitleScreen
-@onready var _logos_roll := $LogosRoll
 @onready var _story_mode_game_selector := %StoryModeGameSelector as HSelector
 @onready var _score_attack_game_selector := %ScoreAttackGameSelector as HSelector
 @onready var _exit_game_btn := %ExitGameBtn
@@ -133,6 +132,7 @@ var _cheat_code_tween: Tween
 @onready var _bgm_player: SimpleBgmPlayer = $SimpleBgmPlayer
 @onready var _k_cheat_code: CheatCode = $KCheatCode
 @onready var _cheater_texture_rect: TextureRect = %CheaterTextureRect
+@onready var _intro_logos_mngr: IntroLogosManager = $IntroLogosManager
 
 
 func _ready() -> void:
@@ -159,7 +159,7 @@ func _start() -> void:
 		if _debug_skip_logos_roll:
 			_enable_title_screen.call_deferred(true)
 		else:
-			_logos_roll.start()
+			_intro_logos_mngr.play()
 			_start_listening_for_cheat_codes()
 	else:
 		_enable_title_screen(true)
@@ -266,9 +266,8 @@ func _stop_listening_for_cheat_codes() -> void:
 	_k_cheat_code.disabled = true
 
 
-func _on_logos_roll_rolled() -> void:
+func _on_intro_logos_manager_finished() -> void:
 	_stop_listening_for_cheat_codes()
-	_logos_roll.visible = false
 	_enable_title_screen.call_deferred(true)
 
 
