@@ -1,4 +1,3 @@
-@tool
 class_name IntroLogosManager
 extends Control
 
@@ -13,6 +12,9 @@ var _first_logo_delay_sec: float = 1.0
 var _delay_between_logos_sec: float = 1.0
 @export_range(0.1, 1.0, 0.01, "or_greater")
 var _finish_delay_sec: float = 1.0
+@export var _skip_logo_input_event: StringName = &"ui_cancel"
+@export_range(0.1, 1.0, 0.01, "or_greater")
+var _ignore_skip_logo_input_sec: float = 1.0
 @export var _background_color: Color:
 	set(value):
 		_background_color = value
@@ -23,16 +25,23 @@ var _curr_logo_idx: int = LOGO_IDX_BEFORE_FIRST
 var _intro_logos: Array[IntroLogo] = []
 
 @onready var _delay_timer: Timer = $DelayTimer
+@onready var _ignore_skip_logo_input_timer: Timer = $IgnoreSkipLogoInputTimer
 @onready var _bg_color_rect: ColorRect = $BackgroundColorRect
 
 
 func _ready() -> void:
 	_on_background_color_set()
-	if not Engine.is_editor_hint():
-		_setup()
-		_reset()
-		if _autostart:
-			play()
+	_setup()
+	_reset()
+	if _autostart:
+		play()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(_skip_logo_input_event) and \
+			_ignore_skip_logo_input_timer.is_stopped():
+		get_viewport().set_input_as_handled()
+		_advance()
 
 
 func play() -> void:
@@ -50,7 +59,9 @@ func _setup() -> void:
 
 
 func _reset() -> void:
+	set_process_unhandled_input(false)
 	_curr_logo_idx = LOGO_IDX_BEFORE_FIRST
+	_ignore_skip_logo_input_timer.stop()
 	_delay_timer.stop()
 	for item: IntroLogo in _intro_logos:
 		item.reset()
@@ -63,6 +74,8 @@ func _is_invalid_curr_logo_idx() -> bool:
 
 
 func _advance() -> void:
+	set_process_unhandled_input(false)
+	
 	var curr_intro_logo: IntroLogo = _get_curr_intro_logo()
 	if curr_intro_logo:
 		curr_intro_logo.reset()
@@ -78,6 +91,8 @@ func _advance() -> void:
 
 
 func _play_curr_intro_logo() -> void:
+	set_process_unhandled_input(true)
+	_ignore_skip_logo_input_timer.start(_ignore_skip_logo_input_sec)
 	var curr_intro_logo: IntroLogo = _get_curr_intro_logo()
 	if curr_intro_logo:
 		curr_intro_logo.play()

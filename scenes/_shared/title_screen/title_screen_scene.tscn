@@ -312,8 +312,9 @@ negative_btn_text = "COMMON_OPTIONS_NO"
 positive_btn_text = "COMMON_OPTIONS_YES"
 
 [node name="IntroLogosManager" parent="." instance=ExtResource("17_1q5mh")]
-visible = false
 theme = ExtResource("2_j83cx")
+_skip_logo_input_event = &"skip_intro_logo"
+_ignore_skip_logo_input_sec = 0.2
 
 [node name="TimedIntroLogo" parent="IntroLogosManager" instance=ExtResource("18_m2l74")]
 layout_mode = 1
