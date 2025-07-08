@@ -4,6 +4,8 @@ extends Control
 signal started
 signal finished
 
+const SfxSkip: AudioStream = preload("res://audio/ui/kenney_interface_sounds/select_002.ogg")
+
 const LOGO_IDX_BEFORE_FIRST: int = -1
 
 @export_range(0.1, 1.0, 0.01, "or_greater")
@@ -40,6 +42,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(_skip_logo_input_event) and \
 			_ignore_skip_logo_input_timer.is_stopped():
+		SoundManager.play_sound(SfxSkip)
 		get_viewport().set_input_as_handled()
 		_advance()
 
