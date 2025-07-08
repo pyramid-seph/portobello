@@ -46,7 +46,7 @@ region = Rect2(24, 4, 10, 10)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
-_debug_ignore_game_progress = true
+_debug_skip_logos_roll = true
 
 [node name="SimpleBgmPlayer" type="Node" parent="."]
 script = ExtResource("21_m04mu")
@@ -215,6 +215,7 @@ vertical_alignment = 1
 
 [node name="MainMenu" type="PanelContainer" parent="TitleScreen"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(204, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -293,6 +294,39 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="PressToStartContainer" type="PanelContainer" parent="TitleScreen"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -183.0
+offset_right = 191.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/PressToStartContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PressToStartLabel" type="Label" parent="TitleScreen/PressToStartContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "TITLE_SCREEN_PRESS_TO_START_KEYBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UnlocksDialog" parent="." instance=ExtResource("10_dgmig")]
 visible = false

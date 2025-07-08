@@ -53,6 +53,10 @@ func play() -> void:
 	_advance()
 
 
+func stop() -> void:
+	_reset()
+
+
 func _setup() -> void:
 	for item: Node in get_children():
 		var intro_logo := item as IntroLogo

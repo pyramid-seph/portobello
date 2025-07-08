@@ -137,14 +137,10 @@ func _configure_controller_for_mode(new_mode: Mode) -> void:
 			_touch_screen_controller.hide_pause_button = true
 
 
-func _is_player_1_joypad_connected() -> bool:
-	# Input events are mapped only to the device 0.
-	return 0 in Input.get_connected_joypads()
-
-
 func _update_touch_controller_visibility() -> void:
 	if _touch_screen_controller:
-		_touch_screen_controller.visible = not _is_player_1_joypad_connected()
+		_touch_screen_controller.visible = \
+				not InputUtils.is_player_1_joypad_connected()
 
 
 func _on_mode_set() -> void:

@@ -1,5 +1,11 @@
 extends Node
 
+enum ScreenState {
+	INTRO_LOGOS,
+	PRESS_TO_START,
+	MENU
+}
+
 const MenuBgDay01Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_01.png")
 const MenuBgDay02Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_02.png")
 const MenuBgDay03Texture: Texture2D = preload("res://art/menu_screen/menu_bg_day_03.png")
@@ -8,6 +14,7 @@ const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_sc
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
 const SfxCheated: AudioStream = preload("res://audio/sfx/sfx_title_screen_cheated.wav")
+const SfxPressedStart: AudioStream = preload("res://audio/ui/ui_next.wav")
 
 const CheatCode = preload("res://scenes/_shared/cheat_code.gd")
 
@@ -111,7 +118,9 @@ const SCORE_ATTACK_MODE_OPTIONS: Array[Dictionary] = [
 	get:
 		return _debug_skip_logos_roll and OS.is_debug_build()
 
+var _screen_state: ScreenState = ScreenState.INTRO_LOGOS
 var _cheat_code_tween: Tween
+var _press_to_start_tween: Tween
 
 @onready var _title_screen := $TitleScreen
 @onready var _story_mode_game_selector := %StoryModeGameSelector as HSelector
@@ -133,14 +142,34 @@ var _cheat_code_tween: Tween
 @onready var _k_cheat_code: CheatCode = $KCheatCode
 @onready var _cheater_texture_rect: TextureRect = %CheaterTextureRect
 @onready var _intro_logos_mngr: IntroLogosManager = $IntroLogosManager
+@onready var _press_to_start_label: Label = %PressToStartLabel
+@onready var _press_to_start_container: PanelContainer = $TitleScreen/PressToStartContainer
 
 
 func _ready() -> void:
+	_press_to_start_container.hide()
+	_main_menu.hide()
+	set_process_unhandled_input(false)
+	_update_press_to_start_label_text()
+	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	TouchControllerManager.mode = TouchControllerManager.Mode.UI_MENU
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()
+	_set_day_options()
+	_set_score_attack_options()
+	_set_stars_count()
+	_set_title_type()
 	_start()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if _screen_state == ScreenState.PRESS_TO_START and \
+			event.is_action_pressed("start_game") and \
+			not event.is_echo():
+		get_viewport().set_input_as_handled()
+		set_process_unhandled_input(false)
+		_on_start_pressed()
 
 
 func _remove_exit_btn_on_web() -> void:
@@ -155,14 +184,12 @@ func _remove_exit_btn_on_web() -> void:
 func _start() -> void:
 	if Game.is_cold_boot:
 		Game.is_cold_boot = false
-		_enable_title_screen(false)
 		if _debug_skip_logos_roll:
-			_enable_title_screen.call_deferred(true)
+			_change_screen_state.call_deferred(ScreenState.PRESS_TO_START)
 		else:
-			_intro_logos_mngr.play()
-			_start_listening_for_cheat_codes()
+			_change_screen_state(ScreenState.INTRO_LOGOS)
 	else:
-		_enable_title_screen(true)
+		_change_screen_state(ScreenState.MENU)
 
 
 func _update_version_label_visibility() -> void:
@@ -208,23 +235,6 @@ func _set_title_type() -> void:
 	_game_title.set_story_mode_progress(save_data.latest_day_completed)
 
 
-func _enable_title_screen(show_screen: bool) -> void:
-	_title_screen.visible = show_screen
-	_title_screen_bg.visible = show_screen
-	if not show_screen:
-		_title_screen.process_mode = Node.PROCESS_MODE_DISABLED
-	else:
-		_set_day_options()
-		_set_score_attack_options()
-		_set_stars_count()
-		_set_title_type()
-		_title_screen.process_mode = Node.PROCESS_MODE_ALWAYS
-		_ui_sounds.focus_node_no_sound.call_deferred(_story_mode_game_selector)
-		_bgm_player.play()
-		_story_mode_game_selector.grab_focus.call_deferred()
-		_notify_unlocks()
-
-
 func _on_minigame_selection_changed(value) -> void:
 	if is_node_ready():
 		_title_screen_bg.game_texture = value.texture
@@ -253,7 +263,7 @@ func _notify_unlocks() -> void:
 				unlocked_score_attack_mode_minigame = story_progress
 			})
 	_unlocks_dialog.body_text = body
-	_unlocks_dialog.visible = true
+	_unlocks_dialog.show()
 
 
 func _start_listening_for_cheat_codes() -> void:
@@ -266,9 +276,133 @@ func _stop_listening_for_cheat_codes() -> void:
 	_k_cheat_code.disabled = true
 
 
-func _on_intro_logos_manager_finished() -> void:
+func _show_press_start_label() -> void:
+	_press_to_start_container.show()
+	if _press_to_start_tween:
+		_press_to_start_tween.kill()
+		_press_to_start_tween = null
+	_press_to_start_tween = create_tween()
+	_press_to_start_tween.set_loops()
+	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
+			1.0, 0.0).from(1.0)
+	_press_to_start_tween.tween_interval(1.0)
+	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
+			0.0, 0.0)
+	_press_to_start_tween.tween_interval(1.0)
+
+
+func _on_start_pressed() -> void:
+	SoundManager.play_sound(SfxPressedStart)
+	_press_to_start_container.show()
+	if _press_to_start_tween:
+		_press_to_start_tween.kill()
+		_press_to_start_tween = null
+	_press_to_start_tween = create_tween()
+	_press_to_start_tween.set_loops(3)
+	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
+			1.0, 0.0).from(1.0)
+	_press_to_start_tween.tween_interval(0.1)
+	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
+			0.0, 0.0)
+	_press_to_start_tween.tween_interval(0.1)
+	_press_to_start_tween.finished.connect(func():
+			_press_to_start_container.hide()
+			_change_screen_state(ScreenState.MENU))
+
+
+func _hide_press_start_label() -> void:
+	_press_to_start_container.hide()
+	if _press_to_start_tween:
+		_press_to_start_tween.kill()
+		_press_to_start_tween = null
+
+
+func _update_press_to_start_label_text() -> void:
+	var press_to_start_text: String =  "TITLE_SCREEN_PRESS_TO_START_"
+	match InputUtils.get_main_input_device():
+		InputUtils.InputDevice.GAMEPAD:
+			press_to_start_text += "GAMEPAD"
+		InputUtils.InputDevice.TOUCHSCREEN:
+			press_to_start_text += "TOUCHSCREEN"
+		_:
+			press_to_start_text += "KEYBOARD"
+	_press_to_start_label.text = press_to_start_text
+	await get_tree().process_frame
+	# Resize and reposition (center horizontal and a fixed y pos)
+	_press_to_start_container.reset_size()
+	_press_to_start_container.set_anchors_and_offsets_preset(
+			Control.PRESET_CENTER_BOTTOM, Control.PRESET_MODE_MINSIZE)
+	_press_to_start_container.position.y = 120.0
+
+
+func _change_screen_state(new_state: ScreenState) -> void:
+	_exit_current_screen_state()
+	_enter_new_screen_state(new_state)
+
+
+func _exit_current_screen_state() -> void:
+	match _screen_state:
+		ScreenState.INTRO_LOGOS:
+			_exit_intro_logo_screen_state()
+		ScreenState.PRESS_TO_START:
+			_exit_press_start_screen_state()
+		_: # Menu or unknown value.
+			_exit_menu_screen_state()
+
+
+func _enter_new_screen_state(new_state: ScreenState) -> void:
+	_screen_state = new_state
+	
+	match _screen_state:
+		ScreenState.INTRO_LOGOS:
+			_enter_intro_logo_screen_state()
+		ScreenState.PRESS_TO_START:
+			_enter_press_start_screen_state()
+		_: # Menu or unknown value.
+			_enter_menu_screen_state()
+
+
+func _enter_intro_logo_screen_state() -> void:
+	_bgm_player.stop()
+	_start_listening_for_cheat_codes()
+	_intro_logos_mngr.play()
+
+
+func _exit_intro_logo_screen_state() -> void:
+	_intro_logos_mngr.stop()
 	_stop_listening_for_cheat_codes()
-	_enable_title_screen.call_deferred(true)
+
+
+func _enter_press_start_screen_state() -> void:
+	set_process_unhandled_input(true)
+	_show_press_start_label()
+	_title_screen.show()
+	if not _bgm_player.is_playing():
+		_bgm_player.play()
+
+
+func _exit_press_start_screen_state() -> void:
+	set_process_unhandled_input(false)
+	_hide_press_start_label()
+	_title_screen.hide()
+
+
+func _enter_menu_screen_state() -> void:
+	_title_screen.show()
+	_main_menu.call_deferred("show")
+	_ui_sounds.focus_node_no_sound.call_deferred(_story_mode_game_selector)
+	_notify_unlocks()
+	if not _bgm_player.is_playing():
+		_bgm_player.play()
+
+
+func _exit_menu_screen_state() -> void:
+	_title_screen.hide()
+	_main_menu.hide()
+
+
+func _on_intro_logos_manager_finished() -> void:
+	_change_screen_state(ScreenState.PRESS_TO_START)
 
 
 func _on_show_scores_btn_focus_entered() -> void:
@@ -381,3 +515,7 @@ func _on_k_cheat_code_completed() -> void:
 			1.0, 0.1).from(0)
 	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",
 			0.0, 0.1)
+
+
+func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
+	_update_press_to_start_label_text()
