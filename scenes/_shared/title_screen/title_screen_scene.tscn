@@ -47,7 +47,6 @@ region = Rect2(24, 4, 10, 10)
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
-_debug_skip_logos_roll = true
 
 [node name="SimpleBgmPlayer" type="Node" parent="."]
 script = ExtResource("21_m04mu")
@@ -87,7 +86,7 @@ metadata/_edit_lock_ = true
 [node name="TitleScreenBg" type="Parallax2D" parent="TitleScreen"]
 unique_name_in_owner = true
 repeat_size = Vector2(60, 0)
-autoscroll = Vector2(10, 0)
+autoscroll = Vector2(30, 0)
 script = ExtResource("2_prsyc")
 game_texture = ExtResource("3_of2ca")
 game_color = Color(0.486275, 0.882353, 0.580392, 1)
