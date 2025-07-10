@@ -152,7 +152,6 @@ func _ready() -> void:
 	set_process_unhandled_input(false)
 	_update_press_to_start_label_text()
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
-	TouchControllerManager.mode = TouchControllerManager.Mode.UI_MENU
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()
@@ -363,6 +362,7 @@ func _enter_new_screen_state(new_state: ScreenState) -> void:
 
 
 func _enter_intro_logo_screen_state() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.INTRO_LOGOS
 	_bgm_player.stop()
 	_start_listening_for_cheat_codes()
 	_intro_logos_mngr.play()
@@ -374,6 +374,7 @@ func _exit_intro_logo_screen_state() -> void:
 
 
 func _enter_press_start_screen_state() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.START_GAME
 	set_process_unhandled_input(true)
 	_show_press_start_label()
 	_title_screen.show()
@@ -388,6 +389,7 @@ func _exit_press_start_screen_state() -> void:
 
 
 func _enter_menu_screen_state() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.UI_MENU
 	_title_screen.show()
 	_main_menu.call_deferred("show")
 	_ui_sounds.focus_node_no_sound.call_deferred(_story_mode_game_selector)
