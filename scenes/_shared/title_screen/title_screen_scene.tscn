@@ -46,6 +46,8 @@ region = Rect2(24, 4, 10, 10)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
+_debug_ignore_game_progress = true
+_debug_skip_logos_roll = true
 
 [node name="SimpleBgmPlayer" type="Node" parent="."]
 script = ExtResource("21_m04mu")
@@ -303,9 +305,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -191.0
+offset_left = -60.0
 offset_top = -183.0
-offset_right = 191.0
+offset_right = 60.0
 offset_bottom = -132.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -317,14 +319,15 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="PressToStartLabel" type="Label" parent="TitleScreen/PressToStartContainer/MarginContainer"]
+[node name="PressToStartLabel" type="RichTextLabel" parent="TitleScreen/PressToStartContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-text = "TITLE_SCREEN_PRESS_TO_START_KEYBOARD"
+bbcode_enabled = true
+text = "Touch [img=valign]res://art/menu_screen/touch_main_accept_to_start.png[/img]"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 

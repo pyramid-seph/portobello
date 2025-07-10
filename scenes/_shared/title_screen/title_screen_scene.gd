@@ -142,7 +142,7 @@ var _press_to_start_tween: Tween
 @onready var _k_cheat_code: CheatCode = $KCheatCode
 @onready var _cheater_texture_rect: TextureRect = %CheaterTextureRect
 @onready var _intro_logos_mngr: IntroLogosManager = $IntroLogosManager
-@onready var _press_to_start_label: Label = %PressToStartLabel
+@onready var _press_to_start_label: RichTextLabel = %PressToStartLabel
 @onready var _press_to_start_container: PanelContainer = $TitleScreen/PressToStartContainer
 
 
@@ -150,7 +150,6 @@ func _ready() -> void:
 	_press_to_start_container.hide()
 	_main_menu.hide()
 	set_process_unhandled_input(false)
-	_update_press_to_start_label_text()
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
@@ -327,10 +326,7 @@ func _update_press_to_start_label_text() -> void:
 			press_to_start_text += "KEYBOARD"
 	_press_to_start_label.text = press_to_start_text
 	await get_tree().process_frame
-	# Resize and reposition (center horizontal and a fixed y pos)
 	_press_to_start_container.reset_size()
-	_press_to_start_container.set_anchors_and_offsets_preset(
-			Control.PRESET_CENTER_BOTTOM, Control.PRESET_MODE_MINSIZE)
 	_press_to_start_container.position.y = 120.0
 
 
@@ -376,6 +372,7 @@ func _exit_intro_logo_screen_state() -> void:
 func _enter_press_start_screen_state() -> void:
 	TouchControllerManager.mode = TouchControllerManager.Mode.START_GAME
 	set_process_unhandled_input(true)
+	_update_press_to_start_label_text()
 	_show_press_start_label()
 	_title_screen.show()
 	if not _bgm_player.is_playing():
