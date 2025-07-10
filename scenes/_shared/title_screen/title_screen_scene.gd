@@ -297,7 +297,7 @@ func _on_start_pressed() -> void:
 		_press_to_start_tween.kill()
 		_press_to_start_tween = null
 	_press_to_start_tween = create_tween()
-	_press_to_start_tween.set_loops(3)
+	_press_to_start_tween.set_loops(4)
 	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
 			1.0, 0.0).from(1.0)
 	_press_to_start_tween.tween_interval(0.1)

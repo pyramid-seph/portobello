@@ -46,7 +46,6 @@ region = Rect2(24, 4, 10, 10)
 
 [node name="TitleScreenScene" type="Node"]
 script = ExtResource("1_17j6l")
-_debug_skip_logos_roll = true
 
 [node name="SimpleBgmPlayer" type="Node" parent="."]
 script = ExtResource("21_m04mu")
