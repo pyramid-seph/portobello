@@ -57,6 +57,10 @@ _autostart = false
 _cheat_code = Array[StringName]([&"move_up", &"move_up", &"move_down", &"move_down", &"move_left", &"move_right", &"move_left", &"move_right"])
 disabled = true
 
+[node name="AttractModeDelayTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
 [node name="ParticlesPrewarmer" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -643,6 +647,7 @@ stretch_mode = 5
 
 [node name="AttractModeCutscene" parent="." instance=ExtResource("26_m2l74")]
 
+[connection signal="timeout" from="AttractModeDelayTimer" to="." method="_on_attract_mode_delay_timer_timeout"]
 [connection signal="current_option_index_changed" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_option_index_changed"]
 [connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_game_selector_focus_entered"]
 [connection signal="selected" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_minigame_selected"]

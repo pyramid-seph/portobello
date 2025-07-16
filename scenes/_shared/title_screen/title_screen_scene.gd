@@ -147,6 +147,7 @@ var _press_to_start_tween: Tween
 @onready var _press_to_start_label: RichTextLabel = %PressToStartLabel
 @onready var _press_to_start_container: PanelContainer = $TitleScreen/PressToStartContainer
 @onready var _attract_mode_cutscene: Cutscene = $AttractModeCutscene
+@onready var _attract_mode_delay_timer: Timer = $AttractModeDelayTimer
 
 
 func _ready() -> void:
@@ -166,8 +167,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _screen_state == ScreenState.PRESS_TO_START and \
-			event.is_action_pressed("start_game") and \
-			not event.is_echo():
+			event.is_action_pressed(&"start_game") and \
+			not event.is_echo() and \
+			not _attract_mode_delay_timer.is_stopped():
 		get_viewport().set_input_as_handled()
 		set_process_unhandled_input(false)
 		_on_start_pressed()
@@ -390,6 +392,7 @@ func _enter_press_start_screen_state() -> void:
 	_update_press_to_start_label_text()
 	_show_press_start_label()
 	_title_screen.show()
+	_attract_mode_delay_timer.start()
 	if not _bgm_player.is_playing():
 		_bgm_player.play()
 
@@ -398,6 +401,7 @@ func _exit_press_start_screen_state() -> void:
 	set_process_unhandled_input(false)
 	_hide_press_start_label()
 	_title_screen.hide()
+	_attract_mode_delay_timer.stop()
 
 
 func _enter_menu_screen_state() -> void:
@@ -425,6 +429,10 @@ func _on_intro_logos_manager_finished() -> void:
 
 func _on_attract_mode_cutscene_finished() -> void:
 	_change_screen_state(ScreenState.PRESS_TO_START)
+
+
+func _on_attract_mode_delay_timer_timeout() -> void:
+	_change_screen_state(ScreenState.ATTRACT_MODE)
 
 
 func _on_show_scores_btn_focus_entered() -> void:
