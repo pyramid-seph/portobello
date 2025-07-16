@@ -1,0 +1,382 @@
+[gd_scene load_steps=22 format=3 uid="uid://cyc40rls0lvnd"]
+
+[ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_6ka13"]
+[ext_resource type="Script" uid="uid://ca8wn1xswg1j5" path="res://scenes/_shared/cutscenes/attract_mode_cutscene.gd" id="2_k41tv"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_v4cf8"]
+[ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="4_6385u"]
+[ext_resource type="AudioStream" uid="uid://cknak87db4uxv" path="res://audio/bgm/cutscene_loop.wav" id="5_a8vvl"]
+[ext_resource type="Animation" uid="uid://fotbph4vflfb" path="res://resources/instances/animations/nes_disappear.res" id="6_3v5l1"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="6_a8vvl"]
+[ext_resource type="Animation" uid="uid://bw48ax7lvi4kg" path="res://resources/instances/animations/nes_disappear_reversed.res" id="7_hdus7"]
+[ext_resource type="Texture2D" uid="uid://brqceadipypny" path="res://art/cutscenes/attract_mode_portrait_bucho.png" id="9_yaeox"]
+[ext_resource type="Texture2D" uid="uid://b3o85efkgtslo" path="res://art/cutscenes/attract_mode_portrait_ami.png" id="10_y3usp"]
+[ext_resource type="Texture2D" uid="uid://d4gvylu7p72hk" path="res://art/cutscenes/attract_mode_portrait_ami_boyfriend.png" id="11_p3xr3"]
+
+[sub_resource type="Animation" id="Animation_bd6wu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SimpleBgmPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8c7hd"]
+resource_name = "cutscene"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SimpleBgmPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 39),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.8],
+"method": &"stop"
+}]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/Slide1/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("default", "default_reversed"),
+"times": PackedFloat32Array(0, 6.5)
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/Slide2/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("default", "default_reversed"),
+"times": PackedFloat32Array(9, 20.5)
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/Slide3/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("default", "default_reversed"),
+"times": PackedFloat32Array(23, 34.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bd6wu"]
+_data = {
+&"RESET": SubResource("Animation_bd6wu"),
+&"cutscene": SubResource("Animation_8c7hd")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c7hd"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_hdus7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yaeox"]
+_data = {
+&"RESET": SubResource("Animation_hdus7"),
+&"default": ExtResource("6_3v5l1"),
+&"default_reversed": ExtResource("7_hdus7")
+}
+
+[sub_resource type="Animation" id="Animation_3v5l1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3v5l1"]
+_data = {
+&"RESET": SubResource("Animation_3v5l1"),
+&"default": ExtResource("6_3v5l1"),
+&"default_reversed": ExtResource("7_hdus7")
+}
+
+[sub_resource type="Animation" id="Animation_yaeox"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3usp"]
+_data = {
+&"RESET": SubResource("Animation_yaeox"),
+&"default": ExtResource("6_3v5l1"),
+&"default_reversed": ExtResource("7_hdus7")
+}
+
+[node name="AttractModeCutscene" instance=ExtResource("1_6ka13")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_v4cf8")
+script = ExtResource("2_k41tv")
+
+[node name="SimpleBgmPlayer" type="Node" parent="." index="0"]
+script = ExtResource("4_6385u")
+_music = ExtResource("5_a8vvl")
+_autostart = false
+metadata/_custom_type_script = "uid://dmkjbeql04u01"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_bd6wu")
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="." index="2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8c7hd")
+
+[node name="Slide1" type="VBoxContainer" parent="PanelContainer" index="0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide1" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_yaeox")
+}
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/Slide1" index="1"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "GAME_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="SubtitleLabel" type="Label" parent="PanelContainer/Slide1" index="2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_a8vvl")
+theme_override_font_sizes/font_size = 8
+text = "GAME_SUBTITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Slide2" type="VBoxContainer" parent="PanelContainer" index="1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide2" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_3v5l1")
+}
+
+[node name="Label" type="Label" parent="PanelContainer/Slide2" index="1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "ATTRACT_MODE_CHAR_BIO_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide2" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide2/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_yaeox")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="PanelContainer/Slide2/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_a8vvl")
+theme_override_font_sizes/font_size = 16
+text = "ATTRACT_MODE_CHAR_BIO_BUCHO_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="PanelContainer/Slide2/VBoxContainer" index="2"]
+custom_minimum_size = Vector2(74, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_a8vvl")
+theme_override_font_sizes/font_size = 8
+text = "ATTRACT_MODE_CHAR_BIO_BUCHO_DESC"
+horizontal_alignment = 3
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slide3" type="VBoxContainer" parent="PanelContainer" index="2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide3" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_y3usp")
+}
+
+[node name="Label" type="Label" parent="PanelContainer/Slide3" index="1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "ATTRACT_MODE_CHAR_BIO_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Her" type="HBoxContainer" parent="PanelContainer/Slide3/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide3/VBoxContainer/Her" index="0"]
+layout_mode = 2
+texture = ExtResource("10_y3usp")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3/VBoxContainer/Her" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Her/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_a8vvl")
+theme_override_font_sizes/font_size = 16
+text = "ATTRACT_MODE_CHAR_BIO_AMI_NAME"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Her/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_a8vvl")
+theme_override_font_sizes/font_size = 8
+text = "ATTRACT_MODE_CHAR_BIO_AMI_DESC"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Him" type="HBoxContainer" parent="PanelContainer/Slide3/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3/VBoxContainer/Him" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Him/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_a8vvl")
+theme_override_font_sizes/font_size = 16
+text = "ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_NAME"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Label2" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Him/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_a8vvl")
+theme_override_font_sizes/font_size = 8
+text = "ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_DESC"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide3/VBoxContainer/Him" index="1"]
+layout_mode = 2
+texture = ExtResource("11_p3xr3")
+stretch_mode = 3
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

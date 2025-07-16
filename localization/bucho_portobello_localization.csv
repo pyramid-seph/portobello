@@ -1,4 +1,13 @@
 keys,en,es
+ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_DESC,A TV chef. He and Ami adopted Bucho the day he traveled abroad to a convention.,Chef de TV. Él y Ami adoptaron a Bucho el día que fue al extranjero a un congreso.
+ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_NAME,Ami's boyfriend,Novio de Ami
+ATTRACT_MODE_CHAR_BIO_AMI_DESC,A baking teacher. She recently lost her beloved grandma to cancer.,Profesora de repostería. Su querida abuela falleció recientemente de cancer.
+ATTRACT_MODE_CHAR_BIO_AMI_NAME,Ami,Ami
+ATTRACT_MODE_CHAR_BIO_BUCHO_DESC,"A kitty with a big appetite and the misterious ability of getting powers from food.
+When he was rescued, he was found next to the bones of his mother. The whereabouts of his siblings remain unknown.","Un gatito con un apetito feroz y la misteriosa habilidad de obtener poderes de la comida.
+Cuando fue rescatado, lo encontraron junto a los huesos de su madre. Se desconoce el paradero de sus hermanos."
+ATTRACT_MODE_CHAR_BIO_BUCHO_NAME,Bucho,Bucho
+ATTRACT_MODE_CHAR_BIO_TITLE,- Characters -,- Personajes -
 COMMON_OPTIONS_EXIT,Quit game,Salir
 COMMON_OPTIONS_NO,No,No
 COMMON_OPTIONS_OK,OK,OK
@@ -117,7 +126,7 @@ DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01,Bucho got the [img=valign]res://art/day_ex
 DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_01,There was a parrot here.,Aquí había un loro.
 DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_02,It's gone now.,Ya no más.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
-GAME_TITLE,Bucho Busca Comida,Pyramid Seph
+GAME_TITLE,Bucho Busca Comida,Bucho Busca Comida
 INFO_DAY_EX_AVAILABLE,"Order up!\n\nA ""Day EX""\nwith extra love!\n ","¡Orden lista!\n\n¡Un ""Día EX""\ncon extra amor!\n "
 INFO_GAMEPAD_SUPPORT,"Supports gamepad,","Puedes jugar con un control,"
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado

@@ -2,6 +2,7 @@ extends Node
 
 enum ScreenState {
 	INTRO_LOGOS,
+	ATTRACT_MODE,
 	PRESS_TO_START,
 	MENU
 }
@@ -17,6 +18,7 @@ const SfxCheated: AudioStream = preload("res://audio/sfx/sfx_title_screen_cheate
 const SfxPressedStart: AudioStream = preload("res://audio/ui/ui_next.wav")
 
 const CheatCode = preload("res://scenes/_shared/cheat_code.gd")
+const Cutscene = preload("res://scenes/_shared/cutscenes/attract_mode_cutscene.gd")
 
 const BG_COLOR_DAY_1_LIKE_GAME := Color("7CE194")
 const BG_COLOR_DAY_2_LIKE_GAME := Color("E76F6F")
@@ -144,6 +146,7 @@ var _press_to_start_tween: Tween
 @onready var _intro_logos_mngr: IntroLogosManager = $IntroLogosManager
 @onready var _press_to_start_label: RichTextLabel = %PressToStartLabel
 @onready var _press_to_start_container: PanelContainer = $TitleScreen/PressToStartContainer
+@onready var _attract_mode_cutscene: Cutscene = $AttractModeCutscene
 
 
 func _ready() -> void:
@@ -339,6 +342,8 @@ func _exit_current_screen_state() -> void:
 	match _screen_state:
 		ScreenState.INTRO_LOGOS:
 			_exit_intro_logo_screen_state()
+		ScreenState.ATTRACT_MODE:
+			_exit_attract_mode_screen_state()
 		ScreenState.PRESS_TO_START:
 			_exit_press_start_screen_state()
 		_: # Menu or unknown value.
@@ -351,6 +356,8 @@ func _enter_new_screen_state(new_state: ScreenState) -> void:
 	match _screen_state:
 		ScreenState.INTRO_LOGOS:
 			_enter_intro_logo_screen_state()
+		ScreenState.ATTRACT_MODE:
+			_enter_attract_mode_screen_state()
 		ScreenState.PRESS_TO_START:
 			_enter_press_start_screen_state()
 		_: # Menu or unknown value.
@@ -367,6 +374,14 @@ func _enter_intro_logo_screen_state() -> void:
 func _exit_intro_logo_screen_state() -> void:
 	_intro_logos_mngr.stop()
 	_stop_listening_for_cheat_codes()
+
+
+func _enter_attract_mode_screen_state() -> void:
+	_attract_mode_cutscene.play()
+
+
+func _exit_attract_mode_screen_state() -> void:
+	pass
 
 
 func _enter_press_start_screen_state() -> void:
@@ -400,7 +415,15 @@ func _exit_menu_screen_state() -> void:
 	_main_menu.hide()
 
 
+func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
+	_update_press_to_start_label_text()
+
+
 func _on_intro_logos_manager_finished() -> void:
+	_change_screen_state(ScreenState.ATTRACT_MODE)
+
+
+func _on_attract_mode_cutscene_finished() -> void:
 	_change_screen_state(ScreenState.PRESS_TO_START)
 
 
@@ -514,7 +537,3 @@ func _on_k_cheat_code_completed() -> void:
 			1.0, 0.1).from(0)
 	_cheat_code_tween.tween_property(_cheater_texture_rect, "self_modulate:a",
 			0.0, 0.1)
-
-
-func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
-	_update_press_to_start_label_text()

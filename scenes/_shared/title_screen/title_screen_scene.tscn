@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=31 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" uid="uid://cjrxno5rl6xnc" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dx2c45d18sp6i" path="res://art/menu_screen/controller_support_touchscreen.png" id="18_jtcvj"]
 [ext_resource type="PackedScene" uid="uid://gs24oo0jfl8v" path="res://scenes/_shared/title_screen/timed_intro_logo.tscn" id="18_m2l74"]
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
+[ext_resource type="PackedScene" uid="uid://cyc40rls0lvnd" path="res://scenes/_shared/cutscenes/attract_mode_cutscene.tscn" id="26_m2l74"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kps1"]
 
@@ -640,6 +641,8 @@ grow_vertical = 0
 texture = SubResource("AtlasTexture_u1547")
 stretch_mode = 5
 
+[node name="AttractModeCutscene" parent="." instance=ExtResource("26_m2l74")]
+
 [connection signal="current_option_index_changed" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_option_index_changed"]
 [connection signal="focus_entered" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_game_selector_focus_entered"]
 [connection signal="selected" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_minigame_selected"]
@@ -661,3 +664,4 @@ stretch_mode = 5
 [connection signal="negative_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_positive_btn_pressed"]
 [connection signal="finished" from="IntroLogosManager" to="." method="_on_intro_logos_manager_finished"]
+[connection signal="finished" from="AttractModeCutscene" to="." method="_on_attract_mode_cutscene_finished"]
