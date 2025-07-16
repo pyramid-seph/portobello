@@ -40,6 +40,36 @@ tracks/1/keys = {
 "method": &"stop"
 }]
 }
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/Slide2/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("RESET", "[stop]"),
+"times": PackedFloat32Array(0, 43.5333)
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/Slide3/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/Slide1/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_8c7hd"]
 resource_name = "cutscene"
@@ -80,8 +110,8 @@ tracks/2/path = NodePath("PanelContainer/Slide1/AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": PackedStringArray("default", "default_reversed"),
-"times": PackedFloat32Array(0, 6.5)
+"clips": PackedStringArray("RESET", "default", "default_reversed"),
+"times": PackedFloat32Array(0, 1, 6.5)
 }
 tracks/3/type = "animation"
 tracks/3/imported = false
@@ -90,8 +120,8 @@ tracks/3/path = NodePath("PanelContainer/Slide2/AnimationPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"clips": PackedStringArray("default", "default_reversed"),
-"times": PackedFloat32Array(9, 20.5)
+"clips": PackedStringArray("RESET", "default", "default_reversed"),
+"times": PackedFloat32Array(0, 9, 20.5)
 }
 tracks/4/type = "animation"
 tracks/4/imported = false
@@ -100,8 +130,8 @@ tracks/4/path = NodePath("PanelContainer/Slide3/AnimationPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"clips": PackedStringArray("default", "default_reversed"),
-"times": PackedFloat32Array(23, 34.5)
+"clips": PackedStringArray("RESET", "default", "default_reversed"),
+"times": PackedFloat32Array(0, 23, 34.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bd6wu"]
