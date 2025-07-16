@@ -181,6 +181,8 @@ func _remove_exit_btn_on_web() -> void:
 				_main_menu_box.get_theme_constant("separation")
 		_main_menu.offset_bottom -= \
 				_exit_game_btn.size.y + main_menu_box_separation
+		_press_to_start_container.offset_bottom -= \
+				_exit_game_btn.size.y + main_menu_box_separation
 		_exit_game_btn.visible = false
 
 
@@ -330,9 +332,6 @@ func _update_press_to_start_label_text() -> void:
 		_:
 			press_to_start_text += "KEYBOARD"
 	_press_to_start_label.text = press_to_start_text
-	await get_tree().process_frame
-	_press_to_start_container.reset_size()
-	_press_to_start_container.position.y = 120.0
 
 
 func _change_screen_state(new_state: ScreenState) -> void:
