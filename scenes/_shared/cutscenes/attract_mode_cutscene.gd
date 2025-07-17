@@ -8,6 +8,7 @@ extends "res://scenes/_shared/cutscenes/cutscene.gd"
 
 func _play() -> void:
 	_animation_player.play(&"cutscene")
+	_animation_player.advance(0)
 
 
 func _clean_up() -> void:
