@@ -171,7 +171,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			not event.is_echo() and \
 			not _attract_mode_delay_timer.is_stopped():
 		get_viewport().set_input_as_handled()
-		set_process_unhandled_input(false)
 		_on_start_pressed()
 
 
@@ -181,8 +180,7 @@ func _remove_exit_btn_on_web() -> void:
 				_main_menu_box.get_theme_constant("separation")
 		_main_menu.offset_bottom -= \
 				_exit_game_btn.size.y + main_menu_box_separation
-		_press_to_start_container.offset_bottom -= \
-				_exit_game_btn.size.y + main_menu_box_separation
+		_press_to_start_container.offset_bottom = _main_menu.offset_bottom
 		_exit_game_btn.visible = false
 
 
@@ -288,15 +286,17 @@ func _show_press_start_label() -> void:
 		_press_to_start_tween = null
 	_press_to_start_tween = create_tween()
 	_press_to_start_tween.set_loops()
-	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
-			1.0, 0.0).from(1.0)
+	_press_to_start_tween.tween_property(_press_to_start_label,
+			"self_modulate:a", 1.0, 0.0).from(1.0)
 	_press_to_start_tween.tween_interval(1.0)
-	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
-			0.0, 0.0)
+	_press_to_start_tween.tween_property(_press_to_start_label,
+			"self_modulate:a", 0.0, 0.0)
 	_press_to_start_tween.tween_interval(1.0)
 
 
 func _on_start_pressed() -> void:
+	set_process_unhandled_input(false)
+	_attract_mode_delay_timer.stop()
 	SoundManager.play_sound(SfxPressedStart)
 	_press_to_start_container.show()
 	if _press_to_start_tween:
@@ -304,15 +304,14 @@ func _on_start_pressed() -> void:
 		_press_to_start_tween = null
 	_press_to_start_tween = create_tween()
 	_press_to_start_tween.set_loops(4)
-	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
-			1.0, 0.0).from(1.0)
+	_press_to_start_tween.tween_property(_press_to_start_label,
+			"self_modulate:a", 1.0, 0.0).from(1.0)
 	_press_to_start_tween.tween_interval(0.1)
-	_press_to_start_tween.tween_property(_press_to_start_label, "self_modulate:a",
-			0.0, 0.0)
+	_press_to_start_tween.tween_property(_press_to_start_label,
+			"self_modulate:a", 0.0, 0.0)
 	_press_to_start_tween.tween_interval(0.1)
-	_press_to_start_tween.finished.connect(func():
-			_press_to_start_container.hide()
-			_change_screen_state(ScreenState.MENU))
+	_press_to_start_tween.finished.connect(
+			_change_screen_state.bind(ScreenState.MENU))
 
 
 func _hide_press_start_label() -> void:
