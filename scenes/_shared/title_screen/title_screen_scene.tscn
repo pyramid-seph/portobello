@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=32 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" uid="uid://cjrxno5rl6xnc" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://2tetg2s6d0cn" path="res://art/menu_screen/controller_support_gamepad.png" id="15_ootbr"]
 [ext_resource type="Texture2D" uid="uid://druain36dsm0w" path="res://art/menu_screen/godot_icon_monochrome_light.png" id="16_k07gw"]
 [ext_resource type="PackedScene" uid="uid://ct0smpufbx6yu" path="res://scenes/_shared/title_screen/intro_logos_manager.tscn" id="17_1q5mh"]
+[ext_resource type="PackedScene" uid="uid://biiuf275aen5x" path="res://scenes/_shared/web_audio_activation_screen.tscn" id="17_d8cit"]
 [ext_resource type="Texture2D" uid="uid://dx2c45d18sp6i" path="res://art/menu_screen/controller_support_touchscreen.png" id="18_jtcvj"]
 [ext_resource type="PackedScene" uid="uid://gs24oo0jfl8v" path="res://scenes/_shared/title_screen/timed_intro_logo.tscn" id="18_m2l74"]
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
@@ -350,12 +351,16 @@ body_text = "CONFIRM_QUIT"
 negative_btn_text = "COMMON_OPTIONS_NO"
 positive_btn_text = "COMMON_OPTIONS_YES"
 
+[node name="WebAudioActivationScreen" parent="." instance=ExtResource("17_d8cit")]
+visible = false
+activation_required = 1
+
 [node name="IntroLogosManager" parent="." instance=ExtResource("17_1q5mh")]
 theme = ExtResource("2_j83cx")
 _skip_logo_input_event = &"skip_intro_logo"
 _ignore_skip_logo_input_sec = 0.2
 
-[node name="TimedIntroLogo" parent="IntroLogosManager" instance=ExtResource("18_m2l74")]
+[node name="TimedIntroLogo1" parent="IntroLogosManager" instance=ExtResource("18_m2l74")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -364,7 +369,7 @@ grow_horizontal = 2
 grow_vertical = 2
 duration_sec = 2.0
 
-[node name="GameCLLogo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo"]
+[node name="GameCLLogo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,7 +377,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo/GameCLLogo"]
+[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo1/GameCLLogo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -666,5 +671,6 @@ stretch_mode = 5
 [connection signal="positive_btn_pressed" from="UnlocksDialog" to="." method="_on_unlocks_dialog_positive_btn_pressed"]
 [connection signal="negative_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_positive_btn_pressed"]
+[connection signal="completed" from="WebAudioActivationScreen" to="." method="_on_web_audio_activation_screen_completed"]
 [connection signal="finished" from="IntroLogosManager" to="." method="_on_intro_logos_manager_finished"]
 [connection signal="finished" from="AttractModeCutscene" to="." method="_on_attract_mode_cutscene_finished"]

@@ -1,6 +1,7 @@
 extends Node
 
 enum ScreenState {
+	WEB_AUDIO_ACTIVATION,
 	INTRO_LOGOS,
 	ATTRACT_MODE,
 	PRESS_TO_START,
@@ -15,7 +16,7 @@ const MenuBgScoresTexture: Texture2D = preload("res://art/menu_screen/menu_bg_sc
 const MenuBgSettingsTexture: Texture2D = preload("res://art/menu_screen/menu_bg_settings.png")
 const MenuBgExitTexture: Texture2D = preload("res://art/menu_screen/menu_bg_exit.png")
 const SfxCheated: AudioStream = preload("res://audio/sfx/sfx_title_screen_cheated.wav")
-const SfxPressedStart: AudioStream = preload("res://audio/ui/ui_next.wav")
+const SfxStartGame: AudioStream = preload("res://audio/ui/ui_start_game.wav")
 
 const CheatCode = preload("res://scenes/_shared/cheat_code.gd")
 const Cutscene = preload("res://scenes/_shared/cutscenes/attract_mode_cutscene.gd")
@@ -148,6 +149,7 @@ var _press_to_start_tween: Tween
 @onready var _press_to_start_container: PanelContainer = $TitleScreen/PressToStartContainer
 @onready var _attract_mode_cutscene: Cutscene = $AttractModeCutscene
 @onready var _attract_mode_delay_timer: Timer = $AttractModeDelayTimer
+@onready var _web_audio_activation_screen: WebAudioActivationScreen = $WebAudioActivationScreen
 
 
 func _ready() -> void:
@@ -190,7 +192,7 @@ func _start() -> void:
 		if _debug_skip_logos_roll:
 			_change_screen_state.call_deferred(ScreenState.PRESS_TO_START)
 		else:
-			_change_screen_state(ScreenState.INTRO_LOGOS)
+			_change_screen_state(ScreenState.WEB_AUDIO_ACTIVATION)
 	else:
 		_change_screen_state(ScreenState.MENU)
 
@@ -297,7 +299,7 @@ func _show_press_start_label() -> void:
 func _on_start_pressed() -> void:
 	set_process_unhandled_input(false)
 	_attract_mode_delay_timer.stop()
-	SoundManager.play_sound(SfxPressedStart)
+	SoundManager.play_sound(SfxStartGame)
 	_press_to_start_container.show()
 	if _press_to_start_tween:
 		_press_to_start_tween.kill()
@@ -340,6 +342,8 @@ func _change_screen_state(new_state: ScreenState) -> void:
 
 func _exit_current_screen_state() -> void:
 	match _screen_state:
+		ScreenState.WEB_AUDIO_ACTIVATION:
+			_exit_web_audio_activation_state()
 		ScreenState.INTRO_LOGOS:
 			_exit_intro_logo_screen_state()
 		ScreenState.ATTRACT_MODE:
@@ -354,6 +358,8 @@ func _enter_new_screen_state(new_state: ScreenState) -> void:
 	_screen_state = new_state
 	
 	match _screen_state:
+		ScreenState.WEB_AUDIO_ACTIVATION:
+			_enter_web_audio_activation_state()
 		ScreenState.INTRO_LOGOS:
 			_enter_intro_logo_screen_state()
 		ScreenState.ATTRACT_MODE:
@@ -362,6 +368,16 @@ func _enter_new_screen_state(new_state: ScreenState) -> void:
 			_enter_press_start_screen_state()
 		_: # Menu or unknown value.
 			_enter_menu_screen_state()
+
+
+func _enter_web_audio_activation_state() -> void:
+	_bgm_player.stop()
+	TouchControllerManager.mode = TouchControllerManager.Mode.UI_MENU
+	_web_audio_activation_screen.enable()
+
+
+func _exit_web_audio_activation_state() -> void:
+	_web_audio_activation_screen.disable()
 
 
 func _enter_intro_logo_screen_state() -> void:
@@ -431,6 +447,10 @@ func _on_attract_mode_cutscene_finished() -> void:
 
 func _on_attract_mode_delay_timer_timeout() -> void:
 	_change_screen_state(ScreenState.ATTRACT_MODE)
+
+
+func _on_web_audio_activation_screen_completed() -> void:
+	_change_screen_state(ScreenState.INTRO_LOGOS)
 
 
 func _on_show_scores_btn_focus_entered() -> void:

@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://biiuf275aen5x"]
+
+[ext_resource type="Script" uid="uid://q01e2rb2q5n" path="res://scenes/_shared/web_audio_activation_screen.gd" id="1_8aexy"]
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_g3n3m"]
+[ext_resource type="Texture2D" uid="uid://byaiwm6bawmhb" path="res://art/menu_screen/web_audio_notice.png" id="2_sutul"]
+[ext_resource type="FontFile" uid="uid://cwc2c33qocoqn" path="res://art/fonts/peaberry_font_v2_0/peaberry_base.woff2" id="2_tloes"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="3_vkxbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3n3m"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne8im"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.815686, 0.882353, 0.486275, 1)
+
+[node name="WebAudioActivationScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_g3n3m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_g3n3m")
+script = ExtResource("1_8aexy")
+
+[node name="DelayedStartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ScreenContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ne8im")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenContainer"]
+layout_mode = 2
+
+[node name="NoticeImg" type="TextureRect" parent="ScreenContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_sutul")
+stretch_mode = 3
+
+[node name="MainInfoLabel" type="RichTextLabel" parent="ScreenContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_tloes")
+bbcode_enabled = true
+text = "INFO_ACTIVATE_AUDIO_WEB_0_MOUSE"
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondaryInfoLabel" type="Label" parent="ScreenContainer/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.262932, 0.262932, 0.262932, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_vkxbd")
+theme_override_font_sizes/font_size = 8
+text = "INFO_ACTIVATE_AUDIO_WEB_1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[connection signal="timeout" from="DelayedStartTimer" to="." method="_on_delayed_start_timer_timeout"]
