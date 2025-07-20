@@ -351,10 +351,6 @@ body_text = "CONFIRM_QUIT"
 negative_btn_text = "COMMON_OPTIONS_NO"
 positive_btn_text = "COMMON_OPTIONS_YES"
 
-[node name="WebAudioActivationScreen" parent="." instance=ExtResource("17_d8cit")]
-visible = false
-activation_required = 1
-
 [node name="IntroLogosManager" parent="." instance=ExtResource("17_1q5mh")]
 theme = ExtResource("2_j83cx")
 _skip_logo_input_event = &"skip_intro_logo"
@@ -648,6 +644,10 @@ grow_vertical = 0
 texture = SubResource("AtlasTexture_u1547")
 stretch_mode = 5
 
+[node name="WebAudioActivationScreen" parent="." instance=ExtResource("17_d8cit")]
+visible = false
+activation_required = 1
+
 [node name="AttractModeCutscene" parent="." instance=ExtResource("26_m2l74")]
 
 [connection signal="timeout" from="AttractModeDelayTimer" to="." method="_on_attract_mode_delay_timer_timeout"]
@@ -671,6 +671,6 @@ stretch_mode = 5
 [connection signal="positive_btn_pressed" from="UnlocksDialog" to="." method="_on_unlocks_dialog_positive_btn_pressed"]
 [connection signal="negative_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_negative_btn_pressed"]
 [connection signal="positive_btn_pressed" from="ConfirmExitDialog" to="." method="_on_confirm_exit_dialog_positive_btn_pressed"]
-[connection signal="completed" from="WebAudioActivationScreen" to="." method="_on_web_audio_activation_screen_completed"]
 [connection signal="finished" from="IntroLogosManager" to="." method="_on_intro_logos_manager_finished"]
+[connection signal="completed" from="WebAudioActivationScreen" to="." method="_on_web_audio_activation_screen_completed"]
 [connection signal="finished" from="AttractModeCutscene" to="." method="_on_attract_mode_cutscene_finished"]
