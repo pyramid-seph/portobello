@@ -14,7 +14,8 @@ var _first_logo_delay_sec: float = 1.0
 var _delay_between_logos_sec: float = 1.0
 @export_range(0.1, 1.0, 0.01, "or_greater")
 var _finish_delay_sec: float = 1.0
-@export var _skip_logo_input_event: StringName = &"ui_cancel"
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var _skip_logo_input_event: StringName = &"ui_cancel"
 @export_range(0.1, 1.0, 0.01, "or_greater")
 var _ignore_skip_logo_input_sec: float = 1.0
 @export var _background_color: Color:
