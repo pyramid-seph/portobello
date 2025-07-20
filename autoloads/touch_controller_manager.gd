@@ -11,6 +11,8 @@ const BUTTON_ACTION_SECONDARY_CANCEL_TEXTURE = preload("res://art/_shared/touch_
 enum Mode {
 	UI_MENU,
 	CUTSCENE,
+	INTRO_LOGOS,
+	START_GAME,
 	GAMEPLAY,
 	GAMEPLAY_DPAD_ONLY,
 	GAMEPLAY_RPG_WORLD,
@@ -80,6 +82,34 @@ func _configure_controller_for_mode(new_mode: Mode) -> void:
 			_touch_screen_controller.hide_main_action_button = false
 			_touch_screen_controller.hide_secondary_action_button = true
 			_touch_screen_controller.hide_pause_button = true
+		Mode.INTRO_LOGOS:
+			_touch_screen_controller.main_action_button_texture = \
+					BUTTON_ACTION_MAIN_SKIP_TEXTURE
+			_touch_screen_controller.secondary_action_button_texture = null
+			_touch_screen_controller.action_button = &"skip_intro_logo"
+			# secondary_action_button cannot be null, so I'll just set it to whatever...
+			_touch_screen_controller.secondary_action_button = &"ui_cancel"
+			_touch_screen_controller.action_down = &"ui_down"
+			_touch_screen_controller.action_left = &"ui_left"
+			_touch_screen_controller.action_right = &"ui_right"
+			_touch_screen_controller.action_up = &"ui_up"
+			_touch_screen_controller.hide_main_action_button = false
+			_touch_screen_controller.hide_secondary_action_button = true
+			_touch_screen_controller.hide_pause_button = true
+		Mode.START_GAME:
+			_touch_screen_controller.main_action_button_texture = \
+					BUTTON_ACTION_MAIN_ACCEPT_TEXTURE
+			_touch_screen_controller.secondary_action_button_texture = null
+			_touch_screen_controller.action_button = &"start_game"
+			# secondary_action_button cannot be null, so I'll just set it to whatever...
+			_touch_screen_controller.secondary_action_button = &"ui_cancel"
+			_touch_screen_controller.action_down = &"ui_down"
+			_touch_screen_controller.action_left = &"ui_left"
+			_touch_screen_controller.action_right = &"ui_right"
+			_touch_screen_controller.action_up = &"ui_up"
+			_touch_screen_controller.hide_main_action_button = false
+			_touch_screen_controller.hide_secondary_action_button = true
+			_touch_screen_controller.hide_pause_button = true
 		Mode.GAMEPLAY:
 			_touch_screen_controller.main_action_button_texture = \
 					BUTTON_ACTION_MAIN_FIRE_TEXTURE
@@ -137,14 +167,10 @@ func _configure_controller_for_mode(new_mode: Mode) -> void:
 			_touch_screen_controller.hide_pause_button = true
 
 
-func _is_player_1_joypad_connected() -> bool:
-	# Input events are mapped only to the device 0.
-	return 0 in Input.get_connected_joypads()
-
-
 func _update_touch_controller_visibility() -> void:
 	if _touch_screen_controller:
-		_touch_screen_controller.visible = not _is_player_1_joypad_connected()
+		_touch_screen_controller.visible = \
+				not InputUtils.is_player_1_joypad_connected()
 
 
 func _on_mode_set() -> void:

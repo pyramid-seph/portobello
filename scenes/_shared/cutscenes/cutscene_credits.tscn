@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cue7pestmbrcu" path="res://art/cutscenes/ending/ending_credits_sea_shine_0.png" id="10_yjovn"]
 [ext_resource type="Texture2D" uid="uid://g4iith1xpt1" path="res://art/cutscenes/ending/ending_credits_bucho_0.png" id="13_gwfa2"]
 [ext_resource type="Script" uid="uid://ckp70i718mq54" path="res://scenes/_shared/cutscenes/post_credits_scene.gd" id="13_qgbjn"]
-[ext_resource type="Texture2D" uid="uid://bg5pf3f7vadyl" path="res://art/cutscenes/ending/ending_post_credits.png" id="13_tg2lj"]
+[ext_resource type="Texture2D" uid="uid://bg5pf3f7vadyl" path="res://art/cutscenes/ending_post_credits.png" id="13_tg2lj"]
 [ext_resource type="Texture2D" uid="uid://cgxdaj67ey6yj" path="res://art/cutscenes/ending/ending_credits_bucho_1.png" id="14_1thfa"]
 [ext_resource type="Texture2D" uid="uid://c4dymrfuhbcl3" path="res://art/cutscenes/ending/ending_post_credits_bucho_mouth.png" id="14_wtijq"]
 [ext_resource type="AudioStream" uid="uid://rew2370r0bfv" path="res://audio/voice/va_postcredits_bucho_01_en.wav" id="20_ly3p3"]

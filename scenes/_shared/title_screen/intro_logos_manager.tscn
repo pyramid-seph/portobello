@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct0smpufbx6yu"]
+
+[ext_resource type="Script" uid="uid://djjne1kcnr3fg" path="res://scenes/_shared/title_screen/intro_logos_manager.gd" id="1_2ttji"]
+
+[node name="IntroLogosManager" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_2ttji")
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="IgnoreSkipLogoInputTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
