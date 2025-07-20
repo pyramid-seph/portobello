@@ -17,47 +17,38 @@
 [sub_resource type="Resource" id="Resource_20g26"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("1_18lrd")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_hovp6"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("3_0ilms")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_ajd17"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("4_q5h7k")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_js7yg"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("5_q8vk8")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_1naio"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("6_d2q5i")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_7mvjd"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("7_ag708")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_cthcs"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("8_1rd6r")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_ug542"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("9_8ww8v")
-_weight = 1.0
 
 [sub_resource type="Resource" id="Resource_vniak"]
 script = ExtResource("2_ieakb")
 _action = ExtResource("10_uda2w")
-_weight = 1.0
 
 [resource]
 script = ExtResource("2_tiv57")
