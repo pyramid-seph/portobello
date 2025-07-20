@@ -61,9 +61,10 @@ jobs:
         working-directory: godotengine
         run: |
           scons platform=web \
-              target=template_release\
-              optimize=size\
-              use_volk=no\
+              target=template_release \
+              optimize=size \
+              vulkan=no \
+              use_volk=no \
               use_closure_compiler=yes \
               tools=no \
               deprecated=no \
@@ -71,6 +72,11 @@ jobs:
               redirect_build_objects=no \
               tests=no \
               debug_symbols=no \
+              openxr=no \
+              svg=no \
+              minizip=no \
+              disable_3d=yes \
+              engine_update_check=no \
               build_profile=${{ env.BUILD_PROFILE_PATH }}
           mkdir -vp ../export_templates/
           mv -v bin/godot.web.template_release.wasm32.nothreads.zip \
