@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ct51hooycinfb"]
+[gd_scene load_steps=28 format=3 uid="uid://ct51hooycinfb"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1lrlh"]
 [ext_resource type="Script" uid="uid://bncn3rylpiytm" path="res://scenes/_shared/cutscenes/cutscene_credits.gd" id="2_eca4p"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://rew2370r0bfv" path="res://audio/voice/va_postcredits_bucho_01_en.wav" id="20_ly3p3"]
 [ext_resource type="AudioStream" uid="uid://d00735eni24eu" path="res://audio/voice/va_postcredits_bucho_02_en.wav" id="21_f08bk"]
 [ext_resource type="AudioStream" uid="uid://7mst7bn6pl2o" path="res://audio/voice/va_postcredits_bucho_03_en.wav" id="22_2vgm6"]
+[ext_resource type="AudioStream" uid="uid://d22bly4a24r5v" path="res://audio/bgm/cutscene_ends.mp3" id="23_f08bk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w1dyf"]
 animations = [{
@@ -78,7 +79,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_gik3p"]
 resource_name = "default"
-length = 12.0
+length = 14.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -135,8 +136,12 @@ tracks/3/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("22_2vgm6")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("23_f08bk")
 }],
-"times": PackedFloat32Array(4, 6, 8)
+"times": PackedFloat32Array(4, 6, 8, 10)
 }
 tracks/3/use_blend = true
 
