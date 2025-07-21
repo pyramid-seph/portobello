@@ -1,3 +1,21 @@
+# v4.0.0 - The one with charisma.
+
+* Now you can skip each intro logo by pressing A/B (Xbox controller), 
+ESC/SPACE (keyboard), or by touching the skip button (mobile).
+* Added a screen to ensure web audio is activated.
+* Added a "Press to start" screen.
+* Added an attract mode cutscene. It is played after the intro logos and after 
+60 seconds of inactivity on the "press to start" screen. This cutscene sets up 
+the game's story. You can skip it by pressing B (Xbox controller), 
+ESCAPE (keyboard), or by touching the skip button (mobile).
+* Updated credits.
+* Polished the ending (just a little!).
+* Implemented Github Actions to automate the release of production builds.
+* This is the first version to also be hosted on Github Pages.
+* Reduced the build size by stripping some unused Godot modules and by using 
+custom export templates.
+
+
 # v3.0.0 - The one that beeps and boops.
 
 * Sound effects!
