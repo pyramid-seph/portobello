@@ -3,14 +3,14 @@
 importer="texture_atlas"
 type="Texture2D"
 uid="uid://bg5pf3f7vadyl"
-path="res://.godot/imported/ending_post_credits.png-3943e7389d4b657215150083f8fca0d9.res"
+path="res://.godot/imported/ending_post_credits.png-9aa6265a1d80d18f4cdf061e5b4743f6.res"
 group_file="res://art/cutscenes/ending/_atlas_ending.png"
 valid=true
 [deps]
 
 
-source_file="res://art/cutscenes/ending/ending_post_credits.png"
-dest_files=["res://.godot/imported/ending_post_credits.png-3943e7389d4b657215150083f8fca0d9.res"]
+source_file="res://art/cutscenes/ending_post_credits.png"
+dest_files=["res://.godot/imported/ending_post_credits.png-9aa6265a1d80d18f4cdf061e5b4743f6.res"]
 
 [params]
 

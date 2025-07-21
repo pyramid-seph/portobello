@@ -1,4 +1,13 @@
 keys,en,es
+ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_DESC,A TV chef. He and Ami adopted Bucho the day he traveled abroad to a convention.,Chef de TV. Él y Ami adoptaron a Bucho el día que fue al extranjero a un congreso.
+ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_NAME,Ami's boyfriend,Novio de Ami
+ATTRACT_MODE_CHAR_BIO_AMI_DESC,A baking teacher. She recently lost her beloved grandpa to cancer.,Profesora de repostería. Su querido abuelo falleció recientemente de cancer.
+ATTRACT_MODE_CHAR_BIO_AMI_NAME,Ami,Ami
+ATTRACT_MODE_CHAR_BIO_BUCHO_DESC,"A kitty with a big appetite and the misterious ability of getting powers from food.
+When he was rescued, he was found next to the bones of his mother. The whereabouts of his siblings remain unknown.","Un gatito de apetito feroz y con la misteriosa habilidad de obtener poderes de la comida.
+Cuando fue rescatado, lo encontraron junto a los huesos de su madre. Se desconoce el paradero de sus hermanos."
+ATTRACT_MODE_CHAR_BIO_BUCHO_NAME,Bucho,Bucho
+ATTRACT_MODE_CHAR_BIO_TITLE,- Characters -,- Personajes -
 COMMON_OPTIONS_EXIT,Quit game,Salir
 COMMON_OPTIONS_NO,No,No
 COMMON_OPTIONS_OK,OK,OK
@@ -13,15 +22,15 @@ CREDITS_BUCHO_TALKS_2,Se - quel,Se - cue - la
 CREDITS_CHARACTER_DESIGN,Character design,Diseño de personajes
 CREDITS_FONTS,Fonts,Fuentes
 CREDITS_GAME_TITLE,- Bucho Busca Comida -,- Bucho Busca Comida -
-CREDITS_ORIGINAL_IDEA,Original idea,Idea Original
+CREDITS_ORIGINAL_IDEA,Original Idea,Idea Original
 CREDITS_ORIGINAL_STAFF,Original Staff,Staff Original
 CREDITS_PORT_STAFF,The Portobello Mushroom\nEdition,Edición Hongo Portobello
-CREDITS_PORTED_BY,Ported by,Conversión
 CREDITS_PROGRAMMING,Programming,Programación
 CREDITS_SCRIPT,Script,Guión
 CREDITS_SPRITES,Sprites,Sprites
 CREDITS_TESTERS,Testing,Pruebas
 CREDITS_THANKS_FOR_PLAYING,Thanks for playing!,¡Gracias por jugar!
+CREDITS_VA_BUCHO,Bucho's Voice,Voz de Bucho
 CREDITS_WILDCARD,Cackling goddess,Comodín
 CUTSCENE_DAY_TITLE_01,Day 1,Día 1
 CUTSCENE_DAY_TITLE_02,Day 2,Día 2
@@ -65,7 +74,7 @@ DIALOGUE_DAY_01_LEVEL_06_LINE_08,sort of...,Te quiero mucho mucho.
 DIALOGUE_DAY_01_LEVEL_06_LINE_09,"Good luck, cupcake!","Bueno, mi cielo, ¡suerte!"
 DIALOGUE_DAY_01_LEVEL_07_LINE_00,"Hello? Mami! Yes,","¿Bueno? ¡Má! Sí, ya fui"
 DIALOGUE_DAY_01_LEVEL_07_LINE_01,I visited abue's grave,al cementerio a ver a
-DIALOGUE_DAY_01_LEVEL_07_LINE_02,and left him some flowers.,abue. Le dejé unas lindas
+DIALOGUE_DAY_01_LEVEL_07_LINE_02,and left him some flowers.,abuelo. Le dejé unas lindas
 DIALOGUE_DAY_01_LEVEL_07_LINE_03,It's gonna be OK.,flores. Todo estará bien.
 DIALOGUE_DAY_01_LEVEL_07_LINE_04,Love you. Bye!,Te quiero. Cuídate.
 DIALOGUE_DAY_01_LEVEL_08_LINE_00,Shortcake! Oh... You don't,¡Amorcito!
@@ -117,7 +126,11 @@ DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01,Bucho got the [img=valign]res://art/day_ex
 DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_01,There was a parrot here.,Aquí había un loro.
 DIALOGUE_DAY_EX_ROOM_EVENT_03_PAGE_02,It's gone now.,Ya no más.
 GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
-GAME_TITLE,Bucho Busca Comida,Pyramid Seph
+GAME_TITLE,Bucho Busca Comida,Bucho Busca Comida
+INFO_ACTIVATE_AUDIO_WEB_0_MOUSE,"To ensure that audio playback is activated on your browser, please [color=red]LEFT CLICK[/color] the image.","Para asegurarte que la reproducción de audio esta activada en tu navegador, por favor, haz [color=red]CLICK IZQUIERDO[/color] en la imagen."
+INFO_ACTIVATE_AUDIO_WEB_0_TOUCHSCREEN,"To ensure that audio playback is activated on your browser, please [color=red]TOUCH[/color] the image.","Para asegurarte que la reproducción de audio esta activada en tu navegador, por favor, [color=red]TOCA[/color] la imagen."
+INFO_ACTIVATE_AUDIO_WEB_1_MOUSE,"After you left click it, a sound will play (even if you have disabled audio on this game settings).","Tras darle click izquierdo, se escuchará un sonido (aun cuando esté desactivado el audio en la configuración del juego)."
+INFO_ACTIVATE_AUDIO_WEB_1_TOUCHSCREEN,"After your touch it, a sound will play (even if you have disabled audio on this game settings).","Tras tocarla, se escuchará un sonido (aun cuando esté desactivado el audio en la configuración del juego)."
 INFO_DAY_EX_AVAILABLE,"Order up!\n\nA ""Day EX""\nwith extra love!\n ","¡Orden lista!\n\n¡Un ""Día EX""\ncon extra amor!\n "
 INFO_GAMEPAD_SUPPORT,"Supports gamepad,","Puedes jugar con un control,"
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
@@ -326,3 +339,6 @@ RPG_BATTLE_STATUS_EFFECT_SHORT_NORMAL,NRML,NRML
 RPG_BATTLE_STATUS_EFFECT_SHORT_POISON,POIS,VNNO
 RPG_BATTLE_STATUS_EFFECT_SHORT_SPEED_BUFF,SPD+,VEL+
 RPG_BATTLE_STATUS_EFFECT_SHORT_SPEED_DEBUFF,SPD-,VEL-
+TITLE_SCREEN_PRESS_TO_START_GAMEPAD,Press A,Presiona A
+TITLE_SCREEN_PRESS_TO_START_KEYBOARD,Press SPACE,Presiona ESPACIO
+TITLE_SCREEN_PRESS_TO_START_TOUCHSCREEN,Touch [img=valign]res://art/menu_screen/touch_main_accept_to_start.png[/img],Toca [img=valign]res://art/menu_screen/touch_main_accept_to_start.png[/img]

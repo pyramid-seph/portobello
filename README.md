@@ -1,4 +1,4 @@
-# Bucho Busca Comida: Edición Hongo Portobello
+# Bucho Busca Comida: The Portobello Mushroom Edition
 
 This port (made with [Godot](https://godotengine.org)) is a recreation of a 
 J2ME game I developed with some good friends for a school project. 

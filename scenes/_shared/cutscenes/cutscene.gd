@@ -3,6 +3,7 @@ extends Control
 
 signal finished
 
+const SfxSkip: AudioStream = preload("res://audio/ui/kenney_interface_sounds/select_002.ogg")
 
 @export var _autostart: bool
 
@@ -23,6 +24,7 @@ func _exit_tree() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("skip_cutscene"):
+		SoundManager.play_sound(SfxSkip)
 		get_viewport().set_input_as_handled()
 		finish()
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwjq6y6l4041p"
-path="res://.godot/imported/_atlas_day_01_tile.png-6f4083ed85abf4ba4d218bd14348f996.ctex"
+uid="uid://byaiwm6bawmhb"
+path="res://.godot/imported/web_audio_notice.png-61f0b0f881dec8dee67788c8ec2ace86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/day_1/_atlas_day_01_tile.png"
-dest_files=["res://.godot/imported/_atlas_day_01_tile.png-6f4083ed85abf4ba4d218bd14348f996.ctex"]
+source_file="res://art/menu_screen/web_audio_notice.png"
+dest_files=["res://.godot/imported/web_audio_notice.png-61f0b0f881dec8dee67788c8ec2ace86.ctex"]
 
 [params]
 

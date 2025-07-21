@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://gs24oo0jfl8v"]
+
+[ext_resource type="Script" uid="uid://dslgxxxu2mqsw" path="res://scenes/_shared/title_screen/timed_intro_logo.gd" id="1_tr7a7"]
+
+[node name="TimedIntroLogo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tr7a7")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

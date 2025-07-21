@@ -19,5 +19,9 @@ func play(position: float = 0.0) -> void:
 		SoundManager.play_music_from_position(_music, position)
 
 
+func is_playing() -> bool:
+	return false if not _music else SoundManager.is_music_playing(_music)
+
+
 func stop(fade_out_duration: float = 0.0) -> void:
 	SoundManager.stop_music(fade_out_duration)
