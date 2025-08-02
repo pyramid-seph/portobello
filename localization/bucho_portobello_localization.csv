@@ -36,6 +36,7 @@ CUTSCENE_DAY_TITLE_01,Day 1,Día 1
 CUTSCENE_DAY_TITLE_02,Day 2,Día 2
 CUTSCENE_DAY_TITLE_03,Day 3,Día 3
 CUTSCENE_DAY_TITLE_04,Day EX,Día EX
+CUTSCENE_SKIP,Skip,Saltar
 DATA_DELETED,Data deleted,Datos borrados
 DIALOGUE_DAY_01_LEVEL_01_LINE_00,"Hi! No, I don't know",¿Bueno?
 DIALOGUE_DAY_01_LEVEL_01_LINE_01,any nigerian prince...,"¡No, aquí no vive Nacho!"

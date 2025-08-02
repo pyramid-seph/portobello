@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4frmn2rmoeag"]
+
+[ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_eq4ej"]
+[ext_resource type="Script" uid="uid://chyyyotgcut4j" path="res://scenes/_shared/cutscenes/skip_indicator.gd" id="1_g0m0d"]
+[ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="2_g0m0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phvwb"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_phvwb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_b3v7t"]
+
+[node name="SkipIndicator" type="PanelContainer"]
+offset_right = 77.0
+offset_bottom = 27.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_phvwb")
+script = ExtResource("1_g0m0d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_eq4ej")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_g0m0d")
+theme_override_font_sizes/font_size = 8
+text = "CUTSCENE_SKIP"
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 1
+
+[node name="SkipProgressBar" type="TextureProgressBar" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.01
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_phvwb")
+texture_progress = SubResource("CanvasTexture_b3v7t")
+tint_progress = Color(1, 0, 0, 1)
