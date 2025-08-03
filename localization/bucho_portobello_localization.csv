@@ -130,8 +130,8 @@ GAME_SUBTITLE,The Portobello Mushroom Edition,Edición Hongo Portobello
 GAME_TITLE,Bucho Busca Comida,Bucho Busca Comida
 INFO_ACTIVATE_AUDIO_WEB_0_MOUSE,"To ensure that audio playback is activated on your browser, please [color=red]LEFT CLICK[/color] the image.","Para asegurarte que la reproducción de audio esta activada en tu navegador, por favor, haz [color=red]CLICK IZQUIERDO[/color] en la imagen."
 INFO_ACTIVATE_AUDIO_WEB_0_TOUCHSCREEN,"To ensure that audio playback is activated on your browser, please [color=red]TOUCH[/color] the image.","Para asegurarte que la reproducción de audio esta activada en tu navegador, por favor, [color=red]TOCA[/color] la imagen."
-INFO_ACTIVATE_AUDIO_WEB_1_MOUSE,"After you left click it, a sound will play (even if you have disabled audio on this game settings).","Tras darle click izquierdo, se escuchará un sonido (aun cuando esté desactivado el audio en la configuración del juego)."
-INFO_ACTIVATE_AUDIO_WEB_1_TOUCHSCREEN,"After your touch it, a sound will play (even if you have disabled audio on this game settings).","Tras tocarla, se escuchará un sonido (aun cuando esté desactivado el audio en la configuración del juego)."
+INFO_ACTIVATE_AUDIO_WEB_1_MOUSE,"After you left click it, a sound will play (even if you have disabled audio on this game's settings).","Tras darle click izquierdo, se escuchará un sonido (aun cuando esté desactivado el audio en la configuración del juego)."
+INFO_ACTIVATE_AUDIO_WEB_1_TOUCHSCREEN,"After your touch it, a sound will play (even if you have disabled audio on this game's settings).","Tras tocarla, se escuchará un sonido (aun cuando esté desactivado el audio en la configuración del juego)."
 INFO_DAY_EX_AVAILABLE,"Order up!\n\nA ""Day EX""\nwith extra love!\n ","¡Orden lista!\n\n¡Un ""Día EX""\ncon extra amor!\n "
 INFO_GAMEPAD_SUPPORT,"Supports gamepad,","Puedes jugar con un control,"
 INFO_KEYBOARD_SUPPORT,and keyboard,o con el teclado
