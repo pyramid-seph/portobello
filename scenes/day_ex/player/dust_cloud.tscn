@@ -27,6 +27,7 @@ radial_velocity_curve = SubResource("CurveTexture_lc3dg")
 gravity = Vector3(0, 0, 0)
 
 [node name="DustCloud" type="GPUParticles2D"]
+physics_interpolation_mode = 2
 self_modulate = Color(0.695359, 0.675482, 0, 1)
 emitting = false
 amount = 24

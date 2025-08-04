@@ -38,8 +38,9 @@ func change_to_scene(path: String, shared_data: Dictionary = {}) -> void:
 	var current_scene: Node = Utils.last_child($/root)
 	if current_scene:
 		current_scene.queue_free()
+		while(is_instance_valid(current_scene)):
+			await get_tree().process_frame
 		current_scene = null
-		await get_tree().process_frame
 	
 	var result: LoadResult = await _load_scene(path)
 	if result.is_success():
