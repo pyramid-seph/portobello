@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=31 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" uid="uid://cjrxno5rl6xnc" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -27,8 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://gs24oo0jfl8v" path="res://scenes/_shared/title_screen/timed_intro_logo.tscn" id="18_m2l74"]
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
 [ext_resource type="PackedScene" uid="uid://cyc40rls0lvnd" path="res://scenes/_shared/cutscenes/attract_mode_cutscene.tscn" id="26_m2l74"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kps1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v21ph"]
 resource_local_to_scene = true
@@ -61,23 +59,6 @@ disabled = true
 [node name="AttractModeDelayTimer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
-
-[node name="ParticlesPrewarmer" type="PanelContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6kps1")
-
-[node name="BloodDropParticles" parent="ParticlesPrewarmer" instance=ExtResource("11_0fxou")]
-position = Vector2(123, 49)
-emitting = true
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" type="ColorRect" parent="ParticlesPrewarmer"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
