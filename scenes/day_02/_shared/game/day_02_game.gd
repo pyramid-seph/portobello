@@ -36,7 +36,6 @@ var _remaining_lives: int:
 		_remaining_lives = value
 		_on_remaining_lives_changed()
 
-@onready var _is_ready := true
 @onready var _timer := $Timer as Timer
 @onready var _ui := %Day02Ui as Day02Ui
 @onready var _results_screen := %ResultsScreen as ResultsScreen
@@ -154,7 +153,7 @@ func _is_game_story_mode() -> bool:
 
 
 func _on_level_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_ui.show_black_screen(true)
 		_ui.set_pause_menu_enabled(false)
 		await _set_up_level()
@@ -163,12 +162,12 @@ func _on_level_set() -> void:
 
 
 func _on_score_changed() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_ui.update_score(_score)
 
 
 func _on_remaining_lives_changed() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_ui.update_lives_counter(_remaining_lives, true)
 
 

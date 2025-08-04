@@ -43,7 +43,6 @@ var _state: MazeEnemyState = MazeEnemyState.CHASING:
 		_state = value
 		_on_state_set()
 
-@onready var _is_ready := true
 @onready var _maze := get_parent() as Maze
 @onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _scare_timer := $ScareTimer as Timer
@@ -185,14 +184,14 @@ func _die() -> void:
 
 
 func _on_is_halt_set() -> void:
-	if _is_ready and is_halt:
+	if is_node_ready() and is_halt:
 		_scare_timer.stop()
 		_not_so_scared_delay_timer.stop()
 		_dying_timer.stop()
 
 
 func _on_textures_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		var sprite_frames := _animated_sprite.sprite_frames
 		sprite_frames.set_frame("default", 0, _texture_0)
 		sprite_frames.set_frame("default", 1, _texture_1)
@@ -200,7 +199,7 @@ func _on_textures_set() -> void:
 
 
 func _on_state_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	z_index = _z_index_dead if _state == MazeEnemyState.DEAD else _z_index_default
 	_update_animation()

@@ -55,7 +55,6 @@ var _next_valid_dirs: Array[Vector2i]
 var _origin_valid_dirs: Array[Vector2i]
 var _origin_local_pos: Vector2
 
-@onready var _is_ready := true
 @onready var _target_local_pos: Vector2 = position:
 	set(value):
 		_origin_local_pos = _target_local_pos
@@ -257,7 +256,7 @@ func _update_sprite_direction() -> void:
 
 
 func _on_state_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	var new_animation := "dying" if _is_dead() else "default"
@@ -269,7 +268,7 @@ func _on_target_local_pos_set() -> void:
 	_next_valid_dirs.clear()
 	_origin_valid_dirs.clear()
 	
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	var target_map_pos: Vector2i = _maze.local_to_map(_target_local_pos)

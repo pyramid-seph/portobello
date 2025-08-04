@@ -7,13 +7,12 @@ signal finished
 @export var dialogue: Array[DialogueLine]:
 	set(value):
 		dialogue = value
-		if _is_ready:
+		if is_node_ready():
 			stop()
 @export var _autostart: bool
 
 var _is_playing: bool
 
-@onready var _is_ready: bool = true
 @onready var _timer := $Timer as Timer
 @onready var _label := $Label as Label
 
