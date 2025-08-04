@@ -14,7 +14,7 @@ config/name="Bucho Busca Comida: The Portobello Mushroom Edition"
 config/name_localized={
 "es": "Bucho Busca Comida: Edición Hongo Portobello"
 }
-config/version="4.0.0"
+config/version="4.1.0"
 run/main_scene="uid://kmbkuf6vx0xv"
 config/features=PackedStringArray("4.4")
 boot_splash/bg_color=Color(0, 0, 0, 1)
