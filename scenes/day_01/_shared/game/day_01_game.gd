@@ -50,7 +50,6 @@ var _treats_eaten: int:
 var _curr_lvl_settings: Day01LevelSettings
 var _immediate_lives_counter_update: bool = true
 
-@onready var _is_ready: bool = true
 @onready var _results_screen := %ResultsScreen as ResultsScreen
 @onready var _player := %Day01Player as Player
 @onready var _ui := %Day01GameUi as Day01Ui
@@ -154,7 +153,7 @@ func _go_to_title_screen() -> void:
 
 
 func _on_level_changed() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_player.is_allowed_to_move = false
 		_ui.show_black_screen(true)
 		_ui.set_pause_menu_enabled(false)
@@ -164,7 +163,7 @@ func _on_level_changed() -> void:
 
 
 func _on_treats_eaten_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	var count: int
 	if _curr_lvl_settings.limits_treats():
@@ -175,12 +174,12 @@ func _on_treats_eaten_changed() -> void:
 
 
 func _on_high_score_changed() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_ui.update_high_score(_high_score)
 
 
 func _on_remaining_lives_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	_ui.update_lives_counter(_remaining_lives, _immediate_lives_counter_update)
 	_immediate_lives_counter_update = false

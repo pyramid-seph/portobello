@@ -23,7 +23,6 @@ const DEFAULT_SHADOW_COLOR := Color("#000000C8")
 		hide_shadow = value
 		_on_hide_shadow_set()
 
-@onready var _is_ready: bool = true
 @onready var _body_label := %BodyLabel as Label
 @onready var _negative_btn := %NegativeBtn as Button
 @onready var _positive_btn := %PositiveBtn as Button
@@ -43,24 +42,24 @@ func _hide() -> void:
 
 
 func _on_positive_btn_text_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_positive_btn.text = positive_btn_text
 
 
 func _on_negative_btn_text_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_negative_btn.text = negative_btn_text
 		_negative_btn.visible = not negative_btn_text.is_empty()
 		_grab_focus()
 
 
 func _on_body_text_set() -> void:
-	if _is_ready:
+	if is_node_ready():
 		_body_label.text = body_text
 
 
 func _on_hide_shadow_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	var curr_theme_style_box := get_theme_stylebox("panel")
 	if hide_shadow:
@@ -91,7 +90,7 @@ func _on_positive_btn_pressed() -> void:
 
 
 func _on_visibility_changed() -> void:
-	if Engine.is_editor_hint() or not _is_ready:
+	if Engine.is_editor_hint() or not is_node_ready():
 		return
 	if visible:
 		_grab_focus()

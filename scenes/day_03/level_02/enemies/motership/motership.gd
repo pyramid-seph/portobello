@@ -41,7 +41,6 @@ var _hp: int = 1:
 @onready var _abduction_ray := $AbductionRay
 @onready var _dialogue_box := $Control/DialogueBox as DialogueBox
 @onready var _life_bar := %LifeBar as TextureProgressBar
-@onready var _is_ready := true
 
 
 func _ready() -> void:
@@ -57,10 +56,6 @@ func _exit_tree() -> void:
 
 func is_dead() -> bool:
 	return _is_dead
-
-
-func is_ready() -> bool:
-	return _is_ready
 
 
 func start_abduction_ray() -> void:
@@ -104,7 +99,7 @@ func _update_hp_bar() -> void:
 
 
 func _on_player_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	_move_player_inside()
 	_heat_seeker_weapon.target = player
@@ -112,7 +107,7 @@ func _on_player_set() -> void:
 
 
 func _on_is_attacking_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	if is_attacking:
 		_enable_weapons()
@@ -134,7 +129,7 @@ func _enable_weapons() -> void:
 
 
 func _on_hp_changed() -> void:
-	if not is_ready():
+	if not is_node_ready():
 		return
 	_update_hp_bar()
 	_enable_weapons()

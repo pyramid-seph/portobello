@@ -21,12 +21,12 @@ func _ready() -> void:
 
 
 func _on_set_speed() -> void:
-	if is_ready():
+	if is_node_ready():
 		_simple_mover.speed = speed
 
 
 func _on_set_movement_pattern() -> void:
-	if is_ready():
+	if is_node_ready():
 		_simple_mover.pattern = movement_pattern
 
 
