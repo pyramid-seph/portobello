@@ -16,10 +16,6 @@ func _ready() -> void:
 		_randomize_frame()
 
 
-func is_ready() -> bool:
-	return is_node_ready()
-
-
 func get_animated_sprite() -> AnimatedSprite2D:
 	return _animated_sprite
 

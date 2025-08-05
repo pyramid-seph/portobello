@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene load_steps=31 format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" uid="uid://cjrxno5rl6xnc" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -27,8 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://gs24oo0jfl8v" path="res://scenes/_shared/title_screen/timed_intro_logo.tscn" id="18_m2l74"]
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
 [ext_resource type="PackedScene" uid="uid://cyc40rls0lvnd" path="res://scenes/_shared/cutscenes/attract_mode_cutscene.tscn" id="26_m2l74"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kps1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v21ph"]
 resource_local_to_scene = true
@@ -62,23 +60,6 @@ disabled = true
 wait_time = 60.0
 one_shot = true
 
-[node name="ParticlesPrewarmer" type="PanelContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6kps1")
-
-[node name="BloodDropParticles" parent="ParticlesPrewarmer" instance=ExtResource("11_0fxou")]
-position = Vector2(123, 49)
-emitting = true
-metadata/_edit_lock_ = true
-
-[node name="ColorRect" type="ColorRect" parent="ParticlesPrewarmer"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -100,6 +81,7 @@ _cell_size = Vector2(30, 30)
 
 [node name="ColorRect" type="ColorRect" parent="TitleScreen/TitleScreenBg"]
 unique_name_in_owner = true
+anchors_preset = -1
 offset_right = 240.0
 offset_bottom = 303.0
 color = Color(0.486275, 0.882353, 0.580392, 1)
@@ -124,12 +106,14 @@ metadata/_edit_lock_ = true
 
 [node name="StarsLabel" type="Label" parent="TitleScreen/GameTitle"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
 offset_top = -14.0
 offset_bottom = 8.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 16
 text = "***"
 horizontal_alignment = 1
@@ -138,7 +122,7 @@ metadata/_edit_lock_ = true
 
 [node name="SubtitleLabel" type="Label" parent="TitleScreen/GameTitle"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -149,6 +133,8 @@ offset_right = 54.5
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("8_obcby")
 theme_override_font_sizes/font_size = 8
 text = "GAME_SUBTITLE"
@@ -202,7 +188,7 @@ metadata/_edit_lock_ = true
 
 [node name="VersionLabel" type="Label" parent="TitleScreen"]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -213,6 +199,8 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("8_obcby")
 theme_override_font_sizes/font_size = 8
 text = "v1.0.0"
@@ -375,7 +363,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo1/GameCLLogo"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -407,7 +395,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo2/MyLogo"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -537,7 +525,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -630,7 +618,7 @@ stretch_mode = 2
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

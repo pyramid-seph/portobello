@@ -19,8 +19,6 @@ extends TextureRect
 var _tween: Tween
 var _is_playing: bool
 
-@onready var _is_ready: bool = true
-
 
 func _ready() -> void:
 	_on_frames_set()
@@ -65,20 +63,20 @@ func _set_default_texture() -> void:
 
 
 func _on_frames_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	_set_default_texture()
 	_on_preview_set()
 
 
 func _on_frame_duration_sec_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	_on_preview_set()
 
 
 func _on_preview_set() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	if preview:
 		play()

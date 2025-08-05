@@ -23,7 +23,6 @@ var _tween: Tween
 @onready var _timer := $Timer as Timer
 @onready var _laser_sight := $Gun/LaserSight as Line2D
 @onready var _laser_sight_warning := $Gun/LaserSightWarning as Line2D
-@onready var _is_ready: bool = true
 @onready var _target_locked: bool = false
 
 
@@ -67,7 +66,7 @@ func _reset_sight() -> void:
 
 
 func _on_is_active_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	if is_active:

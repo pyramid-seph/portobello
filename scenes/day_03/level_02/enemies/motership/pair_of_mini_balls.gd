@@ -5,7 +5,7 @@ extends Node2D
 @export_color_no_alpha var _color_one := Color.MAGENTA:
 	set(value):
 		_color_one = value
-		if _is_ready:
+		if is_node_ready():
 			_change_color(value)
 @export_color_no_alpha var _color_two := Color.MAGENTA
 @export_color_no_alpha var _color_three := Color.MAGENTA
@@ -15,7 +15,6 @@ var _tween: Tween
 
 @onready var _left_ball := $LeftMotershipBallMini
 @onready var _right_ball := $RightMotershipBallMini
-@onready var _is_ready: bool = true
 
 
 func _ready() -> void:

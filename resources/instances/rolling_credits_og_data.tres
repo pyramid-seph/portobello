@@ -13,13 +13,13 @@ names = Array[String](["CREDITS_ORIGINAL_STAFF"])
 script = ExtResource("1_p318k")
 duration_sec = 4.0
 job = "CREDITS_ORIGINAL_IDEA"
-names = Array[String](["Pyramid Seph"])
+names = Array[String](["Pablo E. Morales Breck"])
 
 [sub_resource type="Resource" id="Resource_mavye"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
 job = "CREDITS_SCRIPT"
-names = Array[String](["Fabiola Alonso Carrizales", "Pyramid Seph"])
+names = Array[String](["Fabiola Alonso Carrizales", "Pablo E. Morales Breck"])
 
 [sub_resource type="Resource" id="Resource_hjc78"]
 script = ExtResource("1_p318k")
@@ -31,13 +31,13 @@ names = Array[String](["Fabiola Alonso Carrizales"])
 script = ExtResource("1_p318k")
 duration_sec = 4.0
 job = "CREDITS_SPRITES"
-names = Array[String](["Fabiola Alonso Carrizales", "Pyramid Seph"])
+names = Array[String](["Fabiola Alonso Carrizales", "Pablo E. Morales Breck"])
 
 [sub_resource type="Resource" id="Resource_p3odf"]
 script = ExtResource("1_p318k")
 duration_sec = 4.0
 job = "CREDITS_PROGRAMMING"
-names = Array[String](["Gabriel Pech Ceh", "Pyramid Seph"])
+names = Array[String](["Gabriel Pech Ceh", "Pablo E. Morales Breck"])
 
 [sub_resource type="Resource" id="Resource_l0ovs"]
 script = ExtResource("1_p318k")

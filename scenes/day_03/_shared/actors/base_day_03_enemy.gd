@@ -31,15 +31,10 @@ var world: Node2D:
 var _is_dead: bool = false
 
 @onready var _animated_sprite := $AnimatedSprite2D as AnimatedSprite2D
-@onready var _is_ready: bool = true
 
 
 func _ready() -> void:
 	_internal_on_set_world()
-
-
-func is_ready() -> bool:
-	return _is_ready
 
 
 func is_dead() -> bool:
@@ -109,7 +104,7 @@ func _spawn_explosion() -> void:
 
 
 func _internal_on_set_world() -> void:
-	if is_ready():
+	if is_node_ready():
 		_on_set_world(_world_or_default())
 
 

@@ -8,6 +8,7 @@ emission_shape_offset = Vector3(0.5, 0, 0)
 gravity = Vector3(0, 98, 0)
 
 [node name="BloodDropParticles" type="GPUParticles2D"]
+physics_interpolation_mode = 2
 self_modulate = Color(1, 0, 0, 1)
 emitting = false
 amount = 2

@@ -30,7 +30,6 @@ var _tween_fire: Tween
 @onready var _outer_color := $Laser/OuterColor as Line2D
 @onready var _inner_color := $Laser/InnerColor as Line2D
 @onready var _state_machine := $StateMachine as LaserBallsCannonStateMachine
-@onready var _is_ready: bool = true
 
 
 func _ready() -> void:
@@ -70,7 +69,7 @@ func _set_laser_visibility(make_visible: bool) -> void:
 
 
 func _on_stand_by_color_set() -> void:
-	if Engine.is_editor_hint() and _is_ready:
+	if Engine.is_editor_hint() and is_node_ready():
 		_change_balls_color(_stand_by_color)
 
 
