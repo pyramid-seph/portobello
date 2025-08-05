@@ -24,7 +24,6 @@ extends Node2D
 var _cooldown: float = 0.0
 
 @onready var _timer := $Timer as Timer
-@onready var _is_ready: bool = true
 
 
 func _ready() -> void:
@@ -41,7 +40,7 @@ func _deactivate() -> void:
 
 
 func _on_is_active_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	if is_active:
@@ -51,7 +50,7 @@ func _on_is_active_changed() -> void:
 
 
 func _on_is_max_speed_enabled_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	if is_max_speed_enabled:

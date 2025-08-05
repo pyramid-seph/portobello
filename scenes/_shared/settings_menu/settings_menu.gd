@@ -18,7 +18,6 @@ const LANGUAGE_OPTIONS := [
 	},
 ]
 
-@onready var _is_ready := true
 @onready var _autofire_selector := %AutofireSelector
 @onready var _vibration_selector := %VibrationSelector
 @onready var _audio_selector: HSelector = %AudioSelector
@@ -83,7 +82,7 @@ func _save_data() -> void:
 
 
 func _on_visibility_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	if visible:

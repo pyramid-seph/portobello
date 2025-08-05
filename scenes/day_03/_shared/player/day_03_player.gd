@@ -52,7 +52,6 @@ var lives: int:
 	get:
 		return _player_data.lives
 
-@onready var _is_ready: bool = true
 @onready var _world = get_parent()
 @onready var _gun := $Gun as Gun
 @onready var _mega_gun := $MegaGun
@@ -158,7 +157,7 @@ func _revive(skip_timed_invincibility: bool = false) -> void:
 
 
 func _calculate_max_movement() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	var screen_size: Vector2 = get_viewport_rect().size
 	var texture: Texture2D = _animation_sprite.sprite_frames.get_frame_texture("default", 0)
@@ -238,7 +237,7 @@ func _move(velocity: Vector2, delta: float) -> void:
 
 
 func _on_losing_stamina_changed() -> void:
-	if not _is_ready or is_dead():
+	if not is_node_ready() or is_dead():
 		return
 	if is_losing_stamina:
 		_stamina_timer.start()

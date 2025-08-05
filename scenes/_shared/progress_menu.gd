@@ -9,7 +9,6 @@ const STARS_STRINGS: Array[String] = ["---", "*", "**", "***", "****", "*****"]
 const UNKNOWN_MINI_GAME: String = "?????"
 const UNKNOWN_VALUE: String = "---"
 
-@onready var _is_ready := true
 @onready var _record_type_selector := %RecordTypeSelector
 @onready var _label_0 := %TwoColLabel0
 @onready var _label_1 := %TwoColLabel1
@@ -119,7 +118,7 @@ func _show_high_scores() -> void:
 
 
 func _on_record_type_label_current_option_index_changed(value: int) -> void:
-	if _is_ready:
+	if is_node_ready():
 		match value:
 			SECTION_STARS:
 				_show_stars()
@@ -128,7 +127,7 @@ func _on_record_type_label_current_option_index_changed(value: int) -> void:
 
 
 func _on_visibility_changed() -> void:
-	if not _is_ready:
+	if not is_node_ready():
 		return
 	
 	if visible:
