@@ -1,7 +1,7 @@
 # v4.1.0 - The one that no longer stutters.
 
 * From now on, a long press is required to skip cutscenes.
-* Added SPACE to the list of inputs that skip cutscenes.
+* Added SPACE and A BUTTON to the list of inputs that skip cutscenes.
 * Fixed stutters that sometimes happen when the title screen appears.
 * Fixed english localization errors.
 * Changed the sound for advancing the battle narration on Day EX.
