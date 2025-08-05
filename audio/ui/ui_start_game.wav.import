@@ -12,12 +12,12 @@ dest_files=["res://.godot/imported/ui_start_game.wav-8fb33de90bb24ae2fde628e1f74
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
-edit/normalize=true
+edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
