@@ -146,43 +146,43 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="BloodDropParticles" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
-position = Vector2(5, 26)
-metadata/_edit_lock_ = true
-
-[node name="BloodDropParticles2" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
 position = Vector2(7, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles3" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles2" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
 position = Vector2(9, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles4" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
-position = Vector2(12, 26)
+[node name="BloodDropParticles3" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(11, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles5" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles4" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
 position = Vector2(14, 26)
 metadata/_edit_lock_ = true
 
+[node name="BloodDropParticles5" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+position = Vector2(16, 26)
+metadata/_edit_lock_ = true
+
 [node name="BloodDropParticles6" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
-position = Vector2(38, 49)
+position = Vector2(40, 49)
 metadata/_edit_lock_ = true
 
 [node name="BloodDropParticles7" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
-position = Vector2(41, 49)
+position = Vector2(43, 49)
 metadata/_edit_lock_ = true
 
 [node name="BloodDropParticles8" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
-position = Vector2(43, 48)
+position = Vector2(45, 48)
 metadata/_edit_lock_ = true
 
 [node name="BloodDropParticles9" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
-position = Vector2(46, 50)
+position = Vector2(48, 50)
 metadata/_edit_lock_ = true
 
 [node name="BloodDropParticles10" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
-position = Vector2(48, 49)
+position = Vector2(50, 49)
 metadata/_edit_lock_ = true
 
 [node name="VersionLabel" type="Label" parent="TitleScreen"]
