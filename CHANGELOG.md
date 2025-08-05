@@ -5,6 +5,8 @@
 * Fixed stutters that sometimes happen when the title screen appears.
 * Fixed english localization errors.
 * Changed the sound for advancing the battle narration on Day EX.
+* Reduced the volume of the game start sound.
+* Added missing credit for Kenney for their Kenney Interface Sounds files.
 * Minor code cleanup.
 
 
