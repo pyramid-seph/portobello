@@ -22,7 +22,7 @@ func play() -> void:
 	if _moon_tween:
 		_moon_tween.kill()
 	_moon_tween = create_tween()
-	var _moon_move_duration: float = 9.0
+	var _moon_move_duration: float = 22.0
 	for credit: Credit in _port_credits.list:
 		_moon_move_duration += credit.duration_sec
 	for credit: Credit in _original_credits.list:
@@ -32,7 +32,16 @@ func play() -> void:
 	_flying_credits_bucho.visible = true
 	_parallax_bg.visible = true
 	_ui.visible = true
+	_job_label.text = ""
+	_names_label.text = ""
+	await create_tween().tween_interval(2.0).finished
 	_parallax_bg.process_mode = Node.PROCESS_MODE_INHERIT
+	_job_label.text = "CREDITS_IN_MEMORIAM"
+	_names_label.text = "CREDITS_IN_MEMORIAM_BUCHO"
+	await create_tween().tween_interval(8.0).finished
+	_job_label.text = ""
+	_names_label.text = ""
+	await create_tween().tween_interval(2.0).finished
 	await _roll(_port_credits)
 	_timer.start(2.0)
 	await _timer.timeout
