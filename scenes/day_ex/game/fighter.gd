@@ -169,7 +169,6 @@ func take_turn(ally_side: BattlefieldSide, foe_side: BattlefieldSide,
 	_turn_narration.turn(get_full_name())
 	_animation_player.play(&"take_turn")
 	await _animation_player.animation_finished
-	await _turn_narration.wait_until_read()
 	var brain: FighterBrain = _get_active_brain() 
 	var command_completed: bool = false
 	while not command_completed:
@@ -273,13 +272,15 @@ func _on_turn_finished(are_foes_defeated: bool) -> void:
 	
 	var damage: int =_status_manager.get_poison_damage()
 	_stats_manager.decrease_hp(damage)
+	Log.d("%s got hurt by poison. New HP is %s." %
+			[get_full_name(), _stats_manager.get_curr_hp()])
 	_damage_label.text = str(absi(damage))
+	_turn_narration.poison_damage(get_full_name(), damage)
 	_animation_player.play(&"hurt")
 	await _animation_player.animation_finished
-	_turn_narration.poison_damage(get_full_name(), damage)
 	await _turn_narration.wait_until_read()
 	if is_dead():
-		_on_death(CauseOfDeath.POISONED)
+		await _on_death(CauseOfDeath.POISONED)
 
 
 func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
@@ -309,7 +310,7 @@ func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
 		else:
 			_turn_narration.hp_damage(get_full_name(), damage)
 		_animation_player.play(
-				&"being_eaten" if is_devour_attack else &"hurt")
+				&"chewed" if is_devour_attack else &"hurt")
 		await _animation_player.animation_finished
 		await _turn_narration.wait_until_read()
 	elif damage < 0:
@@ -456,7 +457,7 @@ func _run_attack_command(brain: FighterBrain, command: BattleCommand.Hurt,
 	var attack: BattleAction = command.get_action()
 	if not _have_enough_resources_for(attack):
 		await _wait_not_enough_resources(attack)
-		# Returning true to avoid an infinite loop for baddly implemented FighterBrains
+		# Returning true to avoid an infinite loop caused by poorly implemented FighterBrains
 		return true
 	
 	var target_side: BattlefieldSide = \

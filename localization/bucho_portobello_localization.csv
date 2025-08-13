@@ -260,10 +260,10 @@ RPG_BATTLE_ENEMY_NAME_MOUSE,Mouse,Ratón
 RPG_BATTLE_ENEMY_NAME_PARROT_BLUE,Blue Parrot,Loro Azul
 RPG_BATTLE_ENEMY_NAME_PARROT_YELLOW,Yellow Parrot,Loro Amarillo
 RPG_BATTLE_INFO_ABILITY_CURE,Recover some HP by eating 1 [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]scrap.,Recupera algo de HP al comer 1 [img=valign]res://art/day_ex/dialogue_item_scraps.png[/img]trozo de sobras.
-RPG_BATTLE_INFO_ABILITY_DESPAIR,"Strengthens 1 enemy's ATK, but inflicts them with POISON.","Aumenta el ATQ de 1enemigo, pero le inflige VENENO."
-RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts 1 enemy with LOVE.,Enamora a 1enemigo.
-RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a la mitad el HP de 1enemigo.
-RPG_BATTLE_INFO_ABILITY_SCARE,"Weakens 1 enemy's ATK, but strengthens their SPD.","Debilita el ATQ de 1enemigo, pero aumenta su VEL."
+RPG_BATTLE_INFO_ABILITY_DESPAIR,"Inflicts POISON to 1 enemy, but strengthens their ATK.","Inflinge VENENO a 1 enemigo, pero aumenta su ATQ."
+RPG_BATTLE_INFO_ABILITY_MESMER_EYES,Inflicts 1 enemy with LOVE.,Enamora a 1 enemigo.
+RPG_BATTLE_INFO_ABILITY_RIP_AND_TEAR_EX,Reduces 1 enemy's HP by half.,Reduce a la mitad el HP de 1 enemigo.
+RPG_BATTLE_INFO_ABILITY_SCARE,"Weakens 1 enemy's ATK, but strengthens their SPD.","Debilita el ATQ de 1 enemigo, pero aumenta su VEL."
 RPG_BATTLE_INFO_ABILITY_SURPRISE,Weakens 1 enemy's DEF.,Debilita la DEF de 1 enemigo.
 RPG_BATTLE_INFO_ABILITY_TACKLE,Weakens 1 enemy's SPD.,Debilita la VEL de 1 enemigo.
 RPG_BATTLE_INFO_ATTACK_BITE,Strong attack. Poor accuracy.,Ataque fuerte. Fácilmente evadible.
