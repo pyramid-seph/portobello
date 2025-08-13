@@ -272,13 +272,15 @@ func _on_turn_finished(are_foes_defeated: bool) -> void:
 	
 	var damage: int =_status_manager.get_poison_damage()
 	_stats_manager.decrease_hp(damage)
+	Log.d("%s got hurt by poison. New HP is %s." %
+			[get_full_name(), _stats_manager.get_curr_hp()])
 	_damage_label.text = str(absi(damage))
+	_turn_narration.poison_damage(get_full_name(), damage)
 	_animation_player.play(&"hurt")
 	await _animation_player.animation_finished
-	_turn_narration.poison_damage(get_full_name(), damage)
 	await _turn_narration.wait_until_read()
 	if is_dead():
-		_on_death(CauseOfDeath.POISONED)
+		await _on_death(CauseOfDeath.POISONED)
 
 
 func _hurt_with_phys_attack(attacker: Fighter, attack: BattleAction) -> void:
