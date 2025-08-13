@@ -101,7 +101,7 @@ func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool,
 	if result.is_game_over():
 		if _bgm:
 			_bgm.play_game_over_bgm()
-		await _narrator.say("RPG_BATTLE_NARRATION_BATTLE_FAILURE")
+		await _narrator.say("RPG_BATTLE_NARRATION_BATTLE_FAILURE", {}, true)
 		_transition_delay_timer.start(TRANSITION_DELAY)
 		await _transition_delay_timer.timeout
 		battle_finishing.emit(true)
@@ -127,13 +127,13 @@ func _on_battle_finished(result: BattleManager.Result, is_boss_battle: bool,
 			stats_manager.decrease_mp(stats_manager.get_max_mp() * -1)
 		await _wait_level_up_narration_finished(stats_manager, stats_diff)
 		if scraps_obtained > 0:
-			SoundManager.play_sound(SFX_LOOT_FOUND)
 			_get_player().scraps += scraps_obtained
 			var msg_string: String = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_ONE"
 			if scraps_obtained > 1:
 				msg_string = "RPG_BATTLE_NARRATION_LOOT_SCRAPS_MANY"
-			await _narrator.say_and_wait_until_read(
-					msg_string, { "scraps": scraps_obtained })
+			await _narrator.say(msg_string, { "scraps": scraps_obtained }, true)
+			await SoundManager.play_sound(SFX_LOOT_FOUND).finished
+			await _narrator.wait_until_read()
 		_transition_delay_timer.start(TRANSITION_DELAY)
 		await _transition_delay_timer.timeout
 		_exit_battle_screen(is_boss_battle, stop_bgm_after_battle)
@@ -151,7 +151,7 @@ func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D, is_bo
 	await TransitionPlayer.play_battle()
 	_setup_battle(enemy_party, background)
 	_main_container.show()
-	_narrator.say("RPG_BATTLE_NARRATION_BATTLE_STARTED")
+	_narrator.say("RPG_BATTLE_NARRATION_BATTLE_STARTED", {}, true)
 	await TransitionPlayer.play_battle_backwards()
 	await _narrator.wait_until_read()
 
@@ -186,10 +186,11 @@ func _get_player() -> Fighter:
 func _wait_level_up_narration_finished(
 		stats_manager: StatsManager, stats_diff: Stats) -> void:
 	if stats_diff.get_level() > 0:
-		SoundManager.play_sound(SFX_LEVEL_UP)
 		var new_level: int = stats_manager.get_current_level()
-		await _narrator.say_and_wait_until_read(
-				"RPG_BATTLE_NARRATION_LEVEL_UP", { "level": new_level })
+		_narrator.say("RPG_BATTLE_NARRATION_LEVEL_UP", { "level": new_level },
+			true)
+		await SoundManager.play_sound(SFX_LEVEL_UP).finished
+		await _narrator.wait_until_read()
 	else:
 		return
 	

@@ -2,7 +2,7 @@ extends PanelContainer
 
 signal read
 
-const UI_NEXT_SOUND = preload("res://audio/ui/ui_next.wav")
+const UI_NEXT_SOUND = preload("res://audio/ui/kenney_interface_sounds/drop_003.ogg")
 
 var _what: String = ""
 var _format_values: Dictionary = {}
@@ -23,24 +23,27 @@ func _notification(what: int) -> void:
 		_update_narration_label_text()
 
 
-func say(what: String, format_values: Dictionary = {}) -> void:
+func say(what: String, format_values: Dictionary = {}, skip_sound: bool = false) -> void:
 	_what = what
 	_format_values = format_values
 	
 	if not is_node_ready():
 		await ready
+	
+	if not skip_sound:
+		SoundManager.play_sound(UI_NEXT_SOUND)
 	_update_narration_label_text()
 
 
-func say_and_wait_until_read(what: String, format_values: Dictionary = {}) -> void:
-	say(what, format_values)
+func say_and_wait_until_read(what: String, format_values: Dictionary = {},
+		mute: bool = false) -> void:
+	say(what, format_values, mute)
 	await wait_until_read()
 
 
 func wait_until_read() -> void:
 	grab_focus.call_deferred()
 	await read
-	SoundManager.play_sound(UI_NEXT_SOUND)
 
 
 func silence() -> void:

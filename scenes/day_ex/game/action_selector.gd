@@ -4,6 +4,8 @@ extends VBoxContainer
 signal command_selected(command: BattleCommand)
 signal current_info_changed(info_msg: String)
 
+const UI_DAY_EX_COMMAND_SELECTOR_FOCUS = preload("res://audio/ui/ui_day_ex_command_selector_focus.wav")
+
 const COMMAND_CURE = preload("res://resources/instances/day_ex/actions/command_cure.tres")
 const COMMAND_EAT = preload("res://resources/instances/day_ex/actions/command_eat.tres")
 const COMMAND_DUMMY_BACK = preload("res://resources/instances/day_ex/actions/dummy_back.tres")
@@ -157,6 +159,7 @@ func _on_action_h_selector_current_option_index_changed(index: int) -> void:
 
 
 func _on_focus_entered() -> void:
+	SoundManager.play_ui_sound(UI_DAY_EX_COMMAND_SELECTOR_FOCUS)
 	_ui_sounds.focus_node_no_sound.call_deferred(_command_selector)
 	_reset()
 
