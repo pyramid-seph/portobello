@@ -9,6 +9,7 @@ const BUTTON_ACTION_MAIN_SKIP_TEXTURE = preload("res://art/_shared/touch_button_
 const BUTTON_ACTION_SECONDARY_CANCEL_TEXTURE = preload("res://art/_shared/touch_button_action_secondary_cancel.png")
 
 enum Mode {
+	DPAD_ONLY,
 	UI_MENU,
 	CUTSCENE,
 	INTRO_LOGOS,
@@ -54,6 +55,20 @@ func _configure_controller_for_mode(new_mode: Mode) -> void:
 		return
 	
 	match new_mode:
+		Mode.DPAD_ONLY:
+			_touch_screen_controller.main_action_button_texture = \
+					BUTTON_ACTION_MAIN_ACCEPT_TEXTURE
+			_touch_screen_controller.secondary_action_button_texture = null
+			# action_button and secondary_action_button cannot be null, so I'll just set it to whatever...
+			_touch_screen_controller.action_button = &"ui_accept"
+			_touch_screen_controller.secondary_action_button = &"ui_cancel"
+			_touch_screen_controller.action_down = &"ui_down"
+			_touch_screen_controller.action_left = &"ui_left"
+			_touch_screen_controller.action_right = &"ui_right"
+			_touch_screen_controller.action_up = &"ui_up"
+			_touch_screen_controller.hide_main_action_button = true
+			_touch_screen_controller.hide_secondary_action_button = true
+			_touch_screen_controller.hide_pause_button = true
 		Mode.UI_MENU:
 			_touch_screen_controller.main_action_button_texture = \
 					BUTTON_ACTION_MAIN_ACCEPT_TEXTURE
