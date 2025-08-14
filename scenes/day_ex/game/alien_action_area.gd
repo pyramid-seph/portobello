@@ -1,6 +1,6 @@
 extends ActionArea
 
-
+@warning_ignore("unused_signal")
 signal start_battle(background: Texture2D, party: BattleParty)
 
 const BattleScreen = preload("res://scenes/day_ex/game/battle_screen.gd")

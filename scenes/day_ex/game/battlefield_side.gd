@@ -5,7 +5,6 @@ signal target_selected(target: Fighter)
 
 const UI_SOUND_FOCUS = preload("res://audio/ui/kenney_interface_sounds/drop_003.ogg")
 const UI_SOUND_SELECT = preload("res://audio/ui/kenney_interface_sounds/drop_002.ogg")
-const UI_SOUND_CANCEL_SELECT = preload("res://audio/ui/kenney_interface_sounds/select_002.ogg")
 
 const BattleNarrationBox = preload("res://scenes/day_ex/game/battle_narration_box.gd")
 const Fighter = preload("res://scenes/day_ex/game/fighter.gd")
@@ -110,7 +109,6 @@ func _setup_row(
 
 
 func _setup_row_focus_neighbors(this_row: Node, other_row: Node) -> void:
-	var this_row_children: Array[Node] = this_row.get_children()
 	var other_row_children: Array[Node] = other_row.get_children()
 	var is_other_row_empty: bool = other_row_children.is_empty()
 	var has_other_row_any_active_fighters: bool = other_row_children.any(
@@ -202,7 +200,6 @@ func _on_fighter_selected(target: Fighter) -> void:
 func _on_fighter_selection_canceled() -> void:
 	Log.d("fighter selection canceled")
 	_skip_focus_sound = false
-	SoundManager.play_sound(UI_SOUND_CANCEL_SELECT)
 	target_selected.emit(null)
 
 

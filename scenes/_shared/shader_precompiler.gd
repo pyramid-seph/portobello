@@ -5,6 +5,7 @@ extends Control
 
 
 func _ready() -> void:
+	TouchControllerManager.mode = TouchControllerManager.Mode.DPAD_ONLY
 	get_tree().create_timer(1.0).timeout.connect(_precompile_shaders)
 
 

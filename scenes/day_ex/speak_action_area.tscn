@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0v1rk1qarfru"]
-
-[ext_resource type="Script" uid="uid://bbvtwhlx21hbn" path="res://scenes/day_ex/game/speak_action_area.gd" id="1_qf4ys"]
-
-[node name="SpeakActionArea" type="Area2D"]
-collision_layer = 512
-collision_mask = 0
-script = ExtResource("1_qf4ys")
