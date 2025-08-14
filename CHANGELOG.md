@@ -1,3 +1,16 @@
+# v4.2.0 - The one that remembers fondly.
+
+* Added an in memoriam for Bucho the cat.
+* Improved visibility of the game's logo on the title screen.
+* Improved visibility of the game's version on the title screen.
+* Changed the flow of RPG battles so they require less inputs.
+* Added some sound effects to RPG battles.
+* Changed the advance battle narration sound again again.
+* Fixed an error that made poison damage messages not last long enough to be read.
+* Fixed incorrect touch controller mode on the shader precompilation screen.
+* Fixed typos on Day EX ability descriptions.
+ 
+
 # v4.1.0 - The one that no longer stutters.
 
 * From now on, a long press is required to skip cutscenes.
