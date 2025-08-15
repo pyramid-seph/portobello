@@ -38,7 +38,7 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	SoundManager.stop_music()
+	SoundManager.stop_music(0.1)
 
 
 func _process(delta: float) -> void:

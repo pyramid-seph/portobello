@@ -18,12 +18,14 @@ func turn(who: String) -> void:
 
 func attack(attacker: String, attack_name: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_COMMAND_HURT", 
-			{ "attacker": attacker, "attack": attack_name })
+			{ "attacker": attacker, "attack": attack_name },
+			true)
 
 
 func cure(attacker: String, attack_name: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_COMMAND_CURE", 
-			{ "attacker": attacker, "attack": attack_name })
+			{ "attacker": attacker, "attack": attack_name },
+			true)
 
 
 func pass_turn(who: String) -> void:
@@ -31,7 +33,7 @@ func pass_turn(who: String) -> void:
 
 
 func evade(target: String) -> void:
-	_narrate("RPG_BATTLE_NARRATION_EVADE", { "target": target })
+	_narrate("RPG_BATTLE_NARRATION_EVADE", { "target": target }, true)
 
 
 func charmed(who: String) -> void:
@@ -61,7 +63,8 @@ func already_poisoned(who: String) -> void:
 
 func poison_damage(who: String, damage: int) -> void:
 	_narrate("RPG_BATTLE_NARRATION_STATUS_EFFECT_POISON_DAMAGE", 
-			{ "target": who, "damage": damage })
+			{ "target": who, "damage": damage },
+			true)
 
 
 func poison_clear(who: String) -> void:
@@ -70,25 +73,25 @@ func poison_clear(who: String) -> void:
 
 
 func devour_damage(target: String) -> void:
-	_narrate("RPG_BATTLE_NARRATION_DEVOUR_DAMAGE", { "target": target })
+	_narrate("RPG_BATTLE_NARRATION_DEVOUR_DAMAGE", { "target": target }, true)
 
 
 func hp_damage(target: String, damage: int) -> void:
 	_narrate("RPG_BATTLE_NARRATION_HP_DAMAGE", 
-			{ "target": target, "damage": damage })
+			{ "target": target, "damage": damage }, true)
 
 
 func hp_recover(target: String, damage: int) -> void:
 	_narrate("RPG_BATTLE_NARRATION_HP_RECOVERY", 
-			{ "target": target, "damage": damage })
+			{ "target": target, "damage": damage }, true)
 
 
 func murdered(who: String) -> void:
-	_narrate("RPG_BATTLE_NARRATION_DEAD_MURDERED", { "target": who })
+	_narrate("RPG_BATTLE_NARRATION_DEAD_MURDERED", { "target": who }, true)
 
 
 func devoured(who: String) -> void:
-	_narrate("RPG_BATTLE_NARRATION_DEAD_DEVOURED", { "target": who })
+	_narrate("RPG_BATTLE_NARRATION_DEAD_DEVOURED", { "target": who }, true)
 
 
 func flee_attempt(who: String, how_many: int) -> void:
@@ -106,7 +109,7 @@ func flee_fail(who: String, how_many: int) -> void:
 func flee_success(who: String, how_many: int) -> void:
 	var msg: String = "RPG_BATTLE_NARRATION_FLEE_SUCCESS_%s" % (
 			"MANY" if how_many > 1 else "SINGLE")
-	_narrate(msg, { "target": who })
+	_narrate(msg, { "target": who }, true)
 
 
 func atk_at_max(who: String) -> void:
@@ -172,6 +175,7 @@ func not_enough_mp(who: String) -> void:
 	_narrate("RPG_BATTLE_NARRATION_NOT_ENOUGH_MP", { "target": who })
 
 
-func _narrate(what: String, format_values: Dictionary = {}) -> void:
+func _narrate(what: String, format_values: Dictionary = {},
+		skip_sound: bool = false) -> void:
 	if narrator:
-		narrator.say(what, format_values)
+		narrator.say(what, format_values, skip_sound)
