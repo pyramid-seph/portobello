@@ -75,7 +75,7 @@ func _start_next_wave() -> void:
 	var wave: Wave = _get_current_wave()
 	_spawn_delay_timer.start(wave.time_between_spawns)
 	wave_started.emit(_wave_index)
-	Log.d(">>> Wave started: %s" % _wave_index)
+	Log.d(">>> Wave started: ", _wave_index)
 
 
 func _pre_start_checks_passed(world: Node2D, player: Day03Player) -> bool:
@@ -150,8 +150,8 @@ func _on_wave_delay_timer_timeout() -> void:
 	if _is_stopped:
 		return
 	
-	Log.d("Spawns: %s" % _spawned_enemies_count)
-	Log.d("<<< Wave completed: %s" % _wave_index)
+	Log.d("Spawns: ", _spawned_enemies_count)
+	Log.d("<<< Wave completed: ", _wave_index)
 	
 	if _wave_index >= _waves_descriptor.get_waves().size() - 1:
 		stop()
