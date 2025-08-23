@@ -2,16 +2,16 @@ class_name Log
 extends RefCounted
 
 
-static func d(msg: String, ...args: Array) -> void:
+static func d(...args: Array) -> void:
 	if OS.is_debug_build():
-		print.callv([msg] + args)
+		print.callv(args)
 
 
-static func w(msg: String, ...args: Array) -> void:
+static func w(...args: Array) -> void:
 	if OS.is_debug_build():
-		push_warning.callv([msg] + args)
+		push_warning.callv(args)
 
 
-static func e(msg: String, ...args: Array) -> void:
+static func e(...args: Array) -> void:
 	if OS.is_debug_build():
-		push_error.callv([msg] + args)
+		push_error.callv(args)
