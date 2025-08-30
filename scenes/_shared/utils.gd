@@ -19,8 +19,6 @@ static func rand_item(arr: Array) -> Node:
 	return arr.pick_random() if arr else null
 
 
-# TODO Deprecate in favour of Godot's implementation whenever is released. 
-# See https://github.com/godotengine/godot/pull/88883.
 static func rand_weigthed(weights: Array[float]) -> int:
 	if not weights or weights.is_empty():
 		return -1
