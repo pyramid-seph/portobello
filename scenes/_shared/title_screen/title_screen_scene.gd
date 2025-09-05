@@ -160,10 +160,6 @@ func _ready() -> void:
 	_version_label.text = Utils.get_game_version()
 	_update_version_label_visibility()
 	_remove_exit_btn_on_web()
-	_set_day_options()
-	_set_score_attack_options()
-	_set_stars_count()
-	_set_title_type()
 	_start()
 
 
@@ -405,6 +401,8 @@ func _enter_press_start_screen_state() -> void:
 	set_process_unhandled_input(true)
 	_update_press_to_start_label_text()
 	_show_press_start_label()
+	_set_title_type()
+	_set_stars_count()
 	_title_screen.show()
 	_attract_mode_delay_timer.start()
 	if not _bgm_player.is_playing():
@@ -423,6 +421,10 @@ func _enter_menu_screen_state() -> void:
 	_title_screen.show()
 	_main_menu.call_deferred("show")
 	_ui_sounds.focus_node_no_sound.call_deferred(_story_mode_game_selector)
+	_set_title_type()
+	_set_stars_count()
+	_set_day_options()
+	_set_score_attack_options()
 	_notify_unlocks()
 	if not _bgm_player.is_playing():
 		_bgm_player.play()
