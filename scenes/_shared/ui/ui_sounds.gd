@@ -2,7 +2,7 @@ class_name UiSounds
 extends Node
 
 
-@export var _root_path : NodePath = ^".."
+@export var _root_path: NodePath = ^".."
 @export var _max_depth: int = 16:
 	set(value):
 		_max_depth = maxi(value, 1)
@@ -54,7 +54,7 @@ func _install_control_ui_sounds(parent_node: Node, depth: int = 0) -> void:
 		if parent_node != self:
 			var parent_node_parent: Node = parent_node.get_parent()
 			if parent_node_parent:
-				Log.w("Another UiSound is in: %s" % parent_node_parent.name)
+				Log.w("Another UiSound is in: ", parent_node_parent.name)
 		return
 	
 	if depth >= _max_depth:

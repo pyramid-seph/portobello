@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_5n1jb"]
 script = ExtResource("2_eo7ov")
 _action = ExtResource("1_hftbg")
-_weight = 1.0
 
 [resource]
 script = ExtResource("4_uuxsk")
@@ -17,5 +16,3 @@ _char_name = "RPG_BATTLE_ENEMY_NAME_BUG"
 _texture = ExtResource("1_puv4l")
 _stats_progression_curve = ExtResource("3_724eh")
 _actions = Array[ExtResource("2_eo7ov")]([SubResource("Resource_5n1jb")])
-_loot_scraps = 1
-_loot_exp = 1

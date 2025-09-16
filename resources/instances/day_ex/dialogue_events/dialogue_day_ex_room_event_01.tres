@@ -9,7 +9,6 @@ script = ExtResource("1_8whso")
 character = "DIALOGUE_DAY_EX_CHAR_BLUE_BIRD"
 voice_pack = ExtResource("2_2negq")
 line = "DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_01"
-text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_7qw4c"]
 script = ExtResource("1_8whso")
@@ -23,14 +22,12 @@ script = ExtResource("1_8whso")
 character = "DIALOGUE_DAY_EX_CHAR_BLUE_BIRD"
 voice_pack = ExtResource("2_2negq")
 line = "DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_03"
-text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_17lgo"]
 script = ExtResource("1_8whso")
 character = "DIALOGUE_DAY_EX_CHAR_BLUE_BIRD"
 voice_pack = ExtResource("2_2negq")
 line = "DIALOGUE_DAY_EX_ROOM_EVENT_01_PAGE_04"
-text_speed_chars_per_second = 25.0
 
 [sub_resource type="Resource" id="Resource_fexbf"]
 script = ExtResource("1_8whso")

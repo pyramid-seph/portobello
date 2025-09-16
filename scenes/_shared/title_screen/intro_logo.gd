@@ -1,5 +1,3 @@
-# TODO Make this class abstract on Godot 4.5
-# Abstract class
 class_name IntroLogo
 extends Control
 
@@ -12,11 +10,9 @@ func play() -> void:
 	_play()
 
 
-# Abstract method.
 func _play() -> void:
 	pass
 
 
-# Abstract method.
 func reset() -> void:
 	pass

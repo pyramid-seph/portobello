@@ -16,7 +16,7 @@ config/name_localized={
 }
 config/version="4.2.0"
 run/main_scene="uid://kmbkuf6vx0xv"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.5")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="uid://dmses76gqv1x"
 

@@ -9,7 +9,6 @@ script = ExtResource("1_5vlfh")
 character = "DIALOGUE_DAY_EX_CHAR_YELLOW_BIRD"
 voice_pack = ExtResource("2_0xu1k")
 line = "DIALOGUE_DAY_EX_KITCHEN_EVENT_03_PAGE_01"
-text_speed_chars_per_second = 25.0
 
 [resource]
 script = ExtResource("1_1uw22")

@@ -105,7 +105,7 @@ metadata/_edit_lock_ = true
 
 [node name="StarsLabel" type="Label" parent="TitleScreen/GameTitle"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
 offset_top = -14.0
 offset_bottom = 8.0
@@ -121,7 +121,7 @@ metadata/_edit_lock_ = true
 
 [node name="SubtitleLabel" type="Label" parent="TitleScreen/GameTitle"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -187,7 +187,7 @@ metadata/_edit_lock_ = true
 
 [node name="VersionLabel" type="Label" parent="TitleScreen"]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -362,7 +362,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo1/GameCLLogo"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -394,7 +394,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo2/MyLogo"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -524,7 +524,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -617,7 +617,7 @@ stretch_mode = 2
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
