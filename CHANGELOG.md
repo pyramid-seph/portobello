@@ -1,3 +1,12 @@
+# v5.0.0 - The one that finally bites the apple...sorta.
+
+* Experimental support for Safari running on MacOS.
+* Made this game a PWA.
+* Fixed an error that made the cheatcode to unlock all levels take effect only 
+after restarting the game.
+* Migrated to Godot 4.5.
+
+
 # v4.2.0 - The one that remembers fondly.
 
 * Added an in memoriam for Bucho the cat.
@@ -60,7 +69,7 @@ ping-ponging.
 * Fix: some pixel flashing.
 
 
-# v2.1.0 - The one with less jitter.
+# v2.1.0 - The one that doesn't drink coffee.
 
 * Enabled physics interpolation.
 * Fixed some small bugs.
@@ -78,13 +87,13 @@ ping-ponging.
 * Migrated to Godot 4.3.
 
 
-# v1.2.1 - The one that fixes invisible stuff running.
+# v1.2.1 - The one that hunts ghosts.
 
 * Fix: the scene change indicator animates when invisible.
 * Fix: the second boss of day 3 keeps exploding when the results screen is visible.  
 
 
-# v1.2.0 - The one that supports touchscreens.
+# v1.2.0 - The one that needs a hug.
 
 * Touchscreen support (mobile devices only). The touchscreen controller is only 
 shown if no physical gamepad is connected to the mobile device.
