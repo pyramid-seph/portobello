@@ -6,10 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_236qu"]
 script = ExtResource("1_2v4vd")
-character = ""
 voice_pack = ExtResource("2_o5wlh")
 line = "DIALOGUE_DAY_EX_ROOM_EVENT_02_PAGE_01"
-text_speed_chars_per_second = 25.0
 
 [resource]
 script = ExtResource("1_j3do8")

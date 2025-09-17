@@ -21,7 +21,6 @@ _weight = 2.0
 [sub_resource type="Resource" id="Resource_0ejdx"]
 script = ExtResource("2_vnsam")
 _action = ExtResource("4_bwn6e")
-_weight = 1.0
 
 [resource]
 script = ExtResource("4_bpqi8")

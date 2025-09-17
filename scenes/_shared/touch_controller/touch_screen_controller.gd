@@ -1,31 +1,38 @@
 extends Node2D
 
 
-@export var action_left: StringName = &"ui_left":
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var action_left: StringName = &"ui_left":
 	set(value):
 		action_left = value
 		_on_action_left_set()
-@export var action_right: StringName = &"ui_right":
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var action_right: StringName = &"ui_right":
 	set(value):
 		action_right = value
 		_on_action_right_set()
-@export var action_up: StringName = &"ui_up":
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var action_up: StringName = &"ui_up":
 	set(value):
 		action_up = value
 		_on_action_up_set()
-@export var action_down: StringName = &"ui_down":
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var action_down: StringName = &"ui_down":
 	set(value):
 		action_down = value
 		_on_action_down_set()
-@export var action_button: StringName = &"ui_accept":
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var action_button: StringName = &"ui_accept":
 	set(value):
 		action_button = value
 		_on_action_button_set()
-@export var secondary_action_button: StringName = &"ui_cancel":
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var secondary_action_button: StringName = &"ui_cancel":
 	set(value):
 		secondary_action_button = value
 		_on_secondary_action_button_set()
-@export var action_pause: StringName = &"pause":
+@export_custom(PROPERTY_HINT_INPUT_NAME, "show_builtin")
+var action_pause: StringName = &"pause":
 	set(value):
 		action_pause = value
 		_on_action_pause_set()

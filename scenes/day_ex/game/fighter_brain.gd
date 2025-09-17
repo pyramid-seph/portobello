@@ -1,7 +1,10 @@
+@abstract
 class_name FighterBrain
 extends RefCounted
 
+@warning_ignore("unused_signal")
 signal command_selected(command: BattleCommand)
+@warning_ignore("unused_signal")
 signal target_selected(fighter: Fighter)
 
 const BattlefieldSide = preload("res://scenes/day_ex/game/battlefield_side.gd")
@@ -13,18 +16,16 @@ func start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void:
 	_start_command_selection.call_deferred(fighter, is_flee_forbidden)
 
 
-func  start_target_selection(target_side: BattlefieldSide) -> void:
+func start_target_selection(target_side: BattlefieldSide) -> void:
 	# Deferring call so we give consumers a chance to process the target_selected signal
 	_start_target_selection.call_deferred(target_side)
 
 
-# Implement this function.
+@abstract
 @warning_ignore("unused_parameter")
-func _start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void:
-	command_selected.emit(BattleCommand.Pass.new())
+func _start_command_selection(fighter: Fighter, is_flee_forbidden: bool) -> void
 
 
-# Implement this function
+@abstract
 @warning_ignore("unused_parameter")
-func _start_target_selection(target_side: BattlefieldSide) -> void:
-	target_selected.emit(null)
+func _start_target_selection(target_side: BattlefieldSide) -> void

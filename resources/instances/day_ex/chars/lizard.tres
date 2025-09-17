@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_5n1jb"]
 script = ExtResource("2_h62y6")
 _action = ExtResource("1_obnc3")
-_weight = 1.0
 
 [resource]
 script = ExtResource("4_ha4jh")
@@ -17,5 +16,4 @@ _char_name = "RPG_BATTLE_ENEMY_NAME_LIZARD"
 _texture = ExtResource("3_eshl6")
 _stats_progression_curve = ExtResource("3_encho")
 _actions = Array[ExtResource("2_h62y6")]([SubResource("Resource_5n1jb")])
-_loot_scraps = 1
 _loot_exp = 3

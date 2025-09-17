@@ -191,7 +191,7 @@ func _on_fighter_focus_entered() -> void:
 
 
 func _on_fighter_selected(target: Fighter) -> void:
-	Log.d("%s selected" % target.get_full_name())
+	Log.d(target.get_full_name(), " selected")
 	_skip_focus_sound = false
 	SoundManager.play_sound(UI_SOUND_SELECT)
 	target_selected.emit(target)

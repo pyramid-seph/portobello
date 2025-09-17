@@ -9,16 +9,17 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  GODOT_VERSION: "4.4.1"
+  GODOT_VERSION: "4.5"
   GODOT_RELEASE_NAME: "stable"
 
 jobs:
   compile-export-templates-web:
     name: Compile custom export template (web)
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     env: 
       SCONS_VERSION: "4.9.0"
-      EMSCRIPTEN_VERSION: "3.1.64"
+      EMSCRIPTEN_VERSION: "4.0.11"
       BUILD_PROFILE_PATH: "${{ github.workspace }}/main/custom_profile.build"
     
     steps:
@@ -39,7 +40,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12.10"
+          python-version: "3.13"
           cache: "pip"
 
       - name: Install SCons

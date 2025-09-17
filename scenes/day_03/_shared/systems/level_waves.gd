@@ -6,7 +6,9 @@ var _waves: Array[Wave]
 
 
 func get_waves() -> Array[Wave]:
-	if _waves.is_empty(): _waves = _create_waves()
+	if _waves.is_empty():
+		_waves = _create_waves()
+	
 	return _waves
 
 
