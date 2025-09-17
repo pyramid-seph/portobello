@@ -1,3 +1,8 @@
+# v5.0.1 - The one that paints signs.
+
+* Fixed a build config that showed weird symbols on some labels.
+
+
 # v5.0.0 - The one that finally bites the apple...sorta.
 
 * Experimental support for Safari running on MacOS.
