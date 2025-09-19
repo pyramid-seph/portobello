@@ -52,6 +52,15 @@ window/handheld/orientation=1
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://art/": "orange",
+"res://audio/": "green",
+"res://autoloads/": "red",
+"res://scenes/": "red"
+}
+
 [gdnative]
 
 singletons=["res://addons/godot-git-plugin/git_api.gdnlib"]
