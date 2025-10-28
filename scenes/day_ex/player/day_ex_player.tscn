@@ -581,6 +581,10 @@ wall_min_slide_angle = 0.0
 safe_margin = 0.02
 script = ExtResource("1_71xu7")
 
+[node name="SlipBufferTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_klu10")
 hframes = 3
@@ -647,6 +651,7 @@ position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_5kg2x")
 debug_color = Color(0.894118, 0.192157, 0.631373, 0.419608)
 
+[connection signal="timeout" from="SlipBufferTimer" to="." method="_on_slip_buffer_timer_timeout"]
 [connection signal="body_shape_entered" from="SlipperyFloorDetector" to="SlipperyFloorDetector" method="_on_body_shape_entered"]
 [connection signal="area_entered" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="ActionAreaDetector" to="ActionAreaDetector" method="_on_area_exited"]
