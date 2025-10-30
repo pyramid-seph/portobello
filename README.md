@@ -5,7 +5,7 @@ It is a collection of minigames about Bucho, a hungry cat that happens to get
 powers from food.
 
 Made as an exercise to learn [Godot](https://godotengine.org). It started as a Godot 3.4 project and 
-eventually it was migrated to Godot 4.4.1.
+eventually it was migrated to Godot 4.5.1.
 
 # Licenses
 
