@@ -148,7 +148,7 @@ func _enter_battle_screen(enemy_party: BattleParty, background: Texture2D, is_bo
 		else:
 			_bgm.play_normal_battle_bgm()
 		
-	await TransitionPlayer.play_battle()
+	await TransitionPlayer.play_enter_battle()
 	_setup_battle(enemy_party, background)
 	_main_container.show()
 	_narrator.say("RPG_BATTLE_NARRATION_BATTLE_STARTED", {}, true)
