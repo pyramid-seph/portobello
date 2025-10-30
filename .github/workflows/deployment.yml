@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  GODOT_VERSION: "4.5"
+  GODOT_VERSION: "4.5.1"
   GODOT_RELEASE_NAME: "stable"
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     env: 
-      SCONS_VERSION: "4.9.0"
+      SCONS_VERSION: "4.10.0"
       EMSCRIPTEN_VERSION: "4.0.11"
       BUILD_PROFILE_PATH: "${{ github.workspace }}/main/custom_profile.build"
     
