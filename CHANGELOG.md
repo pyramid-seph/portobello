@@ -1,3 +1,8 @@
+# v5.1.1 - The one that still paints signs.
+
+* Fixed a build config that showed weird symbols on some labels.
+
+
 # v5.1.0 - The one that does not code.
 
 * Changed the RPG battle start animation.
