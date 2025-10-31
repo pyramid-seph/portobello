@@ -14,7 +14,7 @@ config/name="Bucho Busca Comida: The Portobello Mushroom Edition"
 config/name_localized={
 "es": "Bucho Busca Comida: Edición Hongo Portobello"
 }
-config/version="5.0.1"
+config/version="5.1.0"
 run/main_scene="uid://kmbkuf6vx0xv"
 config/features=PackedStringArray("4.5")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -50,7 +50,16 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/gdterm/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://art/": "orange",
+"res://audio/": "green",
+"res://autoloads/": "red",
+"res://scenes/": "red"
+}
 
 [gdnative]
 

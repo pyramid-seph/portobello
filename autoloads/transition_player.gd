@@ -13,6 +13,11 @@ func play_default_backwards() -> void:
 	await _animation_player.animation_finished
 
 
+func play_enter_battle() -> void:
+	_animation_player.play("enter_battle")
+	await _animation_player.animation_finished
+
+
 func play_battle() -> void:
 	_animation_player.play("battle")
 	await _animation_player.animation_finished

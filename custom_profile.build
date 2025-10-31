@@ -3,6 +3,8 @@
 		"disable_3d": true,
 		"disable_3d_physics": true,
 		"disable_navigation": true,
+		"module_text_server_adv_enabled": false,
+		"module_text_server_fb_enabled": true,
 		"openxr": false,
 		"vulkan": false
 	},

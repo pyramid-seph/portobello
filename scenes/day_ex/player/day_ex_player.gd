@@ -13,6 +13,7 @@ const ActionAreaDetector = preload("res://scenes/day_ex/player/action_area_detec
 
 @export var speed: float = 33.33
 @export_range(1.0, 3.0, 0.1) var slip_speed_multiplier: float = 2.0
+@export_range(0.05, 1.0, 0.01) var slip_buffer_time_sec: float = 0.1
 
 @export_group("Debug", "_debug")
 @export var _debug_show_walking_time: bool:
@@ -25,6 +26,7 @@ const ActionAreaDetector = preload("res://scenes/day_ex/player/action_area_detec
 	get:
 		return OS.is_debug_build() and _debug_show_move_vectors
 
+var _buffered_input_dir: Vector2
 var _is_iddle: bool = true
 var _walking_time: float:
 	set(value):
@@ -36,7 +38,7 @@ var _walking_time: float:
 @onready var _interact_sprite_2d: Sprite2D = $InteractSprite2D
 @onready var _slippery_floor_detector: SlipperyFloorDetector = $SlipperyFloorDetector
 @onready var _animation_tree: AnimationTree = $AnimationTree
-
+@onready var _slip_buffer_timer: Timer = $SlipBufferTimer
 
 func _ready() -> void:
 	_interact_sprite_2d.hide()
@@ -48,8 +50,10 @@ func _physics_process(delta: float) -> void:
 	var input_dir: Vector2 = _get_input()
 	var is_on_slippery_floor: bool = _slippery_floor_detector.is_on_slippery_floor()
 	if is_on_slippery_floor:
+		input_dir = _buffer_slip_dir(input_dir)
 		_set_slip_velocity(input_dir)
 	else:
+		_reset_slip_buffer()
 		_set_walk_velocity(input_dir)
 	move_and_slide()
 	
@@ -139,20 +143,18 @@ func _set_walk_velocity(input_dir: Vector2) -> void:
 
 
 func _get_input() -> Vector2:
-	var input: Vector2
 	if not is_processing_unhandled_input():
-		input = Vector2.ZERO
+		return Vector2.ZERO
 	elif Input.is_action_pressed("move_up"):
-		input = Vector2.UP
+		return Vector2.UP
 	elif Input.is_action_pressed("move_down"):
-		input = Vector2.DOWN
+		return Vector2.DOWN
 	elif Input.is_action_pressed("move_left"):
-		input = Vector2.LEFT
+		return Vector2.LEFT
 	elif Input.is_action_pressed("move_right"):
-		input = Vector2.RIGHT
+		return Vector2.RIGHT
 	else:
-		input = Vector2.ZERO
-	return input
+		return Vector2.ZERO
 
 
 func _update_animation_params(facing_dir: Vector2, is_idle: bool):
@@ -160,6 +162,22 @@ func _update_animation_params(facing_dir: Vector2, is_idle: bool):
 	if facing_dir != Vector2.ZERO:
 		_animation_tree["parameters/Idle/blend_position"] = facing_dir
 		_animation_tree["parameters/Move/blend_position"] = facing_dir
+
+
+func _buffer_slip_dir(input_dir: Vector2) -> Vector2:
+	var new_input_dir: Vector2 = input_dir
+	if input_dir.is_zero_approx():
+		if not _slip_buffer_timer.is_stopped():
+			new_input_dir = _buffered_input_dir
+	else:
+		_buffered_input_dir = input_dir
+		_slip_buffer_timer.start(slip_buffer_time_sec)
+	return new_input_dir
+
+
+func _reset_slip_buffer() -> void:
+	_buffered_input_dir = Vector2.ZERO
+	_slip_buffer_timer.stop()
 
 
 func _on_walking_time_set() -> void:
@@ -171,3 +189,7 @@ func _on_debug_show_walking_time_set() -> void:
 	if is_node_ready():
 		_walking_time_label.visible = _debug_show_walking_time
 		_on_walking_time_set()
+
+
+func _on_slip_buffer_timer_timeout() -> void:
+	_buffered_input_dir = Vector2.ZERO
