@@ -34,16 +34,32 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	if DisplayServer.is_touchscreen_available():
+	var has_touch_screen: bool = DisplayServer.is_touchscreen_available()
+	set_process_input(has_touch_screen)
+	
+	if has_touch_screen:
 		_touch_screen_controller = TouchScreenControllerScn.instantiate()
 		add_child(_touch_screen_controller)
-	
+		
 		Input.joy_connection_changed.connect(_on_joy_connection_changed)
+		
 		# It doesn't seem to be necessary to call 
 		# _update_touch_controller_visibility here.
 		# _on_joy_connection_changed is called when the game starts (on desktop)
 		# or when the user presses a button or moves a stick for the first time
 		# after the game starts (on web).
+
+
+func _input(event: InputEvent) -> void:
+	if not _touch_screen_controller or event is InputEventMouse:
+		return
+
+	if event is InputEventJoypadButton or \
+			event is InputEventJoypadMotion or \
+			event is InputEventKey:
+		_touch_screen_controller.visible = false
+	else:
+		_touch_screen_controller.visible = true
 
 
 func is_touch_controller_active() -> bool:
@@ -182,16 +198,12 @@ func _configure_controller_for_mode(new_mode: Mode) -> void:
 			_touch_screen_controller.hide_pause_button = true
 
 
-func _update_touch_controller_visibility() -> void:
-	if _touch_screen_controller:
-		_touch_screen_controller.visible = \
-				not InputUtils.is_player_1_joypad_connected()
-
-
 func _on_mode_set() -> void:
 	if is_node_ready():
 		_configure_controller_for_mode(mode)
 
 
 func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
-	_update_touch_controller_visibility()
+	if _touch_screen_controller:
+		_touch_screen_controller.visible = \
+				not InputUtils.is_player_1_joypad_connected()
