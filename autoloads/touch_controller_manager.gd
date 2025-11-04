@@ -29,37 +29,38 @@ var _touch_screen_controller: TouchScreenController
 
 
 func _init() -> void:
+	set_process_input(false)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	layer = 128
 
 
 func _ready() -> void:
-	var has_touch_screen: bool = DisplayServer.is_touchscreen_available()
-	set_process_input(has_touch_screen)
-	
-	if has_touch_screen:
+	if DisplayServer.is_touchscreen_available():
 		_touch_screen_controller = TouchScreenControllerScn.instantiate()
 		add_child(_touch_screen_controller)
 		
+		set_process_input(true)
 		Input.joy_connection_changed.connect(_on_joy_connection_changed)
-		
-		# It doesn't seem to be necessary to call 
-		# _update_touch_controller_visibility here.
-		# _on_joy_connection_changed is called when the game starts (on desktop)
-		# or when the user presses a button or moves a stick for the first time
-		# after the game starts (on web).
 
 
 func _input(event: InputEvent) -> void:
-	if not _touch_screen_controller or event is InputEventMouse:
+	if not _touch_screen_controller or \
+			event is InputEventMouse or \
+			(event is InputEventJoypadMotion and absf(event.axis_value) < 0.5) or \
+			# Two joypad motion events are received when an Xbox controller
+			# disconnects. Those events must be ignored so the touch controller
+			# does not dissappear after being made visible on 
+			# _on_joy_connection_changed() when that happens.
+			# I'm not sure whether that happens with other controllers or not.
+			not InputUtils.is_player_1_joypad_connected():
 		return
-
+	
 	if event is InputEventJoypadButton or \
-			event is InputEventJoypadMotion or \
-			event is InputEventKey:
-		_touch_screen_controller.visible = false
+			event is InputEventKey or \
+			event is InputEventJoypadMotion:
+		_touch_screen_controller.hide()
 	else:
-		_touch_screen_controller.visible = true
+		_touch_screen_controller.show()
 
 
 func is_touch_controller_active() -> bool:
@@ -203,7 +204,6 @@ func _on_mode_set() -> void:
 		_configure_controller_for_mode(mode)
 
 
-func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
-	if _touch_screen_controller:
-		_touch_screen_controller.visible = \
-				not InputUtils.is_player_1_joypad_connected()
+func _on_joy_connection_changed(device: int, connected: bool) -> void:
+	if _touch_screen_controller and device == 0 and not connected:
+		_touch_screen_controller.show()
