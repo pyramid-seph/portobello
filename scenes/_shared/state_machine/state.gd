@@ -15,4 +15,3 @@ func enter() -> void:
 
 func exit() -> void:
 	pass
-

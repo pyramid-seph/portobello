@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Bucho Busca Comida: The Portobello Mushroom Edition"
@@ -16,7 +20,7 @@ config/name_localized={
 }
 config/version="5.1.1"
 run/main_scene="uid://kmbkuf6vx0xv"
-config/features=PackedStringArray("4.5")
+config/features=PackedStringArray("4.6")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="uid://dmses76gqv1x"
 
@@ -34,7 +38,7 @@ TouchControllerManager="*res://autoloads/touch_controller_manager.gd"
 DialogueManager="*res://autoloads/dialogue_manager.gd"
 Game="*res://autoloads/game.gd"
 AutoMouseHide="*res://autoloads/auto_mouse_hide.gd"
-SoundManager="*res://addons/sound_manager/sound_manager.gd"
+SoundManager="*uid://dirh5xswccose"
 
 [display]
 
@@ -50,7 +54,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/gdterm/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/stats_progression_json_importer/plugin.cfg")
 
 [file_customization]
 
