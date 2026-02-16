@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4nnvy7hmhkml"]
+[gd_scene format=3 uid="uid://c4nnvy7hmhkml"]
 
 [ext_resource type="Script" uid="uid://itua5fqk122o" path="res://scenes/_shared/ui/timed_label.gd" id="1_t08ef"]
 
-[node name="TimedLabel" type="Label"]
+[node name="TimedLabel" type="Label" unique_id=1695592866]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,5 +10,5 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t08ef")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=2011398194]
 one_shot = true

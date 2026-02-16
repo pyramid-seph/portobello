@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b36t6cdxkgoq5"]
+[gd_scene format=3 uid="uid://b36t6cdxkgoq5"]
 
 [ext_resource type="Shader" uid="uid://b300tliqdrffv" path="res://shaders/rpg_battle_char.gdshader" id="1_r8mmh"]
 [ext_resource type="Texture2D" uid="uid://b2eaury1xy8uy" path="res://art/day_ex/battle_char_enemy_lizard.png" id="2_tc2hr"]
@@ -124,6 +124,86 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
 }
+
+[sub_resource type="Animation" id="Animation_yu8hm"]
+resource_name = "chewed"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.490196)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/flash_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DamageLabel:material:shader_parameter/offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, -2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DamageLabel:label_settings:font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_qasdf")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_eg5v7"]
 resource_name = "cure"
@@ -526,86 +606,6 @@ tracks/1/keys = {
 "values": [0.0, 1.0, 0.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_yu8hm"]
-resource_name = "chewed"
-length = 0.75
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 0.490196)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/flash_state")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 0.0, 1.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DamageLabel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DamageLabel:material:shader_parameter/offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, -2)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("DamageLabel:label_settings:font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.2, 0.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_qasdf")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/5/use_blend = true
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xl45o"]
 _data = {
 &"RESET": SubResource("Animation_c4s6s"),
@@ -640,7 +640,7 @@ font_size = 8
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Fighter" type="TextureRect"]
+[node name="Fighter" type="TextureRect" unique_id=1141123685]
 material = SubResource("ShaderMaterial_o3353")
 custom_minimum_size = Vector2(30, 30)
 offset_right = 30.0
@@ -650,22 +650,20 @@ texture = ExtResource("2_tc2hr")
 stretch_mode = 3
 script = ExtResource("3_33cos")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=212779541]
 bus = &"SFX"
 
-[node name="StatusDisplayManager" type="Node" parent="."]
+[node name="StatusDisplayManager" type="Node" parent="." unique_id=1930510360]
 script = ExtResource("4_wdtdj")
 
-[node name="Timer" type="Timer" parent="StatusDisplayManager"]
+[node name="Timer" type="Timer" parent="StatusDisplayManager" unique_id=379629157]
 wait_time = 2.0
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xl45o")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1574026013]
+libraries/ = SubResource("AnimationLibrary_xl45o")
 
-[node name="StatusDisplay" type="TextureRect" parent="."]
+[node name="StatusDisplay" type="TextureRect" parent="." unique_id=482053263]
 custom_minimum_size = Vector2(15, 17)
 layout_mode = 1
 anchors_preset = 1
@@ -678,7 +676,7 @@ texture = ExtResource("5_xgu1x")
 stretch_mode = 2
 script = ExtResource("5_0vlxv")
 
-[node name="DamageLabel" type="Label" parent="."]
+[node name="DamageLabel" type="Label" parent="." unique_id=975139712]
 visible = false
 material = SubResource("ShaderMaterial_r02qg")
 layout_mode = 1
@@ -696,7 +694,7 @@ label_settings = SubResource("LabelSettings_eoyxy")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="." unique_id=247513758]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -717,7 +715,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="SelectorTextureRect" type="TextureRect" parent="."]
+[node name="SelectorTextureRect" type="TextureRect" parent="." unique_id=870072353]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -730,7 +728,8 @@ grow_horizontal = 2
 texture = ExtResource("9_qgetd")
 stretch_mode = 2
 
-[node name="ActionAnimation" parent="." instance=ExtResource("9_gjy52")]
+[node name="ActionAnimation" parent="." unique_id=29799721 instance=ExtResource("9_gjy52")]
+layout_mode = 0
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

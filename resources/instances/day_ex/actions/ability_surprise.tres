@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=5 format=3 uid="uid://cu3foa65bpyhp"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://cu3foa65bpyhp"]
 
 [ext_resource type="AudioStream" uid="uid://bb7whdgh2b16p" path="res://audio/sfx/sfx_day_ex_ability_default.wav" id="1_cvx18"]
 [ext_resource type="Texture2D" uid="uid://qmnrikcdeuqs" path="res://art/day_ex/battle_ability_player_scare_surprise_despair_0.png" id="1_pkns5"]
@@ -9,20 +9,10 @@
 script = ExtResource("1_xvy1n")
 _action_name = "RPG_BATTLE_ABILITY_NAME_PLAYER_SURPRISE"
 _info = "RPG_BATTLE_INFO_ABILITY_SURPRISE"
-_target = 0
 _consumes = 1
-_cost = 1
-_physical_damage = 0
-_damage_points = 1
-_damage_percent = 0.5
 _hit_chance = 0.15
-_status_effect_poison_damage = 0
-_status_effect_attack = 0
 _status_effect_defense = -7
-_status_effect_speed = 0
-_status_effect_love = false
 _sprites = Array[Texture2D]([ExtResource("1_pkns5"), ExtResource("2_ai5ly")])
 _duration_sec = 0.3
 _screen_flash_color = Color(0, 1, 0, 1)
-_shake_screen = false
 _sound = ExtResource("1_cvx18")

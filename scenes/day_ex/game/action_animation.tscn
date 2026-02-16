@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cspmfx76bwjfs"]
+[gd_scene format=3 uid="uid://cspmfx76bwjfs"]
 
 [ext_resource type="Script" uid="uid://gre2yjoa5bks" path="res://scenes/day_ex/game/action_animation.gd" id="1_hp8sh"]
 
-[node name="ActionAnimation" type="Control"]
+[node name="ActionAnimation" type="Control" unique_id=82054315]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_hp8sh")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2107855961]
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 30.0

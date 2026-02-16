@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgusui2goqk5w"]
+[gd_scene format=3 uid="uid://dgusui2goqk5w"]
 
 [ext_resource type="Script" uid="uid://bbqd50afxsuoa" path="res://scenes/day_03/_shared/player/day_03_player.gd" id="1_mps85"]
 [ext_resource type="Resource" uid="uid://fwsyckhw66yi" path="res://resources/instances/player_01_day_03_data.tres" id="2_g6ucs"]
@@ -122,7 +122,7 @@ animations = [{
 "speed": 12.5
 }]
 
-[node name="Day03Player" type="Node2D" groups=["players"]]
+[node name="Day03Player" type="Node2D" unique_id=846176199 groups=["players"]]
 z_index = -90
 script = ExtResource("1_mps85")
 _player_data = ExtResource("2_g6ucs")
@@ -135,29 +135,27 @@ move_offset_left = -4
 move_offset_top = 2
 move_offset_right = 4
 
-[node name="Pickupbox" type="Area2D" parent="."]
+[node name="Pickupbox" type="Area2D" parent="." unique_id=207472080]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickupbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickupbox" unique_id=1643908791]
 position = Vector2(8, 8)
 shape = SubResource("8")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1622310169]
 position = Vector2(8, 8)
 script = ExtResource("5_84f5h")
 killer_groups = Array[String](["enemies", "enemy_bullets"])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=800332950]
 shape = SubResource("7")
 debug_color = Color(0, 1, 0, 0.419608)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8vkqq")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2110894032]
+libraries/ = SubResource("AnimationLibrary_8vkqq")
 
-[node name="ShieldSprite" type="Sprite2D" parent="."]
+[node name="ShieldSprite" type="Sprite2D" parent="." unique_id=664360576]
 visible = false
 position = Vector2(-2, -2)
 texture = SubResource("9")
@@ -165,26 +163,26 @@ centered = false
 region_enabled = true
 region_rect = Rect2(20, 0, 20, 20)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=472453862]
 sprite_frames = SubResource("1")
 autoplay = "default"
 centered = false
 
-[node name="StaminaDepletionTimer" type="Timer" parent="."]
+[node name="StaminaDepletionTimer" type="Timer" parent="." unique_id=2098745606]
 wait_time = 2.0
 autostart = true
 
-[node name="RevivalTimer" type="Timer" parent="."]
+[node name="RevivalTimer" type="Timer" parent="." unique_id=2117216905]
 process_mode = 1
 one_shot = true
 
-[node name="Gun" parent="." instance=ExtResource("9_fgecs")]
+[node name="Gun" parent="." unique_id=456750797 instance=ExtResource("9_fgecs")]
 position = Vector2(8, -2)
 Bullet = ExtResource("10_2vf6h")
 bullet_speed = 125.0
 cooldown = 0.1
 
-[node name="MegaGun" type="Node" parent="."]
+[node name="MegaGun" type="Node" parent="." unique_id=433660676]
 script = ExtResource("11_vuy7j")
 
 [connection signal="died" from="." to="." method="_on_died"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://durkalhb4e6b0"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://durkalhb4e6b0"]
 
 [ext_resource type="Texture2D" uid="uid://dkphhwiyjj3wu" path="res://art/day_ex/battle_ability_player_scratch_0.png" id="1_6pdjp"]
 [ext_resource type="AudioStream" uid="uid://b70ocs6s8ng0p" path="res://audio/sfx/sfx_day_ex_attack_weak.wav" id="1_hwtl4"]
@@ -10,20 +10,9 @@
 script = ExtResource("4_aijva")
 _action_name = "RPG_BATTLE_ATTACK_NAME_PLAYER_SCRATCH"
 _info = "RPG_BATTLE_INFO_ATTACK_SCRATCH"
-_target = 0
-_consumes = 0
-_cost = 1
 _physical_damage = 1
 _damage_points = 16
-_damage_percent = 0.5
 _hit_chance = 0.95
-_status_effect_poison_damage = 0
-_status_effect_attack = 0
-_status_effect_defense = 0
-_status_effect_speed = 0
-_status_effect_love = false
 _sprites = Array[Texture2D]([ExtResource("1_6pdjp"), ExtResource("2_wk7cn"), ExtResource("3_k0r53")])
 _duration_sec = 0.45
-_screen_flash_color = Color(1, 1, 1, 0)
-_shake_screen = false
 _sound = ExtResource("1_hwtl4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://8k034qvxjmd8"]
+[gd_scene format=3 uid="uid://8k034qvxjmd8"]
 
 [ext_resource type="Script" uid="uid://cqwb22yigbfct" path="res://autoloads/scene_changer.gd" id="1_wichc"]
 [ext_resource type="Script" uid="uid://dcldepjshxib4" path="res://autoloads/threaded_loader.gd" id="2_ux1p7"]
@@ -50,16 +50,16 @@ _data = {
 &"default": SubResource("Animation_s2uxx")
 }
 
-[node name="SceneChanger" type="CanvasLayer"]
+[node name="SceneChanger" type="CanvasLayer" unique_id=633638540]
 process_mode = 3
 script = ExtResource("1_wichc")
 _min_duration_sec = 0.84
 _loading_animation_delay_sec = 0.16
 
-[node name="ThreadedLoader" type="Node" parent="."]
+[node name="ThreadedLoader" type="Node" parent="." unique_id=1108250859]
 script = ExtResource("2_ux1p7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1880719449]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -68,7 +68,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="LodingAnimContainer" type="HBoxContainer" parent="."]
+[node name="LodingAnimContainer" type="HBoxContainer" parent="." unique_id=999717568]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -84,28 +84,26 @@ grow_vertical = 0
 theme = ExtResource("3_rwund")
 script = ExtResource("4_6tkct")
 
-[node name="Label" type="Label" parent="LodingAnimContainer"]
+[node name="Label" type="Label" parent="LodingAnimContainer" unique_id=643136083]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
 text = "LOADING_SCREEN_LOADING"
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="LodingAnimContainer"]
+[node name="TextureRect" type="TextureRect" parent="LodingAnimContainer" unique_id=189495691]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_wsohd")
 stretch_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LodingAnimContainer"]
-libraries = {
-&"": SubResource("AnimationLibrary_mmtjt")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LodingAnimContainer" unique_id=525834354]
+libraries/ = SubResource("AnimationLibrary_mmtjt")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=2056857502]
 one_shot = true
 
-[node name="ErrorDialog" parent="." instance=ExtResource("8_o1hk3")]
+[node name="ErrorDialog" parent="." unique_id=544248711 instance=ExtResource("8_o1hk3")]
 visible = false
 body_text = "LOADING_SCREEN_ERROR"
 negative_btn_text = ""

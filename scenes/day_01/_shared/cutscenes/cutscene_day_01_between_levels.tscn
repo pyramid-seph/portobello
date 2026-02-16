@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpc2fbvwdk03l"]
+[gd_scene format=3 uid="uid://dpc2fbvwdk03l"]
 
 [ext_resource type="Script" uid="uid://worywa4pgng3" path="res://scenes/day_01/_shared/cutscenes/cutscene_day_01_between_levels.gd" id="2_lfnil"]
 [ext_resource type="Texture2D" uid="uid://bas5srb0fec1" path="res://art/cutscenes/day_01_level_00.png" id="3_cl58a"]
@@ -277,7 +277,7 @@ _data = {
 &"RESET": SubResource("Animation_22q4m")
 }
 
-[node name="Day01BetweenLevelsCutscene" type="Control"]
+[node name="Day01BetweenLevelsCutscene" type="Control" unique_id=1944826590]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -286,17 +286,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_lfnil")
 
-[node name="SimpleBgmPlayer" type="Node" parent="."]
+[node name="SimpleBgmPlayer" type="Node" parent="." unique_id=1072949151]
 script = ExtResource("7_tbbug")
 _music = ExtResource("3_supr0")
 _autostart = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_uwof8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1414802738]
+libraries/ = SubResource("AnimationLibrary_uwof8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=210813867]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -306,29 +304,29 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="RatPanel" type="Sprite2D" parent="ColorRect"]
+[node name="RatPanel" type="Sprite2D" parent="ColorRect" unique_id=385171143]
 visible = false
 position = Vector2(-64, 105)
 texture = ExtResource("4_4e7iw")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="ColorRect/RatPanel"]
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/RatPanel" unique_id=65285511]
 position = Vector2(19, 34)
 texture = ExtResource("3_ja20l")
 
-[node name="BurpPanel" type="Sprite2D" parent="ColorRect"]
+[node name="BurpPanel" type="Sprite2D" parent="ColorRect" unique_id=1507642747]
 visible = false
 position = Vector2(56, 98)
 texture = ExtResource("3_cl58a")
 centered = false
 
-[node name="PhonePanel" type="Sprite2D" parent="ColorRect"]
+[node name="PhonePanel" type="Sprite2D" parent="ColorRect" unique_id=1211099503]
 visible = false
 position = Vector2(86, 148)
 texture = ExtResource("5_3ymp4")
 centered = false
 
-[node name="DizzyPanel" type="Sprite2D" parent="ColorRect"]
+[node name="DizzyPanel" type="Sprite2D" parent="ColorRect" unique_id=459499997]
 visible = false
 position = Vector2(86, 128)
 texture = ExtResource("6_t15ny")

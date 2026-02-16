@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://t4mwxni2f1u5"]
+[gd_scene format=3 uid="uid://t4mwxni2f1u5"]
 
 [ext_resource type="Script" uid="uid://bbt0u30cigdlq" path="res://scenes/_shared/ui/two_col_label.gd" id="1_c8fd7"]
 
@@ -8,27 +8,27 @@
 texture = SubResource("CanvasTexture_8605g")
 modulate_color = Color(1, 0, 1, 1)
 
-[node name="TwoColLabel" type="PanelContainer"]
+[node name="TwoColLabel" type="PanelContainer" unique_id=567214360]
 offset_right = 74.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_6rwi4")
 script = ExtResource("1_c8fd7")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=815792109]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1737488771]
 layout_mode = 2
 
-[node name="Text1Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Text1Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1386082993]
 unique_name_in_owner = true
 layout_mode = 2
 vertical_alignment = 1
 
-[node name="Text2Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Text2Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=240626138]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

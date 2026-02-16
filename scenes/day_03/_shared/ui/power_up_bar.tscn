@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwqvrgqp2kstp"]
+[gd_scene format=3 uid="uid://cwqvrgqp2kstp"]
 
 [ext_resource type="Script" uid="uid://g52bacaekkna" path="res://scenes/day_03/_shared/ui/power_up_bar.gd" id="1_ommc4"]
 [ext_resource type="Texture2D" uid="uid://d16g60q03k2re" path="res://art/_shared/ui_counter_power.png" id="2"]
@@ -7,17 +7,17 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3jakl"]
 
-[node name="PowerUpBar" type="HBoxContainer"]
+[node name="PowerUpBar" type="HBoxContainer" unique_id=1344005138]
 offset_right = 35.0
 offset_bottom = 10.0
 theme_override_constants/separation = 0
 script = ExtResource("1_ommc4")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=432125828]
 layout_mode = 2
 theme_override_constants/margin_top = 3
 
-[node name="ProgressBar" type="TextureProgressBar" parent="MarginContainer"]
+[node name="ProgressBar" type="TextureProgressBar" parent="MarginContainer" unique_id=2107690595]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(25, 5)
 layout_mode = 2
@@ -33,6 +33,6 @@ texture_progress = SubResource("CanvasTexture_3jakl")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0, 0, 1)
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=609037948]
 layout_mode = 2
 texture = ExtResource("2")

@@ -1,34 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtehqdjeugahu"]
+[gd_scene format=3 uid="uid://dtehqdjeugahu"]
 
 [ext_resource type="Script" uid="uid://oswmn5tx068r" path="res://scenes/day_ex/game/action_selector.gd" id="1_0127k"]
 [ext_resource type="PackedScene" uid="uid://bxs3xgk30vwbi" path="res://scenes/_shared/ui/ui_sounds.tscn" id="2_6jy4n"]
 [ext_resource type="PackedScene" uid="uid://drjxqg6njqe0h" path="res://scenes/_shared/ui/h_selector.tscn" id="2_lidh8"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="3_d7rwn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hat3d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ud6aq"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe4ql"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b46ny"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[node name="ActionSelector" type="VBoxContainer"]
+[node name="ActionSelector" type="VBoxContainer" unique_id=290945829]
 focus_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("1_0127k")
 
-[node name="UiSounds" parent="." instance=ExtResource("2_6jy4n")]
+[node name="UiSounds" parent="." unique_id=147673786 instance=ExtResource("2_6jy4n")]
 
-[node name="CommandHSelector" parent="." instance=ExtResource("2_lidh8")]
+[node name="CommandHSelector" parent="." unique_id=1650485241 instance=ExtResource("2_lidh8")]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
-theme_override_styles/panel = SubResource("StyleBoxFlat_hat3d")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ud6aq")
 selector_text = ""
 _options = ["Attack", "Attack"]
 numbered_list = true
@@ -37,11 +37,11 @@ focus_color = Color(0.29366, 0.29366, 0.29366, 1)
 text_font = ExtResource("3_d7rwn")
 text_color = Color(1, 1, 1, 1)
 
-[node name="ActionHSelector" parent="." instance=ExtResource("2_lidh8")]
+[node name="ActionHSelector" parent="." unique_id=244169027 instance=ExtResource("2_lidh8")]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
-theme_override_styles/panel = SubResource("StyleBoxFlat_oe4ql")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b46ny")
 selector_text = "  "
 _options = ["Bright eyes", "Ability"]
 numbered_list = true

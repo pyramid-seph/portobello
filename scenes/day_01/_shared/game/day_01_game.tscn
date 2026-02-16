@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://cqn328nqhcfq7"]
+[gd_scene format=4 uid="uid://cqn328nqhcfq7"]
 
 [ext_resource type="Script" uid="uid://jsgibygde652" path="res://scenes/day_01/_shared/game/day_01_game.gd" id="1_745ra"]
 [ext_resource type="Script" uid="uid://bm5hgqmjs8u3k" path="res://scenes/day_01/_shared/game/treat_placement_system.gd" id="2_72va4"]
@@ -21,19 +21,16 @@
 [sub_resource type="Resource" id="Resource_o8rmx"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_01_LINE_00"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_ijthu"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_01_LINE_01"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_braj8"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_01_LINE_02"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gjy1r"]
@@ -43,39 +40,32 @@ pace_thresholds = Dictionary[int, float]({
 })
 time_limit_sec = 40.0
 treats_limit = 5
-change_treat_pos_on_player_death = false
 obstacle_course_type = 1
-inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_o8rmx"), SubResource("Resource_ijthu"), SubResource("Resource_braj8")])
 
 [sub_resource type="Resource" id="Resource_4fp23"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_02_LINE_00"
-delay_sec = 0.0
 duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_la1ve"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_02_LINE_01"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_16fw5"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_02_LINE_02"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_xg1id"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_02_LINE_03"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gibyu"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_02_LINE_04"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_tbt28"]
@@ -85,39 +75,32 @@ pace_thresholds = Dictionary[int, float]({
 })
 time_limit_sec = 45.0
 treats_limit = 10
-change_treat_pos_on_player_death = false
 obstacle_course_type = 2
-inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_4fp23"), SubResource("Resource_la1ve"), SubResource("Resource_16fw5"), SubResource("Resource_xg1id"), SubResource("Resource_gibyu")])
 
 [sub_resource type="Resource" id="Resource_sj755"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_03_LINE_00"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_uayyl"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_03_LINE_01"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_r6uwb"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_03_LINE_02"
-delay_sec = 0.0
 duration_sec = 20.0
 
 [sub_resource type="Resource" id="Resource_v1m0x"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_03_LINE_03"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_yi0yk"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_03_LINE_04"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_wx64e"]
@@ -127,57 +110,47 @@ pace_thresholds = Dictionary[int, float]({
 })
 time_limit_sec = 60.0
 treats_limit = 15
-change_treat_pos_on_player_death = false
 obstacle_course_type = 2
-inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_sj755"), SubResource("Resource_uayyl"), SubResource("Resource_r6uwb"), SubResource("Resource_v1m0x"), SubResource("Resource_yi0yk")])
 
 [sub_resource type="Resource" id="Resource_daivp"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_00"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_hg1h1"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_01"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_s6vvx"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_02"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_0wyqe"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_03"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_yga0x"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_04"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_b6jhg"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_05"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_nsick"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_06"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_36lrq"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_04_LINE_07"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2q7hw"]
@@ -189,31 +162,26 @@ time_limit_sec = 80.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
 obstacle_course_type = 2
-inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_daivp"), SubResource("Resource_hg1h1"), SubResource("Resource_s6vvx"), SubResource("Resource_0wyqe"), SubResource("Resource_yga0x"), SubResource("Resource_b6jhg"), SubResource("Resource_nsick"), SubResource("Resource_36lrq")])
 
 [sub_resource type="Resource" id="Resource_s3q5j"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_05_LINE_00"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_dbr5i"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_05_LINE_01"
-delay_sec = 0.0
 duration_sec = 20.0
 
 [sub_resource type="Resource" id="Resource_8chjt"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_05_LINE_02"
-delay_sec = 0.0
 duration_sec = 25.0
 
 [sub_resource type="Resource" id="Resource_1jgoh"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_05_LINE_03"
-delay_sec = 0.0
 duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_ewe2o"]
@@ -225,67 +193,56 @@ time_limit_sec = 60.0
 treats_limit = 10
 change_treat_pos_on_player_death = true
 obstacle_course_type = 2
-inverted_controls = false
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_s3q5j"), SubResource("Resource_dbr5i"), SubResource("Resource_8chjt"), SubResource("Resource_1jgoh")])
 
 [sub_resource type="Resource" id="Resource_kb7o2"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_00"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_8jflc"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_01"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_w14d4"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_02"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_dso5d"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_03"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_8ckjv"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_04"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_enpfy"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_05"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_0rxl2"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_06"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_opn8q"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_07"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_4iutd"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_08"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_tl7p4"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_06_LINE_09"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_roknf"]
@@ -295,7 +252,6 @@ pace_thresholds = Dictionary[int, float]({
 })
 time_limit_sec = 102.0
 treats_limit = 10
-change_treat_pos_on_player_death = false
 obstacle_course_type = 2
 inverted_controls = true
 dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_kb7o2"), SubResource("Resource_8jflc"), SubResource("Resource_w14d4"), SubResource("Resource_dso5d"), SubResource("Resource_8ckjv"), SubResource("Resource_enpfy"), SubResource("Resource_0rxl2"), SubResource("Resource_opn8q"), SubResource("Resource_4iutd"), SubResource("Resource_tl7p4")])
@@ -303,31 +259,26 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_kb7o2"), SubReso
 [sub_resource type="Resource" id="Resource_jg5xd"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_07_LINE_00"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_35vhu"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_07_LINE_01"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_gxgo7"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_07_LINE_02"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_ddbf7"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_07_LINE_03"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_8ofdh"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_07_LINE_04"
-delay_sec = 0.0
 duration_sec = 5.0
 
 [sub_resource type="Resource" id="Resource_re2ea"]
@@ -345,19 +296,16 @@ dialogue = Array[ExtResource("3_i3orw")]([SubResource("Resource_jg5xd"), SubReso
 [sub_resource type="Resource" id="Resource_n0awb"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_08_LINE_00"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_pv6bm"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_08_LINE_01"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_g67s6"]
 script = ExtResource("3_i3orw")
 text = "DIALOGUE_DAY_01_LEVEL_08_LINE_02"
-delay_sec = 0.0
 duration_sec = 10.0
 
 [sub_resource type="Resource" id="Resource_2cvf3"]
@@ -381,12 +329,7 @@ pace_thresholds = Dictionary[int, float]({
 50: 0.125,
 75: 0.1
 })
-time_limit_sec = 0.0
-treats_limit = 0
-change_treat_pos_on_player_death = false
 obstacle_course_type = 2
-inverted_controls = false
-dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_fb7o2"]
 script = ExtResource("2_fmqcn")
@@ -397,12 +340,8 @@ pace_thresholds = Dictionary[int, float]({
 50: 0.125,
 75: 0.1
 })
-time_limit_sec = 0.0
-treats_limit = 0
-change_treat_pos_on_player_death = false
 obstacle_course_type = 2
 inverted_controls = true
-dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_uuev1"]
 script = ExtResource("2_fmqcn")
@@ -413,12 +352,6 @@ pace_thresholds = Dictionary[int, float]({
 50: 0.125,
 75: 0.1
 })
-time_limit_sec = 0.0
-treats_limit = 0
-change_treat_pos_on_player_death = false
-obstacle_course_type = 0
-inverted_controls = false
-dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="Resource" id="Resource_nvdo7"]
 script = ExtResource("2_fmqcn")
@@ -429,12 +362,7 @@ pace_thresholds = Dictionary[int, float]({
 50: 0.125,
 75: 0.1
 })
-time_limit_sec = 0.0
-treats_limit = 0
-change_treat_pos_on_player_death = false
-obstacle_course_type = 0
 inverted_controls = true
-dialogue = Array[ExtResource("3_i3orw")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3nst"]
 size = Vector2(6, 6)
@@ -464,19 +392,19 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_a6blw")
 
-[node name="Day01Game" type="Node"]
+[node name="Day01Game" type="Node" unique_id=319776979]
 physics_interpolation_mode = 2
 script = ExtResource("1_745ra")
 
-[node name="Day01Bgm" type="Node" parent="."]
+[node name="Day01Bgm" type="Node" parent="." unique_id=1972236239]
 script = ExtResource("2_bgswp")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1227887603]
 one_shot = true
 
-[node name="Systems" type="Node" parent="."]
+[node name="Systems" type="Node" parent="." unique_id=1778622814]
 
-[node name="LevelInfo" type="Node" parent="Systems"]
+[node name="LevelInfo" type="Node" parent="Systems" unique_id=514438460]
 script = ExtResource("2_tq1t3")
 _lvl_settings_story_01 = SubResource("Resource_gjy1r")
 _lvl_settings_story_02 = SubResource("Resource_tbt28")
@@ -491,14 +419,14 @@ _lvl_settings_score_attack_1b = SubResource("Resource_fb7o2")
 _lvl_settings_score_attack_1c = SubResource("Resource_uuev1")
 _lvl_settings_score_attack_1d = SubResource("Resource_nvdo7")
 
-[node name="TreatPlacementSystem" type="Node" parent="Systems" node_paths=PackedStringArray("_world")]
+[node name="TreatPlacementSystem" type="Node" parent="Systems" unique_id=794658745 node_paths=PackedStringArray("_world")]
 script = ExtResource("2_72va4")
 _world = NodePath("../../World")
 _player_node_path = NodePath("../../World/FloorTileMapLayer/Day01Player")
 _max_tries = 5
 _tile_map_helper_path = NodePath("../Day01TileMapHelper")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="Systems/TreatPlacementSystem"]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Systems/TreatPlacementSystem" unique_id=352105296]
 visible = false
 enabled = false
 shape = SubResource("RectangleShape2D_r3nst")
@@ -508,30 +436,30 @@ collide_with_areas = true
 collide_with_bodies = false
 metadata/_edit_lock_ = true
 
-[node name="TopLeft" type="Marker2D" parent="Systems/TreatPlacementSystem"]
+[node name="TopLeft" type="Marker2D" parent="Systems/TreatPlacementSystem" unique_id=2105585651]
 visible = false
 position = Vector2(36, 84)
 gizmo_extents = 4.0
 metadata/_edit_lock_ = true
 
-[node name="TopRight" type="Marker2D" parent="Systems/TreatPlacementSystem"]
+[node name="TopRight" type="Marker2D" parent="Systems/TreatPlacementSystem" unique_id=1492879246]
 visible = false
 position = Vector2(204, 84)
 gizmo_extents = 4.0
 metadata/_edit_lock_ = true
 
-[node name="BottomLeft" type="Marker2D" parent="Systems/TreatPlacementSystem"]
+[node name="BottomLeft" type="Marker2D" parent="Systems/TreatPlacementSystem" unique_id=1532468681]
 visible = false
 position = Vector2(36, 228)
 gizmo_extents = 4.0
 metadata/_edit_lock_ = true
 
-[node name="FurniturePlacementSystem" type="Node" parent="Systems"]
+[node name="FurniturePlacementSystem" type="Node" parent="Systems" unique_id=1988114790]
 script = ExtResource("3_fkre0")
 _max_tries = 100
 _tile_map_helper_path = NodePath("../Day01TileMapHelper")
 
-[node name="Day01TileMapHelper" type="Node" parent="Systems" node_paths=PackedStringArray("_tile_map_layer", "_origin", "_large_table", "_large_couch", "_small_couch_facing_left", "_small_couch_facing_right", "_small_table_00", "_small_table_01")]
+[node name="Day01TileMapHelper" type="Node" parent="Systems" unique_id=919821350 node_paths=PackedStringArray("_tile_map_layer", "_origin", "_large_table", "_large_couch", "_small_couch_facing_left", "_small_couch_facing_right", "_small_table_00", "_small_table_01")]
 script = ExtResource("6_mkoph")
 _tile_map_layer = NodePath("../../World/FloorTileMapLayer")
 _player_node_path = NodePath("../../World/FloorTileMapLayer/Day01Player")
@@ -547,12 +475,12 @@ _tile_size_large_couch = Vector2i(4, 7)
 _tile_size_small_couch = Vector2i(6, 6)
 _tile_size_small_table = Vector2i(5, 4)
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=1289658296]
 
-[node name="Background" type="CanvasLayer" parent="World"]
+[node name="Background" type="CanvasLayer" parent="World" unique_id=1602610928]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="World/Background"]
+[node name="ColorRect" type="ColorRect" parent="World/Background" unique_id=2138364617]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -560,7 +488,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="FloorTileMapLayer" type="TileMapLayer" parent="World"]
+[node name="FloorTileMapLayer" type="TileMapLayer" parent="World" unique_id=897171378]
 z_index = -100
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAEABwAAAAAAAAAAAAEABsAAAAAAAAAAAAEABoAAAAAAAAAAAAEABkAAAAAAAAAAAAEABgAAAAAAAAAAAAEABcAAAAAAAAAAAAEABYAAAAAAAAAAAAEABUAAAAAAAAAAAAEABQAAAAAAAAAAAAEABMAAAAAAAAAAAAEABIAAAAAAAAAAAAEABEAAAAAAAAAAAAEABAAAAAAAAAAAAAEAA8AAAAAAAAAAAAEAA4AAAAAAAAAAAAEAA0AAAAAAAAAAAAEAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAFABAAAAAAAAAAAAAFABEAAAAAAAAAAAAFABIAAAAAAAAAAAAFABMAAAAAAAAAAAAFABQAAAAAAAAAAAAFABUAAAAAAAAAAAAFABYAAAAAAAAAAAAFABcAAAAAAAAAAAAFABgAAAAAAAAAAAAFABkAAAAAAAAAAAAFABoAAAAAAAAAAAAFABsAAAAAAAAAAAAFABwAAAAAAAAAAAAGABwAAAAAAAAAAAAGABsAAAAAAAAAAAAGABoAAAAAAAAAAAAGABkAAAAAAAAAAAAGABgAAAAAAAAAAAAGABcAAAAAAAAAAAAGABYAAAAAAAAAAAAGABUAAAAAAAAAAAAGABQAAAAAAAAAAAAGABMAAAAAAAAAAAAGABIAAAAAAAAAAAAGABEAAAAAAAAAAAAGABAAAAAAAAAAAAAGAA8AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA0AAAAAAAAAAAAGAAwAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAHABAAAAAAAAAAAAAHABEAAAAAAAAAAAAHABIAAAAAAAAAAAAHABMAAAAAAAAAAAAHABQAAAAAAAAAAAAHABUAAAAAAAAAAAAHABYAAAAAAAAAAAAHABcAAAAAAAAAAAAHABgAAAAAAAAAAAAHABkAAAAAAAAAAAAHABoAAAAAAAAAAAAHABsAAAAAAAAAAAAHABwAAAAAAAAAAAAIABwAAAAAAAAAAAAIABsAAAAAAAAAAAAIABoAAAAAAAAAAAAIABkAAAAAAAAAAAAIABgAAAAAAAAAAAAIABcAAAAAAAAAAAAIABYAAAAAAAAAAAAIABUAAAAAAAAAAAAIABQAAAAAAAAAAAAIABMAAAAAAAAAAAAIABIAAAAAAAAAAAAIABEAAAAAAAAAAAAIABAAAAAAAAAAAAAIAA8AAAAAAAAAAAAIAA4AAAAAAAAAAAAIAA0AAAAAAAAAAAAIAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAJABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABMAAAAAAAAAAAAJABQAAAAAAAAAAAAJABUAAAAAAAAAAAAJABYAAAAAAAAAAAAJABcAAAAAAAAAAAAJABgAAAAAAAAAAAAJABkAAAAAAAAAAAAJABoAAAAAAAAAAAAJABsAAAAAAAAAAAAJABwAAAAAAAAAAAAKABwAAAAAAAAAAAAKABsAAAAAAAAAAAAKABoAAAAAAAAAAAAKABkAAAAAAAAAAAAKABgAAAAAAAAAAAAKABcAAAAAAAAAAAAKABYAAAAAAAAAAAAKABUAAAAAAAAAAAAKABQAAAAAAAAAAAAKABMAAAAAAAAAAAAKABIAAAAAAAAAAAAKABEAAAAAAAAAAAAKABAAAAAAAAAAAAAKAA8AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA0AAAAAAAAAAAAKAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAALAA8AAAAAAAAAAAALABAAAAAAAAAAAAALABEAAAAAAAAAAAALABIAAAAAAAAAAAALABMAAAAAAAAAAAALABQAAAAAAAAAAAALABUAAAAAAAAAAAALABYAAAAAAAAAAAALABcAAAAAAAAAAAALABgAAAAAAAAAAAALABkAAAAAAAAAAAALABoAAAAAAAAAAAALABsAAAAAAAAAAAALABwAAAAAAAAAAAAMABwAAAAAAAAAAAAMABsAAAAAAAAAAAAMABoAAAAAAAAAAAAMABkAAAAAAAAAAAAMABgAAAAAAAAAAAAMABcAAAAAAAAAAAAMABYAAAAAAAAAAAAMABUAAAAAAAAAAAAMABQAAAAAAAAAAAAMABMAAAAAAAAAAAAMABIAAAAAAAAAAAAMABEAAAAAAAAAAAAMABAAAAAAAAAAAAAMAA8AAAAAAAAAAAAMAA4AAAAAAAAAAAAMAA0AAAAAAAAAAAAMAAwAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAANAA8AAAAAAAAAAAANABAAAAAAAAAAAAANABEAAAAAAAAAAAANABIAAAAAAAAAAAANABMAAAAAAAAAAAANABQAAAAAAAAAAAANABUAAAAAAAAAAAANABYAAAAAAAAAAAANABcAAAAAAAAAAAANABgAAAAAAAAAAAANABkAAAAAAAAAAAANABoAAAAAAAAAAAANABsAAAAAAAAAAAANABwAAAAAAAAAAAAOABwAAAAAAAAAAAAOABsAAAAAAAAAAAAOABoAAAAAAAAAAAAOABkAAAAAAAAAAAAOABgAAAAAAAAAAAAOABcAAAAAAAAAAAAOABYAAAAAAAAAAAAOABUAAAAAAAAAAAAOABQAAAAAAAAAAAAOABMAAAAAAAAAAAAOABIAAAAAAAAAAAAOABEAAAAAAAAAAAAOABAAAAAAAAAAAAAOAA8AAAAAAAAAAAAOAA4AAAAAAAAAAAAOAA0AAAAAAAAAAAAOAAwAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA8AAAAAAAAAAAAPABAAAAAAAAAAAAAPABEAAAAAAAAAAAAPABIAAAAAAAAAAAAPABMAAAAAAAAAAAAPABQAAAAAAAAAAAAPABUAAAAAAAAAAAAPABYAAAAAAAAAAAAPABcAAAAAAAAAAAAPABgAAAAAAAAAAAAPABkAAAAAAAAAAAAPABoAAAAAAAAAAAAPABsAAAAAAAAAAAAPABwAAAAAAAAAAAAQABwAAAAAAAAAAAAQABsAAAAAAAAAAAAQABoAAAAAAAAAAAAQABkAAAAAAAAAAAAQABgAAAAAAAAAAAAQABcAAAAAAAAAAAAQABYAAAAAAAAAAAAQABUAAAAAAAAAAAAQABQAAAAAAAAAAAAQABMAAAAAAAAAAAAQABIAAAAAAAAAAAAQABEAAAAAAAAAAAAQABAAAAAAAAAAAAAQAA8AAAAAAAAAAAAQAA4AAAAAAAAAAAAQAA0AAAAAAAAAAAAQAAwAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAARAA8AAAAAAAAAAAARABAAAAAAAAAAAAARABEAAAAAAAAAAAARABIAAAAAAAAAAAARABMAAAAAAAAAAAARABQAAAAAAAAAAAARABUAAAAAAAAAAAARABYAAAAAAAAAAAARABcAAAAAAAAAAAARABgAAAAAAAAAAAARABkAAAAAAAAAAAARABoAAAAAAAAAAAARABsAAAAAAAAAAAARABwAAAAAAAAAAAASABwAAAAAAAAAAAASABsAAAAAAAAAAAASABoAAAAAAAAAAAASABkAAAAAAAAAAAASABgAAAAAAAAAAAASABcAAAAAAAAAAAASABYAAAAAAAAAAAASABUAAAAAAAAAAAASABQAAAAAAAAAAAASABMAAAAAAAAAAAASABIAAAAAAAAAAAASABEAAAAAAAAAAAASABAAAAAAAAAAAAASAA8AAAAAAAAAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAASAAsAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAATAA8AAAAAAAAAAAATABAAAAAAAAAAAAATABEAAAAAAAAAAAATABIAAAAAAAAAAAATABMAAAAAAAAAAAATABQAAAAAAAAAAAATABUAAAAAAAAAAAATABYAAAAAAAAAAAATABcAAAAAAAAAAAATABgAAAAAAAAAAAATABkAAAAAAAAAAAATABoAAAAAAAAAAAATABsAAAAAAAAAAAATABwAAAAAAAAAAAAUABwAAAAAAAAAAAAUABsAAAAAAAAAAAAUABoAAAAAAAAAAAAUABkAAAAAAAAAAAAUABgAAAAAAAAAAAAUABcAAAAAAAAAAAAUABYAAAAAAAAAAAAUABUAAAAAAAAAAAAUABQAAAAAAAAAAAAUABMAAAAAAAAAAAAUABIAAAAAAAAAAAAUABEAAAAAAAAAAAAUABAAAAAAAAAAAAAUAA8AAAAAAAAAAAAUAA4AAAAAAAAAAAAUAA0AAAAAAAAAAAAUAAwAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAVAA8AAAAAAAAAAAAVABAAAAAAAAAAAAAVABEAAAAAAAAAAAAVABIAAAAAAAAAAAAVABMAAAAAAAAAAAAVABQAAAAAAAAAAAAVABUAAAAAAAAAAAAVABYAAAAAAAAAAAAVABcAAAAAAAAAAAAVABgAAAAAAAAAAAAVABkAAAAAAAAAAAAVABoAAAAAAAAAAAAVABsAAAAAAAAAAAAVABwAAAAAAAAAAAAWABwAAAAAAAAAAAAWABsAAAAAAAAAAAAWABoAAAAAAAAAAAAWABkAAAAAAAAAAAAWABgAAAAAAAAAAAAWABcAAAAAAAAAAAAWABYAAAAAAAAAAAAWABUAAAAAAAAAAAAWABQAAAAAAAAAAAAWABMAAAAAAAAAAAAWABIAAAAAAAAAAAAWABEAAAAAAAAAAAAWABAAAAAAAAAAAAAWAA8AAAAAAAAAAAAWAA4AAAAAAAAAAAAWAA0AAAAAAAAAAAAWAAwAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAwAAAAAAAAAAAAXAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAXAA8AAAAAAAAAAAAXABAAAAAAAAAAAAAXABEAAAAAAAAAAAAXABIAAAAAAAAAAAAXABMAAAAAAAAAAAAXABQAAAAAAAAAAAAXABUAAAAAAAAAAAAXABYAAAAAAAAAAAAXABcAAAAAAAAAAAAXABgAAAAAAAAAAAAXABkAAAAAAAAAAAAXABoAAAAAAAAAAAAXABsAAAAAAAAAAAAXABwAAAAAAAAAAAAYABwAAAAAAAAAAAAYABsAAAAAAAAAAAAYABoAAAAAAAAAAAAYABkAAAAAAAAAAAAYABgAAAAAAAAAAAAYABcAAAAAAAAAAAAYABYAAAAAAAAAAAAYABUAAAAAAAAAAAAYABQAAAAAAAAAAAAYABMAAAAAAAAAAAAYABIAAAAAAAAAAAAYABEAAAAAAAAAAAAYABAAAAAAAAAAAAAYAA8AAAAAAAAAAAAYAA4AAAAAAAAAAAAYAA0AAAAAAAAAAAAYAAwAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAA0AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAAZABAAAAAAAAAAAAAZABEAAAAAAAAAAAAZABIAAAAAAAAAAAAZABMAAAAAAAAAAAAZABQAAAAAAAAAAAAZABUAAAAAAAAAAAAZABYAAAAAAAAAAAAZABcAAAAAAAAAAAAZABgAAAAAAAAAAAAZABkAAAAAAAAAAAAZABoAAAAAAAAAAAAZABsAAAAAAAAAAAAZABwAAAAAAAAAAAA=")
@@ -569,59 +497,59 @@ collision_enabled = false
 navigation_enabled = false
 metadata/_edit_lock_ = true
 
-[node name="GridOrigin" type="Marker2D" parent="World/FloorTileMapLayer"]
+[node name="GridOrigin" type="Marker2D" parent="World/FloorTileMapLayer" unique_id=77956397]
 unique_name_in_owner = true
 position = Vector2(28, 76)
 gizmo_extents = 4.0
 metadata/_edit_lock_ = true
 
-[node name="Day01Player" parent="World/FloorTileMapLayer" instance=ExtResource("6_kn384")]
+[node name="Day01Player" parent="World/FloorTileMapLayer" unique_id=694446166 instance=ExtResource("6_kn384")]
 unique_name_in_owner = true
 z_index = -1
 z_as_relative = false
 position = Vector2(100, 148)
 metadata/_edit_lock_ = true
 
-[node name="LargeCouch" parent="World/FloorTileMapLayer" instance=ExtResource("9_8h8mx")]
+[node name="LargeCouch" parent="World/FloorTileMapLayer" unique_id=2086365575 instance=ExtResource("9_8h8mx")]
 unique_name_in_owner = true
 z_as_relative = false
 position = Vector2(-177, 65)
 metadata/_edit_lock_ = true
 
-[node name="SmallCouchFacingLeft" parent="World/FloorTileMapLayer" instance=ExtResource("10_jkjik")]
+[node name="SmallCouchFacingLeft" parent="World/FloorTileMapLayer" unique_id=1001796109 instance=ExtResource("10_jkjik")]
 unique_name_in_owner = true
 z_as_relative = false
 position = Vector2(-89, 57)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" parent="World/FloorTileMapLayer/SmallCouchFacingLeft" index="0"]
+[node name="Sprite2D" parent="World/FloorTileMapLayer/SmallCouchFacingLeft" index="0" unique_id=1022630085]
 flip_h = true
 
-[node name="SmallCouchFacingRight" parent="World/FloorTileMapLayer" instance=ExtResource("10_jkjik")]
+[node name="SmallCouchFacingRight" parent="World/FloorTileMapLayer" unique_id=1729972781 instance=ExtResource("10_jkjik")]
 unique_name_in_owner = true
 z_as_relative = false
 position = Vector2(-185, 113)
 metadata/_edit_lock_ = true
 
-[node name="SmallTable00" parent="World/FloorTileMapLayer" instance=ExtResource("11_t3pbc")]
+[node name="SmallTable00" parent="World/FloorTileMapLayer" unique_id=1577401927 instance=ExtResource("11_t3pbc")]
 unique_name_in_owner = true
 z_as_relative = false
 position = Vector2(-129, 81)
 metadata/_edit_lock_ = true
 
-[node name="SmallTable01" parent="World/FloorTileMapLayer" instance=ExtResource("11_t3pbc")]
+[node name="SmallTable01" parent="World/FloorTileMapLayer" unique_id=899520081 instance=ExtResource("11_t3pbc")]
 unique_name_in_owner = true
 z_as_relative = false
 position = Vector2(-41, 49)
 metadata/_edit_lock_ = true
 
-[node name="LargeTable" parent="World/FloorTileMapLayer" instance=ExtResource("12_w5pkf")]
+[node name="LargeTable" parent="World/FloorTileMapLayer" unique_id=278443633 instance=ExtResource("12_w5pkf")]
 unique_name_in_owner = true
 z_as_relative = false
 position = Vector2(-97, 153)
 metadata/_edit_lock_ = true
 
-[node name="WallTileMapLayer" type="TileMapLayer" parent="World"]
+[node name="WallTileMapLayer" type="TileMapLayer" parent="World" unique_id=1468954494]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAaAAoAAAAAAAEAAAADAAoAAAAAAAEAAAADABsAAAAAAAEAAAADAAsAAAAAAAEAAAADAAwAAAAAAAEAAAADAA0AAAAAAAEAAAADAA4AAAAAAAEAAAADAA8AAAAAAAEAAAADABAAAAAAAAEAAAADABEAAAAAAAEAAAADABIAAAAAAAEAAAADABMAAAAAAAEAAAADABQAAAAAAAEAAAADABUAAAAAAAEAAAADABYAAAAAAAEAAAADABcAAAAAAAEAAAADABgAAAAAAAEAAAADABkAAAAAAAEAAAADABoAAAAAAAEAAAAaABsAAAAAAAEAAAAaAAsAAAAAAAEAAAAaAAwAAAAAAAEAAAAaAA0AAAAAAAEAAAAaAA4AAAAAAAEAAAAaAA8AAAAAAAEAAAAaABAAAAAAAAEAAAAaABEAAAAAAAEAAAAaABIAAAAAAAEAAAAaABMAAAAAAAEAAAAaABQAAAAAAAEAAAAaABUAAAAAAAEAAAAaABYAAAAAAAEAAAAaABcAAAAAAAEAAAAaABgAAAAAAAEAAAAaABkAAAAAAAEAAAAaABoAAAAAAAEAAAADAAkAAAABAAAAAAADAB0AAAABAAEAAAADABwAAAAAAAEAAAAEAAkAAAAAAAMAAAAFAAkAAAAAAAMAAAAGAAkAAAAAAAMAAAAHAAkAAAAAAAMAAAAIAAkAAAAAAAMAAAAJAAkAAAAAAAMAAAAKAAkAAAAAAAMAAAALAAkAAAAAAAMAAAAMAAkAAAAAAAMAAAANAAkAAAAAAAMAAAAOAAkAAAAAAAMAAAAPAAkAAAAAAAMAAAAQAAkAAAAAAAMAAAARAAkAAAAAAAMAAAASAAkAAAAAAAMAAAATAAkAAAAAAAMAAAAUAAkAAAAAAAMAAAAVAAkAAAAAAAMAAAAWAAkAAAAAAAMAAAAXAAkAAAAAAAMAAAAYAAkAAAAAAAMAAAAZAAkAAAAAAAMAAAAaAAkAAAABAAIAAAAaAB0AAAAAAAIAAAAaABwAAAAAAAEAAAAEAB0AAAAAAAMAAAAFAB0AAAAAAAMAAAAGAB0AAAAAAAMAAAAHAB0AAAAAAAMAAAAIAB0AAAAAAAMAAAAJAB0AAAAAAAMAAAAKAB0AAAAAAAMAAAALAB0AAAAAAAMAAAAMAB0AAAAAAAMAAAANAB0AAAAAAAMAAAAOAB0AAAAAAAMAAAAPAB0AAAAAAAMAAAAQAB0AAAAAAAMAAAARAB0AAAAAAAMAAAASAB0AAAAAAAMAAAATAB0AAAAAAAMAAAAUAB0AAAAAAAMAAAAVAB0AAAAAAAMAAAAWAB0AAAAAAAMAAAAXAB0AAAAAAAMAAAAYAB0AAAAAAAMAAAAZAB0AAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_cwysm")
@@ -629,15 +557,15 @@ rendering_quadrant_size = 8
 navigation_enabled = false
 metadata/_edit_lock_ = true
 
-[node name="Interface" type="Node" parent="."]
+[node name="Interface" type="Node" parent="." unique_id=1909602898]
 
-[node name="Day01GameUi" parent="Interface" instance=ExtResource("6_s8541")]
+[node name="Day01GameUi" parent="Interface" unique_id=115270871 instance=ExtResource("6_s8541")]
 unique_name_in_owner = true
 
-[node name="Day01BetweenLevelsCutscene" parent="Interface" instance=ExtResource("16_sc4vk")]
+[node name="Day01BetweenLevelsCutscene" parent="Interface" unique_id=851472928 instance=ExtResource("16_sc4vk")]
 unique_name_in_owner = true
 
-[node name="ResultsScreen" parent="Interface" instance=ExtResource("2_28578")]
+[node name="ResultsScreen" parent="Interface" unique_id=2105858252 instance=ExtResource("2_28578")]
 unique_name_in_owner = true
 visible = false
 _skip_level_results_screen = true

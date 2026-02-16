@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://dmdeyptx3acva"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://dmdeyptx3acva"]
 
 [ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="1_fbt43"]
 [ext_resource type="Texture2D" uid="uid://466t72xmiue6" path="res://art/day_ex/battle_ability_enemy_peck_0.png" id="1_n8cvs"]
@@ -9,21 +9,9 @@
 [resource]
 script = ExtResource("1_fbt43")
 _action_name = "RPG_BATTLE_ATTACK_NAME_ENEMY_PECK"
-_info = ""
-_target = 0
-_consumes = 0
-_cost = 1
 _physical_damage = 1
 _damage_points = 16
-_damage_percent = 0.5
 _hit_chance = 0.7
-_status_effect_poison_damage = 0
-_status_effect_attack = 0
-_status_effect_defense = 0
-_status_effect_speed = 0
-_status_effect_love = false
 _sprites = Array[Texture2D]([ExtResource("1_n8cvs"), ExtResource("2_g4lx0"), ExtResource("3_cp3sg")])
 _duration_sec = 0.45
-_screen_flash_color = Color(1, 1, 1, 0)
-_shake_screen = false
 _sound = ExtResource("1_v06r4")

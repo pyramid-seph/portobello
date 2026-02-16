@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleParty" load_steps=5 format=3 uid="uid://cqxlnw3nrkxs2"]
+[gd_resource type="Resource" script_class="BattleParty" format=3 uid="uid://cqxlnw3nrkxs2"]
 
 [ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="1_24yyb"]
 [ext_resource type="Resource" uid="uid://ckg341pliq3af" path="res://resources/instances/day_ex/chars/boss_alien.tres" id="1_fy4en"]
@@ -9,4 +9,3 @@
 script = ExtResource("3_ehxb5")
 _front_row = Array[ExtResource("1_24yyb")]([ExtResource("2_xxtke"), ExtResource("2_xxtke")])
 _back_row = Array[ExtResource("1_24yyb")]([ExtResource("1_fy4en")])
-_weight = 1.0

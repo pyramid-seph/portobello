@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctbphqc3meo8i"]
+[gd_scene format=3 uid="uid://ctbphqc3meo8i"]
 
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_h6f6k"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="2_aoa0w"]
@@ -53,7 +53,7 @@ _data = {
 &"next_page": SubResource("Animation_o6p1p")
 }
 
-[node name="BattleNarrationBox" type="PanelContainer"]
+[node name="BattleNarrationBox" type="PanelContainer" unique_id=1805664946]
 custom_minimum_size = Vector2(0, 54)
 offset_right = 24.0
 offset_bottom = 54.0
@@ -69,11 +69,11 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_bkdax")
 script = ExtResource("2_j570o")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=384901508]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="NarrationLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="NarrationLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=1849665078]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -85,17 +85,15 @@ bbcode_enabled = true
 text = "[p][center][color=#58574]Bucho[/color] lost![/center][/p][p] [/p][p][center]What a heartburn![/center][/p]"
 fit_content = true
 
-[node name="NextPageTextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="NextPageTextureRect" type="TextureRect" parent="VBoxContainer" unique_id=389679047]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("3_04hrh")
 stretch_mode = 2
 
-[node name="NextPageAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_k72du")
-}
+[node name="NextPageAnimationPlayer" type="AnimationPlayer" parent="." unique_id=503802271]
+libraries/ = SubResource("AnimationLibrary_k72du")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

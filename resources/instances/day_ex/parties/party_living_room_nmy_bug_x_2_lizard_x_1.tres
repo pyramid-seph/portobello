@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleParty" load_steps=5 format=3 uid="uid://chwvg4b65nkau"]
+[gd_resource type="Resource" script_class="BattleParty" format=3 uid="uid://chwvg4b65nkau"]
 
 [ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="1_a6xpi"]
 [ext_resource type="Resource" uid="uid://dfbbuuqk1jsui" path="res://resources/instances/day_ex/chars/bug.tres" id="1_t1mja"]
@@ -8,5 +8,4 @@
 [resource]
 script = ExtResource("3_ct5aq")
 _front_row = Array[ExtResource("1_a6xpi")]([ExtResource("1_t1mja"), ExtResource("2_e055w"), ExtResource("1_t1mja")])
-_back_row = Array[ExtResource("1_a6xpi")]([])
 _weight = 3.0

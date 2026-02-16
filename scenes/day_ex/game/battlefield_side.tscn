@@ -1,23 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3l2edgf8ciay"]
+[gd_scene format=3 uid="uid://c3l2edgf8ciay"]
 
 [ext_resource type="Script" uid="uid://b1k1nl1mtvp86" path="res://scenes/day_ex/game/battlefield_side.gd" id="1_mlmea"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx7lm"]
 
-[node name="BattlefieldSide" type="PanelContainer"]
+[node name="BattlefieldSide" type="PanelContainer" unique_id=481150146]
 size_flags_vertical = 3
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gx7lm")
 script = ExtResource("1_mlmea")
 
-[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+[node name="BackgroundTextureRect" type="TextureRect" parent="." unique_id=1035623375]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundTextureRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundTextureRect" unique_id=1849018438]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,12 +27,12 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="BackRow" type="HBoxContainer" parent="BackgroundTextureRect/VBoxContainer"]
+[node name="BackRow" type="HBoxContainer" parent="BackgroundTextureRect/VBoxContainer" unique_id=2010857198]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="FrontRow" type="HBoxContainer" parent="BackgroundTextureRect/VBoxContainer"]
+[node name="FrontRow" type="HBoxContainer" parent="BackgroundTextureRect/VBoxContainer" unique_id=922127411]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1

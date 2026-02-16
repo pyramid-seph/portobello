@@ -1,260 +1,260 @@
-[gd_scene load_steps=4 format=4 uid="uid://bx2t7rdotenvm"]
+[gd_scene format=4 uid="uid://bx2t7rdotenvm"]
 
 [ext_resource type="PackedScene" uid="uid://cfcfhqs6pqgcm" path="res://scenes/day_02/_shared/maze/maze.tscn" id="1_5q4sv"]
 [ext_resource type="PackedScene" uid="uid://cj4dighv45bx7" path="res://scenes/day_02/_shared/items/super_treat.tscn" id="2_jk3lg"]
 [ext_resource type="PackedScene" uid="uid://cl2r8iypa5wym" path="res://scenes/day_02/_shared/items/treat.tscn" id="3_tgtul"]
 
-[node name="MazeC" instance=ExtResource("1_5q4sv")]
-tile_map_data = PackedByteArray("AAAFAAIAAAABAAEAACABAAQAAAAAAAEAAGACAAQAAAAAAAAAADACAAUAAAAAAAEAAAABAAYAAAAAAAEAAFABAAgAAAABAAEAAFAEAAQAAAABAAEAAGAFAAQAAAAFAAEAAAAGAAQAAAABAAEAAHAIAAQAAAAAAAAAACAJAAQAAAAAAAEAAGAIAAUAAAAAAAEAABAJAAYAAAAAAAEAAFADAAkAAAAAAAAAACAGAAkAAAAEAAEAACAHAAkAAAAAAAEAAGAEAAkAAAAEAAEAADAFAAAAAAABAAEAAAABAAIAAAABAAEAACAJAAIAAAABAAEAACD//wAAAAAAAAEAAAD//wEAAAAAAAEAAAD//wIAAAAAAAEAAAD//wMAAAAAAAEAAAD//wQAAAAAAAEAAAD//wUAAAAAAAEAAAD//wYAAAAAAAEAAAD//wcAAAAAAAEAAAD//wgAAAAAAAEAAAD//wkAAAAAAAEAAAALAAAAAAAAAAEAABALAAEAAAAAAAEAABALAAIAAAAAAAEAABALAAMAAAAAAAEAABALAAQAAAAAAAEAABALAAUAAAAAAAEAABALAAYAAAAAAAEAABALAAcAAAAAAAEAABALAAgAAAAAAAEAABALAAkAAAAAAAEAABAAAP//AAAEAAAAAAABAP//AAAEAAAAAAACAP//AAAEAAAAAAADAP//AAAEAAAAAAAEAP//AAAEAAAAAAAFAP//AAAEAAAAAAAGAP//AAAEAAAAAAAHAP//AAAEAAAAAAAIAP//AAAEAAAAAAAJAP//AAAEAAAAAAAKAP//AAAEAAAAAAAAAAoAAAAAAAEAAHABAAoAAAAAAAEAAHACAAoAAAAAAAEAAHADAAoAAAAAAAEAAHAEAAoAAAAAAAEAAHAFAAoAAAAAAAEAAHAGAAoAAAAAAAEAAHAHAAoAAAAAAAEAAHAIAAoAAAAAAAEAAHAJAAoAAAAAAAEAAHAKAAoAAAAAAAEAAHD/////AAAEAAIAAAD//woAAAAEAAIAACALAAoAAAAEAAIAADALAP//AAAEAAIAABAGAAEAAAABAAEAAFAEAAEAAAABAAEAAEAFAAEAAAAFAAIAAAAIAAEAAAABAAEAAEAKAAEAAAAAAAIAAGAJAAEAAAAGAAAAAAAIAAYAAAAAAAAAAAACAAYAAAAAAAAAABAKAAYAAAAAAAEAAFAAAAYAAAAAAAEAAFAAAAQAAAAAAAEAAGAKAAQAAAAAAAEAAGAFAAYAAAAAAAIAAGAGAAYAAAABAAEAAHAEAAYAAAABAAEAAGAAAAEAAAAAAAIAAGABAAEAAAAFAAAAABAKAAgAAAABAAEAAGAAAAgAAAAAAAIAAGAEAAgAAAABAAEAAAAGAAgAAAABAAEAAAAIAAkAAAAAAAAAADA=")
+[node name="MazeC" unique_id=65663670 instance=ExtResource("1_5q4sv")]
+tile_map_data = PackedByteArray("AAABAAAA//////////8DAAAA//////////8HAAAA//////////8JAAAA//////////8EAAIA//////////8FAAIAAAABAAEAACAGAAIA//////////8BAAQAAAAAAAEAAGACAAQAAAAAAAAAADACAAUAAAAAAAEAAAABAAUA//////////8BAAYAAAAAAAEAAFABAAcA//////////8BAAgAAAABAAEAAFAEAAQAAAABAAEAAGAFAAQAAAAFAAEAAAAGAAQAAAABAAEAAHAEAAUA//////////8GAAUA//////////8HAAcA//////////8DAAcA//////////8EAAcA//////////8FAAcA//////////8GAAcA//////////8IAAQAAAAAAAAAACAJAAQAAAAAAAEAAGAIAAUAAAAAAAEAABAJAAYAAAAAAAEAAFAJAAcA//////////8JAAgA//////////8DAAkAAAAAAAAAACAGAAkAAAAEAAEAACAHAAkAAAAAAAEAAGAEAAkAAAAEAAEAADAEAAAA//////////8FAAAAAAABAAEAAAAGAAAA//////////8FAAUA//////////8AAAIA//////////8BAAIAAAABAAEAACADAAIA//////////8KAAIA//////////8JAAIAAAABAAEAACAHAAIA//////////8JAAUA/////////////wAAAAAAAAEAAAD//wEAAAAAAAEAAAD//wIAAAAAAAEAAAD//wMAAAAAAAEAAAD//wQAAAAAAAEAAAD//wUAAAAAAAEAAAD//wYAAAAAAAEAAAD//wcAAAAAAAEAAAD//wgAAAAAAAEAAAD//wkAAAAAAAEAAAALAAAAAAAAAAEAABALAAEAAAAAAAEAABALAAIAAAAAAAEAABALAAMAAAAAAAEAABALAAQAAAAAAAEAABALAAUAAAAAAAEAABALAAYAAAAAAAEAABALAAcAAAAAAAEAABALAAgAAAAAAAEAABALAAkAAAAAAAEAABAAAP//AAAEAAAAAAABAP//AAAEAAAAAAACAP//AAAEAAAAAAADAP//AAAEAAAAAAAEAP//AAAEAAAAAAAFAP//AAAEAAAAAAAGAP//AAAEAAAAAAAHAP//AAAEAAAAAAAIAP//AAAEAAAAAAAJAP//AAAEAAAAAAAKAP//AAAEAAAAAAAAAAoAAAAAAAEAAHABAAoAAAAAAAEAAHACAAoAAAAAAAEAAHADAAoAAAAAAAEAAHAEAAoAAAAAAAEAAHAFAAoAAAAAAAEAAHAGAAoAAAAAAAEAAHAHAAoAAAAAAAEAAHAIAAoAAAAAAAEAAHAJAAoAAAAAAAEAAHAKAAoAAAAAAAEAAHD/////AAAEAAIAAAD//woAAAAEAAIAACALAAoAAAAEAAIAADALAP//AAAEAAIAABAGAAEAAAABAAEAAFAEAAEAAAABAAEAAEAFAAEAAAAFAAIAAAAIAAEAAAABAAEAAEAKAAEAAAAAAAIAAGAJAAEAAAAGAAAAAAAIAAYAAAAAAAAAAAACAAYAAAAAAAAAABAKAAYAAAAAAAEAAFAAAAYAAAAAAAEAAFAAAAQAAAAAAAEAAGAKAAQAAAAAAAEAAGAFAAYAAAAAAAIAAGAGAAYAAAABAAEAAHAEAAYAAAABAAEAAGAAAAEAAAAAAAIAAGABAAEAAAAFAAAAABAKAAgAAAABAAEAAGAAAAgAAAAAAAIAAGAEAAgAAAABAAEAAAAGAAgAAAABAAEAAAAIAAkAAAAAAAAAADA=")
 
-[node name="SuperTreat" parent="Food" index="0" instance=ExtResource("2_jk3lg")]
+[node name="SuperTreat" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="0" unique_id=305027741 instance=ExtResource("2_jk3lg")]
 position = Vector2(168, 152)
 metadata/_edit_lock_ = true
 
-[node name="SuperTreat2" parent="Food" index="1" instance=ExtResource("2_jk3lg")]
+[node name="SuperTreat2" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="1" unique_id=1713668382 instance=ExtResource("2_jk3lg")]
 position = Vector2(8, 152)
 metadata/_edit_lock_ = true
 
-[node name="SuperTreat3" parent="Food" index="2" instance=ExtResource("2_jk3lg")]
+[node name="SuperTreat3" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="2" unique_id=1666550803 instance=ExtResource("2_jk3lg")]
 position = Vector2(168, 8)
 metadata/_edit_lock_ = true
 
-[node name="SuperTreat4" parent="Food" index="3" instance=ExtResource("2_jk3lg")]
+[node name="SuperTreat4" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="3" unique_id=769017063 instance=ExtResource("2_jk3lg")]
 position = Vector2(8, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat" parent="Food" index="4" instance=ExtResource("3_tgtul")]
+[node name="Treat" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="4" unique_id=123391245 instance=ExtResource("3_tgtul")]
 position = Vector2(152, 152)
 metadata/_edit_lock_ = true
 
-[node name="Treat2" parent="Food" index="5" instance=ExtResource("3_tgtul")]
+[node name="Treat2" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="5" unique_id=556494711 instance=ExtResource("3_tgtul")]
 position = Vector2(40, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat3" parent="Food" index="6" instance=ExtResource("3_tgtul")]
+[node name="Treat3" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="6" unique_id=28049846 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 136)
 metadata/_edit_lock_ = true
 
-[node name="Treat4" parent="Food" index="7" instance=ExtResource("3_tgtul")]
+[node name="Treat4" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="7" unique_id=21272737 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 136)
 metadata/_edit_lock_ = true
 
-[node name="Treat5" parent="Food" index="8" instance=ExtResource("3_tgtul")]
+[node name="Treat5" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="8" unique_id=1703303575 instance=ExtResource("3_tgtul")]
 position = Vector2(88, 152)
 metadata/_edit_lock_ = true
 
-[node name="Treat6" parent="Food" index="9" instance=ExtResource("3_tgtul")]
+[node name="Treat6" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="9" unique_id=778097915 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat7" parent="Food" index="10" instance=ExtResource("3_tgtul")]
+[node name="Treat7" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="10" unique_id=1384687298 instance=ExtResource("3_tgtul")]
 position = Vector2(104, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat8" parent="Food" index="11" instance=ExtResource("3_tgtul")]
+[node name="Treat8" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="11" unique_id=1622513324 instance=ExtResource("3_tgtul")]
 position = Vector2(88, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat9" parent="Food" index="12" instance=ExtResource("3_tgtul")]
+[node name="Treat9" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="12" unique_id=37314008 instance=ExtResource("3_tgtul")]
 position = Vector2(72, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat10" parent="Food" index="13" instance=ExtResource("3_tgtul")]
+[node name="Treat10" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="13" unique_id=2033019727 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat11" parent="Food" index="14" instance=ExtResource("3_tgtul")]
+[node name="Treat11" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="14" unique_id=1472157484 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 104)
 metadata/_edit_lock_ = true
 
-[node name="Treat12" parent="Food" index="15" instance=ExtResource("3_tgtul")]
+[node name="Treat12" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="15" unique_id=1718833949 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 104)
 metadata/_edit_lock_ = true
 
-[node name="Treat13" parent="Food" index="16" instance=ExtResource("3_tgtul")]
+[node name="Treat13" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="16" unique_id=1988783591 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 88)
 metadata/_edit_lock_ = true
 
-[node name="Treat14" parent="Food" index="17" instance=ExtResource("3_tgtul")]
+[node name="Treat14" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="17" unique_id=924968125 instance=ExtResource("3_tgtul")]
 position = Vector2(104, 88)
 metadata/_edit_lock_ = true
 
-[node name="Treat15" parent="Food" index="18" instance=ExtResource("3_tgtul")]
+[node name="Treat15" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="18" unique_id=1129268528 instance=ExtResource("3_tgtul")]
 position = Vector2(88, 88)
 metadata/_edit_lock_ = true
 
-[node name="Treat16" parent="Food" index="19" instance=ExtResource("3_tgtul")]
+[node name="Treat16" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="19" unique_id=829964439 instance=ExtResource("3_tgtul")]
 position = Vector2(72, 88)
 metadata/_edit_lock_ = true
 
-[node name="Treat17" parent="Food" index="20" instance=ExtResource("3_tgtul")]
+[node name="Treat17" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="20" unique_id=600134414 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 88)
 metadata/_edit_lock_ = true
 
-[node name="Treat18" parent="Food" index="21" instance=ExtResource("3_tgtul")]
+[node name="Treat18" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="21" unique_id=1106236954 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 72)
 metadata/_edit_lock_ = true
 
-[node name="Treat19" parent="Food" index="22" instance=ExtResource("3_tgtul")]
+[node name="Treat19" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="22" unique_id=62368103 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 72)
 metadata/_edit_lock_ = true
 
-[node name="Treat20" parent="Food" index="23" instance=ExtResource("3_tgtul")]
+[node name="Treat20" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="23" unique_id=874686973 instance=ExtResource("3_tgtul")]
 position = Vector2(168, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat21" parent="Food" index="24" instance=ExtResource("3_tgtul")]
+[node name="Treat21" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="24" unique_id=430334094 instance=ExtResource("3_tgtul")]
 position = Vector2(168, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat22" parent="Food" index="25" instance=ExtResource("3_tgtul")]
+[node name="Treat22" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="25" unique_id=1224888661 instance=ExtResource("3_tgtul")]
 position = Vector2(152, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat23" parent="Food" index="26" instance=ExtResource("3_tgtul")]
+[node name="Treat23" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="26" unique_id=1501559422 instance=ExtResource("3_tgtul")]
 position = Vector2(136, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat24" parent="Food" index="27" instance=ExtResource("3_tgtul")]
+[node name="Treat24" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="27" unique_id=734949259 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat25" parent="Food" index="28" instance=ExtResource("3_tgtul")]
+[node name="Treat25" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="28" unique_id=2061824617 instance=ExtResource("3_tgtul")]
 position = Vector2(104, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat26" parent="Food" index="29" instance=ExtResource("3_tgtul")]
+[node name="Treat26" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="29" unique_id=211689930 instance=ExtResource("3_tgtul")]
 position = Vector2(88, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat27" parent="Food" index="30" instance=ExtResource("3_tgtul")]
+[node name="Treat27" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="30" unique_id=1204842941 instance=ExtResource("3_tgtul")]
 position = Vector2(136, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat28" parent="Food" index="31" instance=ExtResource("3_tgtul")]
+[node name="Treat28" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="31" unique_id=750287948 instance=ExtResource("3_tgtul")]
 position = Vector2(104, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat29" parent="Food" index="32" instance=ExtResource("3_tgtul")]
+[node name="Treat29" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="32" unique_id=1348343249 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat30" parent="Food" index="33" instance=ExtResource("3_tgtul")]
+[node name="Treat30" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="33" unique_id=1670271001 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 24)
 metadata/_edit_lock_ = true
 
-[node name="Treat31" parent="Food" index="34" instance=ExtResource("3_tgtul")]
+[node name="Treat31" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="34" unique_id=1095551 instance=ExtResource("3_tgtul")]
 position = Vector2(152, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat32" parent="Food" index="35" instance=ExtResource("3_tgtul")]
+[node name="Treat32" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="35" unique_id=1097232498 instance=ExtResource("3_tgtul")]
 position = Vector2(136, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat33" parent="Food" index="36" instance=ExtResource("3_tgtul")]
+[node name="Treat33" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="36" unique_id=1887926068 instance=ExtResource("3_tgtul")]
 position = Vector2(120, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat34" parent="Food" index="37" instance=ExtResource("3_tgtul")]
+[node name="Treat34" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="37" unique_id=1421270411 instance=ExtResource("3_tgtul")]
 position = Vector2(104, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat35" parent="Food" index="38" instance=ExtResource("3_tgtul")]
+[node name="Treat35" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="38" unique_id=529080186 instance=ExtResource("3_tgtul")]
 position = Vector2(72, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat36" parent="Food" index="39" instance=ExtResource("3_tgtul")]
+[node name="Treat36" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="39" unique_id=482182325 instance=ExtResource("3_tgtul")]
 position = Vector2(72, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat37" parent="Food" index="40" instance=ExtResource("3_tgtul")]
+[node name="Treat37" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="40" unique_id=164968817 instance=ExtResource("3_tgtul")]
 position = Vector2(8, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat38" parent="Food" index="41" instance=ExtResource("3_tgtul")]
+[node name="Treat38" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="41" unique_id=1514087784 instance=ExtResource("3_tgtul")]
 position = Vector2(8, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat39" parent="Food" index="42" instance=ExtResource("3_tgtul")]
+[node name="Treat39" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="42" unique_id=1581776703 instance=ExtResource("3_tgtul")]
 position = Vector2(24, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat40" parent="Food" index="43" instance=ExtResource("3_tgtul")]
+[node name="Treat40" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="43" unique_id=2027537259 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat41" parent="Food" index="44" instance=ExtResource("3_tgtul")]
+[node name="Treat41" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="44" unique_id=715913569 instance=ExtResource("3_tgtul")]
 position = Vector2(40, 56)
 metadata/_edit_lock_ = true
 
-[node name="Treat42" parent="Food" index="45" instance=ExtResource("3_tgtul")]
+[node name="Treat42" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="45" unique_id=284226507 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat43" parent="Food" index="46" instance=ExtResource("3_tgtul")]
+[node name="Treat43" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="46" unique_id=1562490498 instance=ExtResource("3_tgtul")]
 position = Vector2(40, 40)
 metadata/_edit_lock_ = true
 
-[node name="Treat44" parent="Food" index="47" instance=ExtResource("3_tgtul")]
+[node name="Treat44" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="47" unique_id=1300089860 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 24)
 metadata/_edit_lock_ = true
 
-[node name="Treat45" parent="Food" index="48" instance=ExtResource("3_tgtul")]
+[node name="Treat45" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="48" unique_id=1571284150 instance=ExtResource("3_tgtul")]
 position = Vector2(40, 24)
 metadata/_edit_lock_ = true
 
-[node name="Treat46" parent="Food" index="49" instance=ExtResource("3_tgtul")]
+[node name="Treat46" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="49" unique_id=737862804 instance=ExtResource("3_tgtul")]
 position = Vector2(72, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat47" parent="Food" index="50" instance=ExtResource("3_tgtul")]
+[node name="Treat47" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="50" unique_id=80075189 instance=ExtResource("3_tgtul")]
 position = Vector2(56, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat48" parent="Food" index="51" instance=ExtResource("3_tgtul")]
+[node name="Treat48" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="51" unique_id=525895024 instance=ExtResource("3_tgtul")]
 position = Vector2(40, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat49" parent="Food" index="52" instance=ExtResource("3_tgtul")]
+[node name="Treat49" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="52" unique_id=564053189 instance=ExtResource("3_tgtul")]
 position = Vector2(24, 8)
 metadata/_edit_lock_ = true
 
-[node name="Treat50" parent="Food" index="53" instance=ExtResource("3_tgtul")]
+[node name="Treat50" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="53" unique_id=75348728 instance=ExtResource("3_tgtul")]
 position = Vector2(152, 136)
 metadata/_edit_lock_ = true
 
-[node name="Treat51" parent="Food" index="54" instance=ExtResource("3_tgtul")]
+[node name="Treat51" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="54" unique_id=1204888676 instance=ExtResource("3_tgtul")]
 position = Vector2(136, 136)
 metadata/_edit_lock_ = true
 
-[node name="Treat52" parent="Food" index="55" instance=ExtResource("3_tgtul")]
+[node name="Treat52" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="55" unique_id=1489471076 instance=ExtResource("3_tgtul")]
 position = Vector2(168, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat53" parent="Food" index="56" instance=ExtResource("3_tgtul")]
+[node name="Treat53" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="56" unique_id=1196570593 instance=ExtResource("3_tgtul")]
 position = Vector2(152, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat54" parent="Food" index="57" instance=ExtResource("3_tgtul")]
+[node name="Treat54" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="57" unique_id=1327897233 instance=ExtResource("3_tgtul")]
 position = Vector2(136, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat55" parent="Food" index="58" instance=ExtResource("3_tgtul")]
+[node name="Treat55" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="58" unique_id=395219977 instance=ExtResource("3_tgtul")]
 position = Vector2(40, 152)
 metadata/_edit_lock_ = true
 
-[node name="Treat56" parent="Food" index="59" instance=ExtResource("3_tgtul")]
+[node name="Treat56" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="59" unique_id=226281356 instance=ExtResource("3_tgtul")]
 position = Vector2(24, 152)
 metadata/_edit_lock_ = true
 
-[node name="Treat57" parent="Food" index="60" instance=ExtResource("3_tgtul")]
+[node name="Treat57" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="60" unique_id=1957756940 instance=ExtResource("3_tgtul")]
 position = Vector2(40, 136)
 metadata/_edit_lock_ = true
 
-[node name="Treat58" parent="Food" index="61" instance=ExtResource("3_tgtul")]
+[node name="Treat58" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="61" unique_id=1780688364 instance=ExtResource("3_tgtul")]
 position = Vector2(8, 120)
 metadata/_edit_lock_ = true
 
-[node name="Treat59" parent="Food" index="62" instance=ExtResource("3_tgtul")]
+[node name="Treat59" parent="Food" parent_id_path=PackedInt32Array(1038330279) index="62" unique_id=2062852812 instance=ExtResource("3_tgtul")]
 position = Vector2(24, 120)
 metadata/_edit_lock_ = true

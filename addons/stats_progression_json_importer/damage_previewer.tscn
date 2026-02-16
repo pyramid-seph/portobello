@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://m4700b26gge1"]
+[gd_scene format=3 uid="uid://m4700b26gge1"]
 
 [ext_resource type="Script" uid="uid://2q1a2hfu62rw" path="res://addons/stats_progression_json_importer/damage_previewer.gd" id="1_6yaio"]
 
-[node name="DamagePreviewer" type="MarginContainer"]
+[node name="DamagePreviewer" type="MarginContainer" unique_id=1325438491]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,49 +14,49 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_6yaio")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=744214072]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=2094709027]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=357875315]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer3" unique_id=131006748]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer3/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer3/HBoxContainer" unique_id=804762102]
 layout_mode = 2
 text = "Attacker"
 
-[node name="AttackerOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer3/HBoxContainer3/HBoxContainer"]
+[node name="AttackerOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer3/HBoxContainer3/HBoxContainer" unique_id=896054826]
 unique_name_in_owner = true
 layout_mode = 2
-item_count = 8
 selected = 0
-popup/item_0/text = "bug"
+item_count = 8
+popup/item_0/text = "boss_alien"
 popup/item_0/id = 0
-popup/item_1/text = "crow"
+popup/item_1/text = "boss_blue_bird"
 popup/item_1/id = 1
-popup/item_2/text = "duck_alien"
+popup/item_2/text = "boss_duck"
 popup/item_2/id = 2
-popup/item_3/text = "duck_weak"
+popup/item_3/text = "bug"
 popup/item_3/id = 3
-popup/item_4/text = "lizard"
+popup/item_4/text = "crow"
 popup/item_4/id = 4
-popup/item_5/text = "mouse"
+popup/item_5/text = "lizard"
 popup/item_5/id = 5
-popup/item_6/text = "parrot_blue"
+popup/item_6/text = "mouse"
 popup/item_6/id = 6
 popup/item_7/text = "player"
 popup/item_7/id = 7
 
-[node name="AttackerLvlSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer3/HBoxContainer3/HBoxContainer"]
+[node name="AttackerLvlSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer3/HBoxContainer3/HBoxContainer" unique_id=230344348]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
@@ -65,54 +65,54 @@ value = 1.0
 update_on_text_changed = true
 prefix = "LVL"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=1846585362]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TargetLabeL" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2"]
+[node name="TargetLabeL" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=1028095894]
 layout_mode = 2
 text = "Target"
 
-[node name="TargetOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer3/HBoxContainer2"]
+[node name="TargetOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=385883690]
 unique_name_in_owner = true
 layout_mode = 2
-item_count = 8
 selected = 0
-popup/item_0/text = "bug"
+item_count = 8
+popup/item_0/text = "boss_alien"
 popup/item_0/id = 0
-popup/item_1/text = "crow"
+popup/item_1/text = "boss_blue_bird"
 popup/item_1/id = 1
-popup/item_2/text = "duck_alien"
+popup/item_2/text = "boss_duck"
 popup/item_2/id = 2
-popup/item_3/text = "duck_weak"
+popup/item_3/text = "bug"
 popup/item_3/id = 3
-popup/item_4/text = "lizard"
+popup/item_4/text = "crow"
 popup/item_4/id = 4
-popup/item_5/text = "mouse"
+popup/item_5/text = "lizard"
 popup/item_5/id = 5
-popup/item_6/text = "parrot_blue"
+popup/item_6/text = "mouse"
 popup/item_6/id = 6
 popup/item_7/text = "player"
 popup/item_7/id = 7
 
-[node name="RefreshButton" type="Button" parent="VBoxContainer/HBoxContainer3"]
+[node name="RefreshButton" type="Button" parent="VBoxContainer/HBoxContainer3" unique_id=2114300666]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "REFRESH FIGHTERS"
 
-[node name="CalculateButton" type="Button" parent="VBoxContainer"]
+[node name="CalculateButton" type="Button" parent="VBoxContainer" unique_id=160385930]
 layout_mode = 2
 text = "CALCULATE"
 
-[node name="ErrorLabel" type="Label" parent="VBoxContainer"]
+[node name="ErrorLabel" type="Label" parent="VBoxContainer" unique_id=235131099]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.794386, 9.30367e-05, 5.10186e-05, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DmgTable" type="Tree" parent="VBoxContainer"]
+[node name="DmgTable" type="Tree" parent="VBoxContainer" unique_id=276317561]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

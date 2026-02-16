@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs04bvlq1tqjr"]
+[gd_scene format=3 uid="uid://cs04bvlq1tqjr"]
 
 [ext_resource type="PackedScene" uid="uid://dhydiy1l74um" path="res://scenes/day_03/_shared/backgrounds/bg_decor_cloud.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bom2jcxt6ctn7" path="res://art/day_3/bg_wave_0.png" id="2_ycpnp"]
@@ -22,5 +22,5 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BgDecorWave" instance=ExtResource("1")]
+[node name="BgDecorWave" unique_id=955264857 instance=ExtResource("1")]
 sprite_frames = SubResource("4")

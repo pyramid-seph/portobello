@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxxd4wyd36xa6"]
+[gd_scene format=3 uid="uid://dxxd4wyd36xa6"]
 
 [ext_resource type="Script" uid="uid://ccdrq2llmyhs4" path="res://scenes/_shared/ui/two_line_timed_label.gd" id="1_oudw7"]
 
-[node name="TwoLineTimedLabel" type="Control"]
+[node name="TwoLineTimedLabel" type="Control" unique_id=585019270]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_oudw7")
 
-[node name="Labels" type="VBoxContainer" parent="."]
+[node name="Labels" type="VBoxContainer" parent="." unique_id=39873156]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Labels"]
+[node name="Label" type="Label" parent="Labels" unique_id=132013874]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -37,7 +37,7 @@ text = "Hi"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Labels"]
+[node name="Label2" type="Label" parent="Labels" unique_id=1664676902]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

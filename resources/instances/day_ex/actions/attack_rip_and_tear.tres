@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://fm846kdkqxoi"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://fm846kdkqxoi"]
 
 [ext_resource type="Texture2D" uid="uid://c176su5qpidhp" path="res://art/day_ex/battle_ability_player_rip_and_tear_0.png" id="1_43yao"]
 [ext_resource type="AudioStream" uid="uid://bw4665uxm7fw1" path="res://audio/sfx/sfx_day_ex_attack_medium.wav" id="1_plr6o"]
@@ -10,20 +10,9 @@
 script = ExtResource("4_uv4g7")
 _action_name = "RPG_BATTLE_ATTACK_NAME_PLAYER_RIP_AND_TEAR"
 _info = "RPG_BATTLE_INFO_ATTACK_RIP_AND_TEAR"
-_target = 0
-_consumes = 0
-_cost = 1
 _physical_damage = 1
 _damage_points = 24
-_damage_percent = 0.5
 _hit_chance = 0.8
-_status_effect_poison_damage = 0
-_status_effect_attack = 0
-_status_effect_defense = 0
-_status_effect_speed = 0
-_status_effect_love = false
 _sprites = Array[Texture2D]([ExtResource("1_43yao"), ExtResource("2_8ntgf"), ExtResource("3_xhg5a")])
 _duration_sec = 0.45
-_screen_flash_color = Color(1, 1, 1, 0)
-_shake_screen = false
 _sound = ExtResource("1_plr6o")

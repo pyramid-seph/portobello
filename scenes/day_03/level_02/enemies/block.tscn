@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://csyep514u36ex"]
+[gd_scene format=3 uid="uid://csyep514u36ex"]
 
 [ext_resource type="PackedScene" uid="uid://ceybd47nvxx3s" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_uvggw"]
 [ext_resource type="Texture2D" uid="uid://c4gtk1xb3hvfc" path="res://art/day_3/enemy_duck_block_black.png" id="2_ipxdg"]
@@ -14,13 +14,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Block" instance=ExtResource("1_uvggw")]
+[node name="Block" unique_id=304986756 instance=ExtResource("1_uvggw")]
 z_index = -60
 speed = 87.5
 score_points_mega_gun = 50
 is_immune_to_bullets = true
 is_immune_to_impacts = true
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="2" unique_id=1238196061]
 sprite_frames = SubResource("SpriteFrames_vxpm0")
 frame_progress = 0.0647475

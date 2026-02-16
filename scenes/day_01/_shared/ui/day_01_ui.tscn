@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnfahjhvwxeo2"]
+[gd_scene format=3 uid="uid://cnfahjhvwxeo2"]
 
 [ext_resource type="Script" uid="uid://b7s1barv5hfeg" path="res://scenes/day_01/_shared/ui/day_01_ui.gd" id="1_vfhqe"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="2_dhqsk"]
@@ -16,7 +16,7 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_77l20"]
 
-[node name="Day01Ui" type="Control"]
+[node name="Day01Ui" type="Control" unique_id=1417493745]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +26,7 @@ grow_vertical = 2
 theme = ExtResource("7_ak67o")
 script = ExtResource("1_vfhqe")
 
-[node name="LivesCounter" type="HBoxContainer" parent="."]
+[node name="LivesCounter" type="HBoxContainer" parent="." unique_id=1488203484]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -37,41 +37,41 @@ offset_bottom = 22.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 
-[node name="Icon" type="TextureRect" parent="LivesCounter"]
+[node name="Icon" type="TextureRect" parent="LivesCounter" unique_id=1972084075]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_dhqsk")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="LivesCounter"]
+[node name="Label" type="Label" parent="LivesCounter" unique_id=874746398]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "9"
 vertical_alignment = 1
 max_lines_visible = 1
 
-[node name="TreatsCounter" type="HBoxContainer" parent="."]
+[node name="TreatsCounter" type="HBoxContainer" parent="." unique_id=101458995]
 layout_mode = 0
 offset_left = 3.0
 offset_right = 37.0
 offset_bottom = 22.0
 
-[node name="Icon" type="TextureRect" parent="TreatsCounter"]
+[node name="Icon" type="TextureRect" parent="TreatsCounter" unique_id=964144758]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_4e12d")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="TreatsCounter"]
+[node name="Label" type="Label" parent="TreatsCounter" unique_id=19634445]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "99"
 vertical_alignment = 1
 max_lines_visible = 1
 
-[node name="StaminaBar" type="HBoxContainer" parent="."]
+[node name="StaminaBar" type="HBoxContainer" parent="." unique_id=479238684]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -84,11 +84,11 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 1
 
-[node name="Icon" type="TextureRect" parent="StaminaBar"]
+[node name="Icon" type="TextureRect" parent="StaminaBar" unique_id=2085120805]
 layout_mode = 2
 texture = ExtResource("5_tkprg")
 
-[node name="ProgressBar" type="TextureProgressBar" parent="StaminaBar"]
+[node name="ProgressBar" type="TextureProgressBar" parent="StaminaBar" unique_id=1640462226]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 6)
 layout_mode = 2
@@ -105,7 +105,7 @@ texture_progress = SubResource("CanvasTexture_77l20")
 tint_under = Color(0.180392, 0.180392, 0.180392, 1)
 tint_progress = Color(0.729412, 0.431373, 0.431373, 1)
 
-[node name="InvertedControlsSign" type="Label" parent="."]
+[node name="InvertedControlsSign" type="Label" parent="." unique_id=1824916855]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -122,7 +122,7 @@ text = "LEVEL_DAY_01_DIZZY"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="."]
+[node name="HighScoreLabel" type="Label" parent="." unique_id=136555857]
 visible = false
 layout_mode = 1
 anchors_preset = 10
@@ -138,7 +138,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="StartLabels" parent="." instance=ExtResource("7_t8tk8")]
+[node name="StartLabels" parent="." unique_id=348356761 instance=ExtResource("7_t8tk8")]
 layout_mode = 1
 text_1 = "Buffet"
 text_2 = "LEVEL_START_LINE_1"
@@ -149,7 +149,7 @@ duration_sec = 1.6
 label_2_visible_delay_sec = 0.8
 preview_labels = false
 
-[node name="GameOver" parent="." instance=ExtResource("7_4gefh")]
+[node name="GameOver" parent="." unique_id=1336181403 instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
 text = "¡Qué indigestión!
@@ -160,7 +160,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 3.0
 
-[node name="PieceOfCake" parent="." instance=ExtResource("7_4gefh")]
+[node name="PieceOfCake" parent="." unique_id=341998686 instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
 text = "LEVEL_SUCCESS"
@@ -169,7 +169,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 2.0
 
-[node name="TimeOut" parent="." instance=ExtResource("7_4gefh")]
+[node name="TimeOut" parent="." unique_id=1502393580 instance=ExtResource("7_4gefh")]
 visible = false
 layout_mode = 1
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
@@ -179,7 +179,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 2.0
 
-[node name="LevelName" type="Label" parent="."]
+[node name="LevelName" type="Label" parent="." unique_id=854009923]
 visible = false
 layout_mode = 1
 anchors_preset = 10
@@ -194,7 +194,7 @@ text = "LEVEL_DAY_01_LEVEL_NAME_STORY_MODE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DialogueBox" parent="." instance=ExtResource("11_l1dor")]
+[node name="DialogueBox" parent="." unique_id=971272198 instance=ExtResource("11_l1dor")]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -203,7 +203,7 @@ offset_top = -16.0
 offset_bottom = 0.0
 grow_vertical = 0
 
-[node name="BlackScreen" type="ColorRect" parent="."]
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=1751245433]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -213,7 +213,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_t8w1h")]
+[node name="PauseMenu" parent="." unique_id=442343157 instance=ExtResource("6_t8w1h")]
 visible = false
 layout_mode = 1
 show_auto_fire = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cr14ynhm21h10"]
+[gd_scene format=3 uid="uid://cr14ynhm21h10"]
 
 [ext_resource type="Script" uid="uid://cjrxno5rl6xnc" path="res://scenes/_shared/title_screen/title_screen_scene.gd" id="1_17j6l"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="2_j83cx"]
@@ -28,13 +28,13 @@
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="21_m04mu"]
 [ext_resource type="PackedScene" uid="uid://cyc40rls0lvnd" path="res://scenes/_shared/cutscenes/attract_mode_cutscene.tscn" id="26_m2l74"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v21ph"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8cit"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37lb0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1x0l"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -44,23 +44,23 @@ bg_color = Color(1, 1, 1, 0)
 atlas = ExtResource("13_jai3w")
 region = Rect2(24, 4, 10, 10)
 
-[node name="TitleScreenScene" type="Node"]
+[node name="TitleScreenScene" type="Node" unique_id=984071540]
 script = ExtResource("1_17j6l")
 _debug_ignore_game_progress = true
 
-[node name="SimpleBgmPlayer" type="Node" parent="."]
+[node name="SimpleBgmPlayer" type="Node" parent="." unique_id=1211876588]
 script = ExtResource("21_m04mu")
 _autostart = false
 
-[node name="KCheatCode" parent="." instance=ExtResource("2_udsfp")]
+[node name="KCheatCode" parent="." unique_id=890064 instance=ExtResource("2_udsfp")]
 _cheat_code = Array[StringName]([&"move_up", &"move_up", &"move_down", &"move_down", &"move_left", &"move_right", &"move_left", &"move_right"])
 disabled = true
 
-[node name="AttractModeDelayTimer" type="Timer" parent="."]
+[node name="AttractModeDelayTimer" type="Timer" parent="." unique_id=849732308]
 wait_time = 60.0
 one_shot = true
 
-[node name="TitleScreen" type="Control" parent="."]
+[node name="TitleScreen" type="Control" parent="." unique_id=9199278]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,7 +70,7 @@ grow_vertical = 2
 theme = ExtResource("2_j83cx")
 metadata/_edit_lock_ = true
 
-[node name="TitleScreenBg" type="Parallax2D" parent="TitleScreen"]
+[node name="TitleScreenBg" type="Parallax2D" parent="TitleScreen" unique_id=1254994518]
 unique_name_in_owner = true
 repeat_size = Vector2(60, 0)
 autoscroll = Vector2(30, 0)
@@ -79,17 +79,17 @@ game_texture = ExtResource("3_of2ca")
 game_color = Color(0.486275, 0.882353, 0.580392, 1)
 _cell_size = Vector2(30, 30)
 
-[node name="ColorRect" type="ColorRect" parent="TitleScreen/TitleScreenBg"]
+[node name="ColorRect" type="ColorRect" parent="TitleScreen/TitleScreenBg" unique_id=693192769]
 unique_name_in_owner = true
 offset_right = 240.0
 offset_bottom = 303.0
 color = Color(0.486275, 0.882353, 0.580392, 1)
 metadata/_edit_lock_ = true
 
-[node name="BgLayer" type="Node2D" parent="TitleScreen/TitleScreenBg"]
+[node name="BgLayer" type="Node2D" parent="TitleScreen/TitleScreenBg" unique_id=1604400982]
 metadata/_edit_lock_ = true
 
-[node name="GameTitle" type="TextureRect" parent="TitleScreen"]
+[node name="GameTitle" type="TextureRect" parent="TitleScreen" unique_id=537090294]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 63.0
@@ -103,7 +103,7 @@ normal_title = ExtResource("3_oe3xx")
 bloody_title = ExtResource("7_gbsgd")
 metadata/_edit_lock_ = true
 
-[node name="StarsLabel" type="Label" parent="TitleScreen/GameTitle"]
+[node name="StarsLabel" type="Label" parent="TitleScreen/GameTitle" unique_id=1150064818]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -119,7 +119,7 @@ horizontal_alignment = 1
 clip_text = true
 metadata/_edit_lock_ = true
 
-[node name="SubtitleLabel" type="Label" parent="TitleScreen/GameTitle"]
+[node name="SubtitleLabel" type="Label" parent="TitleScreen/GameTitle" unique_id=126981443]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -142,50 +142,50 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="BloodDrops" type="Node2D" parent="TitleScreen/GameTitle"]
+[node name="BloodDrops" type="Node2D" parent="TitleScreen/GameTitle" unique_id=631887415]
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles" parent="TitleScreen/GameTitle/BloodDrops" unique_id=1371468699 instance=ExtResource("11_0fxou")]
 position = Vector2(7, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles2" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles2" parent="TitleScreen/GameTitle/BloodDrops" unique_id=1031434335 instance=ExtResource("11_0fxou")]
 position = Vector2(9, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles3" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles3" parent="TitleScreen/GameTitle/BloodDrops" unique_id=1392114478 instance=ExtResource("11_0fxou")]
 position = Vector2(11, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles4" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles4" parent="TitleScreen/GameTitle/BloodDrops" unique_id=435373476 instance=ExtResource("11_0fxou")]
 position = Vector2(14, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles5" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles5" parent="TitleScreen/GameTitle/BloodDrops" unique_id=292282988 instance=ExtResource("11_0fxou")]
 position = Vector2(16, 26)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles6" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles6" parent="TitleScreen/GameTitle/BloodDrops" unique_id=145591426 instance=ExtResource("11_0fxou")]
 position = Vector2(40, 49)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles7" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles7" parent="TitleScreen/GameTitle/BloodDrops" unique_id=1817086234 instance=ExtResource("11_0fxou")]
 position = Vector2(43, 49)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles8" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles8" parent="TitleScreen/GameTitle/BloodDrops" unique_id=48949632 instance=ExtResource("11_0fxou")]
 position = Vector2(45, 48)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles9" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles9" parent="TitleScreen/GameTitle/BloodDrops" unique_id=1956958337 instance=ExtResource("11_0fxou")]
 position = Vector2(48, 50)
 metadata/_edit_lock_ = true
 
-[node name="BloodDropParticles10" parent="TitleScreen/GameTitle/BloodDrops" instance=ExtResource("11_0fxou")]
+[node name="BloodDropParticles10" parent="TitleScreen/GameTitle/BloodDrops" unique_id=1321497643 instance=ExtResource("11_0fxou")]
 position = Vector2(50, 49)
 metadata/_edit_lock_ = true
 
-[node name="VersionLabel" type="Label" parent="TitleScreen"]
+[node name="VersionLabel" type="Label" parent="TitleScreen" unique_id=1734086198]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -206,7 +206,7 @@ text = "v1.0.0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MainMenu" type="PanelContainer" parent="TitleScreen"]
+[node name="MainMenu" type="PanelContainer" parent="TitleScreen" unique_id=1438296445]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(204, 0)
@@ -222,32 +222,32 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_lock_ = true
 
-[node name="UiSounds" parent="TitleScreen/MainMenu" instance=ExtResource("11_ljvha")]
+[node name="UiSounds" parent="TitleScreen/MainMenu" unique_id=753013711 instance=ExtResource("11_ljvha")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/MainMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/MainMenu" unique_id=974882409]
 layout_mode = 2
 
-[node name="StoryModeGameSelector" parent="TitleScreen/MainMenu/VBoxContainer" instance=ExtResource("9_d05si")]
+[node name="StoryModeGameSelector" parent="TitleScreen/MainMenu/VBoxContainer" unique_id=988405310 instance=ExtResource("9_d05si")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitGameBtn")
 focus_neighbor_bottom = NodePath("../ScoreAttackGameSelector")
-theme_override_styles/panel = SubResource("StyleBoxFlat_v21ph")
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8cit")
 selector_text = "MENU_MAIN_SELECT_STORY_MODE"
 _options = ["1", "2"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
-[node name="ScoreAttackGameSelector" parent="TitleScreen/MainMenu/VBoxContainer" instance=ExtResource("9_d05si")]
+[node name="ScoreAttackGameSelector" parent="TitleScreen/MainMenu/VBoxContainer" unique_id=1223658730 instance=ExtResource("9_d05si")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../StoryModeGameSelector")
 focus_neighbor_bottom = NodePath("../ShowScoresBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_37lb0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_p1x0l")
 selector_text = "MENU_MAIN_SELECT_SCORE_ATTACK_MODE"
 _options = ["Día 1A", "Día 1B"]
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 
-[node name="ShowScoresBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]
+[node name="ShowScoresBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer" unique_id=719954843]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ScoreAttackGameSelector")
@@ -256,7 +256,7 @@ mouse_filter = 2
 text = "MENU_MAIN_PROGRESS"
 alignment = 0
 
-[node name="ShowOptionsBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]
+[node name="ShowOptionsBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer" unique_id=1873191783]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowScoresBtn")
@@ -266,7 +266,7 @@ button_mask = 0
 text = "MENU_MAIN_SETTINGS"
 alignment = 0
 
-[node name="ExitGameBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer"]
+[node name="ExitGameBtn" type="Button" parent="TitleScreen/MainMenu/VBoxContainer" unique_id=1842055653]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../ShowOptionsBtn")
@@ -276,19 +276,19 @@ button_mask = 0
 text = "MENU_MAIN_QUIT"
 alignment = 0
 
-[node name="ProgressMenu" parent="TitleScreen" instance=ExtResource("10_33qhf")]
+[node name="ProgressMenu" parent="TitleScreen" unique_id=247472270 instance=ExtResource("10_33qhf")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="SettingsMenu" parent="TitleScreen" instance=ExtResource("11_5qu15")]
+[node name="SettingsMenu" parent="TitleScreen" unique_id=2093295545 instance=ExtResource("11_5qu15")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="PressToStartContainer" type="PanelContainer" parent="TitleScreen"]
+[node name="PressToStartContainer" type="PanelContainer" parent="TitleScreen" unique_id=1279445380]
 visible = false
 custom_minimum_size = Vector2(204, 0)
 layout_mode = 1
@@ -302,14 +302,14 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/PressToStartContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TitleScreen/PressToStartContainer" unique_id=886683660]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="PressToStartLabel" type="RichTextLabel" parent="TitleScreen/PressToStartContainer/MarginContainer"]
+[node name="PressToStartLabel" type="RichTextLabel" parent="TitleScreen/PressToStartContainer/MarginContainer" unique_id=40497283]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -321,7 +321,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnlocksDialog" parent="." instance=ExtResource("10_dgmig")]
+[node name="UnlocksDialog" parent="." unique_id=1301833732 instance=ExtResource("10_dgmig")]
 visible = false
 body_text = "Ya puedes jugar:
 
@@ -332,18 +332,18 @@ Buffets del día 1
 negative_btn_text = ""
 positive_btn_text = "COMMON_OPTIONS_OK"
 
-[node name="ConfirmExitDialog" parent="." instance=ExtResource("10_dgmig")]
+[node name="ConfirmExitDialog" parent="." unique_id=254931471 instance=ExtResource("10_dgmig")]
 visible = false
 body_text = "CONFIRM_QUIT"
 negative_btn_text = "COMMON_OPTIONS_NO"
 positive_btn_text = "COMMON_OPTIONS_YES"
 
-[node name="IntroLogosManager" parent="." instance=ExtResource("17_1q5mh")]
+[node name="IntroLogosManager" parent="." unique_id=2120737786 instance=ExtResource("17_1q5mh")]
 theme = ExtResource("2_j83cx")
 _skip_logo_input_event = &"skip_intro_logo"
 _ignore_skip_logo_input_sec = 0.2
 
-[node name="TimedIntroLogo1" parent="IntroLogosManager" instance=ExtResource("18_m2l74")]
+[node name="TimedIntroLogo1" parent="IntroLogosManager" unique_id=2027515130 instance=ExtResource("18_m2l74")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -352,7 +352,7 @@ grow_horizontal = 2
 grow_vertical = 2
 duration_sec = 2.0
 
-[node name="GameCLLogo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo1"]
+[node name="GameCLLogo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo1" unique_id=527411719]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -360,7 +360,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo1/GameCLLogo"]
+[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo1/GameCLLogo" unique_id=1666202286]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -376,7 +376,7 @@ grow_vertical = 2
 texture = ExtResource("6_0gi6x")
 stretch_mode = 3
 
-[node name="TimedIntroLogo2" parent="IntroLogosManager" instance=ExtResource("18_m2l74")]
+[node name="TimedIntroLogo2" parent="IntroLogosManager" unique_id=229361607 instance=ExtResource("18_m2l74")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -385,14 +385,14 @@ grow_horizontal = 2
 grow_vertical = 2
 duration_sec = 2.0
 
-[node name="MyLogo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo2"]
+[node name="MyLogo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo2" unique_id=1854729619]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo2/MyLogo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo2/MyLogo" unique_id=2047831029]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -407,76 +407,76 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer"]
+[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer" unique_id=1175573824]
 layout_mode = 2
 text = "LOGOS_ROLL_ME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer" unique_id=1833924171]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("15_a0if4")
-stretch_mode = 3
-
-[node name="TextureRect3" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=1581204120]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect4" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=31096424]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect5" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=269207454]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect6" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect5" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=1649790722]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect7" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect6" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=610683191]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect8" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect7" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=353756324]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect9" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect8" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=1267726957]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect10" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect9" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=1082760769]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TextureRect11" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect10" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=456782593]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("15_a0if4")
 stretch_mode = 3
 
-[node name="TimedIntroLogo3" parent="IntroLogosManager" instance=ExtResource("18_m2l74")]
+[node name="TextureRect11" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo2/MyLogo/VBoxContainer/HBoxContainer" unique_id=772492430]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_a0if4")
+stretch_mode = 3
+
+[node name="TimedIntroLogo3" parent="IntroLogosManager" unique_id=1541876254 instance=ExtResource("18_m2l74")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -485,14 +485,14 @@ grow_horizontal = 2
 grow_vertical = 2
 duration_sec = 2.0
 
-[node name="GodotCredit" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo3"]
+[node name="GodotCredit" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo3" unique_id=46352288]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit"]
+[node name="CenterContainer" type="CenterContainer" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit" unique_id=573063898]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -500,29 +500,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer" unique_id=1516388054]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer/VBoxContainer" unique_id=619512047]
 layout_mode = 2
 text = "LOGOS_ROLL_GODOT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer/VBoxContainer" unique_id=1186405400]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("16_k07gw")
 stretch_mode = 3
 
-[node name="Label2" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit/CenterContainer/VBoxContainer" unique_id=913079493]
 layout_mode = 2
 text = "Godot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit"]
+[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo3/GodotCredit" unique_id=1826900822]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -538,7 +538,7 @@ text = "LOGOS_ROLL_GODOT_LOGO_CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimedIntroLogo4" parent="IntroLogosManager" instance=ExtResource("18_m2l74")]
+[node name="TimedIntroLogo4" parent="IntroLogosManager" unique_id=579125943 instance=ExtResource("18_m2l74")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -547,7 +547,7 @@ grow_horizontal = 2
 grow_vertical = 2
 duration_sec = 4.0
 
-[node name="ControllerSupportInfo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo4"]
+[node name="ControllerSupportInfo" type="ColorRect" parent="IntroLogosManager/TimedIntroLogo4" unique_id=1698812765]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -556,7 +556,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo"]
+[node name="CenterContainer" type="CenterContainer" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo" unique_id=2124512357]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -565,10 +565,10 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer" unique_id=29624639]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer" unique_id=2020038068]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_obcby")
@@ -577,13 +577,13 @@ text = "INFO_GAMEPAD_SUPPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer" unique_id=435899301]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("15_ootbr")
 stretch_mode = 3
 
-[node name="Label2" type="Label" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer" unique_id=259764761]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_obcby")
@@ -592,13 +592,13 @@ text = "INFO_TOUCHSCREEN_SUPPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer" unique_id=969338756]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("18_jtcvj")
 stretch_mode = 3
 
-[node name="Label3" type="Label" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer" unique_id=1273856733]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_obcby")
@@ -607,13 +607,13 @@ text = "INFO_KEYBOARD_SUPPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect3" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="IntroLogosManager/TimedIntroLogo4/ControllerSupportInfo/CenterContainer/VBoxContainer" unique_id=583375981]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("15_nefsx")
 stretch_mode = 2
 
-[node name="CheaterTextureRect" type="TextureRect" parent="IntroLogosManager"]
+[node name="CheaterTextureRect" type="TextureRect" parent="IntroLogosManager" unique_id=2126317270]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -631,11 +631,11 @@ grow_vertical = 0
 texture = SubResource("AtlasTexture_u1547")
 stretch_mode = 5
 
-[node name="WebAudioActivationScreen" parent="." instance=ExtResource("17_d8cit")]
+[node name="WebAudioActivationScreen" parent="." unique_id=1365163478 instance=ExtResource("17_d8cit")]
 visible = false
 activation_required = 1
 
-[node name="AttractModeCutscene" parent="." instance=ExtResource("26_m2l74")]
+[node name="AttractModeCutscene" parent="." unique_id=746773182 instance=ExtResource("26_m2l74")]
 
 [connection signal="timeout" from="AttractModeDelayTimer" to="." method="_on_attract_mode_delay_timer_timeout"]
 [connection signal="current_option_index_changed" from="TitleScreen/MainMenu/VBoxContainer/StoryModeGameSelector" to="." method="_on_story_mode_option_index_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://0fqdkumpc1cf"]
+[gd_scene format=3 uid="uid://0fqdkumpc1cf"]
 
 [ext_resource type="Texture2D" uid="uid://dwjh8xb78a5xe" path="res://art/day_ex/day_ex_player.png" id="1_bkq68"]
 [ext_resource type="Script" uid="uid://b6mgqnnhxf1b7" path="res://scenes/day_ex/player/dust_cloud.gd" id="2_tb7dj"]
@@ -26,7 +26,7 @@ radial_velocity_max = 12.0
 radial_velocity_curve = SubResource("CurveTexture_lc3dg")
 gravity = Vector3(0, 0, 0)
 
-[node name="DustCloud" type="GPUParticles2D"]
+[node name="DustCloud" type="GPUParticles2D" unique_id=971751742]
 physics_interpolation_mode = 2
 self_modulate = Color(0.695359, 0.675482, 0, 1)
 emitting = false

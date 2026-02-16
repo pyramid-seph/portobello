@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://crhr2l33jctpy"]
+[gd_scene format=3 uid="uid://crhr2l33jctpy"]
 
 [ext_resource type="Script" uid="uid://dioxsli8ojscs" path="res://scenes/day_03/level_01/systems/drone_shoot_manager.gd" id="1_q5hex"]
 
-[node name="DroneShootManager" type="Node"]
+[node name="DroneShootManager" type="Node" unique_id=872601600]
 process_mode = 1
 script = ExtResource("1_q5hex")
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1199088131]
 process_mode = 1
 process_callback = 0
 one_shot = true

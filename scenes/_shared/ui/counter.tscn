@@ -1,17 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://drt2fo403br8e"]
+[gd_scene format=3 uid="uid://drt2fo403br8e"]
 
 [ext_resource type="Texture2D" uid="uid://d16g60q03k2re" path="res://art/_shared/ui_counter_power.png" id="1"]
 
-[node name="Counter" type="HBoxContainer"]
+[node name="Counter" type="HBoxContainer" unique_id=599368124]
 offset_right = 24.0
 offset_bottom = 19.0
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=2053889762]
 layout_mode = 2
 texture = ExtResource("1")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1417535405]
 layout_mode = 2
 text = "99"
 max_lines_visible = 1

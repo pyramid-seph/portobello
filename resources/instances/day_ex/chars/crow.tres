@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=11 format=3 uid="uid://dd8hfy3k84br2"]
+[gd_resource type="Resource" script_class="FighterData" format=3 uid="uid://dd8hfy3k84br2"]
 
 [ext_resource type="Resource" uid="uid://dmdeyptx3acva" path="res://resources/instances/day_ex/actions/attack_peck.tres" id="1_hg5k4"]
 [ext_resource type="Script" uid="uid://tqdmlxo83op1" path="res://resources/enemy_command.gd" id="2_vnsam"]

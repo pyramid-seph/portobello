@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfidgn8t0dudh"]
+[gd_scene format=3 uid="uid://bfidgn8t0dudh"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_423fj"]
 [ext_resource type="Script" uid="uid://bfq4yfw87g30g" path="res://scenes/day_03/_shared/ui/day_03_ui.gd" id="2_3x677"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://bd534m0lr50yp" path="res://scenes/day_03/_shared/ui/boss_alert.gd" id="15_d5aqp"]
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="16_bv7rf"]
 
-[node name="Day03Ui" type="Control"]
+[node name="Day03Ui" type="Control" unique_id=1816332387]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 15
@@ -31,23 +31,23 @@ theme = ExtResource("1_423fj")
 script = ExtResource("2_3x677")
 player_data = ExtResource("3_eukm3")
 
-[node name="BarsMargin" type="MarginContainer" parent="."]
+[node name="BarsMargin" type="MarginContainer" parent="." unique_id=1413893848]
 layout_mode = 0
 offset_right = 61.0
 offset_bottom = 20.0
 theme_override_constants/margin_top = 3
 
-[node name="Bars" type="VBoxContainer" parent="BarsMargin"]
+[node name="Bars" type="VBoxContainer" parent="BarsMargin" unique_id=500679458]
 layout_mode = 2
 theme_override_constants/separation = -3
 
-[node name="StaminaBar" parent="BarsMargin/Bars" instance=ExtResource("4_6vio6")]
+[node name="StaminaBar" parent="BarsMargin/Bars" unique_id=591777622 instance=ExtResource("4_6vio6")]
 layout_mode = 2
 
-[node name="PowerUpBar" parent="BarsMargin/Bars" instance=ExtResource("5_fmyon")]
+[node name="PowerUpBar" parent="BarsMargin/Bars" unique_id=1946675183 instance=ExtResource("5_fmyon")]
 layout_mode = 2
 
-[node name="LivesCounter" parent="." instance=ExtResource("6_2h8mh")]
+[node name="LivesCounter" parent="." unique_id=618394566 instance=ExtResource("6_2h8mh")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -62,7 +62,7 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("7_gyakt")
 
-[node name="Score" type="Label" parent="."]
+[node name="Score" type="Label" parent="." unique_id=772206426]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -78,7 +78,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("9_6c4c2")
 
-[node name="HiScore" type="Label" parent="."]
+[node name="HiScore" type="Label" parent="." unique_id=1090199232]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -96,7 +96,7 @@ vertical_alignment = 1
 uppercase = true
 script = ExtResource("10_udkuv")
 
-[node name="StartLabels" parent="." instance=ExtResource("11_rm35m")]
+[node name="StartLabels" parent="." unique_id=1467624584 instance=ExtResource("11_rm35m")]
 layout_mode = 1
 text_1 = "Buffet"
 text_2 = "LEVEL_START_LINE_1"
@@ -106,7 +106,7 @@ font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
 duration_sec = 1.6
 label_2_visible_delay_sec = 0.8
 
-[node name="LevelName" type="Label" parent="."]
+[node name="LevelName" type="Label" parent="." unique_id=1117754676]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -124,7 +124,7 @@ text = "Dish 1 of 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainCourseLabels" parent="." instance=ExtResource("11_rm35m")]
+[node name="MainCourseLabels" parent="." unique_id=70878480 instance=ExtResource("11_rm35m")]
 layout_mode = 1
 text_1 = "LEVEL_BOSS_LINE_0"
 text_2 = "LEVEL_BOSS_LINE_1"
@@ -133,7 +133,7 @@ font_color_fade = Color(0.94902, 0.505882, 0.505882, 1)
 font_outline_color_fade = Color(0.345098, 0.345098, 0.345098, 1)
 preview_labels = false
 
-[node name="GameOver" type="Label" parent="."]
+[node name="GameOver" type="Label" parent="." unique_id=1113158065]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -151,7 +151,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_jr0d7")
 
-[node name="PiecoOfCakeLabel" type="Label" parent="."]
+[node name="PiecoOfCakeLabel" type="Label" parent="." unique_id=1980513615]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -171,7 +171,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("14_ewrt7")
 
-[node name="BossAlert" type="ColorRect" parent="."]
+[node name="BossAlert" type="ColorRect" parent="." unique_id=1343770717]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -184,7 +184,7 @@ duration_sec = 2.4
 color_1 = Color(0.968627, 0.745098, 0.505882, 1)
 color_2 = Color(0.980392, 0.67451, 0.345098, 1)
 
-[node name="Label" type="Label" parent="BossAlert"]
+[node name="Label" type="Label" parent="BossAlert" unique_id=197816738]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -202,10 +202,10 @@ text = "LEVEL_DAY_03_DANGER"
 vertical_alignment = 1
 uppercase = true
 
-[node name="Timer" type="Timer" parent="BossAlert"]
+[node name="Timer" type="Timer" parent="BossAlert" unique_id=436101036]
 one_shot = true
 
-[node name="BlackScreen" type="ColorRect" parent="."]
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=1441039961]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -215,7 +215,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" parent="." instance=ExtResource("16_bv7rf")]
+[node name="PauseMenu" parent="." unique_id=1310934095 instance=ExtResource("16_bv7rf")]
 visible = false
 layout_mode = 1
 

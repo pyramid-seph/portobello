@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://fdgxvi0mndtq"]
+[gd_scene format=3 uid="uid://fdgxvi0mndtq"]
 
 [ext_resource type="Script" uid="uid://ruvfb5ija35o" path="res://scenes/_shared/cutscenes/cutscene.gd" id="1_kh4gp"]
 
-[node name="Cutscene" type="Control"]
+[node name="Cutscene" type="Control" unique_id=842415647]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_kh4gp")

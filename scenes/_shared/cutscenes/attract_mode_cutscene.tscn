@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cyc40rls0lvnd"]
+[gd_scene format=3 uid="uid://cyc40rls0lvnd"]
 
 [ext_resource type="PackedScene" uid="uid://fdgxvi0mndtq" path="res://scenes/_shared/cutscenes/cutscene.tscn" id="1_6ka13"]
 [ext_resource type="Script" uid="uid://ca8wn1xswg1j5" path="res://scenes/_shared/cutscenes/attract_mode_cutscene.gd" id="2_k41tv"]
@@ -213,7 +213,7 @@ _data = {
 &"default_reversed": ExtResource("7_hdus7")
 }
 
-[node name="AttractModeCutscene" instance=ExtResource("1_6ka13")]
+[node name="AttractModeCutscene" unique_id=763001866 instance=ExtResource("1_6ka13")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -222,18 +222,16 @@ grow_vertical = 2
 theme = ExtResource("2_v4cf8")
 script = ExtResource("2_k41tv")
 
-[node name="SimpleBgmPlayer" type="Node" parent="." index="0"]
+[node name="SimpleBgmPlayer" type="Node" parent="." index="0" unique_id=1242169961]
 script = ExtResource("4_6385u")
 _music = ExtResource("5_a8vvl")
 _autostart = false
 metadata/_custom_type_script = "uid://dmkjbeql04u01"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_bd6wu")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=770930634]
+libraries/ = SubResource("AnimationLibrary_bd6wu")
 
-[node name="PanelContainer" type="PanelContainer" parent="." index="2"]
+[node name="PanelContainer" type="PanelContainer" parent="." index="2" unique_id=159610998]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -243,17 +241,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8c7hd")
 
-[node name="Slide1" type="VBoxContainer" parent="PanelContainer" index="0"]
+[node name="Slide1" type="VBoxContainer" parent="PanelContainer" index="0" unique_id=630756240]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide1" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_yaeox")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide1" index="0" unique_id=1565029759]
+libraries/ = SubResource("AnimationLibrary_yaeox")
 
-[node name="TitleLabel" type="Label" parent="PanelContainer/Slide1" index="1"]
+[node name="TitleLabel" type="Label" parent="PanelContainer/Slide1" index="1" unique_id=1905254754]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -263,7 +259,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="SubtitleLabel" type="Label" parent="PanelContainer/Slide1" index="2"]
+[node name="SubtitleLabel" type="Label" parent="PanelContainer/Slide1" index="2" unique_id=1919746995]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_a8vvl")
@@ -273,16 +269,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Slide2" type="VBoxContainer" parent="PanelContainer" index="1"]
+[node name="Slide2" type="VBoxContainer" parent="PanelContainer" index="1" unique_id=488218986]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide2" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_3v5l1")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide2" index="0" unique_id=1338155839]
+libraries/ = SubResource("AnimationLibrary_3v5l1")
 
-[node name="Label" type="Label" parent="PanelContainer/Slide2" index="1"]
+[node name="Label" type="Label" parent="PanelContainer/Slide2" index="1" unique_id=2000147191]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "ATTRACT_MODE_CHAR_BIO_TITLE"
@@ -290,19 +284,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide2" index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide2" index="2" unique_id=611175556]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide2/VBoxContainer" index="0"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide2/VBoxContainer" index="0" unique_id=1025075128]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("9_yaeox")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="PanelContainer/Slide2/VBoxContainer" index="1"]
+[node name="Label" type="Label" parent="PanelContainer/Slide2/VBoxContainer" index="1" unique_id=523123846]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("6_a8vvl")
@@ -312,7 +306,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="PanelContainer/Slide2/VBoxContainer" index="2"]
+[node name="Label2" type="Label" parent="PanelContainer/Slide2/VBoxContainer" index="2" unique_id=505616475]
 custom_minimum_size = Vector2(74, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -323,16 +317,14 @@ horizontal_alignment = 3
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Slide3" type="VBoxContainer" parent="PanelContainer" index="2"]
+[node name="Slide3" type="VBoxContainer" parent="PanelContainer" index="2" unique_id=1711320081]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide3" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_y3usp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Slide3" index="0" unique_id=367019486]
+libraries/ = SubResource("AnimationLibrary_y3usp")
 
-[node name="Label" type="Label" parent="PanelContainer/Slide3" index="1"]
+[node name="Label" type="Label" parent="PanelContainer/Slide3" index="1" unique_id=1465416214]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "ATTRACT_MODE_CHAR_BIO_TITLE"
@@ -340,25 +332,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3" index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3" index="2" unique_id=778553568]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Her" type="HBoxContainer" parent="PanelContainer/Slide3/VBoxContainer" index="0"]
+[node name="Her" type="HBoxContainer" parent="PanelContainer/Slide3/VBoxContainer" index="0" unique_id=2088290392]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide3/VBoxContainer/Her" index="0"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide3/VBoxContainer/Her" index="0" unique_id=1232299790]
 layout_mode = 2
 texture = ExtResource("10_y3usp")
 stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3/VBoxContainer/Her" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3/VBoxContainer/Her" index="1" unique_id=642878188]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Her/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Her/VBoxContainer" index="0" unique_id=854786302]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("6_a8vvl")
@@ -367,7 +359,7 @@ text = "ATTRACT_MODE_CHAR_BIO_AMI_NAME"
 vertical_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Her/VBoxContainer" index="1"]
+[node name="Label2" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Her/VBoxContainer" index="1" unique_id=2072673097]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -378,14 +370,14 @@ text = "ATTRACT_MODE_CHAR_BIO_AMI_DESC"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Him" type="HBoxContainer" parent="PanelContainer/Slide3/VBoxContainer" index="1"]
+[node name="Him" type="HBoxContainer" parent="PanelContainer/Slide3/VBoxContainer" index="1" unique_id=1124131831]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3/VBoxContainer/Him" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Slide3/VBoxContainer/Him" index="0" unique_id=478579921]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Him/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Him/VBoxContainer" index="0" unique_id=1863606638]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("6_a8vvl")
@@ -394,7 +386,7 @@ text = "ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_NAME"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="Label2" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Him/VBoxContainer" index="1"]
+[node name="Label2" type="Label" parent="PanelContainer/Slide3/VBoxContainer/Him/VBoxContainer" index="1" unique_id=1583905418]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -405,7 +397,7 @@ text = "ATTRACT_MODE_CHAR_BIO_AMI_BOYFRIEND_DESC"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide3/VBoxContainer/Him" index="1"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Slide3/VBoxContainer/Him" index="1" unique_id=2116761826]
 layout_mode = 2
 texture = ExtResource("11_p3xr3")
 stretch_mode = 3

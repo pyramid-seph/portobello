@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://e4o4ytds4tos"]
+[gd_scene format=3 uid="uid://e4o4ytds4tos"]
 
 [ext_resource type="Script" uid="uid://b633sq8n0eiww" path="res://scenes/_shared/item.gd" id="1_rgubp"]
 
-[node name="Item" type="Area2D" groups=["items"]]
+[node name="Item" type="Area2D" unique_id=1261365898 groups=["items"]]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_rgubp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=262292489]
 autoplay = "default"
 centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1357100335]
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." groups=["consumables"]]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1589917754 groups=["consumables"]]
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

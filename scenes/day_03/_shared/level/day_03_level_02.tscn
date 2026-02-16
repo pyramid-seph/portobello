@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2y8ad6yqxp0h"]
+[gd_scene format=3 uid="uid://c2y8ad6yqxp0h"]
 
 [ext_resource type="PackedScene" uid="uid://2h71m1hkjgum" path="res://scenes/day_03/_shared/level/day_03_level.tscn" id="1_ttrf2"]
 [ext_resource type="Script" uid="uid://dt3ayy1amsf1b" path="res://scenes/day_03/_shared/systems/level_02_waves.gd" id="2_1y1mh"]
@@ -7,33 +7,33 @@
 [ext_resource type="Script" uid="uid://dmkjbeql04u01" path="res://scenes/_shared/simple_bgm_player.gd" id="4_nq3bm"]
 [ext_resource type="PackedScene" uid="uid://c0r23aw37b8uw" path="res://scenes/day_03/level_02/enemies/motership/motership.tscn" id="5_27b35"]
 
-[node name="Day03Level02" instance=ExtResource("1_ttrf2")]
+[node name="Day03Level02" unique_id=2044354191 instance=ExtResource("1_ttrf2")]
 _results_screen_delay_sec = 3.6
 _save_data_score_attack_mode_score_name = "buff_three_b"
 
-[node name="BossFight" parent="." index="1" node_paths=PackedStringArray("_player")]
+[node name="BossFight" parent="." index="1" unique_id=1214237416 node_paths=PackedStringArray("_player")]
 script = ExtResource("2_qu7pv")
 _player = NodePath("../World/Player")
 Motership = ExtResource("5_27b35")
 
-[node name="SimpleBgmPlayer" type="Node" parent="BossFight" index="0"]
+[node name="SimpleBgmPlayer" type="Node" parent="BossFight" index="0" unique_id=1753849170]
 script = ExtResource("4_nq3bm")
 _autostart = false
 
-[node name="PlayerAbductionTimer" type="Timer" parent="BossFight" index="1"]
+[node name="PlayerAbductionTimer" type="Timer" parent="BossFight" index="1" unique_id=1505496519]
 one_shot = true
 
-[node name="Timer" type="Timer" parent="BossFight" index="2"]
+[node name="Timer" type="Timer" parent="BossFight" index="2" unique_id=1315182329]
 one_shot = true
 
-[node name="Level02Waves" type="Node" parent="Systems/WaveManager" index="1"]
+[node name="Level02Waves" type="Node" parent="Systems/WaveManager" parent_id_path=PackedInt32Array(490967174) index="1" unique_id=1640198664]
 script = ExtResource("2_1y1mh")
 
-[node name="UfoShootManager" parent="Systems" index="3" node_paths=PackedStringArray("_world", "_player") instance=ExtResource("3_i5cuv")]
+[node name="UfoShootManager" parent="Systems" parent_id_path=PackedInt32Array(508348416) index="3" unique_id=1094814563 node_paths=PackedStringArray("_world", "_player") instance=ExtResource("3_i5cuv")]
 _world = NodePath("../../World")
 _player = NodePath("../../World/Player")
 
-[node name="Day03Bg" parent="World" index="0"]
+[node name="Day03Bg" parent="World" parent_id_path=PackedInt32Array(1568600196) index="0" unique_id=118381661]
 sea_color = Color(0.254902, 0.603922, 0.670588, 1)
 
 [connection signal="all_waves_completed" from="Systems/WaveManager" to="Systems/UfoShootManager" method="_on_wave_manager_all_waves_completed"]
