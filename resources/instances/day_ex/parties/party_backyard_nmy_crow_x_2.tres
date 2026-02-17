@@ -7,5 +7,4 @@
 [resource]
 script = ExtResource("2_22d07")
 _front_row = Array[ExtResource("1_ckvu1")]([ExtResource("1_nney5"), ExtResource("1_nney5")])
-_back_row = Array[ExtResource("1_ckvu1")]([])
 _weight = 3.0

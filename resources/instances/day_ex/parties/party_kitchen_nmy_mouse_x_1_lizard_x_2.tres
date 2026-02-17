@@ -9,4 +9,3 @@
 script = ExtResource("3_lk8gl")
 _front_row = Array[ExtResource("1_uompe")]([ExtResource("2_wllql")])
 _back_row = Array[ExtResource("1_uompe")]([ExtResource("1_pg5tx"), ExtResource("1_pg5tx")])
-_weight = 1.0

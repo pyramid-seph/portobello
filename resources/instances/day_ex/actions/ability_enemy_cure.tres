@@ -9,21 +9,11 @@
 [resource]
 script = ExtResource("4_k4057")
 _action_name = "RPG_BATTLE_ABILITY_NAME_ENEMY_CURE"
-_info = ""
 _target = 1
 _consumes = 1
 _cost = 10
 _physical_damage = 3
 _damage_points = 25
-_damage_percent = 0.5
-_hit_chance = 1.0
-_status_effect_poison_damage = 0
-_status_effect_attack = 0
-_status_effect_defense = 0
-_status_effect_speed = 0
-_status_effect_love = false
 _sprites = Array[Texture2D]([ExtResource("1_xi5vo"), ExtResource("2_eo3xf"), ExtResource("3_7h6q6")])
 _duration_sec = 0.45
-_screen_flash_color = Color(1, 1, 1, 0)
-_shake_screen = false
 _sound = ExtResource("1_hwofh")

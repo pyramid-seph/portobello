@@ -7,21 +7,10 @@
 [resource]
 script = ExtResource("3_crjgw")
 _action_name = "RPG_BATTLE_ABILITY_NAME_ENEMY_TACKLE"
-_info = ""
-_target = 0
 _consumes = 1
-_cost = 1
-_physical_damage = 0
-_damage_points = 1
-_damage_percent = 0.5
 _hit_chance = 0.8
-_status_effect_poison_damage = 0
-_status_effect_attack = 0
-_status_effect_defense = 0
 _status_effect_speed = -7
-_status_effect_love = false
 _sprites = Array[Texture2D]([ExtResource("2_ic1jl")])
 _duration_sec = 0.3
 _screen_flash_color = Color(1, 0, 0, 1)
-_shake_screen = false
 _sound = ExtResource("1_1btx7")

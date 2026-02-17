@@ -9,5 +9,4 @@
 [resource]
 script = ExtResource("5_dpu4a")
 _front_row = Array[ExtResource("1_vcblt")]([ExtResource("3_km3tm"), ExtResource("1_liv3e"), ExtResource("4_qlpmp")])
-_back_row = Array[ExtResource("1_vcblt")]([])
 _weight = 8.0
