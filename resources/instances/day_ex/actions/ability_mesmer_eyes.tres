@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=4 format=3 uid="uid://bngpbdi8vf050"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://bngpbdi8vf050"]
 
 [ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="1_3eccw"]
 [ext_resource type="AudioStream" uid="uid://vx08evldwvjg" path="res://audio/sfx/sfx_day_ex_ability_mesmer_eyes.wav" id="1_kdur6"]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgqrapqihdd85"]
+[gd_scene format=3 uid="uid://cgqrapqihdd85"]
 
 [ext_resource type="Texture2D" uid="uid://copb6xp56jikc" path="res://art/cutscenes/day_03_intro_0.png" id="1_2g317"]
 [ext_resource type="Script" uid="uid://bn67861yh3kul" path="res://scenes/day_03/_shared/cutscenes/cutscene_day_03_01.gd" id="1_i8prj"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="3_sbdps"]
 [ext_resource type="Texture2D" uid="uid://bdfkee7jtg4ld" path="res://art/cutscenes/day_03_intro_0_text_en.png" id="4_jds0c"]
 
-[node name="CutsceneDay0301" type="Control"]
+[node name="CutsceneDay0301" type="Control" unique_id=741641053]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,10 +16,10 @@ theme = ExtResource("3_sbdps")
 script = ExtResource("1_i8prj")
 _autostart = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1759996435]
 one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1226079949]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="DayLabel" type="Label" parent="ColorRect"]
+[node name="DayLabel" type="Label" parent="ColorRect" unique_id=1998524469]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -41,12 +41,12 @@ text = "CUTSCENE_DAY_TITLE_03"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect" unique_id=1014665029]
 z_index = 1
 position = Vector2(120, 152)
 texture = ExtResource("1_2g317")
 
-[node name="Sprite2D" type="Sprite2D" parent="ColorRect/Sprite2D"]
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/Sprite2D" unique_id=250426444]
 position = Vector2(0, 65)
 texture = ExtResource("4_jds0c")
 

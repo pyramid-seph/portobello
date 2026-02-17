@@ -1,14 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvq3mnqmcgelf"]
+[gd_scene format=3 uid="uid://dvq3mnqmcgelf"]
 
 [ext_resource type="Script" uid="uid://c6h3c6jelimpl" path="res://scenes/day_03/level_02/enemies/motership/clean_up_zone.gd" id="1_5i8p7"]
 
-[node name="CleanUpZone" type="Area2D"]
+[node name="CleanUpZone" type="Area2D" unique_id=1341045589]
 position = Vector2(0, -2)
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_5i8p7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779258169]
 debug_color = Color(0.901961, 0.847059, 0, 0.419608)
 metadata/_edit_lock_ = true
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleParty" load_steps=5 format=3 uid="uid://chwvg4b65nkau"]
+[gd_resource type="Resource" script_class="BattleParty" format=3 uid="uid://chwvg4b65nkau"]
 
 [ext_resource type="Script" uid="uid://dpm47txi7j3i4" path="res://resources/fighter_data.gd" id="1_a6xpi"]
 [ext_resource type="Resource" uid="uid://dfbbuuqk1jsui" path="res://resources/instances/day_ex/chars/bug.tres" id="1_t1mja"]

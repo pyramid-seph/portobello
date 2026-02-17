@@ -1,19 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://kv2p4bo0vtva"]
+[gd_scene format=3 uid="uid://kv2p4bo0vtva"]
 
 [ext_resource type="Script" uid="uid://c5l8picgs005a" path="res://scenes/day_03/level_02/enemies/motership/motership_ball.gd" id="1_yf116"]
 [ext_resource type="Texture2D" uid="uid://du0lthcgpcg6r" path="res://art/day_3/motership_ball_mini.png" id="2_awcsw"]
 [ext_resource type="Texture2D" uid="uid://ct84ukixl2shl" path="res://art/day_3/motership_ball_shine_mini.png" id="3_cwcg6"]
 
-[node name="MotershipBallMini" type="Node2D"]
+[node name="MotershipBallMini" type="Node2D" unique_id=1521689809]
 script = ExtResource("1_yf116")
 
-[node name="BallSprite" type="Sprite2D" parent="."]
+[node name="BallSprite" type="Sprite2D" parent="." unique_id=955090583]
 modulate = Color(1, 0, 1, 1)
 texture = ExtResource("2_awcsw")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Shine" type="Sprite2D" parent="."]
+[node name="Shine" type="Sprite2D" parent="." unique_id=1305024675]
 position = Vector2(3, 2)
 texture = ExtResource("3_cwcg6")
 centered = false

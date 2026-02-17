@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xl5bc10rc15p"]
+[gd_scene format=3 uid="uid://xl5bc10rc15p"]
 
 [ext_resource type="Script" uid="uid://mkkdx85g0dkn" path="res://scenes/_shared/ui/results_screen.gd" id="1_gc208"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_q821b"]
@@ -16,7 +16,7 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_1iyfp"]
 
-[node name="ResultsScreen" type="Control"]
+[node name="ResultsScreen" type="Control" unique_id=1375808579]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ mouse_filter = 2
 theme = ExtResource("1_q821b")
 script = ExtResource("1_gc208")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1724353067]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=641335386]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,13 +46,13 @@ grow_vertical = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="ResultsContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+[node name="ResultsContainer" type="VBoxContainer" parent="ColorRect/MarginContainer" unique_id=2057910648]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -4
 
-[node name="ScoreLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+[node name="ScoreLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer" unique_id=45404156]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -61,7 +61,7 @@ text = "Score = 42"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="LivesBonusLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+[node name="LivesBonusLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer" unique_id=217638328]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -70,7 +70,7 @@ text = "Bono = 9 x 1000 = 9000"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="TotalScoreLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+[node name="TotalScoreLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer" unique_id=1582587894]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -79,7 +79,7 @@ text = "Total = 9042"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="ExtraLivesLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer"]
+[node name="ExtraLivesLabel" type="Label" parent="ColorRect/MarginContainer/ResultsContainer" unique_id=1963236841]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -88,7 +88,7 @@ text = "¡9 vidas extra!"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="LevelCompletedContainer" type="PanelContainer" parent="ColorRect"]
+[node name="LevelCompletedContainer" type="PanelContainer" parent="ColorRect" unique_id=1036385504]
 visible = false
 layout_mode = 1
 anchors_preset = 14
@@ -101,19 +101,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6nngq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/LevelCompletedContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/LevelCompletedContainer" unique_id=848872614]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -4
 
-[node name="LevelCompleteLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer"]
+[node name="LevelCompleteLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer" unique_id=1263256084]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
 text = "RESULTS_SCREEN_MINIGAME_COMPLETED"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="NewHighScoreLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer"]
+[node name="NewHighScoreLabel" type="Label" parent="ColorRect/LevelCompletedContainer/VBoxContainer" unique_id=1093266142]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.945098, 0.188235, 0.188235, 1)
@@ -121,7 +121,7 @@ text = "RESULTS_SCREEN_NEW_HIGH_SCORE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StarsContainer" type="PanelContainer" parent="ColorRect"]
+[node name="StarsContainer" type="PanelContainer" parent="ColorRect" unique_id=1940412494]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -131,7 +131,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_si1kx")
 
-[node name="Label" type="Label" parent="ColorRect/StarsContainer"]
+[node name="Label" type="Label" parent="ColorRect/StarsContainer" unique_id=1671550068]
 layout_mode = 2
 size_flags_vertical = 0
 text = "RESULTS_SCREEN_EVALUATION"
@@ -139,7 +139,7 @@ label_settings = SubResource("LabelSettings_gbpxl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StarsLabel" type="Label" parent="ColorRect/StarsContainer"]
+[node name="StarsLabel" type="Label" parent="ColorRect/StarsContainer" unique_id=2086855388]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -148,14 +148,14 @@ label_settings = SubResource("LabelSettings_yo2pu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/StarsContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/StarsContainer" unique_id=1427503377]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/StarsContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/StarsContainer" unique_id=1617923200]
 layout_mode = 2
 theme_override_constants/margin_bottom = 84
 
-[node name="EvaluationLabel" type="Label" parent="ColorRect/StarsContainer"]
+[node name="EvaluationLabel" type="Label" parent="ColorRect/StarsContainer" unique_id=1833439860]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8

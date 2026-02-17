@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwr1ojj4316st"]
+[gd_scene format=3 uid="uid://cwr1ojj4316st"]
 
 [ext_resource type="Script" uid="uid://dwabcwxn00r6a" path="res://resources/day_03_player_data.gd" id="1"]
 [ext_resource type="Script" uid="uid://tsm8kr0vtyi" path="res://scenes/day_03/_shared/systems/stamina_spawner.gd" id="2"]
 
-[node name="StaminaSpawner" type="Node2D"]
+[node name="StaminaSpawner" type="Node2D" unique_id=1195027654]
 process_mode = 1
 script = ExtResource("2")
 player_data = ExtResource("1")
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="." unique_id=189393388]
 process_callback = 0
 one_shot = true
 

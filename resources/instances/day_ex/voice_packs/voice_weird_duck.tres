@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="VoicePack" load_steps=5 format=3 uid="uid://cta6g2lyuw8kw"]
+[gd_resource type="Resource" script_class="VoicePack" format=3 uid="uid://cta6g2lyuw8kw"]
 
 [ext_resource type="Script" uid="uid://dbyld21cmkoc" path="res://resources/voice_pack.gd" id="1_fu7k2"]
 [ext_resource type="AudioStream" uid="uid://ui13yjqm3goi" path="res://audio/sfx/sfx_day_ex_voice_weird_duck_01.wav" id="2_jddg6"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Day03PlayerData" load_steps=2 format=3 uid="uid://fwsyckhw66yi"]
+[gd_resource type="Resource" script_class="Day03PlayerData" format=3 uid="uid://fwsyckhw66yi"]
 
 [ext_resource type="Script" uid="uid://dwabcwxn00r6a" path="res://resources/day_03_player_data.gd" id="1"]
 

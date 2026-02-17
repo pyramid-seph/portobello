@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmviupsp68jlo"]
+[gd_scene format=3 uid="uid://dmviupsp68jlo"]
 
 [ext_resource type="Texture2D" uid="uid://dwjh8xb78a5xe" path="res://art/day_ex/day_ex_player.png" id="1_0knkx"]
 
@@ -24,7 +24,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="DayExPlayerDummy" type="AnimatedSprite2D"]
+[node name="DayExPlayerDummy" type="AnimatedSprite2D" unique_id=1387958924]
 sprite_frames = SubResource("SpriteFrames_63yyd")
 autoplay = "default"
 frame_progress = 0.724847

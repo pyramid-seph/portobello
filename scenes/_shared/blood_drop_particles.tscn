@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://baxkyqp0rboen"]
+[gd_scene format=3 uid="uid://baxkyqp0rboen"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3hdif"]
 
@@ -7,7 +7,7 @@ particle_flag_disable_z = true
 emission_shape_offset = Vector3(0.5, 0, 0)
 gravity = Vector3(0, 98, 0)
 
-[node name="BloodDropParticles" type="GPUParticles2D"]
+[node name="BloodDropParticles" type="GPUParticles2D" unique_id=135591536]
 physics_interpolation_mode = 2
 self_modulate = Color(1, 0, 0, 1)
 emitting = false

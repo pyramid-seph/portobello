@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=7 format=3 uid="uid://dfbbuuqk1jsui"]
+[gd_resource type="Resource" script_class="FighterData" format=3 uid="uid://dfbbuuqk1jsui"]
 
 [ext_resource type="Resource" uid="uid://dgogiippglk3l" path="res://resources/instances/day_ex/actions/attack_nibble.tres" id="1_hftbg"]
 [ext_resource type="Texture2D" uid="uid://bcuqtm68exyh1" path="res://art/day_ex/battle_char_enemy_bug.png" id="1_puv4l"]

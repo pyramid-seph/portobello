@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://brik70kwkl220"]
+[gd_scene format=3 uid="uid://brik70kwkl220"]
 
 [ext_resource type="Script" uid="uid://c84deph2fk6s7" path="res://scenes/_shared/ui/animated_texture_rect.gd" id="1_kb2c1"]
 
-[node name="TextureRect" type="TextureRect"]
+[node name="TextureRect" type="TextureRect" unique_id=2092126770]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kb2c1")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1959508558]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://djle3i2ou6cx1"]
+[gd_scene format=3 uid="uid://djle3i2ou6cx1"]
 
 [ext_resource type="Script" uid="uid://dj3xn6x6rugqu" path="res://scenes/day_02/_shared/enemies/day_02_enemy.gd" id="1_h5v7e"]
 [ext_resource type="Texture2D" uid="uid://cyorhj0i20rdm" path="res://art/day_2/enemy_ghost_red_0.png" id="2_8rakd"]
@@ -67,7 +67,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxvp0"]
 size = Vector2(14, 14)
 
-[node name="Day02Enemy" type="Node2D" groups=["enemies"]]
+[node name="Day02Enemy" type="Node2D" unique_id=2052623291 groups=["enemies"]]
 script = ExtResource("1_h5v7e")
 speed = 50.0
 _texture_0 = ExtResource("2_8rakd")
@@ -75,25 +75,25 @@ _texture_1 = ExtResource("3_8px7h")
 _z_index_default = -1
 _z_index_dead = -3
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=6495079]
 sprite_frames = SubResource("SpriteFrames_fhw8j")
 animation = &"dead"
 autoplay = "default"
 
-[node name="ScareTimer" type="Timer" parent="."]
+[node name="ScareTimer" type="Timer" parent="." unique_id=343282907]
 one_shot = true
 
-[node name="NotSoScaredDelayTimer" type="Timer" parent="."]
+[node name="NotSoScaredDelayTimer" type="Timer" parent="." unique_id=1043626361]
 one_shot = true
 
-[node name="DyingTimer" type="Timer" parent="."]
+[node name="DyingTimer" type="Timer" parent="." unique_id=1936329220]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=102170723]
 collision_layer = 64
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=986681514]
 shape = SubResource("RectangleShape2D_dxvp0")
 
 [connection signal="timeout" from="ScareTimer" to="." method="_on_scare_timer_timeout"]

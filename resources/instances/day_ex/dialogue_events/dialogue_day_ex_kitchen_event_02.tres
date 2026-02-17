@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueEvent" load_steps=7 format=3 uid="uid://it88cwxcso7x"]
+[gd_resource type="Resource" script_class="DialogueEvent" format=3 uid="uid://it88cwxcso7x"]
 
 [ext_resource type="Script" uid="uid://d138wt0n8uolw" path="res://scenes/day_ex/game/dialogue_event.gd" id="1_eppi2"]
 [ext_resource type="Script" uid="uid://fturu7sc7ogm" path="res://resources/dialogue_page.gd" id="1_rc40h"]

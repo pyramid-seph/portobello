@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ia6wnprew2fj"]
+[gd_scene format=3 uid="uid://ia6wnprew2fj"]
 
 [ext_resource type="PackedScene" uid="uid://ceybd47nvxx3s" path="res://scenes/day_03/_shared/actors/moving_day_03_enemy.tscn" id="1_xe03b"]
 [ext_resource type="Script" uid="uid://cdh35ysl3a5po" path="res://scenes/day_03/level_02/enemies/ufo.gd" id="2_nhoik"]
@@ -21,25 +21,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ufo" groups=["ufos"] instance=ExtResource("1_xe03b")]
+[node name="Ufo" unique_id=236102075 groups=["ufos"] instance=ExtResource("1_xe03b")]
 z_index = -60
 script = ExtResource("2_nhoik")
 speed = 87.5
 score_points_gun = 10
 score_points_mega_gun = 5
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="2" unique_id=1427331327]
 sprite_frames = SubResource("SpriteFrames_nghcw")
 frame = 1
 frame_progress = 0.576864
 
-[node name="TopGun" parent="." index="4" instance=ExtResource("4_mo5jo")]
+[node name="TopGun" parent="." index="4" unique_id=1165321352 instance=ExtResource("4_mo5jo")]
 position = Vector2(8, -3)
 Bullet = ExtResource("5_ed5w7")
 bullet_speed = 125.0
 ignore_cooldown = true
 
-[node name="BottomGun" parent="." index="5" instance=ExtResource("4_mo5jo")]
+[node name="BottomGun" parent="." index="5" unique_id=1594669731 instance=ExtResource("4_mo5jo")]
 position = Vector2(8, 17)
 Bullet = ExtResource("5_ed5w7")
 bullet_speed = 125.0

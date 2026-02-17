@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cfcfhqs6pqgcm"]
+[gd_scene format=4 uid="uid://cfcfhqs6pqgcm"]
 
 [ext_resource type="Texture2D" uid="uid://j3ged81fnnl6" path="res://art/day_2/_atlas_day_02_tiles_maze.png" id="1_744ve"]
 [ext_resource type="Script" uid="uid://d277x63d66v6m" path="res://scenes/day_02/_shared/maze/maze.gd" id="2_hjgam"]
@@ -41,7 +41,7 @@ texture = ExtResource("1_744ve")
 [sub_resource type="TileSet" id="TileSet_tiqs2"]
 sources/0 = SubResource("TileSetAtlasSource_onvd7")
 
-[node name="Maze" type="TileMapLayer"]
+[node name="Maze" type="TileMapLayer" unique_id=264537652]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAABAAAAAAABAAEAACADAAAAAAAAAAAAAAAHAAAAAAAAAAAAABAJAAAAAAABAAEAACAEAAIAAAACAAIAAAAFAAIAAAACAAIAAAAGAAIAAAACAAIAAAABAAQAAAAAAAAAAFACAAQAAAAAAAAAADACAAUAAAAAAAAAAGABAAUAAAAEAAEAAAABAAYAAAAAAAIAAAABAAcAAAAAAAIAAAABAAgAAAABAAEAACAEAAQAAAAAAAAAAFAFAAQAAAABAAIAACAGAAQAAAAAAAAAAEAEAAUAAAAAAAAAAAAGAAUAAAAAAAAAAGAHAAcAAAABAAEAAFADAAcAAAACAAEAAAAEAAcAAAACAAIAAAAFAAcAAAACAAIAAAAGAAcAAAACAAIAAAAIAAQAAAAAAAAAAFAJAAQAAAAAAAAAADAIAAUAAAAAAAAAAAAJAAYAAAAAAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAABAAEAADADAAkAAAAAAAAAACAGAAkAAAAAAAAAACAHAAkAAAAAAAAAADAEAAkAAAAAAAAAADAEAAAAAAAEAAAAAAAFAAAAAAAEAAAAAAAGAAAAAAAEAAAAAAAFAAUAAAAEAAAAAAAAAAIAAAACAAIAAAABAAIAAAABAAEAAFADAAIAAAACAAEAAAAKAAIAAAACAAIAAAAJAAIAAAABAAEAAEAHAAIAAAABAAEAAFAJAAUAAAAEAAEAABD//wAAAAAAAAEAAAD//wEAAAAAAAEAAAD//wIAAAAAAAEAAAD//wMAAAAAAAEAAAD//wQAAAAAAAEAAAD//wUAAAAAAAEAAAD//wYAAAAAAAEAAAD//wcAAAAAAAEAAAD//wgAAAAAAAEAAAD//wkAAAAAAAEAAAALAAAAAAAAAAEAABALAAEAAAAAAAEAABALAAIAAAAAAAEAABALAAMAAAAAAAEAABALAAQAAAAAAAEAABALAAUAAAAAAAEAABALAAYAAAAAAAEAABALAAcAAAAAAAEAABALAAgAAAAAAAEAABALAAkAAAAAAAEAABAAAP//AAAAAAEAAFABAP//AAAEAAAAAAACAP//AAAEAAAAAAADAP//AAAEAAAAAAAEAP//AAAEAAAAAAAFAP//AAAEAAAAAAAGAP//AAAEAAAAAAAHAP//AAAEAAAAAAAIAP//AAAEAAAAAAAJAP//AAAEAAAAAAAKAP//AAAEAAAAAAAAAAoAAAAAAAEAAGABAAoAAAAAAAEAAGACAAoAAAAAAAEAAGADAAoAAAAAAAEAAGAEAAoAAAAAAAEAAGAFAAoAAAAAAAEAAGAGAAoAAAAAAAEAAGAHAAoAAAAAAAEAAGAIAAoAAAAAAAEAAGAJAAoAAAAAAAEAAGAKAAoAAAAAAAEAAGD/////AAAEAAIAAAD//woAAAAEAAIAACALAAoAAAAEAAIAADALAP//AAAEAAIAABA=")
 tile_set = SubResource("TileSet_tiqs2")
@@ -49,59 +49,59 @@ collision_enabled = false
 navigation_enabled = false
 script = ExtResource("2_hjgam")
 
-[node name="MazeBgm" type="Node" parent="."]
+[node name="MazeBgm" type="Node" parent="." unique_id=1185932166]
 script = ExtResource("3_ir55d")
 
-[node name="BlueGhostRespawnTimer" type="Timer" parent="."]
+[node name="BlueGhostRespawnTimer" type="Timer" parent="." unique_id=1905912228]
 one_shot = true
 
-[node name="RedGhostRespawnTimer" type="Timer" parent="."]
+[node name="RedGhostRespawnTimer" type="Timer" parent="." unique_id=1358582792]
 one_shot = true
 
-[node name="YellowGhostRespawnTimer" type="Timer" parent="."]
+[node name="YellowGhostRespawnTimer" type="Timer" parent="." unique_id=707108101]
 one_shot = true
 
-[node name="RedGhostFirstSpawnTimer" type="Timer" parent="."]
+[node name="RedGhostFirstSpawnTimer" type="Timer" parent="." unique_id=202634872]
 one_shot = true
 
-[node name="YellowGhostFirstSpawnTimer" type="Timer" parent="."]
+[node name="YellowGhostFirstSpawnTimer" type="Timer" parent="." unique_id=2054003780]
 one_shot = true
 
-[node name="PlayerRevivalDelayTimer" type="Timer" parent="."]
+[node name="PlayerRevivalDelayTimer" type="Timer" parent="." unique_id=331860495]
 one_shot = true
 
-[node name="PlayerInitPosMarker" type="Marker2D" parent="."]
+[node name="PlayerInitPosMarker" type="Marker2D" parent="." unique_id=1905833920]
 position = Vector2(88, 136)
 metadata/_edit_lock_ = true
 
-[node name="RespawnPosMarker" type="Marker2D" parent="."]
+[node name="RespawnPosMarker" type="Marker2D" parent="." unique_id=676009567]
 position = Vector2(88, 72)
 metadata/_edit_lock_ = true
 
-[node name="PlayerOutOfMazeMarker" type="Marker2D" parent="."]
+[node name="PlayerOutOfMazeMarker" type="Marker2D" parent="." unique_id=1719171896]
 position = Vector2(-24, -8)
 metadata/_edit_lock_ = true
 
-[node name="Day02Player" parent="." instance=ExtResource("3_ac50a")]
+[node name="Day02Player" parent="." unique_id=322733339 instance=ExtResource("3_ac50a")]
 metadata/_edit_lock_ = true
 
-[node name="YellowGhost" parent="." instance=ExtResource("17_jfr4l")]
+[node name="YellowGhost" parent="." unique_id=157397317 instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 24)
 _texture_0 = ExtResource("7_uvffd")
 _texture_1 = ExtResource("8_k30f1")
 metadata/_edit_lock_ = true
 
-[node name="BlueGhost" parent="." instance=ExtResource("17_jfr4l")]
+[node name="BlueGhost" parent="." unique_id=1640124796 instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 40)
 _texture_0 = ExtResource("5_08ki7")
 _texture_1 = ExtResource("6_w82sn")
 metadata/_edit_lock_ = true
 
-[node name="RedGhost" parent="." instance=ExtResource("17_jfr4l")]
+[node name="RedGhost" parent="." unique_id=870065870 instance=ExtResource("17_jfr4l")]
 position = Vector2(-24, 56)
 metadata/_edit_lock_ = true
 
-[node name="Food" type="Node2D" parent="."]
+[node name="Food" type="Node2D" parent="." unique_id=1178899397]
 metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="BlueGhostRespawnTimer" to="." method="_on_blue_ghost_respawn_timer_timeout"]

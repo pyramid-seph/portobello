@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0itsp3jm2p1k"]
+[gd_scene format=3 uid="uid://b0itsp3jm2p1k"]
 
 [ext_resource type="Script" uid="uid://ba6py46dmp0nq" path="res://scenes/_shared/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_rpjji"]
@@ -12,25 +12,25 @@
 bg_color = Color(0, 0, 0, 0.784314)
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p8f3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esyxq"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxlbj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aca7q"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_av7u1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce6b5"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[node name="PauseMenu" type="PanelContainer"]
+[node name="PauseMenu" type="PanelContainer" unique_id=1325424067]
 process_mode = 3
 z_index = 1
 anchors_preset = 15
@@ -44,17 +44,17 @@ script = ExtResource("1")
 pause_menu_shown_sound = ExtResource("3_runxt")
 show_auto_fire = true
 
-[node name="UiSounds" parent="." instance=ExtResource("6_8odcl")]
+[node name="UiSounds" parent="." unique_id=1674833762 instance=ExtResource("6_8odcl")]
 unique_name_in_owner = true
 _root_path = NodePath("../PauseDialog/SettingsDialog")
 
-[node name="PauseDialog" type="VBoxContainer" parent="."]
+[node name="PauseDialog" type="VBoxContainer" parent="." unique_id=2112746158]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseLabel" type="Label" parent="PauseDialog"]
+[node name="PauseLabel" type="Label" parent="PauseDialog" unique_id=453059907]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -65,23 +65,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="SettingsDialog" type="PanelContainer" parent="PauseDialog"]
+[node name="SettingsDialog" type="PanelContainer" parent="PauseDialog" unique_id=842512808]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(152, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseDialog/SettingsDialog"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseDialog/SettingsDialog" unique_id=929020401]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VibrationSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
+[node name="VibrationSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" unique_id=179392557 instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 focus_neighbor_top = NodePath("../ContinueButton")
-theme_override_styles/panel = SubResource("StyleBoxFlat_3p8f3")
+theme_override_styles/panel = SubResource("StyleBoxFlat_esyxq")
 selector_text = "MENU_PAUSE_VIBRATE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 loop_options = false
@@ -89,11 +89,11 @@ selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 text_font = ExtResource("4_8nmq5")
 
-[node name="AudioSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
+[node name="AudioSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" unique_id=2037798923 instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nxlbj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_aca7q")
 selector_text = "MENU_SETTINGS_AUDIO"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 loop_options = false
@@ -101,11 +101,11 @@ selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 text_font = ExtResource("4_8nmq5")
 
-[node name="AutofireSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" instance=ExtResource("4_u35yd")]
+[node name="AutofireSelector" parent="PauseDialog/SettingsDialog/VBoxContainer" unique_id=1377051830 instance=ExtResource("4_u35yd")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_av7u1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ce6b5")
 selector_text = "MENU_PAUSE_AUTO_FIRE"
 _options = ["COMMON_OPTIONS_YES", "COMMON_OPTIONS_NO"]
 loop_options = false
@@ -113,7 +113,7 @@ selection_disabled = true
 focus_color = Color(0.647059, 0.862745, 0.878431, 1)
 text_font = ExtResource("4_8nmq5")
 
-[node name="GiveUpButton" type="Button" parent="PauseDialog/SettingsDialog/VBoxContainer"]
+[node name="GiveUpButton" type="Button" parent="PauseDialog/SettingsDialog/VBoxContainer" unique_id=368942359]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -121,7 +121,7 @@ text = "MENU_PAUSE_QUIT_MINIGAME"
 flat = true
 alignment = 0
 
-[node name="ContinueButton" type="Button" parent="PauseDialog/SettingsDialog/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="PauseDialog/SettingsDialog/VBoxContainer" unique_id=1090793142]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../VibrationSelector")
@@ -130,7 +130,7 @@ text = "MENU_PAUSE_UNPAUSE"
 flat = true
 alignment = 0
 
-[node name="ConfirmExitLevelDialog" parent="." instance=ExtResource("5_tyfqu")]
+[node name="ConfirmExitLevelDialog" parent="." unique_id=1403153669 instance=ExtResource("5_tyfqu")]
 visible = false
 layout_mode = 2
 body_text = "CONFIRM_GIVE_UP"

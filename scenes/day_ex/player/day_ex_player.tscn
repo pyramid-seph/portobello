@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cbj80apo103mi"]
+[gd_scene format=3 uid="uid://cbj80apo103mi"]
 
 [ext_resource type="Script" uid="uid://mf78wgx7345m" path="res://scenes/day_ex/player/day_ex_player.gd" id="1_71xu7"]
 [ext_resource type="Texture2D" uid="uid://dwjh8xb78a5xe" path="res://art/day_ex/day_ex_player.png" id="2_klu10"]
@@ -573,7 +573,7 @@ radius = 4.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kg2x"]
 radius = 2.0
 
-[node name="DayExPlayer" type="CharacterBody2D"]
+[node name="DayExPlayer" type="CharacterBody2D" unique_id=155308902]
 collision_layer = 32
 collision_mask = 128
 motion_mode = 1
@@ -581,33 +581,31 @@ wall_min_slide_angle = 0.0
 safe_margin = 0.02
 script = ExtResource("1_71xu7")
 
-[node name="SlipBufferTimer" type="Timer" parent="."]
+[node name="SlipBufferTimer" type="Timer" parent="." unique_id=492026091]
 wait_time = 0.1
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137478167]
 texture = ExtResource("2_klu10")
 hframes = 3
 vframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ksaq6")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1831106549]
+libraries/ = SubResource("AnimationLibrary_ksaq6")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=310671100]
 tree_root = SubResource("AnimationNodeStateMachine_i1o70")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0.998536, 0.00466108)
 parameters/Move/blend_position = Vector2(0, 0)
 
-[node name="InteractSprite2D" type="Sprite2D" parent="."]
+[node name="InteractSprite2D" type="Sprite2D" parent="." unique_id=1950926637]
 z_index = 1
 position = Vector2(0, -11)
 texture = ExtResource("9_2royx")
 
-[node name="WalkingTimeLabel" type="Label" parent="."]
+[node name="WalkingTimeLabel" type="Label" parent="." unique_id=1468425574]
 z_index = 100
 anchors_preset = 5
 anchor_left = 0.5
@@ -626,27 +624,27 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlipperyFloorDetector" type="Area2D" parent="."]
+[node name="SlipperyFloorDetector" type="Area2D" parent="." unique_id=1222769002]
 collision_layer = 0
 collision_mask = 1024
 input_pickable = false
 script = ExtResource("11_pku6g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SlipperyFloorDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlipperyFloorDetector" unique_id=352376936]
 shape = SubResource("RectangleShape2D_iquxc")
 debug_color = Color(0.219608, 0.227451, 0.745098, 0.427451)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1814158175]
 shape = SubResource("CircleShape2D_tyx1y")
 debug_color = Color(0, 0.639216, 0.352941, 0.490196)
 
-[node name="ActionAreaDetector" type="Area2D" parent="."]
+[node name="ActionAreaDetector" type="Area2D" parent="." unique_id=1635105355]
 collision_layer = 0
 collision_mask = 512
 input_pickable = false
 script = ExtResource("10_8vasx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionAreaDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionAreaDetector" unique_id=1249974812]
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_5kg2x")
 debug_color = Color(0.894118, 0.192157, 0.631373, 0.419608)

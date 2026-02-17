@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://boe7wya5y54mq"]
+[gd_scene format=3 uid="uid://boe7wya5y54mq"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_760co"]
 [ext_resource type="Script" uid="uid://0xqxc1ynwyt3" path="res://scenes/_shared/ui/simple_dialog.gd" id="1_o20yj"]
@@ -20,7 +20,7 @@ corner_radius_bottom_left = 5
 corner_detail = 4
 anti_aliasing = false
 
-[node name="SimpleDialog" type="PanelContainer"]
+[node name="SimpleDialog" type="PanelContainer" unique_id=1448028789]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,28 +30,28 @@ theme = ExtResource("1_760co")
 theme_override_styles/panel = SubResource("StyleBoxFlat_mlpij")
 script = ExtResource("1_o20yj")
 
-[node name="UiSounds" parent="." instance=ExtResource("3_lsdg3")]
+[node name="UiSounds" parent="." unique_id=464462383 instance=ExtResource("3_lsdg3")]
 
-[node name="DialogContainer" type="PanelContainer" parent="."]
+[node name="DialogContainer" type="PanelContainer" parent="." unique_id=1651263724]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_85es1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogContainer" unique_id=35121723]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="BodyLabel" type="Label" parent="DialogContainer/VBoxContainer"]
+[node name="BodyLabel" type="Label" parent="DialogContainer/VBoxContainer" unique_id=1916972545]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Body"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogContainer/VBoxContainer" unique_id=2131800223]
 layout_mode = 2
 
-[node name="NegativeBtn" type="Button" parent="DialogContainer/VBoxContainer/HBoxContainer"]
+[node name="NegativeBtn" type="Button" parent="DialogContainer/VBoxContainer/HBoxContainer" unique_id=799284120]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,7 +65,7 @@ mouse_filter = 2
 button_mask = 0
 text = "No"
 
-[node name="PositiveBtn" type="Button" parent="DialogContainer/VBoxContainer/HBoxContainer"]
+[node name="PositiveBtn" type="Button" parent="DialogContainer/VBoxContainer/HBoxContainer" unique_id=857036157]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

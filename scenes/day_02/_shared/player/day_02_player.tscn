@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0x0fhmsb17ts"]
+[gd_scene format=3 uid="uid://d0x0fhmsb17ts"]
 
 [ext_resource type="Script" uid="uid://y8cuv4gjwqc4" path="res://scenes/day_02/_shared/player/day_02_player.gd" id="1_18evh"]
 [ext_resource type="Texture2D" uid="uid://bwdibri83ew7" path="res://art/day_2/day_02_player_0.png" id="2_v6tjh"]
@@ -68,29 +68,29 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgo7d"]
 size = Vector2(8, 8)
 
-[node name="Day02Player" type="Node2D" groups=["players"]]
+[node name="Day02Player" type="Node2D" unique_id=1828397599 groups=["players"]]
 physics_interpolation_mode = 2
 z_index = -2
 position = Vector2(-24, -8)
 script = ExtResource("1_18evh")
 
-[node name="Day02PlayerMovementDebug" type="Node2D" parent="."]
+[node name="Day02PlayerMovementDebug" type="Node2D" parent="." unique_id=2107725386]
 script = ExtResource("14_2r3w2")
 
-[node name="Node" type="Node" parent="Day02PlayerMovementDebug"]
+[node name="Node" type="Node" parent="Day02PlayerMovementDebug" unique_id=564047885]
 
-[node name="OriginSprite" type="Sprite2D" parent="Day02PlayerMovementDebug/Node"]
+[node name="OriginSprite" type="Sprite2D" parent="Day02PlayerMovementDebug/Node" unique_id=1882664667]
 visible = false
 self_modulate = Color(1, 1, 1, 0.486275)
 position = Vector2(-24, -8)
 texture = ExtResource("2_v6tjh")
 
-[node name="TargetSprite2" type="Sprite2D" parent="Day02PlayerMovementDebug/Node"]
+[node name="TargetSprite2" type="Sprite2D" parent="Day02PlayerMovementDebug/Node" unique_id=107108233]
 visible = false
 self_modulate = Color(1, 1, 1, 0.623529)
 texture = ExtResource("14_nxlt4")
 
-[node name="DirDurationLabel" type="Label" parent="Day02PlayerMovementDebug"]
+[node name="DirDurationLabel" type="Label" parent="Day02PlayerMovementDebug" unique_id=244437409]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -101,16 +101,16 @@ grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2089573865]
 sprite_frames = SubResource("SpriteFrames_tdrqc")
 animation = &"dying"
 autoplay = "default"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=964515081]
 collision_layer = 32
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1290914286]
 shape = SubResource("RectangleShape2D_hgo7d")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

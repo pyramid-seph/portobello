@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjiiffracbg0c"]
+[gd_scene format=3 uid="uid://bjiiffracbg0c"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_1jj31"]
 [ext_resource type="Script" uid="uid://dklwctfs1fhi5" path="res://scenes/day_ex/_shared/cutscenes/cutscene_day_ex_01.gd" id="1_mjshw"]
 
-[node name="CutsceneDayEx01" type="Control"]
+[node name="CutsceneDayEx01" type="Control" unique_id=85317422]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,10 +14,10 @@ theme = ExtResource("1_1jj31")
 script = ExtResource("1_mjshw")
 _autostart = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=386865489]
 one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1626373004]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="DayLabel" type="Label" parent="ColorRect"]
+[node name="DayLabel" type="Label" parent="ColorRect" unique_id=563412223]
 visible = false
 layout_mode = 1
 anchors_preset = 15

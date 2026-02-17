@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://p87u4fw01vqs"]
+[gd_scene format=3 uid="uid://p87u4fw01vqs"]
 
 [ext_resource type="PackedScene" uid="uid://brj67hm7ypmn8" path="res://scenes/_shared/moving_item.tscn" id="1_htd8b"]
 [ext_resource type="Script" uid="uid://dl3y4a8gwibke" path="res://scenes/day_03/_shared/items/bird.gd" id="2_g1tn3"]
@@ -23,7 +23,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drdwf"]
 size = Vector2(8, 4)
 
-[node name="Bird" instance=ExtResource("1_htd8b")]
+[node name="Bird" unique_id=1544482353 instance=ExtResource("1_htd8b")]
 z_index = -30
 script = ExtResource("2_g1tn3")
 speed = 50.0
@@ -31,13 +31,13 @@ movement_pattern = 8
 score_points_pick_up = 50
 pick_up_sound = ExtResource("3_e7gon")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=639351298]
 sprite_frames = SubResource("SpriteFrames_sugky")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1" unique_id=1971693100]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_drdwf")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=747515057]
 position = Vector2(8, 8)
 scale = Vector2(0.4, 0.2)

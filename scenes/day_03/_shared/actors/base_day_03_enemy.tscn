@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://drvu0mov0ok2m"]
+[gd_scene format=3 uid="uid://drvu0mov0ok2m"]
 
 [ext_resource type="Script" uid="uid://dflxvsy1o2oix" path="res://scenes/day_03/_shared/actors/base_day_03_enemy.gd" id="1_u8kdk"]
 [ext_resource type="Script" uid="uid://bv7id7yvoes87" path="res://scenes/_shared/hitbox.gd" id="2_aodou"]
@@ -19,32 +19,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BaseDay03Enemy" type="Node2D" groups=["enemies"]]
+[node name="BaseDay03Enemy" type="Node2D" unique_id=308482639 groups=["enemies"]]
 script = ExtResource("1_u8kdk")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=590720313]
 script = ExtResource("2_aodou")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=265486500]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_mtxue")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1610675595]
 script = ExtResource("3_sl1yr")
 killer_groups = Array[String](["player_bullets"])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1502045800]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_mtxue")
 debug_color = Color(0, 1, 0, 0.419608)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1427331327]
 sprite_frames = SubResource("SpriteFrames_c2apo")
 autoplay = "default"
 centered = false
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1818417061]
 rect = Rect2(0, 0, 16, 16)
 
 [connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]

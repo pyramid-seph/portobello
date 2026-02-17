@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvvm78qgp2fbl"]
+[gd_scene format=3 uid="uid://dvvm78qgp2fbl"]
 
 [ext_resource type="Script" uid="uid://brse65wrlnrqi" path="res://scenes/day_ex/ui/quest_indicator.gd" id="1_pfojr"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_r57jh"]
@@ -76,7 +76,7 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
-[node name="QuestIndicator" type="MarginContainer"]
+[node name="QuestIndicator" type="MarginContainer" unique_id=1434474458]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 4
@@ -85,26 +85,24 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 script = ExtResource("1_pfojr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7ij5l")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1773340206]
+libraries/ = SubResource("AnimationLibrary_7ij5l")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1205077609]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_603kd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=738152164]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1411496786]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=876529924]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
@@ -113,11 +111,11 @@ theme_override_font_sizes/font_size = 8
 text = "QUEST_MISSION"
 uppercase = true
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1225000299]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=174088146]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0
@@ -126,11 +124,11 @@ theme_override_font_sizes/font_size = 8
 text = "QUEST_MISSION_TITLE"
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=908029825]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="StepLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="StepLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=977504809]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 0

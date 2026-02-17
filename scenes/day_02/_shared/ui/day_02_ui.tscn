@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkurq57vlqf73"]
+[gd_scene format=3 uid="uid://bkurq57vlqf73"]
 
 [ext_resource type="Script" uid="uid://cdnspkkov1s0p" path="res://scenes/day_02/_shared/ui/day_02_ui.gd" id="1_ccpfx"]
 [ext_resource type="PackedScene" uid="uid://b0itsp3jm2p1k" path="res://scenes/_shared/ui/pause_menu.tscn" id="1_x3rjv"]
@@ -9,7 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://d0l6pt7mpwbu8" path="res://scenes/day_01/_shared/ui/label_settings_floating_text.tres" id="6_fvamt"]
 [ext_resource type="FontFile" uid="uid://m3wbmrled4kn" path="res://art/fonts/kenney/kenney_mini.ttf" id="7_gy7mf"]
 
-[node name="Day02Ui" type="Control"]
+[node name="Day02Ui" type="Control" unique_id=417614591]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ grow_vertical = 2
 theme = ExtResource("6_b66xj")
 script = ExtResource("1_ccpfx")
 
-[node name="LivesCounter" type="HBoxContainer" parent="."]
+[node name="LivesCounter" type="HBoxContainer" parent="." unique_id=950967276]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -34,21 +34,21 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 0
 
-[node name="Icon" type="TextureRect" parent="LivesCounter"]
+[node name="Icon" type="TextureRect" parent="LivesCounter" unique_id=644808398]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_ps6a3")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="LivesCounter"]
+[node name="Label" type="Label" parent="LivesCounter" unique_id=1343090473]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "9"
 vertical_alignment = 1
 max_lines_visible = 1
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=1996249784]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -62,7 +62,7 @@ text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="."]
+[node name="HighScoreLabel" type="Label" parent="." unique_id=852970986]
 layout_mode = 1
 offset_left = 3.0
 offset_right = 36.0
@@ -73,7 +73,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="StartLabels" parent="." instance=ExtResource("2_3k77v")]
+[node name="StartLabels" parent="." unique_id=1031926103 instance=ExtResource("2_3k77v")]
 layout_mode = 1
 text_1 = "Buffet"
 text_2 = "LEVEL_START_LINE_1"
@@ -84,7 +84,7 @@ duration_sec = 1.6
 label_2_visible_delay_sec = 0.8
 preview_labels = false
 
-[node name="GameOver" parent="." instance=ExtResource("5_2mhka")]
+[node name="GameOver" parent="." unique_id=963670163 instance=ExtResource("5_2mhka")]
 visible = false
 layout_mode = 1
 text = "¡Qué indigestión!
@@ -94,7 +94,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 3.0
 
-[node name="PieceOfCake" parent="." instance=ExtResource("5_2mhka")]
+[node name="PieceOfCake" parent="." unique_id=1838737129 instance=ExtResource("5_2mhka")]
 visible = false
 layout_mode = 1
 text = "LEVEL_SUCCESS"
@@ -103,7 +103,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 _duration_sec = 2.0
 
-[node name="LevelName" type="Label" parent="."]
+[node name="LevelName" type="Label" parent="." unique_id=1939833002]
 visible = false
 layout_mode = 1
 anchors_preset = 10
@@ -118,7 +118,7 @@ text = "LEVEL_DAY_01_LEVEL_NAME_STORY_MODE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BlackScreen" type="ColorRect" parent="."]
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=1848362461]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -128,7 +128,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_x3rjv")]
+[node name="PauseMenu" parent="." unique_id=210668300 instance=ExtResource("1_x3rjv")]
 visible = false
 layout_mode = 1
 show_auto_fire = false

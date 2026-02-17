@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://durkalhb4e6b0"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://durkalhb4e6b0"]
 
 [ext_resource type="Texture2D" uid="uid://dkphhwiyjj3wu" path="res://art/day_ex/battle_ability_player_scratch_0.png" id="1_6pdjp"]
 [ext_resource type="AudioStream" uid="uid://b70ocs6s8ng0p" path="res://audio/sfx/sfx_day_ex_attack_weak.wav" id="1_hwtl4"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckjfj1kxcsge6"]
+[gd_scene format=3 uid="uid://ckjfj1kxcsge6"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_g671f"]
 [ext_resource type="Script" uid="uid://815ea5s2ydui" path="res://scenes/_shared/progress_menu.gd" id="2_e35o3"]
@@ -8,13 +8,13 @@
 [ext_resource type="StyleBox" uid="uid://deqo7rbmjjsvj" path="res://resources/instances/odd_high_score_item.tres" id="5_yate7"]
 [ext_resource type="StyleBox" uid="uid://c2d5slbtpw4ix" path="res://resources/instances/even_high_score_item.tres" id="6_736vx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qykqa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msbht"]
 resource_local_to_scene = true
 content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(1, 1, 1, 0)
 
-[node name="ProgressMenu" type="Control"]
+[node name="ProgressMenu" type="Control" unique_id=1359428082]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,9 +24,9 @@ grow_vertical = 2
 theme = ExtResource("1_g671f")
 script = ExtResource("2_e35o3")
 
-[node name="UiSounds" parent="." instance=ExtResource("3_hq30q")]
+[node name="UiSounds" parent="." unique_id=1102220647 instance=ExtResource("3_hq30q")]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1384950551]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,20 +39,20 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1471238020]
 custom_minimum_size = Vector2(204, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1424490955]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="RecordTypeSelector" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_s01o1")]
+[node name="RecordTypeSelector" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=18896360 instance=ExtResource("2_s01o1")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../MarginContainer/GoBackBtn")
-theme_override_styles/panel = SubResource("StyleBoxFlat_qykqa")
+theme_override_styles/panel = SubResource("StyleBoxFlat_msbht")
 selector_text = ""
 _options = ["MENU_PROGRESS_STARS", "MENU_PROGRESS_HIGH_SCORES"]
 loop_options = false
@@ -72,15 +72,15 @@ text = "MENU_PROGRESS_STARS"
 [node name="NextOptionLabel" parent="MarginContainer/PanelContainer/VBoxContainer/RecordTypeSelector/LabelContainer" index="3"]
 text = " >"
 
-[node name="EmptySpace" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="EmptySpace" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=2021105973]
 layout_mode = 2
 
-[node name="SeparatorStart" type="ColorRect" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="SeparatorStart" type="ColorRect" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=678058775]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TwoColLabel0" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel0" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=537370315 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -88,7 +88,7 @@ theme_override_styles/panel = ExtResource("5_yate7")
 text_1 = "Día 1"
 text_2 = "*****"
 
-[node name="TwoColLabel1" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel1" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=900986388 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -96,7 +96,7 @@ theme_override_styles/panel = ExtResource("6_736vx")
 text_1 = "Día 2"
 text_2 = "*****"
 
-[node name="TwoColLabel2" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel2" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=179060440 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -104,7 +104,7 @@ theme_override_styles/panel = ExtResource("5_yate7")
 text_1 = "Día 2"
 text_2 = "*****"
 
-[node name="TwoColLabel3" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel3" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=2087805948 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -112,7 +112,7 @@ theme_override_styles/panel = ExtResource("6_736vx")
 text_1 = "Día 2"
 text_2 = "*****"
 
-[node name="TwoColLabel4" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel4" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=936832294 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -120,7 +120,7 @@ theme_override_styles/panel = ExtResource("5_yate7")
 text_1 = "Día 1"
 text_2 = "*****"
 
-[node name="TwoColLabel5" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel5" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=536343005 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -128,7 +128,7 @@ theme_override_styles/panel = ExtResource("6_736vx")
 text_1 = "Día 1"
 text_2 = "*****"
 
-[node name="TwoColLabel6" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel6" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=919465874 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -136,7 +136,7 @@ theme_override_styles/panel = ExtResource("5_yate7")
 text_1 = "Día 1"
 text_2 = "*****"
 
-[node name="TwoColLabel7" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel7" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1174976705 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -144,7 +144,7 @@ theme_override_styles/panel = ExtResource("6_736vx")
 text_1 = "Día 1"
 text_2 = "*****"
 
-[node name="TwoColLabel8" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("4_bducy")]
+[node name="TwoColLabel8" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=2054208115 instance=ExtResource("4_bducy")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
@@ -152,17 +152,17 @@ theme_override_styles/panel = ExtResource("5_yate7")
 text_1 = "Día 1"
 text_2 = "*****"
 
-[node name="SeparatorEnd" type="ColorRect" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="SeparatorEnd" type="ColorRect" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=894213723]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1385313031]
 layout_mode = 2
 mouse_filter = 0
 theme_override_constants/margin_top = 4
 
-[node name="GoBackBtn" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="GoBackBtn" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=2080869610]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_neighbor_top = NodePath("../../RecordTypeSelector")

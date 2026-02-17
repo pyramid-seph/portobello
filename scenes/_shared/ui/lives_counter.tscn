@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxb3w05xdg8w2"]
+[gd_scene format=3 uid="uid://bxb3w05xdg8w2"]
 
 [ext_resource type="PackedScene" uid="uid://drt2fo403br8e" path="res://scenes/_shared/ui/counter.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwjesgpu3jr21" path="res://art/_shared/ui_counter_lives.png" id="3"]
 
-[node name="LivesCounter" instance=ExtResource("1")]
+[node name="LivesCounter" unique_id=1084073340 instance=ExtResource("1")]
 size_flags_horizontal = 0
 
-[node name="Icon" parent="." index="0"]
+[node name="Icon" parent="." index="0" unique_id=1928065813]
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3")
 
-[node name="Label" parent="." index="1"]
+[node name="Label" parent="." index="1" unique_id=1836502396]
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "9"
 vertical_alignment = 1

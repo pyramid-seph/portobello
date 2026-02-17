@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c0r23aw37b8uw"]
+[gd_scene format=3 uid="uid://c0r23aw37b8uw"]
 
 [ext_resource type="Script" uid="uid://bmvbm2g08hij4" path="res://scenes/day_03/level_02/enemies/motership/motership.gd" id="1_lyngl"]
 [ext_resource type="PackedScene" uid="uid://bmfc5e84lpwkj" path="res://scenes/day_03/_shared/objects/explosion.tscn" id="2_wk4gl"]
@@ -42,7 +42,7 @@ script = ExtResource("21_kwipx")
 text = "DIALOGUE_DAY_03_MOTERSHIP_02"
 duration_sec = 2.0
 
-[node name="Motership" type="Node2D"]
+[node name="Motership" type="Node2D" unique_id=1575357338]
 script = ExtResource("1_lyngl")
 _initial_hp = 450
 _activate_block_spawner_at_hp = 350
@@ -50,17 +50,17 @@ _speed_up_block_spawner_at_hp = 200
 _activate_heat_seeker_at_hp = 150
 Explosion = ExtResource("2_wk4gl")
 
-[node name="Inside" type="Node2D" parent="."]
+[node name="Inside" type="Node2D" parent="." unique_id=645159983]
 metadata/_edit_lock_ = true
 
-[node name="Floor" type="Sprite2D" parent="Inside"]
+[node name="Floor" type="Sprite2D" parent="Inside" unique_id=1467736859]
 z_index = -500
 position = Vector2(56, 143)
 texture = ExtResource("3_5chgg")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="AlienHologram" type="Sprite2D" parent="Inside"]
+[node name="AlienHologram" type="Sprite2D" parent="Inside" unique_id=2089714649]
 visible = false
 position = Vector2(112, 206)
 texture = ExtResource("4_3xeh6")
@@ -69,16 +69,16 @@ script = ExtResource("6_fhdi3")
 _flicker_duration_sec = 0.08
 metadata/_edit_lock_ = true
 
-[node name="StartPosition" type="Marker2D" parent="Inside"]
+[node name="StartPosition" type="Marker2D" parent="Inside" unique_id=1170554231]
 position = Vector2(112, 255)
 metadata/_edit_lock_ = true
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="." unique_id=479944484]
 texture = ExtResource("3_4nxgv")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="LifeBar" type="TextureProgressBar" parent="."]
+[node name="LifeBar" type="TextureProgressBar" parent="." unique_id=1996225054]
 unique_name_in_owner = true
 offset_left = 56.0
 offset_top = 122.0
@@ -96,7 +96,7 @@ texture_progress = SubResource("CanvasTexture_gddg1")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0, 0, 1)
 
-[node name="BlockSpawnerWeapon" type="Node2D" parent="." node_paths=PackedStringArray("world")]
+[node name="BlockSpawnerWeapon" type="Node2D" parent="." unique_id=607812570 node_paths=PackedStringArray("world")]
 position = Vector2(120, 142)
 script = ExtResource("5_yw3ju")
 world = NodePath("../Inside")
@@ -105,11 +105,11 @@ _sped_up_cooldown = 0.8
 Block = ExtResource("6_svbuj")
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="BlockSpawnerWeapon"]
+[node name="Timer" type="Timer" parent="BlockSpawnerWeapon" unique_id=1162523954]
 process_callback = 0
 one_shot = true
 
-[node name="HeatSeekerWeapon" type="Node2D" parent="." node_paths=PackedStringArray("world")]
+[node name="HeatSeekerWeapon" type="Node2D" parent="." unique_id=422205894 node_paths=PackedStringArray("world")]
 position = Vector2(120, 135)
 script = ExtResource("7_gjhag")
 world = NodePath("../Inside")
@@ -121,14 +121,14 @@ _time_between_bursts_sec = 0.8
 _bullets_per_burst = 10
 metadata/_edit_lock_ = true
 
-[node name="Gun" parent="HeatSeekerWeapon" instance=ExtResource("7_rkunh")]
+[node name="Gun" parent="HeatSeekerWeapon" unique_id=1951171041 instance=ExtResource("7_rkunh")]
 z_index = -100
 z_as_relative = false
 Bullet = ExtResource("11_iev77")
 cooldown = 8.0
 ignore_cooldown = true
 
-[node name="LaserSight" type="Line2D" parent="HeatSeekerWeapon/Gun"]
+[node name="LaserSight" type="Line2D" parent="HeatSeekerWeapon/Gun" unique_id=251843871]
 physics_interpolation_mode = 2
 visible = false
 texture_repeat = 2
@@ -138,133 +138,133 @@ default_color = Color(0, 0, 0, 1)
 texture = ExtResource("9_441i0")
 texture_mode = 1
 
-[node name="LaserSightWarning" type="Line2D" parent="HeatSeekerWeapon/Gun"]
+[node name="LaserSightWarning" type="Line2D" parent="HeatSeekerWeapon/Gun" unique_id=2074297876]
 physics_interpolation_mode = 2
 visible = false
 points = PackedVector2Array(0, 8, 0, 136)
 width = 1.0
 default_color = Color(1, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="HeatSeekerWeapon"]
+[node name="Timer" type="Timer" parent="HeatSeekerWeapon" unique_id=196191861]
 process_callback = 0
 one_shot = true
 
-[node name="LaserBallsWeapon" type="Node2D" parent="."]
+[node name="LaserBallsWeapon" type="Node2D" parent="." unique_id=177071797]
 position = Vector2(28, 143)
 script = ExtResource("11_gqj8r")
 _cooldown = 1.6
 is_active = true
 metadata/_edit_lock_ = true
 
-[node name="LaserBallsCannon0" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+[node name="LaserBallsCannon0" parent="LaserBallsWeapon" unique_id=50776550 instance=ExtResource("10_oilhl")]
 metadata/_edit_lock_ = true
 
-[node name="LaserBallsCannon1" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+[node name="LaserBallsCannon1" parent="LaserBallsWeapon" unique_id=1749141694 instance=ExtResource("10_oilhl")]
 position = Vector2(0, 32)
 metadata/_edit_lock_ = true
 
-[node name="LaserBallsCannon2" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+[node name="LaserBallsCannon2" parent="LaserBallsWeapon" unique_id=1868072047 instance=ExtResource("10_oilhl")]
 position = Vector2(0, 64)
 metadata/_edit_lock_ = true
 
-[node name="LaserBallsCannon3" parent="LaserBallsWeapon" instance=ExtResource("10_oilhl")]
+[node name="LaserBallsCannon3" parent="LaserBallsWeapon" unique_id=855596634 instance=ExtResource("10_oilhl")]
 position = Vector2(0, 96)
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="LaserBallsWeapon"]
+[node name="Timer" type="Timer" parent="LaserBallsWeapon" unique_id=1906410818]
 process_callback = 0
 one_shot = true
 
-[node name="Weakpoint" type="Node2D" parent="."]
+[node name="Weakpoint" type="Node2D" parent="." unique_id=276983743]
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock0" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock0" type="Sprite2D" parent="Weakpoint" unique_id=1167157449]
 z_index = -50
 position = Vector2(56, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock1" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock1" type="Sprite2D" parent="Weakpoint" unique_id=1968363238]
 z_index = -50
 position = Vector2(72, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock2" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock2" type="Sprite2D" parent="Weakpoint" unique_id=1712578325]
 z_index = -50
 position = Vector2(88, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock3" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock3" type="Sprite2D" parent="Weakpoint" unique_id=1777826517]
 z_index = -50
 position = Vector2(104, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock4" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock4" type="Sprite2D" parent="Weakpoint" unique_id=1563772006]
 z_index = -50
 position = Vector2(120, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock5" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock5" type="Sprite2D" parent="Weakpoint" unique_id=746937252]
 z_index = -50
 position = Vector2(136, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock6" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock6" type="Sprite2D" parent="Weakpoint" unique_id=151009942]
 z_index = -50
 position = Vector2(152, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="WeakPointBlock7" type="Sprite2D" parent="Weakpoint"]
+[node name="WeakPointBlock7" type="Sprite2D" parent="Weakpoint" unique_id=541341680]
 z_index = -50
 position = Vector2(168, 127)
 texture = ExtResource("13_8ybbm")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Hurtbox" type="Area2D" parent="Weakpoint"]
+[node name="Hurtbox" type="Area2D" parent="Weakpoint" unique_id=1215239991]
 script = ExtResource("17_s7cdp")
 killer_groups = Array[String](["player_bullets"])
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weakpoint/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weakpoint/Hurtbox" unique_id=210630771]
 position = Vector2(120, 135)
 shape = SubResource("RectangleShape2D_lwyhk")
 debug_color = Color(0, 1, 0, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="CleanUpZoneTop" parent="." instance=ExtResource("18_f0wfx")]
+[node name="CleanUpZoneTop" parent="." unique_id=222696090 instance=ExtResource("18_f0wfx")]
 position = Vector2(120, 117)
 collision_mask = 18
 groups = Array[String](["player_bullets"])
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" parent="CleanUpZoneTop" index="0"]
+[node name="CollisionShape2D" parent="CleanUpZoneTop" index="0" unique_id=779258169]
 shape = SubResource("RectangleShape2D_uueik")
 
-[node name="CleanUpZoneBottom" parent="." instance=ExtResource("18_f0wfx")]
+[node name="CleanUpZoneBottom" parent="." unique_id=321810160 instance=ExtResource("18_f0wfx")]
 position = Vector2(120, 281)
 collision_mask = 18
 clean_up_behavior = 1
 groups = Array[String](["bullets", "enemies"])
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" parent="CleanUpZoneBottom" index="0"]
+[node name="CollisionShape2D" parent="CleanUpZoneBottom" index="0" unique_id=779258169]
 shape = SubResource("RectangleShape2D_uueik")
 
-[node name="PairOfMiniBallsLeft" parent="." instance=ExtResource("19_67e7r")]
+[node name="PairOfMiniBallsLeft" parent="." unique_id=597535084 instance=ExtResource("19_67e7r")]
 position = Vector2(8, 287)
 _color_one = Color(0, 0, 1, 1)
 _color_two = Color(0, 1, 0, 1)
@@ -278,7 +278,7 @@ color = Color(0, 0, 1, 1)
 position = Vector2(8, 1)
 color = Color(0, 0, 1, 1)
 
-[node name="PairOfMiniBallsCenter" parent="." instance=ExtResource("19_67e7r")]
+[node name="PairOfMiniBallsCenter" parent="." unique_id=870577378 instance=ExtResource("19_67e7r")]
 position = Vector2(108, 288)
 _color_one = Color(0, 1, 0, 1)
 _color_two = Color(1, 0, 0, 1)
@@ -292,7 +292,7 @@ color = Color(0, 1, 0, 1)
 position = Vector2(9, 0)
 color = Color(0, 1, 0, 1)
 
-[node name="PairOfMiniBallsRight" parent="." instance=ExtResource("19_67e7r")]
+[node name="PairOfMiniBallsRight" parent="." unique_id=836186373 instance=ExtResource("19_67e7r")]
 position = Vector2(209, 287)
 _color_one = Color(1, 0, 0, 1)
 _color_two = Color(0, 0, 1, 1)
@@ -307,12 +307,12 @@ color = Color(1, 0, 0, 1)
 position = Vector2(8, 0)
 color = Color(1, 0, 0, 1)
 
-[node name="ExplosionsContainer" type="Node2D" parent="."]
+[node name="ExplosionsContainer" type="Node2D" parent="." unique_id=239581027]
 metadata/_edit_lock_ = true
 
-[node name="FlashContainer" type="Node" parent="."]
+[node name="FlashContainer" type="Node" parent="." unique_id=2115752237]
 
-[node name="Flash" type="ColorRect" parent="FlashContainer"]
+[node name="Flash" type="ColorRect" parent="FlashContainer" unique_id=1336165998]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 15
@@ -321,7 +321,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AbductionRay" type="Node2D" parent="."]
+[node name="AbductionRay" type="Node2D" parent="." unique_id=1223865027]
 physics_interpolation_mode = 2
 z_as_relative = false
 position = Vector2(120, 311)
@@ -331,15 +331,15 @@ _ray_color_1 = Color(1, 1, 0, 0.501961)
 _ray_color_2 = Color(1, 1, 1, 0.501961)
 metadata/_edit_lock_ = true
 
-[node name="Ray" type="Line2D" parent="AbductionRay"]
+[node name="Ray" type="Line2D" parent="AbductionRay" unique_id=1955378742]
 points = PackedVector2Array(0, 0, 0, 273)
 width = 64.0
 metadata/_edit_lock_ = true
 
-[node name="AbductionLines" type="Node2D" parent="AbductionRay"]
+[node name="AbductionLines" type="Node2D" parent="AbductionRay" unique_id=509842501]
 metadata/_edit_lock_ = true
 
-[node name="Line" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=1391166181]
 texture_repeat = 2
 points = PackedVector2Array(-32, 0, 32, 0)
 width = 1.0
@@ -348,7 +348,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Line2" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line2" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=356363668]
 texture_repeat = 2
 position = Vector2(0, 34)
 points = PackedVector2Array(-32, 0, 32, 0)
@@ -358,7 +358,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Line3" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line3" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=1739690102]
 texture_repeat = 2
 position = Vector2(0, 68)
 points = PackedVector2Array(-32, 0, 32, 0)
@@ -368,7 +368,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Line4" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line4" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=1126470799]
 texture_repeat = 2
 position = Vector2(0, 102)
 points = PackedVector2Array(-32, 0, 32, 0)
@@ -378,7 +378,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Line5" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line5" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=1945854357]
 texture_repeat = 2
 position = Vector2(0, 136)
 points = PackedVector2Array(-32, 0, 32, 0)
@@ -388,7 +388,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Line6" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line6" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=1459719800]
 texture_repeat = 2
 position = Vector2(0, 170)
 points = PackedVector2Array(-32, 0, 32, 0)
@@ -398,7 +398,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Line7" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line7" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=829876585]
 texture_repeat = 2
 position = Vector2(0, 204)
 points = PackedVector2Array(-32, 0, 32, 0)
@@ -408,7 +408,7 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Line8" type="Line2D" parent="AbductionRay/AbductionLines"]
+[node name="Line8" type="Line2D" parent="AbductionRay/AbductionLines" unique_id=1844744321]
 texture_repeat = 2
 position = Vector2(0, 238)
 points = PackedVector2Array(-32, 0, 32, 0)
@@ -418,9 +418,9 @@ texture = ExtResource("9_441i0")
 texture_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Control" type="Node" parent="."]
+[node name="Control" type="Node" parent="." unique_id=258747388]
 
-[node name="DialogueBox" parent="Control" instance=ExtResource("20_jn5ls")]
+[node name="DialogueBox" parent="Control" unique_id=500921714 instance=ExtResource("20_jn5ls")]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_bottom = 1.0

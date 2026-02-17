@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://drjxqg6njqe0h"]
+[gd_scene format=3 uid="uid://drjxqg6njqe0h"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_vafp5"]
 [ext_resource type="StyleBox" uid="uid://dvn8b501xre75" path="res://resources/instances/h_selector_panel_style.tres" id="2_1hlqb"]
 [ext_resource type="Script" uid="uid://dc1tlpdew567m" path="res://scenes/_shared/ui/h_selector.gd" id="2_psdub"]
 
-[node name="HSelector" type="PanelContainer"]
+[node name="HSelector" type="PanelContainer" unique_id=554002224]
 offset_right = 132.0
 offset_bottom = 22.0
 focus_mode = 2
@@ -14,14 +14,14 @@ theme_override_styles/panel = ExtResource("2_1hlqb")
 script = ExtResource("2_psdub")
 selector_text = "Example"
 
-[node name="LabelContainer" type="HBoxContainer" parent="."]
+[node name="LabelContainer" type="HBoxContainer" parent="." unique_id=1500432523]
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme = ExtResource("1_vafp5")
 theme_override_constants/separation = 0
 
-[node name="NameLabel" type="Label" parent="LabelContainer"]
+[node name="NameLabel" type="Label" parent="LabelContainer" unique_id=761741173]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -29,7 +29,7 @@ theme_override_font_sizes/font_size = 16
 text = "Example "
 vertical_alignment = 1
 
-[node name="PrevOptionLabel" type="Label" parent="LabelContainer"]
+[node name="PrevOptionLabel" type="Label" parent="LabelContainer" unique_id=1220989256]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -37,7 +37,7 @@ theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 16
 vertical_alignment = 1
 
-[node name="OptionLabel" type="Label" parent="LabelContainer"]
+[node name="OptionLabel" type="Label" parent="LabelContainer" unique_id=1535577471]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -46,7 +46,7 @@ theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 16
 vertical_alignment = 1
 
-[node name="NextOptionLabel" type="Label" parent="LabelContainer"]
+[node name="NextOptionLabel" type="Label" parent="LabelContainer" unique_id=1431416552]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

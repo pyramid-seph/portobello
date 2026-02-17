@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjrmeidj5ljgj"]
+[gd_scene format=3 uid="uid://cjrmeidj5ljgj"]
 
 [ext_resource type="Script" uid="uid://chhmfr0lsss1f" path="res://scenes/day_ex/npcs/npc.gd" id="1_5wttw"]
 
@@ -157,7 +157,7 @@ _data = {
 &"move_up": SubResource("Animation_dsqvr")
 }
 
-[node name="Npc" type="CharacterBody2D"]
+[node name="Npc" type="CharacterBody2D" unique_id=306461291]
 collision_layer = 128
 collision_mask = 160
 motion_mode = 1
@@ -165,22 +165,20 @@ wall_min_slide_angle = 0.0
 safe_margin = 0.02
 script = ExtResource("1_5wttw")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1861960706]
 rect = Rect2(-5, -5, 10, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1394167854]
 shape = SubResource("RectangleShape2D_4e5m6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=442724113]
 hframes = 2
 vframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_c8v5i")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=474688413]
+libraries/ = SubResource("AnimationLibrary_c8v5i")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1811234328]
 wait_time = 10.0
 one_shot = true
 

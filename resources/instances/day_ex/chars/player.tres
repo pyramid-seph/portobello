@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FighterData" load_steps=23 format=3 uid="uid://cipgo47xsp7df"]
+[gd_resource type="Resource" script_class="FighterData" format=3 uid="uid://cipgo47xsp7df"]
 
 [ext_resource type="Resource" uid="uid://durkalhb4e6b0" path="res://resources/instances/day_ex/actions/attack_scratch.tres" id="1_18lrd"]
 [ext_resource type="Script" uid="uid://tqdmlxo83op1" path="res://resources/enemy_command.gd" id="2_ieakb"]

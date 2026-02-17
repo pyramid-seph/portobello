@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://kmbkuf6vx0xv"]
+[gd_scene format=3 uid="uid://kmbkuf6vx0xv"]
 
 [ext_resource type="Theme" uid="uid://y72soc2heqau" path="res://themes/theme.tres" id="1_3vr8k"]
 [ext_resource type="Texture2D" uid="uid://ydnoqkd04fkt" path="res://art/menu_screen/title.png" id="2_0sxud"]
@@ -8,7 +8,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl1nc"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="ShaderPrecompiler" type="Control"]
+[node name="ShaderPrecompiler" type="Control" unique_id=777618916]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -19,11 +19,11 @@ grow_vertical = 2
 theme = ExtResource("1_3vr8k")
 script = ExtResource("2_gp5tc")
 
-[node name="CompilingParent" type="Node2D" parent="."]
+[node name="CompilingParent" type="Node2D" parent="." unique_id=1697920567]
 unique_name_in_owner = true
 position = Vector2(120, 150)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=332352887]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,19 +32,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yl1nc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=88000340]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer" unique_id=1886581267]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_0sxud")
 stretch_mode = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=771618524]
 clip_contents = false
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)

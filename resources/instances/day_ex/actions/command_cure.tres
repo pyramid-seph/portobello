@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://clhd3d4jufm58"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://clhd3d4jufm58"]
 
 [ext_resource type="Texture2D" uid="uid://b0pjuc1pcjx0l" path="res://art/day_ex/battle_ability_player_cure_0.png" id="1_6hllx"]
 [ext_resource type="AudioStream" uid="uid://bwrahwtrd2wbx" path="res://audio/sfx/sfx_day_ex_ability_cure.wav" id="1_qw2ri"]

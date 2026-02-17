@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleAction" load_steps=6 format=3 uid="uid://cd4sudyv4flcl"]
+[gd_resource type="Resource" script_class="BattleAction" format=3 uid="uid://cd4sudyv4flcl"]
 
 [ext_resource type="Script" uid="uid://cgmmmatwsigih" path="res://resources/battle_action.gd" id="1_2bx6u"]
 [ext_resource type="AudioStream" uid="uid://b0s4rc55g4lqw" path="res://audio/sfx/sfx_day_ex_attack_strong.wav" id="1_d4es1"]

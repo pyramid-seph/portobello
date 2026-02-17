@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clyn8nlxsbf12"]
+[gd_scene format=3 uid="uid://clyn8nlxsbf12"]
 
 [ext_resource type="Script" uid="uid://hfyq1gsn65ew" path="res://scenes/day_ex/ui/rpg_dialogue_box.gd" id="1_f0hiq"]
 [ext_resource type="Texture2D" uid="uid://df5g8lttgw47a" path="res://art/day_ex/rpg_dialog_box.png" id="1_ukv3d"]
@@ -58,7 +58,7 @@ line_spacing = 0.0
 font = ExtResource("2_xxf2d")
 font_size = 8
 
-[node name="RpgDialogueBox" type="MarginContainer"]
+[node name="RpgDialogueBox" type="MarginContainer" unique_id=2029791250]
 offset_right = 240.0
 offset_bottom = 92.0
 theme_override_constants/margin_left = 4
@@ -67,23 +67,21 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 script = ExtResource("1_f0hiq")
 
-[node name="NextPageAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1ioml")
-}
-autoplay = "RESET"
+[node name="NextPageAnimationPlayer" type="AnimationPlayer" parent="." unique_id=644971891]
+libraries/ = SubResource("AnimationLibrary_1ioml")
+autoplay = &"RESET"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=551729966]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="NameContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="NameContainer" type="PanelContainer" parent="VBoxContainer" unique_id=399518991]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ekldn")
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/NameContainer"]
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameContainer" unique_id=665116636]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lorem"
@@ -92,16 +90,16 @@ vertical_alignment = 1
 justification_flags = 160
 uppercase = true
 
-[node name="MessageContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="MessageContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1268569701]
 custom_minimum_size = Vector2(232, 58)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ekldn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MessageContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MessageContainer" unique_id=1250783613]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MessageContainer/VBoxContainer"]
+[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MessageContainer/VBoxContainer" unique_id=1528777177]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(216, 10)
 layout_mode = 2
@@ -115,7 +113,7 @@ scroll_active = false
 autowrap_mode = 2
 visible_characters_behavior = 1
 
-[node name="NextPageTextureRect" type="TextureRect" parent="VBoxContainer/MessageContainer/VBoxContainer"]
+[node name="NextPageTextureRect" type="TextureRect" parent="VBoxContainer/MessageContainer/VBoxContainer" unique_id=919272499]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

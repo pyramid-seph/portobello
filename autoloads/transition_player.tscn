@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drnw1js11sdxm"]
+[gd_scene format=3 uid="uid://drnw1js11sdxm"]
 
 [ext_resource type="Script" uid="uid://dhq51hi4pl0mw" path="res://autoloads/transition_player.gd" id="1_rv5xb"]
 [ext_resource type="Texture2D" uid="uid://15xoqgvgxl46" path="res://art/day_ex/fang_top.png" id="2_gqhx8"]
@@ -294,17 +294,15 @@ _data = {
 &"enter_battle": SubResource("Animation_c2x6p")
 }
 
-[node name="TransitionPlayer" type="CanvasLayer"]
+[node name="TransitionPlayer" type="CanvasLayer" unique_id=2146851870]
 process_mode = 3
 layer = 2
 script = ExtResource("1_rv5xb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_qskia")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1370611866]
+libraries/ = SubResource("AnimationLibrary_qskia")
 
-[node name="Flash" type="ColorRect" parent="."]
+[node name="Flash" type="ColorRect" parent="." unique_id=1098088013]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,7 +310,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=640191832]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -321,7 +319,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="FangsTop" type="NinePatchRect" parent="."]
+[node name="FangsTop" type="NinePatchRect" parent="." unique_id=1786231114]
 visible = false
 custom_minimum_size = Vector2(30, 30)
 anchors_preset = 10
@@ -336,7 +334,7 @@ patch_margin_bottom = 30
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 2
 
-[node name="FangsBottom" type="NinePatchRect" parent="."]
+[node name="FangsBottom" type="NinePatchRect" parent="." unique_id=186719270]
 visible = false
 custom_minimum_size = Vector2(30, 30)
 anchors_preset = 12

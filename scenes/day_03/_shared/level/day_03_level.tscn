@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://2h71m1hkjgum"]
+[gd_scene format=3 uid="uid://2h71m1hkjgum"]
 
 [ext_resource type="Script" uid="uid://bhhiw1r6td20g" path="res://scenes/day_03/_shared/level/day_03_level.gd" id="1_wjcvv"]
 [ext_resource type="Script" uid="uid://fc265eyjhy7g" path="res://scenes/day_03/_shared/level/day_03_interactive_bgm_temp.gd" id="2_ji8th"]
@@ -14,51 +14,51 @@
 [ext_resource type="PackedScene" uid="uid://xl5bc10rc15p" path="res://scenes/_shared/ui/results_screen.tscn" id="12_f7tyd"]
 [ext_resource type="PackedScene" uid="uid://bfidgn8t0dudh" path="res://scenes/day_03/_shared/ui/day_03_ui.tscn" id="13_f3m4q"]
 
-[node name="Day03Level" type="Node" node_paths=PackedStringArray("_player")]
+[node name="Day03Level" type="Node" unique_id=888911011 node_paths=PackedStringArray("_player")]
 process_mode = 1
 script = ExtResource("1_wjcvv")
 _player = NodePath("World/Player")
 
-[node name="Day03InteractiveBgm" type="Node" parent="."]
+[node name="Day03InteractiveBgm" type="Node" parent="." unique_id=1837532447]
 script = ExtResource("2_ji8th")
 
-[node name="BossFight" type="Node" parent="."]
+[node name="BossFight" type="Node" parent="." unique_id=1847542094]
 script = ExtResource("2_wci2p")
 
-[node name="Systems" type="Node" parent="."]
+[node name="Systems" type="Node" parent="." unique_id=162214123]
 
-[node name="StaminaSpawner" parent="Systems" instance=ExtResource("6_2hiem")]
+[node name="StaminaSpawner" parent="Systems" unique_id=914318665 instance=ExtResource("6_2hiem")]
 player_data = ExtResource("4_0lkhk")
 StaminaItem = ExtResource("7_c3nnm")
 
-[node name="PowerUpSpawner" parent="Systems" instance=ExtResource("8_ypucm")]
+[node name="PowerUpSpawner" parent="Systems" unique_id=1279656882 instance=ExtResource("8_ypucm")]
 PowerUpItem = ExtResource("9_e6eku")
 
-[node name="WaveManager" parent="Systems" instance=ExtResource("10_yasqi")]
+[node name="WaveManager" parent="Systems" unique_id=748671753 instance=ExtResource("10_yasqi")]
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=1123821184]
 process_mode = 1
 
-[node name="Day03Bg" parent="World" instance=ExtResource("12_206kv")]
+[node name="Day03Bg" parent="World" unique_id=808920826 instance=ExtResource("12_206kv")]
 
-[node name="WavePhaseStartMarker" type="Marker2D" parent="World"]
+[node name="WavePhaseStartMarker" type="Marker2D" parent="World" unique_id=1953227121]
 position = Vector2(112, 287)
 
-[node name="Player" parent="World" instance=ExtResource("3_x4rdx")]
+[node name="Player" parent="World" unique_id=1304300037 instance=ExtResource("3_x4rdx")]
 
-[node name="Interface" type="Node" parent="."]
+[node name="Interface" type="Node" parent="." unique_id=542513331]
 process_mode = 1
 
-[node name="Day03Ui" parent="Interface" instance=ExtResource("13_f3m4q")]
+[node name="Day03Ui" parent="Interface" unique_id=1605449541 instance=ExtResource("13_f3m4q")]
 
-[node name="ResultsScreen" parent="Interface" instance=ExtResource("12_f7tyd")]
+[node name="ResultsScreen" parent="Interface" unique_id=636780335 instance=ExtResource("12_f7tyd")]
 _stars_evaluation_mode = 1
 _stars_threshold_two = 9000
 _stars_threshold_three = 12000
 _stars_threshold_four = 12500
 _stars_threshold_five = 15000
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1124096787]
 one_shot = true
 
 [connection signal="level_state_changed" from="." to="Interface/Day03Ui" method="_on_day_03_level_level_state_changed"]

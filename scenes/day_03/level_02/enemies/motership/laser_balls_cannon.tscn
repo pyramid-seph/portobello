@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://spq6o43sfcc1"]
+[gd_scene format=3 uid="uid://spq6o43sfcc1"]
 
 [ext_resource type="Script" uid="uid://0al4eghbrw4v" path="res://scenes/day_03/level_02/enemies/motership/laser_balls_cannon.gd" id="1_4dg2f"]
 [ext_resource type="PackedScene" uid="uid://pokyleuxj61d" path="res://scenes/day_03/level_02/enemies/motership/motership_ball.tscn" id="1_70o5a"]
@@ -13,7 +13,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fd4x2"]
 size = Vector2(144, 18)
 
-[node name="LaserBallsCannon" type="Node2D" groups=["enemy_bullets"]]
+[node name="LaserBallsCannon" type="Node2D" unique_id=2048802543 groups=["enemy_bullets"]]
 script = ExtResource("1_4dg2f")
 _stand_by_color = Color(0, 0, 1, 1)
 _charging_color = Color(0.980392, 0.67451, 0.345098, 1)
@@ -26,59 +26,59 @@ _laser_int_color_1 = Color(0.00392157, 0.00392157, 0.87451, 1)
 _laser_int_color_2 = Color(0.0431373, 0.0431373, 0.231373, 1)
 _laser_duration_sec = 0.8
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=382968790]
 one_shot = true
 
-[node name="Laser" type="Node2D" parent="."]
+[node name="Laser" type="Node2D" parent="." unique_id=469913593]
 process_mode = 4
 z_index = -110
 z_as_relative = false
 
-[node name="OuterColor" type="Line2D" parent="Laser"]
+[node name="OuterColor" type="Line2D" parent="Laser" unique_id=291029043]
 visible = false
 position = Vector2(20, 16)
 points = PackedVector2Array(0, 0, 144, 0)
 width = 32.0
 
-[node name="InnerColor" type="Line2D" parent="Laser"]
+[node name="InnerColor" type="Line2D" parent="Laser" unique_id=2057718664]
 visible = false
 position = Vector2(30, 16)
 points = PackedVector2Array(0, 0, 124, 0)
 width = 16.0
 
-[node name="Hitbox" type="Area2D" parent="Laser"]
+[node name="Hitbox" type="Area2D" parent="Laser" unique_id=1195004596]
 script = ExtResource("2_u8mdr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Hitbox" unique_id=1976699706]
 position = Vector2(92, 16)
 shape = SubResource("RectangleShape2D_fd4x2")
 debug_color = Color(1, 0, 0, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="LeftBall" parent="." instance=ExtResource("1_70o5a")]
+[node name="LeftBall" parent="." unique_id=1133854812 instance=ExtResource("1_70o5a")]
 color = Color(0, 0, 1, 1)
 
-[node name="RightBall" parent="." instance=ExtResource("1_70o5a")]
+[node name="RightBall" parent="." unique_id=1437752965 instance=ExtResource("1_70o5a")]
 position = Vector2(152, 0)
 color = Color(0, 0, 1, 1)
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." unique_id=828411348]
 script = ExtResource("3_0t5xr")
 _initial_state = NodePath("StandBy")
 
-[node name="StandBy" type="Node" parent="StateMachine"]
+[node name="StandBy" type="Node" parent="StateMachine" unique_id=1663316901]
 script = ExtResource("4_78yud")
 
-[node name="Charging" type="Node" parent="StateMachine"]
+[node name="Charging" type="Node" parent="StateMachine" unique_id=1681418186]
 script = ExtResource("5_q4iqa")
 
-[node name="Detecting" type="Node" parent="StateMachine"]
+[node name="Detecting" type="Node" parent="StateMachine" unique_id=1515651474]
 script = ExtResource("6_brua2")
 
-[node name="Firing" type="Node" parent="StateMachine"]
+[node name="Firing" type="Node" parent="StateMachine" unique_id=1680123732]
 script = ExtResource("7_h04pi")
 
-[node name="Discharged" type="Node" parent="StateMachine"]
+[node name="Discharged" type="Node" parent="StateMachine" unique_id=683137780]
 script = ExtResource("8_i6llu")
 
 [connection signal="hit" from="Laser/Hitbox" to="." method="_on_hitbox_hit"]

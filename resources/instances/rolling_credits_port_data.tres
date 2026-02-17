@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RollingCredits" load_steps=11 format=3 uid="uid://kmr1uhgtp68d"]
+[gd_resource type="Resource" script_class="RollingCredits" format=3 uid="uid://kmr1uhgtp68d"]
 
 [ext_resource type="Script" uid="uid://dpm245jugv1lp" path="res://resources/credit.gd" id="1_x4py4"]
 [ext_resource type="Script" uid="uid://cntjgqmj172wc" path="res://resources/rolling_credits.gd" id="2_7insv"]
